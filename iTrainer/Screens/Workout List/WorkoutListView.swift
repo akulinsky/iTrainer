@@ -6,10 +6,25 @@
 //
 
 import SwiftUI
+import SDWebImageSwiftUI
+
+//Avatar
+//https://randomuser.me/api/portraits/men/38.jpg
 
 struct WorkoutListView: View {
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        
+        VStack {
+            Text("The start")
+            
+            AnimatedImage(url: URL(string: "https://randomuser.me/api/portraits/men/38.jpg")) {
+                Image("person_small")
+            }
+            .aspectRatio(contentMode: .fit)
+            
+            Text("Hello, World!")
+        }
+        .navigationTitle("iTrainer")
     }
 }
 
