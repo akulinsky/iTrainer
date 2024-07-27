@@ -28,6 +28,7 @@
 		F69BD11C2C5506B70057080E /* WorkoutListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F69BD11B2C5506B70057080E /* WorkoutListView.swift */; };
 		F69BD11E2C5507200057080E /* DataManagerBackground.swift in Sources */ = {isa = PBXBuildFile; fileRef = F69BD11D2C5507200057080E /* DataManagerBackground.swift */; };
 		F69BD1212C550A5C0057080E /* SDWebImageSwiftUI in Frameworks */ = {isa = PBXBuildFile; productRef = F69BD1202C550A5C0057080E /* SDWebImageSwiftUI */; };
+		F69BD1232C550E8F0057080E /* DataContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = F69BD1222C550E8E0057080E /* DataContainer.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -70,6 +71,7 @@
 		F69BD1132C5500580057080E /* ServiceNetworkProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ServiceNetworkProvider.swift; sourceTree = "<group>"; };
 		F69BD11B2C5506B70057080E /* WorkoutListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutListView.swift; sourceTree = "<group>"; };
 		F69BD11D2C5507200057080E /* DataManagerBackground.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataManagerBackground.swift; sourceTree = "<group>"; };
+		F69BD1222C550E8E0057080E /* DataContainer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataContainer.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -136,6 +138,7 @@
 				F69BD1162C5505140057080E /* Screens */,
 				F69BD0C92C54F8DA0057080E /* ContentView.swift */,
 				F69BD11D2C5507200057080E /* DataManagerBackground.swift */,
+				F69BD1222C550E8E0057080E /* DataContainer.swift */,
 				F69BD0CB2C54F8DA0057080E /* Item.swift */,
 				F69BD0CD2C54F8DB0057080E /* Assets.xcassets */,
 				F69BD0CF2C54F8DB0057080E /* Preview Content */,
@@ -428,6 +431,7 @@
 				F69BD1012C54FBEE0057080E /* NetworkUtils.swift in Sources */,
 				F69BD0FB2C54FB0E0057080E /* MailView.swift in Sources */,
 				F69BD10A2C54FC170057080E /* ServiceErrors.swift in Sources */,
+				F69BD1232C550E8F0057080E /* DataContainer.swift in Sources */,
 				F69BD1152C5500580057080E /* ServiceNetworkProvider.swift in Sources */,
 				F69BD1072C54FC170057080E /* NetworkClient.swift in Sources */,
 				F69BD1092C54FC170057080E /* NetworkProvider.swift in Sources */,
