@@ -39,15 +39,15 @@ public actor DataManagerBackground: ModelActor {
         }
     }
     
-    func fetchItems(sort: PersonSorting = .firstName, predicate: Predicate<PersonModelDB>? = nil) -> [PersonModelDB] {
-        do {
-            let keys = (sort == .firstName) ? \PersonModelDB.firstName : \PersonModelDB.lastName
-            let sort = SortDescriptor(keys, order: .forward)
-            return try context.fetch(FetchDescriptor<PersonModelDB>(predicate: predicate, sortBy: [sort]))
-        } catch {
-            fatalError(error.localizedDescription)
-        }
-    }
+//    func fetchItems(sort: PersonSorting = .firstName, predicate: Predicate<PersonModelDB>? = nil) -> [PersonModelDB] {
+//        do {
+//            let keys = (sort == .firstName) ? \PersonModelDB.firstName : \PersonModelDB.lastName
+//            let sort = SortDescriptor(keys, order: .forward)
+//            return try context.fetch(FetchDescriptor<PersonModelDB>(predicate: predicate, sortBy: [sort]))
+//        } catch {
+//            fatalError(error.localizedDescription)
+//        }
+//    }
     
     func fetchItem<T: PersistentModel>(predicate: Predicate<T>? = nil) -> T? {
         do {
@@ -71,18 +71,6 @@ public actor DataManagerBackground: ModelActor {
         context.insert(model)
     }
     
-    func update(with id: UUID, block: (PersonModelDB?)->()) {
-        
-        if let model = self.fetchItems(predicate: #Predicate<PersonModelDB> { model in
-            model.id == id
-        }).first {
-            block(model)
-            save()
-        } else {
-            block(nil)
-        }
-    }
-    
     func update<T: PersistentModel>(predicate: Predicate<T>, block: (T?)->()) {
         
         if let model = self.fetchItem(predicate: predicate) {
@@ -91,17 +79,6 @@ public actor DataManagerBackground: ModelActor {
         } else {
             block(nil)
         }
-    }
-    
-    public func remove(with id: UUID) {
-
-        if let deleteModel = self.fetchItems(predicate: #Predicate<PersonModelDB> { model in
-            model.id == id
-        }).first {
-            context.delete(deleteModel)
-        }
-        
-        save()
     }
     
     public func remove<T: PersistentModel>(predicate: Predicate<T>) {

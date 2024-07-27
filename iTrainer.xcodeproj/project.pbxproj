@@ -15,6 +15,18 @@
 		F69BD0DB2C54F8DB0057080E /* iTrainerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F69BD0DA2C54F8DB0057080E /* iTrainerTests.swift */; };
 		F69BD0E52C54F8DB0057080E /* iTrainerUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F69BD0E42C54F8DB0057080E /* iTrainerUITests.swift */; };
 		F69BD0E72C54F8DB0057080E /* iTrainerUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F69BD0E62C54F8DB0057080E /* iTrainerUITestsLaunchTests.swift */; };
+		F69BD0FB2C54FB0E0057080E /* MailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F69BD0FA2C54FB0E0057080E /* MailView.swift */; };
+		F69BD0FD2C54FB190057080E /* AKDisabledButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = F69BD0FC2C54FB190057080E /* AKDisabledButtonStyle.swift */; };
+		F69BD0FF2C54FBC10057080E /* View+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = F69BD0FE2C54FBC10057080E /* View+Utils.swift */; };
+		F69BD1012C54FBEE0057080E /* NetworkUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = F69BD1002C54FBEE0057080E /* NetworkUtils.swift */; };
+		F69BD1072C54FC170057080E /* NetworkClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = F69BD1032C54FC170057080E /* NetworkClient.swift */; };
+		F69BD1092C54FC170057080E /* NetworkProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = F69BD1052C54FC170057080E /* NetworkProvider.swift */; };
+		F69BD10A2C54FC170057080E /* ServiceErrors.swift in Sources */ = {isa = PBXBuildFile; fileRef = F69BD1062C54FC170057080E /* ServiceErrors.swift */; };
+		F69BD1112C54FEA70057080E /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = F69BD1102C54FEA70057080E /* Alamofire */; };
+		F69BD1142C5500580057080E /* ServiceRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F69BD1122C5500570057080E /* ServiceRouter.swift */; };
+		F69BD1152C5500580057080E /* ServiceNetworkProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = F69BD1132C5500580057080E /* ServiceNetworkProvider.swift */; };
+		F69BD11C2C5506B70057080E /* WorkoutListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F69BD11B2C5506B70057080E /* WorkoutListView.swift */; };
+		F69BD11E2C5507200057080E /* DataManagerBackground.swift in Sources */ = {isa = PBXBuildFile; fileRef = F69BD11D2C5507200057080E /* DataManagerBackground.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -46,6 +58,17 @@
 		F69BD0E02C54F8DB0057080E /* iTrainerUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = iTrainerUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		F69BD0E42C54F8DB0057080E /* iTrainerUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iTrainerUITests.swift; sourceTree = "<group>"; };
 		F69BD0E62C54F8DB0057080E /* iTrainerUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iTrainerUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		F69BD0FA2C54FB0E0057080E /* MailView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MailView.swift; sourceTree = "<group>"; };
+		F69BD0FC2C54FB190057080E /* AKDisabledButtonStyle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AKDisabledButtonStyle.swift; sourceTree = "<group>"; };
+		F69BD0FE2C54FBC10057080E /* View+Utils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "View+Utils.swift"; sourceTree = "<group>"; };
+		F69BD1002C54FBEE0057080E /* NetworkUtils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkUtils.swift; sourceTree = "<group>"; };
+		F69BD1032C54FC170057080E /* NetworkClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkClient.swift; sourceTree = "<group>"; };
+		F69BD1052C54FC170057080E /* NetworkProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkProvider.swift; sourceTree = "<group>"; };
+		F69BD1062C54FC170057080E /* ServiceErrors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ServiceErrors.swift; sourceTree = "<group>"; };
+		F69BD1122C5500570057080E /* ServiceRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ServiceRouter.swift; sourceTree = "<group>"; };
+		F69BD1132C5500580057080E /* ServiceNetworkProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ServiceNetworkProvider.swift; sourceTree = "<group>"; };
+		F69BD11B2C5506B70057080E /* WorkoutListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutListView.swift; sourceTree = "<group>"; };
+		F69BD11D2C5507200057080E /* DataManagerBackground.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataManagerBackground.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -53,6 +76,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F69BD1112C54FEA70057080E /* Alamofire in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -80,6 +104,7 @@
 				F69BD0D92C54F8DB0057080E /* iTrainerTests */,
 				F69BD0E32C54F8DB0057080E /* iTrainerUITests */,
 				F69BD0C52C54F8DA0057080E /* Products */,
+				F69BD10C2C54FD6B0057080E /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -96,8 +121,19 @@
 		F69BD0C62C54F8DA0057080E /* iTrainer */ = {
 			isa = PBXGroup;
 			children = (
+				F69BD0F92C54FA3A0057080E /* Utilities */,
+				F69BD0F72C54F9E90057080E /* Extensions */,
+				F69BD0F82C54FA230057080E /* Networking */,
+				F69BD1132C5500580057080E /* ServiceNetworkProvider.swift */,
+				F69BD1122C5500570057080E /* ServiceRouter.swift */,
+				F69BD0F62C54F9CB0057080E /* Network Models */,
+				F69BD0F42C54F9950057080E /* Data Base Models */,
+				F69BD0F52C54F9B70057080E /* Models */,
+				F69BD0F32C54F9820057080E /* Controls */,
 				F69BD0C72C54F8DA0057080E /* iTrainerApp.swift */,
+				F69BD1162C5505140057080E /* Screens */,
 				F69BD0C92C54F8DA0057080E /* ContentView.swift */,
+				F69BD11D2C5507200057080E /* DataManagerBackground.swift */,
 				F69BD0CB2C54F8DA0057080E /* Item.swift */,
 				F69BD0CD2C54F8DB0057080E /* Assets.xcassets */,
 				F69BD0CF2C54F8DB0057080E /* Preview Content */,
@@ -130,6 +166,117 @@
 			path = iTrainerUITests;
 			sourceTree = "<group>";
 		};
+		F69BD0F32C54F9820057080E /* Controls */ = {
+			isa = PBXGroup;
+			children = (
+				F69BD0FC2C54FB190057080E /* AKDisabledButtonStyle.swift */,
+				F69BD0FA2C54FB0E0057080E /* MailView.swift */,
+			);
+			path = Controls;
+			sourceTree = "<group>";
+		};
+		F69BD0F42C54F9950057080E /* Data Base Models */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "Data Base Models";
+			sourceTree = "<group>";
+		};
+		F69BD0F52C54F9B70057080E /* Models */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		F69BD0F62C54F9CB0057080E /* Network Models */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "Network Models";
+			sourceTree = "<group>";
+		};
+		F69BD0F72C54F9E90057080E /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				F69BD0FE2C54FBC10057080E /* View+Utils.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		F69BD0F82C54FA230057080E /* Networking */ = {
+			isa = PBXGroup;
+			children = (
+				F69BD1022C54FC170057080E /* NetworkProvider */,
+			);
+			path = Networking;
+			sourceTree = "<group>";
+		};
+		F69BD0F92C54FA3A0057080E /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				F69BD1002C54FBEE0057080E /* NetworkUtils.swift */,
+			);
+			path = Utilities;
+			sourceTree = "<group>";
+		};
+		F69BD1022C54FC170057080E /* NetworkProvider */ = {
+			isa = PBXGroup;
+			children = (
+				F69BD1032C54FC170057080E /* NetworkClient.swift */,
+				F69BD1052C54FC170057080E /* NetworkProvider.swift */,
+				F69BD1062C54FC170057080E /* ServiceErrors.swift */,
+			);
+			path = NetworkProvider;
+			sourceTree = "<group>";
+		};
+		F69BD10C2C54FD6B0057080E /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		F69BD1162C5505140057080E /* Screens */ = {
+			isa = PBXGroup;
+			children = (
+				F69BD1172C55054B0057080E /* Workout List */,
+				F69BD1182C55056C0057080E /* Workout Groups */,
+				F69BD1192C5505980057080E /* Exercise List */,
+				F69BD11A2C5505CC0057080E /* Exercise */,
+			);
+			path = Screens;
+			sourceTree = "<group>";
+		};
+		F69BD1172C55054B0057080E /* Workout List */ = {
+			isa = PBXGroup;
+			children = (
+				F69BD11B2C5506B70057080E /* WorkoutListView.swift */,
+			);
+			path = "Workout List";
+			sourceTree = "<group>";
+		};
+		F69BD1182C55056C0057080E /* Workout Groups */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "Workout Groups";
+			sourceTree = "<group>";
+		};
+		F69BD1192C5505980057080E /* Exercise List */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "Exercise List";
+			sourceTree = "<group>";
+		};
+		F69BD11A2C5505CC0057080E /* Exercise */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Exercise;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -146,6 +293,9 @@
 			dependencies = (
 			);
 			name = iTrainer;
+			packageProductDependencies = (
+				F69BD1102C54FEA70057080E /* Alamofire */,
+			);
 			productName = iTrainer;
 			productReference = F69BD0C42C54F8DA0057080E /* iTrainer.app */;
 			productType = "com.apple.product-type.application";
@@ -218,6 +368,9 @@
 				Base,
 			);
 			mainGroup = F69BD0BB2C54F8DA0057080E;
+			packageReferences = (
+				F69BD10F2C54FEA70057080E /* XCRemoteSwiftPackageReference "Alamofire" */,
+			);
 			productRefGroup = F69BD0C52C54F8DA0057080E /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -261,8 +414,19 @@
 			buildActionMask = 2147483647;
 			files = (
 				F69BD0CA2C54F8DA0057080E /* ContentView.swift in Sources */,
+				F69BD11E2C5507200057080E /* DataManagerBackground.swift in Sources */,
+				F69BD11C2C5506B70057080E /* WorkoutListView.swift in Sources */,
+				F69BD1142C5500580057080E /* ServiceRouter.swift in Sources */,
+				F69BD0FD2C54FB190057080E /* AKDisabledButtonStyle.swift in Sources */,
 				F69BD0CC2C54F8DA0057080E /* Item.swift in Sources */,
 				F69BD0C82C54F8DA0057080E /* iTrainerApp.swift in Sources */,
+				F69BD0FF2C54FBC10057080E /* View+Utils.swift in Sources */,
+				F69BD1012C54FBEE0057080E /* NetworkUtils.swift in Sources */,
+				F69BD0FB2C54FB0E0057080E /* MailView.swift in Sources */,
+				F69BD10A2C54FC170057080E /* ServiceErrors.swift in Sources */,
+				F69BD1152C5500580057080E /* ServiceNetworkProvider.swift in Sources */,
+				F69BD1072C54FC170057080E /* NetworkClient.swift in Sources */,
+				F69BD1092C54FC170057080E /* NetworkProvider.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -592,6 +756,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		F69BD10F2C54FEA70057080E /* XCRemoteSwiftPackageReference "Alamofire" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Alamofire/Alamofire.git";
+			requirement = {
+				kind = exactVersion;
+				version = 5.4.3;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		F69BD1102C54FEA70057080E /* Alamofire */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = F69BD10F2C54FEA70057080E /* XCRemoteSwiftPackageReference "Alamofire" */;
+			productName = Alamofire;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = F69BD0BC2C54F8DA0057080E /* Project object */;
 }
