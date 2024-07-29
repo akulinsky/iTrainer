@@ -8,11 +8,19 @@
 import SwiftUI
 
 struct ExerciseCell: View {
+    
+    @State var model: ExerciseModel
+    
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        HStack {
+            VStack {
+                Text(model.title ?? "--").leadingAlignment()
+            }
+        }
+        .frame(height: 60)
     }
 }
 
 #Preview {
-    ExerciseCell()
+    ExerciseCell(model: ExerciseModel(title: "TEST"))
 }

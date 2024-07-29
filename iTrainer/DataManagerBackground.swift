@@ -25,7 +25,7 @@ public actor DataManagerBackground: ModelActor {
         )
     }
     
-    public func fetchData<T: PersistentModel>(
+    public func fetchModels<T: PersistentModel>(
         predicate: Predicate<T>? = nil,
         sortBy: [SortDescriptor<T>] = []
     ) -> [T] {
@@ -123,4 +123,26 @@ public actor DataManagerBackground: ModelActor {
         }
     }
 
+}
+
+extension DataManagerBackground {
+    
+    func fetchAllWorkouts() -> [WorkoutModelDB] {
+        return fetchModels(sortBy: [SortDescriptor(\WorkoutModelDB.index, order: .forward)])
+    }
+    
+    func fetchWorkoutGroups(for workoutId: UUID) -> [WorkoutGroupModelDB] {
+        return fetchModels(predicate: #Predicate<WorkoutGroupModelDB> { $0.workout?.id == workoutId },
+                           sortBy: [SortDescriptor(\WorkoutGroupModelDB.index, order: .forward)])
+    }
+    
+    func fetchExercise(for workoutGroupId: UUID) -> [ExerciseModelDB] {
+        return fetchModels(predicate: #Predicate<ExerciseModelDB> { $0.workoutGroup?.id == workoutGroupId },
+                           sortBy: [SortDescriptor(\ExerciseModelDB.index, order: .forward)])
+    }
+    
+    func fetchSets(for exerciseId: UUID) -> [SetsModelDB] {
+        return fetchModels(predicate: #Predicate<SetsModelDB> { $0.exercise?.id == exerciseId },
+                           sortBy: [SortDescriptor(\SetsModelDB.index, order: .forward)])
+    }
 }

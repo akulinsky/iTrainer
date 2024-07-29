@@ -9,7 +9,7 @@ import Foundation
 import SwiftData
 
 @Model
-class ExerciseModelDB: DataItemIndexProtocol {
+class ExerciseModelDB: DataItemProtocol {
     @Attribute (.unique) var id = UUID()
     var index: Int = 0
     var title: String?
@@ -20,5 +20,21 @@ class ExerciseModelDB: DataItemIndexProtocol {
     
     init() {
         
+    }
+}
+
+extension ExerciseModelDB {
+    static func count() async -> Int {
+        await DataManagerBackground(container: DataContainer.shared.sharedModelContainer).count(type: ExerciseModelDB.self)
+    }
+}
+
+// Predicates
+extension ExerciseModelDB {
+    func predicateSelf() -> Predicate<ExerciseModelDB> {
+        let id = self.id
+        return #Predicate<ExerciseModelDB> {
+            $0.id == id
+        }
     }
 }

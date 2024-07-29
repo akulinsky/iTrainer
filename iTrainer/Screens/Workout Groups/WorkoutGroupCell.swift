@@ -8,11 +8,19 @@
 import SwiftUI
 
 struct WorkoutGroupCell: View {
+    
+    @State var model: WorkoutGroupModel
+    
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        HStack {
+            VStack {
+                Text(model.title ?? "--").leadingAlignment()
+            }
+        }
+        .frame(height: 60)
     }
 }
 
 #Preview {
-    WorkoutGroupCell()
+    WorkoutGroupCell(model: WorkoutGroupModel(title: "TEST"))
 }

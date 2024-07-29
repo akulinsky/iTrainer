@@ -8,11 +8,19 @@
 import SwiftUI
 
 struct SetsCell: View {
+    
+    @State var model: SetsModel
+    
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        HStack {
+            Text("Weight: \(model.weight)")
+            Text(" X ")
+            Text("Reps: \(model.reps)")
+        }
+        .frame(height: 60)
     }
 }
 
 #Preview {
-    SetsCell()
+    SetsCell(model: SetsModel(reps: 10, weight: 100))
 }

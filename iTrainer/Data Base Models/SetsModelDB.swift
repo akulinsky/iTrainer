@@ -9,7 +9,7 @@ import Foundation
 import SwiftData
 
 @Model
-class SetsModelDB: DataItemIndexProtocol {
+class SetsModelDB: DataSetItemProtocol {
     @Attribute (.unique) var id = UUID()
     var index: Int = 0
     var reps: Int = 0
@@ -19,5 +19,21 @@ class SetsModelDB: DataItemIndexProtocol {
     
     init() {
         
+    }
+}
+
+extension SetsModelDB {
+    static func count() async -> Int {
+        await DataManagerBackground(container: DataContainer.shared.sharedModelContainer).count(type: SetsModelDB.self)
+    }
+}
+
+// Predicates
+extension SetsModelDB {
+    func predicateSelf() -> Predicate<SetsModelDB> {
+        let id = self.id
+        return #Predicate<SetsModelDB> {
+            $0.id == id
+        }
     }
 }

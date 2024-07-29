@@ -7,6 +7,15 @@
 
 import Foundation
 
-protocol DataItemIndexProtocol {
-    var index: Int {get}
+protocol DataItemProtocol {
+    var id: UUID { get }
+    var index: Int { get }
+    var title: String? { get }
+}
+
+protocol DataSetItemProtocol {
+    var id: UUID { get }
+    var index: Int { get }
+    var reps: Int { get }
+    var weight: Int { get }
 }

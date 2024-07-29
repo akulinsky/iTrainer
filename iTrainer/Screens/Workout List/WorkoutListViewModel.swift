@@ -77,7 +77,7 @@ class WorkoutListViewModel: ObservableObject {
             print("DBG_  ExerciseModelDB removed count: \(await ExerciseModelDB.count())")
             print("DBG_  SetsModelDB removed count: \(await SetsModelDB.count())")
             
-            for index in 1...1 {
+            for index in 1...5 {
                 let item = WorkoutModelDB()
                 await dataManager.insert(model: item)
                 item.index = index
@@ -92,7 +92,7 @@ class WorkoutListViewModel: ObservableObject {
     }
     
     private func addTestGroup(for workout: WorkoutModelDB, dataManager: DataManagerBackground) async {
-        for index in 1...1 {
+        for index in 1...4 {
             let item = WorkoutGroupModelDB()
             
             await dataManager.insert(model: item)
@@ -105,7 +105,7 @@ class WorkoutListViewModel: ObservableObject {
     }
     
     private func addTestExercise(for group: WorkoutGroupModelDB, dataManager: DataManagerBackground) async {
-        for index in 1...1 {
+        for index in 1...5 {
             let item = ExerciseModelDB()
             
             await dataManager.insert(model: item)
@@ -118,7 +118,7 @@ class WorkoutListViewModel: ObservableObject {
     }
     
     private func addTestSets(for exercise: ExerciseModelDB, dataManager: DataManagerBackground) async {
-        for index in 1...1 {
+        for index in 1...3 {
             let item = SetsModelDB()
             
             await dataManager.insert(model: item)

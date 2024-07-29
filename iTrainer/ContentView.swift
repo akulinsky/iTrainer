@@ -11,10 +11,13 @@ import SwiftData
 struct ContentView: View {
 
     var body: some View {
-        NavigationSplitView {
+//        NavigationSplitView {
+//            WorkoutListView()
+//        } detail: {
+//            Text("Select an item")
+//        }
+        NavigationStack {
             WorkoutListView()
-        } detail: {
-            Text("Select an item")
         }
     }
 }

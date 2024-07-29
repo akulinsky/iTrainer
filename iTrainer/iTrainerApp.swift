@@ -10,10 +10,12 @@ import SwiftData
 
 @main
 struct iTrainerApp: App {
+    
+    var dataContainer = DataContainer()
 
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            ContentView().environmentObject(dataContainer)
         }
     }
 }
