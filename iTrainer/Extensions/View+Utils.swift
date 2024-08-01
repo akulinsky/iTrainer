@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import Combine
  
 // MARK: - LeadingAlignmentModifier
 
@@ -196,5 +197,36 @@ extension View {
         clipShape(RoundedCorner(radius: radius, corners: corners) )
             .overlay(RoundedCorner(radius: radius, corners: corners)
                 .stroke(borderColor, lineWidth: lineWidth))
+    }
+}
+
+// MARK: - Shake View
+
+struct ShakeViewModifier: ViewModifier {
+    var sink: PassthroughSubject<Void, Never>
+    let intensity: CGFloat
+    let duration: CGFloat
+    @State private var shake: Bool = false
+    @State private var xIntensity: CGFloat = 0
+    
+    func body(content: Content) -> some View {
+        content
+            .offset(x: shake ? xIntensity : -xIntensity, y: 0)
+            .onReceive(sink) { _ in
+                self.xIntensity = intensity
+                withAnimation(.easeInOut(duration: duration).repeatCount(5)) {
+                    shake.toggle()
+                } completion: {
+                    withAnimation(.easeInOut(duration: duration)) {
+                        self.xIntensity = 0
+                    }
+                }
+            }
+    }
+}
+
+extension View {
+    func shakeAnimation(_ sink: PassthroughSubject<Void, Never>, intensity: CGFloat = 8, duration: CGFloat = 0.08) -> some View {
+        modifier(ShakeViewModifier(sink: sink, intensity: intensity, duration: duration))
     }
 }

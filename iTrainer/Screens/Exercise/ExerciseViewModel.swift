@@ -54,9 +54,18 @@ class ExerciseViewModel: ObservableObject {
 //
 //    }
     
-//    func delete(index: Int) {
-//
-//    }
+    func delete(index: Int) {
+        let item = self.sets[index]
+        Task {
+            let dataManager = DataManagerBackground(container: DataContainer.shared.sharedModelContainer)
+            await dataManager.removeSets(with: item.id)
+            print("DBG_ --------------")
+            print("DBG_  SetsModelDB count: \(await SetsModelDB.count())")
+            await MainActor.run {
+                fetchItems()
+            }
+        }
+    }
     
     private func addNewExerciseToBase(_ setsModel: SetsModel, dataManager: DataManagerBackground) async {
         let item = SetsModelDB()

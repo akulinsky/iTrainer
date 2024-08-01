@@ -49,7 +49,7 @@ public actor DataManagerBackground: ModelActor {
 //        }
 //    }
     
-    func fetchItem<T: PersistentModel>(predicate: Predicate<T>? = nil) -> T? {
+    func fetchItem<T: PersistentModel>(predicate: Predicate<T>) -> T? {
         do {
             return try context.fetch(FetchDescriptor<T>(predicate: predicate)).first
         } catch {
@@ -125,7 +125,11 @@ public actor DataManagerBackground: ModelActor {
 
 }
 
+// MARK: - Request
+
 extension DataManagerBackground {
+    
+    // MARK: - Fetch
     
     func fetchAllWorkouts() -> [WorkoutModelDB] {
         return fetchModels(sortBy: [SortDescriptor(\WorkoutModelDB.index, order: .forward)])
@@ -145,4 +149,128 @@ extension DataManagerBackground {
         return fetchModels(predicate: #Predicate<SetsModelDB> { $0.exercise?.id == exerciseId },
                            sortBy: [SortDescriptor(\SetsModelDB.index, order: .forward)])
     }
+    
+    // MARK: - Remove
+    
+    func removeWorkout(with id: UUID) {
+        
+        guard let item = fetchItem(predicate: #Predicate<WorkoutModelDB> { $0.id == id }) else {
+            return
+        }
+        
+        item.workoutGroups.forEach { model in
+            removeWorkoutGroup(with: model.id)
+        }
+        
+        remove(model: item)
+    }
+    
+    func removeWorkoutGroup(with id: UUID) {
+        guard let item = fetchItem(predicate: #Predicate<WorkoutGroupModelDB> { $0.id == id }) else {
+            return
+        }
+        
+        item.exercises.forEach { model in
+            removeExercise(with: model.id)
+        }
+        
+        remove(model: item)
+    }
+    
+    func removeExercise(with id: UUID) {
+        guard let item = fetchItem(predicate: #Predicate<ExerciseModelDB> { $0.id == id }) else {
+            return
+        }
+        
+        item.sets.forEach { model in
+            removeSets(with: model.id)
+        }
+        
+        remove(model: item)
+    }
+    
+    func removeSets(with id: UUID) {
+        guard let item = fetchItem(predicate: #Predicate<SetsModelDB> { $0.id == id }) else {
+            return
+        }
+        
+        remove(model: item)
+    }
+    
+    // MARK: - Updates
+    
+    func update(workout: WorkoutModel) {
+        
+        let uuid = workout.id
+        
+        if let item = fetchItem(predicate: #Predicate<WorkoutModelDB> { $0.id == uuid }) {
+            item.title = workout.title
+            self.save()
+        } else {
+            let item = WorkoutModelDB()
+            self.insert(model: item)
+            item.index = count(type: WorkoutModelDB.self) + 1
+            item.title = workout.title
+        }
+    }
+    
+    func update(group: WorkoutGroupModel, workoutId: UUID? = nil) {
+        
+        let uuid = group.id
+        
+        if let item = fetchItem(predicate: #Predicate<WorkoutGroupModelDB> { $0.id == uuid }) {
+            item.title = group.title
+            self.save()
+        } else if let workoutId = workoutId,
+                    let workoutModel = fetchItem(predicate: #Predicate<WorkoutModelDB> { $0.id == workoutId }) {
+            let item = WorkoutGroupModelDB()
+            item.workout = workoutModel
+            self.insert(model: item)
+            item.index = workoutModel.workoutGroups.count
+            item.title = group.title
+        } else {
+            assertionFailure("Can't update the WorkoutGroupModel, because the workoutId == nil")
+        }
+    }
+    
+    func update(exercise: ExerciseModel, groupId: UUID? = nil) {
+        
+        let uuid = exercise.id
+        
+        if let item = fetchItem(predicate: #Predicate<ExerciseModelDB> { $0.id == uuid }) {
+            item.title = exercise.title
+            self.save()
+        } else if let groupId = groupId,
+                    let groupModel = fetchItem(predicate: #Predicate<WorkoutGroupModelDB> { $0.id == groupId }) {
+            let item = ExerciseModelDB()
+            item.workoutGroup = groupModel
+            self.insert(model: item)
+            item.index = groupModel.exercises.count
+            item.title = exercise.title
+        } else {
+            assertionFailure("Can't update the ExerciseModel, because the groupId == nil")
+        }
+    }
+    
+    func update(sets: SetsModel, exerciseId: UUID? = nil) {
+        
+        let uuid = sets.id
+        
+        if let item = fetchItem(predicate: #Predicate<SetsModelDB> { $0.id == uuid }) {
+            item.reps = sets.reps
+            item.weight = sets.weight
+            self.save()
+        } else if let exerciseId = exerciseId,
+                    let exerciseModel = fetchItem(predicate: #Predicate<ExerciseModelDB> { $0.id == exerciseId }) {
+            let item = SetsModelDB()
+            item.exercise = exerciseModel
+            self.insert(model: item)
+            item.index = exerciseModel.sets.count
+            item.reps = sets.reps
+            item.weight = sets.weight
+        } else {
+            assertionFailure("Can't update the SetsModelDB, because the groupId == nil")
+        }
+    }
+    
 }

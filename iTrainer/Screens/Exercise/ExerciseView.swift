@@ -16,8 +16,6 @@ struct ExerciseView: View {
     }
     
     var body: some View {
-//        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
-        
         
         VStack {
             Text("Hello, World!")
@@ -54,9 +52,9 @@ struct ExerciseView: View {
 
     private func deleteItems(offsets: IndexSet) {
         withAnimation {
-//            for index in offsets {
-//                viewModel.delete(index: index)
-//            }
+            for index in offsets {
+                viewModel.delete(index: index)
+            }
         }
     }
 }

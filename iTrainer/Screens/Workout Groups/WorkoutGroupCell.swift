@@ -9,18 +9,40 @@ import SwiftUI
 
 struct WorkoutGroupCell: View {
     
-    @State var model: WorkoutGroupModel
+    enum Action {
+        case update(WorkoutGroupModel)
+        case cancel
+    }
+    
+    typealias ActionBlock = (Action)->()
+    
+    private var actionBlock: ActionBlock
+    
+    var model: WorkoutGroupModel
+    
+    init(model: WorkoutGroupModel, actionBlock: @escaping ActionBlock) {
+        self.model = model
+        self.actionBlock = actionBlock
+    }
     
     var body: some View {
-        HStack {
-            VStack {
-                Text(model.title ?? "--").leadingAlignment()
+        ZStack {
+            HStack {
+                VStack {
+                    Text(model.title ?? "--").leadingAlignment()
+                }
             }
+            .frame(height: 60)
+            
+            Button("") {
+//                print("DBG_ : \(model.title ?? "--")")
+                actionBlock(.update(model))
+            }
+            .frame(maxWidth: .infinity, maxHeight: .infinity)
         }
-        .frame(height: 60)
     }
 }
 
 #Preview {
-    WorkoutGroupCell(model: WorkoutGroupModel(title: "TEST"))
+    WorkoutGroupCell(model: WorkoutGroupModel(title: "TEST")) { action in }
 }

@@ -9,18 +9,40 @@ import SwiftUI
 
 struct ExerciseCell: View {
     
-    @State var model: ExerciseModel
+    enum Action {
+        case update(ExerciseModel)
+        case cancel
+    }
+    
+    typealias ActionBlock = (Action)->()
+    
+    private var actionBlock: ActionBlock
+    
+    var model: ExerciseModel
+    
+    init(model: ExerciseModel, actionBlock: @escaping ActionBlock) {
+        self.model = model
+        self.actionBlock = actionBlock
+    }
     
     var body: some View {
-        HStack {
-            VStack {
-                Text(model.title ?? "--").leadingAlignment()
+        ZStack {
+            HStack {
+                VStack {
+                    Text(model.title ?? "--").leadingAlignment()
+                }
             }
+            .frame(height: 60)
+            
+            Button("") {
+//                print("DBG_ : \(model.title ?? "--")")
+                actionBlock(.update(model))
+            }
+            .frame(maxWidth: .infinity, maxHeight: .infinity)
         }
-        .frame(height: 60)
     }
 }
 
 #Preview {
-    ExerciseCell(model: ExerciseModel(title: "TEST"))
+    ExerciseCell(model: ExerciseModel(title: "TEST")) { action in }
 }
