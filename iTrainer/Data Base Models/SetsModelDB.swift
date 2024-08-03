@@ -13,7 +13,7 @@ class SetsModelDB: DataSetItemProtocol {
     @Attribute (.unique) var id = UUID()
     var index: Int = 0
     var reps: Int = 0
-    var weight: Int = 0
+    var weight: Float = 0
     
     var exercise: ExerciseModelDB?
     

@@ -198,7 +198,7 @@ class WorkoutListViewModel: ObservableObject {
             await dataManager.insert(model: item)
             item.index = index
             item.reps = 10 - (index-1)
-            item.weight = 50 + (index-2)*10
+            item.weight = 50.0 + Float((index-2))*10.0
             item.exercise = exercise
         }
     }

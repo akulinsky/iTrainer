@@ -19,6 +19,10 @@ class ExerciseViewModel: ObservableObject {
     
     @Published var isShowAlert = false
     
+    @Published var isEditSets = false
+    
+    var editSets: SetsModel?
+    
     var errorMessage: String? = nil
     
     var exercise: ExerciseModel
@@ -50,9 +54,47 @@ class ExerciseViewModel: ObservableObject {
         
     }
     
-//    func update(person: PersonModelDB) {
-//
-//    }
+    func edit(sets: SetsModel) {
+        editSets = sets
+        isEditSets = true
+    }
+    
+    func update(weight: Float, reps: Int) {
+        if var editSets = editSets {
+            editSets.reps = reps
+            editSets.weight = weight
+            update(item: editSets)
+        } else {
+            update(item: SetsModel(reps: reps, weight: weight))
+        }
+        editSets = nil
+    }
+    
+    func update(item: SetsModel) {
+        Task {
+            await DataManagerBackground(container: DataContainer.shared.sharedModelContainer).update(sets: item, exerciseId: exercise.id)
+            await MainActor.run {
+                fetchItems()
+            }
+        }
+    }
+    
+    func moveItem(source: IndexSet, destination: Int) {
+        Task {
+            let dataManager = DataManagerBackground(container: DataContainer.shared.sharedModelContainer)
+            var models = await dataManager.fetchSets(for: exercise.id)
+            models.move(fromOffsets: source, toOffset: destination)
+            var index = 1
+            for item in models {
+                item.index = index
+                index += 1
+            }
+            await dataManager.save()
+            await MainActor.run {
+                fetchItems()
+            }
+        }
+    }
     
     func delete(index: Int) {
         let item = self.sets[index]

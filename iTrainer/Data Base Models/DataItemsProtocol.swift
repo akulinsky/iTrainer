@@ -17,5 +17,5 @@ protocol DataSetItemProtocol {
     var id: UUID { get }
     var index: Int { get }
     var reps: Int { get }
-    var weight: Int { get }
+    var weight: Float { get }
 }

@@ -9,18 +9,45 @@ import SwiftUI
 
 struct SetsCell: View {
     
-    @State var model: SetsModel
+    enum Action {
+        case update(SetsModel)
+        case cancel
+    }
+    
+    typealias ActionBlock = (Action)->()
+    
+    private var actionBlock: ActionBlock
+    
+    var model: SetsModel
+    
+    init(model: SetsModel, actionBlock: @escaping ActionBlock) {
+        self.model = model
+        self.actionBlock = actionBlock
+    }
     
     var body: some View {
-        HStack {
-            Text("Weight: \(model.weight)")
-            Text(" X ")
-            Text("Reps: \(model.reps)")
+        
+        ZStack(alignment: .leading) {
+            HStack(alignment: .firstTextBaseline) {
+                Text("Weight:")
+                    .font(.footnote)
+                Text(String(format: "%.1f", model.weight)).bold()
+                Text("x")
+                Text("Reps:")
+                    .font(.footnote)
+                Text("\(model.reps)").bold()
+            }
+            .foregroundStyle(.gray)
+            .frame(height: 30)
+            
+            Button("") {
+                actionBlock(.update(model))
+            }
+            .frame(maxWidth: .infinity, maxHeight: .infinity)
         }
-        .frame(height: 60)
     }
 }
 
 #Preview {
-    SetsCell(model: SetsModel(reps: 10, weight: 100))
+    SetsCell(model: SetsModel(reps: 10, weight: 100)) { action in }
 }

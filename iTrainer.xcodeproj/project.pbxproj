@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		F6078BA32C5CF1BE00531302 /* EditSetsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6078BA22C5CF1BE00531302 /* EditSetsView.swift */; };
 		F6180DDB2C5A6D55009A23A7 /* EditNameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6180DDA2C5A6D55009A23A7 /* EditNameView.swift */; };
 		F69BD0C82C54F8DA0057080E /* iTrainerApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = F69BD0C72C54F8DA0057080E /* iTrainerApp.swift */; };
 		F69BD0CA2C54F8DA0057080E /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F69BD0C92C54F8DA0057080E /* ContentView.swift */; };
@@ -70,6 +71,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		F6078BA22C5CF1BE00531302 /* EditSetsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditSetsView.swift; sourceTree = "<group>"; };
 		F6180DDA2C5A6D55009A23A7 /* EditNameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditNameView.swift; sourceTree = "<group>"; };
 		F69BD0C42C54F8DA0057080E /* iTrainer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iTrainer.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F69BD0C72C54F8DA0057080E /* iTrainerApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iTrainerApp.swift; sourceTree = "<group>"; };
@@ -219,6 +221,7 @@
 				F69BD0FC2C54FB190057080E /* AKDisabledButtonStyle.swift */,
 				F69BD0FA2C54FB0E0057080E /* MailView.swift */,
 				F6180DDA2C5A6D55009A23A7 /* EditNameView.swift */,
+				F6078BA22C5CF1BE00531302 /* EditSetsView.swift */,
 			);
 			path = Controls;
 			sourceTree = "<group>";
@@ -486,6 +489,7 @@
 				F6EA7BD62C57B2C4005225A0 /* WorkoutGroupListViewModel.swift in Sources */,
 				F69BD1252C5519AA0057080E /* DataItemsProtocol.swift in Sources */,
 				F69BD0CA2C54F8DA0057080E /* ContentView.swift in Sources */,
+				F6078BA32C5CF1BE00531302 /* EditSetsView.swift in Sources */,
 				F6EA7BD82C57D898005225A0 /* WorkoutListCell.swift in Sources */,
 				F69BD12E2C551B4F0057080E /* SetsModelDB.swift in Sources */,
 				F6EA7BDE2C57DE6F005225A0 /* ExerciseCell.swift in Sources */,
