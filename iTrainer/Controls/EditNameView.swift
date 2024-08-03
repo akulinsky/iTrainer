@@ -76,9 +76,6 @@ struct EditNameView: View {
         }
         .onAppear {
             focused = true
-//            DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + .seconds(2)) {
-//                focused = true
-//            }
         }
     }
 }
