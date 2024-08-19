@@ -8,11 +8,65 @@
 import SwiftUI
 
 struct ExerciseTypeCell: View {
+    
+    @Environment(\.colorScheme) var colorScheme
+    
+    private var model: ExerciseTypeModel
+    
+    private let mode: ExerciseTypeViewMode
+    
+    private let isSelected: Bool
+    
+    private var color: Color {
+        
+        switch colorScheme {
+        case .light:
+            isSelected ? Color(UIColor.darkGray) : Color(UIColor.lightGray).opacity(0.5)
+        default:
+            isSelected ? Color(UIColor.lightGray) : Color(UIColor.darkGray).opacity(0.5)
+        }
+    }
+    
+    var toggleBlock: ()->()
+    
+    init(model: ExerciseTypeModel, mode: ExerciseTypeViewMode, isSelected: Bool, toggleBlock: @escaping ()->()) {
+        self.model = model
+        self.mode = mode
+        self.isSelected = isSelected
+        self.toggleBlock = toggleBlock
+    }
+    
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        HStack {
+            
+            if mode == .selecting {
+                Image(systemName: "checkmark.circle")
+                    .font(.title)
+                    .foregroundStyle(color)
+                    .onTapGesture {
+                        toggleBlock()
+                    }
+            }
+            
+            if let icon = model.icon {
+                icon
+                    .resizable()
+                    .frame(width: 60)
+            } else {
+                Color.red.frame(width: 60)
+            }
+            Text(model.title).leadingAlignment()
+        }
+        .frame(height: 60)
     }
 }
 
 #Preview {
-    ExerciseTypeCell()
+    ExerciseTypeCell(model: ExerciseTypeModel(title: "Жим лежа",
+                                              type: .chest,
+                                              parameters: [.weight(), .repeats()]
+                                             ),
+                     mode: .showing,
+                     isSelected: false,
+                     toggleBlock: {})
 }

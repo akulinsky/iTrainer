@@ -20,25 +20,60 @@ struct ExerciseCell: View {
     
     var model: ExerciseModel
     
+    @Environment(\.editMode) var editMode
+    
     init(model: ExerciseModel, actionBlock: @escaping ActionBlock) {
         self.model = model
         self.actionBlock = actionBlock
     }
     
+    private var heightCell: CGFloat {
+        if model.isHeadline, 
+            let editMode = editMode?.wrappedValue,
+            editMode != .active {
+            return 25
+        }
+        return 60
+    }
+    
     var body: some View {
-        ZStack {
+        
+        let view = ZStack {
             HStack {
                 VStack {
-                    Text(model.title ?? "--").leadingAlignment()
+                    let text = Text(model.displayName).leadingAlignment()
+                    if model.isHeadline {
+                        text.padding(.leading, 20)
+                            .foregroundStyle(.white)
+                            .font(.subheadline)
+                            .bold()
+                            .shadow(color: .black, radius: 1, x: 1.0, y: 1.0)
+                    } else {
+                        text
+                    }
+                    
                 }
             }
-            .frame(height: 60)
+            .frame(height: heightCell)
             
-            Button("") {
-//                print("DBG_ : \(model.title ?? "--")")
-                actionBlock(.update(model))
+            if let editMode = editMode?.wrappedValue,
+               editMode == .active {
+                
+                Button("") {
+                    actionBlock(.update(model))
+                }
+                .frame(maxWidth: .infinity, maxHeight: .infinity)
             }
-            .frame(maxWidth: .infinity, maxHeight: .infinity)
+        }
+        if model.isHeadline {
+            view
+                .listRowInsets(EdgeInsets.init(top: 0, leading: 0,
+                                            bottom: 0, trailing: 0))
+//                .listRowBackground(Color(uiColor: .separator))
+                .listRowBackground(Color(uiColor: .systemGray3))
+            
+        } else {
+            view
         }
     }
 }

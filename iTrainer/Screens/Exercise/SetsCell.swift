@@ -31,11 +31,11 @@ struct SetsCell: View {
             HStack(alignment: .firstTextBaseline) {
                 Text("Weight:")
                     .font(.footnote)
-                Text(String(format: "%.1f", model.weight)).bold()
+                Text(String(format: "%.1f", model.weight ?? 0)).bold()
                 Text("x")
                 Text("Reps:")
                     .font(.footnote)
-                Text("\(model.reps)").bold()
+                Text("\(model.reps ?? 0)").bold()
             }
             .foregroundStyle(.gray)
             .frame(height: 30)

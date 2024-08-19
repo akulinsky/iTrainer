@@ -118,6 +118,8 @@ struct EditSetsView: View {
                     }
                 }
             }
+            
+            Spacer()
         }
     }
     

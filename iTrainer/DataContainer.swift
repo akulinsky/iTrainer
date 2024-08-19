@@ -13,6 +13,8 @@ final class DataContainer: ObservableObject {
     
     static let shared = DataContainer()
     
+    @Published var arrayExercises = ExerciseTypeModel.createExercises
+    
     var sharedModelContainer: ModelContainer = {
         let schema = Schema([
             WorkoutModelDB.self,
@@ -32,5 +34,4 @@ final class DataContainer: ObservableObject {
     init() {
         
     }
-    
 }

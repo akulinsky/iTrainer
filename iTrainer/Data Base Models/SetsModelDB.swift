@@ -12,8 +12,10 @@ import SwiftData
 class SetsModelDB: DataSetItemProtocol {
     @Attribute (.unique) var id = UUID()
     var index: Int = 0
-    var reps: Int = 0
-    var weight: Float = 0
+    var reps: Int?
+    var weight: Float?
+    var distance: Float?
+    var timer: Date?
     
     var exercise: ExerciseModelDB?
     

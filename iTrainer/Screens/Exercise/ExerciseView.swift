@@ -63,7 +63,7 @@ struct ExerciseView: View {
         }
         .sheet(isPresented: $viewModel.isEditSets, content: {
             editSets()
-                .presentationDetents([.medium])
+                .presentationDetents([.height(250)])
         })
     }
     
@@ -79,7 +79,7 @@ struct ExerciseView: View {
     private func menuItem() -> some View {
         Menu {
             Button("Edit", systemImage: "pencil", action: clickBtnEditint)
-            Button("New exercise", systemImage: "plus.square", action: clickBtnNewWorkout)
+            Button("New sets", systemImage: "plus.square", action: clickBtnNewSets)
         } label: {
             Image(systemName: "ellipsis")
         }
@@ -112,7 +112,7 @@ struct ExerciseView: View {
         }
     }
     
-    private func clickBtnNewWorkout() {
+    private func clickBtnNewSets() {
         viewModel.editSets = nil
         viewModel.isEditSets = true
     }

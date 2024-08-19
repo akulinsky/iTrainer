@@ -31,6 +31,7 @@ struct ExerciseListView: View {
             }
             .environment(\.editMode, $editMode)
         }
+        .environment(\.defaultMinListRowHeight, 10)
         .navigationTitle(viewModel.group.title ?? "Exercises")
         .toolbar {
             ToolbarItem(placement: .navigationBarTrailing) {
@@ -44,13 +45,39 @@ struct ExerciseListView: View {
                 }
             }
         }
-        .sheet(isPresented: $viewModel.isEditExercise, content: {
+        .sheet(isPresented: $viewModel.isEditExercise, onDismiss: {
+            viewModel.isEditHeadline = false
+            viewModel.isEditExercise = false
+        }, content: {
             editNameView()
-                .presentationDetents([.medium])
+                .presentationDetents([.height(250)])
+        })
+        
+        .sheet(isPresented: $viewModel.isAddNewExercise, onDismiss: {
+//            viewModel.isEditHeadline = false
+            viewModel.isAddNewExercise = false
+        }, content: {
+            addNewExerciseView()
+//                .presentationDetents([.height(250)])
         })
     }
     
     private func cells(for item: ExerciseModel) -> some View {
+        
+        if item.isHeadline {
+            return AnyView(
+                ExerciseCell(model: item) {
+                    switch $0 {
+                    case .update(let updateModel):
+                        viewModel.edit(exercise: updateModel)
+                        break
+                    default:
+                        break
+                    }
+                }
+            )
+        }
+        
         switch editMode {
         case .active:
             return AnyView(
@@ -74,14 +101,7 @@ struct ExerciseListView: View {
                 NavigationLink {
                     ExerciseView(viewModel: ExerciseViewModel(exercise: item))
                 } label: {
-                    ExerciseCell(model: item) {
-                        switch $0 {
-                        case .update(_):
-                            break
-                        default:
-                            break
-                        }
-                    }
+                    ExerciseCell(model: item) { _ in }
                 }
             )
         }
@@ -99,30 +119,45 @@ struct ExerciseListView: View {
     private func menuItem() -> some View {
         Menu {
             Button("Edit", systemImage: "pencil", action: clickBtnEditint)
-            Button("New exercise", systemImage: "plus.square", action: clickBtnNewWorkout)
+            Button("New exercise", systemImage: "plus.square", action: clickBtnNewExercise)
+            Button("Add headline", systemImage: "text.line.first.and.arrowtriangle.forward", action: clickBtnNewHeadline)
         } label: {
             Image(systemName: "ellipsis")
         }
     }
     
+    
     private func editNameView() -> some View {
         
         var title = ""
-        if let value = viewModel.editExercise?.title {
+        if let value = viewModel.editExercise?.displayName {
             title = value
         }
         
+        let nameItem = viewModel.isEditHeadline ? "headline" : "exercise"
+        
         return EditNameView(value: title.isEmpty ? "" : title,
-                            title: viewModel.editExercise == nil ? "New exercise" : "Edit exercise",
-                            placeholder: "New exercise name") {
+                            title: viewModel.editExercise == nil ? "New \(nameItem)" : "Edit \(nameItem)",
+                            placeholder: "New \(nameItem) name") {
             
             switch $0 {
             case .save(let name):
                 viewModel.update(name: name)
             default:
+                viewModel.isEditHeadline = false
                 break
             }
         }
+    }
+    
+    private func addNewExerciseView() -> some View {
+        
+        let view = ExerciseTypeView(mode: .selecting) { result in
+            viewModel.addNewExercises(with: result)
+            viewModel.isAddNewExercise = false
+        }
+        
+        return view
     }
     
     private func clickBtnEditint() {
@@ -137,8 +172,14 @@ struct ExerciseListView: View {
         }
     }
     
-    private func clickBtnNewWorkout() {
+    private func clickBtnNewExercise() {
         viewModel.editExercise = nil
+        viewModel.isAddNewExercise = true
+    }
+    
+    private func clickBtnNewHeadline() {
+        viewModel.editExercise = nil
+        viewModel.isEditHeadline = true
         viewModel.isEditExercise = true
     }
     

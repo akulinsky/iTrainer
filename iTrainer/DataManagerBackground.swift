@@ -85,13 +85,13 @@ public actor DataManagerBackground: ModelActor {
 
         if let model = self.fetchItem(predicate: predicate) {
             context.delete(model)
-            save()
+//            save()
         }
     }
     
     public func remove<T: PersistentModel>(model: T) {
         context.delete(model)
-        save()
+//        save()
         /*
         do {
             
@@ -109,7 +109,7 @@ public actor DataManagerBackground: ModelActor {
             for item in results {
                 context.delete(item)
             }
-            save()
+//            save()
         } catch {
             fatalError(error.localizedDescription)
         }
@@ -158,10 +158,6 @@ extension DataManagerBackground {
             return
         }
         
-        item.workoutGroups.forEach { model in
-            removeWorkoutGroup(with: model.id)
-        }
-        
         remove(model: item)
     }
     
@@ -170,20 +166,12 @@ extension DataManagerBackground {
             return
         }
         
-        item.exercises.forEach { model in
-            removeExercise(with: model.id)
-        }
-        
         remove(model: item)
     }
     
     func removeExercise(with id: UUID) {
         guard let item = fetchItem(predicate: #Predicate<ExerciseModelDB> { $0.id == id }) else {
             return
-        }
-        
-        item.sets.forEach { model in
-            removeSets(with: model.id)
         }
         
         remove(model: item)
@@ -247,6 +235,7 @@ extension DataManagerBackground {
             self.insert(model: item)
             item.index = groupModel.exercises.count
             item.title = exercise.title
+            item.isHeadline = exercise.isHeadline
         } else {
             assertionFailure("Can't update the ExerciseModel, because the groupId == nil")
         }

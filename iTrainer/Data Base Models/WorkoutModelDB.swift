@@ -14,7 +14,8 @@ class WorkoutModelDB: DataItemProtocol {
     var index: Int = 0
     var title: String?
     
-    @Relationship (inverse: \WorkoutGroupModelDB.workout) var workoutGroups: [WorkoutGroupModelDB] = []
+    @Relationship (deleteRule: .cascade, inverse: \WorkoutGroupModelDB.workout) 
+    var workoutGroups: [WorkoutGroupModelDB] = []
     
     init() {
         

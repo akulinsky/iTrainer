@@ -33,7 +33,7 @@ class ExerciseViewModel: ObservableObject {
         self.exercise = exercise
     }
     
-    func fetchItems(complete: (()->())? = nil) {
+    private func fetchItems(complete: (()->())? = nil) {
         Task {
             let dataManager = DataManagerBackground(container: DataContainer.shared.sharedModelContainer)
             let items = await dataManager.fetchSets(for: exercise.id).map { SetsModel(model: $0) }

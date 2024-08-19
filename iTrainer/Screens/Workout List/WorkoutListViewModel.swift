@@ -91,8 +91,12 @@ class WorkoutListViewModel: ObservableObject {
     func delete(index: Int) {
         let item = self.workouts[index]
         Task {
+            
             let dataManager = DataManagerBackground(container: DataContainer.shared.sharedModelContainer)
             await dataManager.removeWorkout(with: item.id)
+            
+//            let dataManager = DataManagerBackground(container: DataContainer.shared.sharedModelContainer)
+//            await dataManager.removeWorkout(with: item.id)
 //            print("DBG_ --------------")
 //            print("DBG_  WorkoutModelDB count: \(await WorkoutModelDB.count())")
 //            print("DBG_  WorkoutGroupModelDB count: \(await WorkoutGroupModelDB.count())")
@@ -138,9 +142,6 @@ class WorkoutListViewModel: ObservableObject {
             print("DBG_  ExerciseModelDB was count: \(await ExerciseModelDB.count())")
             print("DBG_  SetsModelDB was count: \(await SetsModelDB.count())")
             await dataManager.removeAll(type: WorkoutModelDB.self)
-            await dataManager.removeAll(type: WorkoutGroupModelDB.self)
-            await dataManager.removeAll(type: ExerciseModelDB.self)
-            await dataManager.removeAll(type: SetsModelDB.self)
             print("DBG_ --------------")
             print("DBG_  WorkoutModelDB removed count: \(await WorkoutModelDB.count())")
             print("DBG_  WorkoutGroupModelDB removed count: \(await WorkoutGroupModelDB.count())")

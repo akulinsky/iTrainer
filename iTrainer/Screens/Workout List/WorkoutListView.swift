@@ -53,7 +53,7 @@ struct WorkoutListView: View {
                 }
                 .sheet(isPresented: $viewModel.isEditWorkout, content: {
                     editNameView()
-                        .presentationDetents([.medium])
+                        .presentationDetents([.height(250)])
                 })
             }
         }
@@ -112,6 +112,9 @@ struct WorkoutListView: View {
     private func menuItem() -> some View {
         Menu {
             Button("Edit", systemImage: "pencil", action: clickBtnEditint)
+//            Button("Edit", systemImage: "thermometer.sun.fill", action: clickBtnEditint)
+//                .symbolRenderingMode(.palette)
+//                .foregroundStyle(.red, .yellow, .blue)
             Button("New workout", systemImage: "plus.square", action: clickBtnNewWorkout)
         } label: {
             Image(systemName: "ellipsis")

@@ -45,8 +45,9 @@ struct EditNameView: View {
     var body: some View {
         NavigationStack {
             VStack {
-                Spacer()
+//                Spacer()
                 TextField(placeholder, text: $value)
+                    .padding(.top, 30)
                     .focused($focused)
                     .textFieldStyle(.roundedBorder)
 //                    .shakeAnimation(shake, intensity: 6, duration: 0.08)
@@ -73,6 +74,8 @@ struct EditNameView: View {
                     }
                 }
             }
+            
+            Spacer()
         }
         .onAppear {
             focused = true

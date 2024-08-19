@@ -21,11 +21,15 @@ class ExerciseListViewModel: ObservableObject {
     
     @Published var isEditExercise = false
     
+    @Published var isAddNewExercise = false
+    
     var editExercise: ExerciseModel?
     
     var errorMessage: String? = nil
     
     var group: WorkoutGroupModel
+    
+    var isEditHeadline = false
     
     private let networkClient = ServiceNetworkClient()
     
@@ -56,7 +60,18 @@ class ExerciseListViewModel: ObservableObject {
     
     func edit(exercise: ExerciseModel) {
         editExercise = exercise
+        if exercise.isHeadline {
+            isEditHeadline = true
+        }
         isEditExercise = true
+    }
+    
+    func addNewExercises(with typeIDs: Set<String>) {
+        for id in typeIDs {
+            if let model = DataContainer.shared.arrayExercises.filter({ $0.id == id }).first {
+                update(item: ExerciseModel(title: model.title, isHeadline: self.isEditHeadline))
+            }
+        }
     }
     
     func update(name: String) {
@@ -64,9 +79,10 @@ class ExerciseListViewModel: ObservableObject {
             editExercise.title = name
             update(item: editExercise)
         } else {
-            update(item: ExerciseModel(title: name))
+            update(item: ExerciseModel(title: name, isHeadline: self.isEditHeadline))
         }
         editExercise = nil
+        self.isEditHeadline = false
     }
     
     func update(item: ExerciseModel) {

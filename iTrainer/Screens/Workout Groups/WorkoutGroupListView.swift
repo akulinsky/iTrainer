@@ -46,7 +46,7 @@ struct WorkoutGroupListView: View {
         }
         .sheet(isPresented: $viewModel.isEditGroup, content: {
             editNameView()
-                .presentationDetents([.medium])
+                .presentationDetents([.height(250)])
         })
     }
     
@@ -99,7 +99,7 @@ struct WorkoutGroupListView: View {
     private func menuItem() -> some View {
         Menu {
             Button("Edit", systemImage: "pencil", action: clickBtnEditint)
-            Button("New group", systemImage: "plus.square", action: clickBtnNewWorkout)
+            Button("New group", systemImage: "plus.square", action: clickBtnNewWorkoutGroup)
         } label: {
             Image(systemName: "ellipsis")
         }
@@ -137,7 +137,7 @@ struct WorkoutGroupListView: View {
         }
     }
     
-    private func clickBtnNewWorkout() {
+    private func clickBtnNewWorkoutGroup() {
         viewModel.editGroup = nil
         viewModel.isEditGroup = true
     }
