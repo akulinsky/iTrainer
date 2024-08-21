@@ -41,6 +41,7 @@ class WorkoutListViewModel: ObservableObject {
 //                pinnedWorkout = items[1]
 //            }
 //        }
+        
     }
     
     func fetchItems(complete: (()->())? = nil) {
@@ -180,12 +181,12 @@ class WorkoutListViewModel: ObservableObject {
     }
     
     private func addTestExercise(for group: WorkoutGroupModelDB, dataManager: DataManagerBackground) async {
-        for index in 1...5 {
+        for index in 0..<5 {
             let item = ExerciseModelDB()
             
             await dataManager.insert(model: item)
             item.index = index
-            item.title = "Exercise \(index)"
+            item.typeId = DataContainer.shared.arrayExercises[index].id
             item.workoutGroup = group
             
             await addTestSets(for: item, dataManager: dataManager)

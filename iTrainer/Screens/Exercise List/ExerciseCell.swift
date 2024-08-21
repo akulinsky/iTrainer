@@ -40,6 +40,15 @@ struct ExerciseCell: View {
         
         let view = ZStack {
             HStack {
+                if !model.isHeadline {
+                    if let icon = model.type?.icon {
+                        icon
+                            .resizable()
+                            .frame(width: heightCell)
+                    } else {
+                        Color.red.frame(width: heightCell)
+                    }
+                }
                 VStack {
                     let text = Text(model.displayName).leadingAlignment()
                     if model.isHeadline {
@@ -65,11 +74,11 @@ struct ExerciseCell: View {
                 .frame(maxWidth: .infinity, maxHeight: .infinity)
             }
         }
+        
         if model.isHeadline {
             view
                 .listRowInsets(EdgeInsets.init(top: 0, leading: 0,
                                             bottom: 0, trailing: 0))
-//                .listRowBackground(Color(uiColor: .separator))
                 .listRowBackground(Color(uiColor: .systemGray3))
             
         } else {
@@ -79,5 +88,5 @@ struct ExerciseCell: View {
 }
 
 #Preview {
-    ExerciseCell(model: ExerciseModel(title: "TEST")) { action in }
+    ExerciseCell(model: ExerciseModel(title: "TEST", typeId: "0")) { action in }
 }

@@ -64,8 +64,13 @@ extension ExerciseTypeModel {
                               type: .chest,
                               parameters: [.weight(), .repeats()]
                              ),
-            ExerciseTypeModel(id: "2",
+            ExerciseTypeModel(id: "1",
                               title: "Жим лежа на наклонной скамье",
+                              type: .chest,
+                              parameters: [.weight(), .repeats()]
+                             ),
+            ExerciseTypeModel(id: "2",
+                              title: "Еще один Жим лежа",
                               type: .chest,
                               parameters: [.weight(), .repeats()]
                              )
@@ -83,6 +88,11 @@ extension ExerciseTypeModel {
                               title: "Подтягивание на перекладине",
                               type: .back,
                               parameters: [.weight(), .repeats()]
+                             ),
+            ExerciseTypeModel(id: "202",
+                              title: "Еще одно Подтягивание на перекладине",
+                              type: .back,
+                              parameters: [.weight(), .repeats()]
                              )
         ]
     }
@@ -96,6 +106,11 @@ extension ExerciseTypeModel {
                              ),
             ExerciseTypeModel(id: "401",
                               title: "Еще упражнение на ноги",
+                              type: .legs,
+                              parameters: [.weight(), .repeats()]
+                             ),
+            ExerciseTypeModel(id: "402",
+                              title: "Все Еще упражнение на ноги",
                               type: .legs,
                               parameters: [.weight(), .repeats()]
                              )

@@ -235,6 +235,7 @@ extension DataManagerBackground {
             self.insert(model: item)
             item.index = groupModel.exercises.count
             item.title = exercise.title
+            item.typeId = exercise.typeId
             item.isHeadline = exercise.isHeadline
         } else {
             assertionFailure("Can't update the ExerciseModel, because the groupId == nil")

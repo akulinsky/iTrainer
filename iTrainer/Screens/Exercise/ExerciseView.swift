@@ -11,23 +11,43 @@ struct ExerciseView: View {
     
     @StateObject var viewModel: ExerciseViewModel
     
-    @State private var editMode = EditMode.inactive
+    @State private var strWeight: String = ""
+    
+    private var heightHeader: CGFloat = 50.0
     
     init(viewModel: ExerciseViewModel) {
         _viewModel = StateObject(wrappedValue: viewModel)
     }
     
+    @State var progress: Double = 0.65
+    
     var body: some View {
         
         VStack {
-            Text("Ukraine must win!")
-                .font(.largeTitle.bold())
-                .frame(height: 100)
-                .foregroundStyle(
-                    .linearGradient(colors: [.blue, .yellow],
-                                    startPoint: .top,
-                                    endPoint: .bottom)
-                )
+            HStack {
+                if let icon = viewModel.exercise.type?.icon {
+                    icon
+                        .resizable()
+                        .frame(width: heightHeader)
+                } else {
+                    Color.red.frame(width: heightHeader)
+                }
+                VStack {
+                    Text(viewModel.exercise.displayName).leadingAlignment()
+                }
+            }
+            .frame(height: heightHeader)
+            .padding([.top, .leading, .trailing])
+            
+            CircularProgressView(progress: progress)
+                .frame(width: 60, height: 60)
+                .overlay {
+                    Text("\(TimeInterval(progress * 100).minuteSecond)")
+                                        .font(.subheadline)
+                                        .foregroundStyle(.gray)
+                                        .bold()
+                }
+            
             List {
                 ForEach(viewModel.sets) { item in
                     SetsCell(model: item) {
@@ -46,12 +66,13 @@ struct ExerciseView: View {
             .refreshable {
                 refresh()
             }
-            .environment(\.editMode, $editMode)
         }
-        .navigationTitle(viewModel.exercise.title ?? "Exercise")
+        
+        .navigationTitle(viewModel.exercise.type?.type.title ?? "Exercise")
+        .navigationBarTitleDisplayMode(.inline)
         .toolbar {
             ToolbarItem(placement: .navigationBarTrailing) {
-                optionButton()
+                Button("Edit", systemImage: "pencil", action: clickBtnEditint)
             }
         }
         .task {
@@ -65,24 +86,6 @@ struct ExerciseView: View {
             editSets()
                 .presentationDetents([.height(250)])
         })
-    }
-    
-    private func optionButton() -> some View {
-        switch editMode {
-        case .active:
-            return AnyView(Button("Done", action: clickBtnDone).bold())
-        default:
-            return AnyView(menuItem())
-        }
-    }
-    
-    private func menuItem() -> some View {
-        Menu {
-            Button("Edit", systemImage: "pencil", action: clickBtnEditint)
-            Button("New sets", systemImage: "plus.square", action: clickBtnNewSets)
-        } label: {
-            Image(systemName: "ellipsis")
-        }
     }
     
     private func editSets() -> some View {
@@ -101,15 +104,7 @@ struct ExerciseView: View {
     }
     
     private func clickBtnEditint() {
-        withAnimation {
-            editMode = .active
-        }
-    }
-    
-    private func clickBtnDone() {
-        withAnimation {
-            editMode = .inactive
-        }
+        print("DBG_ Edit Exercise")
     }
     
     private func clickBtnNewSets() {
@@ -134,6 +129,12 @@ struct ExerciseView: View {
     }
 }
 
+extension View {
+    func endEditing() {
+        UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
+    }
+}
+
 #Preview {
-    ExerciseView(viewModel: ExerciseViewModel(exercise: ExerciseModel(title: "fff")))
+    ExerciseView(viewModel: ExerciseViewModel(exercise: ExerciseModel(title: "fff", typeId: "0")))
 }

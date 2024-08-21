@@ -13,6 +13,7 @@ class ExerciseModelDB: DataItemProtocol {
     @Attribute (.unique) var id = UUID()
     var index: Int = 0
     var title: String?
+    var typeId: String = ""
     
     var isHeadline: Bool = false
     

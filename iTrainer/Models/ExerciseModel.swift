@@ -11,24 +11,33 @@ struct ExerciseModel: DataItemProtocol, Identifiable {
     var id: UUID
     var index: Int
     var title: String?
+    var typeId: String
     var isHeadline: Bool
     
     init(model: ExerciseModelDB) {
         self.id = model.id
         self.index = model.index
         self.title = model.title
+        self.typeId = model.typeId
         self.isHeadline = model.isHeadline
     }
     
-    init(id: UUID = UUID(), index: Int = 0, title: String, isHeadline: Bool = false) {
+    init(id: UUID = UUID(), index: Int = 0, title: String? = nil, typeId: String = "", isHeadline: Bool = false) {
         self.id = id
         self.index = index
         self.title = title
+        self.typeId = typeId
         self.isHeadline = isHeadline
     }
+}
+
+extension ExerciseModel {
     
     var displayName: String {
-        title ?? "--"
+        title ?? type?.title ?? ""
     }
     
+    var type: ExerciseTypeModel? {
+        DataContainer.shared.arrayExercises.filter({ $0.id == typeId }).first
+    }
 }

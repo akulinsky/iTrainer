@@ -41,6 +41,7 @@ class ExerciseListViewModel: ObservableObject {
         Task {
             let dataManager = DataManagerBackground(container: DataContainer.shared.sharedModelContainer)
             let items = await dataManager.fetchExercise(for: group.id).map { ExerciseModel(model: $0) }
+            
             await MainActor.run {
                 exercises = items
                 if let complete = complete {
@@ -68,9 +69,7 @@ class ExerciseListViewModel: ObservableObject {
     
     func addNewExercises(with typeIDs: Set<String>) {
         for id in typeIDs {
-            if let model = DataContainer.shared.arrayExercises.filter({ $0.id == id }).first {
-                update(item: ExerciseModel(title: model.title, isHeadline: self.isEditHeadline))
-            }
+            update(item: ExerciseModel(typeId: id, isHeadline: false))
         }
     }
     

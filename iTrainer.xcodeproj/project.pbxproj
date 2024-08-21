@@ -11,6 +11,8 @@
 		F6180DDB2C5A6D55009A23A7 /* EditNameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6180DDA2C5A6D55009A23A7 /* EditNameView.swift */; };
 		F62818452C62408D003642F8 /* ExerciseTypeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F62818442C62408D003642F8 /* ExerciseTypeModel.swift */; };
 		F62818482C6249B7003642F8 /* MuscleType.swift in Sources */ = {isa = PBXBuildFile; fileRef = F62818472C6249B7003642F8 /* MuscleType.swift */; };
+		F68D60652C760C4B00783E54 /* CircularProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F68D60642C760C4B00783E54 /* CircularProgressView.swift */; };
+		F68D60672C76193500783E54 /* TimeInterval+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = F68D60662C76193500783E54 /* TimeInterval+Utils.swift */; };
 		F69BD0C82C54F8DA0057080E /* iTrainerApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = F69BD0C72C54F8DA0057080E /* iTrainerApp.swift */; };
 		F69BD0CA2C54F8DA0057080E /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F69BD0C92C54F8DA0057080E /* ContentView.swift */; };
 		F69BD0CC2C54F8DA0057080E /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = F69BD0CB2C54F8DA0057080E /* Item.swift */; };
@@ -83,6 +85,8 @@
 		F6180DDA2C5A6D55009A23A7 /* EditNameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditNameView.swift; sourceTree = "<group>"; };
 		F62818442C62408D003642F8 /* ExerciseTypeModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseTypeModel.swift; sourceTree = "<group>"; };
 		F62818472C6249B7003642F8 /* MuscleType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MuscleType.swift; sourceTree = "<group>"; };
+		F68D60642C760C4B00783E54 /* CircularProgressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircularProgressView.swift; sourceTree = "<group>"; };
+		F68D60662C76193500783E54 /* TimeInterval+Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TimeInterval+Utils.swift"; sourceTree = "<group>"; };
 		F69BD0C42C54F8DA0057080E /* iTrainer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iTrainer.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F69BD0C72C54F8DA0057080E /* iTrainerApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iTrainerApp.swift; sourceTree = "<group>"; };
 		F69BD0C92C54F8DA0057080E /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -238,6 +242,7 @@
 				F69BD0FA2C54FB0E0057080E /* MailView.swift */,
 				F6180DDA2C5A6D55009A23A7 /* EditNameView.swift */,
 				F6078BA22C5CF1BE00531302 /* EditSetsView.swift */,
+				F68D60642C760C4B00783E54 /* CircularProgressView.swift */,
 			);
 			path = Controls;
 			sourceTree = "<group>";
@@ -278,6 +283,7 @@
 			isa = PBXGroup;
 			children = (
 				F69BD0FE2C54FBC10057080E /* View+Utils.swift */,
+				F68D60662C76193500783E54 /* TimeInterval+Utils.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -547,6 +553,7 @@
 				F69BD0FB2C54FB0E0057080E /* MailView.swift in Sources */,
 				F6EA7BCA2C578BAF005225A0 /* WorkoutListViewModel.swift in Sources */,
 				F62818452C62408D003642F8 /* ExerciseTypeModel.swift in Sources */,
+				F68D60672C76193500783E54 /* TimeInterval+Utils.swift in Sources */,
 				F6EA7BE02C57DEF6005225A0 /* ExerciseListViewModel.swift in Sources */,
 				F6EA7BE42C57F6F9005225A0 /* ExerciseViewModel.swift in Sources */,
 				F69BD10A2C54FC170057080E /* ServiceErrors.swift in Sources */,
@@ -554,6 +561,7 @@
 				F6180DDB2C5A6D55009A23A7 /* EditNameView.swift in Sources */,
 				F69BD1232C550E8F0057080E /* DataContainer.swift in Sources */,
 				F6EA7BD42C57B2A3005225A0 /* WorkoutGroupListView.swift in Sources */,
+				F68D60652C760C4B00783E54 /* CircularProgressView.swift in Sources */,
 				F6EA7BCC2C579333005225A0 /* WorkoutModel.swift in Sources */,
 				F6DD68AF2C65050A004EFB03 /* ExerciseTypeViewModel.swift in Sources */,
 				F69BD1152C5500580057080E /* ServiceNetworkProvider.swift in Sources */,
