@@ -10,6 +10,7 @@ import SwiftUI
 struct SetsCell: View {
     
     enum Action {
+        case selected(SetsModel)
         case update(SetsModel)
         case cancel
     }
@@ -27,23 +28,38 @@ struct SetsCell: View {
     
     var body: some View {
         
-        ZStack(alignment: .leading) {
-            HStack(alignment: .firstTextBaseline) {
-                Text("Weight:")
-                    .font(.footnote)
-                Text(String(format: "%.1f", model.weight ?? 0)).bold()
-                Text("x")
-                Text("Reps:")
-                    .font(.footnote)
-                Text("\(model.reps ?? 0)").bold()
-            }
-            .foregroundStyle(.gray)
-            .frame(height: 30)
+        HStack(alignment: .firstTextBaseline) {
+            Text("# \(model.index):")
+                .font(.footnote)
+                .bold()
+            Text("Weight:")
+                .font(.footnote)
+            Text(String(format: "%.1f", model.weight ?? 0)).bold()
             
-            Button("") {
+            Text("Reps:")
+                .font(.footnote)
+            Text("\(model.reps ?? 0)").bold()
+            
+            Spacer()
+            
+            Button {
                 actionBlock(.update(model))
+            } label: {
+                
+                HStack {
+                    Spacer()
+                    Image(systemName: "pencil")
+                        .font(.title2)
+                }
+                .contentShape(Rectangle())
             }
-            .frame(maxWidth: .infinity, maxHeight: .infinity)
+            .frame(maxWidth: 50, maxHeight: .infinity, alignment: .trailing)
+        }
+        .foregroundStyle(.gray)
+        .frame(height: 30)
+        .frame(maxWidth: .infinity, alignment: .trailing)
+        .onTapGesture {
+            actionBlock(.selected(model))
         }
     }
 }

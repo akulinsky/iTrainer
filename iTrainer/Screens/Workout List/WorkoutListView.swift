@@ -117,7 +117,11 @@ struct WorkoutListView: View {
 //                .foregroundStyle(.red, .yellow, .blue)
             Button("New workout", systemImage: "plus.square", action: clickBtnNewWorkout)
         } label: {
-            Image(systemName: "ellipsis")
+            VStack {
+                Spacer()
+                Image(systemName: "ellipsis")
+                Spacer()
+            }
         }
     }
     

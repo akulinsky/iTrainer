@@ -21,6 +21,20 @@ class ExerciseViewModel: ObservableObject {
     
     @Published var isEditSets = false
     
+    @Published var isEditExercise = false
+    
+    @Published var title: String
+    
+    
+    @Published var strWeight: String = ""
+    
+    @Published var strReps: String = ""
+    
+    @Published var shakeWeight = PassthroughSubject<Void, Never>()
+    
+    @Published var shakeReps = PassthroughSubject<Void, Never>()
+    
+    
     var editSets: SetsModel?
     
     var errorMessage: String? = nil
@@ -31,11 +45,19 @@ class ExerciseViewModel: ObservableObject {
     
     init(exercise: ExerciseModel) {
         self.exercise = exercise
+        title = exercise.title ?? ""
     }
     
     private func fetchItems(complete: (()->())? = nil) {
         Task {
             let dataManager = DataManagerBackground(container: DataContainer.shared.sharedModelContainer)
+            
+            if let model = await dataManager.fetchExercise(for: exercise.id).map({ ExerciseModel(model: $0) }) {
+                exercise = model
+            }
+            
+            title = exercise.displayName
+            
             let items = await dataManager.fetchSets(for: exercise.id).map { SetsModel(model: $0) }
             await MainActor.run {
                 sets = items
@@ -79,33 +101,23 @@ class ExerciseViewModel: ObservableObject {
         }
     }
     
-    func moveItem(source: IndexSet, destination: Int) {
-        Task {
-            let dataManager = DataManagerBackground(container: DataContainer.shared.sharedModelContainer)
-            var models = await dataManager.fetchSets(for: exercise.id)
-            models.move(fromOffsets: source, toOffset: destination)
-            var index = 1
-            for item in models {
-                item.index = index
-                index += 1
-            }
-            await dataManager.save()
-            await MainActor.run {
-                fetchItems()
-            }
+    func save() {
+        var resultWeight: Float = 0.0
+        var resultReps: Int = 0
+        
+        
+        if let weight = Float(strWeight), weight > 0 {
+            resultWeight = weight
+        } else {
+            shakeWeight.send()
+            return
         }
-    }
-    
-    func delete(index: Int) {
-        let item = self.sets[index]
-        Task {
-            let dataManager = DataManagerBackground(container: DataContainer.shared.sharedModelContainer)
-            await dataManager.removeSets(with: item.id)
-            print("DBG_ --------------")
-            print("DBG_  SetsModelDB count: \(await SetsModelDB.count())")
-            await MainActor.run {
-                fetchItems()
-            }
+        
+        if let reps = Int(strReps), reps > 0 {
+            resultReps = reps
+        } else {
+            shakeReps.send()
+            return
         }
     }
     

@@ -101,7 +101,11 @@ struct WorkoutGroupListView: View {
             Button("Edit", systemImage: "pencil", action: clickBtnEditint)
             Button("New group", systemImage: "plus.square", action: clickBtnNewWorkoutGroup)
         } label: {
-            Image(systemName: "ellipsis")
+            VStack {
+                Spacer()
+                Image(systemName: "ellipsis")
+                Spacer()
+            }
         }
     }
     

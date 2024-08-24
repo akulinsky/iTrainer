@@ -40,7 +40,7 @@ class ExerciseListViewModel: ObservableObject {
     func fetchItems(complete: (()->())? = nil) {
         Task {
             let dataManager = DataManagerBackground(container: DataContainer.shared.sharedModelContainer)
-            let items = await dataManager.fetchExercise(for: group.id).map { ExerciseModel(model: $0) }
+            let items = await dataManager.fetchExercises(for: group.id).map { ExerciseModel(model: $0) }
             
             await MainActor.run {
                 exercises = items
@@ -93,10 +93,19 @@ class ExerciseListViewModel: ObservableObject {
         }
     }
     
+    func add(item: ExerciseModel) {
+        Task {
+            await DataManagerBackground(container: DataContainer.shared.sharedModelContainer).add(exercise: item, to: group.id)
+            await MainActor.run {
+                fetchItems()
+            }
+        }
+    }
+    
     func moveItem(source: IndexSet, destination: Int) {
         Task {
             let dataManager = DataManagerBackground(container: DataContainer.shared.sharedModelContainer)
-            var models = await dataManager.fetchExercise(for: group.id)
+            var models = await dataManager.fetchExercises(for: group.id)
             models.move(fromOffsets: source, toOffset: destination)
             var index = 1
             for item in models {

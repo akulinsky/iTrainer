@@ -122,7 +122,11 @@ struct ExerciseListView: View {
             Button("New exercise", systemImage: "plus.square", action: clickBtnNewExercise)
             Button("Add headline", systemImage: "text.line.first.and.arrowtriangle.forward", action: clickBtnNewHeadline)
         } label: {
-            Image(systemName: "ellipsis")
+            VStack {
+                Spacer()
+                Image(systemName: "ellipsis")
+                Spacer()
+            }
         }
     }
     

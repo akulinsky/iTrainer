@@ -140,9 +140,14 @@ extension DataManagerBackground {
                            sortBy: [SortDescriptor(\WorkoutGroupModelDB.index, order: .forward)])
     }
     
-    func fetchExercise(for workoutGroupId: UUID) -> [ExerciseModelDB] {
+    func fetchExercises(for workoutGroupId: UUID) -> [ExerciseModelDB] {
         return fetchModels(predicate: #Predicate<ExerciseModelDB> { $0.workoutGroup?.id == workoutGroupId },
                            sortBy: [SortDescriptor(\ExerciseModelDB.index, order: .forward)])
+    }
+    
+    func fetchExercise(for exerciseId: UUID) -> ExerciseModelDB? {
+        let uuid = exerciseId
+        return fetchItem(predicate: #Predicate<ExerciseModelDB> { $0.id == uuid })
     }
     
     func fetchSets(for exerciseId: UUID) -> [SetsModelDB] {
@@ -177,12 +182,29 @@ extension DataManagerBackground {
         remove(model: item)
     }
     
-    func removeSets(with id: UUID) {
-        guard let item = fetchItem(predicate: #Predicate<SetsModelDB> { $0.id == id }) else {
+    func removeSets(with id: UUID, withSaving: Bool = true) {
+        guard let removeItem = fetchItem(predicate: #Predicate<SetsModelDB> { $0.id == id }) else {
             return
         }
+        remove(model: removeItem)
         
-        remove(model: item)
+        let udid = removeItem.exercise?.id
+        let sets = fetchModels(predicate: #Predicate<SetsModelDB> { $0.exercise?.id == udid },
+                               sortBy: [SortDescriptor(\SetsModelDB.index, order: .forward)])
+        
+        for (index, value) in sets.enumerated() {
+            value.index = index + 1
+        }
+        
+        if withSaving {
+            save()
+        }
+    }
+    
+    func removeSets(with ids: [UUID]) {
+        for id in ids {
+            removeSets(with: id, withSaving: false)
+        }
     }
     
     // MARK: - Updates
@@ -222,9 +244,7 @@ extension DataManagerBackground {
     }
     
     func update(exercise: ExerciseModel, groupId: UUID? = nil) {
-        
         let uuid = exercise.id
-        
         if let item = fetchItem(predicate: #Predicate<ExerciseModelDB> { $0.id == uuid }) {
             item.title = exercise.title
             self.save()
@@ -242,16 +262,29 @@ extension DataManagerBackground {
         }
     }
     
-    func update(sets: SetsModel, exerciseId: UUID? = nil) {
-        
+    func add(exercise: ExerciseModel, to groupId: UUID) {
+        if let groupModel = fetchItem(predicate: #Predicate<WorkoutGroupModelDB> { $0.id == groupId }) {
+            let item = ExerciseModelDB()
+            item.workoutGroup = groupModel
+            self.insert(model: item)
+            item.index = groupModel.exercises.count
+            item.title = exercise.title
+            item.typeId = exercise.typeId
+            item.isHeadline = exercise.isHeadline
+        } else {
+            assertionFailure("Can't update the ExerciseModel, because the groupId == nil")
+        }
+    }
+    
+    func update(sets: SetsModel, exerciseId: UUID, withSaving: Bool = true) {
         let uuid = sets.id
-        
         if let item = fetchItem(predicate: #Predicate<SetsModelDB> { $0.id == uuid }) {
             item.reps = sets.reps
             item.weight = sets.weight
-            self.save()
-        } else if let exerciseId = exerciseId,
-                    let exerciseModel = fetchItem(predicate: #Predicate<ExerciseModelDB> { $0.id == exerciseId }) {
+            if withSaving {
+                self.save()
+            }
+        } else if let exerciseModel = fetchItem(predicate: #Predicate<ExerciseModelDB> { $0.id == exerciseId }) {
             let item = SetsModelDB()
             item.exercise = exerciseModel
             self.insert(model: item)
@@ -263,4 +296,29 @@ extension DataManagerBackground {
         }
     }
     
+    func update(sets: [SetsModel], exerciseId: UUID) {
+        for model in sets {
+            update(sets: model, exerciseId: exerciseId, withSaving: false)
+        }
+        save()
+    }
+    
+//    func add(sets: SetsModel, exerciseId: UUID) {
+//        if let exerciseModel = fetchItem(predicate: #Predicate<ExerciseModelDB> { $0.id == exerciseId }) {
+//            let item = SetsModelDB()
+//            item.exercise = exerciseModel
+//            self.insert(model: item)
+//            item.index = exerciseModel.sets.count
+//            item.reps = sets.reps
+//            item.weight = sets.weight
+//        } else {
+//            assertionFailure("Can't update the SetsModelDB, because the groupId == nil")
+//        }
+//    }
+//    
+//    func add(sets: [SetsModel], exerciseId: UUID) {
+//        for model in sets {
+//            add(sets: model, exerciseId: exerciseId)
+//        }
+//    }
 }
