@@ -164,6 +164,7 @@ extension DataManagerBackground {
         }
         
         remove(model: item)
+        save()
     }
     
     func removeWorkoutGroup(with id: UUID) {
@@ -172,6 +173,7 @@ extension DataManagerBackground {
         }
         
         remove(model: item)
+        save()
     }
     
     func removeExercise(with id: UUID) {
@@ -180,6 +182,7 @@ extension DataManagerBackground {
         }
         
         remove(model: item)
+        save()
     }
     
     func removeSets(with id: UUID, withSaving: Bool = true) {
@@ -243,11 +246,11 @@ extension DataManagerBackground {
         }
     }
     
-    func update(exercise: ExerciseModel, groupId: UUID? = nil) {
+    func update(exercise: ExerciseModel, groupId: UUID? = nil, withSaving: Bool = true) {
         let uuid = exercise.id
         if let item = fetchItem(predicate: #Predicate<ExerciseModelDB> { $0.id == uuid }) {
             item.title = exercise.title
-            self.save()
+            item.restTime = exercise.restTime
         } else if let groupId = groupId,
                     let groupModel = fetchItem(predicate: #Predicate<WorkoutGroupModelDB> { $0.id == groupId }) {
             let item = ExerciseModelDB()
@@ -255,32 +258,41 @@ extension DataManagerBackground {
             self.insert(model: item)
             item.index = groupModel.exercises.count
             item.title = exercise.title
+            item.restTime = exercise.restTime
             item.typeId = exercise.typeId
             item.isHeadline = exercise.isHeadline
         } else {
             assertionFailure("Can't update the ExerciseModel, because the groupId == nil")
+        }
+        
+        if withSaving {
+            self.save()
         }
     }
     
-    func add(exercise: ExerciseModel, to groupId: UUID) {
-        if let groupModel = fetchItem(predicate: #Predicate<WorkoutGroupModelDB> { $0.id == groupId }) {
-            let item = ExerciseModelDB()
-            item.workoutGroup = groupModel
-            self.insert(model: item)
-            item.index = groupModel.exercises.count
-            item.title = exercise.title
-            item.typeId = exercise.typeId
-            item.isHeadline = exercise.isHeadline
-        } else {
-            assertionFailure("Can't update the ExerciseModel, because the groupId == nil")
+    func update(exercises: [ExerciseModel], groupId: UUID? = nil) {
+        for model in exercises {
+            update(exercise: model, groupId: groupId, withSaving: false)
         }
+        save()
     }
     
     func update(sets: SetsModel, exerciseId: UUID, withSaving: Bool = true) {
         let uuid = sets.id
         if let item = fetchItem(predicate: #Predicate<SetsModelDB> { $0.id == uuid }) {
-            item.reps = sets.reps
-            item.weight = sets.weight
+            for param in sets.parameters {
+                switch param {
+                case .weight(let value):
+                    item.weight = value
+                case .repeats(let value):
+                    item.reps = value
+                case .distance(let value):
+                    item.distance = value
+                case .time(let value):
+                    item.time = value
+                }
+            }
+            
             if withSaving {
                 self.save()
             }
@@ -289,8 +301,18 @@ extension DataManagerBackground {
             item.exercise = exerciseModel
             self.insert(model: item)
             item.index = exerciseModel.sets.count
-            item.reps = sets.reps
-            item.weight = sets.weight
+            for param in sets.parameters {
+                switch param {
+                case .weight(let value):
+                    item.weight = value
+                case .repeats(let value):
+                    item.reps = value
+                case .distance(let value):
+                    item.distance = value
+                case .time(let value):
+                    item.time = value
+                }
+            }
         } else {
             assertionFailure("Can't update the SetsModelDB, because the groupId == nil")
         }
@@ -302,23 +324,4 @@ extension DataManagerBackground {
         }
         save()
     }
-    
-//    func add(sets: SetsModel, exerciseId: UUID) {
-//        if let exerciseModel = fetchItem(predicate: #Predicate<ExerciseModelDB> { $0.id == exerciseId }) {
-//            let item = SetsModelDB()
-//            item.exercise = exerciseModel
-//            self.insert(model: item)
-//            item.index = exerciseModel.sets.count
-//            item.reps = sets.reps
-//            item.weight = sets.weight
-//        } else {
-//            assertionFailure("Can't update the SetsModelDB, because the groupId == nil")
-//        }
-//    }
-//    
-//    func add(sets: [SetsModel], exerciseId: UUID) {
-//        for model in sets {
-//            add(sets: model, exerciseId: exerciseId)
-//        }
-//    }
 }

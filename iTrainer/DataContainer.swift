@@ -23,6 +23,7 @@ final class DataContainer: ObservableObject {
             SetsModelDB.self
         ])
         let modelConfiguration = ModelConfiguration(schema: schema, isStoredInMemoryOnly: false)
+//        print("DBG_ URL to database : \(modelConfiguration.url)")
 
         do {
             return try ModelContainer(for: schema, configurations: [modelConfiguration])
@@ -30,6 +31,8 @@ final class DataContainer: ObservableObject {
             fatalError("Could not create ModelContainer: \(error)")
         }
     }()
+    
+    var thisTestProperty = "thisTestProperty"
     
     init() {
         

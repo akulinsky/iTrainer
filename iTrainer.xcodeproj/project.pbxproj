@@ -14,6 +14,7 @@
 		F630C9512C79E92F00049730 /* AKTextFieldStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = F630C9502C79E92F00049730 /* AKTextFieldStyle.swift */; };
 		F68D60652C760C4B00783E54 /* CircularProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F68D60642C760C4B00783E54 /* CircularProgressView.swift */; };
 		F68D60672C76193500783E54 /* TimeInterval+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = F68D60662C76193500783E54 /* TimeInterval+Utils.swift */; };
+		F6946BC52C8C5FD300089148 /* ReportWorkoutModelDB.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6946BC42C8C5FD300089148 /* ReportWorkoutModelDB.swift */; };
 		F69BD0C82C54F8DA0057080E /* iTrainerApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = F69BD0C72C54F8DA0057080E /* iTrainerApp.swift */; };
 		F69BD0CA2C54F8DA0057080E /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F69BD0C92C54F8DA0057080E /* ContentView.swift */; };
 		F69BD0CC2C54F8DA0057080E /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = F69BD0CB2C54F8DA0057080E /* Item.swift */; };
@@ -49,6 +50,7 @@
 		F6DD68AD2C6503C9004EFB03 /* ExerciseTypeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6DD68AC2C6503C9004EFB03 /* ExerciseTypeCell.swift */; };
 		F6DD68AF2C65050A004EFB03 /* ExerciseTypeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6DD68AE2C65050A004EFB03 /* ExerciseTypeViewModel.swift */; };
 		F6DD68B12C650CAE004EFB03 /* MuscleTypeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6DD68B02C650CAE004EFB03 /* MuscleTypeView.swift */; };
+		F6E4161F2C7F982500E77EB4 /* Distance+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6E4161E2C7F982500E77EB4 /* Distance+Utils.swift */; };
 		F6EA7BCA2C578BAF005225A0 /* WorkoutListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6EA7BC92C578BAF005225A0 /* WorkoutListViewModel.swift */; };
 		F6EA7BCC2C579333005225A0 /* WorkoutModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6EA7BCB2C579332005225A0 /* WorkoutModel.swift */; };
 		F6EA7BCE2C57ACEF005225A0 /* WorkoutGroupModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6EA7BCD2C57ACEF005225A0 /* WorkoutGroupModel.swift */; };
@@ -92,6 +94,7 @@
 		F630C9502C79E92F00049730 /* AKTextFieldStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AKTextFieldStyle.swift; sourceTree = "<group>"; };
 		F68D60642C760C4B00783E54 /* CircularProgressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircularProgressView.swift; sourceTree = "<group>"; };
 		F68D60662C76193500783E54 /* TimeInterval+Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TimeInterval+Utils.swift"; sourceTree = "<group>"; };
+		F6946BC42C8C5FD300089148 /* ReportWorkoutModelDB.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportWorkoutModelDB.swift; sourceTree = "<group>"; };
 		F69BD0C42C54F8DA0057080E /* iTrainer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iTrainer.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F69BD0C72C54F8DA0057080E /* iTrainerApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iTrainerApp.swift; sourceTree = "<group>"; };
 		F69BD0C92C54F8DA0057080E /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -128,6 +131,7 @@
 		F6DD68AC2C6503C9004EFB03 /* ExerciseTypeCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseTypeCell.swift; sourceTree = "<group>"; };
 		F6DD68AE2C65050A004EFB03 /* ExerciseTypeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseTypeViewModel.swift; sourceTree = "<group>"; };
 		F6DD68B02C650CAE004EFB03 /* MuscleTypeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MuscleTypeView.swift; sourceTree = "<group>"; };
+		F6E4161E2C7F982500E77EB4 /* Distance+Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Distance+Utils.swift"; sourceTree = "<group>"; };
 		F6EA7BC92C578BAF005225A0 /* WorkoutListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutListViewModel.swift; sourceTree = "<group>"; };
 		F6EA7BCB2C579332005225A0 /* WorkoutModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutModel.swift; sourceTree = "<group>"; };
 		F6EA7BCD2C57ACEF005225A0 /* WorkoutGroupModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutGroupModel.swift; sourceTree = "<group>"; };
@@ -173,6 +177,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		F66CBE2B2C8DCA920025B87F /* Report */ = {
+			isa = PBXGroup;
+			children = (
+				F6946BC42C8C5FD300089148 /* ReportWorkoutModelDB.swift */,
+			);
+			path = Report;
+			sourceTree = "<group>";
+		};
 		F69BD0BB2C54F8DA0057080E = {
 			isa = PBXGroup;
 			children = (
@@ -263,6 +275,7 @@
 				F69BD1292C551B270057080E /* WorkoutGroupModelDB.swift */,
 				F69BD12B2C551B400057080E /* ExerciseModelDB.swift */,
 				F69BD12D2C551B4F0057080E /* SetsModelDB.swift */,
+				F66CBE2B2C8DCA920025B87F /* Report */,
 			);
 			path = "Data Base Models";
 			sourceTree = "<group>";
@@ -292,6 +305,7 @@
 			children = (
 				F69BD0FE2C54FBC10057080E /* View+Utils.swift */,
 				F68D60662C76193500783E54 /* TimeInterval+Utils.swift */,
+				F6E4161E2C7F982500E77EB4 /* Distance+Utils.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -545,6 +559,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F6EA7BD62C57B2C4005225A0 /* WorkoutGroupListViewModel.swift in Sources */,
+				F6946BC52C8C5FD300089148 /* ReportWorkoutModelDB.swift in Sources */,
 				F69BD1252C5519AA0057080E /* DataItemsProtocol.swift in Sources */,
 				F630C9512C79E92F00049730 /* AKTextFieldStyle.swift in Sources */,
 				F69BD0CA2C54F8DA0057080E /* ContentView.swift in Sources */,
@@ -562,6 +577,7 @@
 				F69BD0CC2C54F8DA0057080E /* Item.swift in Sources */,
 				F69BD0C82C54F8DA0057080E /* iTrainerApp.swift in Sources */,
 				F69BD1272C551B040057080E /* WorkoutModelDB.swift in Sources */,
+				F6E4161F2C7F982500E77EB4 /* Distance+Utils.swift in Sources */,
 				F6EA7BD22C57AD17005225A0 /* SetsModel.swift in Sources */,
 				F6EA7BDA2C57DA0F005225A0 /* WorkoutGroupCell.swift in Sources */,
 				F6EA7BE62C57F861005225A0 /* SetsCell.swift in Sources */,

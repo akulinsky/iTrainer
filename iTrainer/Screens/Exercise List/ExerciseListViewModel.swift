@@ -13,8 +13,6 @@ import Combine
 
 class ExerciseListViewModel: ObservableObject {
     
-    @EnvironmentObject var dataContainer: DataContainer
-    
     @Published var exercises = [ExerciseModel]()
     
     @Published var isShowAlert = false
@@ -68,37 +66,23 @@ class ExerciseListViewModel: ObservableObject {
     }
     
     func addNewExercises(with typeIDs: Set<String>) {
-        for id in typeIDs {
-            update(item: ExerciseModel(typeId: id, isHeadline: false))
-        }
+        update(items: typeIDs.map { ExerciseModel(typeId: $0, isHeadline: false) })
     }
     
     func update(name: String) {
         if var editExercise = editExercise {
             editExercise.title = name
-            update(item: editExercise)
+            update(items: [editExercise])
         } else {
-            update(item: ExerciseModel(title: name, isHeadline: self.isEditHeadline))
+            update(items: [ExerciseModel(title: name, isHeadline: self.isEditHeadline)])
         }
         editExercise = nil
         self.isEditHeadline = false
     }
     
-    func update(item: ExerciseModel) {
+    private func update(items: [ExerciseModel]) {
         Task {
-            await DataManagerBackground(container: DataContainer.shared.sharedModelContainer).update(exercise: item, groupId: group.id)
-            await MainActor.run {
-                fetchItems()
-            }
-        }
-    }
-    
-    func add(item: ExerciseModel) {
-        Task {
-            await DataManagerBackground(container: DataContainer.shared.sharedModelContainer).add(exercise: item, to: group.id)
-            await MainActor.run {
-                fetchItems()
-            }
+            await DataManagerBackground(container: DataContainer.shared.sharedModelContainer).update(exercises: items, groupId: group.id)
         }
     }
     

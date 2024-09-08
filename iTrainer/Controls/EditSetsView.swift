@@ -10,29 +10,59 @@ import Combine
 
 struct EditSetsView: View {
     
+    @Observable
+    class ParamData: Identifiable {
+        var id: Int
+        var value: String = ""
+        var shake = PassthroughSubject<Void, Never>()
+        
+        let param: SetsParameter
+        
+        let keyboardType: UIKeyboardType
+        
+        init(param: SetsParameter) {
+            self.param = param
+            self.id = param.id
+            
+            switch param {
+            case .weight(let value):
+                if value > 0 {
+                    self.value = "\(value)"
+                }
+                keyboardType = .decimalPad
+            case .repeats(let value):
+                if value > 0 {
+                    self.value = "\(value)"
+                }
+                keyboardType = .numberPad
+            case .distance(let value):
+                if value > 0 {
+                    self.value = value.distanceForDisplay
+                }
+                keyboardType = .numberPad
+            case .time(let value):
+                if value > 0 {
+                    self.value = value.timeForTextField
+                }
+                keyboardType = .numberPad
+            }
+        }
+    }
+    
     enum Result {
-        case save(Float, Int)
+        case save(params: [SetsParameter])
         case cancel
     }
     
     typealias ResultBlock = (Result)->()
     
-    @State private var strWeight: String = ""
+    @State private var params  = [ParamData]()
     
-    @State private var strReps: String = ""
+    @State private var setsParams: [SetsParameter] = []
     
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
     
-    private var weight: Float
-    private var reps: Int
-    
-    private var placeholderWeight: String {
-        weight > 0 ? String(format: "%.1f", weight) : "Weight"
-    }
-    
-    private var placeholderReps: String {
-        reps > 0 ? String(reps) : "Reps"
-    }
+    @Environment(\.colorScheme) var colorScheme
     
     private var shakeReps = PassthroughSubject<Void, Never>()
     private var shakeWeight = PassthroughSubject<Void, Never>()
@@ -42,69 +72,58 @@ struct EditSetsView: View {
     private var complete: ResultBlock
     
     init(title: String = "",
-         weight: Float = 0,
-         reps: Int = 0,
+         params: [SetsParameter],
          complete: @escaping ResultBlock) {
         
         self.title = title
-        self.weight = weight
-        self.reps = reps
         self.complete = complete
+        _setsParams = State(initialValue: params)
+        
+        var result  = [ParamData]()
+        for param in params {
+            let data = ParamData(param: param)
+            result.append(data)
+        }
+        _params = State(initialValue: result)
+    }
+    
+    private var color: Color {
+        switch colorScheme {
+        case .light:
+            Color(UIColor.darkGray)
+        default:
+            Color(UIColor.lightGray)
+        }
     }
     
     var body: some View {
         NavigationStack {
-            VStack {
+            HStack(spacing: 30) {
                 
-                HStack {
+                ForEach(self.$params) { $item in
                     VStack(alignment: .leading, spacing: 0) {
                         HStack(alignment: .firstTextBaseline) {
-                            if weight > 0 {
-                                Text("Weight:")
+                            Text("\(item.param.title)")
                                     .font(.caption)
-                                Text("\(String(format: "%.1f", weight))")
-                                    .font(.footnote.bold())
-                            }
+                            
                         }
                         .frame(height: 30)
                         .padding([.leading, .trailing])
                         .foregroundStyle(.gray)
                         
                         HStack {
-                            TextField(placeholderWeight, text: $strWeight)
-                                .padding([.leading, .trailing])
-                                .textFieldStyle(.roundedBorder)
-                                .shakeAnimation(shakeWeight)
-                                .keyboardType(.numberPad)
-                            
-                            Text("x")
-                                .foregroundStyle(Color(UIColor.lightGray))
+                            TextField(item.param.title, text: $item.value, onEditingChanged: { focused in
+                                self.focused(focused, param: item)
+                            })
+                            .textFieldStyle(AKTextFieldStyle())
+                            .shakeAnimation(item.shake)
+                            .keyboardType(item.keyboardType)
+                            .foregroundStyle(color)
                         }
-                    }
-                    
-                    VStack(alignment: .leading, spacing: 0) {
-                        
-                        HStack(alignment: .firstTextBaseline) {
-                            if reps > 0 {
-                                Text("Reps:")
-                                    .font(.caption)
-                                Text("\(reps)").bold()
-                                    .font(.footnote.bold())
-                            }
-                        }
-                        .frame(height: 30)
-                        .padding([.leading, .trailing])
-                        .foregroundStyle(.gray)
-                        
-                        TextField(placeholderReps, text: $strReps)
-                            .padding([.leading, .trailing])
-                            .textFieldStyle(.roundedBorder)
-                            .shakeAnimation(shakeReps)
-                            .keyboardType(.numberPad)
                     }
                 }
             }
-            .padding()
+            .padding([.leading, .trailing], 30)
             .navigationTitle(title)
             .toolbar {
                 ToolbarItem(placement: .topBarLeading) {
@@ -123,31 +142,69 @@ struct EditSetsView: View {
         }
     }
     
+    private func focused(_ focused: Bool, param: ParamData) {
+        if focused {
+            return
+        }
+        
+        switch param.param {
+        case .time(_):
+            let value = param.value.replacingOccurrences(of: ":", with: "")
+            if let value = Double(value), value > 0 {
+                let time = TimeInterval.timeForSet(value: value)
+                DispatchQueue.main.async {
+                    param.value = time.timeForTextField
+                }
+            }
+           
+        default:
+            break
+        }
+    }
+    
     private func prepareToSave() {
         
-        var resultWeight: Float = 0.0
-        var resultReps: Int = 0
+        var result = [SetsParameter]()
         
-        
-        if strWeight.isEmpty, weight > 0 {
-            resultWeight = weight
-        } else if let weight = Float(strWeight), weight > 0 {
-            resultWeight = weight
-        } else {
-            shakeWeight.send()
-            return
+        for param in params {
+            switch param.param {
+            case .weight(_):
+                let numberFormatter = NumberFormatter()
+                numberFormatter.numberStyle = NumberFormatter.Style.decimal
+                if let value = numberFormatter.number(from: param.value)?.floatValue, value > 0 {
+                    result.append(.weight(value))
+                } else if let value = Float(param.value), value > 0 {
+                    result.append(.weight(value))
+                } else {
+                    param.shake.send()
+                    return
+                }
+            case .repeats(_):
+                if let value = Int(param.value), value > 0 {
+                    result.append(.repeats(value))
+                } else {
+                    param.shake.send()
+                    return
+                }
+            case .distance(_):
+                if let value = Float(param.value), value > 0 {
+                    result.append(.distance(value))
+                } else {
+                    param.shake.send()
+                    return
+                }
+            case .time(_):
+                let value = param.value.replacingOccurrences(of: ":", with: "")
+                if let value = Double(value), value > 0 {
+                    let time = TimeInterval.timeForSet(value: value)
+                    result.append(.time(time))
+                } else {
+                    param.shake.send()
+                    return
+                }
+            }
         }
-        
-        if strReps.isEmpty, reps > 0 {
-            resultReps = reps
-        } else if let reps = Int(strReps), reps > 0 {
-            resultReps = reps
-        } else {
-            shakeReps.send()
-            return
-        }
-        
-        complete(.save(resultWeight, resultReps))
+        complete(.save(params: result))
         presentationMode.wrappedValue.dismiss()
     }
     
@@ -158,5 +215,5 @@ struct EditSetsView: View {
 }
 
 #Preview {
-    EditSetsView(title: "Add new sets", weight: 100, reps: 8) { result in }
+    EditSetsView(title: "Add new sets", params: [.weight(100), .repeats(10)]) { result in }
 }

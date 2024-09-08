@@ -13,6 +13,7 @@ struct ExerciseModel: DataItemProtocol, Identifiable {
     var title: String?
     var typeId: String
     var isHeadline: Bool
+    var restTime: TimeInterval
     
     init(model: ExerciseModelDB) {
         self.id = model.id
@@ -20,14 +21,22 @@ struct ExerciseModel: DataItemProtocol, Identifiable {
         self.title = model.title
         self.typeId = model.typeId
         self.isHeadline = model.isHeadline
+        self.restTime = model.restTime ?? 120
     }
     
-    init(id: UUID = UUID(), index: Int = 0, title: String? = nil, typeId: String = "", isHeadline: Bool = false) {
+    init(id: UUID = UUID(),
+         index: Int = 0,
+         title: String? = nil,
+         typeId: String = "",
+         isHeadline: Bool = false,
+         restTime: TimeInterval = 120) {
+        
         self.id = id
         self.index = index
         self.title = title
         self.typeId = typeId
         self.isHeadline = isHeadline
+        self.restTime = restTime
     }
 }
 

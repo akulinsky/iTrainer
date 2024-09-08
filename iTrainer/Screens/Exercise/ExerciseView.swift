@@ -33,14 +33,7 @@ struct ExerciseView: View {
                     .frame(height: heightHeader)
                     .padding([.top, .leading, .trailing])
                 
-                CircularProgressView(progress: progress)
-                    .frame(width: 60, height: 60)
-                    .overlay {
-                        Text("\(TimeInterval(progress * 100).minuteSecond)")
-                            .font(.subheadline)
-                            .foregroundStyle(.gray)
-                            .bold()
-                    }
+                restTimeView
                 
                 setsView
                     .padding()
@@ -107,6 +100,23 @@ struct ExerciseView: View {
     }
     
     @ViewBuilder
+    private var restTimeView: some View {
+        HStack {
+            CircularProgressView(progress: viewModel.progressRestTime)
+                .frame(width: 60, height: 60)
+                .overlay {
+                    Text("\(viewModel.restTime.minuteSecond)")
+                        .font(.subheadline)
+                        .foregroundStyle(.gray)
+                        .bold()
+                }
+        }
+        .onTapGesture {
+            viewModel.tapToTimer()
+        }
+    }
+    
+    @ViewBuilder
     private var setsView: some View {
         VStack {
             ForEach(viewModel.sets) { item in
@@ -115,13 +125,7 @@ struct ExerciseView: View {
                     case .update(let updateModel):
                         viewModel.edit(sets: updateModel)
                     case .selected(let selectedModel):
-                        if let value = selectedModel.weight {
-                            viewModel.strWeight = "\(value)"
-                        }
-                        
-                        if let value = selectedModel.reps {
-                            viewModel.strReps = "\(value)"
-                        }
+                        viewModel.addResult(with: selectedModel.parameters)
                     default:
                         break
                     }
@@ -133,30 +137,16 @@ struct ExerciseView: View {
     @ViewBuilder
     private var setDataView: some View {
         HStack(spacing: 12) {
-            TextField("Weight", text: $viewModel.strWeight)
-                .padding([.leading, .trailing])
-                .frame(maxHeight: .infinity)
-                .shakeAnimation(viewModel.shakeWeight)
-                .keyboardType(.numberPad)
-                .foregroundStyle(Color(UIColor.darkGray))
-                .background {
-                    HStack {
-                        ZStack {
-                            RoundedRectangle(cornerRadius: 5)
-                                .fill(Color(UIColor.lightGray))
-                                .opacity(0.3)
-                            
-                            RoundedRectangle(cornerRadius: 5)
-                                .stroke(.gray, lineWidth: 1)
-                        }
-                    }
-                }
             
-            TextField("Reps", text: $viewModel.strReps)
+            ForEach($viewModel.paramsData) { $item in
+                TextField(item.param.title, text: $item.value, onEditingChanged: { focused in
+                    self.viewModel.focused(focused, paramData: item)
+                })
+                
                 .padding([.leading, .trailing])
                 .frame(maxHeight: .infinity)
-                .shakeAnimation(viewModel.shakeReps)
-                .keyboardType(.numberPad)
+                .shakeAnimation(item.shake)
+                .keyboardType(item.keyboardType)
                 .foregroundStyle(Color(UIColor.darkGray))
                 .background {
                     HStack {
@@ -170,14 +160,12 @@ struct ExerciseView: View {
                         }
                     }
                 }
+            }
             
             Button {
                 prepareToSave()
             } label: {
-                
                 ZStack {
-//                    RoundedRectangle(cornerRadius: 8)
-//                        .stroke(color, lineWidth: 1)
                     HStack {
                         Spacer()
                         Image(systemName: "plus.app")
@@ -199,14 +187,12 @@ struct ExerciseView: View {
     
     @ViewBuilder
     private func editSets() -> some View {
-        
         EditSetsView(title: viewModel.editSets == nil ? "New sets" : "Edit sets",
-                            weight: Float(viewModel.editSets?.weight ?? 0),
-                            reps: viewModel.editSets?.reps ?? 0) {
+                     params: viewModel.editSets?.parameters ?? []) {
             
             switch $0 {
-            case .save(let weight, let reps):
-                viewModel.update(weight: weight, reps: reps)
+            case .save(let params):
+                viewModel.update(params: params)
             default:
                 break
             }

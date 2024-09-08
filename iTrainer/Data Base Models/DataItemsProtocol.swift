@@ -7,6 +7,13 @@
 
 import Foundation
 
+protocol ReportDataItemProtocol {
+    var id: UUID { get }
+    var title: String? { get }
+    var startDate: Date? { get }
+    var endDate: Date? { get }
+}
+
 protocol DataItemProtocol {
     var id: UUID { get }
     var index: Int { get }
@@ -16,8 +23,11 @@ protocol DataItemProtocol {
 protocol DataSetItemProtocol {
     var id: UUID { get }
     var index: Int { get }
+}
+
+protocol DataParamsProtocol {
     var reps: Int? { get }
     var weight: Float? { get }
     var distance: Float? { get }
-    var timer: Date? { get }
+    var time: TimeInterval? { get }
 }

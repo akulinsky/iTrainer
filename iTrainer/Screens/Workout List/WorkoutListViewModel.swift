@@ -13,11 +13,7 @@ import Combine
 
 class WorkoutListViewModel: ObservableObject {
     
-    //WorkoutModel
-    
     // MARK: - properties
-    
-    @EnvironmentObject var dataContainer: DataContainer
     
     @Published var workouts = [WorkoutModel]()
     
@@ -34,13 +30,6 @@ class WorkoutListViewModel: ObservableObject {
     private let networkClient = ServiceNetworkClient()
     
     func setup() {
-//        Task {
-//            let dataManager = DataManagerBackground(container: DataContainer.shared.sharedModelContainer)
-//            let items = await dataManager.fetchAllWorkouts().map { WorkoutModel(model: $0) }
-//            await MainActor.run {
-//                pinnedWorkout = items[1]
-//            }
-//        }
         
     }
     
@@ -181,7 +170,7 @@ class WorkoutListViewModel: ObservableObject {
     }
     
     private func addTestExercise(for group: WorkoutGroupModelDB, dataManager: DataManagerBackground) async {
-        for index in 0..<5 {
+        for index in 0..<DataContainer.shared.arrayExercises.count {
             let item = ExerciseModelDB()
             
             await dataManager.insert(model: item)
@@ -199,8 +188,20 @@ class WorkoutListViewModel: ObservableObject {
             
             await dataManager.insert(model: item)
             item.index = index
-            item.reps = 10 - (index-1)
-            item.weight = 50.0 + Float((index-2))*10.0
+            let typeExercise = DataContainer.shared.arrayExercises.first { $0.id == exercise.typeId }
+            for param in typeExercise!.parameters {
+                switch param {
+                case .weight(_):
+                    item.weight = 50.0 + Float((index-2))*10.0
+                case .repeats(_):
+                    item.reps = 10 - (index-1)
+                case .distance(_):
+                    item.distance = 500 * Float(index)
+                case .time(_):
+                    item.time = TimeInterval(60 * index)
+                }
+            }
+            
             item.exercise = exercise
         }
     }

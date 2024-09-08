@@ -9,9 +9,13 @@ import Foundation
 import SwiftUI
 
 struct AKTextFieldStyle: TextFieldStyle {
+    
+    @FocusState private var focused: Bool
+    
     func _body(configuration: TextField<Self._Label>) -> some View {
         configuration
             .frame(height: 40)
+            .focused($focused)
             .padding([.leading, .trailing])
             .background {
                 HStack {
@@ -24,6 +28,9 @@ struct AKTextFieldStyle: TextFieldStyle {
                             .stroke(.gray, lineWidth: 1)
                     }
                 }
+            }
+            .onTapGesture {
+                focused = true
             }
     }
 }

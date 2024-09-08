@@ -17,17 +17,15 @@ class ExerciseEditViewModel: ObservableObject {
     
     typealias SaveingBlock = (Bool)->()
     
-    @EnvironmentObject var dataContainer: DataContainer
-    
     @Published var setsViewModels = [SetEditCellViewModel]()
     
     @Published var isShowAlert = false
     
     @Published var title: String
     
-    @Published var switchBrake = false
+    @Published var switchRest = false
     
-    @Published var brakeTime: TimeInterval = 120.0
+    @Published var restTime = ""
     
     var errorMessage: String? = nil
     
@@ -38,19 +36,40 @@ class ExerciseEditViewModel: ObservableObject {
     private var isFirstTime = true
     private var deletedSets = [SetEditCellViewModel]()
     
+    private var restTimeInterval: TimeInterval {
+        var time = TimeInterval(0)
+        
+        let value = restTime.replacingOccurrences(of: ":", with: "")
+        
+        if let value = Double(value), value >= 0 {
+            var value = TimeInterval.timeForSet(value: value)
+            if value > 600 {
+                value = 600
+            }
+            time = value
+        }
+        return time
+    }
+    
     // MARK: - Init
     
     init(exercise: ExerciseModel) {
         self.exercise = exercise
         title = exercise.title ?? ""
+        restTime = exercise.restTime.minuteSecond
     }
     
     // MARK: - Private methods
     
     private func fetchItems(complete: (()->())? = nil) {
         Task {
+            
+            guard let type = self.exercise.type else {
+                return
+            }
+            
             let dataManager = DataManagerBackground(container: DataContainer.shared.sharedModelContainer)
-            let items = await dataManager.fetchSets(for: exercise.id).map { SetEditCellViewModel(model: SetsModel(model: $0)) }
+            let items = await dataManager.fetchSets(for: exercise.id).map { SetEditCellViewModel(model: SetsModel(model: $0), exerciseType: type) }
             await MainActor.run {
                 setsViewModels = items
                 if let complete = complete {
@@ -70,11 +89,21 @@ class ExerciseEditViewModel: ObservableObject {
     }
     
     func add() {
+        
+        guard let params = exercise.type?.parameters else {
+            return
+        }
+        
         var set = SetsModel()
         set.index = setsViewModels.count + 1
-        setsViewModels.append(SetEditCellViewModel(model: set))
-//        sets.append(set)
-//        addedSets.append(set)
+        
+        for param in params {
+            set.parameters.append(param)
+        }
+        
+        if let type = exercise.type {
+            setsViewModels.append(SetEditCellViewModel(model: set, exerciseType: type))
+        }
     }
     
     func delete(setsViewModel: SetEditCellViewModel) {
@@ -87,11 +116,23 @@ class ExerciseEditViewModel: ObservableObject {
         }
     }
     
+    func focusedRestTime(_ focused: Bool) {
+        if focused {
+            return
+        }
+        
+        DispatchQueue.main.async {
+            self.restTime = self.restTimeInterval.minuteSecond
+        }
+    }
+    
     func save(completeBlock: @escaping SaveingBlock) {
         Task {
             let dataManager = DataManagerBackground(container: DataContainer.shared.sharedModelContainer)
             
             exercise.title = title.isEmpty ? nil : title
+            
+            exercise.restTime = self.restTimeInterval
             
             await dataManager.update(exercise: exercise)
             
@@ -108,13 +149,49 @@ class ExerciseEditViewModel: ObservableObject {
 
 class SetEditCellViewModel: ObservableObject, Identifiable {
     
+    class ParamData: ObservableObject, Identifiable {
+        var id: Int
+        @Published var value: String = ""
+        var shake = PassthroughSubject<Void, Never>()
+        
+        let param: SetsParameter
+        
+        let keyboardType: UIKeyboardType
+        
+        init(param: SetsParameter) {
+            self.param = param
+            self.id = param.id
+            
+            switch param {
+            case .weight(let value):
+                if value > 0 {
+                    self.value = "\(value)"
+                }
+                keyboardType = .decimalPad
+            case .repeats(let value):
+                if value > 0 {
+                    self.value = "\(value)"
+                }
+                keyboardType = .numberPad
+            case .distance(let value):
+                if value > 0 {
+                    self.value = value.distanceForDisplay
+                }
+                keyboardType = .numberPad
+            case .time(let value):
+                if value > 0 {
+                    self.value = value.timeForTextField
+                }
+                keyboardType = .numberPad
+            }
+        }
+    }
+    
     // MARK: - Properties
     
-    @Published var strWeight: String
-    
-    @Published var strReps: String
-    
     private var cancellable = Set<AnyCancellable>()
+    
+    private var exerciseType: ExerciseTypeModel
     
     var id: UUID {
         model.id
@@ -122,36 +199,101 @@ class SetEditCellViewModel: ObservableObject, Identifiable {
     
     var model: SetsModel
     
+    var paramsData = [ParamData]()
+    
     // MARK: - Init
     
-    init(model: SetsModel) {
+    init(model: SetsModel, exerciseType: ExerciseTypeModel) {
         self.model = model
+        self.exerciseType = exerciseType
         
-        if let value = model.weight, value > 0 {
-            strWeight = String(format: "%.1f", model.weight ?? 0)
-        } else {
-            strWeight = ""
-        }
-        
-        if let value = model.weight, value > 0 {
-            strReps = String("\(model.reps ?? 0)")
-        } else {
-            strReps = ""
-        }
-        
-        $strWeight.sink { value in
-            if let value = Float(value), value > 0 {
-                self.model.weight = value
+        for param in self.model.parameters {
+            let paramData = ParamData(param: param)
+            paramsData.append(paramData)
+            
+            var ignore = false
+            
+            switch param {
+            case .weight(_):
+                paramData.$value.sink { value in
+                    
+                    let numberFormatter = NumberFormatter()
+                    numberFormatter.numberStyle = NumberFormatter.Style.decimal
+                    if let value = numberFormatter.number(from: value)?.floatValue, value > 0 {
+                        if let index = self.model.parameters.firstIndex(where: { $0.id == param.id}) {
+                            self.model.parameters.remove(at: index)
+                            self.model.parameters.insert(.weight(value), at: index)
+                        }
+                    }
+                }
+                .store(in: &cancellable)
+            case .repeats(_):
+                paramData.$value.sink { value in
+                    if let value = Int(value), value > 0 {
+                        if let index = self.model.parameters.firstIndex(where: { $0.id == param.id}) {
+                            self.model.parameters.remove(at: index)
+                            self.model.parameters.insert(.repeats(value), at: index)
+                        }
+                    }
+                }
+                .store(in: &cancellable)
+            case .distance(_):
+                paramData.$value.sink { value in
+                    if let value = Float(value), value > 0 {
+                        if let index = self.model.parameters.firstIndex(where: { $0.id == param.id}) {
+                            self.model.parameters.remove(at: index)
+                            self.model.parameters.insert(.distance(value), at: index)
+                        }
+                    }
+                }
+                .store(in: &cancellable)
+            case .time(_):
+                paramData.$value.sink { value in
+                    if ignore {
+                        ignore = false
+                        return
+                    }
+                    
+                    let value = value.replacingOccurrences(of: ":", with: "")
+                    if let value = Double(value), value > 0 {
+                        let value = TimeInterval.timeForSet(value: value)
+                        if let index = self.model.parameters.firstIndex(where: { $0.id == param.id}) {
+                            
+                            if case .time(let time) = self.model.parameters[index], value == time {
+                                return
+                            }
+                            ignore = true
+                            self.model.parameters.remove(at: index)
+                            self.model.parameters.insert(.time(value), at: index)
+                        }
+                    }
+                }
+                .store(in: &cancellable)
             }
         }
-        .store(in: &cancellable)
-        
-        $strReps.sink { value in
-            if let value = Int(value), value > 0 {
-                self.model.reps = value
-            }
+    }
+    
+    func focused(_ focused: Bool, paramData: ParamData, complete: (()->())? = nil) {
+        if focused {
+            return
         }
-        .store(in: &cancellable)
+        
+        switch paramData.param {
+        case .time(_):
+            if let index = self.model.parameters.firstIndex(where: { $0.id == paramData.id}) {
+                if case .time(let time) = self.model.parameters[index] {
+                    DispatchQueue.main.async {
+                        paramData.value = time.timeForTextField
+                        if let complete = complete {
+                            complete()
+                        }
+                    }
+                }
+            }
+           
+        default:
+            break
+        }
     }
     
     // MARK: - Private methods

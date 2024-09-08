@@ -14,6 +14,7 @@ class ExerciseModelDB: DataItemProtocol {
     var index: Int = 0
     var title: String?
     var typeId: String = ""
+    var restTime: TimeInterval?
     
     var isHeadline: Bool = false
     

@@ -32,13 +32,12 @@ struct SetsCell: View {
             Text("# \(model.index):")
                 .font(.footnote)
                 .bold()
-            Text("Weight:")
-                .font(.footnote)
-            Text(String(format: "%.1f", model.weight ?? 0)).bold()
             
-            Text("Reps:")
-                .font(.footnote)
-            Text("\(model.reps ?? 0)").bold()
+            ForEach(model.parameters) { item in
+                Text("\(item.title):")
+                    .font(.footnote)
+                Text(item.stringValue).bold()
+            }
             
             Spacer()
             
@@ -65,5 +64,5 @@ struct SetsCell: View {
 }
 
 #Preview {
-    SetsCell(model: SetsModel(reps: 10, weight: 100)) { action in }
+    SetsCell(model: SetsModel(params: [.weight(100), .repeats(10)])) { action in }
 }

@@ -13,6 +13,8 @@ struct ExerciseListView: View {
     
     @State private var editMode = EditMode.inactive
     
+    @State private var showAnimation = false
+    
     init(viewModel: ExerciseListViewModel) {
         _viewModel = StateObject(wrappedValue: viewModel)
     }
@@ -26,6 +28,7 @@ struct ExerciseListView: View {
                 .onDelete(perform: deleteItems)
                 .onMove(perform: moveItems)
             }
+            .animation(.easeInOut, value: showAnimation)
             .refreshable {
                 refresh()
             }
@@ -48,17 +51,27 @@ struct ExerciseListView: View {
         .sheet(isPresented: $viewModel.isEditExercise, onDismiss: {
             viewModel.isEditHeadline = false
             viewModel.isEditExercise = false
+            viewModel.reloadData {
+                showAnimation.toggle()
+            }
         }, content: {
-            editNameView()
-                .presentationDetents([.height(250)])
+            
+            if viewModel.isEditHeadline {
+                editNameView()
+                    .presentationDetents([.height(250)])
+            } else {
+                editExercise()
+                    .presentationDetents([.large])
+            }
         })
         
         .sheet(isPresented: $viewModel.isAddNewExercise, onDismiss: {
-//            viewModel.isEditHeadline = false
             viewModel.isAddNewExercise = false
+            viewModel.reloadData {
+                showAnimation.toggle()
+            }
         }, content: {
             addNewExerciseView()
-//                .presentationDetents([.height(250)])
         })
     }
     
@@ -81,19 +94,14 @@ struct ExerciseListView: View {
         switch editMode {
         case .active:
             return AnyView(
-                ZStack {
-                    ExerciseCell(model: item) {
-                        switch $0 {
-                        case .update(let updateModel):
-                            viewModel.edit(exercise: updateModel)
-                            break
-                        default:
-                            break
-                        }
+                ExerciseCell(model: item) {
+                    switch $0 {
+                    case .update(let updateModel):
+                        viewModel.edit(exercise: updateModel)
+                        break
+                    default:
+                        break
                     }
-                    NavigationLink(destination: ExerciseView(viewModel: ExerciseViewModel(exercise: item))) {
-                        EmptyView()
-                    }.opacity(0)
                 }
             )
         default:
@@ -154,14 +162,19 @@ struct ExerciseListView: View {
         }
     }
     
+    @ViewBuilder
+    private func editExercise() -> some View {
+        if let exercise = viewModel.editExercise {
+            ExerciseEditView(viewModel: ExerciseEditViewModel(exercise: exercise))
+        }
+    }
+    
+    @ViewBuilder
     private func addNewExerciseView() -> some View {
-        
-        let view = ExerciseTypeView(mode: .selecting) { result in
+        ExerciseTypeView(mode: .selecting) { result in
             viewModel.addNewExercises(with: result)
             viewModel.isAddNewExercise = false
         }
-        
-        return view
     }
     
     private func clickBtnEditint() {

@@ -43,7 +43,7 @@ struct ExerciseEditView: View {
                     titleView
                         .padding([.leading, .top, .trailing], 20)
                     
-                    breakTimeView
+                    restTimeView
                         .padding([.leading, .top, .trailing], 20)
                     
                     setsView
@@ -115,31 +115,31 @@ struct ExerciseEditView: View {
     }
     
     @ViewBuilder
-    private var breakTimeView: some View {
+    private var restTimeView: some View {
         VStack {
             HStack {
-                Text("Break time")
+                Text("Rest time")
                     .foregroundStyle(.gray)
                 
                 Spacer()
             }
             
-            ZStack {
-                Text(viewModel.brakeTime.minuteSecond)
-                    .font(.title)
-                    .foregroundStyle(.gray)
+            HStack {
+                TextField("Rest time", text: $viewModel.restTime, onEditingChanged: { focused in
+                    viewModel.focusedRestTime(focused)
+                })
+                .textFieldStyle(AKTextFieldStyle())
+                .frame(width: 75)
+                .foregroundStyle(color)
+                .keyboardType(.numberPad)
+                
+//                Spacer()
             }
-            .frame(height: 60)
-            .frame(maxWidth: .infinity)
-            .opacity(viewModel.switchBrake ? 0.3 : 1.0)
-            .contentShape(Rectangle())
-            .onTapGesture {
-                if !viewModel.switchBrake {
-                    selectBreakTime()
-                }
-            }
+            .opacity(viewModel.switchRest ? 0.3 : 1.0)
+            .allowsHitTesting(!viewModel.switchRest)
+//            .padding(.leading, 55)
             
-            Toggle("Without break", isOn: $viewModel.switchBrake)
+            Toggle("Without rest", isOn: $viewModel.switchRest)
                 .foregroundStyle(.gray)
         }
     }
@@ -198,18 +198,6 @@ struct ExerciseEditView: View {
         viewModel.add()
         showAnimation.toggle()
     }
-    
-    private func selectBreakTime() {
-        print("DBG_ AAAAA")
-    }
-    
-//    private func deleteItems(offsets: IndexSet) {
-////        withAnimation {
-////            for index in offsets {
-////                viewModel.delete(index: index)
-////            }
-////        }
-//    }
 }
 
 #Preview {

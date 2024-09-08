@@ -13,8 +13,6 @@ import Combine
 
 class WorkoutGroupListViewModel: ObservableObject {
     
-    @EnvironmentObject var dataContainer: DataContainer
-    
     @Published var workoutGroups = [WorkoutGroupModel]()
     
     @Published var isShowAlert = false

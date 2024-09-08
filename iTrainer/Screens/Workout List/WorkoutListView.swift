@@ -76,9 +76,6 @@ struct WorkoutListView: View {
                             break
                         }
                     }
-                    NavigationLink(destination: WorkoutGroupListView(viewModel: WorkoutGroupListViewModel(workout: item))) {
-                        EmptyView()
-                    }.opacity(0)
                 }
             )
         default:

@@ -64,9 +64,6 @@ struct WorkoutGroupListView: View {
                             break
                         }
                     }
-                    NavigationLink(destination: ExerciseListView(viewModel: ExerciseListViewModel(group: item))) {
-                        EmptyView()
-                    }.opacity(0)
                 }
             )
         default:

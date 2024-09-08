@@ -8,11 +8,47 @@
 import Foundation
 import SwiftUI
 
-enum ParameterValue<value> {
+enum ParameterValue<value>: Identifiable, Hashable {
+    
     case repeats(_ value: Int = 0)
     case weight(_ value: Float = 0)
     case distance(_ value: Float = 0)
-    case timer(_ value: TimeInterval = 0)
+    case time(_ value: TimeInterval = 0)
+    
+    var title: String {
+        switch self {
+        case .weight(_):
+            "Weight"
+        case .repeats(_):
+            "Reps"
+        case .distance(_):
+            "Distance"
+        case .time(_):
+            "Time"
+        }
+    }
+    
+    var stringValue: String {
+        switch self {
+        case .weight(let value):
+            String(format: "%.1f", value)
+        case .repeats(let value):
+            "\(value)"
+        case .distance(let value):
+            value.distanceForDisplay
+        case .time(let value):         
+            value.timeForDisplay
+        }
+    }
+    
+    var id: Int {
+        switch self {
+        case .weight(_): 0
+        case .repeats(_): 1
+        case .distance(_): 2
+        case .time(_): 3
+        }
+    }
 }
 
 //enum ParameterValue<T>: CaseIterable {
@@ -53,6 +89,7 @@ extension ExerciseTypeModel {
         var result = createChestExercises
         result.append(contentsOf: createBackExercises)
         result.append(contentsOf: createLegsExercises)
+        result.append(contentsOf: createCardioExercises)
         
         return result
     }
@@ -113,6 +150,26 @@ extension ExerciseTypeModel {
                               title: "Все Еще упражнение на ноги",
                               type: .legs,
                               parameters: [.weight(), .repeats()]
+                             )
+        ]
+    }
+    
+    static var createCardioExercises: [ExerciseTypeModel] {
+        return [
+            ExerciseTypeModel(id: "2000",
+                              title: "Бег",
+                              type: .cardio,
+                              parameters: [.distance(), .time()]
+                             ),
+            ExerciseTypeModel(id: "2001",
+                              title: "Быстрый бег",
+                              type: .cardio,
+                              parameters: [.distance(), .time()]
+                             ),
+            ExerciseTypeModel(id: "2002",
+                              title: "Кое что для кардио",
+                              type: .cardio,
+                              parameters: [.time()]
                              )
         ]
     }

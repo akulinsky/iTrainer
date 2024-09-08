@@ -27,6 +27,8 @@ struct SetEditCell: View {
     
     private var shakeWeight = PassthroughSubject<Void, Never>()
     
+    @State private var updateUI = false
+    
     private var color: Color {
         switch colorScheme {
         case .light:
@@ -52,49 +54,35 @@ struct SetEditCell: View {
                         .font(.footnote)
                         .foregroundStyle(.gray)
                         .bold()
+                        .frame(width: 35)
                 }
             }
             .fixedSize()
             
-            VStack(alignment: .leading, spacing: 0) {
-                HStack(alignment: .firstTextBaseline) {
+            ForEach($viewModel.paramsData) { $item in
+                VStack(alignment: .leading, spacing: 0) {
+                    HStack(alignment: .firstTextBaseline) {
+                        Text("\(item.param.title): \(item.value)")
+                                .font(.caption)
+                        
+                    }
+                    .frame(height: 30)
+                    .padding([.leading, .trailing])
+                    .foregroundStyle(.gray)
                     
-                        Text("Weight:")
-                            .font(.caption)
-                    
-                }
-                .frame(height: 30)
-                .padding([.leading, .trailing])
-                .foregroundStyle(.gray)
-                
-                HStack {
-                    TextField("Weight", text: $viewModel.strWeight)
+                    HStack {
+                        TextField(item.param.title, text: $item.value, onEditingChanged: { focused in
+                            self.viewModel.focused(focused, paramData: item) {
+                                self.updateUI.toggle()
+                            }
+                        })
+                        .id(updateUI)
                         .textFieldStyle(AKTextFieldStyle())
-                        .shakeAnimation(shakeWeight)
-                        .keyboardType(.numberPad)
+                        .shakeAnimation(item.shake)
+                        .keyboardType(item.keyboardType)
                         .foregroundStyle(color)
+                    }
                 }
-            }
-            
-            VStack(alignment: .leading, spacing: 0) {
-                HStack(alignment: .firstTextBaseline) {
-                    
-                        Text("Reps:")
-                            .font(.caption)
-                    
-                }
-                .frame(height: 30)
-                .padding([.leading, .trailing])
-                .foregroundStyle(.gray)
-                
-                HStack {
-                    TextField("Reps", text: $viewModel.strReps)
-                        .textFieldStyle(AKTextFieldStyle())
-                        .shakeAnimation(shakeReps)
-                        .keyboardType(.numberPad)
-                        .foregroundStyle(color)
-                }
-                .contentShape(Rectangle())
             }
             
             Button {
@@ -119,5 +107,8 @@ struct SetEditCell: View {
 }
 
 #Preview {
-    SetEditCell(viewModel: SetEditCellViewModel(model: SetsModel(reps: 10, weight: 50)), actionBlock: {_ in })
+    SetEditCell(viewModel: SetEditCellViewModel(model: SetsModel(params: [.weight(50), .repeats(10)]),
+                                                exerciseType: ExerciseTypeModel(title: "Test",
+                                                                                type: .chest,
+                                                                                parameters: [.weight(), .repeats()])), actionBlock: {_ in })
 }

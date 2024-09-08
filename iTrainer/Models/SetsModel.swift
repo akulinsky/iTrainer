@@ -7,40 +7,42 @@
 
 import Foundation
 
-struct SetsModel: DataSetItemProtocol, Identifiable {
+typealias SetsParameter = ParameterValue<Any>
+
+struct SetsModel: DataSetItemProtocol, Identifiable, Equatable {
     
     var id: UUID
     var index: Int
     
-    var reps: Int?
-    var weight: Float?
-    var distance: Float?
-    var timer: Date?
-    
-    var parameters = [ParameterValue<Any>]()
+    var parameters = [SetsParameter]()
     
     init(model: SetsModelDB) {
         self.id = model.id
         self.index = model.index
         
-        self.reps = model.reps
-        self.weight = model.weight
-        self.distance = model.distance
-        self.timer = model.timer
+        if let value = model.weight {
+            parameters.append(.weight(value))
+        }
+        
+        if let value = model.reps {
+            parameters.append(.repeats(value))
+        }
+        
+        if let value = model.distance {
+            parameters.append(.distance(value))
+        }
+        
+        if let value = model.time {
+            parameters.append(.time(value))
+        }
     }
     
     init(id: UUID = UUID(),
          index: Int = 0,
-         reps: Int? = nil,
-         weight: Float? = nil,
-         distance: Float? = nil,
-         timer: Date? = nil) {
+         params: [SetsParameter] = []) {
         
         self.id = id
         self.index = index
-        self.reps = reps
-        self.weight = weight
-        self.distance = distance
-        self.timer = timer
+        self.parameters = params
     }
 }

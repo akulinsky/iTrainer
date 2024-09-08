@@ -9,13 +9,13 @@ import Foundation
 import SwiftData
 
 @Model
-class SetsModelDB: DataSetItemProtocol {
+class SetsModelDB: DataSetItemProtocol, DataParamsProtocol {
     @Attribute (.unique) var id = UUID()
     var index: Int = 0
     var reps: Int?
     var weight: Float?
     var distance: Float?
-    var timer: Date?
+    var time: TimeInterval?
     
     var exercise: ExerciseModelDB?
     
