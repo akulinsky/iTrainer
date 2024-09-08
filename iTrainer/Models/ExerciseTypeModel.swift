@@ -8,6 +8,8 @@
 import Foundation
 import SwiftUI
 
+typealias SetsParameter = ParameterValue<Any>
+
 enum ParameterValue<value>: Identifiable, Hashable {
     
     case repeats(_ value: Int = 0)
@@ -50,14 +52,6 @@ enum ParameterValue<value>: Identifiable, Hashable {
         }
     }
 }
-
-//enum ParameterValue<T>: CaseIterable {
-//enum ParameterType: Int, CaseIterable {
-//    case repeats
-//    case weight
-//    case distance
-//    case timer
-//}
 
 struct ExerciseTypeModel: Identifiable {
     

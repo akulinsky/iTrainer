@@ -7,9 +7,7 @@
 
 import Foundation
 
-typealias SetsParameter = ParameterValue<Any>
-
-struct SetsModel: DataSetItemProtocol, Identifiable, Equatable {
+struct SetsModel: DataSetItemProtocol, Equatable {
     
     var id: UUID
     var index: Int

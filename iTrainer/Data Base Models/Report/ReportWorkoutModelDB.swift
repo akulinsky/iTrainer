@@ -9,17 +9,34 @@ import Foundation
 import SwiftData
 
 @Model
-class ReportWorkoutModelDB: ReportDataItemProtocol {
+class ReportWorkoutModelDB: ReportWorkoutDataProtocol {
+    
     @Attribute (.unique) var id = UUID()
-    var title: String?
+    
+    var titleWorkout: String
+    
+    var workoutId: UUID
+    
+    var workoutGroupId: UUID
+    
+    var titleWorkoutGroup: String
+    
     var startDate: Date?
+    
     var endDate: Date?
     
-//    @Relationship (deleteRule: .cascade, inverse: \WorkoutGroupModelDB.report)
-//    var workoutGroups: [WorkoutGroupModelDB] = []
+    @Relationship (deleteRule: .cascade, inverse: \ReportExerciseModelDB.report)
+    var exercises: [ReportExerciseModelDB] = []
     
-    init() {
+    init(titleWorkout: String,
+         workoutId: UUID,
+         workoutGroupId: UUID,
+         titleWorkoutGroup: String) {
         
+        self.titleWorkout = titleWorkout
+        self.workoutId = workoutId
+        self.workoutGroupId = workoutGroupId
+        self.titleWorkoutGroup = titleWorkoutGroup
     }
 }
 

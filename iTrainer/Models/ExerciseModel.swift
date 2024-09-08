@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct ExerciseModel: DataItemProtocol, Identifiable {
+struct ExerciseModel: DataItemProtocol {
     var id: UUID
     var index: Int
     var title: String?

@@ -7,20 +7,17 @@
 
 import Foundation
 
-protocol ReportDataItemProtocol {
+protocol DataIdProtocol: Identifiable {
     var id: UUID { get }
-    var title: String? { get }
-    var startDate: Date? { get }
-    var endDate: Date? { get }
 }
 
-protocol DataItemProtocol {
+protocol DataItemProtocol: DataIdProtocol {
     var id: UUID { get }
     var index: Int { get }
     var title: String? { get }
 }
 
-protocol DataSetItemProtocol {
+protocol DataSetItemProtocol: DataIdProtocol {
     var id: UUID { get }
     var index: Int { get }
 }
@@ -30,4 +27,24 @@ protocol DataParamsProtocol {
     var weight: Float? { get }
     var distance: Float? { get }
     var time: TimeInterval? { get }
+}
+
+protocol ReportWorkoutDataProtocol: DataIdProtocol {
+    var workoutId: UUID { get }
+    var titleWorkout: String { get }
+    var workoutGroupId: UUID { get }
+    var titleWorkoutGroup: String { get }
+    var startDate: Date? { get }
+    var endDate: Date? { get }
+}
+
+protocol ReportExerciseDataProtocol: DataIdProtocol {
+    var titleExercise: String { get }
+    var exerciseId: UUID { get }
+    var index: Int { get }
+    var typeId: String { get }
+}
+
+protocol ReportSetDataProtocol: DataIdProtocol {
+    var date: Date { get }
 }
