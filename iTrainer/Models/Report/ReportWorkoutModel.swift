@@ -23,6 +23,8 @@ struct ReportWorkoutModel: ReportWorkoutDataProtocol {
     
     var endDate: Date?
     
+    var targetExercisesCount = 0
+    
     init(model: ReportWorkoutModelDB) {
         self.id = model.id
         self.titleWorkout = model.titleWorkout
@@ -31,6 +33,7 @@ struct ReportWorkoutModel: ReportWorkoutDataProtocol {
         self.titleWorkoutGroup = model.titleWorkoutGroup
         self.startDate = model.startDate
         self.endDate = model.endDate
+        self.targetExercisesCount = model.targetExercisesCount
     }
     
     init(id: UUID = UUID(), 

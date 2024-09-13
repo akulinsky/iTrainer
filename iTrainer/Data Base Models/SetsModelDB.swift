@@ -19,8 +19,20 @@ class SetsModelDB: DataSetItemProtocol, DataParamsProtocol {
     
     var exercise: ExerciseModelDB?
     
+    var reportExercise: ReportExerciseModelDB?
+    
     init() {
         
+    }
+    
+    func copy() -> SetsModelDB {
+        let copy = SetsModelDB()
+        copy.index = self.index
+        copy.reps = self.reps
+        copy.weight = self.weight
+        copy.distance = self.distance
+        copy.time = self.time
+        return copy
     }
 }
 

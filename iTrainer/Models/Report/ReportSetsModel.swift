@@ -15,8 +15,6 @@ struct ReportSetsModel: ReportSetDataProtocol {
     
     var parameters = [SetsParameter]()
     
-    var targetParameters = [SetsParameter]()
-    
     init(model: ReportSetsModelDB) {
         self.id = model.id
         self.date = model.date
@@ -36,32 +34,14 @@ struct ReportSetsModel: ReportSetDataProtocol {
         if let value = model.time {
             parameters.append(.time(value))
         }
-        
-        if let value = model.targetWeight {
-            targetParameters.append(.weight(value))
-        }
-        
-        if let value = model.targetReps {
-            targetParameters.append(.repeats(value))
-        }
-        
-        if let value = model.targetDistance {
-            targetParameters.append(.distance(value))
-        }
-        
-        if let value = model.targetTime {
-            targetParameters.append(.time(value))
-        }
     }
     
     init(id: UUID = UUID(),
          date: Date,
-         params: [SetsParameter] = [],
-         targetParams: [SetsParameter] = []) {
+         params: [SetsParameter] = []) {
         
         self.id = id
         self.date = date
         self.parameters = params
-        self.targetParameters = targetParams
     }
 }

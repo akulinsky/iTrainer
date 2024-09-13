@@ -35,7 +35,6 @@ struct ReportExerciseModel: ReportExerciseDataProtocol {
         
         self.id = id
         self.titleExercise = titleExercise
-        self.titleExercise = titleExercise
         self.exerciseId = exerciseId
         self.index = index
         self.typeId = typeId

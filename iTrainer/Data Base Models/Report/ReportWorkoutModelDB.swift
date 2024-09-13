@@ -25,6 +25,8 @@ class ReportWorkoutModelDB: ReportWorkoutDataProtocol {
     
     var endDate: Date?
     
+    var targetExercisesCount = 0
+    
     @Relationship (deleteRule: .cascade, inverse: \ReportExerciseModelDB.report)
     var exercises: [ReportExerciseModelDB] = []
     

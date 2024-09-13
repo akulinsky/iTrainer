@@ -72,8 +72,8 @@ struct EditSetsView: View {
     private var complete: ResultBlock
     
     init(title: String = "",
-         params: [SetsParameter],
-         complete: @escaping ResultBlock) {
+         params: [SetsParameter] = [],
+         complete: @escaping ResultBlock = {_ in }) {
         
         self.title = title
         self.complete = complete

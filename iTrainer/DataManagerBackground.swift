@@ -140,12 +140,17 @@ extension DataManagerBackground {
                            sortBy: [SortDescriptor(\WorkoutGroupModelDB.index, order: .forward)])
     }
     
+    func fetchWorkoutGroup(with id: UUID) -> WorkoutGroupModelDB? {
+        let uuid = id
+        return fetchItem(predicate: #Predicate<WorkoutGroupModelDB> { $0.id == uuid })
+    }
+    
     func fetchExercises(for workoutGroupId: UUID) -> [ExerciseModelDB] {
         return fetchModels(predicate: #Predicate<ExerciseModelDB> { $0.workoutGroup?.id == workoutGroupId },
                            sortBy: [SortDescriptor(\ExerciseModelDB.index, order: .forward)])
     }
     
-    func fetchExercise(for exerciseId: UUID) -> ExerciseModelDB? {
+    func fetchExercise(with exerciseId: UUID) -> ExerciseModelDB? {
         let uuid = exerciseId
         return fetchItem(predicate: #Predicate<ExerciseModelDB> { $0.id == uuid })
     }
@@ -153,6 +158,34 @@ extension DataManagerBackground {
     func fetchSets(for exerciseId: UUID) -> [SetsModelDB] {
         return fetchModels(predicate: #Predicate<SetsModelDB> { $0.exercise?.id == exerciseId },
                            sortBy: [SortDescriptor(\SetsModelDB.index, order: .forward)])
+    }
+    
+    func fetchStartedWorkout() -> ReportWorkoutModelDB? {
+        return fetchItem(predicate: #Predicate<ReportWorkoutModelDB> { $0.endDate == nil })
+    }
+    
+    func fetchAllReportWorkout() -> [ReportWorkoutModelDB] {
+        return fetchModels(sortBy: [SortDescriptor(\ReportWorkoutModelDB.startDate, order: .forward)])
+    }
+    
+    func fetchReportExercises(for workoutId: UUID) -> [ReportExerciseModelDB] {
+        return fetchModels(predicate: #Predicate<ReportExerciseModelDB> { $0.report?.id == workoutId },
+                           sortBy: [SortDescriptor(\ReportExerciseModelDB.index, order: .forward)])
+    }
+    
+    func fetchReportExercise(id: UUID) -> ReportExerciseModelDB? {
+        let uuid = id
+        return fetchItem(predicate: #Predicate<ReportExerciseModelDB> { $0.id == uuid })
+    }
+    
+    func fetchReportExercise(exerciseId: UUID) -> ReportExerciseModelDB? {
+        let uuid = exerciseId
+        return fetchItem(predicate: #Predicate<ReportExerciseModelDB> { $0.exerciseId == uuid })
+    }
+    
+    func fetchReportSets(for exerciseId: UUID) -> [ReportSetsModelDB] {
+        return fetchModels(predicate: #Predicate<ReportSetsModelDB> { $0.reportExercise?.id == exerciseId },
+                           sortBy: [SortDescriptor(\ReportSetsModelDB.date, order: .forward)])
     }
     
     // MARK: - Remove
@@ -218,13 +251,13 @@ extension DataManagerBackground {
         
         if let item = fetchItem(predicate: #Predicate<WorkoutModelDB> { $0.id == uuid }) {
             item.title = workout.title
-            self.save()
         } else {
             let item = WorkoutModelDB()
             self.insert(model: item)
             item.index = count(type: WorkoutModelDB.self) + 1
             item.title = workout.title
         }
+        self.save()
     }
     
     func update(group: WorkoutGroupModel, workoutId: UUID? = nil) {
@@ -233,7 +266,6 @@ extension DataManagerBackground {
         
         if let item = fetchItem(predicate: #Predicate<WorkoutGroupModelDB> { $0.id == uuid }) {
             item.title = group.title
-            self.save()
         } else if let workoutId = workoutId,
                     let workoutModel = fetchItem(predicate: #Predicate<WorkoutModelDB> { $0.id == workoutId }) {
             let item = WorkoutGroupModelDB()
@@ -244,6 +276,8 @@ extension DataManagerBackground {
         } else {
             assertionFailure("Can't update the WorkoutGroupModel, because the workoutId == nil")
         }
+        
+        self.save()
     }
     
     func update(exercise: ExerciseModel, groupId: UUID? = nil, withSaving: Bool = true) {

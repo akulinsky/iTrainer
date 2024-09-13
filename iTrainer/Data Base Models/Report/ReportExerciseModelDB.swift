@@ -23,8 +23,11 @@ class ReportExerciseModelDB: ReportExerciseDataProtocol {
     
     var report: ReportWorkoutModelDB?
     
-    @Relationship (deleteRule: .cascade, inverse: \ReportSetsModelDB.exercise)
-    var exercises: [ReportSetsModelDB] = []
+    @Relationship (deleteRule: .cascade, inverse: \ReportSetsModelDB.reportExercise)
+    var reportSets: [ReportSetsModelDB] = []
+    
+    @Relationship (deleteRule: .cascade, inverse: \SetsModelDB.reportExercise)
+    var targetSets: [SetsModelDB] = []
     
     init(titleExercise: String, exerciseId: UUID, index: Int, typeId: String) {
         self.titleExercise = titleExercise

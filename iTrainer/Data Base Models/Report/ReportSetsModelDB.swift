@@ -25,15 +25,9 @@ class ReportSetsModelDB: ReportSetDataProtocol, DataParamsProtocol {
     
     var time: TimeInterval?
     
-    var targetReps: Int?
-    
-    var targetWeight: Float?
-    
-    var targetDistance: Float?
-    
-    var targetTime: TimeInterval?
-    
     // MARK: -
+    
+    var reportExercise: ReportExerciseModelDB?
     
     var exercise: ReportExerciseModelDB?
     

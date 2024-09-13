@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		F6078BA32C5CF1BE00531302 /* EditSetsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6078BA22C5CF1BE00531302 /* EditSetsView.swift */; };
+		F6164EAE2C9066860019C0AF /* WorkoutManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6164EAD2C9066860019C0AF /* WorkoutManager.swift */; };
 		F6180DDB2C5A6D55009A23A7 /* EditNameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6180DDA2C5A6D55009A23A7 /* EditNameView.swift */; };
 		F62818452C62408D003642F8 /* ExerciseTypeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F62818442C62408D003642F8 /* ExerciseTypeModel.swift */; };
 		F62818482C6249B7003642F8 /* MuscleType.swift in Sources */ = {isa = PBXBuildFile; fileRef = F62818472C6249B7003642F8 /* MuscleType.swift */; };
@@ -22,7 +23,6 @@
 		F6946BC52C8C5FD300089148 /* ReportWorkoutModelDB.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6946BC42C8C5FD300089148 /* ReportWorkoutModelDB.swift */; };
 		F69BD0C82C54F8DA0057080E /* iTrainerApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = F69BD0C72C54F8DA0057080E /* iTrainerApp.swift */; };
 		F69BD0CA2C54F8DA0057080E /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F69BD0C92C54F8DA0057080E /* ContentView.swift */; };
-		F69BD0CC2C54F8DA0057080E /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = F69BD0CB2C54F8DA0057080E /* Item.swift */; };
 		F69BD0CE2C54F8DB0057080E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F69BD0CD2C54F8DB0057080E /* Assets.xcassets */; };
 		F69BD0D12C54F8DB0057080E /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F69BD0D02C54F8DB0057080E /* Preview Assets.xcassets */; };
 		F69BD0DB2C54F8DB0057080E /* iTrainerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F69BD0DA2C54F8DB0057080E /* iTrainerTests.swift */; };
@@ -93,6 +93,7 @@
 
 /* Begin PBXFileReference section */
 		F6078BA22C5CF1BE00531302 /* EditSetsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditSetsView.swift; sourceTree = "<group>"; };
+		F6164EAD2C9066860019C0AF /* WorkoutManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutManager.swift; sourceTree = "<group>"; };
 		F6180DDA2C5A6D55009A23A7 /* EditNameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditNameView.swift; sourceTree = "<group>"; };
 		F62818442C62408D003642F8 /* ExerciseTypeModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseTypeModel.swift; sourceTree = "<group>"; };
 		F62818472C6249B7003642F8 /* MuscleType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MuscleType.swift; sourceTree = "<group>"; };
@@ -108,7 +109,6 @@
 		F69BD0C42C54F8DA0057080E /* iTrainer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iTrainer.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F69BD0C72C54F8DA0057080E /* iTrainerApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iTrainerApp.swift; sourceTree = "<group>"; };
 		F69BD0C92C54F8DA0057080E /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
-		F69BD0CB2C54F8DA0057080E /* Item.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Item.swift; sourceTree = "<group>"; };
 		F69BD0CD2C54F8DB0057080E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		F69BD0D02C54F8DB0057080E /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		F69BD0D62C54F8DB0057080E /* iTrainerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = iTrainerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -245,7 +245,7 @@
 				F69BD0C92C54F8DA0057080E /* ContentView.swift */,
 				F69BD11D2C5507200057080E /* DataManagerBackground.swift */,
 				F69BD1222C550E8E0057080E /* DataContainer.swift */,
-				F69BD0CB2C54F8DA0057080E /* Item.swift */,
+				F6164EAD2C9066860019C0AF /* WorkoutManager.swift */,
 				F69BD0CD2C54F8DB0057080E /* Assets.xcassets */,
 				F69BD0CF2C54F8DB0057080E /* Preview Content */,
 			);
@@ -598,7 +598,6 @@
 				F6EA7BD02C57AD03005225A0 /* ExerciseModel.swift in Sources */,
 				F6F4CF282C6B71D600A5BBA9 /* ExerciseTypeListView.swift in Sources */,
 				F69BD0FD2C54FB190057080E /* AKDisabledButtonStyle.swift in Sources */,
-				F69BD0CC2C54F8DA0057080E /* Item.swift in Sources */,
 				F69BD0C82C54F8DA0057080E /* iTrainerApp.swift in Sources */,
 				F69BD1272C551B040057080E /* WorkoutModelDB.swift in Sources */,
 				F66CBE342C8DEBA80025B87F /* ReportExerciseModel.swift in Sources */,
@@ -623,6 +622,7 @@
 				F6EA7BE02C57DEF6005225A0 /* ExerciseListViewModel.swift in Sources */,
 				F6EA7BE42C57F6F9005225A0 /* ExerciseViewModel.swift in Sources */,
 				F69BD10A2C54FC170057080E /* ServiceErrors.swift in Sources */,
+				F6164EAE2C9066860019C0AF /* WorkoutManager.swift in Sources */,
 				F62818482C6249B7003642F8 /* MuscleType.swift in Sources */,
 				F6180DDB2C5A6D55009A23A7 /* EditNameView.swift in Sources */,
 				F69BD1232C550E8F0057080E /* DataContainer.swift in Sources */,

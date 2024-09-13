@@ -42,6 +42,8 @@ class ExerciseViewModel: ObservableObject {
     
     @Published var sets = [SetsModel]()
     
+    @Published var reportSets = [ReportSetsModel]()
+    
     @Published var isShowAlert = false
     
     @Published var isEditSets = false
@@ -50,12 +52,7 @@ class ExerciseViewModel: ObservableObject {
     
     @Published var title: String
     
-    @Published var restTime: TimeInterval = 2.0
-    
-    @Published var progressRestTime: Double = 1.0
-    
     var paramsData = [ParamData]()
-    
     
     var editSets: SetsModel?
     
@@ -65,25 +62,31 @@ class ExerciseViewModel: ObservableObject {
     
     private let networkClient = ServiceNetworkClient()
     
-    private var isRunTimer = false
+    static var countExerciseViewModel = 0
     
     init(exercise: ExerciseModel) {
         self.exercise = exercise
         title = exercise.title ?? ""
+        
+        ExerciseViewModel.countExerciseViewModel += 1
+        print("DBG_ countExerciseViewModel: \(ExerciseViewModel.countExerciseViewModel)")
+    }
+    
+    deinit {
+        ExerciseViewModel.countExerciseViewModel -= 1
+        print("DBG_ countExerciseViewModel: \(ExerciseViewModel.countExerciseViewModel)")
     }
     
     private func fetchItems(complete: (()->())? = nil) {
         Task {
             let dataManager = DataManagerBackground(container: DataContainer.shared.sharedModelContainer)
             
-            if let model = await dataManager.fetchExercise(for: exercise.id).map({ ExerciseModel(model: $0) }) {
+            if let model = await dataManager.fetchExercise(with: exercise.id).map({ ExerciseModel(model: $0) }) {
                 exercise = model
                 
+                DataContainer.shared.workoutManager.currentExercise(id: exercise.id)
+                
                 await MainActor.run {
-                    isRunTimer = false
-                    restTime = exercise.restTime
-                    progressRestTime = 1.0
-                    
                     if paramsData.isEmpty {
                         for param in exercise.type!.parameters {
                             self.paramsData.append(ParamData(param: param))
@@ -95,33 +98,26 @@ class ExerciseViewModel: ObservableObject {
             }
             
             let items = await dataManager.fetchSets(for: exercise.id).map { SetsModel(model: $0) }
-            await MainActor.run {
+            var reportSets: [ReportSetsModel]?
+            if let reportExercise = await dataManager.fetchReportExercise(exerciseId: exercise.id) {
+                reportSets = reportExercise.reportSets.map { ReportSetsModel(model: $0) }.sorted(by: { $0.date > $1.date })
+//                print("DBG_ -------- SETS --------")
+//                for set in reportExercise.reportSets {
+//                    print("DBG_ weight: \(String(describing: set.weight)) reps: \(String(describing: set.reps))")
+//                }
+            }
+            
+            await MainActor.run { [reportSets] in
                 
-                sets = items
+                self.sets = items
+                if let reportSets = reportSets {
+                    self.reportSets = reportSets
+                }
+                
                 if let complete = complete {
                     complete()
                 }
             }
-        }
-    }
-    
-    func fire() {
-        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + .milliseconds(100)) {
-            
-            if !self.isRunTimer {
-                return
-            }
-            
-            if self.restTime <= 0 {
-                self.restTime = self.exercise.restTime
-                self.progressRestTime = 1.0
-                self.isRunTimer = false
-            } else {
-                self.restTime -= 0.1
-            }
-            
-            self.progressRestTime = self.restTime / self.exercise.restTime
-            self.fire()
         }
     }
     
@@ -237,24 +233,52 @@ class ExerciseViewModel: ObservableObject {
     }
     
     func tapToTimer() {
-        isRunTimer.toggle()
-        if isRunTimer {
-            fire()
-        }
+        print("DBG_ tapToTimer")
     }
     
     func save() {
-//        var resultWeight: Float = 0.0
-//        var resultReps: Int = 0
+        
+        var result = [SetsParameter]()
         
         for param in paramsData {
             
-            if let weight = Float(param.value), weight > 0 {
-//                resultWeight = weight
-            } else {
-                param.shake.send()
-                return
+            switch param.param {
+            case .weight(_):
+                let numberFormatter = NumberFormatter()
+                numberFormatter.numberStyle = NumberFormatter.Style.decimal
+                if let value = numberFormatter.number(from: param.value)?.floatValue, value >= 0 {
+                    result.append(.weight(value))
+                } else if let value = Float(param.value), value >= 0 {
+                    result.append(.weight(value))
+                } else {
+                    param.shake.send()
+                    return
+                }
+            case .repeats(_):
+                if let value = Int(param.value), value >= 0 {
+                    result.append(.repeats(value))
+                } else {
+                    param.shake.send()
+                    return
+                }
+            case .distance(_):
+                if let value = Float(param.value), value >= 0 {
+                    result.append(.distance(value))
+                } else {
+                    param.shake.send()
+                    return
+                }
+            case .time(_):
+                let value = param.value.replacingOccurrences(of: ":", with: "")
+                if let value = Double(value), value >= 0 {
+                    let time = TimeInterval.timeForSet(value: value)
+                    result.append(.time(time))
+                } else {
+                    param.shake.send()
+                    return
+                }
             }
         }
+        DataContainer.shared.workoutManager.addReportSet(with: result, for: exercise.id)
     }
 }

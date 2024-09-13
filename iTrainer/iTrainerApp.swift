@@ -11,11 +11,11 @@ import SwiftData
 @main
 struct iTrainerApp: App {
     
-    var dataContainer = DataContainer()
+    var dataContainer = DataContainer.shared
 
     var body: some Scene {
         WindowGroup {
-            ContentView().environmentObject(dataContainer)
+            ContentView().environmentObject(dataContainer).environmentObject(dataContainer.workoutManager)
         }
     }
 }

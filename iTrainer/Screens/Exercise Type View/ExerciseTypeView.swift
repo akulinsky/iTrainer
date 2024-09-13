@@ -9,7 +9,6 @@ import SwiftUI
 
 struct ExerciseTypeView: View {
     
-//    @StateObject var viewModel = ExerciseTypeViewModel()
     @StateObject var viewModel: ExerciseTypeViewModel
     
 //    @Environment(\.isSearching) private var isSearching

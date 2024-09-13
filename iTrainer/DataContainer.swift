@@ -15,6 +15,8 @@ final class DataContainer: ObservableObject {
     
     @Published var arrayExercises = ExerciseTypeModel.createExercises
     
+    let workoutManager = WorkoutManager()
+    
     var sharedModelContainer: ModelContainer = {
         let schema = Schema([
             WorkoutModelDB.self,

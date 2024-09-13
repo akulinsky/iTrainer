@@ -10,6 +10,8 @@ import Combine
 
 struct ExerciseView: View {
     
+    @EnvironmentObject var workoutManager: WorkoutManager
+    
     @StateObject var viewModel: ExerciseViewModel
     
     @Environment(\.colorScheme) var colorScheme
@@ -40,10 +42,21 @@ struct ExerciseView: View {
                 
                 setDataView
                     .padding()
+                
+                reportSetsView
+                    .padding()
             }
             .navigationTitle(viewModel.exercise.type?.type.title ?? "Exercise")
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
+                if !workoutManager.workoutTime.isEmpty {
+                    ToolbarItem(placement: .navigationBarTrailing) {
+                        Text(workoutManager.workoutTime)
+                            .onTapGesture {
+                                workoutManager.endWorkout()
+                            }
+                    }
+                }
                 ToolbarItem(placement: .navigationBarTrailing) {
                     Button("Edit", systemImage: "pencil", action: clickBtnEditint)
                 }
@@ -102,10 +115,10 @@ struct ExerciseView: View {
     @ViewBuilder
     private var restTimeView: some View {
         HStack {
-            CircularProgressView(progress: viewModel.progressRestTime)
+            CircularProgressView(progress: workoutManager.progressRestTime)
                 .frame(width: 60, height: 60)
                 .overlay {
-                    Text("\(viewModel.restTime.minuteSecond)")
+                    Text("\(workoutManager.restTime)")
                         .font(.subheadline)
                         .foregroundStyle(.gray)
                         .bold()
@@ -179,6 +192,43 @@ struct ExerciseView: View {
             .frame(width: 40, height: 40)
         }
         .frame(height: 40)
+    }
+    
+    @ViewBuilder
+    private var reportSetsView: some View {
+        VStack {
+            ForEach(viewModel.reportSets) { item in
+                HStack(alignment: .firstTextBaseline) {
+                    Text(item.date.formatted(date: .abbreviated, time: .omitted))
+                        .font(.footnote)
+                        .bold()
+                    
+                    ForEach(item.parameters) { item in
+                        Text("\(item.title):")
+                            .font(.footnote)
+                        Text(item.stringValue).bold()
+                    }
+                    
+                    Spacer()
+                    
+                    Button {
+//                        actionBlock(.update(model))
+                    } label: {
+                        
+                        HStack {
+                            Spacer()
+                            Image(systemName: "pencil")
+                                .font(.title2)
+                        }
+                        .contentShape(Rectangle())
+                    }
+                    .frame(maxWidth: 50, maxHeight: .infinity, alignment: .trailing)
+                }
+                .foregroundStyle(.gray)
+                .frame(height: 30)
+                .frame(maxWidth: .infinity, alignment: .trailing)
+            }
+        }
     }
     
     private func prepareToSave() {
