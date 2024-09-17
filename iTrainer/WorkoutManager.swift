@@ -246,79 +246,74 @@ final class WorkoutManager: ObservableObject {
         }
     }
     
-    func addReportSet(with params: [SetsParameter], for exerciseId: UUID) {
+    func addReportSet(with params: [SetsParameter], for exerciseId: UUID) async {
         
+        let dataManager = DataManagerBackground(container: DataContainer.shared.sharedModelContainer)
         
-//        startTimer()
-//        resetRestTime()
-//        startRestTime()
-//        return
-        
-        Task {
-            
-            let dataManager = DataManagerBackground(container: DataContainer.shared.sharedModelContainer)
-            
-            guard let exercise = await dataManager.fetchExercise(with: exerciseId),
-                    let workoutGroupId = exercise.workoutGroup?.id else {
-                print("Error: \(#file):\(#function) \(#line) Can't add report: exercise == nil or workoutGroupId == nil")
-                return
-            }
-            
-            var reportWorkout = await self.reportWorkout(dataManager: dataManager)
-            
-            /// Start the workout
-            if reportWorkout == nil {
-//                startWorkout(with: workoutGroupId)
-                await self.startWorkout(with: workoutGroupId, dataManager: dataManager)
-                reportWorkout = await self.reportWorkout(dataManager: dataManager)
-            }
-            
-            guard let reportWorkout = reportWorkout else {
-                print("Error: \(#file):\(#function) \(#line) Can't add report: reportWorkout == nil")
-                return
-            }
-            
-            var reportExercise = reportWorkout.exercises.first(where: { $0.exerciseId == exerciseId })
-            
-            /// Create the report exercises
-            if reportExercise == nil {
-                reportExercise = ReportExerciseModelDB(titleExercise: ExerciseModel(model: exercise).displayName,
-                                                        exerciseId: exercise.id,
-                                                        index: exercise.index,
-                                                        typeId: exercise.typeId)
-                await dataManager.insert(model: reportExercise!)
-                reportExercise?.report = reportWorkout
-            }
-            
-            guard let reportExercise = reportExercise else {
-                print("Error: \(#file):\(#function) \(#line) reportExercise == nil")
-                return
-            }
-            
-            let report = ReportSetsModelDB(date: Date())
-            await dataManager.insert(model: report)
-            report.reportExercise = reportExercise
-            
-            for param in params {
-                switch param {
-                case .weight(let value):
-                    report.weight = value
-                case .repeats(let value):
-                    report.reps = value
-                case .distance(let value):
-                    report.distance = value
-                case .time(let value):
-                    report.time = value
-                }
-            }
-            
-            await dataManager.save()
-            
-            resetRestTime()
-            startRestTime()
-            
-            print("DBG_ Report was added")
+        guard let exercise = await dataManager.fetchExercise(with: exerciseId),
+                let workoutGroupId = exercise.workoutGroup?.id else {
+            print("Error: \(#file):\(#function) \(#line) Can't add report: exercise == nil or workoutGroupId == nil")
+            return
         }
+        
+        var reportWorkout = await self.reportWorkout(dataManager: dataManager)
+        
+        /// Start the workout
+        if reportWorkout == nil {
+//                startWorkout(with: workoutGroupId)
+            await self.startWorkout(with: workoutGroupId, dataManager: dataManager)
+            reportWorkout = await self.reportWorkout(dataManager: dataManager)
+        }
+        
+        guard let reportWorkout = reportWorkout else {
+            print("Error: \(#file):\(#function) \(#line) Can't add report: reportWorkout == nil")
+            return
+        }
+        
+        var reportExercise = reportWorkout.exercises.first(where: { $0.exerciseId == exerciseId })
+        
+        /// Create the report exercises
+        if reportExercise == nil {
+            reportExercise = ReportExerciseModelDB(titleExercise: ExerciseModel(model: exercise).displayName,
+                                                    exerciseId: exercise.id,
+                                                    index: exercise.index,
+                                                    typeId: exercise.typeId)
+            await dataManager.insert(model: reportExercise!)
+            reportExercise?.report = reportWorkout
+        }
+        
+        guard let reportExercise = reportExercise else {
+            print("Error: \(#file):\(#function) \(#line) reportExercise == nil")
+            return
+        }
+        
+        let report = ReportSetsModelDB(date: Date())
+        await dataManager.insert(model: report)
+        report.reportExercise = reportExercise
+        
+        for param in params {
+            switch param {
+            case .weight(let value):
+                report.weight = value
+            case .repeats(let value):
+                report.reps = value
+            case .distance(let value):
+                report.distance = value
+            case .time(let value):
+                report.time = value
+            }
+        }
+        
+        await dataManager.save()
+        
+        resetRestTime()
+        startRestTime()
+        
+        print("DBG_ Report was added")
+    }
+    
+    func removeReportSet(id: UUID) async {
+        await DataManagerBackground(container: DataContainer.shared.sharedModelContainer).removeReportSets(with: id)
     }
     
     func currentExercise(id: UUID) {

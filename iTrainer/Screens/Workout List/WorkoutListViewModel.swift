@@ -85,8 +85,6 @@ class WorkoutListViewModel: ObservableObject {
             let dataManager = DataManagerBackground(container: DataContainer.shared.sharedModelContainer)
             await dataManager.removeWorkout(with: item.id)
             
-//            let dataManager = DataManagerBackground(container: DataContainer.shared.sharedModelContainer)
-//            await dataManager.removeWorkout(with: item.id)
 //            print("DBG_ --------------")
 //            print("DBG_  WorkoutModelDB count: \(await WorkoutModelDB.count())")
 //            print("DBG_  WorkoutGroupModelDB count: \(await WorkoutGroupModelDB.count())")
@@ -126,38 +124,47 @@ class WorkoutListViewModel: ObservableObject {
     private func addTestModels() {
         Task {
             let dataManager = DataManagerBackground(container: DataContainer.shared.sharedModelContainer)
-            print("DBG_ --------------")
-            print("DBG_  WorkoutModelDB was count: \(await WorkoutModelDB.count())")
-            print("DBG_  WorkoutGroupModelDB was count: \(await WorkoutGroupModelDB.count())")
-            print("DBG_  ExerciseModelDB was count: \(await ExerciseModelDB.count())")
-            print("DBG_  SetsModelDB was count: \(await SetsModelDB.count())")
+            
             await dataManager.removeAll(type: WorkoutModelDB.self)
-            print("DBG_ --------------")
-            print("DBG_  WorkoutModelDB removed count: \(await WorkoutModelDB.count())")
-            print("DBG_  WorkoutGroupModelDB removed count: \(await WorkoutGroupModelDB.count())")
-            print("DBG_  ExerciseModelDB removed count: \(await ExerciseModelDB.count())")
-            print("DBG_  SetsModelDB removed count: \(await SetsModelDB.count())")
+            await dataManager.removeAll(type: WorkoutGroupModelDB.self)
+            await dataManager.removeAll(type: ExerciseModelDB.self)
+            await dataManager.removeAll(type: SetsModelDB.self)
             
-            for index in 1...5 {
-                let item = WorkoutModelDB()
-                await dataManager.insert(model: item)
-                item.index = index
-                item.title = "Workout \(index)"
-                
-                await addTestGroup(for: item, dataManager: dataManager)
-            }
+            await dataManager.removeAll(type: ReportWorkoutModelDB.self)
+            await dataManager.removeAll(type: ReportExerciseModelDB.self)
+            await dataManager.removeAll(type: ReportSetsModelDB.self)
+            
+            await addTestWorkout(dataManager: dataManager)
+            await dataManager.save()
             
             print("DBG_ --------------")
-            print("DBG_  WorkoutModelDB now count: \(await WorkoutModelDB.count())")
-            print("DBG_  WorkoutGroupModelDB now count: \(await WorkoutGroupModelDB.count())")
-            print("DBG_  ExerciseModelDB now count: \(await ExerciseModelDB.count())")
-            print("DBG_  SetsModelDB now count: \(await SetsModelDB.count())")
+            print("DBG_  WorkoutModelDB count: \(await WorkoutModelDB.count())")
+            print("DBG_  WorkoutGroupModelDB count: \(await WorkoutGroupModelDB.count())")
+            print("DBG_  ExerciseModelDB count: \(await ExerciseModelDB.count())")
+            print("DBG_  SetsModelDB count: \(await SetsModelDB.count())")
+            
+            print("DBG_  ReportWorkoutModelDB: \(await ReportWorkoutModelDB.count())")
+            print("DBG_  ReportExerciseModelDB: \(await ReportExerciseModelDB.count())")
+            print("DBG_  ReportSetsModelDB: \(await ReportSetsModelDB.count())")
+            print("DBG_  SetsModelDB count: \(await SetsModelDB.count())")
+            
             reloadData()
         }
     }
     
+    private func addTestWorkout(dataManager: DataManagerBackground) async {
+        for index in 1...1 {
+            let item = WorkoutModelDB()
+            await dataManager.insert(model: item)
+            item.index = index
+            item.title = "Workout \(index)"
+            
+            await addTestGroup(for: item, dataManager: dataManager)
+        }
+    }
+    
     private func addTestGroup(for workout: WorkoutModelDB, dataManager: DataManagerBackground) async {
-        for index in 1...4 {
+        for index in 1...1 {
             let item = WorkoutGroupModelDB()
             
             await dataManager.insert(model: item)
@@ -183,7 +190,7 @@ class WorkoutListViewModel: ObservableObject {
     }
     
     private func addTestSets(for exercise: ExerciseModelDB, dataManager: DataManagerBackground) async {
-        for index in 1...3 {
+        for index in 1...1 {
             let item = SetsModelDB()
             
             await dataManager.insert(model: item)

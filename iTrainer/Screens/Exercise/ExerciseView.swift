@@ -28,63 +28,70 @@ struct ExerciseView: View {
     
     var body: some View {
         
-        ScrollView {
-            
-            VStack {
-                headerView
-                    .frame(height: heightHeader)
-                    .padding([.top, .leading, .trailing])
+        VStack {
+            List {
                 
-                restTimeView
-                
-                setsView
-                    .padding()
-                
-                setDataView
-                    .padding()
-                
+                VStack {
+                    headerView
+                        .frame(height: heightHeader)
+                        .padding([.top, .leading, .trailing])
+                    
+                    restTimeView
+                    
+                    setsView
+                        .padding()
+                    
+                    setDataView
+                        .padding()
+                }
+                .listRowInsets(EdgeInsets.init(top: 0, leading: 0,
+                                            bottom: 0, trailing: 0))
                 reportSetsView
-                    .padding()
             }
-            .navigationTitle(viewModel.exercise.type?.type.title ?? "Exercise")
-            .navigationBarTitleDisplayMode(.inline)
-            .toolbar {
-                if !workoutManager.workoutTime.isEmpty {
-                    ToolbarItem(placement: .navigationBarTrailing) {
-                        Text(workoutManager.workoutTime)
-                            .onTapGesture {
-                                workoutManager.endWorkout()
-                            }
-                    }
-                }
-                ToolbarItem(placement: .navigationBarTrailing) {
-                    Button("Edit", systemImage: "pencil", action: clickBtnEditint)
-                }
-            }
-            .task {
-                viewModel.reloadData {
-                    if viewModel.sets.count == 0 {
-                        refresh()
-                    }
-                }
-            }
-            .sheet(isPresented: $viewModel.isEditSets, content: {
-                editSets()
-                    .presentationDetents([.height(250)])
-            })
-            .sheet(isPresented: $viewModel.isEditExercise, onDismiss: {
-                viewModel.reloadData {
-                    showAnimation.toggle()
-                }
-            }, content: {
-                editExercise()
-                    .presentationDetents([.large])
-            })
+            .listStyle(.plain)
+            .animation(.easeInOut, value: showAnimation)
         }
-        .animation(.easeInOut, value: showAnimation)
         .safeAreaPadding(.bottom, 20)
         .dismissKeyboardOnTap()
         .scrollDismissesKeyboard(.immediately)
+        .navigationTitle(viewModel.exercise.type?.type.title ?? "Exercise")
+        .navigationBarTitleDisplayMode(.inline)
+        .toolbar {
+            if !workoutManager.workoutTime.isEmpty {
+                ToolbarItem(placement: .navigationBarTrailing) {
+                    Text(workoutManager.workoutTime)
+                        .onTapGesture {
+                            workoutManager.endWorkout()
+                        }
+                }
+            }
+            ToolbarItem(placement: .navigationBarTrailing) {
+                Button("Edit", systemImage: "pencil", action: clickBtnEditint)
+            }
+        }
+        .task {
+            viewModel.reloadData {
+                if viewModel.sets.count == 0 {
+                    refresh()
+                }
+            }
+        }
+        .sheet(isPresented: $viewModel.isEditSets, content: {
+            editSets()
+                .presentationDetents([.height(250)])
+        })
+        .sheet(isPresented: $viewModel.isEditReportSets, content: {
+            editReportSets()
+                .presentationDetents([.height(250)])
+        })
+        .sheet(isPresented: $viewModel.isEditExercise, onDismiss: {
+            viewModel.reloadData {
+                showAnimation.toggle()
+            }
+        }, content: {
+            editExercise()
+                .presentationDetents([.large])
+        })
     }
     
     private var color: Color {
@@ -175,60 +182,64 @@ struct ExerciseView: View {
                 }
             }
             
-            Button {
-                prepareToSave()
-            } label: {
-                ZStack {
-                    HStack {
-                        Spacer()
-                        Image(systemName: "plus.app")
-                            .font(.largeTitle)
-                        Spacer()
-                    }
-                    .contentShape(Rectangle())
+            ZStack {
+                HStack {
+                    Spacer()
+                    Image(systemName: "plus.app")
+                        .font(.largeTitle)
+                    Spacer()
                 }
+                .contentShape(Rectangle())
             }
             .foregroundStyle(color)
             .frame(width: 40, height: 40)
+            .onTapGesture {
+                print("DBG_ prepareToSave")
+                prepareToSave()
+            }
         }
         .frame(height: 40)
     }
     
     @ViewBuilder
     private var reportSetsView: some View {
-        VStack {
-            ForEach(viewModel.reportSets) { item in
-                HStack(alignment: .firstTextBaseline) {
-                    Text(item.date.formatted(date: .abbreviated, time: .omitted))
-                        .font(.footnote)
-                        .bold()
+        ForEach(viewModel.reportExercises) { exercise in
+            Section(header: reportSetsHeaderView(reportExercise: exercise)) {
+                ForEach(exercise.sets) { item in
                     
-                    ForEach(item.parameters) { item in
-                        Text("\(item.title):")
-                            .font(.footnote)
-                        Text(item.stringValue).bold()
-                    }
-                    
-                    Spacer()
-                    
-                    Button {
-//                        actionBlock(.update(model))
-                    } label: {
-                        
-                        HStack {
-                            Spacer()
-                            Image(systemName: "pencil")
-                                .font(.title2)
+                    ReportSetsCell(reportSet: item) {
+                        switch $0 {
+                        case .update(let updateModel):
+                            viewModel.editReport(sets: updateModel)
+                        case .selected(let selectedModel):
+                            viewModel.addResult(with: selectedModel.parameters)
+                        default:
+                            break
                         }
-                        .contentShape(Rectangle())
                     }
-                    .frame(maxWidth: 50, maxHeight: .infinity, alignment: .trailing)
                 }
-                .foregroundStyle(.gray)
-                .frame(height: 30)
-                .frame(maxWidth: .infinity, alignment: .trailing)
+                .onDelete(perform: { deleteReport(offsets: $0, reportExerciseId: exercise.id) })
             }
         }
+    }
+    
+    @ViewBuilder
+    private func reportSetsHeaderView(reportExercise: ReportExerciseModel) -> some View {
+        Color(uiColor: .systemGray3).overlay {
+            HStack {
+                Text(reportExercise.date?.formatted(date: .long, time: .omitted) ?? "")
+                    .padding(.leading, 20)
+                    .foregroundStyle(.white)
+                    .font(.subheadline)
+                    .bold()
+                    .shadow(color: .black, radius: 1, x: 1.0, y: 1.0)
+                
+                Spacer()
+            }
+        }
+        .listRowInsets(EdgeInsets.init(top: 0, leading: 0,
+                                    bottom: 0, trailing: 0))
+        .frame(height: 26)
     }
     
     private func prepareToSave() {
@@ -239,10 +250,22 @@ struct ExerciseView: View {
     private func editSets() -> some View {
         EditSetsView(title: viewModel.editSets == nil ? "New sets" : "Edit sets",
                      params: viewModel.editSets?.parameters ?? []) {
-            
             switch $0 {
             case .save(let params):
                 viewModel.update(params: params)
+            default:
+                break
+            }
+        }
+    }
+    
+    @ViewBuilder
+    private func editReportSets() -> some View {
+        EditSetsView(title: "Edit report sets",
+                     params: viewModel.editReportSets?.parameters ?? []) {
+            switch $0 {
+            case .save(let params):
+                viewModel.updateReport(params: params)
             default:
                 break
             }
@@ -258,13 +281,14 @@ struct ExerciseView: View {
         viewModel.isEditExercise = true
     }
     
-    private func clickBtnNewSets() {
-        viewModel.editSets = nil
-        viewModel.isEditSets = true
-    }
-    
     private func refresh() {
         viewModel.refreshData()
+    }
+    
+    private func deleteReport(offsets: IndexSet, reportExerciseId: UUID) {
+        withAnimation {
+            viewModel.deleteReportSets(offsets: offsets, reportExerciseId: reportExerciseId)
+        }
     }
 }
 

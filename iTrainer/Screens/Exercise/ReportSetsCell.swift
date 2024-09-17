@@ -1,17 +1,17 @@
 //
-//  SetsCell.swift
+//  ReportSetsCell.swift
 //  iTrainer
 //
-//  Created by Andrey Kulinskiy on 29.07.2024.
+//  Created by Andrey Kulinskiy on 16.09.2024.
 //
 
 import SwiftUI
 
-struct SetsCell: View {
+struct ReportSetsCell: View {
     
     enum Action {
-        case selected(SetsModel)
-        case update(SetsModel)
+        case selected(ReportSetsModel)
+        case update(ReportSetsModel)
         case cancel
     }
     
@@ -21,10 +21,10 @@ struct SetsCell: View {
     
     @State private var colorEditButton: Color = .gray
     
-    var model: SetsModel
+    var model: ReportSetsModel
     
-    init(model: SetsModel, actionBlock: @escaping ActionBlock) {
-        self.model = model
+    init(reportSet: ReportSetsModel, actionBlock: @escaping ActionBlock) {
+        self.model = reportSet
         self.actionBlock = actionBlock
     }
     
@@ -64,9 +64,10 @@ struct SetsCell: View {
         .onTapGesture {
             actionBlock(.selected(model))
         }
+        .listRowBackground(Color(uiColor: .systemGray6))
     }
 }
 
 #Preview {
-    SetsCell(model: SetsModel(params: [.weight(100), .repeats(10)])) { action in }
+    ReportSetsCell(reportSet: ReportSetsModel(date: Date()), actionBlock: {_ in })
 }

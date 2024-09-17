@@ -11,6 +11,8 @@ struct ReportSetsModel: ReportSetDataProtocol {
     
     var id: UUID
     
+    var index: Int = 0
+    
     var date: Date
     
     var parameters = [SetsParameter]()

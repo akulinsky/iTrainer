@@ -42,11 +42,13 @@ class ExerciseViewModel: ObservableObject {
     
     @Published var sets = [SetsModel]()
     
-    @Published var reportSets = [ReportSetsModel]()
+    @Published var reportExercises = [ReportExerciseModel]()
     
     @Published var isShowAlert = false
     
     @Published var isEditSets = false
+    
+    @Published var isEditReportSets = false
     
     @Published var isEditExercise = false
     
@@ -56,6 +58,8 @@ class ExerciseViewModel: ObservableObject {
     
     var editSets: SetsModel?
     
+    var editReportSets: ReportSetsModel?
+    
     var errorMessage: String? = nil
     
     var exercise: ExerciseModel
@@ -64,17 +68,11 @@ class ExerciseViewModel: ObservableObject {
     
     static var countExerciseViewModel = 0
     
+//    private let log = LifecycleLogger(name: "ExerciseViewModel")
+    
     init(exercise: ExerciseModel) {
         self.exercise = exercise
         title = exercise.title ?? ""
-        
-        ExerciseViewModel.countExerciseViewModel += 1
-        print("DBG_ countExerciseViewModel: \(ExerciseViewModel.countExerciseViewModel)")
-    }
-    
-    deinit {
-        ExerciseViewModel.countExerciseViewModel -= 1
-        print("DBG_ countExerciseViewModel: \(ExerciseViewModel.countExerciseViewModel)")
     }
     
     private func fetchItems(complete: (()->())? = nil) {
@@ -98,21 +96,21 @@ class ExerciseViewModel: ObservableObject {
             }
             
             let items = await dataManager.fetchSets(for: exercise.id).map { SetsModel(model: $0) }
-            var reportSets: [ReportSetsModel]?
-            if let reportExercise = await dataManager.fetchReportExercise(exerciseId: exercise.id) {
-                reportSets = reportExercise.reportSets.map { ReportSetsModel(model: $0) }.sorted(by: { $0.date > $1.date })
-//                print("DBG_ -------- SETS --------")
-//                for set in reportExercise.reportSets {
-//                    print("DBG_ weight: \(String(describing: set.weight)) reps: \(String(describing: set.reps))")
-//                }
-            }
             
-            await MainActor.run { [reportSets] in
+            let reportExercise = await dataManager.fetchReportExercises(exerciseId: self.exercise.id)
+                .filter({ $0.reportSets.count > 0 })
+                .map { ReportExerciseModel(model: $0) }
+                .sorted(by: {
+                    guard let date1 = $0.date, let date2 = $1.date else {
+                        return false
+                    }
+                    return date1 > date2
+                })
+            
+            await MainActor.run { [reportExercise] in
                 
                 self.sets = items
-                if let reportSets = reportSets {
-                    self.reportSets = reportSets
-                }
+                self.reportExercises = reportExercise
                 
                 if let complete = complete {
                     complete()
@@ -177,7 +175,7 @@ class ExerciseViewModel: ObservableObject {
                     editSets.parameters.insert(newParam, at: index)
                 }
             }
-            update(item: editSets)
+            update(sets: editSets)
         } else {
             var result = [SetsParameter]()
             for param in params {
@@ -198,15 +196,56 @@ class ExerciseViewModel: ObservableObject {
                     result.append(newParam)
                 }
             }
-            update(item: SetsModel(params: result))
+            update(sets: SetsModel(params: result))
         }
         
         editSets = nil
     }
     
-    func update(item: SetsModel) {
+    private func update(sets: SetsModel) {
         Task {
-            await DataManagerBackground(container: DataContainer.shared.sharedModelContainer).update(sets: item, exerciseId: exercise.id)
+            await DataManagerBackground(container: DataContainer.shared.sharedModelContainer).update(sets: sets, exerciseId: exercise.id)
+            await MainActor.run {
+                fetchItems()
+            }
+        }
+    }
+    
+    func editReport(sets: ReportSetsModel) {
+        editReportSets = sets
+        isEditReportSets = true
+    }
+    
+    func updateReport(params: [SetsParameter]) {
+        if var editSets = editReportSets {
+            for param in params {
+                var newParam: SetsParameter?
+                
+                switch param {
+                case .weight(let value):
+                    newParam = .weight(value)
+                case .repeats(let value):
+                    newParam = .repeats(value)
+                case .distance(let value):
+                    newParam = .distance(value)
+                case .time(let value):
+                    newParam = .time(value)
+                }
+                
+                if let newParam = newParam,
+                   let index = editSets.parameters.firstIndex(where: { $0.id == param.id}) {
+                    editSets.parameters.remove(at: index)
+                    editSets.parameters.insert(newParam, at: index)
+                }
+            }
+            updateReport(sets: editSets)
+            editReportSets = nil
+        }
+    }
+    
+    private func updateReport(sets: ReportSetsModel) {
+        Task {
+            await DataManagerBackground(container: DataContainer.shared.sharedModelContainer).updateReport(sets: sets)
             await MainActor.run {
                 fetchItems()
             }
@@ -279,6 +318,28 @@ class ExerciseViewModel: ObservableObject {
                 }
             }
         }
-        DataContainer.shared.workoutManager.addReportSet(with: result, for: exercise.id)
+        
+        Task { [result] in
+            await DataContainer.shared.workoutManager.addReportSet(with: result, for: exercise.id)
+            await MainActor.run {
+                fetchItems()
+            }
+        }
+    }
+    
+    func deleteReportSets(offsets: IndexSet, reportExerciseId: UUID) {
+        
+        guard let exercise = reportExercises.first(where: { $0.id == reportExerciseId }), 
+            let index = offsets.first else {
+            return
+        }
+        
+        Task {
+            let set = exercise.sets[index]
+            await DataContainer.shared.workoutManager.removeReportSet(id: set.id)
+            await MainActor.run {
+                fetchItems()
+            }
+        }
     }
 }

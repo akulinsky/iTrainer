@@ -17,6 +17,8 @@ public actor DataManagerBackground: ModelActor {
     
     private var context: ModelContext { modelExecutor.modelContext }
     
+//    private let log = LifecycleLogger(name: "DataManagerBackground")
+    
     public init(container: ModelContainer) {
         self.modelContainer = container
         let context = ModelContext(modelContainer)
@@ -183,6 +185,16 @@ extension DataManagerBackground {
         return fetchItem(predicate: #Predicate<ReportExerciseModelDB> { $0.exerciseId == uuid })
     }
     
+    func fetchReportExercises(exerciseId: UUID) -> [ReportExerciseModelDB] {
+        return fetchModels(predicate: #Predicate<ReportExerciseModelDB> { $0.exerciseId == exerciseId },
+                           sortBy: [SortDescriptor(\ReportExerciseModelDB.report?.startDate, order: .forward)])
+    }
+    
+    func fetchReportSet(id: UUID) -> ReportSetsModelDB? {
+        let uuid = id
+        return fetchItem(predicate: #Predicate<ReportSetsModelDB> { $0.id == uuid })
+    }
+    
     func fetchReportSets(for exerciseId: UUID) -> [ReportSetsModelDB] {
         return fetchModels(predicate: #Predicate<ReportSetsModelDB> { $0.reportExercise?.id == exerciseId },
                            sortBy: [SortDescriptor(\ReportSetsModelDB.date, order: .forward)])
@@ -190,32 +202,41 @@ extension DataManagerBackground {
     
     // MARK: - Remove
     
-    func removeWorkout(with id: UUID) {
+    func removeWorkout(with id: UUID, withSaving: Bool = true) {
         
         guard let item = fetchItem(predicate: #Predicate<WorkoutModelDB> { $0.id == id }) else {
             return
         }
         
+        item.workoutGroups.forEach { removeWorkoutGroup(with: $0.id, withSaving: false) }
         remove(model: item)
-        save()
+        if withSaving {
+            save()
+        }
     }
     
-    func removeWorkoutGroup(with id: UUID) {
+    func removeWorkoutGroup(with id: UUID, withSaving: Bool = true) {
         guard let item = fetchItem(predicate: #Predicate<WorkoutGroupModelDB> { $0.id == id }) else {
             return
         }
         
+        item.exercises.forEach { removeExercise(with: $0.id, withSaving: false) }
         remove(model: item)
-        save()
+        if withSaving {
+            save()
+        }
     }
     
-    func removeExercise(with id: UUID) {
+    func removeExercise(with id: UUID, withSaving: Bool = true) {
         guard let item = fetchItem(predicate: #Predicate<ExerciseModelDB> { $0.id == id }) else {
             return
         }
         
+        item.sets.forEach { removeSets(with: $0.id, withSaving: false) }
         remove(model: item)
-        save()
+        if withSaving {
+            save()
+        }
     }
     
     func removeSets(with id: UUID, withSaving: Bool = true) {
@@ -240,6 +261,44 @@ extension DataManagerBackground {
     func removeSets(with ids: [UUID]) {
         for id in ids {
             removeSets(with: id, withSaving: false)
+        }
+    }
+    
+    /// Reports
+    
+    func removeReportWorkout(with id: UUID, withSaving: Bool = true) {
+        
+        guard let item = fetchItem(predicate: #Predicate<ReportWorkoutModelDB> { $0.id == id }) else {
+            return
+        }
+        
+        item.exercises.forEach { removeReportExercise(with: $0.id, withSaving: false) }
+        remove(model: item)
+        if withSaving {
+            save()
+        }
+    }
+    
+    func removeReportExercise(with id: UUID, withSaving: Bool = true) {
+        guard let item = fetchItem(predicate: #Predicate<ReportExerciseModelDB> { $0.id == id }) else {
+            return
+        }
+        
+        item.reportSets.forEach { removeReportSets(with: $0.id, withSaving: false) }
+        remove(model: item)
+        if withSaving {
+            save()
+        }
+    }
+    
+    func removeReportSets(with id: UUID, withSaving: Bool = true) {
+        guard let removeItem = fetchItem(predicate: #Predicate<ReportSetsModelDB> { $0.id == id }) else {
+            return
+        }
+        remove(model: removeItem)
+        
+        if withSaving {
+            save()
         }
     }
     
@@ -355,6 +414,37 @@ extension DataManagerBackground {
     func update(sets: [SetsModel], exerciseId: UUID) {
         for model in sets {
             update(sets: model, exerciseId: exerciseId, withSaving: false)
+        }
+        save()
+    }
+    
+    func updateReport(sets: ReportSetsModel, withSaving: Bool = true) {
+        let uuid = sets.id
+        if let item = fetchItem(predicate: #Predicate<ReportSetsModelDB> { $0.id == uuid }) {
+            for param in sets.parameters {
+                switch param {
+                case .weight(let value):
+                    item.weight = value
+                case .repeats(let value):
+                    item.reps = value
+                case .distance(let value):
+                    item.distance = value
+                case .time(let value):
+                    item.time = value
+                }
+            }
+            
+            if withSaving {
+                self.save()
+            }
+        } else {
+            assertionFailure("Can't update the SetsModelDB, because the groupId == nil")
+        }
+    }
+    
+    func updateReport(sets: [ReportSetsModel]) {
+        for model in sets {
+            updateReport(sets: model, withSaving: false)
         }
         save()
     }

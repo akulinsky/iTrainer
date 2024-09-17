@@ -29,8 +29,6 @@ class ReportSetsModelDB: ReportSetDataProtocol, DataParamsProtocol {
     
     var reportExercise: ReportExerciseModelDB?
     
-    var exercise: ReportExerciseModelDB?
-    
     init(date: Date) {
         self.date = date
     }

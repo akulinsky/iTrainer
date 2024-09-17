@@ -108,9 +108,11 @@ class ExerciseListViewModel: ObservableObject {
         Task {
             let dataManager = DataManagerBackground(container: DataContainer.shared.sharedModelContainer)
             await dataManager.removeExercise(with: item.id)
-            print("DBG_ --------------")
-            print("DBG_  ExerciseModelDB count: \(await ExerciseModelDB.count())")
-            print("DBG_  SetsModelDB count: \(await SetsModelDB.count())")
+//            print("DBG_ --------------")
+//            print("DBG_  WorkoutModelDB count: \(await WorkoutModelDB.count())")
+//            print("DBG_  WorkoutGroupModelDB count: \(await WorkoutGroupModelDB.count())")
+//            print("DBG_  ExerciseModelDB count: \(await ExerciseModelDB.count())")
+//            print("DBG_  SetsModelDB count: \(await SetsModelDB.count())")
             await MainActor.run {
                 fetchItems()
             }
