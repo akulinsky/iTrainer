@@ -64,24 +64,33 @@ class ReportViewModel: ObservableObject {
                 return
             }
             
+            let startDate = report.startDate
+            let endDate = report.endDate
+            let titleWorkout = report.titleWorkout
+            let titleWorkoutGroup = report.titleWorkoutGroup
+            let targetExercisesCount = report.targetExercisesCount
+            let exercisesCount = report.exercises.count
+            let reportModels = createReportModels(exersices: report.exercises)
+            let reportExercises = report.exercises.map({ ReportExerciseModel(model: $0) })
+                .sorted(by: { $0.index < $1.index })
+            
             await MainActor.run {
                 
-                if let startDate = report.startDate,
-                    let endDate = report.endDate {
-                    reportDate = startDate.formatted(date: .complete, time: .omitted)
-                    reportRangeTime = "\(startDate.formatted(date: .omitted, time: .shortened)) - \(endDate.formatted(date: .omitted, time: .shortened))"
-                    workoutTime = "\((endDate.timeIntervalSinceNow - startDate.timeIntervalSinceNow).timeForDisplay)"
+                if let startDate,
+                    let endDate {
+                    self.reportDate = startDate.formatted(date: .complete, time: .omitted)
+                    self.reportRangeTime = "\(startDate.formatted(date: .omitted, time: .shortened)) - \(endDate.formatted(date: .omitted, time: .shortened))"
+                    self.workoutTime = "\((endDate.timeIntervalSinceNow - startDate.timeIntervalSinceNow).timeForDisplay)"
                     
-                    reportModels = createReportModels(exersices: report.exercises)
+                    self.reportModels = reportModels
                 }
-                titleWorkout = report.titleWorkout
-                titleWorkoutGroup = report.titleWorkoutGroup
-                reportExercises = report.exercises.map({ ReportExerciseModel(model: $0) })
-                    .sorted(by: { $0.index < $1.index })
+                self.titleWorkout = titleWorkout
+                self.titleWorkoutGroup = titleWorkoutGroup
+                self.reportExercises = reportExercises
                 
-                if report.targetExercisesCount > 0 {
-                    progressWorkout = Double(report.exercises.count) / Double(report.targetExercisesCount)
-                    percentageProgressWorkout = "\(Int(progressWorkout * 100))%"
+                if targetExercisesCount > 0 {
+                    self.progressWorkout = Double(exercisesCount) / Double(targetExercisesCount)
+                    self.percentageProgressWorkout = "\(Int(self.progressWorkout * 100))%"
                 }
                 
                 if let complete = complete {
