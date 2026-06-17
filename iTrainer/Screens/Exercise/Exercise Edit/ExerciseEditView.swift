@@ -128,9 +128,10 @@ struct ExerciseEditView: View {
                 TextField("Rest time", text: $viewModel.restTime, onEditingChanged: { focused in
                     viewModel.focusedRestTime(focused)
                 })
+                .multilineTextAlignment(.center)
                 .textFieldStyle(AKTextFieldStyle())
                 .frame(width: 75)
-                .foregroundStyle(color)
+//                .foregroundStyle(color)
                 .keyboardType(.numberPad)
                 
 //                Spacer()

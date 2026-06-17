@@ -9,7 +9,7 @@ import Foundation
 import SwiftData
 
 @Model
-class ReportSetsModelDB: ReportSetDataProtocol, DataParamsProtocol {
+class ReportSetsModelDB: ReportSetDataProtocol, DataParamsProtocol, PersistentProtocol {
     
     @Attribute (.unique) var id = UUID()
     
@@ -31,21 +31,5 @@ class ReportSetsModelDB: ReportSetDataProtocol, DataParamsProtocol {
     
     init(date: Date) {
         self.date = date
-    }
-}
-
-extension ReportSetsModelDB {
-    static func count() async -> Int {
-        await DataManagerBackground(container: DataContainer.shared.sharedModelContainer).count(type: ReportSetsModelDB.self)
-    }
-}
-
-// Predicates
-extension ReportSetsModelDB {
-    func predicateSelf() -> Predicate<ReportSetsModelDB> {
-        let id = self.id
-        return #Predicate<ReportSetsModelDB> {
-            $0.id == id
-        }
     }
 }

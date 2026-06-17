@@ -220,7 +220,7 @@ final class WorkoutManager: ObservableObject {
             
             let exercises = await dataManager.fetchExercises(for: reportWorkout.workoutGroupId)
             
-            reportWorkout.targetExercisesCount = exercises.count
+            reportWorkout.targetExercisesCount = exercises.filter({ !$0.isHeadline }).count
             
             for exercise in exercises {
                 if let reportExercise = reportExercises.first(where: { $0.exerciseId == exercise.id }) {
@@ -231,14 +231,6 @@ final class WorkoutManager: ObservableObject {
                         await dataManager.insert(model: set)
                         set.reportExercise = reportExercise
                     }
-                    
-//                    let targetSets = exercise.sets.map {
-//                        let target = $0.copy()
-////                        await dataManager.insert(model: target)
-//                        target.reportExercise = reportExercise
-//                        return target
-//                    }
-//                    reportExercise.targetSets = targetSets
                 }
             }
             await dataManager.save()

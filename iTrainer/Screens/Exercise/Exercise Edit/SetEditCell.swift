@@ -80,7 +80,7 @@ struct SetEditCell: View {
                         .textFieldStyle(AKTextFieldStyle())
                         .shakeAnimation(item.shake)
                         .keyboardType(item.keyboardType)
-                        .foregroundStyle(color)
+//                        .foregroundStyle(color)
                     }
                 }
             }

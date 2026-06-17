@@ -58,7 +58,7 @@ struct SetsCell: View {
                     }
             }
         }
-        .foregroundStyle(.gray)
+//        .foregroundStyle(.gray)
         .frame(height: 30)
         .frame(maxWidth: .infinity, alignment: .trailing)
         .onTapGesture {

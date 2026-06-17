@@ -6,19 +6,18 @@
 //
 
 import Foundation
+import SwiftData
 
 protocol DataIdProtocol: Identifiable {
     var id: UUID { get }
 }
 
 protocol DataItemProtocol: DataIdProtocol {
-    var id: UUID { get }
     var index: Int { get }
     var title: String? { get }
 }
 
 protocol DataSetItemProtocol: DataIdProtocol {
-    var id: UUID { get }
     var index: Int { get }
 }
 
@@ -47,4 +46,24 @@ protocol ReportExerciseDataProtocol: DataIdProtocol {
 
 protocol ReportSetDataProtocol: DataIdProtocol {
     var date: Date { get }
+}
+
+protocol PersistentProtocol: PersistentModel, DataIdProtocol {
+    associatedtype Model: PersistentModel
+    
+    static func count() async -> Int
+    
+    func predicateSelf() -> Predicate<Model>
+}
+
+extension PersistentProtocol {
+    
+    static func count() async -> Int {
+        await DataManagerBackground(container: DataContainer.shared.sharedModelContainer).count(type: self.self)
+    }
+    
+    func predicateSelf() -> Predicate<WorkoutModelDB> {
+        let id = self.id
+        return #Predicate<WorkoutModelDB> { $0.id == id }
+    }
 }

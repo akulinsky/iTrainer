@@ -17,12 +17,15 @@ struct ContentView: View {
                 .tabItem {
                     Label("Workouts", systemImage: "list.dash")
                 }
-//            MuscleTypeView()
             ExerciseTypeView()
                 .tabItem {
-//                    Label("Exercises", systemImage: "figure.disc.sports")
                     Text("Exercises")
                     Image(systemName: "figure.disc.sports")
+                }
+            ReportsView()
+                .tabItem {
+                    Text("Reports")
+                    Image(systemName: "calendar")
                 }
         }
         .onAppear(perform: {

@@ -19,8 +19,6 @@ struct WorkoutListView: View {
     
     @State private var path = NavigationPath()
     
-    @State private var date = Date()
-    
     var body: some View {
         
         NavigationStack(path: $path) {
@@ -28,11 +26,6 @@ struct WorkoutListView: View {
                 WorkoutGroupListView(viewModel: WorkoutGroupListViewModel(workout: workout))
             } else {
                 VStack {
-                    
-//                    DatePicker("", selection: $date,
-//                               displayedComponents: [.date])
-//                        .datePickerStyle(.graphical)
-                    
                     List {
                         ForEach(viewModel.workouts) { item in
                             cells(for: item)

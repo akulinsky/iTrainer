@@ -127,7 +127,7 @@ struct ExerciseView: View {
                 .overlay {
                     Text("\(workoutManager.restTime)")
                         .font(.subheadline)
-                        .foregroundStyle(.gray)
+//                        .foregroundStyle(.gray)
                         .bold()
                 }
         }
@@ -167,7 +167,7 @@ struct ExerciseView: View {
                 .frame(maxHeight: .infinity)
                 .shakeAnimation(item.shake)
                 .keyboardType(item.keyboardType)
-                .foregroundStyle(Color(UIColor.darkGray))
+//                .foregroundStyle(Color(UIColor.darkGray))
                 .background {
                     HStack {
                         ZStack {
@@ -243,7 +243,9 @@ struct ExerciseView: View {
     }
     
     private func prepareToSave() {
-        viewModel.save()
+        viewModel.save {
+            showAnimation.toggle()
+        }
     }
     
     @ViewBuilder

@@ -275,7 +275,7 @@ class ExerciseViewModel: ObservableObject {
         print("DBG_ tapToTimer")
     }
     
-    func save() {
+    func save(complete: (()->())? = nil) {
         
         var result = [SetsParameter]()
         
@@ -323,6 +323,9 @@ class ExerciseViewModel: ObservableObject {
             await DataContainer.shared.workoutManager.addReportSet(with: result, for: exercise.id)
             await MainActor.run {
                 fetchItems()
+                if let complete = complete {
+                    complete()
+                }
             }
         }
     }

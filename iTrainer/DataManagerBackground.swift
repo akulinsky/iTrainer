@@ -41,16 +41,6 @@ public actor DataManagerBackground: ModelActor {
         }
     }
     
-//    func fetchItems(sort: PersonSorting = .firstName, predicate: Predicate<PersonModelDB>? = nil) -> [PersonModelDB] {
-//        do {
-//            let keys = (sort == .firstName) ? \PersonModelDB.firstName : \PersonModelDB.lastName
-//            let sort = SortDescriptor(keys, order: .forward)
-//            return try context.fetch(FetchDescriptor<PersonModelDB>(predicate: predicate, sortBy: [sort]))
-//        } catch {
-//            fatalError(error.localizedDescription)
-//        }
-//    }
-    
     func fetchItem<T: PersistentModel>(predicate: Predicate<T>) -> T? {
         do {
             return try context.fetch(FetchDescriptor<T>(predicate: predicate)).first
@@ -93,14 +83,6 @@ public actor DataManagerBackground: ModelActor {
     
     public func remove<T: PersistentModel>(model: T) {
         context.delete(model)
-//        save()
-        /*
-        do {
-            
-        } catch {
-            fatalError(error.localizedDescription)
-        }
-         */
     }
     
     func removeAll<T: PersistentModel>(type: T.Type) {
@@ -111,7 +93,6 @@ public actor DataManagerBackground: ModelActor {
             for item in results {
                 context.delete(item)
             }
-//            save()
         } catch {
             fatalError(error.localizedDescription)
         }
@@ -166,8 +147,15 @@ extension DataManagerBackground {
         return fetchItem(predicate: #Predicate<ReportWorkoutModelDB> { $0.endDate == nil })
     }
     
+    /// Reports
+    
     func fetchAllReportWorkout() -> [ReportWorkoutModelDB] {
         return fetchModels(sortBy: [SortDescriptor(\ReportWorkoutModelDB.startDate, order: .forward)])
+    }
+    
+    func fetchReportWorkout(id: UUID) -> ReportWorkoutModelDB? {
+        let uuid = id
+        return fetchItem(predicate: #Predicate<ReportWorkoutModelDB> { $0.id == uuid })
     }
     
     func fetchReportExercises(for workoutId: UUID) -> [ReportExerciseModelDB] {

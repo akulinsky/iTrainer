@@ -9,7 +9,7 @@ import Foundation
 import SwiftData
 
 @Model
-class ReportExerciseModelDB: ReportExerciseDataProtocol {
+class ReportExerciseModelDB: ReportExerciseDataProtocol, PersistentProtocol {
     
     @Attribute (.unique) var id = UUID()
     
@@ -34,21 +34,5 @@ class ReportExerciseModelDB: ReportExerciseDataProtocol {
         self.exerciseId = exerciseId
         self.index = index
         self.typeId = typeId
-    }
-}
-
-extension ReportExerciseModelDB {
-    static func count() async -> Int {
-        await DataManagerBackground(container: DataContainer.shared.sharedModelContainer).count(type: ReportExerciseModelDB.self)
-    }
-}
-
-// Predicates
-extension ReportWorkoutModelDB {
-    func predicateSelf() -> Predicate<ReportExerciseModelDB> {
-        let id = self.id
-        return #Predicate<ReportExerciseModelDB> {
-            $0.id == id
-        }
     }
 }

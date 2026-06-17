@@ -17,13 +17,13 @@ struct ReportSetsCell: View {
     
     typealias ActionBlock = (Action)->()
     
-    private var actionBlock: ActionBlock
+    private var actionBlock: ActionBlock?
     
     @State private var colorEditButton: Color = .gray
     
     var model: ReportSetsModel
     
-    init(reportSet: ReportSetsModel, actionBlock: @escaping ActionBlock) {
+    init(reportSet: ReportSetsModel, actionBlock: ActionBlock? = nil) {
         self.model = reportSet
         self.actionBlock = actionBlock
     }
@@ -39,35 +39,44 @@ struct ReportSetsCell: View {
                 Text("\(item.title):")
                     .font(.footnote)
                 Text(item.stringValue).bold()
+                    .font(.footnote)
+                    .bold()
             }
             
             Spacer()
             
             HStack {
                 Spacer()
-                Image(systemName: "pencil")
-                    .foregroundStyle(colorEditButton)
-                    .font(.title2)
-                    .frame(maxWidth: 50, maxHeight: .infinity, alignment: .trailing)
-                    .onTapGesture {
-                        colorEditButton = Color(UIColor.darkGray)
-                        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + .milliseconds(150)) {
-                            colorEditButton = .gray
+                if actionBlock != nil {
+                    Image(systemName: "pencil")
+                        .foregroundStyle(colorEditButton)
+                        .font(.title2)
+                        .frame(maxWidth: 50, maxHeight: .infinity, alignment: .trailing)
+                        .onTapGesture {
+                            colorEditButton = Color(UIColor.darkGray)
+                            DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + .milliseconds(150)) {
+                                colorEditButton = .gray
+                            }
+                            if let actionBlock = actionBlock {
+                                actionBlock(.update(model))
+                            }
                         }
-                        actionBlock(.update(model))
-                    }
+                }
             }
         }
-        .foregroundStyle(.gray)
+//        .foregroundStyle(.gray)
         .frame(height: 30)
         .frame(maxWidth: .infinity, alignment: .trailing)
         .onTapGesture {
-            actionBlock(.selected(model))
+            if let actionBlock = actionBlock {
+                actionBlock(.selected(model))
+            }
         }
         .listRowBackground(Color(uiColor: .systemGray6))
     }
 }
 
 #Preview {
-    ReportSetsCell(reportSet: ReportSetsModel(date: Date()), actionBlock: {_ in })
+    ReportSetsCell(reportSet: ReportSetsModel(date: .now,
+                                              params: [.weight(50), .repeats(8)]), actionBlock: {_ in })
 }
