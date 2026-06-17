@@ -145,6 +145,7 @@
 		F69BD1292C551B270057080E /* WorkoutGroupModelDB.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutGroupModelDB.swift; sourceTree = "<group>"; };
 		F69BD12B2C551B400057080E /* ExerciseModelDB.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseModelDB.swift; sourceTree = "<group>"; };
 		F69BD12D2C551B4F0057080E /* SetsModelDB.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetsModelDB.swift; sourceTree = "<group>"; };
+		F6AA00012D13E7A000000001 /* iTrainer-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "iTrainer-Info.plist"; sourceTree = "<group>"; };
 		F6B9B2282C96BF3B00115CEA /* LifecycleLogger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LifecycleLogger.swift; sourceTree = "<group>"; };
 		F6B9B22A2C98593200115CEA /* ReportSetsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportSetsCell.swift; sourceTree = "<group>"; };
 		F6C821C82C6FA2FF00A64CD1 /* SelectExerciseBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectExerciseBarView.swift; sourceTree = "<group>"; };
@@ -230,6 +231,7 @@
 		F69BD0BB2C54F8DA0057080E = {
 			isa = PBXGroup;
 			children = (
+				F6AA00012D13E7A000000001 /* iTrainer-Info.plist */,
 				F69BD0C62C54F8DA0057080E /* iTrainer */,
 				F69BD0D92C54F8DB0057080E /* iTrainerTests */,
 				F69BD0E32C54F8DB0057080E /* iTrainerUITests */,
@@ -852,12 +854,9 @@
 				DEVELOPMENT_ASSET_PATHS = "\"iTrainer/Preview Content\"";
 				DEVELOPMENT_TEAM = G55R78L3UN;
 				ENABLE_PREVIEWS = YES;
-				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
-				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
-				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				GENERATE_INFOPLIST_FILE = NO;
+				INFOPLIST_FILE = "iTrainer-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 26.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -881,12 +880,9 @@
 				DEVELOPMENT_ASSET_PATHS = "\"iTrainer/Preview Content\"";
 				DEVELOPMENT_TEAM = G55R78L3UN;
 				ENABLE_PREVIEWS = YES;
-				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
-				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
-				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				GENERATE_INFOPLIST_FILE = NO;
+				INFOPLIST_FILE = "iTrainer-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 26.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
