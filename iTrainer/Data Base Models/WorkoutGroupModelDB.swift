@@ -10,13 +10,13 @@ import SwiftData
 
 @Model
 class WorkoutGroupModelDB: DataItemProtocol, PersistentProtocol {
-    @Attribute (.unique) var id = UUID()
+    @Attribute(.unique) var id = UUID()
     var index: Int = 0
     var title: String?
     
     var workout: WorkoutModelDB?
     
-    @Relationship (deleteRule: .cascade, inverse: \ExerciseModelDB.workoutGroup) 
+    @Relationship(deleteRule: .cascade, inverse: \ExerciseModelDB.workoutGroup) 
     var exercises: [ExerciseModelDB] = []
     
     init() {

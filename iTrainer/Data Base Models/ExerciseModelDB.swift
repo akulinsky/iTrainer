@@ -10,7 +10,7 @@ import SwiftData
 
 @Model
 class ExerciseModelDB: DataItemProtocol, PersistentProtocol {
-    @Attribute (.unique) var id = UUID()
+    @Attribute(.unique) var id = UUID()
     var index: Int = 0
     var title: String?
     var typeId: String = ""
@@ -20,7 +20,7 @@ class ExerciseModelDB: DataItemProtocol, PersistentProtocol {
     
     var workoutGroup: WorkoutGroupModelDB?
     
-    @Relationship (deleteRule: .cascade, inverse: \SetsModelDB.exercise) 
+    @Relationship(deleteRule: .cascade, inverse: \SetsModelDB.exercise) 
     var sets: [SetsModelDB] = []
     
     init() {

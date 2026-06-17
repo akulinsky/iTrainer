@@ -11,7 +11,7 @@ import SwiftData
 @Model
 class ReportSetsModelDB: ReportSetDataProtocol, DataParamsProtocol, PersistentProtocol {
     
-    @Attribute (.unique) var id = UUID()
+    @Attribute(.unique) var id = UUID()
     
     var date: Date
     

@@ -10,7 +10,7 @@ import SwiftData
 
 @Model
 class SetsModelDB: DataSetItemProtocol, DataParamsProtocol, PersistentProtocol {
-    @Attribute (.unique) var id = UUID()
+    @Attribute(.unique) var id = UUID()
     var index: Int = 0
     var reps: Int?
     var weight: Float?

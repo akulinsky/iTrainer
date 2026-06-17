@@ -11,7 +11,7 @@ import SwiftData
 @Model
 class ReportWorkoutModelDB: ReportWorkoutDataProtocol, PersistentProtocol {
     
-    @Attribute (.unique) var id = UUID()
+    @Attribute(.unique) var id = UUID()
     
     var titleWorkout: String
     
@@ -27,7 +27,7 @@ class ReportWorkoutModelDB: ReportWorkoutDataProtocol, PersistentProtocol {
     
     var targetExercisesCount = 0
     
-    @Relationship (deleteRule: .cascade, inverse: \ReportExerciseModelDB.report)
+    @Relationship(deleteRule: .cascade, inverse: \ReportExerciseModelDB.report)
     var exercises: [ReportExerciseModelDB] = []
     
     init(titleWorkout: String,
