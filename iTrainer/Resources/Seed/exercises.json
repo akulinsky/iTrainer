@@ -1,0 +1,686 @@
+[
+  {
+    "id": "chest_bench_press",
+    "titleKey": "exercise.chest.bench_press",
+    "defaultTitle": "Bench Press",
+    "devTitle": "Жим лежа",
+    "category": "chest",
+    "parameters": ["weight", "reps"],
+    "sortOrder": 0
+  },
+  {
+    "id": "chest_incline_bench_press",
+    "titleKey": "exercise.chest.incline_bench_press",
+    "defaultTitle": "Incline Bench Press",
+    "devTitle": "Жим лежа на наклонной скамье",
+    "category": "chest",
+    "parameters": ["weight", "reps"],
+    "sortOrder": 1
+  },
+  {
+    "id": "chest_dumbbell_press",
+    "titleKey": "exercise.chest.dumbbell_press",
+    "defaultTitle": "Dumbbell Press",
+    "devTitle": "Жим гантелей",
+    "category": "chest",
+    "parameters": ["weight", "reps"],
+    "sortOrder": 2
+  },
+  {
+    "id": "chest_incline_dumbbell_press",
+    "titleKey": "exercise.chest.incline_dumbbell_press",
+    "defaultTitle": "Incline Dumbbell Press",
+    "devTitle": "Жим гантелей на наклонной скамье",
+    "category": "chest",
+    "parameters": ["weight", "reps"],
+    "sortOrder": 3
+  },
+  {
+    "id": "chest_dumbbell_fly",
+    "titleKey": "exercise.chest.dumbbell_fly",
+    "defaultTitle": "Dumbbell Fly",
+    "devTitle": "Разводка гантелей",
+    "category": "chest",
+    "parameters": ["weight", "reps"],
+    "sortOrder": 4
+  },
+  {
+    "id": "chest_cable_crossover",
+    "titleKey": "exercise.chest.cable_crossover",
+    "defaultTitle": "Cable Crossover",
+    "devTitle": "Кроссовер",
+    "category": "chest",
+    "parameters": ["weight", "reps"],
+    "sortOrder": 5
+  },
+  {
+    "id": "chest_machine_press",
+    "titleKey": "exercise.chest.machine_press",
+    "defaultTitle": "Machine Chest Press",
+    "devTitle": "Жим в тренажере",
+    "category": "chest",
+    "parameters": ["weight", "reps"],
+    "sortOrder": 6
+  },
+  {
+    "id": "chest_dips",
+    "titleKey": "exercise.chest.dips",
+    "defaultTitle": "Dips",
+    "devTitle": "Отжимания на брусьях",
+    "category": "chest",
+    "parameters": ["weight", "reps"],
+    "sortOrder": 7
+  },
+  {
+    "id": "chest_push_up",
+    "titleKey": "exercise.chest.push_up",
+    "defaultTitle": "Push-Up",
+    "devTitle": "Отжимания от пола",
+    "category": "chest",
+    "parameters": ["reps"],
+    "sortOrder": 8
+  },
+  {
+    "id": "back_pull_up",
+    "titleKey": "exercise.back.pull_up",
+    "defaultTitle": "Pull-Up",
+    "devTitle": "Подтягивания",
+    "category": "back",
+    "parameters": ["weight", "reps"],
+    "sortOrder": 0
+  },
+  {
+    "id": "back_barbell_row",
+    "titleKey": "exercise.back.barbell_row",
+    "defaultTitle": "Bent-Over Barbell Row",
+    "devTitle": "Тяга штанги в наклоне",
+    "category": "back",
+    "parameters": ["weight", "reps"],
+    "sortOrder": 1
+  },
+  {
+    "id": "back_one_arm_dumbbell_row",
+    "titleKey": "exercise.back.one_arm_dumbbell_row",
+    "defaultTitle": "One-Arm Dumbbell Row",
+    "devTitle": "Тяга гантели одной рукой",
+    "category": "back",
+    "parameters": ["weight", "reps"],
+    "sortOrder": 2
+  },
+  {
+    "id": "back_lat_pulldown",
+    "titleKey": "exercise.back.lat_pulldown",
+    "defaultTitle": "Lat Pulldown",
+    "devTitle": "Тяга верхнего блока",
+    "category": "back",
+    "parameters": ["weight", "reps"],
+    "sortOrder": 3
+  },
+  {
+    "id": "back_seated_cable_row",
+    "titleKey": "exercise.back.seated_cable_row",
+    "defaultTitle": "Seated Cable Row",
+    "devTitle": "Тяга горизонтального блока",
+    "category": "back",
+    "parameters": ["weight", "reps"],
+    "sortOrder": 4
+  },
+  {
+    "id": "back_deadlift",
+    "titleKey": "exercise.back.deadlift",
+    "defaultTitle": "Deadlift",
+    "devTitle": "Становая тяга",
+    "category": "back",
+    "parameters": ["weight", "reps"],
+    "sortOrder": 5
+  },
+  {
+    "id": "back_hyperextension",
+    "titleKey": "exercise.back.hyperextension",
+    "defaultTitle": "Hyperextension",
+    "devTitle": "Гиперэкстензия",
+    "category": "back",
+    "parameters": ["weight", "reps"],
+    "sortOrder": 6
+  },
+  {
+    "id": "legs_barbell_squat",
+    "titleKey": "exercise.legs.barbell_squat",
+    "defaultTitle": "Barbell Squat",
+    "devTitle": "Приседания со штангой",
+    "category": "legs",
+    "parameters": ["weight", "reps"],
+    "sortOrder": 0
+  },
+  {
+    "id": "legs_leg_press",
+    "titleKey": "exercise.legs.leg_press",
+    "defaultTitle": "Leg Press",
+    "devTitle": "Жим ногами",
+    "category": "legs",
+    "parameters": ["weight", "reps"],
+    "sortOrder": 1
+  },
+  {
+    "id": "legs_lunge",
+    "titleKey": "exercise.legs.lunge",
+    "defaultTitle": "Lunge",
+    "devTitle": "Выпады",
+    "category": "legs",
+    "parameters": ["weight", "reps"],
+    "sortOrder": 2
+  },
+  {
+    "id": "legs_leg_extension",
+    "titleKey": "exercise.legs.leg_extension",
+    "defaultTitle": "Leg Extension",
+    "devTitle": "Разгибание ног в тренажере",
+    "category": "legs",
+    "parameters": ["weight", "reps"],
+    "sortOrder": 3
+  },
+  {
+    "id": "legs_leg_curl",
+    "titleKey": "exercise.legs.leg_curl",
+    "defaultTitle": "Leg Curl",
+    "devTitle": "Сгибание ног в тренажере",
+    "category": "legs",
+    "parameters": ["weight", "reps"],
+    "sortOrder": 4
+  },
+  {
+    "id": "legs_calf_raise",
+    "titleKey": "exercise.legs.calf_raise",
+    "defaultTitle": "Calf Raise",
+    "devTitle": "Подъемы на носки",
+    "category": "legs",
+    "parameters": ["weight", "reps"],
+    "sortOrder": 5
+  },
+  {
+    "id": "glutes_glute_bridge",
+    "titleKey": "exercise.glutes.glute_bridge",
+    "defaultTitle": "Glute Bridge",
+    "devTitle": "Ягодичный мост",
+    "category": "glutes",
+    "parameters": ["weight", "reps"],
+    "sortOrder": 0
+  },
+  {
+    "id": "glutes_hip_thrust",
+    "titleKey": "exercise.glutes.hip_thrust",
+    "defaultTitle": "Hip Thrust",
+    "devTitle": "Хип-траст",
+    "category": "glutes",
+    "parameters": ["weight", "reps"],
+    "sortOrder": 1
+  },
+  {
+    "id": "glutes_romanian_deadlift",
+    "titleKey": "exercise.glutes.romanian_deadlift",
+    "defaultTitle": "Romanian Deadlift",
+    "devTitle": "Румынская тяга",
+    "category": "glutes",
+    "parameters": ["weight", "reps"],
+    "sortOrder": 2
+  },
+  {
+    "id": "glutes_cable_kickback",
+    "titleKey": "exercise.glutes.cable_kickback",
+    "defaultTitle": "Cable Kickback",
+    "devTitle": "Отведение ноги назад",
+    "category": "glutes",
+    "parameters": ["weight", "reps"],
+    "sortOrder": 3
+  },
+  {
+    "id": "glutes_bulgarian_split_squat",
+    "titleKey": "exercise.glutes.bulgarian_split_squat",
+    "defaultTitle": "Bulgarian Split Squat",
+    "devTitle": "Болгарские выпады",
+    "category": "glutes",
+    "parameters": ["weight", "reps"],
+    "sortOrder": 4
+  },
+  {
+    "id": "glutes_leg_kickback",
+    "titleKey": "exercise.glutes.leg_kickback",
+    "defaultTitle": "Leg Kickback",
+    "devTitle": "Махи ногой назад",
+    "category": "glutes",
+    "parameters": ["reps"],
+    "sortOrder": 5
+  },
+  {
+    "id": "shoulders_overhead_press",
+    "titleKey": "exercise.shoulders.overhead_press",
+    "defaultTitle": "Overhead Press",
+    "devTitle": "Жим штанги стоя",
+    "category": "shoulders",
+    "parameters": ["weight", "reps"],
+    "sortOrder": 0
+  },
+  {
+    "id": "shoulders_seated_dumbbell_press",
+    "titleKey": "exercise.shoulders.seated_dumbbell_press",
+    "defaultTitle": "Seated Dumbbell Press",
+    "devTitle": "Жим гантелей сидя",
+    "category": "shoulders",
+    "parameters": ["weight", "reps"],
+    "sortOrder": 1
+  },
+  {
+    "id": "shoulders_lateral_raise",
+    "titleKey": "exercise.shoulders.lateral_raise",
+    "defaultTitle": "Lateral Raise",
+    "devTitle": "Махи гантелями в стороны",
+    "category": "shoulders",
+    "parameters": ["weight", "reps"],
+    "sortOrder": 2
+  },
+  {
+    "id": "shoulders_front_raise",
+    "titleKey": "exercise.shoulders.front_raise",
+    "defaultTitle": "Front Raise",
+    "devTitle": "Подъем гантелей перед собой",
+    "category": "shoulders",
+    "parameters": ["weight", "reps"],
+    "sortOrder": 3
+  },
+  {
+    "id": "shoulders_reverse_fly",
+    "titleKey": "exercise.shoulders.reverse_fly",
+    "defaultTitle": "Reverse Fly",
+    "devTitle": "Обратная разводка",
+    "category": "shoulders",
+    "parameters": ["weight", "reps"],
+    "sortOrder": 4
+  },
+  {
+    "id": "shoulders_upright_row",
+    "titleKey": "exercise.shoulders.upright_row",
+    "defaultTitle": "Upright Row",
+    "devTitle": "Тяга штанги к подбородку",
+    "category": "shoulders",
+    "parameters": ["weight", "reps"],
+    "sortOrder": 5
+  },
+  {
+    "id": "biceps_barbell_curl",
+    "titleKey": "exercise.biceps.barbell_curl",
+    "defaultTitle": "Barbell Curl",
+    "devTitle": "Подъем штанги на бицепс",
+    "category": "biceps",
+    "parameters": ["weight", "reps"],
+    "sortOrder": 0
+  },
+  {
+    "id": "biceps_dumbbell_curl",
+    "titleKey": "exercise.biceps.dumbbell_curl",
+    "defaultTitle": "Dumbbell Curl",
+    "devTitle": "Подъем гантелей на бицепс",
+    "category": "biceps",
+    "parameters": ["weight", "reps"],
+    "sortOrder": 1
+  },
+  {
+    "id": "biceps_hammer_curl",
+    "titleKey": "exercise.biceps.hammer_curl",
+    "defaultTitle": "Hammer Curl",
+    "devTitle": "Молотковые сгибания",
+    "category": "biceps",
+    "parameters": ["weight", "reps"],
+    "sortOrder": 2
+  },
+  {
+    "id": "biceps_preacher_curl",
+    "titleKey": "exercise.biceps.preacher_curl",
+    "defaultTitle": "Preacher Curl",
+    "devTitle": "Сгибания на скамье Скотта",
+    "category": "biceps",
+    "parameters": ["weight", "reps"],
+    "sortOrder": 3
+  },
+  {
+    "id": "biceps_concentration_curl",
+    "titleKey": "exercise.biceps.concentration_curl",
+    "defaultTitle": "Concentration Curl",
+    "devTitle": "Концентрированный подъем",
+    "category": "biceps",
+    "parameters": ["weight", "reps"],
+    "sortOrder": 4
+  },
+  {
+    "id": "biceps_cable_curl",
+    "titleKey": "exercise.biceps.cable_curl",
+    "defaultTitle": "Cable Curl",
+    "devTitle": "Сгибания рук на блоке",
+    "category": "biceps",
+    "parameters": ["weight", "reps"],
+    "sortOrder": 5
+  },
+  {
+    "id": "triceps_french_press",
+    "titleKey": "exercise.triceps.french_press",
+    "defaultTitle": "French Press",
+    "devTitle": "Французский жим",
+    "category": "triceps",
+    "parameters": ["weight", "reps"],
+    "sortOrder": 0
+  },
+  {
+    "id": "triceps_cable_pushdown",
+    "titleKey": "exercise.triceps.cable_pushdown",
+    "defaultTitle": "Cable Pushdown",
+    "devTitle": "Разгибание рук на блоке",
+    "category": "triceps",
+    "parameters": ["weight", "reps"],
+    "sortOrder": 1
+  },
+  {
+    "id": "triceps_dips",
+    "titleKey": "exercise.triceps.dips",
+    "defaultTitle": "Dips",
+    "devTitle": "Отжимания на брусьях",
+    "category": "triceps",
+    "parameters": ["weight", "reps"],
+    "sortOrder": 2
+  },
+  {
+    "id": "triceps_close_grip_bench_press",
+    "titleKey": "exercise.triceps.close_grip_bench_press",
+    "defaultTitle": "Close-Grip Bench Press",
+    "devTitle": "Жим узким хватом",
+    "category": "triceps",
+    "parameters": ["weight", "reps"],
+    "sortOrder": 3
+  },
+  {
+    "id": "triceps_overhead_dumbbell_extension",
+    "titleKey": "exercise.triceps.overhead_dumbbell_extension",
+    "defaultTitle": "Overhead Dumbbell Extension",
+    "devTitle": "Разгибание гантели из-за головы",
+    "category": "triceps",
+    "parameters": ["weight", "reps"],
+    "sortOrder": 4
+  },
+  {
+    "id": "triceps_kickback",
+    "titleKey": "exercise.triceps.kickback",
+    "defaultTitle": "Kickback",
+    "devTitle": "Кикбэк",
+    "category": "triceps",
+    "parameters": ["weight", "reps"],
+    "sortOrder": 5
+  },
+  {
+    "id": "forearms_wrist_curl",
+    "titleKey": "exercise.forearms.wrist_curl",
+    "defaultTitle": "Wrist Curl",
+    "devTitle": "Сгибание запястий",
+    "category": "forearms",
+    "parameters": ["weight", "reps"],
+    "sortOrder": 0
+  },
+  {
+    "id": "forearms_reverse_wrist_curl",
+    "titleKey": "exercise.forearms.reverse_wrist_curl",
+    "defaultTitle": "Reverse Wrist Curl",
+    "devTitle": "Разгибание запястий",
+    "category": "forearms",
+    "parameters": ["weight", "reps"],
+    "sortOrder": 1
+  },
+  {
+    "id": "forearms_reverse_barbell_curl",
+    "titleKey": "exercise.forearms.reverse_barbell_curl",
+    "defaultTitle": "Reverse Barbell Curl",
+    "devTitle": "Обратный подъем штанги",
+    "category": "forearms",
+    "parameters": ["weight", "reps"],
+    "sortOrder": 2
+  },
+  {
+    "id": "forearms_farmer_walk",
+    "titleKey": "exercise.forearms.farmer_walk",
+    "defaultTitle": "Farmer's Walk",
+    "devTitle": "Фермерская прогулка",
+    "category": "forearms",
+    "parameters": ["weight", "distance", "time"],
+    "sortOrder": 3
+  },
+  {
+    "id": "forearms_dead_hang",
+    "titleKey": "exercise.forearms.dead_hang",
+    "defaultTitle": "Dead Hang",
+    "devTitle": "Вис на турнике",
+    "category": "forearms",
+    "parameters": ["time"],
+    "sortOrder": 4
+  },
+  {
+    "id": "forearms_wrist_roller",
+    "titleKey": "exercise.forearms.wrist_roller",
+    "defaultTitle": "Wrist Roller",
+    "devTitle": "Роллер для запястий",
+    "category": "forearms",
+    "parameters": ["weight", "reps"],
+    "sortOrder": 5
+  },
+  {
+    "id": "abs_crunch",
+    "titleKey": "exercise.abs.crunch",
+    "defaultTitle": "Crunch",
+    "devTitle": "Скручивания",
+    "category": "abs",
+    "parameters": ["reps"],
+    "sortOrder": 0
+  },
+  {
+    "id": "abs_lying_leg_raise",
+    "titleKey": "exercise.abs.lying_leg_raise",
+    "defaultTitle": "Lying Leg Raise",
+    "devTitle": "Подъем ног лежа",
+    "category": "abs",
+    "parameters": ["reps"],
+    "sortOrder": 1
+  },
+  {
+    "id": "abs_plank",
+    "titleKey": "exercise.abs.plank",
+    "defaultTitle": "Plank",
+    "devTitle": "Планка",
+    "category": "abs",
+    "parameters": ["time"],
+    "sortOrder": 2
+  },
+  {
+    "id": "abs_bicycle_crunch",
+    "titleKey": "exercise.abs.bicycle_crunch",
+    "defaultTitle": "Bicycle Crunch",
+    "devTitle": "Велосипед",
+    "category": "abs",
+    "parameters": ["reps"],
+    "sortOrder": 3
+  },
+  {
+    "id": "abs_reverse_crunch",
+    "titleKey": "exercise.abs.reverse_crunch",
+    "defaultTitle": "Reverse Crunch",
+    "devTitle": "Обратные скручивания",
+    "category": "abs",
+    "parameters": ["reps"],
+    "sortOrder": 4
+  },
+  {
+    "id": "abs_cable_crunch",
+    "titleKey": "exercise.abs.cable_crunch",
+    "defaultTitle": "Cable Crunch",
+    "devTitle": "Скручивания на блоке",
+    "category": "abs",
+    "parameters": ["weight", "reps"],
+    "sortOrder": 5
+  },
+  {
+    "id": "cardio_running",
+    "titleKey": "exercise.cardio.running",
+    "defaultTitle": "Running",
+    "devTitle": "Бег",
+    "category": "cardio",
+    "parameters": ["distance", "time"],
+    "sortOrder": 0
+  },
+  {
+    "id": "cardio_walking",
+    "titleKey": "exercise.cardio.walking",
+    "defaultTitle": "Walking",
+    "devTitle": "Ходьба",
+    "category": "cardio",
+    "parameters": ["distance", "time"],
+    "sortOrder": 1
+  },
+  {
+    "id": "cardio_cycling",
+    "titleKey": "exercise.cardio.cycling",
+    "defaultTitle": "Cycling",
+    "devTitle": "Велосипед",
+    "category": "cardio",
+    "parameters": ["distance", "time"],
+    "sortOrder": 2
+  },
+  {
+    "id": "cardio_elliptical",
+    "titleKey": "exercise.cardio.elliptical",
+    "defaultTitle": "Elliptical",
+    "devTitle": "Эллипс",
+    "category": "cardio",
+    "parameters": ["time"],
+    "sortOrder": 3
+  },
+  {
+    "id": "cardio_rowing",
+    "titleKey": "exercise.cardio.rowing",
+    "defaultTitle": "Rowing",
+    "devTitle": "Гребля",
+    "category": "cardio",
+    "parameters": ["distance", "time"],
+    "sortOrder": 4
+  },
+  {
+    "id": "cardio_jump_rope",
+    "titleKey": "exercise.cardio.jump_rope",
+    "defaultTitle": "Jump Rope",
+    "devTitle": "Скакалка",
+    "category": "cardio",
+    "parameters": ["time"],
+    "sortOrder": 5
+  },
+  {
+    "id": "functional_training_burpee",
+    "titleKey": "exercise.functional_training.burpee",
+    "defaultTitle": "Burpee",
+    "devTitle": "Берпи",
+    "category": "functional_training",
+    "parameters": ["reps"],
+    "sortOrder": 0
+  },
+  {
+    "id": "functional_training_thruster",
+    "titleKey": "exercise.functional_training.thruster",
+    "defaultTitle": "Thruster",
+    "devTitle": "Трастеры",
+    "category": "functional_training",
+    "parameters": ["weight", "reps"],
+    "sortOrder": 1
+  },
+  {
+    "id": "functional_training_kettlebell_swing",
+    "titleKey": "exercise.functional_training.kettlebell_swing",
+    "defaultTitle": "Kettlebell Swing",
+    "devTitle": "Махи гирей",
+    "category": "functional_training",
+    "parameters": ["weight", "reps"],
+    "sortOrder": 2
+  },
+  {
+    "id": "functional_training_mountain_climber",
+    "titleKey": "exercise.functional_training.mountain_climber",
+    "defaultTitle": "Mountain Climber",
+    "devTitle": "Альпинист",
+    "category": "functional_training",
+    "parameters": ["reps"],
+    "sortOrder": 3
+  },
+  {
+    "id": "functional_training_wall_ball",
+    "titleKey": "exercise.functional_training.wall_ball",
+    "defaultTitle": "Wall Ball",
+    "devTitle": "Броски мяча в стену",
+    "category": "functional_training",
+    "parameters": ["weight", "reps"],
+    "sortOrder": 4
+  },
+  {
+    "id": "functional_training_farmer_walk",
+    "titleKey": "exercise.functional_training.farmer_walk",
+    "defaultTitle": "Farmer's Walk",
+    "devTitle": "Фермерская прогулка",
+    "category": "functional_training",
+    "parameters": ["weight", "distance", "time"],
+    "sortOrder": 5
+  },
+  {
+    "id": "stretching_hamstring_stretch",
+    "titleKey": "exercise.stretching.hamstring_stretch",
+    "defaultTitle": "Hamstring Stretch",
+    "devTitle": "Растяжка задней поверхности бедра",
+    "category": "stretching",
+    "parameters": ["time"],
+    "sortOrder": 0
+  },
+  {
+    "id": "stretching_quadriceps_stretch",
+    "titleKey": "exercise.stretching.quadriceps_stretch",
+    "defaultTitle": "Quadriceps Stretch",
+    "devTitle": "Растяжка квадрицепса",
+    "category": "stretching",
+    "parameters": ["time"],
+    "sortOrder": 1
+  },
+  {
+    "id": "stretching_chest_stretch",
+    "titleKey": "exercise.stretching.chest_stretch",
+    "defaultTitle": "Chest Stretch",
+    "devTitle": "Растяжка грудных мышц",
+    "category": "stretching",
+    "parameters": ["time"],
+    "sortOrder": 2
+  },
+  {
+    "id": "stretching_shoulder_stretch",
+    "titleKey": "exercise.stretching.shoulder_stretch",
+    "defaultTitle": "Shoulder Stretch",
+    "devTitle": "Растяжка плеч",
+    "category": "stretching",
+    "parameters": ["time"],
+    "sortOrder": 3
+  },
+  {
+    "id": "stretching_glute_stretch",
+    "titleKey": "exercise.stretching.glute_stretch",
+    "defaultTitle": "Glute Stretch",
+    "devTitle": "Растяжка ягодичных мышц",
+    "category": "stretching",
+    "parameters": ["time"],
+    "sortOrder": 4
+  },
+  {
+    "id": "stretching_calf_stretch",
+    "titleKey": "exercise.stretching.calf_stretch",
+    "defaultTitle": "Calf Stretch",
+    "devTitle": "Растяжка икроножных мышц",
+    "category": "stretching",
+    "parameters": ["time"],
+    "sortOrder": 5
+  }
+]
