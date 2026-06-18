@@ -28,14 +28,14 @@ class ExerciseTypeViewModel: ObservableObject {
     
     let mode: ExerciseTypeViewMode
     
-    var categoryId: Int?
+    var categoryId: String?
     
     var categoryTitle: String {
-        guard let categoryId = self.categoryId, 
-                let category = ExerciseCategory(rawValue: categoryId) else {
+        guard let categoryId = self.categoryId,
+              let category = categories.first(where: { $0.id == categoryId }) else {
             return ""
         }
-        return category.title
+        return category.displayName
     }
     
     private var completeBlock: SelectedExerciseTypesBlock?
@@ -44,24 +44,25 @@ class ExerciseTypeViewModel: ObservableObject {
     
     private var cancellable = Set<AnyCancellable>()
     
-//    private var arrayExercises = ExerciseTypeModel.createExercises
     private var arrayExercises = [ExerciseTypeModel]()
     
     init(mode: ExerciseTypeViewMode = .showing, completeBlock: (SelectedExerciseTypesBlock)? = nil) {
-        categories = ExerciseCategory.allCases
-        
         self.mode = mode
-        
         self.completeBlock = completeBlock
         
-        $searchQuery.sink { search in
+        $searchQuery.sink { _ in
             self.fetchItems()
         }
         .store(in: &cancellable)
         
-        $searchQueryExercise.sink { search in
+        $searchQueryExercise.sink { _ in
             self.fetchItems()
         }
+        .store(in: &cancellable)
+        
+        DataContainer.shared.$categories.sink(receiveValue: { categories in
+            self.categories = categories
+        })
         .store(in: &cancellable)
         
         DataContainer.shared.$arrayExercises.sink(receiveValue: { array in
@@ -72,54 +73,21 @@ class ExerciseTypeViewModel: ObservableObject {
     }
     
     private func fetchItems() {
-        
-//        Task {
-//            
-//            var result: [ExerciseTypeModel] = []
-//            
-//            if let categoryId = self.categoryId,
-//               let category = ExerciseCategory(rawValue: categoryId) {
-//                result = ExerciseTypeModel.createExercises.filter {
-//                    $0.type == category
-//                }
-//            }
-//            
-//            if !searchQuery.isEmpty {
-//                result = ExerciseTypeModel.createExercises
-//                
-////                result = ExerciseTypeModel.createExercises.filter {
-////                    $0.title.lowercased().contains(searchQuery.lowercased())
-////                }
-//            } else if !searchQueryExercise.isEmpty, !result.isEmpty {
-//                result = ExerciseTypeModel.createExercises
-//                
-////                result = result.filter {
-////                    $0.title.lowercased().contains(searchQueryExercise.lowercased())
-////                }
-//            }
-//            
-//            await MainActor.run { [result] in
-//                self.exercises = result
-//            }
-//        }
-        
-        
         var result: [ExerciseTypeModel] = []
         
-        if let categoryId = self.categoryId,
-           let category = ExerciseCategory(rawValue: categoryId) {
+        if let categoryId = self.categoryId {
             result = arrayExercises.filter {
-                $0.type == category
+                $0.type.id == categoryId
             }
         }
         
         if !searchQuery.isEmpty {
             result = arrayExercises.filter {
-                $0.title.lowercased().contains(searchQuery.lowercased())
+                $0.displayName.lowercased().contains(searchQuery.lowercased())
             }
         } else if !searchQueryExercise.isEmpty, !result.isEmpty {
             result = result.filter {
-                $0.title.lowercased().contains(searchQueryExercise.lowercased())
+                $0.displayName.lowercased().contains(searchQueryExercise.lowercased())
             }
         }
         

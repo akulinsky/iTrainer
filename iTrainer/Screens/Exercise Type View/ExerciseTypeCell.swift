@@ -62,8 +62,15 @@ struct ExerciseTypeCell: View {
 }
 
 #Preview {
-    ExerciseTypeCell(model: ExerciseTypeModel(title: "Жим лежа",
-                                              type: .chest,
+    let category = ExerciseCategory(id: "chest",
+                                    titleKey: "exercise.category.chest",
+                                    defaultTitle: "Chest",
+                                    devTitle: "Грудь",
+                                    kind: "muscleGroup",
+                                    iconName: "icMuscleType_chest",
+                                    sortOrder: 0)
+    ExerciseTypeCell(model: ExerciseTypeModel(devTitle: "Жим лежа",
+                                              type: category,
                                               parameters: [.weight(), .repeats()]
                                              ),
                      mode: .showing,

@@ -51,121 +51,140 @@ enum ParameterValue<value>: Identifiable, Hashable {
         case .time(_): 3
         }
     }
+    
+    static func seedParameter(for id: String) -> ParameterValue<Any>? {
+        switch id {
+        case "weight":
+            .weight()
+        case "reps":
+            .repeats()
+        case "distance":
+            .distance()
+        case "time":
+            .time()
+        default:
+            nil
+        }
+    }
 }
 
 struct ExerciseTypeModel: Identifiable {
     
     var id: String = UUID().uuidString
     
-    let icon: Image?
-    let title: String
+    let iconName: String
+    let titleKey: String
+    let defaultTitle: String
+    let devTitle: String
     let type: ExerciseCategory
     let parameters: [ParameterValue<Any>]
+    let sortOrder: Int
     var bookmark: Bool
     
-    init(id: String? = nil, title: String, icon: Image? = nil, type: ExerciseCategory, parameters: [ParameterValue<Any>], bookmark: Bool = false) {
-//        self.icon = icon
-        self.icon = Image("ic_chest_exercise")
+    var icon: Image? {
+        Image(iconName)
+    }
+    
+    var title: String {
+        displayName
+    }
+    
+    var displayName: String {
+        devTitle
+    }
+    
+    init(id: String? = nil,
+         titleKey: String = "",
+         defaultTitle: String = "",
+         devTitle: String,
+         iconName: String = "ic_chest_exercise",
+         type: ExerciseCategory,
+         parameters: [ParameterValue<Any>],
+         sortOrder: Int = 0,
+         bookmark: Bool = false) {
+        self.iconName = iconName
+        self.titleKey = titleKey
+        self.defaultTitle = defaultTitle
+        self.devTitle = devTitle
         
         if let id = id {
             self.id = id
         }
         
-        self.title = title
         self.type = type
         self.parameters = parameters
+        self.sortOrder = sortOrder
         self.bookmark = bookmark
+    }
+}
+
+private struct ExerciseSeedModel: Decodable {
+    let id: String
+    let titleKey: String
+    let defaultTitle: String
+    let devTitle: String
+    let category: String
+    let iconName: String
+    let parameters: [String]
+    let sortOrder: Int
+}
+
+enum ExerciseSeedLoader {
+    static func loadCategories() -> [ExerciseCategory] {
+        load([ExerciseCategory].self, resource: "exercise_categories")
+            .sorted(by: { $0.sortOrder < $1.sortOrder })
+    }
+    
+    static func loadExercises(categories: [ExerciseCategory]? = nil) -> [ExerciseTypeModel] {
+        let categories = categories ?? loadCategories()
+        let categoryById = Dictionary(uniqueKeysWithValues: categories.map { ($0.id, $0) })
+        let seeds = load([ExerciseSeedModel].self, resource: "exercises")
+        
+        return seeds.compactMap { seed in
+            guard let category = categoryById[seed.category] else {
+                assertionFailure("Missing exercise category with id: \(seed.category)")
+                return nil
+            }
+            
+            let parameters = seed.parameters.compactMap { ParameterValue<Any>.seedParameter(for: $0) }
+            guard parameters.count == seed.parameters.count else {
+                assertionFailure("Unsupported exercise parameters for id: \(seed.id)")
+                return nil
+            }
+            
+            return ExerciseTypeModel(id: seed.id,
+                                     titleKey: seed.titleKey,
+                                     defaultTitle: seed.defaultTitle,
+                                     devTitle: seed.devTitle,
+                                     iconName: seed.iconName,
+                                     type: category,
+                                     parameters: parameters,
+                                     sortOrder: seed.sortOrder)
+        }
+        .sorted {
+            if $0.type.sortOrder == $1.type.sortOrder {
+                return $0.sortOrder < $1.sortOrder
+            }
+            return $0.type.sortOrder < $1.type.sortOrder
+        }
+    }
+    
+    private static func load<T: Decodable>(_ type: T.Type, resource: String) -> T {
+        guard let url = Bundle.main.url(forResource: resource, withExtension: "json") else {
+            fatalError("Missing bundled resource: \(resource).json")
+        }
+        
+        do {
+            let data = try Data(contentsOf: url)
+            return try JSONDecoder().decode(type, from: data)
+        } catch {
+            fatalError("Failed to decode \(resource).json: \(error)")
+        }
     }
 }
 
 extension ExerciseTypeModel {
     static var createExercises: [ExerciseTypeModel] {
-        var result = createChestExercises
-        result.append(contentsOf: createBackExercises)
-        result.append(contentsOf: createLegsExercises)
-        result.append(contentsOf: createCardioExercises)
-        
-        return result
-    }
-    
-    static var createChestExercises: [ExerciseTypeModel] {
-        return [
-            ExerciseTypeModel(id: "0",
-                              title: "Жим лежа",
-                              type: .chest,
-                              parameters: [.weight(), .repeats()]
-                             ),
-            ExerciseTypeModel(id: "1",
-                              title: "Жим лежа на наклонной скамье",
-                              type: .chest,
-                              parameters: [.weight(), .repeats()]
-                             ),
-            ExerciseTypeModel(id: "2",
-                              title: "Еще один Жим лежа",
-                              type: .chest,
-                              parameters: [.weight(), .repeats()]
-                             )
-        ]
-    }
-    
-    static var createBackExercises: [ExerciseTypeModel] {
-        return [
-            ExerciseTypeModel(id: "200",
-                              title: "Тяга штанги в наклоне",
-                              type: .back,
-                              parameters: [.weight(), .repeats()]
-                             ),
-            ExerciseTypeModel(id: "201",
-                              title: "Подтягивание на перекладине",
-                              type: .back,
-                              parameters: [.weight(), .repeats()]
-                             ),
-            ExerciseTypeModel(id: "202",
-                              title: "Еще одно Подтягивание на перекладине",
-                              type: .back,
-                              parameters: [.weight(), .repeats()]
-                             )
-        ]
-    }
-    
-    static var createLegsExercises: [ExerciseTypeModel] {
-        return [
-            ExerciseTypeModel(id: "400",
-                              title: "Приседание со штангой",
-                              type: .legs,
-                              parameters: [.weight(), .repeats()]
-                             ),
-            ExerciseTypeModel(id: "401",
-                              title: "Еще упражнение на ноги",
-                              type: .legs,
-                              parameters: [.weight(), .repeats()]
-                             ),
-            ExerciseTypeModel(id: "402",
-                              title: "Все Еще упражнение на ноги",
-                              type: .legs,
-                              parameters: [.weight(), .repeats()]
-                             )
-        ]
-    }
-    
-    static var createCardioExercises: [ExerciseTypeModel] {
-        return [
-            ExerciseTypeModel(id: "2000",
-                              title: "Бег",
-                              type: .cardio,
-                              parameters: [.distance(), .time()]
-                             ),
-            ExerciseTypeModel(id: "2001",
-                              title: "Быстрый бег",
-                              type: .cardio,
-                              parameters: [.distance(), .time()]
-                             ),
-            ExerciseTypeModel(id: "2002",
-                              title: "Кое что для кардио",
-                              type: .cardio,
-                              parameters: [.time()]
-                             )
-        ]
+        ExerciseSeedLoader.loadExercises()
     }
 }
-

@@ -107,8 +107,15 @@ struct SetEditCell: View {
 }
 
 #Preview {
+    let category = ExerciseCategory(id: "chest",
+                                    titleKey: "exercise.category.chest",
+                                    defaultTitle: "Chest",
+                                    devTitle: "Грудь",
+                                    kind: "muscleGroup",
+                                    iconName: "icMuscleType_chest",
+                                    sortOrder: 0)
     SetEditCell(viewModel: SetEditCellViewModel(model: SetsModel(params: [.weight(50), .repeats(10)]),
-                                                exerciseType: ExerciseTypeModel(title: "Test",
-                                                                                type: .chest,
+                                                exerciseType: ExerciseTypeModel(devTitle: "Test",
+                                                                                type: category,
                                                                                 parameters: [.weight(), .repeats()])), actionBlock: {_ in })
 }
