@@ -59,11 +59,11 @@ struct ExerciseTypeModel: Identifiable {
     
     let icon: Image?
     let title: String
-    let type: MuscleType
+    let type: ExerciseCategory
     let parameters: [ParameterValue<Any>]
     var bookmark: Bool
     
-    init(id: String? = nil, title: String, icon: Image? = nil, type: MuscleType, parameters: [ParameterValue<Any>], bookmark: Bool = false) {
+    init(id: String? = nil, title: String, icon: Image? = nil, type: ExerciseCategory, parameters: [ParameterValue<Any>], bookmark: Bool = false) {
 //        self.icon = icon
         self.icon = Image("ic_chest_exercise")
         

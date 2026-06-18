@@ -52,7 +52,7 @@ struct ExerciseTypeView: View {
             
             VStack {
                 if viewModel.searchQuery.isEmpty {
-                    MuscleTypeView(viewModel: viewModel)
+                    ExerciseCategoryView(viewModel: viewModel)
                 } else {
                     ExerciseTypeListView(viewModel: viewModel)
                 }

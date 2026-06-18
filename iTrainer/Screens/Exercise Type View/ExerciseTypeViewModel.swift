@@ -16,7 +16,7 @@ typealias SelectedExerciseTypesBlock = (Set<String>)->()
 
 class ExerciseTypeViewModel: ObservableObject {
     
-    @Published var muscles = [MuscleType]()
+    @Published var categories = [ExerciseCategory]()
     
     @Published var exercises = [ExerciseTypeModel]()
     
@@ -28,14 +28,14 @@ class ExerciseTypeViewModel: ObservableObject {
     
     let mode: ExerciseTypeViewMode
     
-    var muscleId: Int?
+    var categoryId: Int?
     
-    var muscleTitle: String {
-        guard let muscleId = self.muscleId, 
-                let muscleType = MuscleType(rawValue: muscleId) else {
+    var categoryTitle: String {
+        guard let categoryId = self.categoryId, 
+                let category = ExerciseCategory(rawValue: categoryId) else {
             return ""
         }
-        return muscleType.title
+        return category.title
     }
     
     private var completeBlock: SelectedExerciseTypesBlock?
@@ -48,7 +48,7 @@ class ExerciseTypeViewModel: ObservableObject {
     private var arrayExercises = [ExerciseTypeModel]()
     
     init(mode: ExerciseTypeViewMode = .showing, completeBlock: (SelectedExerciseTypesBlock)? = nil) {
-        muscles = MuscleType.allCases
+        categories = ExerciseCategory.allCases
         
         self.mode = mode
         
@@ -77,10 +77,10 @@ class ExerciseTypeViewModel: ObservableObject {
 //            
 //            var result: [ExerciseTypeModel] = []
 //            
-//            if let muscleId = self.muscleId,
-//               let muscleType = MuscleType(rawValue: muscleId) {
+//            if let categoryId = self.categoryId,
+//               let category = ExerciseCategory(rawValue: categoryId) {
 //                result = ExerciseTypeModel.createExercises.filter {
-//                    $0.type == muscleType
+//                    $0.type == category
 //                }
 //            }
 //            
@@ -106,10 +106,10 @@ class ExerciseTypeViewModel: ObservableObject {
         
         var result: [ExerciseTypeModel] = []
         
-        if let muscleId = self.muscleId,
-           let muscleType = MuscleType(rawValue: muscleId) {
+        if let categoryId = self.categoryId,
+           let category = ExerciseCategory(rawValue: categoryId) {
             result = arrayExercises.filter {
-                $0.type == muscleType
+                $0.type == category
             }
         }
         

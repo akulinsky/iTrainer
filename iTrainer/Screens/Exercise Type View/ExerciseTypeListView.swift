@@ -39,7 +39,7 @@ struct ExerciseTypeListView: View {
                     cells(for: item)
                 }
             }
-            .navigationTitle(viewModel.muscleTitle)
+            .navigationTitle(viewModel.categoryTitle)
             .navigationBarTitleDisplayMode(.inline)
             .onAppear {
                 viewModel.reloadExercises()

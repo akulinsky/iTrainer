@@ -1,5 +1,5 @@
 //
-//  MuscleType.swift
+//  ExerciseCategory.swift
 //  iTrainer
 //
 //  Created by Andrey Kulinskiy on 06.08.2024.
@@ -8,7 +8,7 @@
 import Foundation
 import SwiftUI
 
-enum MuscleType: Int, CaseIterable, Identifiable {
+enum ExerciseCategory: Int, CaseIterable, Identifiable {
     
     case chest      // грудь
     case back       // спина

@@ -1,5 +1,5 @@
 //
-//  MuscleTypeView.swift
+//  ExerciseCategoryView.swift
 //  iTrainer
 //
 //  Created by Andrey Kulinskiy on 08.08.2024.
@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct MuscleTypeView: View {
+struct ExerciseCategoryView: View {
     
     @StateObject var viewModel: ExerciseTypeViewModel
     
@@ -20,10 +20,10 @@ struct MuscleTypeView: View {
     var body: some View {
         
         VStack {
-            List(selection: $viewModel.muscleId) {
+            List(selection: $viewModel.categoryId) {
                 
     //            Section {
-    //                ForEach(viewModel.muscles) { item in
+    //                ForEach(viewModel.categories) { item in
     //
     //                    NavigationLink {
     //                        ExerciseTypeListView(viewModel: viewModel)
@@ -44,7 +44,7 @@ struct MuscleTypeView: View {
     //                }
     //            }
                 
-                ForEach(viewModel.muscles) { item in
+                ForEach(viewModel.categories) { item in
                     
                     NavigationLink {
                         ExerciseTypeListView(viewModel: viewModel)
@@ -70,11 +70,11 @@ struct MuscleTypeView: View {
             }
         }
         .onAppear {
-            viewModel.muscleId = nil
+            viewModel.categoryId = nil
         }
     }
 }
 
 #Preview {
-    MuscleTypeView(viewModel: ExerciseTypeViewModel())
+    ExerciseCategoryView(viewModel: ExerciseTypeViewModel())
 }
