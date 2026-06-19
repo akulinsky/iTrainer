@@ -112,7 +112,7 @@ struct SetEditCell: View {
                                     defaultTitle: "Chest",
                                     devTitle: "Грудь",
                                     kind: "muscleGroup",
-                                    iconName: "icMuscleType_chest",
+                                    iconName: "icMissingImage",
                                     sortOrder: 0)
     SetEditCell(viewModel: SetEditCellViewModel(model: SetsModel(params: [.weight(50), .repeats(10)]),
                                                 exerciseType: ExerciseTypeModel(devTitle: "Test",

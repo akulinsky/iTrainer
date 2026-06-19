@@ -23,7 +23,7 @@
       "reps"
     ],
     "sortOrder": 1,
-    "iconName": "ic_chest_exercise"
+    "iconName": "icMissingImage"
   },
   {
     "id": "chest_dumbbell_press",
@@ -36,7 +36,7 @@
       "reps"
     ],
     "sortOrder": 2,
-    "iconName": "ic_chest_exercise"
+    "iconName": "icMissingImage"
   },
   {
     "id": "chest_incline_dumbbell_press",
@@ -49,7 +49,7 @@
       "reps"
     ],
     "sortOrder": 3,
-    "iconName": "ic_chest_exercise"
+    "iconName": "icMissingImage"
   },
   {
     "id": "chest_dumbbell_fly",
@@ -62,7 +62,7 @@
       "reps"
     ],
     "sortOrder": 4,
-    "iconName": "ic_chest_exercise"
+    "iconName": "icMissingImage"
   },
   {
     "id": "chest_cable_crossover",
@@ -75,7 +75,7 @@
       "reps"
     ],
     "sortOrder": 5,
-    "iconName": "ic_chest_exercise"
+    "iconName": "icMissingImage"
   },
   {
     "id": "chest_machine_press",
@@ -88,7 +88,7 @@
       "reps"
     ],
     "sortOrder": 6,
-    "iconName": "ic_chest_exercise"
+    "iconName": "icMissingImage"
   },
   {
     "id": "chest_dips",
@@ -101,7 +101,7 @@
       "reps"
     ],
     "sortOrder": 7,
-    "iconName": "ic_chest_exercise"
+    "iconName": "icMissingImage"
   },
   {
     "id": "chest_push_up",
@@ -113,7 +113,7 @@
       "reps"
     ],
     "sortOrder": 8,
-    "iconName": "ic_chest_exercise"
+    "iconName": "icMissingImage"
   },
   {
     "id": "back_pull_up",
@@ -126,7 +126,7 @@
       "reps"
     ],
     "sortOrder": 0,
-    "iconName": "ic_chest_exercise"
+    "iconName": "icMissingImage"
   },
   {
     "id": "back_barbell_row",
@@ -139,7 +139,7 @@
       "reps"
     ],
     "sortOrder": 1,
-    "iconName": "ic_chest_exercise"
+    "iconName": "icMissingImage"
   },
   {
     "id": "back_one_arm_dumbbell_row",
@@ -152,7 +152,7 @@
       "reps"
     ],
     "sortOrder": 2,
-    "iconName": "ic_chest_exercise"
+    "iconName": "icMissingImage"
   },
   {
     "id": "back_lat_pulldown",
@@ -165,7 +165,7 @@
       "reps"
     ],
     "sortOrder": 3,
-    "iconName": "ic_chest_exercise"
+    "iconName": "icMissingImage"
   },
   {
     "id": "back_seated_cable_row",
@@ -178,7 +178,7 @@
       "reps"
     ],
     "sortOrder": 4,
-    "iconName": "ic_chest_exercise"
+    "iconName": "icMissingImage"
   },
   {
     "id": "back_deadlift",
@@ -191,7 +191,7 @@
       "reps"
     ],
     "sortOrder": 5,
-    "iconName": "ic_chest_exercise"
+    "iconName": "icMissingImage"
   },
   {
     "id": "back_hyperextension",
@@ -204,7 +204,7 @@
       "reps"
     ],
     "sortOrder": 6,
-    "iconName": "ic_chest_exercise"
+    "iconName": "icMissingImage"
   },
   {
     "id": "legs_barbell_squat",
@@ -217,7 +217,7 @@
       "reps"
     ],
     "sortOrder": 0,
-    "iconName": "ic_chest_exercise"
+    "iconName": "icMissingImage"
   },
   {
     "id": "legs_leg_press",
@@ -230,7 +230,7 @@
       "reps"
     ],
     "sortOrder": 1,
-    "iconName": "ic_chest_exercise"
+    "iconName": "icMissingImage"
   },
   {
     "id": "legs_lunge",
@@ -243,7 +243,7 @@
       "reps"
     ],
     "sortOrder": 2,
-    "iconName": "ic_chest_exercise"
+    "iconName": "icMissingImage"
   },
   {
     "id": "legs_leg_extension",
@@ -256,7 +256,7 @@
       "reps"
     ],
     "sortOrder": 3,
-    "iconName": "ic_chest_exercise"
+    "iconName": "icMissingImage"
   },
   {
     "id": "legs_leg_curl",
@@ -269,7 +269,7 @@
       "reps"
     ],
     "sortOrder": 4,
-    "iconName": "ic_chest_exercise"
+    "iconName": "icMissingImage"
   },
   {
     "id": "legs_calf_raise",
@@ -282,7 +282,7 @@
       "reps"
     ],
     "sortOrder": 5,
-    "iconName": "ic_chest_exercise"
+    "iconName": "icMissingImage"
   },
   {
     "id": "glutes_glute_bridge",
@@ -295,7 +295,7 @@
       "reps"
     ],
     "sortOrder": 0,
-    "iconName": "ic_chest_exercise"
+    "iconName": "icMissingImage"
   },
   {
     "id": "glutes_hip_thrust",
@@ -308,7 +308,7 @@
       "reps"
     ],
     "sortOrder": 1,
-    "iconName": "ic_chest_exercise"
+    "iconName": "icMissingImage"
   },
   {
     "id": "glutes_romanian_deadlift",
@@ -321,7 +321,7 @@
       "reps"
     ],
     "sortOrder": 2,
-    "iconName": "ic_chest_exercise"
+    "iconName": "icMissingImage"
   },
   {
     "id": "glutes_cable_kickback",
@@ -334,7 +334,7 @@
       "reps"
     ],
     "sortOrder": 3,
-    "iconName": "ic_chest_exercise"
+    "iconName": "icMissingImage"
   },
   {
     "id": "glutes_bulgarian_split_squat",
@@ -347,7 +347,7 @@
       "reps"
     ],
     "sortOrder": 4,
-    "iconName": "ic_chest_exercise"
+    "iconName": "icMissingImage"
   },
   {
     "id": "glutes_leg_kickback",
@@ -359,7 +359,7 @@
       "reps"
     ],
     "sortOrder": 5,
-    "iconName": "ic_chest_exercise"
+    "iconName": "icMissingImage"
   },
   {
     "id": "shoulders_overhead_press",
@@ -372,7 +372,7 @@
       "reps"
     ],
     "sortOrder": 0,
-    "iconName": "ic_chest_exercise"
+    "iconName": "icMissingImage"
   },
   {
     "id": "shoulders_seated_dumbbell_press",
@@ -385,7 +385,7 @@
       "reps"
     ],
     "sortOrder": 1,
-    "iconName": "ic_chest_exercise"
+    "iconName": "icMissingImage"
   },
   {
     "id": "shoulders_lateral_raise",
@@ -398,7 +398,7 @@
       "reps"
     ],
     "sortOrder": 2,
-    "iconName": "ic_chest_exercise"
+    "iconName": "icMissingImage"
   },
   {
     "id": "shoulders_front_raise",
@@ -411,7 +411,7 @@
       "reps"
     ],
     "sortOrder": 3,
-    "iconName": "ic_chest_exercise"
+    "iconName": "icMissingImage"
   },
   {
     "id": "shoulders_reverse_fly",
@@ -424,7 +424,7 @@
       "reps"
     ],
     "sortOrder": 4,
-    "iconName": "ic_chest_exercise"
+    "iconName": "icMissingImage"
   },
   {
     "id": "shoulders_upright_row",
@@ -437,7 +437,7 @@
       "reps"
     ],
     "sortOrder": 5,
-    "iconName": "ic_chest_exercise"
+    "iconName": "icMissingImage"
   },
   {
     "id": "biceps_barbell_curl",
@@ -450,7 +450,7 @@
       "reps"
     ],
     "sortOrder": 0,
-    "iconName": "ic_chest_exercise"
+    "iconName": "icMissingImage"
   },
   {
     "id": "biceps_dumbbell_curl",
@@ -463,7 +463,7 @@
       "reps"
     ],
     "sortOrder": 1,
-    "iconName": "ic_chest_exercise"
+    "iconName": "icMissingImage"
   },
   {
     "id": "biceps_hammer_curl",
@@ -476,7 +476,7 @@
       "reps"
     ],
     "sortOrder": 2,
-    "iconName": "ic_chest_exercise"
+    "iconName": "icMissingImage"
   },
   {
     "id": "biceps_preacher_curl",
@@ -489,7 +489,7 @@
       "reps"
     ],
     "sortOrder": 3,
-    "iconName": "ic_chest_exercise"
+    "iconName": "icMissingImage"
   },
   {
     "id": "biceps_concentration_curl",
@@ -502,7 +502,7 @@
       "reps"
     ],
     "sortOrder": 4,
-    "iconName": "ic_chest_exercise"
+    "iconName": "icMissingImage"
   },
   {
     "id": "biceps_cable_curl",
@@ -515,7 +515,7 @@
       "reps"
     ],
     "sortOrder": 5,
-    "iconName": "ic_chest_exercise"
+    "iconName": "icMissingImage"
   },
   {
     "id": "triceps_french_press",
@@ -528,7 +528,7 @@
       "reps"
     ],
     "sortOrder": 0,
-    "iconName": "ic_chest_exercise"
+    "iconName": "icMissingImage"
   },
   {
     "id": "triceps_cable_pushdown",
@@ -541,7 +541,7 @@
       "reps"
     ],
     "sortOrder": 1,
-    "iconName": "ic_chest_exercise"
+    "iconName": "icMissingImage"
   },
   {
     "id": "triceps_dips",
@@ -554,7 +554,7 @@
       "reps"
     ],
     "sortOrder": 2,
-    "iconName": "ic_chest_exercise"
+    "iconName": "icMissingImage"
   },
   {
     "id": "triceps_close_grip_bench_press",
@@ -567,7 +567,7 @@
       "reps"
     ],
     "sortOrder": 3,
-    "iconName": "ic_chest_exercise"
+    "iconName": "icMissingImage"
   },
   {
     "id": "triceps_overhead_dumbbell_extension",
@@ -580,7 +580,7 @@
       "reps"
     ],
     "sortOrder": 4,
-    "iconName": "ic_chest_exercise"
+    "iconName": "icMissingImage"
   },
   {
     "id": "triceps_kickback",
@@ -593,7 +593,7 @@
       "reps"
     ],
     "sortOrder": 5,
-    "iconName": "ic_chest_exercise"
+    "iconName": "icMissingImage"
   },
   {
     "id": "forearms_wrist_curl",
@@ -606,7 +606,7 @@
       "reps"
     ],
     "sortOrder": 0,
-    "iconName": "ic_chest_exercise"
+    "iconName": "icMissingImage"
   },
   {
     "id": "forearms_reverse_wrist_curl",
@@ -619,7 +619,7 @@
       "reps"
     ],
     "sortOrder": 1,
-    "iconName": "ic_chest_exercise"
+    "iconName": "icMissingImage"
   },
   {
     "id": "forearms_reverse_barbell_curl",
@@ -632,7 +632,7 @@
       "reps"
     ],
     "sortOrder": 2,
-    "iconName": "ic_chest_exercise"
+    "iconName": "icMissingImage"
   },
   {
     "id": "forearms_farmer_walk",
@@ -646,7 +646,7 @@
       "time"
     ],
     "sortOrder": 3,
-    "iconName": "ic_chest_exercise"
+    "iconName": "icMissingImage"
   },
   {
     "id": "forearms_dead_hang",
@@ -658,7 +658,7 @@
       "time"
     ],
     "sortOrder": 4,
-    "iconName": "ic_chest_exercise"
+    "iconName": "icMissingImage"
   },
   {
     "id": "forearms_wrist_roller",
@@ -671,7 +671,7 @@
       "reps"
     ],
     "sortOrder": 5,
-    "iconName": "ic_chest_exercise"
+    "iconName": "icMissingImage"
   },
   {
     "id": "abs_crunch",
@@ -683,7 +683,7 @@
       "reps"
     ],
     "sortOrder": 0,
-    "iconName": "ic_chest_exercise"
+    "iconName": "icMissingImage"
   },
   {
     "id": "abs_lying_leg_raise",
@@ -695,7 +695,7 @@
       "reps"
     ],
     "sortOrder": 1,
-    "iconName": "ic_chest_exercise"
+    "iconName": "icMissingImage"
   },
   {
     "id": "abs_plank",
@@ -707,7 +707,7 @@
       "time"
     ],
     "sortOrder": 2,
-    "iconName": "ic_chest_exercise"
+    "iconName": "icMissingImage"
   },
   {
     "id": "abs_bicycle_crunch",
@@ -719,7 +719,7 @@
       "reps"
     ],
     "sortOrder": 3,
-    "iconName": "ic_chest_exercise"
+    "iconName": "icMissingImage"
   },
   {
     "id": "abs_reverse_crunch",
@@ -731,7 +731,7 @@
       "reps"
     ],
     "sortOrder": 4,
-    "iconName": "ic_chest_exercise"
+    "iconName": "icMissingImage"
   },
   {
     "id": "abs_cable_crunch",
@@ -744,7 +744,7 @@
       "reps"
     ],
     "sortOrder": 5,
-    "iconName": "ic_chest_exercise"
+    "iconName": "icMissingImage"
   },
   {
     "id": "cardio_running",
@@ -757,7 +757,7 @@
       "time"
     ],
     "sortOrder": 0,
-    "iconName": "ic_chest_exercise"
+    "iconName": "icMissingImage"
   },
   {
     "id": "cardio_walking",
@@ -770,7 +770,7 @@
       "time"
     ],
     "sortOrder": 1,
-    "iconName": "ic_chest_exercise"
+    "iconName": "icMissingImage"
   },
   {
     "id": "cardio_cycling",
@@ -783,7 +783,7 @@
       "time"
     ],
     "sortOrder": 2,
-    "iconName": "ic_chest_exercise"
+    "iconName": "icMissingImage"
   },
   {
     "id": "cardio_elliptical",
@@ -795,7 +795,7 @@
       "time"
     ],
     "sortOrder": 3,
-    "iconName": "ic_chest_exercise"
+    "iconName": "icMissingImage"
   },
   {
     "id": "cardio_rowing",
@@ -808,7 +808,7 @@
       "time"
     ],
     "sortOrder": 4,
-    "iconName": "ic_chest_exercise"
+    "iconName": "icMissingImage"
   },
   {
     "id": "cardio_jump_rope",
@@ -820,7 +820,7 @@
       "time"
     ],
     "sortOrder": 5,
-    "iconName": "ic_chest_exercise"
+    "iconName": "icMissingImage"
   },
   {
     "id": "functional_training_burpee",
@@ -832,7 +832,7 @@
       "reps"
     ],
     "sortOrder": 0,
-    "iconName": "ic_chest_exercise"
+    "iconName": "icMissingImage"
   },
   {
     "id": "functional_training_thruster",
@@ -845,7 +845,7 @@
       "reps"
     ],
     "sortOrder": 1,
-    "iconName": "ic_chest_exercise"
+    "iconName": "icMissingImage"
   },
   {
     "id": "functional_training_kettlebell_swing",
@@ -858,7 +858,7 @@
       "reps"
     ],
     "sortOrder": 2,
-    "iconName": "ic_chest_exercise"
+    "iconName": "icMissingImage"
   },
   {
     "id": "functional_training_mountain_climber",
@@ -870,7 +870,7 @@
       "reps"
     ],
     "sortOrder": 3,
-    "iconName": "ic_chest_exercise"
+    "iconName": "icMissingImage"
   },
   {
     "id": "functional_training_wall_ball",
@@ -883,7 +883,7 @@
       "reps"
     ],
     "sortOrder": 4,
-    "iconName": "ic_chest_exercise"
+    "iconName": "icMissingImage"
   },
   {
     "id": "functional_training_farmer_walk",
@@ -897,7 +897,7 @@
       "time"
     ],
     "sortOrder": 5,
-    "iconName": "ic_chest_exercise"
+    "iconName": "icMissingImage"
   },
   {
     "id": "stretching_hamstring_stretch",
@@ -909,7 +909,7 @@
       "time"
     ],
     "sortOrder": 0,
-    "iconName": "ic_chest_exercise"
+    "iconName": "icMissingImage"
   },
   {
     "id": "stretching_quadriceps_stretch",
@@ -921,7 +921,7 @@
       "time"
     ],
     "sortOrder": 1,
-    "iconName": "ic_chest_exercise"
+    "iconName": "icMissingImage"
   },
   {
     "id": "stretching_chest_stretch",
@@ -933,7 +933,7 @@
       "time"
     ],
     "sortOrder": 2,
-    "iconName": "ic_chest_exercise"
+    "iconName": "icMissingImage"
   },
   {
     "id": "stretching_shoulder_stretch",
@@ -945,7 +945,7 @@
       "time"
     ],
     "sortOrder": 3,
-    "iconName": "ic_chest_exercise"
+    "iconName": "icMissingImage"
   },
   {
     "id": "stretching_glute_stretch",
@@ -957,7 +957,7 @@
       "time"
     ],
     "sortOrder": 4,
-    "iconName": "ic_chest_exercise"
+    "iconName": "icMissingImage"
   },
   {
     "id": "stretching_calf_stretch",
@@ -969,6 +969,6 @@
       "time"
     ],
     "sortOrder": 5,
-    "iconName": "ic_chest_exercise"
+    "iconName": "icMissingImage"
   }
 ]

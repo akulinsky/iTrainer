@@ -67,7 +67,7 @@ struct ExerciseTypeCell: View {
                                     defaultTitle: "Chest",
                                     devTitle: "Грудь",
                                     kind: "muscleGroup",
-                                    iconName: "icMuscleType_chest",
+                                    iconName: "icMissingImage",
                                     sortOrder: 0)
     ExerciseTypeCell(model: ExerciseTypeModel(devTitle: "Жим лежа",
                                               type: category,

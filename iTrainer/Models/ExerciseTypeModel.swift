@@ -97,12 +97,12 @@ struct ExerciseTypeModel: Identifiable {
          titleKey: String = "",
          defaultTitle: String = "",
          devTitle: String,
-         iconName: String = "ic_chest_exercise",
+         iconName: String = ImageAssetName.missing,
          type: ExerciseCategory,
          parameters: [ParameterValue<Any>],
          sortOrder: Int = 0,
          bookmark: Bool = false) {
-        self.iconName = iconName
+        self.iconName = ImageAssetName.resolved(iconName)
         self.titleKey = titleKey
         self.defaultTitle = defaultTitle
         self.devTitle = devTitle
@@ -124,7 +124,7 @@ private struct ExerciseSeedModel: Decodable {
     let defaultTitle: String
     let devTitle: String
     let category: String
-    let iconName: String
+    let iconName: String?
     let parameters: [String]
     let sortOrder: Int
 }
@@ -156,7 +156,7 @@ enum ExerciseSeedLoader {
                                      titleKey: seed.titleKey,
                                      defaultTitle: seed.defaultTitle,
                                      devTitle: seed.devTitle,
-                                     iconName: seed.iconName,
+                                     iconName: ImageAssetName.resolved(seed.iconName),
                                      type: category,
                                      parameters: parameters,
                                      sortOrder: seed.sortOrder)
