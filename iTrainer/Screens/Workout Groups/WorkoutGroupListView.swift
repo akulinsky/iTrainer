@@ -7,11 +7,17 @@
 
 import SwiftUI
 
+enum WorkoutGroupListRoute: Hashable {
+    case exerciseListView(item: WorkoutGroupModel)
+}
+
 struct WorkoutGroupListView: View {
     
     @StateObject var viewModel: WorkoutGroupListViewModel
     
     @State private var editMode = EditMode.inactive
+    
+    @Environment(\.navigation) private var navigation
     
     init(viewModel: WorkoutGroupListViewModel) {
         _viewModel = StateObject(wrappedValue: viewModel)
@@ -48,39 +54,36 @@ struct WorkoutGroupListView: View {
             editNameView()
                 .presentationDetents([.height(250)])
         })
+        .contentSelf(content: { view in
+            contentViewNavigation(content: view)
+        })
+    }
+    
+    @ViewBuilder
+    private func contentViewNavigation<T: View>(content: T) -> some View {
+        content
+            .navigationDestination(for: WorkoutGroupListRoute.self, destination: { item in
+                switch item {
+                case .exerciseListView(let model):
+                    ExerciseListView(viewModel: ExerciseListViewModel(group: model))
+                        .environment(\.navigation, navigation)
+                }
+            })
     }
     
     private func cells(for item: WorkoutGroupModel) -> some View {
-        switch editMode {
-        case .active:
-            return AnyView(
-                ZStack {
-                    WorkoutGroupCell(model: item) {
-                        switch $0 {
-                        case .update(let updateModel):
-                            viewModel.edit(group: updateModel)
-                            break
-                        default:
-                            break
-                        }
-                    }
+        WorkoutGroupCell(model: item) {
+            switch $0 {
+            case .update(let updateModel):
+                switch editMode {
+                case .active:
+                    viewModel.edit(group: updateModel)
+                default:
+                    navigation.path.append(WorkoutGroupListRoute.exerciseListView(item: item))
                 }
-            )
-        default:
-            return AnyView(
-                NavigationLink {
-                    ExerciseListView(viewModel: ExerciseListViewModel(group: item))
-                } label: {
-                    WorkoutGroupCell(model: item) {
-                        switch $0 {
-                        case .update(_):
-                            break
-                        default:
-                            break
-                        }
-                    }
-                }
-            )
+            default:
+                break
+            }
         }
     }
     

@@ -7,6 +7,10 @@
 
 import SwiftUI
 
+enum ExerciseListRoute: Hashable {
+    case exerciseView(item: ExerciseModel)
+}
+
 struct ExerciseListView: View {
     
     @StateObject var viewModel: ExerciseListViewModel
@@ -14,6 +18,8 @@ struct ExerciseListView: View {
     @State private var editMode = EditMode.inactive
     
     @State private var showAnimation = false
+    
+    @Environment(\.navigation) private var navigation
     
     init(viewModel: ExerciseListViewModel) {
         _viewModel = StateObject(wrappedValue: viewModel)
@@ -73,45 +79,39 @@ struct ExerciseListView: View {
         }, content: {
             addNewExerciseView()
         })
+        .contentSelf(content: { view in
+            contentViewNavigation(content: view)
+        })
+    }
+    
+    @ViewBuilder
+    private func contentViewNavigation<T: View>(content: T) -> some View {
+        content
+            .navigationDestination(for: ExerciseListRoute.self, destination: { item in
+                switch item {
+                case .exerciseView(let model):
+                    ExerciseView(viewModel: ExerciseViewModel(exercise: model))
+                        .environment(\.navigation, navigation)
+                }
+            })
     }
     
     private func cells(for item: ExerciseModel) -> some View {
         
-        if item.isHeadline {
-            return AnyView(
-                ExerciseCell(model: item) {
-                    switch $0 {
-                    case .update(let updateModel):
-                        viewModel.edit(exercise: updateModel)
-                        break
-                    default:
-                        break
+        ExerciseCell(model: item) {
+            switch $0 {
+            case .update(let updateModel):
+                switch editMode {
+                case .active:
+                    viewModel.edit(exercise: updateModel)
+                default:
+                    if !item.isHeadline {
+                        navigation.path.append(ExerciseListRoute.exerciseView(item: item))
                     }
                 }
-            )
-        }
-        
-        switch editMode {
-        case .active:
-            return AnyView(
-                ExerciseCell(model: item) {
-                    switch $0 {
-                    case .update(let updateModel):
-                        viewModel.edit(exercise: updateModel)
-                        break
-                    default:
-                        break
-                    }
-                }
-            )
-        default:
-            return AnyView(
-                NavigationLink {
-                    ExerciseView(viewModel: ExerciseViewModel(exercise: item))
-                } label: {
-                    ExerciseCell(model: item) { _ in }
-                }
-            )
+            default:
+                break
+            }
         }
     }
     

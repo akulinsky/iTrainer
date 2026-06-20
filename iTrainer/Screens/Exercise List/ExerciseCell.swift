@@ -65,14 +65,10 @@ struct ExerciseCell: View {
             }
             .frame(height: heightCell)
             
-            if let editMode = editMode?.wrappedValue,
-               editMode == .active {
-                
-                Button("") {
-                    actionBlock(.update(model))
-                }
-                .frame(maxWidth: .infinity, maxHeight: .infinity)
+            Button("") {
+                actionBlock(.update(model))
             }
+            .frame(maxWidth: .infinity, maxHeight: .infinity)
         }
         
         if model.isHeadline {
