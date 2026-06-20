@@ -17,46 +17,61 @@ struct WorkoutGroupListView: View {
     
     @State private var editMode = EditMode.inactive
     
-    @Environment(\.navigation) private var navigation
+    @StateObject private var navigationManager = NavigationManager()
     
     init(viewModel: WorkoutGroupListViewModel) {
         _viewModel = StateObject(wrappedValue: viewModel)
     }
     
     var body: some View {
-        VStack {
-            List {
-                ForEach(viewModel.workoutGroups) { item in
-                    cells(for: item)
-                }
-                .onDelete(perform: deleteItems)
-                .onMove(perform: moveItems)
-            }
-            .refreshable {
-                refresh()
-            }
-            .environment(\.editMode, $editMode)
-        }
-        .navigationTitle(viewModel.workout.title ?? "Groups")
-        .toolbar {
-            ToolbarItem(placement: .navigationBarTrailing) {
-                optionButton()
-            }
-        }
-        .task {
-            viewModel.reloadData {
-                if viewModel.workoutGroups.count == 0 {
-                    refresh()
+        NavigationStack(path: $navigationManager.path) {
+            VStack {
+                if viewModel.workout == nil {
+                    emptyWorkoutView()
+                } else {
+                    List {
+                        ForEach(viewModel.workoutGroups) { item in
+                            cells(for: item)
+                        }
+                        .onDelete(perform: deleteItems)
+                        .onMove(perform: moveItems)
+                    }
+                    .refreshable {
+                        refresh()
+                    }
+                    .environment(\.editMode, $editMode)
                 }
             }
+            .navigationTitle(viewModel.workout?.title ?? "Groups")
+            .toolbar {
+                ToolbarItemGroup(placement: .navigationBarTrailing) {
+                    chooseWorkoutButton()
+                    optionButton()
+                }
+            }
+            .task {
+                viewModel.reloadData {
+                    if viewModel.workoutGroups.count == 0 {
+                        refresh()
+                    }
+                }
+            }
+            .sheet(isPresented: $viewModel.isEditGroup, content: {
+                editNameView()
+                    .presentationDetents([.height(250)])
+            })
+            .sheet(isPresented: $viewModel.isSelectWorkoutPresented, content: {
+                WorkoutListView { workout in
+                    viewModel.select(workout: workout)
+                }
+                .presentationDetents([.large])
+                .presentationDragIndicator(.visible)
+            })
+            .contentSelf(content: { view in
+                contentViewNavigation(content: view)
+            })
         }
-        .sheet(isPresented: $viewModel.isEditGroup, content: {
-            editNameView()
-                .presentationDetents([.height(250)])
-        })
-        .contentSelf(content: { view in
-            contentViewNavigation(content: view)
-        })
+        .environment(\.navigation, navigationManager)
     }
     
     @ViewBuilder
@@ -66,9 +81,31 @@ struct WorkoutGroupListView: View {
                 switch item {
                 case .exerciseListView(let model):
                     ExerciseListView(viewModel: ExerciseListViewModel(group: model))
-                        .environment(\.navigation, navigation)
+                        .environment(\.navigation, navigationManager)
                 }
             })
+    }
+    
+    private func emptyWorkoutView() -> some View {
+        VStack(spacing: 16) {
+            Spacer()
+            Image(systemName: "list.bullet.rectangle")
+                .font(.system(size: 44))
+                .foregroundStyle(.secondary)
+            Text("No workout selected")
+                .font(.headline)
+            Button("Choose workout", action: viewModel.showWorkoutPicker)
+                .buttonStyle(.borderedProminent)
+            Spacer()
+        }
+        .frame(maxWidth: .infinity, maxHeight: .infinity)
+        .padding()
+    }
+    
+    private func chooseWorkoutButton() -> some View {
+        Button(action: viewModel.showWorkoutPicker) {
+            Image(systemName: "list.bullet.rectangle")
+        }
     }
     
     private func cells(for item: WorkoutGroupModel) -> some View {
@@ -79,7 +116,7 @@ struct WorkoutGroupListView: View {
                 case .active:
                     viewModel.edit(group: updateModel)
                 default:
-                    navigation.path.append(WorkoutGroupListRoute.exerciseListView(item: item))
+                    navigationManager.path.append(WorkoutGroupListRoute.exerciseListView(item: item))
                 }
             default:
                 break
@@ -99,7 +136,9 @@ struct WorkoutGroupListView: View {
     private func menuItem() -> some View {
         Menu {
             Button("Edit", systemImage: "pencil", action: clickBtnEditint)
+                .disabled(viewModel.workout == nil)
             Button("New group", systemImage: "plus.square", action: clickBtnNewWorkoutGroup)
+                .disabled(viewModel.workout == nil)
         } label: {
             VStack {
                 Spacer()
@@ -130,6 +169,8 @@ struct WorkoutGroupListView: View {
     }
     
     private func clickBtnEditint() {
+        guard viewModel.workout != nil else { return }
+        
         withAnimation {
             editMode = .active
         }
@@ -142,6 +183,8 @@ struct WorkoutGroupListView: View {
     }
     
     private func clickBtnNewWorkoutGroup() {
+        guard viewModel.workout != nil else { return }
+        
         viewModel.editGroup = nil
         viewModel.isEditGroup = true
     }

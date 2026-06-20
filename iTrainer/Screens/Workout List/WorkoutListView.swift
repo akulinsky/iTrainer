@@ -11,10 +11,6 @@ import SDWebImageSwiftUI
 //Avatar
 //https://randomuser.me/api/portraits/men/38.jpg
 
-enum WorkoutListViewRoute: Hashable {
-    case workoutGroupListView(item: WorkoutModel)
-}
-
 struct WorkoutListView: View {
     
     @StateObject var viewModel = WorkoutListViewModel()
@@ -23,21 +19,31 @@ struct WorkoutListView: View {
     
     @StateObject private var navigationManager = NavigationManager()
     
+    private let onSelectWorkout: ((WorkoutModel) -> Void)?
+    
+    init(onSelectWorkout: ((WorkoutModel) -> Void)? = nil) {
+        self.onSelectWorkout = onSelectWorkout
+    }
+    
     var body: some View {
         
         NavigationStack(path: $navigationManager.path) {
             VStack {
-                List {
-                    ForEach(viewModel.workouts) { item in
-                        cells(for: item)
+                if viewModel.workouts.isEmpty {
+                    emptyWorkoutView()
+                } else {
+                    List {
+                        ForEach(viewModel.workouts) { item in
+                            cells(for: item)
+                        }
+                        .onDelete(perform: deleteItems)
+                        .onMove(perform: moveItems)
                     }
-                    .onDelete(perform: deleteItems)
-                    .onMove(perform: moveItems)
+                    .refreshable {
+                        refresh()
+                    }
+                    .environment(\.editMode, $editMode)
                 }
-                .refreshable {
-                    refresh()
-                }
-                .environment(\.editMode, $editMode)
             }
             .navigationTitle("Workouts")
             .toolbar {
@@ -46,18 +52,11 @@ struct WorkoutListView: View {
                 }
             }
             .task {
-                viewModel.reloadData {
-                    if viewModel.workouts.count == 0 {
-                        refresh()
-                    }
-                }
+                viewModel.reloadData()
             }
             .sheet(isPresented: $viewModel.isEditWorkout, content: {
                 editNameView()
                     .presentationDetents([.height(250)])
-            })
-            .contentSelf(content: { view in
-                contentViewNavigation(content: view)
             })
         }
         .task {
@@ -65,18 +64,21 @@ struct WorkoutListView: View {
         }
     }
     
-    @ViewBuilder
-    private func contentViewNavigation<T: View>(content: T) -> some View {
-        content
-            .navigationDestination(for: WorkoutListViewRoute.self, destination: { item in
-                switch item {
-                case .workoutGroupListView(let model):
-                    WorkoutGroupListView(viewModel: WorkoutGroupListViewModel(workout: model))
-                        .environment(\.navigation, navigationManager)
-                }
-            })
+    private func emptyWorkoutView() -> some View {
+        VStack(spacing: 16) {
+            Spacer()
+            Image(systemName: "list.bullet.rectangle")
+                .font(.system(size: 44))
+                .foregroundStyle(.secondary)
+            Text("No workouts")
+                .font(.headline)
+            Button("New workout", action: clickBtnNewWorkout)
+                .buttonStyle(.borderedProminent)
+            Spacer()
+        }
+        .frame(maxWidth: .infinity, maxHeight: .infinity)
+        .padding()
     }
-    
     
     private func cells(for item: WorkoutModel) -> some View {
         
@@ -87,7 +89,8 @@ struct WorkoutListView: View {
                 case .active:
                     viewModel.edit(workout: updateModel)
                 default:
-                    navigationManager.path.append(WorkoutListViewRoute.workoutGroupListView(item: item))
+                    onSelectWorkout?(item)
+                    break
                 }
             default:
                 break
@@ -107,6 +110,7 @@ struct WorkoutListView: View {
     private func menuItem() -> some View {
         Menu {
             Button("Edit", systemImage: "pencil", action: clickBtnEditint)
+                .disabled(viewModel.workouts.isEmpty)
 //            Button("Edit", systemImage: "thermometer.sun.fill", action: clickBtnEditint)
 //                .symbolRenderingMode(.palette)
 //                .foregroundStyle(.red, .yellow, .blue)
@@ -141,6 +145,8 @@ struct WorkoutListView: View {
     }
     
     private func clickBtnEditint() {
+        guard !viewModel.workouts.isEmpty else { return }
+        
         withAnimation {
             editMode = .active
         }

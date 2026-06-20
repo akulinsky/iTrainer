@@ -118,6 +118,18 @@ extension DataManagerBackground {
         return fetchModels(sortBy: [SortDescriptor(\WorkoutModelDB.index, order: .forward)])
     }
     
+    func fetchSelectedWorkout() -> WorkoutModelDB? {
+        return fetchItem(predicate: #Predicate<WorkoutModelDB> { $0.isSelected == true })
+    }
+    
+    func selectWorkout(with id: UUID) {
+        let workouts = fetchAllWorkouts()
+        for workout in workouts {
+            workout.isSelected = workout.id == id
+        }
+        save()
+    }
+    
     func fetchWorkoutGroups(for workoutId: UUID) -> [WorkoutGroupModelDB] {
         return fetchModels(predicate: #Predicate<WorkoutGroupModelDB> { $0.workout?.id == workoutId },
                            sortBy: [SortDescriptor(\WorkoutGroupModelDB.index, order: .forward)])
@@ -298,11 +310,13 @@ extension DataManagerBackground {
         
         if let item = fetchItem(predicate: #Predicate<WorkoutModelDB> { $0.id == uuid }) {
             item.title = workout.title
+            item.isSelected = workout.isSelected
         } else {
             let item = WorkoutModelDB()
             self.insert(model: item)
             item.index = count(type: WorkoutModelDB.self) + 1
             item.title = workout.title
+            item.isSelected = workout.isSelected
         }
         self.save()
     }

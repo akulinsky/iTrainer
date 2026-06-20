@@ -13,6 +13,7 @@ class WorkoutModelDB: DataItemProtocol, PersistentProtocol {
     @Attribute(.unique) var id = UUID()
     var index: Int = 0
     var title: String?
+    var isSelected: Bool = false
     
     @Relationship(deleteRule: .cascade, inverse: \WorkoutGroupModelDB.workout) 
     var workoutGroups: [WorkoutGroupModelDB] = []

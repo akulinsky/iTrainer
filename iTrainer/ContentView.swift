@@ -13,7 +13,7 @@ struct ContentView: View {
     var body: some View {
         
         TabView {
-            WorkoutListView()
+            WorkoutGroupListView(viewModel: WorkoutGroupListViewModel())
                 .tabItem {
                     Label("Workouts", systemImage: "list.dash")
                 }

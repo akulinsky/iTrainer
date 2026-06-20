@@ -32,6 +32,13 @@ struct WorkoutListCell: View {
                 VStack {
                     Text(model.title ?? "--").leadingAlignment()
                 }
+                
+                Spacer()
+                
+                if model.isSelected {
+                    Image(systemName: "checkmark")
+                        .foregroundStyle(.tint)
+                }
             }
             .frame(height: 60)
             

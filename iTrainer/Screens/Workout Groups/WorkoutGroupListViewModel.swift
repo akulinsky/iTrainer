@@ -19,20 +19,25 @@ class WorkoutGroupListViewModel: ObservableObject {
     
     @Published var isEditGroup = false
     
+    @Published var isSelectWorkoutPresented = false
+    
     var editGroup: WorkoutGroupModel?
     
     var errorMessage: String? = nil
     
-    var workout: WorkoutModel
+    var workout: WorkoutModel?
     
     private let networkClient = ServiceNetworkClient()
     
-    init(workout: WorkoutModel) {
+    init(workout: WorkoutModel? = nil) {
         self.workout = workout
     }
     
     func fetchItems(complete: (()->())? = nil) {
         Task {
+            
+            guard let workout else { return }
+            
             let dataManager = DataManagerBackground(container: DataContainer.shared.sharedModelContainer)
             let items = await dataManager.fetchWorkoutGroups(for: workout.id).map { WorkoutGroupModel(model: $0) }
             await MainActor.run {
@@ -45,7 +50,11 @@ class WorkoutGroupListViewModel: ObservableObject {
     }
     
     func reloadData(complete: (()->())? = nil) {
-        self.fetchItems(complete: complete)
+        if workout == nil {
+            fetchSelectedWorkout(complete: complete)
+        } else {
+            fetchItems(complete: complete)
+        }
     }
     
     func refreshData() {
@@ -53,11 +62,33 @@ class WorkoutGroupListViewModel: ObservableObject {
     }
     
     func edit(group: WorkoutGroupModel) {
+        guard workout != nil else { return }
+        
         editGroup = group
         isEditGroup = true
     }
     
+    func showWorkoutPicker() {
+        isSelectWorkoutPresented = true
+    }
+    
+    func select(workout: WorkoutModel) {
+        Task {
+            let dataManager = DataManagerBackground(container: DataContainer.shared.sharedModelContainer)
+            await dataManager.selectWorkout(with: workout.id)
+            let selectedData = await selectedWorkoutData(from: dataManager)
+            
+            await MainActor.run {
+                self.workout = selectedData.workout
+                self.workoutGroups = selectedData.groups
+                self.isSelectWorkoutPresented = false
+            }
+        }
+    }
+    
     func update(name: String) {
+        guard workout != nil else { return }
+        
         if var editGroup = editGroup {
             editGroup.title = name
             update(item: editGroup)
@@ -67,8 +98,33 @@ class WorkoutGroupListViewModel: ObservableObject {
         editGroup = nil
     }
     
+    private func fetchSelectedWorkout(complete: (()->())? = nil) {
+        Task {
+            let dataManager = DataManagerBackground(container: DataContainer.shared.sharedModelContainer)
+            let selectedData = await selectedWorkoutData(from: dataManager)
+            
+            await MainActor.run {
+                self.workout = selectedData.workout
+                self.workoutGroups = selectedData.groups
+                complete?()
+            }
+        }
+    }
+    
+    private func selectedWorkoutData(from dataManager: DataManagerBackground) async -> (workout: WorkoutModel?, groups: [WorkoutGroupModel]) {
+        guard let selectedWorkoutDB = await dataManager.fetchSelectedWorkout() else {
+            return (nil, [])
+        }
+        
+        let selectedWorkout = WorkoutModel(model: selectedWorkoutDB)
+        let groups = await dataManager.fetchWorkoutGroups(for: selectedWorkout.id).map { WorkoutGroupModel(model: $0) }
+        return (selectedWorkout, groups)
+    }
+    
     func update(item: WorkoutGroupModel) {
         Task {
+            guard let workout else { return }
+            
             await DataManagerBackground(container: DataContainer.shared.sharedModelContainer).update(group:item, workoutId: workout.id)
             await MainActor.run {
                 fetchItems()
@@ -78,6 +134,9 @@ class WorkoutGroupListViewModel: ObservableObject {
     
     func moveItem(source: IndexSet, destination: Int) {
         Task {
+            
+            guard let workout else { return }
+            
             let dataManager = DataManagerBackground(container: DataContainer.shared.sharedModelContainer)
             var models = await dataManager.fetchWorkoutGroups(for: workout.id)
             models.move(fromOffsets: source, toOffset: destination)
@@ -94,6 +153,8 @@ class WorkoutGroupListViewModel: ObservableObject {
     }
     
     func delete(index: Int) {
+        guard workout != nil else { return }
+        
         let item = self.workoutGroups[index]
         Task {
             let dataManager = DataManagerBackground(container: DataContainer.shared.sharedModelContainer)
