@@ -11,11 +11,24 @@ import SwiftData
 @main
 struct iTrainerApp: App {
     
-    var dataContainer = DataContainer.shared
+    private let environment = AppEnvironment.live
+    
+#if DEBUG
+private let seedMode: DatabaseSeedMode = .production
+#else
+private let seedMode: DatabaseSeedMode = .production
+#endif
 
     var body: some Scene {
         WindowGroup {
-            ContentView().environmentObject(dataContainer).environmentObject(dataContainer.workoutManager)
+            ContentView()
+                .environment(\.appEnvironment, environment)
+                .environment(environment.appState)
+                .environmentObject(environment.dataContainer)
+                .environmentObject(environment.dataContainer.workoutManager)
+                .task {
+                    await environment.databaseSeeder.run(seedMode)
+                }
         }
     }
 }
