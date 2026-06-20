@@ -38,6 +38,8 @@ struct ExerciseTypeListView: View {
                 ForEach(viewModel.exercises) { item in
                     cells(for: item)
                 }
+                .listRowInsets(EdgeInsets.init(top: 2, leading: 0,
+                                               bottom: 2, trailing: 0))
             }
             .navigationTitle(viewModel.categoryTitle)
             .navigationBarTitleDisplayMode(.inline)

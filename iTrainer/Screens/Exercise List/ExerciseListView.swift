@@ -33,6 +33,8 @@ struct ExerciseListView: View {
                 }
                 .onDelete(perform: deleteItems)
                 .onMove(perform: moveItems)
+                .listRowInsets(EdgeInsets.init(top: 2, leading: 0,
+                                               bottom: 2, trailing: 0))
             }
             .animation(.easeInOut, value: showAnimation)
             .refreshable {

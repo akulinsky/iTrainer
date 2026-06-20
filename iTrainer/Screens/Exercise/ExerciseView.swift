@@ -16,7 +16,7 @@ struct ExerciseView: View {
     
     @Environment(\.colorScheme) var colorScheme
     
-    private var heightHeader: CGFloat = 50.0
+    private var heightHeader: CGFloat = 100.0
     
     @State private var showAnimation = false
     

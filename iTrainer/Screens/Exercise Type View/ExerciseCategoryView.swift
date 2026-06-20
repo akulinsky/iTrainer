@@ -11,6 +11,8 @@ struct ExerciseCategoryView: View {
     
     @StateObject var viewModel: ExerciseTypeViewModel
     
+    private let frameSize: CGFloat = 80
+    
 //    @Environment(\.isSearching) var isSearching
     
     init(viewModel: ExerciseTypeViewModel) {
@@ -52,12 +54,14 @@ struct ExerciseCategoryView: View {
                         HStack {
                             item.icon
                                 .resizable()
-                                .frame(width: 60)
+                                .frame(width: frameSize)
                             Text(item.title).leadingAlignment()
                         }
-                        .frame(height: 60)
+                        .frame(height: frameSize)
                     }
                 }
+                .listRowInsets(EdgeInsets.init(top: 2, leading: 0,
+                                               bottom: 2, trailing: 0))
             }
             
             if viewModel.mode == .selecting {

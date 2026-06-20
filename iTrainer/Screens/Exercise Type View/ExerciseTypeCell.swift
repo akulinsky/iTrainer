@@ -17,6 +17,8 @@ struct ExerciseTypeCell: View {
     
     private let isSelected: Bool
     
+    private let frameSize: CGFloat = 80
+    
     private var color: Color {
         
         switch colorScheme {
@@ -51,13 +53,13 @@ struct ExerciseTypeCell: View {
             if let icon = model.icon {
                 icon
                     .resizable()
-                    .frame(width: 60)
+                    .frame(width: frameSize)
             } else {
-                Color.red.frame(width: 60)
+                Color.red.frame(width: frameSize)
             }
             Text(model.title).leadingAlignment()
         }
-        .frame(height: 60)
+        .frame(height: frameSize)
     }
 }
 

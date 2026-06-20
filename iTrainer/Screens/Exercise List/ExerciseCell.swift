@@ -20,6 +20,8 @@ struct ExerciseCell: View {
     
     var model: ExerciseModel
     
+    private let frameSize: CGFloat = 80
+    
     @Environment(\.editMode) var editMode
     
     init(model: ExerciseModel, actionBlock: @escaping ActionBlock) {
@@ -33,7 +35,7 @@ struct ExerciseCell: View {
             editMode != .active {
             return 25
         }
-        return 60
+        return frameSize
     }
     
     var body: some View {
