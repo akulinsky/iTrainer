@@ -27,8 +27,6 @@
 		F69BD0CA2C54F8DA0057080E /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F69BD0C92C54F8DA0057080E /* ContentView.swift */; };
 		F69BD0CE2C54F8DB0057080E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F69BD0CD2C54F8DB0057080E /* Assets.xcassets */; };
 		F69BD0D12C54F8DB0057080E /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F69BD0D02C54F8DB0057080E /* Preview Assets.xcassets */; };
-		F6A100012D14000100000001 /* exercise_categories.json in Resources */ = {isa = PBXBuildFile; fileRef = F6A100032D14000100000003 /* exercise_categories.json */; };
-		F6A100022D14000100000002 /* exercises.json in Resources */ = {isa = PBXBuildFile; fileRef = F6A100042D14000100000004 /* exercises.json */; };
 		F69BD0DB2C54F8DB0057080E /* iTrainerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F69BD0DA2C54F8DB0057080E /* iTrainerTests.swift */; };
 		F69BD0E52C54F8DB0057080E /* iTrainerUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F69BD0E42C54F8DB0057080E /* iTrainerUITests.swift */; };
 		F69BD0E72C54F8DB0057080E /* iTrainerUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F69BD0E62C54F8DB0057080E /* iTrainerUITestsLaunchTests.swift */; };
@@ -51,6 +49,8 @@
 		F69BD12A2C551B270057080E /* WorkoutGroupModelDB.swift in Sources */ = {isa = PBXBuildFile; fileRef = F69BD1292C551B270057080E /* WorkoutGroupModelDB.swift */; };
 		F69BD12C2C551B400057080E /* ExerciseModelDB.swift in Sources */ = {isa = PBXBuildFile; fileRef = F69BD12B2C551B400057080E /* ExerciseModelDB.swift */; };
 		F69BD12E2C551B4F0057080E /* SetsModelDB.swift in Sources */ = {isa = PBXBuildFile; fileRef = F69BD12D2C551B4F0057080E /* SetsModelDB.swift */; };
+		F6A100012D14000100000001 /* exercise_categories.json in Resources */ = {isa = PBXBuildFile; fileRef = F6A100032D14000100000003 /* exercise_categories.json */; };
+		F6A100022D14000100000002 /* exercises.json in Resources */ = {isa = PBXBuildFile; fileRef = F6A100042D14000100000004 /* exercises.json */; };
 		F6B9B2292C96BF3B00115CEA /* LifecycleLogger.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6B9B2282C96BF3B00115CEA /* LifecycleLogger.swift */; };
 		F6B9B22B2C98593200115CEA /* ReportSetsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6B9B22A2C98593200115CEA /* ReportSetsCell.swift */; };
 		F6C821C92C6FA2FF00A64CD1 /* SelectExerciseBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6C821C82C6FA2FF00A64CD1 /* SelectExerciseBarView.swift */; };
@@ -147,9 +147,9 @@
 		F69BD1292C551B270057080E /* WorkoutGroupModelDB.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutGroupModelDB.swift; sourceTree = "<group>"; };
 		F69BD12B2C551B400057080E /* ExerciseModelDB.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseModelDB.swift; sourceTree = "<group>"; };
 		F69BD12D2C551B4F0057080E /* SetsModelDB.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetsModelDB.swift; sourceTree = "<group>"; };
-		F6AA00012D13E7A000000001 /* iTrainer-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "iTrainer-Info.plist"; sourceTree = "<group>"; };
 		F6A100032D14000100000003 /* exercise_categories.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = exercise_categories.json; sourceTree = "<group>"; };
 		F6A100042D14000100000004 /* exercises.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = exercises.json; sourceTree = "<group>"; };
+		F6AA00012D13E7A000000001 /* iTrainer-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "iTrainer-Info.plist"; sourceTree = "<group>"; };
 		F6B9B2282C96BF3B00115CEA /* LifecycleLogger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LifecycleLogger.swift; sourceTree = "<group>"; };
 		F6B9B22A2C98593200115CEA /* ReportSetsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportSetsCell.swift; sourceTree = "<group>"; };
 		F6C821C82C6FA2FF00A64CD1 /* SelectExerciseBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectExerciseBarView.swift; sourceTree = "<group>"; };
@@ -451,6 +451,23 @@
 			path = Exercise;
 			sourceTree = "<group>";
 		};
+		F6A100052D14000100000005 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				F6A100062D14000100000006 /* Seed */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		F6A100062D14000100000006 /* Seed */ = {
+			isa = PBXGroup;
+			children = (
+				F6A100032D14000100000003 /* exercise_categories.json */,
+				F6A100042D14000100000004 /* exercises.json */,
+			);
+			path = Seed;
+			sourceTree = "<group>";
+		};
 		F6CB13092C9B16CE00B9FCFC /* Reports View */ = {
 			isa = PBXGroup;
 			children = (
@@ -486,23 +503,6 @@
 				F6DD68AC2C6503C9004EFB03 /* ExerciseTypeCell.swift */,
 			);
 			path = "Exercise Type View";
-			sourceTree = "<group>";
-		};
-		F6A100052D14000100000005 /* Resources */ = {
-			isa = PBXGroup;
-			children = (
-				F6A100062D14000100000006 /* Seed */,
-			);
-			path = Resources;
-			sourceTree = "<group>";
-		};
-		F6A100062D14000100000006 /* Seed */ = {
-			isa = PBXGroup;
-			children = (
-				F6A100032D14000100000003 /* exercise_categories.json */,
-				F6A100042D14000100000004 /* exercises.json */,
-			);
-			path = Seed;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
