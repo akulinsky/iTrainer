@@ -230,3 +230,23 @@ extension View {
         modifier(ShakeViewModifier(sink: sink, intensity: intensity, duration: duration))
     }
 }
+
+// MARK: - apply If, use for modifiers
+
+extension View {
+    @ViewBuilder
+    func applyIf<T: View>(_ condition: Bool, apply: (Self) -> T) -> some View {
+        if condition {
+            apply(self)
+        } else {
+            self
+        }
+    }
+}
+
+extension View {
+    @ViewBuilder
+    func contentSelf<T: View>(content: (Self) -> T) -> some View {
+        content(self)
+    }
+}

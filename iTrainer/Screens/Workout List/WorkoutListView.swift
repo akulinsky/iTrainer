@@ -11,89 +11,87 @@ import SDWebImageSwiftUI
 //Avatar
 //https://randomuser.me/api/portraits/men/38.jpg
 
+enum WorkoutListViewRoute: Hashable {
+    case workoutGroupListView(item: WorkoutModel)
+}
+
 struct WorkoutListView: View {
     
     @StateObject var viewModel = WorkoutListViewModel()
     
     @State private var editMode = EditMode.inactive
     
-    @State private var path = NavigationPath()
+    @StateObject private var navigationManager = NavigationManager()
     
     var body: some View {
         
-        NavigationStack(path: $path) {
-            if let workout = viewModel.pinnedWorkout {
-                WorkoutGroupListView(viewModel: WorkoutGroupListViewModel(workout: workout))
-            } else {
-                VStack {
-                    List {
-                        ForEach(viewModel.workouts) { item in
-                            cells(for: item)
-                        }
-                        .onDelete(perform: deleteItems)
-                        .onMove(perform: moveItems)
+        NavigationStack(path: $navigationManager.path) {
+            VStack {
+                List {
+                    ForEach(viewModel.workouts) { item in
+                        cells(for: item)
                     }
-                    .refreshable {
+                    .onDelete(perform: deleteItems)
+                    .onMove(perform: moveItems)
+                }
+                .refreshable {
+                    refresh()
+                }
+                .environment(\.editMode, $editMode)
+            }
+            .navigationTitle("Workouts")
+            .toolbar {
+                ToolbarItem(placement: .navigationBarTrailing) {
+                    optionButton()
+                }
+            }
+            .task {
+                viewModel.reloadData {
+                    if viewModel.workouts.count == 0 {
                         refresh()
                     }
-                    .environment(\.editMode, $editMode)
                 }
-                .navigationTitle("Workouts")
-                .toolbar {
-                    ToolbarItem(placement: .navigationBarTrailing) {
-                        optionButton()
-                    }
-                }
-                .task {
-                    viewModel.reloadData {
-                        if viewModel.workouts.count == 0 {
-                            refresh()
-                        }
-                    }
-                }
-                .sheet(isPresented: $viewModel.isEditWorkout, content: {
-                    editNameView()
-                        .presentationDetents([.height(250)])
-                })
             }
+            .sheet(isPresented: $viewModel.isEditWorkout, content: {
+                editNameView()
+                    .presentationDetents([.height(250)])
+            })
+            .contentSelf(content: { view in
+                contentViewNavigation(content: view)
+            })
         }
         .task {
             viewModel.setup()
         }
     }
     
+    @ViewBuilder
+    private func contentViewNavigation<T: View>(content: T) -> some View {
+        content
+            .navigationDestination(for: WorkoutListViewRoute.self, destination: { item in
+                switch item {
+                case .workoutGroupListView(let model):
+                    WorkoutGroupListView(viewModel: WorkoutGroupListViewModel(workout: model))
+                        .environment(\.navigation, navigationManager)
+                }
+            })
+    }
+    
+    
     private func cells(for item: WorkoutModel) -> some View {
-        switch editMode {
-        case .active:
-            return AnyView(
-                ZStack {
-                    WorkoutListCell(model: item) {
-                        switch $0 {
-                        case .update(let updateModel):
-                            viewModel.edit(workout: updateModel)
-                            break
-                        default:
-                            break
-                        }
-                    }
+        
+        WorkoutListCell(model: item) {
+            switch $0 {
+            case .update(let updateModel):
+                switch editMode {
+                case .active:
+                    viewModel.edit(workout: updateModel)
+                default:
+                    navigationManager.path.append(WorkoutListViewRoute.workoutGroupListView(item: item))
                 }
-            )
-        default:
-            return AnyView(
-                NavigationLink {
-                    WorkoutGroupListView(viewModel: WorkoutGroupListViewModel(workout: item))
-                    
-                } label: {
-                    WorkoutListCell(model: item) {
-                        switch $0 {
-                        case .update(_):
-                            break
-                        default:
-                            break
-                        }
-                    }
-                }
-            )
+            default:
+                break
+            }
         }
     }
     
