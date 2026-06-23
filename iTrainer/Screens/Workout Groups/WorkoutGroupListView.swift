@@ -30,6 +30,11 @@ struct WorkoutGroupListView: View {
                     emptyWorkoutView()
                 } else {
                     List {
+                        workoutStatusWidget
+                            .listRowInsets(EdgeInsets(top: 10, leading: 20, bottom: 12, trailing: 20))
+                            .listRowSeparator(.hidden)
+                            .listRowBackground(AppColor.backgroundPrimary)
+                        
                         ForEach(viewModel.workoutGroups) { item in
                             cells(for: item)
                                 .listRowInsets(EdgeInsets(top: 6, leading: 20, bottom: 6, trailing: 20))
@@ -118,8 +123,20 @@ struct WorkoutGroupListView: View {
         }
     }
     
+    private var workoutStatusWidget: some View {
+        WorkoutStatusWidget(workoutTime: 9805,
+                            restTime: 38,
+                            restProgress: 0.72,
+                            workoutProgress: 0.64)
+    }
+    
     private func cells(for item: WorkoutGroupModel) -> some View {
-        WorkoutGroupCell(model: item) {
+        let index = viewModel.workoutGroups.firstIndex { $0.id == item.id } ?? 0
+        
+        return WorkoutGroupCell(model: item,
+                                progress: progress(for: index),
+                                status: status(for: index),
+                                exerciseCount: viewModel.exerciseCount(for: item.id)) {
             switch $0 {
             case .update(let updateModel):
                 switch editMode {
@@ -131,6 +148,32 @@ struct WorkoutGroupListView: View {
             default:
                 break
             }
+        }
+    }
+    
+    private func progress(for index: Int) -> Double {
+        switch index {
+        case 0:
+            0.64
+        case 1:
+            1
+        case 2:
+            0
+        case 3:
+            0.22
+        default:
+            0
+        }
+    }
+    
+    private func status(for index: Int) -> WorkoutGroupStatus {
+        switch index {
+        case 0:
+            .active
+        case 1:
+            .lastCompleted
+        default:
+            .normal
         }
     }
     

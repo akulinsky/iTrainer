@@ -7,6 +7,12 @@
 
 import SwiftUI
 
+enum ExerciseProgressStatus {
+    case active(progress: Double)
+    case completed(progress: Double)
+    case none
+}
+
 struct ExerciseCell: View {
     
     enum Action {
@@ -19,13 +25,17 @@ struct ExerciseCell: View {
     private var actionBlock: ActionBlock
     
     var model: ExerciseModel
+    private let progressStatus: ExerciseProgressStatus
     
     private let iconSize: CGFloat = 72
     
     @Environment(\.editMode) var editMode
     
-    init(model: ExerciseModel, actionBlock: @escaping ActionBlock) {
+    init(model: ExerciseModel,
+         progressStatus: ExerciseProgressStatus = .none,
+         actionBlock: @escaping ActionBlock) {
         self.model = model
+        self.progressStatus = progressStatus
         self.actionBlock = actionBlock
     }
     
@@ -68,15 +78,20 @@ struct ExerciseCell: View {
                             .minimumScaleFactor(0.86)
                         
                         if let type = model.type {
-                            Text(type.type.displayName)
-                                .font(AppFont.rowSubtitle)
-                                .foregroundStyle(AppColor.textSecondary)
+                            HStack(alignment: .center, spacing: 8) {
+                                Text(type.type.displayName)
+                                    .font(AppFont.rowSubtitle)
+                                    .foregroundStyle(AppColor.textSecondary)
+                                
+                                Spacer(minLength: 8)
+                                
+                                progressStatusText
+                            }
                         }
                     }
-                    
-                    Spacer(minLength: 8)
+                    .frame(maxWidth: .infinity, alignment: .leading)
                 }
-                .padding(12)
+                .padding(.init(top: 12, leading: 12, bottom: 12, trailing: 8))
                 .frame(minHeight: 96)
                 .background(AppColor.surfacePrimary)
                 .clipShape(RoundedRectangle(cornerRadius: 14, style: .continuous))
@@ -94,8 +109,34 @@ struct ExerciseCell: View {
         
         view
     }
+    
+    @ViewBuilder
+    private var progressStatusText: some View {
+        switch progressStatus {
+        case .active(let progress):
+            Text(progressText(for: progress))
+                .font(AppFont.exerciseProgressValue)
+                .foregroundStyle(AppColor.progressAmber)
+        case .completed(let progress):
+            Text(progressText(for: progress))
+                .font(AppFont.exerciseProgressValue)
+                .foregroundStyle(AppColor.progressGreen)
+        case .none:
+            EmptyView()
+        }
+    }
+    
+    private func progressText(for progress: Double) -> String {
+        "\(Int((progress.clampedProgress * 100).rounded()))%"
+    }
 }
 
 #Preview {
     ExerciseCell(model: ExerciseModel(title: "TEST", typeId: "0")) { action in }
+}
+
+private extension Double {
+    var clampedProgress: Double {
+        min(max(self, 0), 1)
+    }
 }

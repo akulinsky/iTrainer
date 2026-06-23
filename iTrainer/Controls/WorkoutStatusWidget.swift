@@ -1,0 +1,187 @@
+//
+//  WorkoutStatusWidget.swift
+//  iTrainer
+//
+//  Created by Andrey Kulinskiy on 23.06.2026.
+//
+
+import SwiftUI
+
+struct WorkoutStatusWidget: View {
+    let workoutTime: TimeInterval
+    let restTime: TimeInterval
+    let restProgress: Double
+    let workoutProgress: Double
+    let onWorkoutTap: () -> Void
+    let onRestTap: () -> Void
+    let onProgressTap: () -> Void
+    
+    init(workoutTime: TimeInterval,
+         restTime: TimeInterval,
+         restProgress: Double,
+         workoutProgress: Double,
+         onWorkoutTap: @escaping () -> Void = {},
+         onRestTap: @escaping () -> Void = {},
+         onProgressTap: @escaping () -> Void = {}) {
+        self.workoutTime = workoutTime
+        self.restTime = restTime
+        self.restProgress = restProgress
+        self.workoutProgress = workoutProgress
+        self.onWorkoutTap = onWorkoutTap
+        self.onRestTap = onRestTap
+        self.onProgressTap = onProgressTap
+    }
+    
+    var body: some View {
+        VStack(alignment: .leading, spacing: 10) {
+            Text("Active workout")
+                .font(AppFont.workoutWidgetTitle)
+                .foregroundStyle(AppColor.textPrimary)
+            
+            HStack(alignment: .top, spacing: 14) {
+                WorkoutStatusMetricView(title: "Workout",
+                                        value: workoutTime.workoutStatusDisplayTime,
+                                        color: AppColor.workoutGreen,
+                                        progress: 1,
+                                        isFullRing: true,
+                                        action: onWorkoutTap)
+                
+                WorkoutStatusMetricView(title: "Rest",
+                                        value: restTime.minuteSecond,
+                                        color: AppColor.restAmber,
+                                        progress: restProgress,
+                                        isFullRing: false,
+                                        action: onRestTap)
+                
+                WorkoutStatusMetricView(title: "Progress",
+                                        value: "\(workoutProgressPercent)%",
+                                        color: workoutProgressColor,
+                                        progress: workoutProgress,
+                                        isFullRing: false,
+                                        action: onProgressTap)
+            }
+        }
+        .padding(18)
+        .background(AppColor.surfacePrimary)
+        .clipShape(RoundedRectangle(cornerRadius: 18, style: .continuous))
+        .overlay {
+            RoundedRectangle(cornerRadius: 18, style: .continuous)
+                .stroke(AppColor.separatorSoft, lineWidth: 1)
+        }
+    }
+    
+    private var workoutProgressPercent: Int {
+        Int((workoutProgress.clampedProgress * 100).rounded())
+    }
+    
+    private var workoutProgressColor: Color {
+        switch workoutProgressPercent {
+        case 0...32:
+            AppColor.progressRed
+        case 33...65:
+            AppColor.progressAmber
+        default:
+            AppColor.progressGreen
+        }
+    }
+}
+
+private struct WorkoutStatusMetricView: View {
+    let title: String
+    let value: String
+    let color: Color
+    let progress: Double
+    let isFullRing: Bool
+    let action: () -> Void
+    
+    var body: some View {
+        Button(action: action) {
+            VStack(spacing: 10) {
+                ZStack {
+                    WorkoutStatusRing(progress: progress,
+                                      color: color,
+                                      isFullRing: isFullRing)
+                    
+                    Text(value)
+                        .font(AppFont.workoutWidgetValue)
+                        .foregroundStyle(AppColor.textPrimary)
+                        .lineLimit(1)
+                        .minimumScaleFactor(0.58)
+                        .padding(.horizontal, 12)
+                }
+                .aspectRatio(1, contentMode: .fit)
+                .frame(maxWidth: 110)
+                
+                Text(title)
+                    .font(AppFont.workoutWidgetLabel)
+                    .foregroundStyle(AppColor.textPrimary)
+                    .lineLimit(1)
+                    .minimumScaleFactor(0.8)
+            }
+            .frame(maxWidth: .infinity)
+            .contentShape(Rectangle())
+        }
+        .buttonStyle(.plain)
+    }
+}
+
+private struct WorkoutStatusRing: View {
+    let progress: Double
+    let color: Color
+    let isFullRing: Bool
+    
+    private let lineWidth: CGFloat = 5
+    
+    var body: some View {
+        ZStack {
+            if isFullRing {
+                Circle()
+                    .stroke(color, style: StrokeStyle(lineWidth: lineWidth, lineCap: .round))
+            } else {
+                Circle()
+                    .stroke(AppColor.progressTrack, lineWidth: lineWidth)
+                
+                Circle()
+                    .trim(from: 0, to: progress.clampedProgress)
+                    .stroke(color, style: StrokeStyle(lineWidth: lineWidth, lineCap: .round))
+                    .rotationEffect(.degrees(-90))
+                    .animation(.easeOut, value: progress.clampedProgress)
+            }
+        }
+        .padding(lineWidth / 2)
+    }
+}
+
+private extension Double {
+    var clampedProgress: Double {
+        min(max(self, 0), 1)
+    }
+}
+
+private extension TimeInterval {
+    var workoutStatusDisplayTime: String {
+        let safeValue = max(self, 0)
+        let hours = Int(safeValue / 3600)
+        let minutes = Int(safeValue / 60) % 60
+        let seconds = Int(safeValue) % 60
+        
+        if hours > 0 {
+            return String(format: "%d:%02d:%02d", hours, minutes, seconds)
+        }
+        return String(format: "%d:%02d", minutes, seconds)
+    }
+}
+
+#Preview {
+    ZStack {
+        AppColor.backgroundPrimary
+            .ignoresSafeArea()
+        
+        WorkoutStatusWidget(workoutTime: 9805,
+                            restTime: 38,
+                            restProgress: 0.72,
+                            workoutProgress: 0.64)
+            .padding(20)
+    }
+    .preferredColorScheme(.light)
+}

@@ -15,6 +15,8 @@ class WorkoutGroupListViewModel: ObservableObject {
     
     @Published var workoutGroups = [WorkoutGroupModel]()
     
+    @Published private var exerciseCountsByGroupId = [UUID: Int]()
+    
     @Published var isShowAlert = false
     
     @Published var isEditGroup = false
@@ -40,8 +42,10 @@ class WorkoutGroupListViewModel: ObservableObject {
             
             let dataManager = DataManagerBackground(container: DataContainer.shared.sharedModelContainer)
             let items = await dataManager.fetchWorkoutGroups(for: workout.id).map { WorkoutGroupModel(model: $0) }
+            let exerciseCountsByGroupId = await exerciseCounts(for: items, dataManager: dataManager)
             await MainActor.run {
                 workoutGroups = items
+                self.exerciseCountsByGroupId = exerciseCountsByGroupId
                 if let complete = complete {
                     complete()
                 }
@@ -81,6 +85,7 @@ class WorkoutGroupListViewModel: ObservableObject {
             await MainActor.run {
                 self.workout = selectedData.workout
                 self.workoutGroups = selectedData.groups
+                self.exerciseCountsByGroupId = selectedData.exerciseCountsByGroupId
                 self.isSelectWorkoutPresented = false
             }
         }
@@ -106,19 +111,36 @@ class WorkoutGroupListViewModel: ObservableObject {
             await MainActor.run {
                 self.workout = selectedData.workout
                 self.workoutGroups = selectedData.groups
+                self.exerciseCountsByGroupId = selectedData.exerciseCountsByGroupId
                 complete?()
             }
         }
     }
     
-    private func selectedWorkoutData(from dataManager: DataManagerBackground) async -> (workout: WorkoutModel?, groups: [WorkoutGroupModel]) {
+    private func selectedWorkoutData(from dataManager: DataManagerBackground) async -> (workout: WorkoutModel?, groups: [WorkoutGroupModel], exerciseCountsByGroupId: [UUID: Int]) {
         guard let selectedWorkoutDB = await dataManager.fetchSelectedWorkout() else {
-            return (nil, [])
+            return (nil, [], [:])
         }
         
         let selectedWorkout = WorkoutModel(model: selectedWorkoutDB)
         let groups = await dataManager.fetchWorkoutGroups(for: selectedWorkout.id).map { WorkoutGroupModel(model: $0) }
-        return (selectedWorkout, groups)
+        var exerciseCountsByGroupId = [UUID: Int]()
+        for group in groups {
+            exerciseCountsByGroupId[group.id] = await dataManager.fetchExercises(for: group.id).filter { !$0.isHeadline }.count
+        }
+        return (selectedWorkout, groups, exerciseCountsByGroupId)
+    }
+    
+    func exerciseCount(for groupId: UUID) -> Int {
+        exerciseCountsByGroupId[groupId] ?? 0
+    }
+    
+    private func exerciseCounts(for groups: [WorkoutGroupModel], dataManager: DataManagerBackground) async -> [UUID: Int] {
+        var counts = [UUID: Int]()
+        for group in groups {
+            counts[group.id] = await dataManager.fetchExercises(for: group.id).filter { !$0.isHeadline }.count
+        }
+        return counts
     }
     
     func update(item: WorkoutGroupModel) {

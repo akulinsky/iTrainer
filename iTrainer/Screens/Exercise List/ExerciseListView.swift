@@ -28,6 +28,11 @@ struct ExerciseListView: View {
     var body: some View {
         VStack(spacing: 0) {
             List {
+                workoutStatusWidget
+                    .listRowInsets(EdgeInsets(top: 10, leading: 20, bottom: 12, trailing: 20))
+                    .listRowSeparator(.hidden)
+                    .listRowBackground(AppColor.backgroundPrimary)
+                
                 ForEach(viewModel.exercises) { item in
                     cells(for: item)
                         .listRowInsets(rowInsets(for: item))
@@ -104,8 +109,10 @@ struct ExerciseListView: View {
     }
     
     private func cells(for item: ExerciseModel) -> some View {
+        let index = viewModel.exercises.filter { !$0.isHeadline }.firstIndex { $0.id == item.id } ?? 0
         
-        ExerciseCell(model: item) {
+        return ExerciseCell(model: item,
+                            progressStatus: progressStatus(for: index, item: item)) {
             switch $0 {
             case .update(let updateModel):
                 switch editMode {
@@ -119,6 +126,28 @@ struct ExerciseListView: View {
             default:
                 break
             }
+        }
+    }
+    
+    private var workoutStatusWidget: some View {
+        WorkoutStatusWidget(workoutTime: 9805,
+                            restTime: 38,
+                            restProgress: 0.72,
+                            workoutProgress: 0.64)
+    }
+    
+    private func progressStatus(for index: Int, item: ExerciseModel) -> ExerciseProgressStatus {
+        guard !item.isHeadline else {
+            return .none
+        }
+        
+        switch index {
+        case 0:
+            return .active(progress: 0.64)
+        case 1:
+            return .completed(progress: 1)
+        default:
+            return .none
         }
     }
     
