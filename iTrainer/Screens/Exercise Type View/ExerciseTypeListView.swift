@@ -44,6 +44,7 @@ struct ExerciseTypeListView: View {
                 }
             }
             .listStyle(.plain)
+            .scrollDismissesKeyboard(.immediately)
             .scrollContentBackground(.hidden)
             .background(AppColor.backgroundPrimary)
             .navigationTitle(viewModel.categoryTitle)

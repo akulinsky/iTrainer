@@ -28,6 +28,7 @@ struct ExerciseCategoryView: View {
                 }
             }
             .listStyle(.plain)
+            .scrollDismissesKeyboard(.immediately)
             .scrollContentBackground(.hidden)
             .background(AppColor.backgroundPrimary)
             
