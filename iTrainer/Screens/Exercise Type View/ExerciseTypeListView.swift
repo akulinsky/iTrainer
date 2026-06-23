@@ -61,9 +61,7 @@ struct ExerciseTypeListView: View {
     
     private func cells(for item: ExerciseTypeModel) -> some View {
         NavigationLink {
-            Text("For \(item.title) additional information.")
-                .multilineTextAlignment(.center)
-                .padding()
+            exerciseInfo(for: item)
         } label: {
             ExerciseTypeCell(model: item, 
                              mode: viewModel.mode,
@@ -71,6 +69,23 @@ struct ExerciseTypeListView: View {
                 viewModel.toggleSelectExercise(with: item.id)
             }
         }
+    }
+    
+    @ViewBuilder
+    private func exerciseInfo(for item: ExerciseTypeModel) -> some View {
+        VStack {
+            
+            if let icon = item.icon {
+                icon
+                    .resizable()
+                    .scaledToFit()
+            }
+            
+            Text("For \(item.title) additional information.")
+                .multilineTextAlignment(.center)
+                .padding()
+        }
+        .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .top)
     }
 }
 
