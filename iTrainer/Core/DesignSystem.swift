@@ -23,5 +23,7 @@ enum AppFont {
     static let screenTitle: Font = .system(size: 28, weight: .bold)
     static let rowTitle: Font = .system(size: 17, weight: .semibold)
     static let rowSubtitle: Font = .system(size: 14, weight: .regular)
+    static let categoryCardTitle: Font = .system(size: 24, weight: .bold)
+    static let categoryCardSubtitle: Font = .system(size: 17, weight: .regular)
     static let caption: Font = .system(size: 12, weight: .medium)
 }

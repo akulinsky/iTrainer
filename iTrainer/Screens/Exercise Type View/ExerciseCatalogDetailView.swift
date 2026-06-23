@@ -11,46 +11,82 @@ struct ExerciseCatalogDetailView: View {
     
     let model: ExerciseTypeModel
     
-    private let iconHeight: CGFloat = 280
+    private let iconHeight: CGFloat = 260
+    private let cardCornerRadius: CGFloat = 16
     
     var body: some View {
         ScrollView {
-            VStack(spacing: 18) {
-                if let icon = model.icon {
-                    icon
-                        .resizable()
-                        .scaledToFit()
-                        .frame(maxWidth: .infinity)
-                        .frame(height: iconHeight)
-                        .padding(.top, 16)
-                }
-                
-                VStack(spacing: 8) {
-                    Text(model.displayName)
-                        .font(AppFont.screenTitle)
-                        .foregroundStyle(AppColor.textPrimary)
-                        .multilineTextAlignment(.center)
-                    
-                    Text(model.type.displayName)
-                        .font(AppFont.rowSubtitle)
-                        .foregroundStyle(AppColor.textSecondary)
-                }
-                .frame(maxWidth: .infinity)
-                
-                VStack(alignment: .leading, spacing: 12) {
-                    metadataRow(title: "Category", value: model.type.displayName)
-                    metadataRow(title: "Parameters", value: parametersText)
-                }
-                .padding(16)
-                .background(AppColor.surfacePrimary)
-                .clipShape(RoundedRectangle(cornerRadius: 8, style: .continuous))
+            VStack(spacing: 16) {
+                heroCard
+                titleCard
+                metadataCard
             }
-            .padding(.horizontal, 16)
+            .padding(.horizontal, 20)
+            .padding(.top, 12)
             .padding(.bottom, 24)
         }
         .background(AppColor.backgroundPrimary)
         .navigationTitle(model.displayName)
         .navigationBarTitleDisplayMode(.inline)
+    }
+    
+    private var heroCard: some View {
+        ZStack {
+            AppColor.surfacePrimary
+            
+            if let icon = model.icon {
+                icon
+                    .resizable()
+                    .scaledToFill()
+                    .frame(maxWidth: .infinity)
+                    .clipped()
+            }
+        }
+        .frame(maxWidth: .infinity)
+        .clipShape(RoundedRectangle(cornerRadius: cardCornerRadius, style: .continuous))
+        .overlay {
+            RoundedRectangle(cornerRadius: cardCornerRadius, style: .continuous)
+                .stroke(AppColor.separatorSoft, lineWidth: 1)
+        }
+    }
+    
+    private var titleCard: some View {
+        VStack(spacing: 8) {
+            Text(model.displayName)
+                .font(AppFont.screenTitle)
+                .foregroundStyle(AppColor.textPrimary)
+                .multilineTextAlignment(.center)
+                .lineLimit(3)
+                .minimumScaleFactor(0.82)
+            
+            Text(model.type.displayName)
+                .font(AppFont.categoryCardSubtitle)
+                .foregroundStyle(AppColor.textSecondary)
+        }
+        .padding(.vertical, 18)
+        .padding(.horizontal, 16)
+        .frame(maxWidth: .infinity)
+        .background(AppColor.surfacePrimary)
+        .clipShape(RoundedRectangle(cornerRadius: cardCornerRadius, style: .continuous))
+        .overlay {
+            RoundedRectangle(cornerRadius: cardCornerRadius, style: .continuous)
+                .stroke(AppColor.separatorSoft, lineWidth: 1)
+        }
+    }
+    
+    private var metadataCard: some View {
+        VStack(alignment: .leading, spacing: 14) {
+            metadataRow(title: "Category", value: model.type.displayName)
+            metadataRow(title: "Parameters", value: parametersText)
+        }
+        .padding(16)
+        .frame(maxWidth: .infinity, alignment: .leading)
+        .background(AppColor.surfacePrimary)
+        .clipShape(RoundedRectangle(cornerRadius: cardCornerRadius, style: .continuous))
+        .overlay {
+            RoundedRectangle(cornerRadius: cardCornerRadius, style: .continuous)
+                .stroke(AppColor.separatorSoft, lineWidth: 1)
+        }
     }
     
     private func metadataRow(title: String, value: String) -> some View {

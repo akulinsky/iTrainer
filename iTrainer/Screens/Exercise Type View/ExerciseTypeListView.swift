@@ -38,7 +38,7 @@ struct ExerciseTypeListView: View {
             List {
                 ForEach(viewModel.exercises) { item in
                     cells(for: item)
-                        .listRowInsets(EdgeInsets(top: 6, leading: 16, bottom: 6, trailing: 16))
+                        .listRowInsets(EdgeInsets(top: 6, leading: 20, bottom: 6, trailing: 20))
                         .listRowSeparator(.hidden)
                         .listRowBackground(AppColor.backgroundPrimary)
                 }

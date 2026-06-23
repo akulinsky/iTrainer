@@ -22,7 +22,7 @@ struct ExerciseCategoryView: View {
             List {
                 ForEach(viewModel.categories) { item in
                     categoryButton(for: item)
-                        .listRowInsets(EdgeInsets(top: 6, leading: 16, bottom: 6, trailing: 16))
+                        .listRowInsets(EdgeInsets(top: 8, leading: 24, bottom: 8, trailing: 24))
                         .listRowSeparator(.hidden)
                         .listRowBackground(AppColor.backgroundPrimary)
                 }
@@ -64,35 +64,40 @@ private struct ExerciseCategoryRow: View {
     let category: ExerciseCategory
     let exerciseCount: Int
     
-    private let iconSize: CGFloat = 80
+    private let iconSize: CGFloat = 104
+    private let cardCornerRadius: CGFloat = 16
+    private let iconCornerRadius: CGFloat = 14
     
     var body: some View {
-        HStack(spacing: 14) {
+        HStack(spacing: 20) {
             category.icon
                 .resizable()
-                .scaledToFit()
+                .scaledToFill()
                 .frame(width: iconSize, height: iconSize)
+                .clipShape(RoundedRectangle(cornerRadius: iconCornerRadius, style: .continuous))
             
-            VStack(alignment: .leading, spacing: 6) {
+            VStack(alignment: .leading, spacing: 8) {
                 Text(category.displayName)
-                    .font(AppFont.rowTitle)
+                    .font(AppFont.categoryCardTitle)
                     .foregroundStyle(AppColor.textPrimary)
+                    .lineLimit(2)
+                    .minimumScaleFactor(0.82)
                 
                 Text(subtitle)
-                    .font(AppFont.rowSubtitle)
+                    .font(AppFont.categoryCardSubtitle)
                     .foregroundStyle(AppColor.textSecondary)
             }
             
             Spacer(minLength: 8)
-            
-            Image(systemName: "chevron.right")
-                .font(.footnote.weight(.semibold))
-                .foregroundStyle(AppColor.textSecondary.opacity(0.55))
         }
-        .padding(.vertical, 10)
-        .padding(.horizontal, 12)
+        .padding(14)
+        .frame(minHeight: 136)
         .background(AppColor.surfacePrimary)
-        .clipShape(RoundedRectangle(cornerRadius: 8, style: .continuous))
+        .clipShape(RoundedRectangle(cornerRadius: cardCornerRadius, style: .continuous))
+        .overlay {
+            RoundedRectangle(cornerRadius: cardCornerRadius, style: .continuous)
+                .stroke(AppColor.separatorSoft, lineWidth: 1)
+        }
     }
     
     private var subtitle: String {

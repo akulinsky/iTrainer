@@ -14,7 +14,9 @@ struct ExerciseTypeCell: View {
     private let isSelected: Bool
     private let toggleBlock: () -> Void
     
-    private let iconSize: CGFloat = 64
+    private let iconSize: CGFloat = 72
+    private let cardCornerRadius: CGFloat = 14
+    private let iconCornerRadius: CGFloat = 12
     
     init(model: ExerciseTypeModel, mode: ExerciseTypeViewMode, isSelected: Bool, toggleBlock: @escaping () -> Void) {
         self.model = model
@@ -24,28 +26,25 @@ struct ExerciseTypeCell: View {
     }
     
     var body: some View {
-        HStack(spacing: 12) {
+        HStack(spacing: 14) {
             if mode == .selecting {
-                Image(systemName: isSelected ? "checkmark.circle.fill" : "circle")
-                    .font(.title2)
-                    .foregroundStyle(isSelected ? AppColor.brandPrimary : AppColor.textSecondary.opacity(0.45))
-                    .contentShape(Rectangle())
-                    .onTapGesture {
-                        toggleBlock()
-                    }
+                selectionIcon
             }
             
             if let icon = model.icon {
                 icon
                     .resizable()
-                    .scaledToFit()
+                    .scaledToFill()
                     .frame(width: iconSize, height: iconSize)
+                    .clipShape(RoundedRectangle(cornerRadius: iconCornerRadius, style: .continuous))
             }
             
-            VStack(alignment: .leading, spacing: 5) {
+            VStack(alignment: .leading, spacing: 6) {
                 Text(model.displayName)
                     .font(AppFont.rowTitle)
                     .foregroundStyle(AppColor.textPrimary)
+                    .lineLimit(2)
+                    .minimumScaleFactor(0.86)
                 
                 Text(model.type.displayName)
                     .font(AppFont.rowSubtitle)
@@ -54,10 +53,25 @@ struct ExerciseTypeCell: View {
             
             Spacer(minLength: 8)
         }
-        .padding(.vertical, 8)
-        .padding(.horizontal, 12)
+        .padding(12)
+        .frame(minHeight: 96)
         .background(AppColor.surfacePrimary)
-        .clipShape(RoundedRectangle(cornerRadius: 8, style: .continuous))
+        .clipShape(RoundedRectangle(cornerRadius: cardCornerRadius, style: .continuous))
+        .overlay {
+            RoundedRectangle(cornerRadius: cardCornerRadius, style: .continuous)
+                .stroke(AppColor.separatorSoft, lineWidth: 1)
+        }
+    }
+    
+    private var selectionIcon: some View {
+        Image(systemName: isSelected ? "checkmark.circle.fill" : "circle")
+            .font(.title2)
+            .foregroundStyle(isSelected ? AppColor.brandPrimary : AppColor.textSecondary.opacity(0.45))
+            .frame(width: 28, height: 28)
+            .contentShape(Rectangle())
+            .onTapGesture {
+                toggleBlock()
+            }
     }
 }
 

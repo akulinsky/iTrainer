@@ -63,7 +63,9 @@ struct ExerciseTypeView: View {
                 }
             }
             .navigationTitle("Exercises")
+            .navigationBarTitleDisplayMode(.inline)
             .searchable(text: $viewModel.searchQuery, prompt: "Search for exercise")
+            .tint(AppColor.brandPrimary)
             .toolbar {
                 if presentationMode.wrappedValue.isPresented {
                     ToolbarItem(placement: .topBarLeading) {
