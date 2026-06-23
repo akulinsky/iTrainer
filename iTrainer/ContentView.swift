@@ -7,6 +7,7 @@
 
 import SwiftUI
 import SwiftData
+import UIKit
 
 struct ContentView: View {
     
@@ -14,15 +15,15 @@ struct ContentView: View {
         TabView {
             WorkoutGroupListView(viewModel: WorkoutGroupListViewModel())
                 .tabItem {
-                    Label("Plans", systemImage: "list.dash")
+                    Label("Workouts", image: "icTabPlans")
                 }
             ExerciseTypeView()
                 .tabItem {
-                    Label("Exercises", systemImage: "figure.strengthtraining.traditional")
+                    Label("Exercises", image: "icTabExercises")
                 }
             ReportsView()
                 .tabItem {
-                    Label("Reports", systemImage: "calendar")
+                    Label("Reports", image: "icTabReports")
                 }
         }
         .tint(AppColor.brandPrimary)
@@ -32,6 +33,21 @@ struct ContentView: View {
             appearance.configureWithOpaqueBackground()
             appearance.backgroundColor = UIColor(AppColor.surfacePrimary)
             appearance.shadowColor = UIColor(AppColor.separatorSoft)
+
+            let normalColor = UIColor(AppColor.textSecondary)
+            let selectedColor = UIColor(AppColor.brandPrimary)
+            let itemAppearance = UITabBarItemAppearance()
+            itemAppearance.normal.iconColor = normalColor
+            itemAppearance.normal.titleTextAttributes = [.foregroundColor: normalColor]
+            itemAppearance.selected.iconColor = selectedColor
+            itemAppearance.selected.titleTextAttributes = [.foregroundColor: selectedColor]
+
+            appearance.stackedLayoutAppearance = itemAppearance
+            appearance.inlineLayoutAppearance = itemAppearance
+            appearance.compactInlineLayoutAppearance = itemAppearance
+
+            UITabBar.appearance().tintColor = selectedColor
+            UITabBar.appearance().unselectedItemTintColor = normalColor
             UITabBar.appearance().standardAppearance = appearance
             UITabBar.appearance().scrollEdgeAppearance = appearance
         }
