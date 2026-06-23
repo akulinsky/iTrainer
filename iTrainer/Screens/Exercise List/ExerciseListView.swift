@@ -26,22 +26,27 @@ struct ExerciseListView: View {
     }
     
     var body: some View {
-        VStack {
+        VStack(spacing: 0) {
             List {
                 ForEach(viewModel.exercises) { item in
                     cells(for: item)
+                        .listRowInsets(rowInsets(for: item))
+                        .listRowSeparator(.hidden)
+                        .listRowBackground(AppColor.backgroundPrimary)
                 }
                 .onDelete(perform: deleteItems)
                 .onMove(perform: moveItems)
-                .listRowInsets(EdgeInsets.init(top: 2, leading: 0,
-                                               bottom: 2, trailing: 0))
             }
+            .listStyle(.plain)
+            .scrollContentBackground(.hidden)
+            .background(AppColor.backgroundPrimary)
             .animation(.easeInOut, value: showAnimation)
             .refreshable {
                 refresh()
             }
             .environment(\.editMode, $editMode)
         }
+        .background(AppColor.backgroundPrimary)
         .environment(\.defaultMinListRowHeight, 10)
         .navigationTitle(viewModel.group.title ?? "Exercises")
         .toolbar {
@@ -115,6 +120,13 @@ struct ExerciseListView: View {
                 break
             }
         }
+    }
+    
+    private func rowInsets(for item: ExerciseModel) -> EdgeInsets {
+        if item.isHeadline, editMode != .active {
+            return EdgeInsets(top: 16, leading: 20, bottom: 4, trailing: 20)
+        }
+        return EdgeInsets(top: 6, leading: 20, bottom: 6, trailing: 20)
     }
     
     private func optionButton() -> some View {

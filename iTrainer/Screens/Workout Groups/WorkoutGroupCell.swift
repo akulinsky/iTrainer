@@ -27,12 +27,35 @@ struct WorkoutGroupCell: View {
     
     var body: some View {
         ZStack {
-            HStack {
-                VStack {
-                    Text(model.title ?? "--").leadingAlignment()
+            HStack(spacing: 14) {
+                Image(systemName: "folder.fill")
+                    .font(.system(size: 20, weight: .semibold))
+                    .foregroundStyle(AppColor.brandPrimary)
+                    .frame(width: 44, height: 44)
+                    .background(AppColor.surfaceSecondary)
+                    .clipShape(RoundedRectangle(cornerRadius: 10, style: .continuous))
+                
+                VStack(alignment: .leading, spacing: 4) {
+                    Text(model.title ?? "--")
+                        .font(AppFont.rowTitle)
+                        .foregroundStyle(AppColor.textPrimary)
+                        .lineLimit(1)
+                    
+                    Text("Workout group")
+                        .font(AppFont.rowSubtitle)
+                        .foregroundStyle(AppColor.textSecondary)
                 }
+                
+                Spacer(minLength: 8)
             }
-            .frame(height: 60)
+            .padding(12)
+            .frame(minHeight: 76)
+            .background(AppColor.surfacePrimary)
+            .clipShape(RoundedRectangle(cornerRadius: 14, style: .continuous))
+            .overlay {
+                RoundedRectangle(cornerRadius: 14, style: .continuous)
+                    .stroke(AppColor.separatorSoft, lineWidth: 1)
+            }
             
             Button("") {
 //                print("DBG_ : \(model.title ?? "--")")

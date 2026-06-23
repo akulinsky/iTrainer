@@ -25,23 +25,30 @@ struct WorkoutGroupListView: View {
     
     var body: some View {
         NavigationStack(path: $navigationManager.path) {
-            VStack {
+            VStack(spacing: 0) {
                 if viewModel.workout == nil {
                     emptyWorkoutView()
                 } else {
                     List {
                         ForEach(viewModel.workoutGroups) { item in
                             cells(for: item)
+                                .listRowInsets(EdgeInsets(top: 6, leading: 20, bottom: 6, trailing: 20))
+                                .listRowSeparator(.hidden)
+                                .listRowBackground(AppColor.backgroundPrimary)
                         }
                         .onDelete(perform: deleteItems)
                         .onMove(perform: moveItems)
                     }
+                    .listStyle(.plain)
+                    .scrollContentBackground(.hidden)
+                    .background(AppColor.backgroundPrimary)
                     .refreshable {
                         refresh()
                     }
                     .environment(\.editMode, $editMode)
                 }
             }
+            .background(AppColor.backgroundPrimary)
             .navigationTitle(viewModel.workout?.title ?? "Groups")
             .toolbar {
                 ToolbarItemGroup(placement: .navigationBarTrailing) {
@@ -91,15 +98,18 @@ struct WorkoutGroupListView: View {
             Spacer()
             Image(systemName: "list.bullet.rectangle")
                 .font(.system(size: 44))
-                .foregroundStyle(.secondary)
+                .foregroundStyle(AppColor.textSecondary)
             Text("No workout selected")
-                .font(.headline)
+                .font(AppFont.rowTitle)
+                .foregroundStyle(AppColor.textPrimary)
             Button("Choose workout", action: viewModel.showWorkoutPicker)
                 .buttonStyle(.borderedProminent)
+                .tint(AppColor.brandPrimary)
             Spacer()
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity)
         .padding()
+        .background(AppColor.backgroundPrimary)
     }
     
     private func chooseWorkoutButton() -> some View {

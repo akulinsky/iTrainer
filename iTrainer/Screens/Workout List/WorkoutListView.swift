@@ -28,23 +28,30 @@ struct WorkoutListView: View {
     var body: some View {
         
         NavigationStack(path: $navigationManager.path) {
-            VStack {
+            VStack(spacing: 0) {
                 if viewModel.workouts.isEmpty {
                     emptyWorkoutView()
                 } else {
                     List {
                         ForEach(viewModel.workouts) { item in
                             cells(for: item)
+                                .listRowInsets(EdgeInsets(top: 6, leading: 20, bottom: 6, trailing: 20))
+                                .listRowSeparator(.hidden)
+                                .listRowBackground(AppColor.backgroundPrimary)
                         }
                         .onDelete(perform: deleteItems)
                         .onMove(perform: moveItems)
                     }
+                    .listStyle(.plain)
+                    .scrollContentBackground(.hidden)
+                    .background(AppColor.backgroundPrimary)
                     .refreshable {
                         refresh()
                     }
                     .environment(\.editMode, $editMode)
                 }
             }
+            .background(AppColor.backgroundPrimary)
             .navigationTitle("Workouts")
             .toolbar {
                 ToolbarItem(placement: .navigationBarTrailing) {
@@ -69,15 +76,18 @@ struct WorkoutListView: View {
             Spacer()
             Image(systemName: "list.bullet.rectangle")
                 .font(.system(size: 44))
-                .foregroundStyle(.secondary)
+                .foregroundStyle(AppColor.textSecondary)
             Text("No workouts")
-                .font(.headline)
+                .font(AppFont.rowTitle)
+                .foregroundStyle(AppColor.textPrimary)
             Button("New workout", action: clickBtnNewWorkout)
                 .buttonStyle(.borderedProminent)
+                .tint(AppColor.brandPrimary)
             Spacer()
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity)
         .padding()
+        .background(AppColor.backgroundPrimary)
     }
     
     private func cells(for item: WorkoutModel) -> some View {

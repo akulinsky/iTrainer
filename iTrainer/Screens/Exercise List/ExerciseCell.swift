@@ -20,7 +20,7 @@ struct ExerciseCell: View {
     
     var model: ExerciseModel
     
-    private let frameSize: CGFloat = 80
+    private let iconSize: CGFloat = 72
     
     @Environment(\.editMode) var editMode
     
@@ -29,43 +29,62 @@ struct ExerciseCell: View {
         self.actionBlock = actionBlock
     }
     
-    private var heightCell: CGFloat {
-        if model.isHeadline, 
-            let editMode = editMode?.wrappedValue,
-            editMode != .active {
-            return 25
-        }
-        return frameSize
-    }
-    
     var body: some View {
-        
         let view = ZStack {
-            HStack {
-                if !model.isHeadline {
-                    if let icon = model.type?.icon {
-                        icon
-                            .resizable()
-                            .frame(width: heightCell)
-                    } else {
-                        Color.red.frame(width: heightCell)
-                    }
+            if model.isHeadline, editMode?.wrappedValue != .active {
+                HStack {
+                    Text(model.displayName)
+                        .font(AppFont.caption)
+                        .foregroundStyle(AppColor.textSecondary)
+                        .textCase(.uppercase)
+                    
+                    Spacer(minLength: 8)
                 }
-                VStack {
-                    let text = Text(model.displayName).leadingAlignment()
-                    if model.isHeadline {
-                        text.padding(.leading, 20)
-                            .foregroundStyle(.white)
-                            .font(.subheadline)
-                            .bold()
-                            .shadow(color: .black, radius: 1, x: 1.0, y: 1.0)
-                    } else {
-                        text
+                .padding(.horizontal, 4)
+                .frame(minHeight: 28)
+            } else {
+                HStack(spacing: 14) {
+                    if !model.isHeadline {
+                        if let icon = model.type?.icon {
+                            icon
+                                .resizable()
+                                .scaledToFill()
+                                .frame(width: iconSize, height: iconSize)
+                                .clipShape(RoundedRectangle(cornerRadius: 12, style: .continuous))
+                        } else {
+                            Image("icMissingImage")
+                                .resizable()
+                                .scaledToFill()
+                                .frame(width: iconSize, height: iconSize)
+                                .clipShape(RoundedRectangle(cornerRadius: 12, style: .continuous))
+                        }
                     }
                     
+                    VStack(alignment: .leading, spacing: 6) {
+                        Text(model.displayName)
+                            .font(AppFont.rowTitle)
+                            .foregroundStyle(AppColor.textPrimary)
+                            .lineLimit(2)
+                            .minimumScaleFactor(0.86)
+                        
+                        if let type = model.type {
+                            Text(type.type.displayName)
+                                .font(AppFont.rowSubtitle)
+                                .foregroundStyle(AppColor.textSecondary)
+                        }
+                    }
+                    
+                    Spacer(minLength: 8)
+                }
+                .padding(12)
+                .frame(minHeight: 96)
+                .background(AppColor.surfacePrimary)
+                .clipShape(RoundedRectangle(cornerRadius: 14, style: .continuous))
+                .overlay {
+                    RoundedRectangle(cornerRadius: 14, style: .continuous)
+                        .stroke(AppColor.separatorSoft, lineWidth: 1)
                 }
             }
-            .frame(height: heightCell)
             
             Button("") {
                 actionBlock(.update(model))
@@ -73,15 +92,7 @@ struct ExerciseCell: View {
             .frame(maxWidth: .infinity, maxHeight: .infinity)
         }
         
-        if model.isHeadline {
-            view
-                .listRowInsets(EdgeInsets.init(top: 0, leading: 0,
-                                            bottom: 0, trailing: 0))
-                .listRowBackground(Color(uiColor: .systemGray3))
-            
-        } else {
-            view
-        }
+        view
     }
 }
 
