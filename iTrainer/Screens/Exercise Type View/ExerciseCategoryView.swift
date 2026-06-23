@@ -13,8 +13,6 @@ struct ExerciseCategoryView: View {
     
     private let frameSize: CGFloat = 80
     
-//    @Environment(\.isSearching) var isSearching
-    
     init(viewModel: ExerciseTypeViewModel) {
         _viewModel = StateObject(wrappedValue: viewModel)
     }
@@ -23,28 +21,6 @@ struct ExerciseCategoryView: View {
         
         VStack {
             List(selection: $viewModel.categoryId) {
-                
-    //            Section {
-    //                ForEach(viewModel.categories) { item in
-    //
-    //                    NavigationLink {
-    //                        ExerciseTypeListView(viewModel: viewModel)
-    //                    } label: {
-    //                        HStack {
-    //                            item.icon
-    //                                .resizable()
-    //                                .frame(width: 60)
-    //                            Text(item.title).leadingAlignment()
-    //                        }
-    //                        .frame(height: 60)
-    //                    }
-    //                }
-    //            } header: {
-    //                if viewModel.mode == .selecting {
-    //                    Text("Selected: \(viewModel.countSelectedExercises)")
-    //                        .bold()
-    //                }
-    //            }
                 
                 ForEach(viewModel.categories) { item in
                     
