@@ -11,26 +11,30 @@ import SwiftData
 struct ContentView: View {
     
     var body: some View {
-        
         TabView {
             WorkoutGroupListView(viewModel: WorkoutGroupListViewModel())
                 .tabItem {
-                    Label("Workouts", systemImage: "list.dash")
+                    Label("Plans", systemImage: "list.dash")
                 }
             ExerciseTypeView()
                 .tabItem {
-                    Text("Exercises")
-                    Image(systemName: "figure.disc.sports")
+                    Label("Exercises", systemImage: "figure.strengthtraining.traditional")
                 }
             ReportsView()
                 .tabItem {
-                    Text("Reports")
-                    Image(systemName: "calendar")
+                    Label("Reports", systemImage: "calendar")
                 }
         }
-        .onAppear(perform: {
-            UITabBar.appearance().backgroundColor = .systemGray4.withAlphaComponent(0.4)
-        })
+        .tint(AppColor.brandPrimary)
+        .preferredColorScheme(.light)
+        .onAppear {
+            let appearance = UITabBarAppearance()
+            appearance.configureWithOpaqueBackground()
+            appearance.backgroundColor = UIColor(AppColor.surfacePrimary)
+            appearance.shadowColor = UIColor(AppColor.separatorSoft)
+            UITabBar.appearance().standardAppearance = appearance
+            UITabBar.appearance().scrollEdgeAppearance = appearance
+        }
     }
 }
 

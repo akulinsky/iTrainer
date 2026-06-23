@@ -9,79 +9,52 @@ import SwiftUI
 
 struct SelectExerciseBarView: View {
     
-    @Environment(\.colorScheme) var colorScheme
-    
     @Binding var countSelectedExercises: Int
     
-    var addBlock: ()->()
+    var addBlock: () -> Void
+    var clearBlock: () -> Void
     
-    var clearBlock: ()->()
-    
-    private var color: Color {
-        switch colorScheme {
-        case .light:
-            Color(UIColor.darkGray)
-        default:
-            Color(UIColor.lightGray)
-        }
+    private var isActionDisabled: Bool {
+        countSelectedExercises == 0
     }
     
     var body: some View {
-        
-        VStack(spacing: 5) {
+        HStack(spacing: 12) {
+            Text("\(countSelectedExercises) selected")
+                .font(AppFont.rowTitle)
+                .foregroundStyle(.white)
+                .frame(maxWidth: .infinity, alignment: .leading)
             
-            Text("Selected: \(countSelectedExercises)")
-                .font(.subheadline)
-                .foregroundStyle(color)
-                .bold()
-            
-            HStack(spacing: 14) {
-                
-                Button {
-                    clearBlock()
-                } label: {
-                    
-                    ZStack {
-                        RoundedRectangle(cornerRadius: 8)
-                            .stroke(color, lineWidth: 1)
-                        HStack {
-                            Spacer()
-                            Image(systemName: "trash")
-                                .font(.title2)
-                            Spacer()
-                        }
-                        .contentShape(Rectangle())
-                    }
-                }
-                .foregroundStyle(color)
-                .frame(maxWidth: .infinity, maxHeight: .infinity)
-                .disabled(countSelectedExercises == 0)
-                .buttonStyle(.plain)
-                
-                Button {
-                    addBlock()
-                } label: {
-                    
-                    ZStack {
-                        RoundedRectangle(cornerRadius: 8)
-                            .stroke(color, lineWidth: 1)
-                        HStack {
-                            Spacer()
-                            Image(systemName: "plus.app")
-                                .font(.title2)
-                            Spacer()
-                        }
-                        .contentShape(Rectangle())
-                    }
-                }
-                .foregroundStyle(color)
-                .frame(maxWidth: .infinity, maxHeight: .infinity)
-                .disabled(countSelectedExercises == 0)
-                .buttonStyle(.plain)
+            Button {
+                clearBlock()
+            } label: {
+                Image(systemName: "trash")
+                    .font(.title3.weight(.semibold))
+                    .frame(width: 42, height: 42)
+                    .contentShape(Rectangle())
             }
-            .frame(height: 46)
+            .foregroundStyle(.white)
+            .opacity(isActionDisabled ? 0.45 : 1)
+            .disabled(isActionDisabled)
+            .buttonStyle(.plain)
+            
+            Button {
+                addBlock()
+            } label: {
+                Image(systemName: "plus")
+                    .font(.title3.weight(.semibold))
+                    .frame(width: 42, height: 42)
+                    .contentShape(Rectangle())
+            }
+            .foregroundStyle(.white)
+            .opacity(isActionDisabled ? 0.45 : 1)
+            .disabled(isActionDisabled)
+            .buttonStyle(.plain)
         }
-        .padding([.leading, .trailing, .bottom])
+        .padding(.horizontal, 16)
+        .padding(.top, 10)
+        .padding(.bottom, 12)
+        .background(AppColor.brandPrimary)
     }
 }
 

@@ -9,29 +9,14 @@ import SwiftUI
 
 struct ExerciseTypeCell: View {
     
-    @Environment(\.colorScheme) var colorScheme
-    
-    private var model: ExerciseTypeModel
-    
+    private let model: ExerciseTypeModel
     private let mode: ExerciseTypeViewMode
-    
     private let isSelected: Bool
+    private let toggleBlock: () -> Void
     
-    private let frameSize: CGFloat = 80
+    private let iconSize: CGFloat = 64
     
-    private var color: Color {
-        
-        switch colorScheme {
-        case .light:
-            isSelected ? Color(UIColor.darkGray) : Color(UIColor.lightGray).opacity(0.5)
-        default:
-            isSelected ? Color(UIColor.lightGray) : Color(UIColor.darkGray).opacity(0.5)
-        }
-    }
-    
-    var toggleBlock: ()->()
-    
-    init(model: ExerciseTypeModel, mode: ExerciseTypeViewMode, isSelected: Bool, toggleBlock: @escaping ()->()) {
+    init(model: ExerciseTypeModel, mode: ExerciseTypeViewMode, isSelected: Bool, toggleBlock: @escaping () -> Void) {
         self.model = model
         self.mode = mode
         self.isSelected = isSelected
@@ -39,12 +24,12 @@ struct ExerciseTypeCell: View {
     }
     
     var body: some View {
-        HStack {
-            
+        HStack(spacing: 12) {
             if mode == .selecting {
-                Image(systemName: "checkmark.circle")
-                    .font(.title)
-                    .foregroundStyle(color)
+                Image(systemName: isSelected ? "checkmark.circle.fill" : "circle")
+                    .font(.title2)
+                    .foregroundStyle(isSelected ? AppColor.brandPrimary : AppColor.textSecondary.opacity(0.45))
+                    .contentShape(Rectangle())
                     .onTapGesture {
                         toggleBlock()
                     }
@@ -53,13 +38,26 @@ struct ExerciseTypeCell: View {
             if let icon = model.icon {
                 icon
                     .resizable()
-                    .frame(width: frameSize)
-            } else {
-                Color.red.frame(width: frameSize)
+                    .scaledToFit()
+                    .frame(width: iconSize, height: iconSize)
             }
-            Text(model.title).leadingAlignment()
+            
+            VStack(alignment: .leading, spacing: 5) {
+                Text(model.displayName)
+                    .font(AppFont.rowTitle)
+                    .foregroundStyle(AppColor.textPrimary)
+                
+                Text(model.type.displayName)
+                    .font(AppFont.rowSubtitle)
+                    .foregroundStyle(AppColor.textSecondary)
+            }
+            
+            Spacer(minLength: 8)
         }
-        .frame(height: frameSize)
+        .padding(.vertical, 8)
+        .padding(.horizontal, 12)
+        .background(AppColor.surfacePrimary)
+        .clipShape(RoundedRectangle(cornerRadius: 8, style: .continuous))
     }
 }
 

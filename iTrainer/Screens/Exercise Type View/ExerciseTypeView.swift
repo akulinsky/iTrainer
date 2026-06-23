@@ -7,6 +7,11 @@
 
 import SwiftUI
 
+enum ExerciseTypeRoute: Hashable {
+    case exerciseTypeListView(categoryId: String)
+    case exerciseDetailView(exerciseId: String)
+}
+
 struct ExerciseTypeView: View {
     
     @StateObject var viewModel: ExerciseTypeViewModel
@@ -14,6 +19,8 @@ struct ExerciseTypeView: View {
 //    @Environment(\.isSearching) private var isSearching
     
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
+    
+    @StateObject private var navigationManager = NavigationManager()
     
     let mode: ExerciseTypeViewMode
     
@@ -47,9 +54,7 @@ struct ExerciseTypeView: View {
 //                }
 //            }
         
-        
-        NavigationStack {
-            
+        NavigationStack(path: $navigationManager.path) {
             VStack {
                 if viewModel.searchQuery.isEmpty {
                     ExerciseCategoryView(viewModel: viewModel)
@@ -68,7 +73,30 @@ struct ExerciseTypeView: View {
                     }
                 }
             }
+            .contentSelf(content: { view in
+                contentViewNavigation(content: view)
+            })
         }
+        .environment(\.navigation, navigationManager)
+    }
+    
+    @ViewBuilder
+    private func contentViewNavigation<T: View>(content: T) -> some View {
+        content
+            .navigationDestination(for: ExerciseTypeRoute.self) { item in
+                switch item {
+                case .exerciseTypeListView(let categoryId):
+                    ExerciseTypeListView(viewModel: viewModel)
+                        .onAppear {
+                            viewModel.categoryId = categoryId
+                            viewModel.reloadExercises()
+                        }
+                case .exerciseDetailView(let exerciseId):
+                    if let exercise = viewModel.exercise(with: exerciseId) {
+                        ExerciseCatalogDetailView(model: exercise)
+                    }
+                }
+            }
     }
     
     private func cancel() {

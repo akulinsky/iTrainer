@@ -98,6 +98,14 @@ class ExerciseTypeViewModel: ObservableObject {
         fetchItems()
     }
     
+    func exerciseCount(for category: ExerciseCategory) -> Int {
+        arrayExercises.filter { $0.type.id == category.id }.count
+    }
+    
+    func exercise(with id: String) -> ExerciseTypeModel? {
+        arrayExercises.first { $0.id == id }
+    }
+    
     func toggleSelectExercise(with id: String) {
         
         if selectionExercises.contains(id) {

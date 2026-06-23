@@ -12,6 +12,8 @@ struct ExerciseTypeListView: View {
     
     @StateObject var viewModel: ExerciseTypeViewModel
     
+    @Environment(\.navigation) private var navigation
+    
 //    @State private var editMode = EditMode.inactive
 //    @Environment(\.isSearching) var isSearching
     
@@ -32,15 +34,18 @@ struct ExerciseTypeListView: View {
     
     @ViewBuilder
     private var content: some View {
-        
-        VStack {
+        VStack(spacing: 0) {
             List {
                 ForEach(viewModel.exercises) { item in
                     cells(for: item)
+                        .listRowInsets(EdgeInsets(top: 6, leading: 16, bottom: 6, trailing: 16))
+                        .listRowSeparator(.hidden)
+                        .listRowBackground(AppColor.backgroundPrimary)
                 }
-                .listRowInsets(EdgeInsets.init(top: 2, leading: 0,
-                                               bottom: 2, trailing: 0))
             }
+            .listStyle(.plain)
+            .scrollContentBackground(.hidden)
+            .background(AppColor.backgroundPrimary)
             .navigationTitle(viewModel.categoryTitle)
             .navigationBarTitleDisplayMode(.inline)
             .onAppear {
@@ -56,36 +61,20 @@ struct ExerciseTypeListView: View {
                 }
             }
         }
+        .background(AppColor.backgroundPrimary)
     }
     
-    
     private func cells(for item: ExerciseTypeModel) -> some View {
-        NavigationLink {
-            exerciseInfo(for: item)
+        Button {
+            navigation.path.append(ExerciseTypeRoute.exerciseDetailView(exerciseId: item.id))
         } label: {
-            ExerciseTypeCell(model: item, 
+            ExerciseTypeCell(model: item,
                              mode: viewModel.mode,
                              isSelected: viewModel.isSelectedExercise(with: item.id)) {
                 viewModel.toggleSelectExercise(with: item.id)
             }
         }
-    }
-    
-    @ViewBuilder
-    private func exerciseInfo(for item: ExerciseTypeModel) -> some View {
-        VStack {
-            
-            if let icon = item.icon {
-                icon
-                    .resizable()
-                    .scaledToFit()
-            }
-            
-            Text("For \(item.title) additional information.")
-                .multilineTextAlignment(.center)
-                .padding()
-        }
-        .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .top)
+        .buttonStyle(.plain)
     }
 }
 
