@@ -223,7 +223,7 @@ struct ExerciseView: View {
         TextField(item.param.title, text: value, onEditingChanged: { focused in
             self.viewModel.focused(focused, paramData: item)
         })
-        .font(AppFont.rowSubtitle)
+        .font(AppFont.rowTitle)
         .foregroundStyle(AppColor.textPrimary)
         .keyboardType(item.keyboardType)
         .multilineTextAlignment(.center)

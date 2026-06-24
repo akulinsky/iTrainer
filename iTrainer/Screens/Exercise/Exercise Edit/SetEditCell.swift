@@ -53,8 +53,11 @@ struct SetEditCell: View {
             Spacer(minLength: 6)
             
             HStack(alignment: .center, spacing: 6) {
-                ForEach($viewModel.paramsData) { $item in
-                    parameterInput(item: $item)
+                ForEach(viewModel.paramsData) { item in
+                    SetEditParameterInput(item: item) { focused, item, complete in
+                        viewModel.focused(focused, paramData: item, complete: complete)
+                        updateUI.toggle()
+                    }
                 }
             }
             
@@ -71,20 +74,45 @@ struct SetEditCell: View {
         }
     }
     
-    @ViewBuilder
-    private func parameterInput(item: Binding<SetEditCellViewModel.ParamData>) -> some View {
+    private func summaryText(for item: SetEditCellViewModel.ParamData) -> String {
+        let value = item.value.isEmpty ? "-" : item.value
+        return "\(item.param.title): \(value)"
+    }
+}
+
+private struct SetEditParameterInput: View {
+    @ObservedObject var item: SetEditCellViewModel.ParamData
+    let onEditingChanged: (Bool, SetEditCellViewModel.ParamData, (() -> Void)?) -> Void
+    
+    @State private var updateUI = false
+    
+    var body: some View {
         VStack(spacing: 4) {
-            TextField(item.wrappedValue.param.title, text: item.value, onEditingChanged: { focused in
-                self.viewModel.focused(focused, paramData: item.wrappedValue) {
-                    self.updateUI.toggle()
+            ZStack {
+                if item.value.isEmpty {
+                    Text(item.param.title)
+                        .font(AppFont.caption)
+                        .foregroundStyle(AppColor.textSecondary)
+                        .lineLimit(1)
+                        .minimumScaleFactor(0.72)
+                        .padding(.horizontal, 6)
+                        .allowsHitTesting(false)
                 }
-            })
-            .id(updateUI)
-            .textFieldStyle(.plain)
-            .font(AppFont.rowTitle)
-            .multilineTextAlignment(.center)
-            .foregroundStyle(AppColor.textPrimary)
-            .padding(.horizontal, 8)
+                
+                TextField("", text: $item.value, onEditingChanged: { focused in
+                    onEditingChanged(focused, item) {
+                        updateUI.toggle()
+                    }
+                })
+                .id(updateUI)
+                .textFieldStyle(.plain)
+                .font(AppFont.rowTitle)
+                .multilineTextAlignment(.center)
+                .foregroundStyle(AppColor.textPrimary)
+                .padding(.horizontal, 8)
+                .shakeAnimation(item.shake)
+                .keyboardType(item.keyboardType)
+            }
             .frame(width: 66, height: 48)
             .background(AppColor.surfacePrimary)
             .clipShape(RoundedRectangle(cornerRadius: 8))
@@ -92,10 +120,8 @@ struct SetEditCell: View {
                 RoundedRectangle(cornerRadius: 8)
                     .stroke(AppColor.separatorSoft, lineWidth: 1)
             }
-            .shakeAnimation(item.wrappedValue.shake)
-            .keyboardType(item.wrappedValue.keyboardType)
             
-            Text(unitText(for: item.wrappedValue.param))
+            Text(unitText(for: item.param))
                 .font(AppFont.rowSubtitle)
                 .foregroundStyle(AppColor.textSecondary)
                 .lineLimit(1)
@@ -103,11 +129,6 @@ struct SetEditCell: View {
                 .fixedSize(horizontal: true, vertical: false)
                 .frame(width: 66, height: 18)
         }
-    }
-    
-    private func summaryText(for item: SetEditCellViewModel.ParamData) -> String {
-        let value = item.value.isEmpty ? "-" : item.value
-        return "\(item.param.title): \(value)"
     }
     
     private func unitText(for param: SetsParameter) -> String {
