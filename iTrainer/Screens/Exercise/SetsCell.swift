@@ -19,7 +19,7 @@ struct SetsCell: View {
     
     private var actionBlock: ActionBlock
     
-    @State private var colorEditButton: Color = .gray
+    @State private var colorEditButton: Color = AppColor.textSecondary
     
     var model: SetsModel
     
@@ -29,44 +29,79 @@ struct SetsCell: View {
     }
     
     var body: some View {
-        
-        HStack(alignment: .firstTextBaseline) {
-            Text("# \(model.index):")
-                .font(.footnote)
-                .bold()
+        HStack(spacing: 12) {
+            Image("icTargetSet")
+                .renderingMode(.template)
+                .resizable()
+                .scaledToFit()
+                .foregroundStyle(AppColor.progressGreen)
+                .frame(width: 24, height: 24)
             
-            ForEach(model.parameters) { item in
-                Text("\(item.title):")
-                    .font(.footnote)
-                Text(item.stringValue).bold()
+            VStack(alignment: .leading, spacing: 4) {
+                Text("Set \(model.index)")
+                    .font(AppFont.rowTitle)
+                    .foregroundStyle(AppColor.textPrimary)
+                
+                Text(parametersText)
+                    .font(AppFont.rowSubtitle)
+                    .foregroundStyle(AppColor.textSecondary)
+                    .lineLimit(1)
+                    .minimumScaleFactor(0.82)
             }
+            .frame(maxWidth: .infinity, alignment: .leading)
             
-            Spacer()
-            
-            HStack {
-                Spacer()
+            Button(action: edit) {
                 Image(systemName: "pencil")
+                    .font(.system(size: 17, weight: .semibold))
                     .foregroundStyle(colorEditButton)
-                    .font(.title2)
-                    .frame(maxWidth: 50, maxHeight: .infinity, alignment: .trailing)
-                    .onTapGesture {
-                        colorEditButton = Color(UIColor.darkGray)
-                        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + .milliseconds(150)) {
-                            colorEditButton = .gray
-                        }
-                        actionBlock(.update(model))
-                    }
+                    .frame(width: 36, height: 36)
+                    .contentShape(Rectangle())
             }
+            .buttonStyle(.plain)
         }
-//        .foregroundStyle(.gray)
-        .frame(height: 30)
-        .frame(maxWidth: .infinity, alignment: .trailing)
+        .padding(.horizontal, 12)
+        .padding(.vertical, 10)
+        .frame(minHeight: 58)
+        .background(AppColor.surfacePrimary)
+        .clipShape(RoundedRectangle(cornerRadius: 14, style: .continuous))
+        .overlay {
+            RoundedRectangle(cornerRadius: 14, style: .continuous)
+                .stroke(AppColor.separatorSoft, lineWidth: 1)
+        }
+        .contentShape(Rectangle())
         .onTapGesture {
             actionBlock(.selected(model))
         }
+    }
+    
+    private var parametersText: String {
+        model.parameters.map { "\($0.stringValue) \($0.shortTitle)" }.joined(separator: " · ")
+    }
+    
+    private func edit() {
+        colorEditButton = AppColor.textPrimary
+        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + .milliseconds(150)) {
+            colorEditButton = AppColor.textSecondary
+        }
+        actionBlock(.update(model))
     }
 }
 
 #Preview {
     SetsCell(model: SetsModel(params: [.weight(100), .repeats(10)])) { action in }
+}
+
+private extension SetsParameter {
+    var shortTitle: String {
+        switch self {
+        case .weight:
+            "kg"
+        case .repeats:
+            "reps"
+        case .distance:
+            "m"
+        case .time:
+            ""
+        }
+    }
 }

@@ -14,57 +14,50 @@ struct ExerciseView: View {
     
     @StateObject var viewModel: ExerciseViewModel
     
-    @Environment(\.colorScheme) var colorScheme
-    
-    private var heightHeader: CGFloat = 100.0
-    
     @State private var showAnimation = false
     
     init(viewModel: ExerciseViewModel) {
         _viewModel = StateObject(wrappedValue: viewModel)
     }
     
-    @State var progress: Double = 0.65
-    
     var body: some View {
-        
-        VStack {
-            List {
-                
-                VStack {
-                    headerView
-                        .frame(height: heightHeader)
-                        .padding([.top, .leading, .trailing])
-                    
-                    restTimeView
-                    
-                    setsView
-                        .padding()
-                    
-                    setDataView
-                        .padding()
-                }
-                .listRowInsets(EdgeInsets.init(top: 0, leading: 0,
-                                            bottom: 0, trailing: 0))
-                reportSetsView
+        List {
+            if workoutManager.isWorkoutInProgress {
+                workoutStatusWidget
+                    .transition(.move(edge: .top).combined(with: .opacity))
+                    .listRowInsets(EdgeInsets(top: 10, leading: 20, bottom: 12, trailing: 20))
+                    .listRowSeparator(.hidden)
+                    .listRowBackground(AppColor.backgroundPrimary)
             }
-            .listStyle(.plain)
-            .animation(.easeInOut, value: showAnimation)
+            
+            exerciseHeaderCard
+                .listRowInsets(EdgeInsets(top: 6, leading: 20, bottom: 8, trailing: 20))
+                .listRowSeparator(.hidden)
+                .listRowBackground(AppColor.backgroundPrimary)
+            
+            targetSetsSection
+                .listRowInsets(EdgeInsets(top: 8, leading: 20, bottom: 8, trailing: 20))
+                .listRowSeparator(.hidden)
+                .listRowBackground(AppColor.backgroundPrimary)
+            
+            addResultSection
+                .listRowInsets(EdgeInsets(top: 8, leading: 20, bottom: 8, trailing: 20))
+                .listRowSeparator(.hidden)
+                .listRowBackground(AppColor.backgroundPrimary)
+            
+            completedSetsSection
         }
+        .listStyle(.plain)
+        .scrollContentBackground(.hidden)
+        .background(AppColor.backgroundPrimary)
+        .animation(.easeInOut(duration: 0.24), value: workoutManager.isWorkoutInProgress)
+        .animation(.easeInOut, value: showAnimation)
         .safeAreaPadding(.bottom, 20)
         .dismissKeyboardOnTap()
         .scrollDismissesKeyboard(.immediately)
-        .navigationTitle(viewModel.exercise.type?.type.title ?? "Exercise")
+        .navigationTitle(viewModel.title)
         .navigationBarTitleDisplayMode(.inline)
         .toolbar {
-            if !workoutManager.workoutTime.isEmpty {
-                ToolbarItem(placement: .navigationBarTrailing) {
-                    Text(workoutManager.workoutTime)
-                        .onTapGesture {
-                            workoutManager.endWorkout()
-                        }
-                }
-            }
             ToolbarItem(placement: .navigationBarTrailing) {
                 Button("Edit", systemImage: "pencil", action: clickBtnEditint)
             }
@@ -94,123 +87,81 @@ struct ExerciseView: View {
         })
     }
     
-    private var color: Color {
-        switch colorScheme {
-        case .light:
-            Color(UIColor.gray)
-        default:
-            Color(UIColor.lightGray)
-        }
+    private var workoutStatusWidget: some View {
+        WorkoutStatusWidget(title: workoutManager.currentWorkoutTitle,
+                            workoutTime: workoutManager.workoutElapsedTime,
+                            restTime: workoutManager.currentRestTime,
+                            restProgress: workoutManager.progressRestTime,
+                            workoutProgress: workoutManager.workoutProgress)
     }
     
-    @ViewBuilder
-    private var headerView: some View {
-        HStack {
-            if let icon = viewModel.exercise.type?.icon {
-                icon
-                    .resizable()
-                    .frame(width: heightHeader)
-            } else {
-                Color.red.frame(width: heightHeader)
-            }
-            VStack {
-                Text(viewModel.title).leadingAlignment()
-            }
-        }
-    }
-    
-    @ViewBuilder
-    private var restTimeView: some View {
-        HStack {
-            CircularProgressView(progress: workoutManager.progressRestTime)
-                .frame(width: 60, height: 60)
-                .overlay {
-                    Text("\(workoutManager.restTime)")
-                        .font(.subheadline)
-//                        .foregroundStyle(.gray)
-                        .bold()
-                }
-        }
-        .onTapGesture {
-            viewModel.tapToTimer()
-        }
-    }
-    
-    @ViewBuilder
-    private var setsView: some View {
-        VStack {
-            ForEach(viewModel.sets) { item in
-                SetsCell(model: item) {
-                    switch $0 {
-                    case .update(let updateModel):
-                        viewModel.edit(sets: updateModel)
-                    case .selected(let selectedModel):
-                        viewModel.addResult(with: selectedModel.parameters)
-                    default:
-                        break
-                    }
-                }
-            }
-        }
-    }
-    
-    @ViewBuilder
-    private var setDataView: some View {
-        HStack(spacing: 12) {
+    private var exerciseHeaderCard: some View {
+        HStack(spacing: 14) {
+            exerciseIcon
             
-            ForEach($viewModel.paramsData) { $item in
-                TextField(item.param.title, text: $item.value, onEditingChanged: { focused in
-                    self.viewModel.focused(focused, paramData: item)
-                })
+            VStack(alignment: .leading, spacing: 7) {
+                Text(viewModel.title)
+                    .font(AppFont.workoutGroupCardTitle)
+                    .foregroundStyle(AppColor.textPrimary)
+                    .lineLimit(2)
+                    .minimumScaleFactor(0.82)
                 
-                .padding([.leading, .trailing])
-                .frame(maxHeight: .infinity)
-                .shakeAnimation(item.shake)
-                .keyboardType(item.keyboardType)
-//                .foregroundStyle(Color(UIColor.darkGray))
-                .background {
-                    HStack {
-                        ZStack {
-                            RoundedRectangle(cornerRadius: 5)
-                                .fill(Color(UIColor.lightGray))
-                                .opacity(0.3)
-                            
-                            RoundedRectangle(cornerRadius: 5)
-                                .stroke(.gray, lineWidth: 1)
-                        }
-                    }
-                }
+                Text(exerciseMetadata)
+                    .font(AppFont.rowSubtitle)
+                    .foregroundStyle(AppColor.textSecondary)
+                    .lineLimit(1)
+                    .minimumScaleFactor(0.82)
+                
+                Text("Rest \(viewModel.exercise.restTime.minuteSecond)")
+                    .font(AppFont.rowSubtitle)
+                    .foregroundStyle(AppColor.textSecondary)
             }
-            
-            ZStack {
-                HStack {
-                    Spacer()
-                    Image(systemName: "plus.app")
-                        .font(.largeTitle)
-                    Spacer()
-                }
-                .contentShape(Rectangle())
-            }
-            .foregroundStyle(color)
-            .frame(width: 40, height: 40)
-            .onTapGesture {
-                print("DBG_ prepareToSave")
-                prepareToSave()
-            }
+            .frame(maxWidth: .infinity, alignment: .leading)
         }
-        .frame(height: 40)
+        .padding(12)
+        .frame(minHeight: 112)
+        .background(AppColor.surfacePrimary)
+        .clipShape(RoundedRectangle(cornerRadius: 14, style: .continuous))
+        .overlay {
+            RoundedRectangle(cornerRadius: 14, style: .continuous)
+                .stroke(AppColor.separatorSoft, lineWidth: 1)
+        }
     }
     
     @ViewBuilder
-    private var reportSetsView: some View {
-        ForEach(viewModel.reportExercises) { exercise in
-            Section(header: reportSetsHeaderView(reportExercise: exercise)) {
-                ForEach(exercise.sets) { item in
-                    
-                    ReportSetsCell(reportSet: item) {
+    private var exerciseIcon: some View {
+        if let icon = viewModel.exercise.type?.icon {
+            icon
+                .resizable()
+                .scaledToFill()
+                .frame(width: 88, height: 88)
+                .clipShape(RoundedRectangle(cornerRadius: 12, style: .continuous))
+        } else {
+            Image("icMissingImage")
+                .resizable()
+                .scaledToFill()
+                .frame(width: 88, height: 88)
+                .clipShape(RoundedRectangle(cornerRadius: 12, style: .continuous))
+        }
+    }
+    
+    private var exerciseMetadata: String {
+        guard let type = viewModel.exercise.type else {
+            return ""
+        }
+        return "\(type.type.displayName) · \(type.displayName)"
+    }
+    
+    private var targetSetsSection: some View {
+        VStack(alignment: .leading, spacing: 10) {
+            sectionTitle("Target sets")
+            
+            VStack(spacing: 8) {
+                ForEach(viewModel.sets) { item in
+                    SetsCell(model: item) {
                         switch $0 {
                         case .update(let updateModel):
-                            viewModel.editReport(sets: updateModel)
+                            viewModel.edit(sets: updateModel)
                         case .selected(let selectedModel):
                             viewModel.addResult(with: selectedModel.parameters)
                         default:
@@ -218,28 +169,109 @@ struct ExerciseView: View {
                         }
                     }
                 }
-                .onDelete(perform: { deleteReport(offsets: $0, reportExerciseId: exercise.id) })
             }
         }
     }
     
-    @ViewBuilder
-    private func reportSetsHeaderView(reportExercise: ReportExerciseModel) -> some View {
-        Color(uiColor: .systemGray3).overlay {
-            HStack {
-                Text(reportExercise.date?.formatted(date: .long, time: .omitted) ?? "")
-                    .padding(.leading, 20)
-                    .foregroundStyle(.white)
-                    .font(.subheadline)
-                    .bold()
-                    .shadow(color: .black, radius: 1, x: 1.0, y: 1.0)
+    private var addResultSection: some View {
+        VStack(alignment: .leading, spacing: 10) {
+            sectionTitle("Add result")
+            
+            HStack(spacing: 10) {
+                ForEach($viewModel.paramsData) { $item in
+                    addResultTextField(item: item, value: $item.value)
+                }
                 
-                Spacer()
+                Button(action: prepareToSave) {
+                    HStack(spacing: 5) {
+                        Image(systemName: "plus.circle")
+                        Text("Add")
+                    }
+                    .font(AppFont.rowTitle)
+                    .foregroundStyle(.white)
+                    .frame(width: 92)
+                    .frame(height: 48)
+                    .background(AppColor.brandPrimary)
+                    .clipShape(RoundedRectangle(cornerRadius: 10, style: .continuous))
+                }
+                .buttonStyle(.plain)
+            }
+            .padding(12)
+            .background(AppColor.surfacePrimary)
+            .clipShape(RoundedRectangle(cornerRadius: 14, style: .continuous))
+            .overlay {
+                RoundedRectangle(cornerRadius: 14, style: .continuous)
+                    .stroke(AppColor.separatorSoft, lineWidth: 1)
             }
         }
-        .listRowInsets(EdgeInsets.init(top: 0, leading: 0,
-                                    bottom: 0, trailing: 0))
-        .frame(height: 26)
+    }
+    
+    private func addResultTextField(item: ExerciseViewModel.ParamData, value: Binding<String>) -> some View {
+        TextField(item.param.title, text: value, onEditingChanged: { focused in
+            self.viewModel.focused(focused, paramData: item)
+        })
+        .font(AppFont.rowSubtitle)
+        .foregroundStyle(AppColor.textPrimary)
+        .keyboardType(item.keyboardType)
+        .multilineTextAlignment(.center)
+        .padding(.horizontal, 8)
+        .frame(height: 46)
+        .frame(maxWidth: .infinity)
+        .shakeAnimation(item.shake)
+        .background(AppColor.surfacePrimary)
+        .clipShape(RoundedRectangle(cornerRadius: 10, style: .continuous))
+        .overlay {
+            RoundedRectangle(cornerRadius: 10, style: .continuous)
+                .stroke(AppColor.separatorSoft, lineWidth: 1)
+        }
+    }
+    
+    @ViewBuilder
+    private var completedSetsSection: some View {
+        if !viewModel.reportExercises.isEmpty {
+            ForEach(viewModel.reportExercises) { exercise in
+                Section {
+                    ForEach(exercise.sets) { item in
+                        ReportSetsCell(reportSet: item) {
+                            switch $0 {
+                            case .update(let updateModel):
+                                viewModel.editReport(sets: updateModel)
+                            case .selected(let selectedModel):
+                                viewModel.addResult(with: selectedModel.parameters)
+                            default:
+                                break
+                            }
+                        }
+                        .listRowInsets(EdgeInsets(top: 4, leading: 20, bottom: 4, trailing: 20))
+                        .listRowSeparator(.hidden)
+                        .listRowBackground(AppColor.backgroundPrimary)
+                    }
+                    .onDelete(perform: { deleteReport(offsets: $0, reportExerciseId: exercise.id) })
+                } header: {
+                    reportSetsHeaderView(reportExercise: exercise)
+                }
+            }
+        }
+    }
+    
+    private func sectionTitle(_ title: String) -> some View {
+        Text(title)
+            .font(AppFont.caption)
+            .foregroundStyle(AppColor.textSecondary)
+            .textCase(.uppercase)
+            .padding(.horizontal, 4)
+    }
+    
+    private func reportSetsHeaderView(reportExercise: ReportExerciseModel) -> some View {
+        VStack(alignment: .leading, spacing: 0) {
+            sectionTitle(reportExercise.date?.formatted(date: .long, time: .omitted) ?? "History")
+                .padding(.leading, 20)
+                .padding(.top, 12)
+                .padding(.bottom, 6)
+        }
+        .frame(maxWidth: .infinity, alignment: .leading)
+        .background(AppColor.backgroundPrimary)
+        .listRowInsets(EdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 0))
     }
     
     private func prepareToSave() {
@@ -295,5 +327,5 @@ struct ExerciseView: View {
 }
 
 #Preview {
-    ExerciseView(viewModel: ExerciseViewModel(exercise: ExerciseModel(title: "fff", typeId: "0")))
+    ExerciseView(viewModel: ExerciseViewModel(exercise: ExerciseModel(title: "Bench Press", typeId: "0")))
 }

@@ -19,7 +19,7 @@ struct ReportSetsCell: View {
     
     private var actionBlock: ActionBlock?
     
-    @State private var colorEditButton: Color = .gray
+    @State private var colorEditButton: Color = AppColor.textSecondary
     
     var model: ReportSetsModel
     
@@ -29,54 +29,87 @@ struct ReportSetsCell: View {
     }
     
     var body: some View {
-        
-        HStack(alignment: .firstTextBaseline) {
-            Text("# \(model.index):")
-                .font(.footnote)
-                .bold()
+        HStack(spacing: 12) {
+            Image(systemName: "checkmark.circle")
+                .font(.system(size: 22, weight: .semibold))
+                .foregroundStyle(AppColor.progressGreen)
+                .frame(width: 26, height: 26)
             
-            ForEach(model.parameters) { item in
-                Text("\(item.title):")
-                    .font(.footnote)
-                Text(item.stringValue).bold()
-                    .font(.footnote)
-                    .bold()
+            VStack(alignment: .leading, spacing: 4) {
+                Text("Set \(model.index)")
+                    .font(AppFont.rowTitle)
+                    .foregroundStyle(AppColor.textPrimary)
+                
+                Text(parametersText)
+                    .font(AppFont.rowSubtitle)
+                    .foregroundStyle(AppColor.textSecondary)
+                    .lineLimit(1)
+                    .minimumScaleFactor(0.82)
             }
+            .frame(maxWidth: .infinity, alignment: .leading)
             
-            Spacer()
-            
-            HStack {
-                Spacer()
+            HStack(spacing: 6) {
+                Text(model.date.formatted(date: .omitted, time: .shortened))
+                    .font(AppFont.rowSubtitle)
+                    .foregroundStyle(AppColor.textSecondary)
+                    .lineLimit(1)
+                
                 if actionBlock != nil {
-                    Image(systemName: "pencil")
-                        .foregroundStyle(colorEditButton)
-                        .font(.title2)
-                        .frame(maxWidth: 50, maxHeight: .infinity, alignment: .trailing)
-                        .onTapGesture {
-                            colorEditButton = Color(UIColor.darkGray)
-                            DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + .milliseconds(150)) {
-                                colorEditButton = .gray
-                            }
-                            if let actionBlock = actionBlock {
-                                actionBlock(.update(model))
-                            }
-                        }
+                    Button(action: edit) {
+                        Image(systemName: "pencil")
+                            .font(.system(size: 17, weight: .semibold))
+                            .foregroundStyle(colorEditButton)
+                            .frame(width: 34, height: 36)
+                            .contentShape(Rectangle())
+                    }
+                    .buttonStyle(.plain)
                 }
             }
         }
-//        .foregroundStyle(.gray)
-        .frame(height: 30)
-        .frame(maxWidth: .infinity, alignment: .trailing)
-        .onTapGesture {
-            if let actionBlock = actionBlock {
-                actionBlock(.selected(model))
-            }
+        .padding(.horizontal, 12)
+        .padding(.vertical, 10)
+        .frame(minHeight: 58)
+        .background(AppColor.surfacePrimary)
+        .clipShape(RoundedRectangle(cornerRadius: 14, style: .continuous))
+        .overlay {
+            RoundedRectangle(cornerRadius: 14, style: .continuous)
+                .stroke(AppColor.separatorSoft, lineWidth: 1)
         }
-        .listRowBackground(Color(uiColor: .systemGray6))
+        .contentShape(Rectangle())
+        .onTapGesture {
+            actionBlock?(.selected(model))
+        }
+    }
+    
+    private var parametersText: String {
+        model.parameters.map { "\($0.stringValue) \($0.shortTitle)" }.joined(separator: " · ")
+    }
+    
+    private func edit() {
+        colorEditButton = AppColor.textPrimary
+        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + .milliseconds(150)) {
+            colorEditButton = AppColor.textSecondary
+        }
+        actionBlock?(.update(model))
     }
 }
 
 #Preview {
     ReportSetsCell(reportSet: ReportSetsModel(date: .now,
                                               params: [.weight(50), .repeats(8)]), actionBlock: {_ in })
+}
+
+private extension SetsParameter {
+    var shortTitle: String {
+        switch self {
+        case .weight:
+            "kg"
+        case .repeats:
+            "reps"
+        case .distance:
+            "m"
+        case .time:
+            ""
+        }
+    }
 }
