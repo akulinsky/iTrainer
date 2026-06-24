@@ -146,6 +146,12 @@ struct WorkoutGroupListView: View {
                             workoutProgress: workoutManager.workoutProgress,
                             onWorkoutTap: {
                                 isEndWorkoutAlertPresented = true
+                            },
+                            onRestTap: {
+                                navigateToCurrentExercise()
+                            },
+                            onProgressTap: {
+                                navigateToCurrentExercise()
                             })
     }
     
@@ -255,6 +261,37 @@ struct WorkoutGroupListView: View {
     
     private func refresh() {
         viewModel.refreshData()
+    }
+    
+    private func navigateToCurrentExercise() {
+        guard let currentGroupId = workoutManager.currentWorkoutGroupId,
+              let currentExerciseId = workoutManager.currentExerciseId else {
+            return
+        }
+        
+        let group = viewModel.workoutGroups.first(where: { $0.id == currentGroupId })
+        
+        Task {
+            let dataManager = DataManagerBackground(container: DataContainer.shared.sharedModelContainer)
+            let activeGroup: WorkoutGroupModel?
+            if let group {
+                activeGroup = group
+            } else {
+                activeGroup = await dataManager.fetchWorkoutGroup(with: currentGroupId).map { WorkoutGroupModel(model: $0) }
+            }
+            let activeExercise = await dataManager.fetchExercise(with: currentExerciseId).map { ExerciseModel(model: $0) }
+            
+            await MainActor.run {
+                guard let activeGroup, let activeExercise else {
+                    return
+                }
+                
+                navigationManager.path.append(WorkoutGroupListRoute.exerciseListView(item: activeGroup))
+                DispatchQueue.main.async {
+                    navigationManager.path.append(ExerciseListRoute.exerciseView(item: activeExercise))
+                }
+            }
+        }
     }
 
     private func deleteItems(offsets: IndexSet) {

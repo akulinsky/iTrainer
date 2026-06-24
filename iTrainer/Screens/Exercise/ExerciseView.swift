@@ -12,11 +12,15 @@ struct ExerciseView: View {
     
     @EnvironmentObject var workoutManager: WorkoutManager
     
+    @Environment(\.navigation) private var navigation
+    
     @StateObject var viewModel: ExerciseViewModel
     
     @State private var showAnimation = false
     
     @State private var isEndWorkoutAlertPresented = false
+    
+    @State private var isExerciseInfoPresented = false
     
     init(viewModel: ExerciseViewModel) {
         _viewModel = StateObject(wrappedValue: viewModel)
@@ -105,39 +109,69 @@ struct ExerciseView: View {
                             workoutProgress: workoutManager.workoutProgress,
                             onWorkoutTap: {
                                 isEndWorkoutAlertPresented = true
+                            },
+                            onRestTap: {
+                                navigateToCurrentExercise()
+                            },
+                            onProgressTap: {
+                                navigateToCurrentExercise()
                             })
     }
     
     private var exerciseHeaderCard: some View {
-        HStack(spacing: 14) {
-            exerciseIcon
-            
-            VStack(alignment: .leading, spacing: 7) {
-                Text(viewModel.title)
-                    .font(AppFont.workoutGroupCardTitle)
-                    .foregroundStyle(AppColor.textPrimary)
-                    .lineLimit(2)
-                    .minimumScaleFactor(0.82)
+        Button {
+            isExerciseInfoPresented = true
+        } label: {
+            HStack(spacing: 14) {
+                exerciseIcon
                 
-                Text(exerciseMetadata)
-                    .font(AppFont.rowSubtitle)
-                    .foregroundStyle(AppColor.textSecondary)
-                    .lineLimit(1)
-                    .minimumScaleFactor(0.82)
-                
-                Text("Rest \(viewModel.exercise.restTime.minuteSecond)")
-                    .font(AppFont.rowSubtitle)
-                    .foregroundStyle(AppColor.textSecondary)
+                VStack(alignment: .leading, spacing: 7) {
+                    Text(viewModel.title)
+                        .font(AppFont.workoutGroupCardTitle)
+                        .foregroundStyle(AppColor.textPrimary)
+                        .lineLimit(2)
+                        .minimumScaleFactor(0.82)
+                    
+                    Text(exerciseMetadata)
+                        .font(AppFont.rowSubtitle)
+                        .foregroundStyle(AppColor.textSecondary)
+                        .lineLimit(1)
+                        .minimumScaleFactor(0.82)
+                    
+                    HStack(alignment: .center) {
+                        Text("Rest \(viewModel.exercise.restTime.minuteSecond)")
+                            .font(AppFont.rowSubtitle)
+                            .foregroundStyle(AppColor.textSecondary)
+                        
+                        Spacer(minLength: 12)
+                        
+                        Image(systemName: "info.circle")
+                            .font(.system(size: 20, weight: .semibold))
+                            .foregroundStyle(AppColor.textSecondary)
+                            .padding(.trailing, 2)
+                    }
+                }
+                .frame(maxWidth: .infinity, alignment: .leading)
             }
+            .padding(12)
+            .frame(minHeight: 112)
             .frame(maxWidth: .infinity, alignment: .leading)
+            .background(AppColor.surfacePrimary)
+            .clipShape(RoundedRectangle(cornerRadius: 14, style: .continuous))
+            .overlay {
+                RoundedRectangle(cornerRadius: 14, style: .continuous)
+                    .stroke(AppColor.separatorSoft, lineWidth: 1)
+            }
+            .contentShape(RoundedRectangle(cornerRadius: 14, style: .continuous))
+            .accessibilityElement(children: .combine)
+            .accessibilityLabel("\(viewModel.title), \(exerciseMetadata)")
+            .accessibilityHint("Open exercise information")
         }
-        .padding(12)
-        .frame(minHeight: 112)
-        .background(AppColor.surfacePrimary)
-        .clipShape(RoundedRectangle(cornerRadius: 14, style: .continuous))
-        .overlay {
-            RoundedRectangle(cornerRadius: 14, style: .continuous)
-                .stroke(AppColor.separatorSoft, lineWidth: 1)
+        .buttonStyle(.plain)
+        .navigationDestination(isPresented: $isExerciseInfoPresented) {
+            if let type = viewModel.exercise.type {
+                ExerciseCatalogDetailView(model: type)
+            }
         }
     }
     
@@ -330,6 +364,27 @@ struct ExerciseView: View {
     
     private func refresh() {
         viewModel.refreshData()
+    }
+    
+    private func navigateToCurrentExercise() {
+        guard let currentExerciseId = workoutManager.currentExerciseId else {
+            return
+        }
+        
+        if currentExerciseId == viewModel.exercise.id {
+            return
+        }
+        
+        Task {
+            let dataManager = DataManagerBackground(container: DataContainer.shared.sharedModelContainer)
+            guard let exercise = await dataManager.fetchExercise(with: currentExerciseId).map({ ExerciseModel(model: $0) }) else {
+                return
+            }
+            
+            await MainActor.run {
+                navigation.path.append(ExerciseListRoute.exerciseView(item: exercise))
+            }
+        }
     }
     
     private func deleteReport(offsets: IndexSet, reportExerciseId: UUID) {

@@ -37,6 +37,11 @@ struct ExerciseListView: View {
                         .listRowInsets(EdgeInsets(top: 10, leading: 20, bottom: 12, trailing: 20))
                         .listRowSeparator(.hidden)
                         .listRowBackground(AppColor.backgroundPrimary)
+                } else {
+                    startSessionCard
+                        .listRowInsets(EdgeInsets(top: 10, leading: 20, bottom: 12, trailing: 20))
+                        .listRowSeparator(.hidden)
+                        .listRowBackground(AppColor.backgroundPrimary)
                 }
                 
                 ForEach(viewModel.exercises) { item in
@@ -150,7 +155,47 @@ struct ExerciseListView: View {
                             workoutProgress: workoutManager.workoutProgress,
                             onWorkoutTap: {
                                 isEndWorkoutAlertPresented = true
+                            },
+                            onRestTap: {
+                                navigateToCurrentExercise()
+                            },
+                            onProgressTap: {
+                                navigateToCurrentExercise()
                             })
+    }
+    
+    private var startSessionCard: some View {
+        Button {
+            workoutManager.startWorkout(with: viewModel.group.id)
+        } label: {
+            HStack(spacing: 12) {
+                Image(systemName: "play.circle.fill")
+                    .font(.system(size: 28, weight: .semibold))
+                    .foregroundStyle(AppColor.workoutGreen)
+                
+                VStack(alignment: .leading, spacing: 4) {
+                    Text("Start workout")
+                        .font(AppFont.workoutGroupCardTitle)
+                        .foregroundStyle(AppColor.textPrimary)
+                    
+                    Text(viewModel.group.title ?? "Workout session")
+                        .font(AppFont.rowSubtitle)
+                        .foregroundStyle(AppColor.textSecondary)
+                        .lineLimit(1)
+                }
+                
+                Spacer()
+            }
+            .padding(16)
+            .frame(maxWidth: .infinity, alignment: .leading)
+            .background(AppColor.surfacePrimary)
+            .clipShape(RoundedRectangle(cornerRadius: 14, style: .continuous))
+            .overlay {
+                RoundedRectangle(cornerRadius: 14, style: .continuous)
+                    .stroke(AppColor.separatorSoft, lineWidth: 1)
+            }
+        }
+        .buttonStyle(.plain)
     }
     
     private func progressStatus(for item: ExerciseModel) -> ExerciseProgressStatus {
@@ -274,6 +319,28 @@ struct ExerciseListView: View {
     
     private func refresh() {
         viewModel.refreshData()
+    }
+    
+    private func navigateToCurrentExercise() {
+        guard let currentExerciseId = workoutManager.currentExerciseId else {
+            return
+        }
+        
+        if let exercise = viewModel.exercises.first(where: { $0.id == currentExerciseId }) {
+            navigation.path.append(ExerciseListRoute.exerciseView(item: exercise))
+            return
+        }
+        
+        Task {
+            let dataManager = DataManagerBackground(container: DataContainer.shared.sharedModelContainer)
+            guard let exercise = await dataManager.fetchExercise(with: currentExerciseId).map({ ExerciseModel(model: $0) }) else {
+                return
+            }
+            
+            await MainActor.run {
+                navigation.path.append(ExerciseListRoute.exerciseView(item: exercise))
+            }
+        }
     }
 
     private func deleteItems(offsets: IndexSet) {
