@@ -13,6 +13,8 @@ enum WorkoutGroupListRoute: Hashable {
 
 struct WorkoutGroupListView: View {
     
+    @EnvironmentObject private var workoutManager: WorkoutManager
+    
     @StateObject var viewModel: WorkoutGroupListViewModel
     
     @State private var editMode = EditMode.inactive
@@ -30,10 +32,12 @@ struct WorkoutGroupListView: View {
                     emptyWorkoutView()
                 } else {
                     List {
-                        workoutStatusWidget
-                            .listRowInsets(EdgeInsets(top: 10, leading: 20, bottom: 12, trailing: 20))
-                            .listRowSeparator(.hidden)
-                            .listRowBackground(AppColor.backgroundPrimary)
+                        if workoutManager.isWorkoutInProgress {
+                            workoutStatusWidget
+                                .listRowInsets(EdgeInsets(top: 10, leading: 20, bottom: 12, trailing: 20))
+                                .listRowSeparator(.hidden)
+                                .listRowBackground(AppColor.backgroundPrimary)
+                        }
                         
                         ForEach(viewModel.workoutGroups) { item in
                             cells(for: item)
@@ -55,6 +59,7 @@ struct WorkoutGroupListView: View {
             }
             .background(AppColor.backgroundPrimary)
             .navigationTitle(viewModel.workout?.title ?? "Groups")
+            .navigationBarTitleDisplayMode(.inline)
             .toolbar {
                 ToolbarItemGroup(placement: .navigationBarTrailing) {
                     chooseWorkoutButton()
@@ -124,18 +129,17 @@ struct WorkoutGroupListView: View {
     }
     
     private var workoutStatusWidget: some View {
-        WorkoutStatusWidget(workoutTime: 9805,
-                            restTime: 38,
-                            restProgress: 0.72,
-                            workoutProgress: 0.64)
+        WorkoutStatusWidget(title: workoutManager.currentWorkoutTitle,
+                            workoutTime: workoutManager.workoutElapsedTime,
+                            restTime: workoutManager.currentRestTime,
+                            restProgress: workoutManager.progressRestTime,
+                            workoutProgress: workoutManager.workoutProgress)
     }
     
     private func cells(for item: WorkoutGroupModel) -> some View {
-        let index = viewModel.workoutGroups.firstIndex { $0.id == item.id } ?? 0
-        
         return WorkoutGroupCell(model: item,
-                                progress: progress(for: index),
-                                status: status(for: index),
+                                progress: progress(for: item),
+                                status: status(for: item),
                                 exerciseCount: viewModel.exerciseCount(for: item.id)) {
             switch $0 {
             case .update(let updateModel):
@@ -151,30 +155,24 @@ struct WorkoutGroupListView: View {
         }
     }
     
-    private func progress(for index: Int) -> Double {
-        switch index {
-        case 0:
-            0.64
-        case 1:
-            1
-        case 2:
-            0
-        case 3:
-            0.22
-        default:
-            0
+    private func progress(for item: WorkoutGroupModel) -> Double {
+        if workoutManager.currentWorkoutGroupId == item.id {
+            return workoutManager.workoutProgress
         }
+        
+        return viewModel.lastCompletedProgress(for: item.id)
     }
     
-    private func status(for index: Int) -> WorkoutGroupStatus {
-        switch index {
-        case 0:
-            .active
-        case 1:
-            .lastCompleted
-        default:
-            .normal
+    private func status(for item: WorkoutGroupModel) -> WorkoutGroupStatus {
+        if workoutManager.currentWorkoutGroupId == item.id {
+            return .active
         }
+        
+        if viewModel.isLastCompletedGroup(item.id) {
+            return .lastCompleted
+        }
+        
+        return .normal
     }
     
     private func optionButton() -> some View {

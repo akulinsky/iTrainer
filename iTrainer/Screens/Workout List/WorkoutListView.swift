@@ -53,6 +53,7 @@ struct WorkoutListView: View {
             }
             .background(AppColor.backgroundPrimary)
             .navigationTitle("Workouts")
+            .navigationBarTitleDisplayMode(.inline)
             .toolbar {
                 ToolbarItem(placement: .navigationBarTrailing) {
                     optionButton()

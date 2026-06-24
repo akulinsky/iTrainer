@@ -13,6 +13,8 @@ enum ExerciseListRoute: Hashable {
 
 struct ExerciseListView: View {
     
+    @EnvironmentObject private var workoutManager: WorkoutManager
+    
     @StateObject var viewModel: ExerciseListViewModel
     
     @State private var editMode = EditMode.inactive
@@ -28,10 +30,12 @@ struct ExerciseListView: View {
     var body: some View {
         VStack(spacing: 0) {
             List {
-                workoutStatusWidget
-                    .listRowInsets(EdgeInsets(top: 10, leading: 20, bottom: 12, trailing: 20))
-                    .listRowSeparator(.hidden)
-                    .listRowBackground(AppColor.backgroundPrimary)
+                if workoutManager.isWorkoutInProgress {
+                    workoutStatusWidget
+                        .listRowInsets(EdgeInsets(top: 10, leading: 20, bottom: 12, trailing: 20))
+                        .listRowSeparator(.hidden)
+                        .listRowBackground(AppColor.backgroundPrimary)
+                }
                 
                 ForEach(viewModel.exercises) { item in
                     cells(for: item)
@@ -54,6 +58,7 @@ struct ExerciseListView: View {
         .background(AppColor.backgroundPrimary)
         .environment(\.defaultMinListRowHeight, 10)
         .navigationTitle(viewModel.group.title ?? "Exercises")
+        .navigationBarTitleDisplayMode(.inline)
         .toolbar {
             ToolbarItem(placement: .navigationBarTrailing) {
                 optionButton()
@@ -109,10 +114,8 @@ struct ExerciseListView: View {
     }
     
     private func cells(for item: ExerciseModel) -> some View {
-        let index = viewModel.exercises.filter { !$0.isHeadline }.firstIndex { $0.id == item.id } ?? 0
-        
         return ExerciseCell(model: item,
-                            progressStatus: progressStatus(for: index, item: item)) {
+                            progressStatus: progressStatus(for: item)) {
             switch $0 {
             case .update(let updateModel):
                 switch editMode {
@@ -130,25 +133,38 @@ struct ExerciseListView: View {
     }
     
     private var workoutStatusWidget: some View {
-        WorkoutStatusWidget(workoutTime: 9805,
-                            restTime: 38,
-                            restProgress: 0.72,
-                            workoutProgress: 0.64)
+        WorkoutStatusWidget(title: workoutManager.currentWorkoutTitle,
+                            workoutTime: workoutManager.workoutElapsedTime,
+                            restTime: workoutManager.currentRestTime,
+                            restProgress: workoutManager.progressRestTime,
+                            workoutProgress: workoutManager.workoutProgress)
     }
     
-    private func progressStatus(for index: Int, item: ExerciseModel) -> ExerciseProgressStatus {
+    private func progressStatus(for item: ExerciseModel) -> ExerciseProgressStatus {
         guard !item.isHeadline else {
             return .none
         }
         
-        switch index {
-        case 0:
-            return .active(progress: 0.64)
-        case 1:
-            return .completed(progress: 1)
-        default:
-            return .none
+        let isCurrentWorkoutGroup = workoutManager.currentWorkoutGroupId == viewModel.group.id
+        
+        if workoutManager.currentExerciseId == item.id,
+           isCurrentWorkoutGroup,
+           let progress = workoutManager.exerciseProgressById[item.id] {
+            return .active(progress: progress)
         }
+        
+        if isCurrentWorkoutGroup {
+            guard let progress = workoutManager.exerciseProgressById[item.id] else {
+                return .none
+            }
+            return .completed(progress: progress)
+        }
+        
+        if let progress = viewModel.lastCompletedProgress(for: item.id) {
+            return .completed(progress: progress)
+        }
+        
+        return .none
     }
     
     private func rowInsets(for item: ExerciseModel) -> EdgeInsets {

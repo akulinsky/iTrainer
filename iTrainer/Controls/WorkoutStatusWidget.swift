@@ -8,21 +8,24 @@
 import SwiftUI
 
 struct WorkoutStatusWidget: View {
+    let title: String
     let workoutTime: TimeInterval
-    let restTime: TimeInterval
+    let restTime: TimeInterval?
     let restProgress: Double
     let workoutProgress: Double
     let onWorkoutTap: () -> Void
     let onRestTap: () -> Void
     let onProgressTap: () -> Void
     
-    init(workoutTime: TimeInterval,
-         restTime: TimeInterval,
-         restProgress: Double,
+    init(title: String = "Active workout",
+         workoutTime: TimeInterval,
+         restTime: TimeInterval? = nil,
+         restProgress: Double = 0,
          workoutProgress: Double,
          onWorkoutTap: @escaping () -> Void = {},
          onRestTap: @escaping () -> Void = {},
          onProgressTap: @escaping () -> Void = {}) {
+        self.title = title
         self.workoutTime = workoutTime
         self.restTime = restTime
         self.restProgress = restProgress
@@ -34,7 +37,7 @@ struct WorkoutStatusWidget: View {
     
     var body: some View {
         VStack(alignment: .leading, spacing: 10) {
-            Text("Active workout")
+            Text(title)
                 .font(AppFont.workoutWidgetTitle)
                 .foregroundStyle(AppColor.textPrimary)
             
@@ -46,12 +49,14 @@ struct WorkoutStatusWidget: View {
                                         isFullRing: true,
                                         action: onWorkoutTap)
                 
-                WorkoutStatusMetricView(title: "Rest",
-                                        value: restTime.minuteSecond,
-                                        color: AppColor.restAmber,
-                                        progress: restProgress,
-                                        isFullRing: false,
-                                        action: onRestTap)
+                if let restTime {
+                    WorkoutStatusMetricView(title: "Rest",
+                                            value: restTime.minuteSecond,
+                                            color: AppColor.restAmber,
+                                            progress: restProgress,
+                                            isFullRing: false,
+                                            action: onRestTap)
+                }
                 
                 WorkoutStatusMetricView(title: "Progress",
                                         value: "\(workoutProgressPercent)%",
@@ -177,7 +182,8 @@ private extension TimeInterval {
         AppColor.backgroundPrimary
             .ignoresSafeArea()
         
-        WorkoutStatusWidget(workoutTime: 9805,
+        WorkoutStatusWidget(title: "Push Day",
+                            workoutTime: 9805,
                             restTime: 38,
                             restProgress: 0.72,
                             workoutProgress: 0.64)

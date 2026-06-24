@@ -15,6 +15,8 @@ class ExerciseListViewModel: ObservableObject {
     
     @Published var exercises = [ExerciseModel]()
     
+    @Published private var lastCompletedProgressByExerciseId = [UUID: Double]()
+    
     @Published var isShowAlert = false
     
     @Published var isEditExercise = false
@@ -39,9 +41,12 @@ class ExerciseListViewModel: ObservableObject {
         Task {
             let dataManager = DataManagerBackground(container: DataContainer.shared.sharedModelContainer)
             let items = await dataManager.fetchExercises(for: group.id).map { ExerciseModel(model: $0) }
+            let lastCompletedReport = await dataManager.fetchLatestCompletedReportWorkout(forWorkoutGroupId: group.id)
+            let lastCompletedProgressByExerciseId = progressByExerciseId(from: lastCompletedReport)
             
             await MainActor.run {
                 exercises = items
+                self.lastCompletedProgressByExerciseId = lastCompletedProgressByExerciseId
                 if let complete = complete {
                     complete()
                 }
@@ -55,6 +60,10 @@ class ExerciseListViewModel: ObservableObject {
     
     func refreshData() {
         
+    }
+    
+    func lastCompletedProgress(for exerciseId: UUID) -> Double? {
+        lastCompletedProgressByExerciseId[exerciseId]
     }
     
     func edit(exercise: ExerciseModel) {
@@ -84,6 +93,23 @@ class ExerciseListViewModel: ObservableObject {
         Task {
             await DataManagerBackground(container: DataContainer.shared.sharedModelContainer).update(exercises: items, groupId: group.id)
         }
+    }
+    
+    private func progressByExerciseId(from report: ReportWorkoutModelDB?) -> [UUID: Double] {
+        guard let report else {
+            return [:]
+        }
+        
+        var progressById = [UUID: Double]()
+        for exercise in report.exercises {
+            let targetSetCount = exercise.targetSets.count
+            guard targetSetCount > 0 else {
+                progressById[exercise.exerciseId] = 1
+                continue
+            }
+            progressById[exercise.exerciseId] = min(Double(exercise.reportSets.count) / Double(targetSetCount), 1)
+        }
+        return progressById
     }
     
     func moveItem(source: IndexSet, destination: Int) {

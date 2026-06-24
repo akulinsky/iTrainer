@@ -17,6 +17,10 @@ class WorkoutGroupListViewModel: ObservableObject {
     
     @Published private var exerciseCountsByGroupId = [UUID: Int]()
     
+    @Published private var lastCompletedWorkoutGroupId: UUID?
+    
+    @Published private var lastCompletedProgressByGroupId = [UUID: Double]()
+    
     @Published var isShowAlert = false
     
     @Published var isEditGroup = false
@@ -43,9 +47,14 @@ class WorkoutGroupListViewModel: ObservableObject {
             let dataManager = DataManagerBackground(container: DataContainer.shared.sharedModelContainer)
             let items = await dataManager.fetchWorkoutGroups(for: workout.id).map { WorkoutGroupModel(model: $0) }
             let exerciseCountsByGroupId = await exerciseCounts(for: items, dataManager: dataManager)
+            let lastCompletedReport = await dataManager.fetchLatestCompletedReportWorkout(for: workout.id)
+            let lastCompletedWorkoutGroupId = lastCompletedReport?.workoutGroupId
+            let lastCompletedProgressByGroupId = await progressByGroupId(for: items, dataManager: dataManager)
             await MainActor.run {
                 workoutGroups = items
                 self.exerciseCountsByGroupId = exerciseCountsByGroupId
+                self.lastCompletedWorkoutGroupId = lastCompletedWorkoutGroupId
+                self.lastCompletedProgressByGroupId = lastCompletedProgressByGroupId
                 if let complete = complete {
                     complete()
                 }
@@ -86,6 +95,8 @@ class WorkoutGroupListViewModel: ObservableObject {
                 self.workout = selectedData.workout
                 self.workoutGroups = selectedData.groups
                 self.exerciseCountsByGroupId = selectedData.exerciseCountsByGroupId
+                self.lastCompletedWorkoutGroupId = selectedData.lastCompletedWorkoutGroupId
+                self.lastCompletedProgressByGroupId = selectedData.lastCompletedProgressByGroupId
                 self.isSelectWorkoutPresented = false
             }
         }
@@ -112,14 +123,16 @@ class WorkoutGroupListViewModel: ObservableObject {
                 self.workout = selectedData.workout
                 self.workoutGroups = selectedData.groups
                 self.exerciseCountsByGroupId = selectedData.exerciseCountsByGroupId
+                self.lastCompletedWorkoutGroupId = selectedData.lastCompletedWorkoutGroupId
+                self.lastCompletedProgressByGroupId = selectedData.lastCompletedProgressByGroupId
                 complete?()
             }
         }
     }
     
-    private func selectedWorkoutData(from dataManager: DataManagerBackground) async -> (workout: WorkoutModel?, groups: [WorkoutGroupModel], exerciseCountsByGroupId: [UUID: Int]) {
+    private func selectedWorkoutData(from dataManager: DataManagerBackground) async -> (workout: WorkoutModel?, groups: [WorkoutGroupModel], exerciseCountsByGroupId: [UUID: Int], lastCompletedWorkoutGroupId: UUID?, lastCompletedProgressByGroupId: [UUID: Double]) {
         guard let selectedWorkoutDB = await dataManager.fetchSelectedWorkout() else {
-            return (nil, [], [:])
+            return (nil, [], [:], nil, [:])
         }
         
         let selectedWorkout = WorkoutModel(model: selectedWorkoutDB)
@@ -128,11 +141,25 @@ class WorkoutGroupListViewModel: ObservableObject {
         for group in groups {
             exerciseCountsByGroupId[group.id] = await dataManager.fetchExercises(for: group.id).filter { !$0.isHeadline }.count
         }
-        return (selectedWorkout, groups, exerciseCountsByGroupId)
+        let lastCompletedReport = await dataManager.fetchLatestCompletedReportWorkout(for: selectedWorkout.id)
+        let lastCompletedProgressByGroupId = await progressByGroupId(for: groups, dataManager: dataManager)
+        return (selectedWorkout,
+                groups,
+                exerciseCountsByGroupId,
+                lastCompletedReport?.workoutGroupId,
+                lastCompletedProgressByGroupId)
     }
     
     func exerciseCount(for groupId: UUID) -> Int {
         exerciseCountsByGroupId[groupId] ?? 0
+    }
+    
+    func isLastCompletedGroup(_ groupId: UUID) -> Bool {
+        lastCompletedWorkoutGroupId == groupId
+    }
+    
+    func lastCompletedProgress(for groupId: UUID) -> Double {
+        lastCompletedProgressByGroupId[groupId] ?? 0
     }
     
     private func exerciseCounts(for groups: [WorkoutGroupModel], dataManager: DataManagerBackground) async -> [UUID: Int] {
@@ -141,6 +168,31 @@ class WorkoutGroupListViewModel: ObservableObject {
             counts[group.id] = await dataManager.fetchExercises(for: group.id).filter { !$0.isHeadline }.count
         }
         return counts
+    }
+    
+    private func progressByGroupId(for groups: [WorkoutGroupModel], dataManager: DataManagerBackground) async -> [UUID: Double] {
+        var progressById = [UUID: Double]()
+        
+        for group in groups {
+            guard let report = await dataManager.fetchLatestCompletedReportWorkout(forWorkoutGroupId: group.id) else {
+                continue
+            }
+            
+            progressById[group.id] = progress(from: report,
+                                              fallbackTargetCount: exerciseCountsByGroupId[group.id] ?? 0)
+        }
+        
+        return progressById
+    }
+    
+    private func progress(from report: ReportWorkoutModelDB, fallbackTargetCount: Int) -> Double {
+        let targetCount = report.targetExercisesCount > 0 ? report.targetExercisesCount : fallbackTargetCount
+        guard targetCount > 0 else {
+            return 0
+        }
+        
+        let completedCount = report.exercises.count
+        return min(Double(completedCount) / Double(targetCount), 1)
     }
     
     func update(item: WorkoutGroupModel) {

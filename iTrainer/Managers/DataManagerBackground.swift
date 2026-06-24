@@ -159,6 +159,18 @@ extension DataManagerBackground {
         return fetchItem(predicate: #Predicate<ReportWorkoutModelDB> { $0.endDate == nil })
     }
     
+    func fetchLatestCompletedReportWorkout(for workoutId: UUID) -> ReportWorkoutModelDB? {
+        let uuid = workoutId
+        return fetchModels(predicate: #Predicate<ReportWorkoutModelDB> { $0.workoutId == uuid && $0.endDate != nil },
+                           sortBy: [SortDescriptor(\ReportWorkoutModelDB.endDate, order: .reverse)]).first
+    }
+    
+    func fetchLatestCompletedReportWorkout(forWorkoutGroupId workoutGroupId: UUID) -> ReportWorkoutModelDB? {
+        let uuid = workoutGroupId
+        return fetchModels(predicate: #Predicate<ReportWorkoutModelDB> { $0.workoutGroupId == uuid && $0.endDate != nil },
+                           sortBy: [SortDescriptor(\ReportWorkoutModelDB.endDate, order: .reverse)]).first
+    }
+    
     /// Reports
     
     func fetchAllReportWorkout() -> [ReportWorkoutModelDB] {

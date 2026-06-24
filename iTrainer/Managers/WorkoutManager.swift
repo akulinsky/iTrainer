@@ -32,6 +32,28 @@ final class WorkoutManager: ObservableObject {
     
     @Published var workoutTime: String = ""
     
+    @Published private(set) var isWorkoutInProgress = false
+    
+    @Published private(set) var workoutElapsedTime: TimeInterval = 0
+    
+    @Published private(set) var currentRestTime: TimeInterval?
+    
+    @Published private(set) var workoutProgress: Double = 0
+    
+    @Published private(set) var currentWorkoutTitle: String = "Active workout"
+    
+    @Published private(set) var currentWorkoutGroupId: UUID?
+    
+    @Published private(set) var currentExerciseId: UUID?
+    
+    @Published private(set) var reportedExerciseIds = Set<UUID>()
+    
+    @Published private(set) var exerciseProgressById = [UUID: Double]()
+    
+    private var completedExercisesCount = 0
+    
+    private var targetExercisesCount = 0
+    
     // MARK: - Init
     
     init() {
@@ -70,10 +92,13 @@ final class WorkoutManager: ObservableObject {
             await MainActor.run {
                 if !self.isRunningWorkoutTimer {
                     self.workoutTime = ""
+                    self.workoutElapsedTime = 0
                 } else if self.workoutTimeInterval > 3600 {
                     self.workoutTime = self.workoutTimeInterval.hourMinuteSecond
+                    self.workoutElapsedTime = self.workoutTimeInterval
                 } else {
                     self.workoutTime = self.workoutTimeInterval.minuteSecond
+                    self.workoutElapsedTime = self.workoutTimeInterval
                 }
             }
         }
@@ -95,6 +120,7 @@ final class WorkoutManager: ObservableObject {
         
         workoutTimeInterval = 0.0
         isRunningWorkoutTimer = true
+        isWorkoutInProgress = true
         updateWorkoutTime()
         
         workoutTimer?.activate()
@@ -103,6 +129,16 @@ final class WorkoutManager: ObservableObject {
     private func stopTimer() {
         workoutTimeInterval = 0.0
         isRunningWorkoutTimer = false
+        isWorkoutInProgress = false
+        workoutElapsedTime = 0
+        workoutProgress = 0
+        currentWorkoutTitle = "Active workout"
+        currentWorkoutGroupId = nil
+        currentExerciseId = nil
+        reportedExerciseIds = []
+        exerciseProgressById = [:]
+        completedExercisesCount = 0
+        targetExercisesCount = 0
         updateWorkoutTime()
         workoutTimer?.cancel()
         resetRestTime()
@@ -146,10 +182,6 @@ final class WorkoutManager: ObservableObject {
     
     private func startWorkout(with groupId: UUID, dataManager: DataManagerBackground) async {
         
-        await MainActor.run {
-            startTimer()
-        }
-        
         if await dataManager.fetchStartedWorkout() != nil {
             print("Error: \(#file):\(#function) \(#line) Workout was started")
             return
@@ -159,11 +191,27 @@ final class WorkoutManager: ObservableObject {
             return
         }
         reportWorkout.startDate = Date()
+        let targetExercisesCount = await dataManager.fetchExercises(for: groupId).filter { !$0.isHeadline }.count
         await dataManager.save()
+        
+        let currentWorkoutTitle = reportWorkout.titleWorkoutGroup
+        await MainActor.run {
+            self.currentWorkoutTitle = currentWorkoutTitle
+            self.currentWorkoutGroupId = groupId
+            self.targetExercisesCount = targetExercisesCount
+            self.exerciseProgressById = [:]
+            self.completedExercisesCount = 0
+            self.reportedExerciseIds = []
+            self.updateWorkoutProgress()
+            startTimer()
+        }
         print("DBG_ Workout was started")
     }
     
     private func startRestTime() {
+        guard currentRestTimeIntervalExercise != nil else {
+            return
+        }
         self.isRunningRestTime = true
     }
     
@@ -174,6 +222,7 @@ final class WorkoutManager: ObservableObject {
         Task {
             await MainActor.run {
                 self.progressRestTime = 1.0
+                self.currentRestTime = self.currentRestTimeIntervalExercise
             }
         }
     }
@@ -183,8 +232,18 @@ final class WorkoutManager: ObservableObject {
             await MainActor.run {
                 self.restTime = self.restTimeInterval.minuteSecond
                 self.progressRestTime = self.restTimeIntervalExercise > 0 ? self.restTimeInterval / self.restTimeIntervalExercise : 1.0
+                self.currentRestTime = self.currentRestTimeIntervalExercise == nil ? nil : self.restTimeInterval
             }
         }
+    }
+    
+    @MainActor
+    private func updateWorkoutProgress() {
+        guard targetExercisesCount > 0 else {
+            workoutProgress = 0
+            return
+        }
+        workoutProgress = Double(completedExercisesCount) / Double(targetExercisesCount)
     }
     
     // MARK: - Public methods
@@ -298,8 +357,24 @@ final class WorkoutManager: ObservableObject {
         
         await dataManager.save()
         
+        let currentWorkoutTitle = reportWorkout.titleWorkoutGroup
+        let reportedExerciseIds = Set(reportWorkout.exercises.map(\.exerciseId))
+        let exerciseProgressById = await exerciseProgressById(for: reportWorkout, dataManager: dataManager)
+        let exercises = await dataManager.fetchExercises(for: workoutGroupId)
+        let targetExercisesCount = exercises.filter { !$0.isHeadline }.count
+        await MainActor.run {
+            self.currentWorkoutTitle = currentWorkoutTitle
+            self.currentWorkoutGroupId = workoutGroupId
+            self.reportedExerciseIds = reportedExerciseIds
+            self.exerciseProgressById = exerciseProgressById
+            self.completedExercisesCount = reportedExerciseIds.count
+            self.targetExercisesCount = targetExercisesCount
+            self.updateWorkoutProgress()
+        }
+        
         resetRestTime()
         startRestTime()
+        updateRestTime()
         
         print("DBG_ Report was added")
     }
@@ -308,10 +383,33 @@ final class WorkoutManager: ObservableObject {
         await DataManagerBackground(container: DataContainer.shared.sharedModelContainer).removeReportSets(with: id)
     }
     
+    private func exerciseProgressById(for reportWorkout: ReportWorkoutModelDB, dataManager: DataManagerBackground) async -> [UUID: Double] {
+        var progressById = [UUID: Double]()
+        
+        for reportExercise in reportWorkout.exercises {
+            guard let exercise = await dataManager.fetchExercise(with: reportExercise.exerciseId) else {
+                continue
+            }
+            
+            let targetSetCount = exercise.sets.count
+            guard targetSetCount > 0 else {
+                progressById[reportExercise.exerciseId] = 1
+                continue
+            }
+            
+            progressById[reportExercise.exerciseId] = min(Double(reportExercise.reportSets.count) / Double(targetSetCount), 1)
+        }
+        
+        return progressById
+    }
+    
     func currentExercise(id: UUID) {
         Task {
             let dataManager = DataManagerBackground(container: DataContainer.shared.sharedModelContainer)
             currentRestTimeIntervalExercise = await dataManager.fetchExercise(with: id)?.restTime
+            await MainActor.run {
+                self.currentExerciseId = id
+            }
             if !isRunningRestTime {
                 resetRestTime()
                 updateRestTime()
