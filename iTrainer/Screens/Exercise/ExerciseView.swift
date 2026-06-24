@@ -16,6 +16,8 @@ struct ExerciseView: View {
     
     @State private var showAnimation = false
     
+    @State private var isEndWorkoutAlertPresented = false
+    
     init(viewModel: ExerciseViewModel) {
         _viewModel = StateObject(wrappedValue: viewModel)
     }
@@ -85,6 +87,14 @@ struct ExerciseView: View {
             editExercise()
                 .presentationDetents([.large])
         })
+        .alert("Finish workout?", isPresented: $isEndWorkoutAlertPresented) {
+            Button("Cancel", role: .cancel) {}
+            Button("Finish", role: .destructive) {
+                workoutManager.endWorkout()
+            }
+        } message: {
+            Text("Current workout will be closed.")
+        }
     }
     
     private var workoutStatusWidget: some View {
@@ -92,7 +102,10 @@ struct ExerciseView: View {
                             workoutTime: workoutManager.workoutElapsedTime,
                             restTime: workoutManager.currentRestTime,
                             restProgress: workoutManager.progressRestTime,
-                            workoutProgress: workoutManager.workoutProgress)
+                            workoutProgress: workoutManager.workoutProgress,
+                            onWorkoutTap: {
+                                isEndWorkoutAlertPresented = true
+                            })
     }
     
     private var exerciseHeaderCard: some View {

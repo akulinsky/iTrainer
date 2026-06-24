@@ -11,26 +11,9 @@ struct ExerciseEditView: View {
     
     @StateObject var viewModel: ExerciseEditViewModel
     
-    @Environment(\.colorScheme) var colorScheme
-    
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
     
-    @State private var strWeight: String = ""
-    
-    @State private var strReps: String = ""
-    
-    private var heightHeader: CGFloat = 50.0
-    
     @State private var showAnimation = false
-    
-    private var color: Color {
-        switch colorScheme {
-        case .light:
-            Color(UIColor.darkGray)
-        default:
-            Color(UIColor.lightGray)
-        }
-    }
     
     init(viewModel: ExerciseEditViewModel) {
         _viewModel = StateObject(wrappedValue: viewModel)
@@ -39,25 +22,23 @@ struct ExerciseEditView: View {
     var body: some View {
         NavigationStack {
             ScrollView {
-                VStack {
+                VStack(alignment: .leading, spacing: 26) {
                     titleView
-                        .padding([.leading, .top, .trailing], 20)
-                    
                     restTimeView
-                        .padding([.leading, .top, .trailing], 20)
-                    
                     setsView
-                        .padding([.leading, .top, .trailing], 20)
                     
                     Color.clear
-                        .frame(height: 60)
+                        .frame(height: 30)
                 }
+                .padding(.horizontal, 20)
+                .padding(.top, 20)
             }
+            .background(AppColor.backgroundPrimary)
             .animation(.easeInOut, value: showAnimation)
             .safeAreaPadding(.bottom, 20)
             .dismissKeyboardOnTap()
             .scrollDismissesKeyboard(.immediately)
-            .navigationTitle(viewModel.exercise.type?.type.title ?? "Exercise")
+            .navigationTitle("Edit exercise")
             .toolbarTitleDisplayMode(.inline)
             .toolbar {
                 if presentationMode.wrappedValue.isPresented {
@@ -65,12 +46,15 @@ struct ExerciseEditView: View {
                         Button("Cancel") {
                             cancel()
                         }
+                        .foregroundStyle(AppColor.textSecondary)
                     }
                     
                     ToolbarItem(placement: .topBarTrailing) {
                         Button("Save") {
                             save()
                         }
+                        .font(AppFont.rowTitle)
+                        .foregroundStyle(AppColor.brandPrimary)
                     }
                 }
             }
@@ -94,104 +78,154 @@ struct ExerciseEditView: View {
     
     @ViewBuilder
     private var titleView: some View {
-        VStack {
-            TextField("New title...", text: $viewModel.title)
-                .padding([.leading, .trailing])
+        VStack(alignment: .leading, spacing: 14) {
+            Text("Custom name")
+                .font(AppFont.rowTitle)
+                .foregroundStyle(AppColor.textPrimary)
+            
+            TextField(viewModel.exercise.type?.title ?? "New title...", text: $viewModel.title)
+                .font(AppFont.rowTitle)
+                .padding(.horizontal, 14)
                 .frame(height: 50)
-                .foregroundStyle(color)
-                .background {
-                    HStack {
-                        ZStack {
-                            RoundedRectangle(cornerRadius: 5)
-                                .fill(Color(UIColor.lightGray))
-                                .opacity(0.3)
-                            
-                            RoundedRectangle(cornerRadius: 5)
-                                .stroke(.gray, lineWidth: 1)
-                        }
-                    }
+                .foregroundStyle(AppColor.textPrimary)
+                .background(AppColor.surfacePrimary)
+                .clipShape(RoundedRectangle(cornerRadius: 8))
+                .overlay {
+                    RoundedRectangle(cornerRadius: 8)
+                        .stroke(AppColor.separatorSoft, lineWidth: 1)
                 }
+            
+            Text("Leave empty to use default name.")
+                .font(AppFont.rowSubtitle)
+                .foregroundStyle(AppColor.textSecondary)
+        }
+        .padding(.horizontal, 20)
+        .padding(.vertical, 18)
+        .frame(maxWidth: .infinity, alignment: .leading)
+        .background(AppColor.surfacePrimary)
+        .clipShape(RoundedRectangle(cornerRadius: 14))
+        .overlay {
+            RoundedRectangle(cornerRadius: 14)
+                .stroke(AppColor.separatorSoft, lineWidth: 1)
         }
     }
     
     @ViewBuilder
     private var restTimeView: some View {
-        VStack {
-            HStack {
-                Text("Rest time")
-                    .foregroundStyle(.gray)
-                
-                Spacer()
-            }
+        VStack(alignment: .leading, spacing: 18) {
+            Text("Rest time")
+                .font(AppFont.rowTitle)
+                .foregroundStyle(AppColor.textPrimary)
             
-            HStack {
-                TextField("Rest time", text: $viewModel.restTime, onEditingChanged: { focused in
-                    viewModel.focusedRestTime(focused)
-                })
-                .multilineTextAlignment(.center)
-                .textFieldStyle(AKTextFieldStyle())
-                .frame(width: 75)
-//                .foregroundStyle(color)
-                .keyboardType(.numberPad)
+            VStack(spacing: 14) {
+                HStack {
+                    Text("Rest between sets")
+                        .font(AppFont.workoutGroupCardSubtitle)
+                        .foregroundStyle(AppColor.textPrimary)
+                    
+                    Spacer()
+                    
+                    restTimeField
+                }
+                .opacity(viewModel.switchRest ? 0.35 : 1.0)
+                .allowsHitTesting(!viewModel.switchRest)
                 
-//                Spacer()
+                Divider()
+                    .overlay(AppColor.separatorSoft)
+                
+                Toggle("Without rest", isOn: $viewModel.switchRest)
+                    .font(AppFont.workoutGroupCardSubtitle)
+                    .foregroundStyle(AppColor.textPrimary)
+                    .tint(AppColor.brandPrimary)
             }
-            .opacity(viewModel.switchRest ? 0.3 : 1.0)
-            .allowsHitTesting(!viewModel.switchRest)
-//            .padding(.leading, 55)
+        }
+        .padding(18)
+        .frame(maxWidth: .infinity, alignment: .leading)
+        .background(AppColor.surfacePrimary)
+        .clipShape(RoundedRectangle(cornerRadius: 14))
+        .overlay {
+            RoundedRectangle(cornerRadius: 14)
+                .stroke(AppColor.separatorSoft, lineWidth: 1)
+        }
+    }
+    
+    @ViewBuilder
+    private var restTimeField: some View {
+        HStack(spacing: 8) {
+            TextField("Rest time", text: $viewModel.restTime, onEditingChanged: { focused in
+                viewModel.focusedRestTime(focused)
+            })
+            .multilineTextAlignment(.center)
+            .textFieldStyle(.plain)
+            .font(AppFont.rowTitle)
+            .foregroundStyle(AppColor.brandPrimary)
+            .frame(width: 72)
+            .keyboardType(.numberPad)
             
-            Toggle("Without rest", isOn: $viewModel.switchRest)
-                .foregroundStyle(.gray)
+            Image(systemName: "chevron.down")
+                .font(.system(size: 14, weight: .semibold))
+                .foregroundStyle(AppColor.textSecondary)
         }
     }
     
     @ViewBuilder
     private var setsView: some View {
-        VStack {
-            HStack {
-                Text("Sets")
-                    .foregroundStyle(.gray)
-                
-                Spacer()
-            }
+        VStack(alignment: .leading, spacing: 14) {
+            Text("Target sets")
+                .font(AppFont.rowTitle)
+                .foregroundStyle(AppColor.textPrimary)
             
-            ForEach(viewModel.setsViewModels) { item in
-                SetEditCell(viewModel: item) {
-                    switch $0 {
-                    case .delete(let item):
-                        viewModel.delete(setsViewModel: item)
-                        showAnimation.toggle()
-                    default:
-                        break
+            VStack(spacing: 0) {
+                ForEach(Array(viewModel.setsViewModels.enumerated()), id: \.element.id) { index, item in
+                    if index > 0 {
+                        Divider()
+                            .padding(.leading, 64)
+                            .overlay(AppColor.separatorSoft)
                     }
-                }.transition(.asymmetric(
-                    insertion: .scale.combined(with: .opacity),
-                    removal: .move(edge: .trailing).combined(with: .opacity)
-                ))
+                    
+                    SetEditCell(viewModel: item) {
+                        switch $0 {
+                        case .delete(let item):
+                            viewModel.delete(setsViewModel: item)
+                            showAnimation.toggle()
+                        default:
+                            break
+                        }
+                    }
+                    .padding(.vertical, 16)
+                    .transition(.asymmetric(
+                        insertion: .scale.combined(with: .opacity),
+                        removal: .move(edge: .trailing).combined(with: .opacity)
+                    ))
+                }
+            }
+            .padding(.horizontal, 14)
+            .background(AppColor.surfacePrimary)
+            .clipShape(RoundedRectangle(cornerRadius: 14))
+            .overlay {
+                RoundedRectangle(cornerRadius: 14)
+                    .stroke(AppColor.separatorSoft, lineWidth: 1)
             }
             
             Button {
                 addSet()
             } label: {
-                
-                ZStack {
-                    RoundedRectangle(cornerRadius: 8)
-                        .stroke(color, lineWidth: 1)
-                    HStack {
-                        Spacer()
-                        Image(systemName: "plus")
-                            .font(.title)
-                        Spacer()
-                    }
-                    .contentShape(Rectangle())
+                HStack(spacing: 10) {
+                    Image(systemName: "plus")
+                        .font(.system(size: 24, weight: .regular))
+                    
+                    Text("Add set")
+                        .font(AppFont.rowTitle)
                 }
-                .padding(.top, 10)
+                .foregroundStyle(.white)
+                .frame(maxWidth: .infinity)
+                .frame(height: 56)
+                .background(AppColor.brandPrimary)
+                .clipShape(RoundedRectangle(cornerRadius: 8))
+                .contentShape(Rectangle())
             }
-            .foregroundStyle(color)
-            .frame(height: 50)
-            .frame(maxWidth: .infinity)
             .buttonStyle(.plain)
-//            .padding([.leading, .trailing], 40)
+            .padding(.top, 10)
         }
     }
     

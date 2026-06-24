@@ -19,24 +19,9 @@ struct SetEditCell: View {
     
     private var actionBlock: ActionBlock
     
-    @Environment(\.colorScheme) var colorScheme
-    
     @StateObject var viewModel: SetEditCellViewModel
     
-    private var shakeReps = PassthroughSubject<Void, Never>()
-    
-    private var shakeWeight = PassthroughSubject<Void, Never>()
-    
     @State private var updateUI = false
-    
-    private var color: Color {
-        switch colorScheme {
-        case .light:
-            Color(UIColor.darkGray)
-        default:
-            Color(UIColor.lightGray)
-        }
-    }
     
     init(viewModel: SetEditCellViewModel, actionBlock: @escaping ActionBlock) {
         _viewModel = StateObject(wrappedValue: viewModel)
@@ -44,64 +29,97 @@ struct SetEditCell: View {
     }
     
     var body: some View {
-        HStack(spacing: 20) {
+        HStack(alignment: .center, spacing: 8) {
+            Image("icTargetSet")
+                .renderingMode(.template)
+                .resizable()
+                .scaledToFit()
+                .foregroundStyle(AppColor.workoutGreen)
+                .frame(width: 32, height: 32)
             
-            VStack(alignment: .leading, spacing: 0) {
-                Color.clear
-                    .frame(height: 30)
-                HStack {
-                    Text("# \(viewModel.model.index):")
-                        .font(.footnote)
-                        .foregroundStyle(.gray)
-                        .bold()
-                        .frame(width: 35)
+            VStack(alignment: .leading, spacing: 4) {
+                Text("Set \(viewModel.model.index)")
+                    .font(AppFont.rowTitle)
+                    .foregroundStyle(AppColor.textPrimary)
+                
+                ForEach(viewModel.paramsData) { item in
+                    Text(summaryText(for: item))
+                        .font(AppFont.rowSubtitle)
+                        .foregroundStyle(AppColor.textSecondary)
                 }
             }
-            .fixedSize()
+            .frame(minWidth: 92, alignment: .leading)
             
-            ForEach($viewModel.paramsData) { $item in
-                VStack(alignment: .leading, spacing: 0) {
-                    HStack(alignment: .firstTextBaseline) {
-                        Text("\(item.param.title): \(item.value)")
-                                .font(.caption)
-                        
-                    }
-                    .frame(height: 30)
-                    .padding([.leading, .trailing])
-                    .foregroundStyle(.gray)
-                    
-                    HStack {
-                        TextField(item.param.title, text: $item.value, onEditingChanged: { focused in
-                            self.viewModel.focused(focused, paramData: item) {
-                                self.updateUI.toggle()
-                            }
-                        })
-                        .id(updateUI)
-                        .textFieldStyle(AKTextFieldStyle())
-                        .shakeAnimation(item.shake)
-                        .keyboardType(item.keyboardType)
-//                        .foregroundStyle(color)
-                    }
+            Spacer(minLength: 6)
+            
+            HStack(alignment: .center, spacing: 6) {
+                ForEach($viewModel.paramsData) { $item in
+                    parameterInput(item: $item)
                 }
             }
             
             Button {
                 actionBlock(.delete(viewModel))
             } label: {
-                
-                ZStack {
-                    HStack {
-                        Spacer()
-                        Image(systemName: "trash")
-                            .font(.title3)
-                        Spacer()
-                    }
+                Image(systemName: "trash")
+                    .font(.system(size: 20, weight: .regular))
+                    .foregroundStyle(AppColor.accentCoral)
+                    .frame(width: 32, height: 44)
                     .contentShape(Rectangle())
-                }
             }
-            .foregroundStyle(color)
-            .frame(width: 20, height: 40)
-            .offset(y: 14.0)
+            .buttonStyle(.plain)
+        }
+    }
+    
+    @ViewBuilder
+    private func parameterInput(item: Binding<SetEditCellViewModel.ParamData>) -> some View {
+        VStack(spacing: 4) {
+            TextField(item.wrappedValue.param.title, text: item.value, onEditingChanged: { focused in
+                self.viewModel.focused(focused, paramData: item.wrappedValue) {
+                    self.updateUI.toggle()
+                }
+            })
+            .id(updateUI)
+            .textFieldStyle(.plain)
+            .font(AppFont.rowTitle)
+            .multilineTextAlignment(.center)
+            .foregroundStyle(AppColor.textPrimary)
+            .padding(.horizontal, 8)
+            .frame(width: 66, height: 48)
+            .background(AppColor.surfacePrimary)
+            .clipShape(RoundedRectangle(cornerRadius: 8))
+            .overlay {
+                RoundedRectangle(cornerRadius: 8)
+                    .stroke(AppColor.separatorSoft, lineWidth: 1)
+            }
+            .shakeAnimation(item.wrappedValue.shake)
+            .keyboardType(item.wrappedValue.keyboardType)
+            
+            Text(unitText(for: item.wrappedValue.param))
+                .font(AppFont.rowSubtitle)
+                .foregroundStyle(AppColor.textSecondary)
+                .lineLimit(1)
+                .minimumScaleFactor(0.8)
+                .fixedSize(horizontal: true, vertical: false)
+                .frame(width: 66, height: 18)
+        }
+    }
+    
+    private func summaryText(for item: SetEditCellViewModel.ParamData) -> String {
+        let value = item.value.isEmpty ? "-" : item.value
+        return "\(item.param.title): \(value)"
+    }
+    
+    private func unitText(for param: SetsParameter) -> String {
+        switch param {
+        case .weight(_):
+            "kg"
+        case .repeats(_):
+            "reps"
+        case .distance(_):
+            "m"
+        case .time(_):
+            "sec"
         }
     }
 }

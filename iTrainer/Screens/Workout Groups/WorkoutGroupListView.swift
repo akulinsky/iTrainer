@@ -19,6 +19,8 @@ struct WorkoutGroupListView: View {
     
     @State private var editMode = EditMode.inactive
     
+    @State private var isEndWorkoutAlertPresented = false
+    
     @StateObject private var navigationManager = NavigationManager()
     
     init(viewModel: WorkoutGroupListViewModel) {
@@ -87,6 +89,14 @@ struct WorkoutGroupListView: View {
             .contentSelf(content: { view in
                 contentViewNavigation(content: view)
             })
+            .alert("Finish workout?", isPresented: $isEndWorkoutAlertPresented) {
+                Button("Cancel", role: .cancel) {}
+                Button("Finish", role: .destructive) {
+                    workoutManager.endWorkout()
+                }
+            } message: {
+                Text("Current workout will be closed.")
+            }
         }
         .environment(\.navigation, navigationManager)
     }
@@ -133,7 +143,10 @@ struct WorkoutGroupListView: View {
                             workoutTime: workoutManager.workoutElapsedTime,
                             restTime: workoutManager.currentRestTime,
                             restProgress: workoutManager.progressRestTime,
-                            workoutProgress: workoutManager.workoutProgress)
+                            workoutProgress: workoutManager.workoutProgress,
+                            onWorkoutTap: {
+                                isEndWorkoutAlertPresented = true
+                            })
     }
     
     private func cells(for item: WorkoutGroupModel) -> some View {
