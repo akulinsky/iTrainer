@@ -14,6 +14,7 @@ struct ExerciseEditView: View {
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
     
     @State private var showAnimation = false
+    @State private var isRestTimePickerPresented = false
     
     init(viewModel: ExerciseEditViewModel) {
         _viewModel = StateObject(wrappedValue: viewModel)
@@ -60,6 +61,17 @@ struct ExerciseEditView: View {
             }
             .onAppear {
                 viewModel.reloadData()
+            }
+            .sheet(isPresented: $isRestTimePickerPresented) {
+                DurationPickerSheet(
+                    title: "Rest time",
+                    value: restTimeSecondsBinding,
+                    range: 0...600,
+                    secondStep: 5,
+                    presets: restTimePresets
+                )
+                .presentationDetents([.height(430)])
+                .presentationDragIndicator(.visible)
             }
         }
     }
@@ -151,21 +163,40 @@ struct ExerciseEditView: View {
     
     @ViewBuilder
     private var restTimeField: some View {
-        HStack(spacing: 8) {
-            TextField("Rest time", text: $viewModel.restTime, onEditingChanged: { focused in
-                viewModel.focusedRestTime(focused)
-            })
-            .multilineTextAlignment(.center)
-            .textFieldStyle(.plain)
-            .font(AppFont.rowTitle)
-            .foregroundStyle(AppColor.brandPrimary)
-            .frame(width: 72)
-            .keyboardType(.numberPad)
-            
-            Image(systemName: "chevron.down")
-                .font(.system(size: 14, weight: .semibold))
-                .foregroundStyle(AppColor.textSecondary)
+        Button {
+            isRestTimePickerPresented = true
+        } label: {
+            HStack(spacing: 8) {
+                Text(viewModel.restTime)
+                    .font(AppFont.rowTitle)
+                    .foregroundStyle(AppColor.brandPrimary)
+                    .monospacedDigit()
+                
+                Image(systemName: "chevron.down")
+                    .font(.system(size: 14, weight: .semibold))
+                    .foregroundStyle(AppColor.textSecondary)
+            }
+            .contentShape(Rectangle())
         }
+        .buttonStyle(.plain)
+    }
+    
+    private var restTimeSecondsBinding: Binding<Int> {
+        Binding(
+            get: { viewModel.restTimeSeconds },
+            set: { viewModel.setRestTime(seconds: $0) }
+        )
+    }
+    
+    private var restTimePresets: [DurationPreset] {
+        [
+            DurationPreset(title: "0:30", seconds: 30),
+            DurationPreset(title: "1:00", seconds: 60),
+            DurationPreset(title: "1:30", seconds: 90),
+            DurationPreset(title: "2:00", seconds: 120),
+            DurationPreset(title: "3:00", seconds: 180),
+            DurationPreset(title: "5:00", seconds: 300)
+        ]
     }
     
     @ViewBuilder

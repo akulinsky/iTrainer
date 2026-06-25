@@ -39,5 +39,6 @@ enum AppFont {
     static let workoutGroupProgressValue: Font = .system(size: 20, weight: .bold)
     static let workoutGroupStatus: Font = .system(size: 15, weight: .medium)
     static let exerciseProgressValue: Font = .system(size: 16, weight: .bold)
+    static let durationPickerUnit: Font = .system(size: 16, weight: .bold)
     static let caption: Font = .system(size: 12, weight: .medium)
 }

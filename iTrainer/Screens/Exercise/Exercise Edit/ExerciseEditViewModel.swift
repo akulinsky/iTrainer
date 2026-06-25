@@ -116,6 +116,15 @@ class ExerciseEditViewModel: ObservableObject {
         }
     }
     
+    var restTimeSeconds: Int {
+        Int(restTimeInterval)
+    }
+    
+    func setRestTime(seconds: Int) {
+        let clampedSeconds = min(max(seconds, 0), 600)
+        restTime = TimeInterval(clampedSeconds).minuteSecond
+    }
+    
     func focusedRestTime(_ focused: Bool) {
         if focused {
             return
