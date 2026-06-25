@@ -22,6 +22,7 @@ struct ExerciseListView: View {
     @State private var showAnimation = false
     
     @State private var isEndWorkoutAlertPresented = false
+    @State private var isStartWorkoutAlertPresented = false
     
     @Environment(\.navigation) private var navigation
     
@@ -34,11 +35,19 @@ struct ExerciseListView: View {
             List {
                 if workoutManager.isWorkoutInProgress {
                     workoutStatusWidget
+                        .transition(.asymmetric(
+                            insertion: .move(edge: .top).combined(with: .opacity),
+                            removal: .scale(scale: 0.96).combined(with: .opacity)
+                        ))
                         .listRowInsets(EdgeInsets(top: 10, leading: 20, bottom: 12, trailing: 20))
                         .listRowSeparator(.hidden)
                         .listRowBackground(AppColor.backgroundPrimary)
                 } else {
                     startSessionCard
+                        .transition(.asymmetric(
+                            insertion: .move(edge: .top).combined(with: .opacity),
+                            removal: .scale(scale: 0.96).combined(with: .opacity)
+                        ))
                         .listRowInsets(EdgeInsets(top: 10, leading: 20, bottom: 12, trailing: 20))
                         .listRowSeparator(.hidden)
                         .listRowBackground(AppColor.backgroundPrimary)
@@ -57,6 +66,7 @@ struct ExerciseListView: View {
             .scrollContentBackground(.hidden)
             .background(AppColor.backgroundPrimary)
             .animation(.easeInOut, value: showAnimation)
+            .animation(.spring(response: 0.45, dampingFraction: 0.86), value: workoutManager.isWorkoutInProgress)
             .refreshable {
                 refresh()
             }
@@ -109,10 +119,22 @@ struct ExerciseListView: View {
         .alert("Finish workout?", isPresented: $isEndWorkoutAlertPresented) {
             Button("Cancel", role: .cancel) {}
             Button("Finish", role: .destructive) {
-                workoutManager.endWorkout()
+                withAnimation(.spring(response: 0.45, dampingFraction: 0.86)) {
+                    workoutManager.endWorkout()
+                }
             }
         } message: {
             Text("Current workout will be closed.")
+        }
+        .alert("Start workout?", isPresented: $isStartWorkoutAlertPresented) {
+            Button("Cancel", role: .cancel) {}
+            Button("Start") {
+                withAnimation(.spring(response: 0.45, dampingFraction: 0.86)) {
+                    workoutManager.startWorkout(with: viewModel.group.id)
+                }
+            }
+        } message: {
+            Text("Start \(viewModel.group.title ?? "this workout")?")
         }
     }
     
@@ -166,7 +188,7 @@ struct ExerciseListView: View {
     
     private var startSessionCard: some View {
         Button {
-            workoutManager.startWorkout(with: viewModel.group.id)
+            isStartWorkoutAlertPresented = true
         } label: {
             HStack(spacing: 12) {
                 Image(systemName: "play.circle.fill")
