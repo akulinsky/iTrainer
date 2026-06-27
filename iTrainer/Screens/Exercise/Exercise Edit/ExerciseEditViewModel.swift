@@ -151,7 +151,7 @@ class ExerciseEditViewModel: ObservableObject {
     }
     
     private func validateTargetSets() -> Bool {
-        setsViewModels.allSatisfy { $0.hasValidValues }
+        setsViewModels.allSatisfy { $0.commitAllInputs() && $0.hasValidValues }
     }
     
     func save(completeBlock: @escaping SaveingBlock) {
@@ -227,39 +227,18 @@ class SetEditCellViewModel: ObservableObject, Identifiable {
     
     // MARK: - Properties
     
-    private var cancellable = Set<AnyCancellable>()
-    
     private var exerciseType: ExerciseTypeModel
     
     var id: UUID {
         model.id
     }
     
-    var model: SetsModel
+    @Published var model: SetsModel
     
     var paramsData = [ParamData]()
     
     var hasValidValues: Bool {
-        paramsData.allSatisfy { paramData in
-            guard !paramData.value.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty else {
-                return false
-            }
-            
-            switch paramData.param {
-            case .weight:
-                return parsedFloat(from: paramData.value) > 0
-            case .repeats:
-                return (Int(paramData.value) ?? 0) > 0
-            case .distance:
-                return parsedFloat(from: paramData.value) > 0
-            case .time:
-                let value = paramData.value.replacingOccurrences(of: ":", with: "")
-                guard let value = Double(value) else {
-                    return false
-                }
-                return TimeInterval.timeForSet(value: value) > 0
-            }
-        }
+        model.parameters.allSatisfy { isValid(parameter: $0) }
     }
     
     // MARK: - Init
@@ -272,65 +251,6 @@ class SetEditCellViewModel: ObservableObject, Identifiable {
             let paramData = ParamData(param: param, focusId: "set-\(model.id.uuidString)-\(param.id)")
             paramsData.append(paramData)
             
-            var ignore = false
-            
-            switch param {
-            case .weight(_):
-                paramData.$value.sink { value in
-                    
-                    let numberFormatter = NumberFormatter()
-                    numberFormatter.numberStyle = NumberFormatter.Style.decimal
-                    if let value = numberFormatter.number(from: value)?.floatValue, value > 0 {
-                        if let index = self.model.parameters.firstIndex(where: { $0.id == param.id}) {
-                            self.model.parameters.remove(at: index)
-                            self.model.parameters.insert(.weight(value), at: index)
-                        }
-                    }
-                }
-                .store(in: &cancellable)
-            case .repeats(_):
-                paramData.$value.sink { value in
-                    if let value = Int(value), value > 0 {
-                        if let index = self.model.parameters.firstIndex(where: { $0.id == param.id}) {
-                            self.model.parameters.remove(at: index)
-                            self.model.parameters.insert(.repeats(value), at: index)
-                        }
-                    }
-                }
-                .store(in: &cancellable)
-            case .distance(_):
-                paramData.$value.sink { value in
-                    if let value = Float(value), value > 0 {
-                        if let index = self.model.parameters.firstIndex(where: { $0.id == param.id}) {
-                            self.model.parameters.remove(at: index)
-                            self.model.parameters.insert(.distance(value), at: index)
-                        }
-                    }
-                }
-                .store(in: &cancellable)
-            case .time(_):
-                paramData.$value.sink { value in
-                    if ignore {
-                        ignore = false
-                        return
-                    }
-                    
-                    let value = value.replacingOccurrences(of: ":", with: "")
-                    if let value = Double(value), value > 0 {
-                        let value = TimeInterval.timeForSet(value: value)
-                        if let index = self.model.parameters.firstIndex(where: { $0.id == param.id}) {
-                            
-                            if case .time(let time) = self.model.parameters[index], value == time {
-                                return
-                            }
-                            ignore = true
-                            self.model.parameters.remove(at: index)
-                            self.model.parameters.insert(.time(value), at: index)
-                        }
-                    }
-                }
-                .store(in: &cancellable)
-            }
         }
     }
     
@@ -361,28 +281,72 @@ class SetEditCellViewModel: ObservableObject, Identifiable {
             return
         }
         
-        model.parameters[index] = parameter
+        var updatedModel = model
+        updatedModel.parameters[index] = parameter
+        model = updatedModel
     }
     
-    private func isValidInput(_ paramData: ParamData) -> Bool {
+    private func isValid(parameter: SetsParameter) -> Bool {
+        switch parameter {
+        case .weight(let value):
+            return value > 0
+        case .repeats(let value):
+            return value > 0
+        case .distance(let value):
+            return value > 0
+        case .time(let value):
+            return value > 0
+        }
+    }
+    
+    private func parameter(from paramData: ParamData) -> SetsParameter? {
         guard !paramData.value.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty else {
-            return false
+            return nil
         }
         
         switch paramData.param {
         case .weight:
-            return parsedFloat(from: paramData.value) > 0
+            let value = parsedFloat(from: paramData.value)
+            return value > 0 ? .weight(value) : nil
         case .repeats:
-            return (Int(paramData.value) ?? 0) > 0
-        case .distance:
-            return parsedFloat(from: paramData.value) > 0
-        case .time:
-            let value = paramData.value.replacingOccurrences(of: ":", with: "")
-            guard let value = Double(value) else {
-                return false
+            guard let value = Int(paramData.value), value > 0 else {
+                return nil
             }
-            return TimeInterval.timeForSet(value: value) > 0
+            return .repeats(value)
+        case .distance:
+            let value = parsedFloat(from: paramData.value)
+            return value > 0 ? .distance(value) : nil
+        case .time:
+            let textValue = paramData.value.replacingOccurrences(of: ":", with: "")
+            guard let value = Double(textValue) else {
+                return nil
+            }
+            let time = TimeInterval.timeForSet(value: value)
+            return time > 0 ? .time(time) : nil
         }
+    }
+    
+    @discardableResult
+    private func commitInput(_ paramData: ParamData) -> SetsParameter? {
+        guard let parameter = parameter(from: paramData) else {
+            return nil
+        }
+        
+        updateParameter(parameter)
+        return parameter
+    }
+    
+    func commitAllInputs() -> Bool {
+        paramsData.allSatisfy { commitInput($0) != nil }
+    }
+    
+    func summaryText(for paramId: Int) -> String {
+        guard let parameter = parameter(for: paramId) else {
+            return ""
+        }
+        
+        let value = formattedValue(for: parameter)
+        return "\(parameter.title): \(value.isEmpty ? "-" : value)"
     }
     
     private func formattedValue(for parameter: SetsParameter) -> String {
@@ -404,15 +368,7 @@ class SetEditCellViewModel: ObservableObject, Identifiable {
             return
         }
         
-        let parameter: SetsParameter?
-        if isValidInput(paramData) {
-            parameter = self.parameter(for: paramData.id)
-        } else if let valueBeforeEditing = paramData.valueBeforeEditing {
-            updateParameter(valueBeforeEditing)
-            parameter = valueBeforeEditing
-        } else {
-            parameter = self.parameter(for: paramData.id)
-        }
+        let parameter = commitInput(paramData) ?? self.parameter(for: paramData.id)
         
         guard let parameter else {
             return
