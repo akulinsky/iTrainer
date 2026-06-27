@@ -48,9 +48,7 @@ struct SetEditCell: View {
                     .foregroundStyle(AppColor.textPrimary)
                 
                 ForEach(viewModel.paramsData) { item in
-                    Text(summaryText(for: item))
-                        .font(AppFont.rowSubtitle)
-                        .foregroundStyle(AppColor.textSecondary)
+                    SetEditParameterSummary(item: item)
                 }
             }
             .frame(minWidth: 92, alignment: .leading)
@@ -79,7 +77,18 @@ struct SetEditCell: View {
         }
     }
     
-    private func summaryText(for item: SetEditCellViewModel.ParamData) -> String {
+}
+
+private struct SetEditParameterSummary: View {
+    @ObservedObject var item: SetEditCellViewModel.ParamData
+    
+    var body: some View {
+        Text(summaryText)
+            .font(AppFont.rowSubtitle)
+            .foregroundStyle(AppColor.textSecondary)
+    }
+    
+    private var summaryText: String {
         let value = item.value.isEmpty ? "-" : item.value
         return "\(item.param.title): \(value)"
     }

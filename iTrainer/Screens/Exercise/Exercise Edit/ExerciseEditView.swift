@@ -67,6 +67,11 @@ struct ExerciseEditView: View {
             .onAppear {
                 viewModel.reloadData()
             }
+            .alert("Cannot save exercise", isPresented: $viewModel.isShowAlert) {
+                Button("OK", role: .cancel) {}
+            } message: {
+                Text(viewModel.errorMessage ?? "Check target set values and try again.")
+            }
             .sheet(isPresented: $isRestTimePickerPresented) {
                 DurationPickerSheet(
                     title: "Rest time",

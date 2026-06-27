@@ -93,21 +93,19 @@ class ExerciseEditViewModel: ObservableObject {
     }
     
     func add() {
-        
-        guard let params = exercise.type?.parameters else {
+        guard let type = exercise.type else {
             return
         }
         
-        var set = SetsModel()
+        var set = setsViewModels.last?.model ?? SetsModel()
+        set.id = UUID()
         set.index = setsViewModels.count + 1
         
-        for param in params {
-            set.parameters.append(param)
+        if setsViewModels.isEmpty {
+            set.parameters = type.parameters
         }
         
-        if let type = exercise.type {
-            setsViewModels.append(SetEditCellViewModel(model: set, exerciseType: type))
-        }
+        setsViewModels.append(SetEditCellViewModel(model: set, exerciseType: type))
     }
     
     func delete(setsViewModel: SetEditCellViewModel) {
@@ -152,7 +150,18 @@ class ExerciseEditViewModel: ObservableObject {
         }
     }
     
+    private func validateTargetSets() -> Bool {
+        setsViewModels.allSatisfy { $0.hasValidValues }
+    }
+    
     func save(completeBlock: @escaping SaveingBlock) {
+        guard validateTargetSets() else {
+            errorMessage = "Fill all target set values before saving."
+            isShowAlert = true
+            completeBlock(false)
+            return
+        }
+        
         Task {
             let dataManager = DataManagerBackground(container: DataContainer.shared.sharedModelContainer)
             
@@ -179,6 +188,7 @@ class SetEditCellViewModel: ObservableObject, Identifiable {
         var id: Int
         @Published var value: String = ""
         var shake = PassthroughSubject<Void, Never>()
+        var valueBeforeEditing: SetsParameter?
         
         let focusId: String
         let param: SetsParameter
@@ -228,6 +238,29 @@ class SetEditCellViewModel: ObservableObject, Identifiable {
     var model: SetsModel
     
     var paramsData = [ParamData]()
+    
+    var hasValidValues: Bool {
+        paramsData.allSatisfy { paramData in
+            guard !paramData.value.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty else {
+                return false
+            }
+            
+            switch paramData.param {
+            case .weight:
+                return parsedFloat(from: paramData.value) > 0
+            case .repeats:
+                return (Int(paramData.value) ?? 0) > 0
+            case .distance:
+                return parsedFloat(from: paramData.value) > 0
+            case .time:
+                let value = paramData.value.replacingOccurrences(of: ":", with: "")
+                guard let value = Double(value) else {
+                    return false
+                }
+                return TimeInterval.timeForSet(value: value) > 0
+            }
+        }
+    }
     
     // MARK: - Init
     
@@ -301,47 +334,96 @@ class SetEditCellViewModel: ObservableObject, Identifiable {
         }
     }
     
-    func clearInput(id: String) -> Bool {
-        guard let paramData = paramsData.first(where: { $0.focusId == id }),
-              let index = model.parameters.firstIndex(where: { $0.id == paramData.id }) else {
-            return false
+    private func parsedFloat(from value: String) -> Float {
+        let numberFormatter = NumberFormatter()
+        numberFormatter.numberStyle = NumberFormatter.Style.decimal
+        if let value = numberFormatter.number(from: value)?.floatValue {
+            return value
         }
-        
-        switch model.parameters[index] {
-        case .weight:
-            model.parameters[index] = .weight(0)
-        case .repeats:
-            model.parameters[index] = .repeats(0)
-        case .distance:
-            model.parameters[index] = .distance(0)
-        case .time:
-            model.parameters[index] = .time(0)
+        return Float(value) ?? 0
+    }
+    
+    func clearInput(id: String) -> Bool {
+        guard let paramData = paramsData.first(where: { $0.focusId == id }) else {
+            return false
         }
         
         paramData.value = ""
         return true
     }
     
-    func focused(_ focused: Bool, paramData: ParamData, complete: (()->())? = nil) {
-        if focused {
+    private func parameter(for paramId: Int) -> SetsParameter? {
+        model.parameters.first(where: { $0.id == paramId })
+    }
+    
+    private func updateParameter(_ parameter: SetsParameter) {
+        guard let index = model.parameters.firstIndex(where: { $0.id == parameter.id }) else {
             return
         }
         
+        model.parameters[index] = parameter
+    }
+    
+    private func isValidInput(_ paramData: ParamData) -> Bool {
+        guard !paramData.value.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty else {
+            return false
+        }
+        
         switch paramData.param {
-        case .time(_):
-            if let index = self.model.parameters.firstIndex(where: { $0.id == paramData.id}) {
-                if case .time(let time) = self.model.parameters[index] {
-                    DispatchQueue.main.async {
-                        paramData.value = time > 0 ? time.timeForTextField : ""
-                        if let complete = complete {
-                            complete()
-                        }
-                    }
-                }
+        case .weight:
+            return parsedFloat(from: paramData.value) > 0
+        case .repeats:
+            return (Int(paramData.value) ?? 0) > 0
+        case .distance:
+            return parsedFloat(from: paramData.value) > 0
+        case .time:
+            let value = paramData.value.replacingOccurrences(of: ":", with: "")
+            guard let value = Double(value) else {
+                return false
             }
-           
-        default:
-            break
+            return TimeInterval.timeForSet(value: value) > 0
+        }
+    }
+    
+    private func formattedValue(for parameter: SetsParameter) -> String {
+        switch parameter {
+        case .weight(let value):
+            return value > 0 ? "\(value)" : ""
+        case .repeats(let value):
+            return value > 0 ? "\(value)" : ""
+        case .distance(let value):
+            return value > 0 ? value.distanceForDisplay : ""
+        case .time(let value):
+            return value > 0 ? value.timeForTextField : ""
+        }
+    }
+    
+    func focused(_ focused: Bool, paramData: ParamData, complete: (()->())? = nil) {
+        if focused {
+            paramData.valueBeforeEditing = parameter(for: paramData.id)
+            return
+        }
+        
+        let parameter: SetsParameter?
+        if isValidInput(paramData) {
+            parameter = self.parameter(for: paramData.id)
+        } else if let valueBeforeEditing = paramData.valueBeforeEditing {
+            updateParameter(valueBeforeEditing)
+            parameter = valueBeforeEditing
+        } else {
+            parameter = self.parameter(for: paramData.id)
+        }
+        
+        guard let parameter else {
+            return
+        }
+        
+        DispatchQueue.main.async {
+            paramData.value = self.formattedValue(for: parameter)
+            paramData.valueBeforeEditing = nil
+            if let complete = complete {
+                complete()
+            }
         }
     }
     
