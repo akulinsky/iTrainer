@@ -205,22 +205,50 @@ struct ExerciseView: View {
         VStack(alignment: .leading, spacing: 10) {
             sectionTitle("Target sets")
             
-            VStack(spacing: 8) {
-                ForEach(Array(viewModel.sets.enumerated()), id: \.element.id) { index, item in
-                    SetsCell(model: item,
-                             targetStatus: targetSetStatus(at: index)) {
-                        switch $0 {
-                        case .update(let updateModel):
-                            viewModel.edit(sets: updateModel)
-                        case .selected(let selectedModel):
-                            viewModel.addResult(with: selectedModel.parameters)
-                        default:
-                            break
+            if viewModel.sets.isEmpty {
+                noTargetSetsView
+            } else {
+                VStack(spacing: 8) {
+                    ForEach(Array(viewModel.sets.enumerated()), id: \.element.id) { index, item in
+                        SetsCell(model: item,
+                                 targetStatus: targetSetStatus(at: index)) {
+                            switch $0 {
+                            case .update(let updateModel):
+                                viewModel.edit(sets: updateModel)
+                            case .selected(let selectedModel):
+                                viewModel.addResult(with: selectedModel.parameters)
+                            default:
+                                break
+                            }
                         }
                     }
                 }
             }
         }
+    }
+    
+    private var noTargetSetsView: some View {
+        Button(action: clickBtnEditint) {
+            VStack(alignment: .leading, spacing: 4) {
+                Text("No target sets")
+                    .font(AppFont.rowTitle)
+                    .foregroundStyle(AppColor.textPrimary)
+                
+                Text("Add target sets in edit")
+                    .font(AppFont.rowSubtitle)
+                    .foregroundStyle(AppColor.textSecondary)
+            }
+            .padding(14)
+            .frame(maxWidth: .infinity, alignment: .leading)
+            .background(AppColor.surfacePrimary)
+            .clipShape(RoundedRectangle(cornerRadius: 14, style: .continuous))
+            .overlay {
+                RoundedRectangle(cornerRadius: 14, style: .continuous)
+                    .stroke(AppColor.separatorSoft, lineWidth: 1)
+            }
+            .contentShape(RoundedRectangle(cornerRadius: 14, style: .continuous))
+        }
+        .buttonStyle(.plain)
     }
     
     private func targetSetStatus(at index: Int) -> SetsCell.TargetStatus {
