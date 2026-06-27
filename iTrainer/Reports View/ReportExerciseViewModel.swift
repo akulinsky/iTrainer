@@ -69,7 +69,6 @@ class ReportExerciseViewModel: ObservableObject {
 //            if let model = await dataManager.fetchExercise(with: exercise.id).map({ ExerciseModel(model: $0) }) {
 //                exercise = model
 //                
-//                DataContainer.shared.workoutManager.currentExercise(id: exercise.id)
 //                
 //                await MainActor.run {
 //                    if paramsData.isEmpty {

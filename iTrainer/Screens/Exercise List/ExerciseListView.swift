@@ -179,10 +179,10 @@ struct ExerciseListView: View {
                                 isEndWorkoutAlertPresented = true
                             },
                             onRestTap: {
-                                navigateToCurrentExercise()
+                                navigateToActiveExercise()
                             },
                             onProgressTap: {
-                                navigateToCurrentExercise()
+                                navigateToActiveExercise()
                             })
     }
     
@@ -227,7 +227,7 @@ struct ExerciseListView: View {
         
         let isCurrentWorkoutGroup = workoutManager.currentWorkoutGroupId == viewModel.group.id
         
-        if workoutManager.currentExerciseId == item.id,
+        if workoutManager.activeExerciseId == item.id,
            isCurrentWorkoutGroup,
            let progress = workoutManager.exerciseProgressById[item.id] {
             return .active(progress: progress)
@@ -343,19 +343,19 @@ struct ExerciseListView: View {
         viewModel.refreshData()
     }
     
-    private func navigateToCurrentExercise() {
-        guard let currentExerciseId = workoutManager.currentExerciseId else {
+    private func navigateToActiveExercise() {
+        guard let activeExerciseId = workoutManager.activeExerciseId else {
             return
         }
         
-        if let exercise = viewModel.exercises.first(where: { $0.id == currentExerciseId }) {
+        if let exercise = viewModel.exercises.first(where: { $0.id == activeExerciseId }) {
             navigation.path.append(ExerciseListRoute.exerciseView(item: exercise))
             return
         }
         
         Task {
             let dataManager = DataManagerBackground(container: DataContainer.shared.sharedModelContainer)
-            guard let exercise = await dataManager.fetchExercise(with: currentExerciseId).map({ ExerciseModel(model: $0) }) else {
+            guard let exercise = await dataManager.fetchExercise(with: activeExerciseId).map({ ExerciseModel(model: $0) }) else {
                 return
             }
             

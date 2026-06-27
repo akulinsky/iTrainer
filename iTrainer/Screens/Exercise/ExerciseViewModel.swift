@@ -82,8 +82,6 @@ class ExerciseViewModel: ObservableObject {
             if let model = await dataManager.fetchExercise(with: exercise.id).map({ ExerciseModel(model: $0) }) {
                 exercise = model
                 
-                DataContainer.shared.workoutManager.currentExercise(id: exercise.id)
-                
                 await MainActor.run {
                     if paramsData.isEmpty {
                         for param in exercise.type!.parameters {
@@ -250,6 +248,10 @@ class ExerciseViewModel: ObservableObject {
                 fetchItems()
             }
         }
+    }
+    
+    func clearParamsDataValues() {
+        paramsData.forEach { $0.value = "" }
     }
     
     func focused(_ focused: Bool, paramData: ParamData) {

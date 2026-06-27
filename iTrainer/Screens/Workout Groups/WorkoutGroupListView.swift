@@ -148,10 +148,10 @@ struct WorkoutGroupListView: View {
                                 isEndWorkoutAlertPresented = true
                             },
                             onRestTap: {
-                                navigateToCurrentExercise()
+                                navigateToActiveExercise()
                             },
                             onProgressTap: {
-                                navigateToCurrentExercise()
+                                navigateToActiveExercise()
                             })
     }
     
@@ -263,9 +263,9 @@ struct WorkoutGroupListView: View {
         viewModel.refreshData()
     }
     
-    private func navigateToCurrentExercise() {
+    private func navigateToActiveExercise() {
         guard let currentGroupId = workoutManager.currentWorkoutGroupId,
-              let currentExerciseId = workoutManager.currentExerciseId else {
+              let activeExerciseId = workoutManager.activeExerciseId else {
             return
         }
         
@@ -279,7 +279,7 @@ struct WorkoutGroupListView: View {
             } else {
                 activeGroup = await dataManager.fetchWorkoutGroup(with: currentGroupId).map { WorkoutGroupModel(model: $0) }
             }
-            let activeExercise = await dataManager.fetchExercise(with: currentExerciseId).map { ExerciseModel(model: $0) }
+            let activeExercise = await dataManager.fetchExercise(with: activeExerciseId).map { ExerciseModel(model: $0) }
             
             await MainActor.run {
                 guard let activeGroup, let activeExercise else {

@@ -44,7 +44,7 @@ final class WorkoutManager: ObservableObject {
     
     @Published private(set) var currentWorkoutGroupId: UUID?
     
-    @Published private(set) var currentExerciseId: UUID?
+    @Published private(set) var activeExerciseId: UUID?
     
     @Published private(set) var reportedExerciseIds = Set<UUID>()
     
@@ -134,7 +134,8 @@ final class WorkoutManager: ObservableObject {
         workoutProgress = 0
         currentWorkoutTitle = "Active workout"
         currentWorkoutGroupId = nil
-        currentExerciseId = nil
+        activeExerciseId = nil
+        currentRestTimeIntervalExercise = nil
         reportedExerciseIds = []
         exerciseProgressById = [:]
         completedExercisesCount = 0
@@ -198,6 +199,8 @@ final class WorkoutManager: ObservableObject {
         await MainActor.run {
             self.currentWorkoutTitle = currentWorkoutTitle
             self.currentWorkoutGroupId = groupId
+            self.activeExerciseId = nil
+            self.currentRestTimeIntervalExercise = nil
             self.targetExercisesCount = targetExercisesCount
             self.exerciseProgressById = [:]
             self.completedExercisesCount = 0
@@ -362,9 +365,12 @@ final class WorkoutManager: ObservableObject {
         let exerciseProgressById = await exerciseProgressById(for: reportWorkout, dataManager: dataManager)
         let exercises = await dataManager.fetchExercises(for: workoutGroupId)
         let targetExercisesCount = exercises.filter { !$0.isHeadline }.count
+        currentRestTimeIntervalExercise = exercise.restTime
+        
         await MainActor.run {
             self.currentWorkoutTitle = currentWorkoutTitle
             self.currentWorkoutGroupId = workoutGroupId
+            self.activeExerciseId = exerciseId
             self.reportedExerciseIds = reportedExerciseIds
             self.exerciseProgressById = exerciseProgressById
             self.completedExercisesCount = reportedExerciseIds.count
@@ -401,19 +407,5 @@ final class WorkoutManager: ObservableObject {
         }
         
         return progressById
-    }
-    
-    func currentExercise(id: UUID) {
-        Task {
-            let dataManager = DataManagerBackground(container: DataContainer.shared.sharedModelContainer)
-            currentRestTimeIntervalExercise = await dataManager.fetchExercise(with: id)?.restTime
-            await MainActor.run {
-                self.currentExerciseId = id
-            }
-            if !isRunningRestTime {
-                resetRestTime()
-                updateRestTime()
-            }
-        }
     }
 }

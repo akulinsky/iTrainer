@@ -22,6 +22,8 @@ struct ExerciseView: View {
     
     @State private var isExerciseInfoPresented = false
     
+    @FocusState private var focusedParamId: Int?
+    
     init(viewModel: ExerciseViewModel) {
         _viewModel = StateObject(wrappedValue: viewModel)
     }
@@ -111,10 +113,10 @@ struct ExerciseView: View {
                                 isEndWorkoutAlertPresented = true
                             },
                             onRestTap: {
-                                navigateToCurrentExercise()
+                                navigateToActiveExercise()
                             },
                             onProgressTap: {
-                                navigateToCurrentExercise()
+                                navigateToActiveExercise()
                             })
     }
     
@@ -260,6 +262,7 @@ struct ExerciseView: View {
         .font(AppFont.rowTitle)
         .foregroundStyle(AppColor.textPrimary)
         .keyboardType(item.keyboardType)
+        .focused($focusedParamId, equals: item.id)
         .multilineTextAlignment(.center)
         .padding(.horizontal, 8)
         .frame(height: 46)
@@ -322,7 +325,9 @@ struct ExerciseView: View {
     }
     
     private func prepareToSave() {
+        focusedParamId = nil
         viewModel.save {
+            viewModel.clearParamsDataValues()
             showAnimation.toggle()
         }
     }
@@ -366,18 +371,18 @@ struct ExerciseView: View {
         viewModel.refreshData()
     }
     
-    private func navigateToCurrentExercise() {
-        guard let currentExerciseId = workoutManager.currentExerciseId else {
+    private func navigateToActiveExercise() {
+        guard let activeExerciseId = workoutManager.activeExerciseId else {
             return
         }
         
-        if currentExerciseId == viewModel.exercise.id {
+        if activeExerciseId == viewModel.exercise.id {
             return
         }
         
         Task {
             let dataManager = DataManagerBackground(container: DataContainer.shared.sharedModelContainer)
-            guard let exercise = await dataManager.fetchExercise(with: currentExerciseId).map({ ExerciseModel(model: $0) }) else {
+            guard let exercise = await dataManager.fetchExercise(with: activeExerciseId).map({ ExerciseModel(model: $0) }) else {
                 return
             }
             
