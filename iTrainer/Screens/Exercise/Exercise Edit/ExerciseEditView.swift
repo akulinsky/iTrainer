@@ -16,6 +16,8 @@ struct ExerciseEditView: View {
     @State private var showAnimation = false
     @State private var isRestTimePickerPresented = false
     
+    @FocusState private var focusedInputId: String?
+    
     init(viewModel: ExerciseEditViewModel) {
         _viewModel = StateObject(wrappedValue: viewModel)
     }
@@ -41,6 +43,9 @@ struct ExerciseEditView: View {
             .scrollDismissesKeyboard(.immediately)
             .navigationTitle("Edit exercise")
             .toolbarTitleDisplayMode(.inline)
+            .safeAreaInset(edge: .bottom, spacing: 0) {
+                keyboardAccessoryView
+            }
             .toolbar {
                 if presentationMode.wrappedValue.isPresented {
                     ToolbarItem(placement: .topBarLeading) {
@@ -88,6 +93,46 @@ struct ExerciseEditView: View {
         }
     }
     
+    private func clearFocusedInput() {
+        guard let focusedInputId else {
+            return
+        }
+        
+        viewModel.clearFocusedInput(id: focusedInputId)
+    }
+    
+    @ViewBuilder
+    private var keyboardAccessoryView: some View {
+        if focusedInputId != nil {
+            HStack {
+                Button("Clear") {
+                    clearFocusedInput()
+                }
+                .font(AppFont.rowTitle)
+                .foregroundStyle(AppColor.brandPrimary)
+                
+                Spacer()
+                
+                Button("Done") {
+                    focusedInputId = nil
+                }
+                .font(AppFont.rowTitle)
+                .foregroundStyle(AppColor.brandPrimary)
+            }
+            .padding(.horizontal, 18)
+            .frame(height: 50)
+            .background(AppColor.surfacePrimary)
+            .clipShape(RoundedRectangle(cornerRadius: 16, style: .continuous))
+            .overlay {
+                RoundedRectangle(cornerRadius: 16, style: .continuous)
+                    .stroke(AppColor.separatorSoft, lineWidth: 1)
+            }
+            .padding(.horizontal, 20)
+            .padding(.bottom, 8)
+            .transition(.move(edge: .bottom).combined(with: .opacity))
+        }
+    }
+    
     @ViewBuilder
     private var titleView: some View {
         VStack(alignment: .leading, spacing: 14) {
@@ -106,6 +151,7 @@ struct ExerciseEditView: View {
                     RoundedRectangle(cornerRadius: 8)
                         .stroke(AppColor.separatorSoft, lineWidth: 1)
                 }
+                .focused($focusedInputId, equals: ExerciseEditFocusId.title)
             
             Text("Leave empty to use default name.")
                 .font(AppFont.rowSubtitle)
@@ -214,7 +260,7 @@ struct ExerciseEditView: View {
                             .overlay(AppColor.separatorSoft)
                     }
                     
-                    SetEditCell(viewModel: item) {
+                    SetEditCell(viewModel: item, focusedInputId: $focusedInputId) {
                         switch $0 {
                         case .delete(let item):
                             viewModel.delete(setsViewModel: item)

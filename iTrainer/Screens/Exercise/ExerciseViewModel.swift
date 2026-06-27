@@ -54,6 +54,10 @@ class ExerciseViewModel: ObservableObject {
     
     @Published var title: String
     
+    @Published var isActiveWorkoutExercise = false
+    
+    @Published var activeReportSetCount = 0
+    
     var paramsData = [ParamData]()
     
     var editSets: SetsModel?
@@ -79,10 +83,17 @@ class ExerciseViewModel: ObservableObject {
         Task {
             let dataManager = DataManagerBackground(container: DataContainer.shared.sharedModelContainer)
             
-            if let model = await dataManager.fetchExercise(with: exercise.id).map({ ExerciseModel(model: $0) }) {
-                exercise = model
+            if let model = await dataManager.fetchExercise(with: exercise.id) {
+                let exerciseModel = ExerciseModel(model: model)
+                let startedWorkout = await dataManager.fetchStartedWorkout()
+                let isActiveWorkoutExercise = startedWorkout?.workoutGroupId == model.workoutGroup?.id
+                let activeReportSetCount = startedWorkout?.exercises.first(where: { $0.exerciseId == model.id })?.reportSets.count ?? 0
                 
                 await MainActor.run {
+                    exercise = exerciseModel
+                    self.isActiveWorkoutExercise = isActiveWorkoutExercise
+                    self.activeReportSetCount = activeReportSetCount
+                    
                     if paramsData.isEmpty {
                         for param in exercise.type!.parameters {
                             self.paramsData.append(ParamData(param: param))

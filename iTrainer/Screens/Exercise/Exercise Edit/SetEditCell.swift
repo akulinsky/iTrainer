@@ -23,8 +23,13 @@ struct SetEditCell: View {
     
     @State private var updateUI = false
     
-    init(viewModel: SetEditCellViewModel, actionBlock: @escaping ActionBlock) {
+    private var focusedInputId: FocusState<String?>.Binding
+    
+    init(viewModel: SetEditCellViewModel,
+         focusedInputId: FocusState<String?>.Binding,
+         actionBlock: @escaping ActionBlock) {
         _viewModel = StateObject(wrappedValue: viewModel)
+        self.focusedInputId = focusedInputId
         self.actionBlock = actionBlock
     }
     
@@ -54,7 +59,7 @@ struct SetEditCell: View {
             
             HStack(alignment: .center, spacing: 6) {
                 ForEach(viewModel.paramsData) { item in
-                    SetEditParameterInput(item: item) { focused, item, complete in
+                    SetEditParameterInput(item: item, focusedInputId: focusedInputId) { focused, item, complete in
                         viewModel.focused(focused, paramData: item, complete: complete)
                         updateUI.toggle()
                     }
@@ -82,6 +87,7 @@ struct SetEditCell: View {
 
 private struct SetEditParameterInput: View {
     @ObservedObject var item: SetEditCellViewModel.ParamData
+    var focusedInputId: FocusState<String?>.Binding
     let onEditingChanged: (Bool, SetEditCellViewModel.ParamData, (() -> Void)?) -> Void
     
     @State private var updateUI = false
@@ -112,6 +118,7 @@ private struct SetEditParameterInput: View {
                 .padding(.horizontal, 8)
                 .shakeAnimation(item.shake)
                 .keyboardType(item.keyboardType)
+                .focused(focusedInputId, equals: item.focusId)
             }
             .frame(width: 66, height: 48)
             .background(AppColor.surfacePrimary)
@@ -146,15 +153,25 @@ private struct SetEditParameterInput: View {
 }
 
 #Preview {
-    let category = ExerciseCategory(id: "chest",
-                                    titleKey: "exercise.category.chest",
-                                    defaultTitle: "Chest",
-                                    devTitle: "Грудь",
-                                    kind: "muscleGroup",
-                                    iconName: "icMissingImage",
-                                    sortOrder: 0)
-    SetEditCell(viewModel: SetEditCellViewModel(model: SetsModel(params: [.weight(50), .repeats(10)]),
-                                                exerciseType: ExerciseTypeModel(devTitle: "Test",
-                                                                                type: category,
-                                                                                parameters: [.weight(), .repeats()])), actionBlock: {_ in })
+    SetEditCellPreview()
+}
+
+private struct SetEditCellPreview: View {
+    @FocusState private var focusedInputId: String?
+    
+    var body: some View {
+        let category = ExerciseCategory(id: "chest",
+                                        titleKey: "exercise.category.chest",
+                                        defaultTitle: "Chest",
+                                        devTitle: "Грудь",
+                                        kind: "muscleGroup",
+                                        iconName: "icMissingImage",
+                                        sortOrder: 0)
+        SetEditCell(viewModel: SetEditCellViewModel(model: SetsModel(params: [.weight(50), .repeats(10)]),
+                                                    exerciseType: ExerciseTypeModel(devTitle: "Test",
+                                                                                    type: category,
+                                                                                    parameters: [.weight(), .repeats()])),
+                    focusedInputId: $focusedInputId,
+                    actionBlock: {_ in })
+    }
 }

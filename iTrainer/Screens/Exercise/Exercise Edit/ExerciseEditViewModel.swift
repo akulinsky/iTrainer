@@ -11,6 +11,10 @@ import SwiftUI
 import Alamofire
 import Combine
 
+enum ExerciseEditFocusId {
+    static let title = "exercise-title"
+}
+
 class ExerciseEditViewModel: ObservableObject {
     
     // MARK: - Properties
@@ -135,6 +139,19 @@ class ExerciseEditViewModel: ObservableObject {
         }
     }
     
+    func clearFocusedInput(id: String) {
+        if id == ExerciseEditFocusId.title {
+            title = ""
+            return
+        }
+        
+        for setViewModel in setsViewModels {
+            if setViewModel.clearInput(id: id) {
+                return
+            }
+        }
+    }
+    
     func save(completeBlock: @escaping SaveingBlock) {
         Task {
             let dataManager = DataManagerBackground(container: DataContainer.shared.sharedModelContainer)
@@ -163,12 +180,14 @@ class SetEditCellViewModel: ObservableObject, Identifiable {
         @Published var value: String = ""
         var shake = PassthroughSubject<Void, Never>()
         
+        let focusId: String
         let param: SetsParameter
         
         let keyboardType: UIKeyboardType
         
-        init(param: SetsParameter) {
+        init(param: SetsParameter, focusId: String) {
             self.param = param
+            self.focusId = focusId
             self.id = param.id
             
             switch param {
@@ -217,7 +236,7 @@ class SetEditCellViewModel: ObservableObject, Identifiable {
         self.exerciseType = exerciseType
         
         for param in self.model.parameters {
-            let paramData = ParamData(param: param)
+            let paramData = ParamData(param: param, focusId: "set-\(model.id.uuidString)-\(param.id)")
             paramsData.append(paramData)
             
             var ignore = false
@@ -282,6 +301,27 @@ class SetEditCellViewModel: ObservableObject, Identifiable {
         }
     }
     
+    func clearInput(id: String) -> Bool {
+        guard let paramData = paramsData.first(where: { $0.focusId == id }),
+              let index = model.parameters.firstIndex(where: { $0.id == paramData.id }) else {
+            return false
+        }
+        
+        switch model.parameters[index] {
+        case .weight:
+            model.parameters[index] = .weight(0)
+        case .repeats:
+            model.parameters[index] = .repeats(0)
+        case .distance:
+            model.parameters[index] = .distance(0)
+        case .time:
+            model.parameters[index] = .time(0)
+        }
+        
+        paramData.value = ""
+        return true
+    }
+    
     func focused(_ focused: Bool, paramData: ParamData, complete: (()->())? = nil) {
         if focused {
             return
@@ -292,7 +332,7 @@ class SetEditCellViewModel: ObservableObject, Identifiable {
             if let index = self.model.parameters.firstIndex(where: { $0.id == paramData.id}) {
                 if case .time(let time) = self.model.parameters[index] {
                     DispatchQueue.main.async {
-                        paramData.value = time.timeForTextField
+                        paramData.value = time > 0 ? time.timeForTextField : ""
                         if let complete = complete {
                             complete()
                         }

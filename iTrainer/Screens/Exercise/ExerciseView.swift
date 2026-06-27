@@ -206,8 +206,9 @@ struct ExerciseView: View {
             sectionTitle("Target sets")
             
             VStack(spacing: 8) {
-                ForEach(viewModel.sets) { item in
-                    SetsCell(model: item) {
+                ForEach(Array(viewModel.sets.enumerated()), id: \.element.id) { index, item in
+                    SetsCell(model: item,
+                             targetStatus: targetSetStatus(at: index)) {
                         switch $0 {
                         case .update(let updateModel):
                             viewModel.edit(sets: updateModel)
@@ -220,6 +221,15 @@ struct ExerciseView: View {
                 }
             }
         }
+    }
+    
+    private func targetSetStatus(at index: Int) -> SetsCell.TargetStatus {
+        guard workoutManager.isWorkoutInProgress,
+              viewModel.isActiveWorkoutExercise else {
+            return .inactive
+        }
+        
+        return index < viewModel.activeReportSetCount ? .completed : .pending
     }
     
     private var addResultSection: some View {

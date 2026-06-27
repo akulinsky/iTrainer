@@ -9,6 +9,12 @@ import SwiftUI
 
 struct SetsCell: View {
     
+    enum TargetStatus {
+        case inactive
+        case pending
+        case completed
+    }
+    
     enum Action {
         case selected(SetsModel)
         case update(SetsModel)
@@ -23,8 +29,13 @@ struct SetsCell: View {
     
     var model: SetsModel
     
-    init(model: SetsModel, actionBlock: @escaping ActionBlock) {
+    private let targetStatus: TargetStatus
+    
+    init(model: SetsModel,
+         targetStatus: TargetStatus = .inactive,
+         actionBlock: @escaping ActionBlock) {
         self.model = model
+        self.targetStatus = targetStatus
         self.actionBlock = actionBlock
     }
     
@@ -34,7 +45,7 @@ struct SetsCell: View {
                 .renderingMode(.template)
                 .resizable()
                 .scaledToFit()
-                .foregroundStyle(AppColor.progressGreen)
+                .foregroundStyle(targetIconColor)
                 .frame(width: 24, height: 24)
             
             VStack(alignment: .leading, spacing: 4) {
@@ -76,6 +87,15 @@ struct SetsCell: View {
     
     private var parametersText: String {
         model.parameters.map { "\($0.stringValue) \($0.shortTitle)" }.joined(separator: " · ")
+    }
+    
+    private var targetIconColor: Color {
+        switch targetStatus {
+        case .inactive, .completed:
+            AppColor.progressGreen
+        case .pending:
+            AppColor.progressAmber
+        }
     }
     
     private func edit() {
