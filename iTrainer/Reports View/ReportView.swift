@@ -14,9 +14,11 @@ struct ReportView: View {
     @Environment(\.navigation) private var navigationManager
     
     private let horizontalPadding: CGFloat = 20
+    private let onClose: (() -> Void)?
     
-    init(viewModel: ReportViewModel) {
+    init(viewModel: ReportViewModel, onClose: (() -> Void)? = nil) {
         _viewModel = StateObject(wrappedValue: viewModel)
+        self.onClose = onClose
     }
     
     var body: some View {
@@ -34,6 +36,16 @@ struct ReportView: View {
         .background(AppColor.backgroundPrimary.ignoresSafeArea())
         .navigationTitle("Workout Report")
         .navigationBarTitleDisplayMode(.inline)
+        .toolbar {
+            if let onClose {
+                ToolbarItem(placement: .navigationBarTrailing) {
+                    Button(action: onClose) {
+                        Image(systemName: "xmark")
+                    }
+                    .accessibilityLabel("Close")
+                }
+            }
+        }
         .task {
             viewModel.reloadData()
         }

@@ -15,6 +15,8 @@ struct ExerciseListView: View {
     
     @EnvironmentObject private var workoutManager: WorkoutManager
     
+    @Environment(AppState.self) private var appState
+    
     @StateObject var viewModel: ExerciseListViewModel
     
     @State private var editMode = EditMode.inactive
@@ -120,7 +122,7 @@ struct ExerciseListView: View {
             Button("Cancel", role: .cancel) {}
             Button("Finish", role: .destructive) {
                 withAnimation(.spring(response: 0.45, dampingFraction: 0.86)) {
-                    workoutManager.endWorkout()
+                    finishWorkout()
                 }
             }
         } message: {
@@ -341,6 +343,12 @@ struct ExerciseListView: View {
     
     private func refresh() {
         viewModel.refreshData()
+    }
+    
+    private func finishWorkout() {
+        workoutManager.endWorkout { report in
+            appState.reportToPresent = report
+        }
     }
     
     private func navigateToActiveExercise() {

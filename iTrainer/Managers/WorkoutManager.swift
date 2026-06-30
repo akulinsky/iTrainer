@@ -258,7 +258,7 @@ final class WorkoutManager: ObservableObject {
         }
     }
     
-    func endWorkout() {
+    func endWorkout(complete: ((ReportWorkoutModel?) -> Void)? = nil) {
         
         stopTimer()
         
@@ -266,6 +266,9 @@ final class WorkoutManager: ObservableObject {
             let dataManager = DataManagerBackground(container: DataContainer.shared.sharedModelContainer)
             guard let reportWorkout = await self.reportWorkout(dataManager: dataManager) else {
                 print("Error: \(#file):\(#function) \(#line) reportWorkout == nil")
+                await MainActor.run {
+                    complete?(nil)
+                }
                 return
             }
             reportWorkout.endDate = Date()
@@ -277,6 +280,9 @@ final class WorkoutManager: ObservableObject {
                 await dataManager.save()
                 print("DBG_ ReportExercises.count == 0")
                 print("DBG_ Report was removed")
+                await MainActor.run {
+                    complete?(nil)
+                }
                 return
             }
             
@@ -296,7 +302,11 @@ final class WorkoutManager: ObservableObject {
                 }
             }
             await dataManager.save()
+            let report = ReportWorkoutModel(model: reportWorkout)
             print("DBG_ Workout was finished")
+            await MainActor.run {
+                complete?(report)
+            }
         }
     }
     

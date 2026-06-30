@@ -15,6 +15,8 @@ struct WorkoutGroupListView: View {
     
     @EnvironmentObject private var workoutManager: WorkoutManager
     
+    @Environment(AppState.self) private var appState
+    
     @StateObject var viewModel: WorkoutGroupListViewModel
     
     @State private var editMode = EditMode.inactive
@@ -92,7 +94,7 @@ struct WorkoutGroupListView: View {
             .alert("Finish workout?", isPresented: $isEndWorkoutAlertPresented) {
                 Button("Cancel", role: .cancel) {}
                 Button("Finish", role: .destructive) {
-                    workoutManager.endWorkout()
+                    finishWorkout()
                 }
             } message: {
                 Text("Current workout will be closed.")
@@ -261,6 +263,12 @@ struct WorkoutGroupListView: View {
     
     private func refresh() {
         viewModel.refreshData()
+    }
+    
+    private func finishWorkout() {
+        workoutManager.endWorkout { report in
+            appState.reportToPresent = report
+        }
     }
     
     private func navigateToActiveExercise() {

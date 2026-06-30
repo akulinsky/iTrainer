@@ -12,6 +12,8 @@ struct ExerciseView: View {
     
     @EnvironmentObject var workoutManager: WorkoutManager
     
+    @Environment(AppState.self) private var appState
+    
     @Environment(\.navigation) private var navigation
     
     @StateObject var viewModel: ExerciseViewModel
@@ -96,7 +98,7 @@ struct ExerciseView: View {
         .alert("Finish workout?", isPresented: $isEndWorkoutAlertPresented) {
             Button("Cancel", role: .cancel) {}
             Button("Finish", role: .destructive) {
-                workoutManager.endWorkout()
+                finishWorkout()
             }
         } message: {
             Text("Current workout will be closed.")
@@ -407,6 +409,12 @@ struct ExerciseView: View {
     
     private func refresh() {
         viewModel.refreshData()
+    }
+    
+    private func finishWorkout() {
+        workoutManager.endWorkout { report in
+            appState.reportToPresent = report
+        }
     }
     
     private func navigateToActiveExercise() {
