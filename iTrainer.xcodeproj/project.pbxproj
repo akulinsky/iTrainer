@@ -20,6 +20,7 @@
 		F648969C2FE70B13005B0619 /* AppState.swift in Sources */ = {isa = PBXBuildFile; fileRef = F648969B2FE70B13005B0619 /* AppState.swift */; };
 		F648969E2FE71522005B0619 /* DatabaseSeeder.swift in Sources */ = {isa = PBXBuildFile; fileRef = F648969D2FE71522005B0619 /* DatabaseSeeder.swift */; };
 		F6536BF42FEB10080041B40B /* WorkoutStatusWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6536BF32FEB10080041B40B /* WorkoutStatusWidget.swift */; };
+		F656783D2FF42AE100250F44 /* ReportStatusService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F656783C2FF42AE100250F44 /* ReportStatusService.swift */; };
 		F657BEA02FED49F4002E5449 /* DurationPickerSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = F657BE9F2FED49F4002E5449 /* DurationPickerSheet.swift */; };
 		F66CBE2D2C8DD8A80025B87F /* ReportExerciseModelDB.swift in Sources */ = {isa = PBXBuildFile; fileRef = F66CBE2C2C8DD8A80025B87F /* ReportExerciseModelDB.swift */; };
 		F66CBE2F2C8DDEB50025B87F /* ReportSetsModelDB.swift in Sources */ = {isa = PBXBuildFile; fileRef = F66CBE2E2C8DDEB50025B87F /* ReportSetsModelDB.swift */; };
@@ -125,6 +126,7 @@
 		F648969B2FE70B13005B0619 /* AppState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppState.swift; sourceTree = "<group>"; };
 		F648969D2FE71522005B0619 /* DatabaseSeeder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseSeeder.swift; sourceTree = "<group>"; };
 		F6536BF32FEB10080041B40B /* WorkoutStatusWidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutStatusWidget.swift; sourceTree = "<group>"; };
+		F656783C2FF42AE100250F44 /* ReportStatusService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportStatusService.swift; sourceTree = "<group>"; };
 		F657BE9F2FED49F4002E5449 /* DurationPickerSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DurationPickerSheet.swift; sourceTree = "<group>"; };
 		F66CBE2C2C8DD8A80025B87F /* ReportExerciseModelDB.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportExerciseModelDB.swift; sourceTree = "<group>"; };
 		F66CBE2E2C8DDEB50025B87F /* ReportSetsModelDB.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportSetsModelDB.swift; sourceTree = "<group>"; };
@@ -517,6 +519,7 @@
 				F632E90D2C9C2C6E009C7BE1 /* ReportViewModel.swift */,
 				F6F1E08E2CA07B7200C1419A /* ReportExerciseView.swift */,
 				F6F1E0902CA07B8700C1419A /* ReportExerciseViewModel.swift */,
+				F656783C2FF42AE100250F44 /* ReportStatusService.swift */,
 			);
 			path = "Reports View";
 			sourceTree = "<group>";
@@ -752,6 +755,7 @@
 				F68D60652C760C4B00783E54 /* CircularProgressView.swift in Sources */,
 				F6EA7BCC2C579333005225A0 /* WorkoutModel.swift in Sources */,
 				F6DD68AF2C65050A004EFB03 /* ExerciseTypeViewModel.swift in Sources */,
+				F656783D2FF42AE100250F44 /* ReportStatusService.swift in Sources */,
 				F69BD1152C5500580057080E /* ServiceNetworkProvider.swift in Sources */,
 				F69BD1072C54FC170057080E /* NetworkClient.swift in Sources */,
 				F6CB903F2C77687E002529A6 /* ExerciseEditView.swift in Sources */,
@@ -977,7 +981,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = G55R78L3UN;
 				GENERATE_INFOPLIST_FILE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 26.0;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = qwe.iTrainerTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -997,7 +1001,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = G55R78L3UN;
 				GENERATE_INFOPLIST_FILE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 26.0;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = qwe.iTrainerTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -1016,6 +1020,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = G55R78L3UN;
 				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 26.0;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = qwe.iTrainerUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -1034,6 +1039,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = G55R78L3UN;
 				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 26.0;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = qwe.iTrainerUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";

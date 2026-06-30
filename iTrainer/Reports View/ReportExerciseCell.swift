@@ -7,13 +7,7 @@
 
 import SwiftUI
 
-enum ReportExerciseStatus {
-    case personalRecord
-    case progress
-    case goalAchieved
-    case goalMissed
-    case complete
-    
+extension ExerciseReportStatus {
     var title: String {
         switch self {
         case .personalRecord:
@@ -57,12 +51,12 @@ enum ReportExerciseStatus {
 struct ReportExerciseCell: View {
     
     var model: ReportExerciseModel
-    var status: ReportExerciseStatus
+    var status: ExerciseReportStatus
     
     private let iconSize: CGFloat = 72
     
     init(model: ReportExerciseModel,
-         status: ReportExerciseStatus = .complete) {
+         status: ExerciseReportStatus = .complete) {
         self.model = model
         self.status = status
     }

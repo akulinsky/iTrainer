@@ -88,11 +88,11 @@ struct ReportView: View {
     @ViewBuilder
     private var reportBanner: some View {
         HStack(spacing: 16) {
-            Image(systemName: viewModel.bannerStyle.systemImage)
+            Image(systemName: viewModel.workoutStatus.systemImage)
                 .font(.system(size: 24, weight: .semibold))
                 .frame(width: 34)
             
-            Text(viewModel.bannerStyle.title)
+            Text(viewModel.workoutStatus.title)
                 .font(AppFont.workoutWidgetTitle)
                 .lineLimit(2)
                 .minimumScaleFactor(0.86)
@@ -134,7 +134,7 @@ struct ReportView: View {
                 CircularProgressView(lineWidth: 6,
                                      progress: progress,
                                      trackColor: AppColor.progressTrack,
-                                     progressColor: AppColor.progressGreen)
+                                     progressColor: progressColor(for: card))
                     .frame(width: 72, height: 72)
                     .overlay {
                         Text(card.value)
@@ -198,10 +198,62 @@ struct ReportView: View {
     }
     
     private var bannerColor: Color {
-        switch viewModel.bannerStyle {
+        viewModel.workoutStatus.color
+    }
+    
+    private func progressColor(for card: ReportViewModel.SummaryCard) -> Color {
+        guard let progress = card.colorProgress else {
+            return AppColor.progressGreen
+        }
+        
+        if progress >= 1 {
+            return AppColor.progressGreen
+        }
+        
+        if progress >= 0.5 {
+            return AppColor.progressAmber
+        }
+        
+        return AppColor.progressRed
+    }
+}
+
+private extension WorkoutReportStatus {
+    var title: String {
+        switch self {
+        case .personalRecord(let count):
+            count > 1 ? "\(count) New Personal Records" : "New Personal Record"
+        case .progress:
+            "Progress"
+        case .workoutIncomplete:
+            "Workout Incomplete"
+        case .goalsAchieved:
+            "Goals Achieved"
+        case .goalsNotAchieved:
+            "Goals Not Achieved"
+        case .workoutComplete:
+            "Workout Complete"
+        }
+    }
+    
+    var systemImage: String {
+        switch self {
+        case .personalRecord:
+            "trophy.fill"
+        case .progress:
+            "chart.line.uptrend.xyaxis"
+        case .goalsAchieved, .workoutComplete:
+            "checkmark.circle.fill"
+        case .goalsNotAchieved, .workoutIncomplete:
+            "exclamationmark.triangle.fill"
+        }
+    }
+    
+    var color: Color {
+        switch self {
         case .personalRecord:
             AppColor.restAmber
-        case .progress, .goalsAchieved, .complete:
+        case .progress, .goalsAchieved, .workoutComplete:
             AppColor.progressGreen
         case .goalsNotAchieved:
             AppColor.progressRed
