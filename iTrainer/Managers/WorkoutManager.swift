@@ -331,7 +331,8 @@ final class WorkoutManager: ObservableObject {
             reportExercise = ReportExerciseModelDB(titleExercise: ExerciseModel(model: exercise).displayName,
                                                     exerciseId: exercise.id,
                                                     index: exercise.index,
-                                                    typeId: exercise.typeId)
+                                                    typeId: exercise.typeId,
+                                                    restTime: exercise.restTime)
             await dataManager.insert(model: reportExercise!)
             reportExercise?.report = reportWorkout
         }

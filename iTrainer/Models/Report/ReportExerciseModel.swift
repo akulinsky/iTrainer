@@ -19,6 +19,8 @@ struct ReportExerciseModel: ReportExerciseDataProtocol {
     
     var typeId: String
     
+    var restTime: TimeInterval?
+    
     var date: Date?
     
     var sets = [ReportSetsModel]()
@@ -29,6 +31,7 @@ struct ReportExerciseModel: ReportExerciseDataProtocol {
         self.exerciseId = model.exerciseId
         self.index = model.index
         self.typeId = model.typeId
+        self.restTime = model.restTime
         self.date = model.report?.startDate
         
         self.sets = model.reportSets.map { ReportSetsModel(model: $0) }.sorted(by: { $0.date > $1.date })
@@ -41,13 +44,15 @@ struct ReportExerciseModel: ReportExerciseDataProtocol {
          titleExercise: String,
          exerciseId: UUID,
          index: Int,
-         typeId: String) {
+         typeId: String,
+         restTime: TimeInterval? = nil) {
         
         self.id = id
         self.titleExercise = titleExercise
         self.exerciseId = exerciseId
         self.index = index
         self.typeId = typeId
+        self.restTime = restTime
     }
 }
 

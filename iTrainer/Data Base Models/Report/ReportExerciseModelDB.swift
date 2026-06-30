@@ -21,6 +21,8 @@ class ReportExerciseModelDB: ReportExerciseDataProtocol, PersistentProtocol {
     
     var typeId: String
     
+    var restTime: TimeInterval?
+    
     var report: ReportWorkoutModelDB?
     
     @Relationship(deleteRule: .cascade, inverse: \ReportSetsModelDB.reportExercise)
@@ -29,10 +31,15 @@ class ReportExerciseModelDB: ReportExerciseDataProtocol, PersistentProtocol {
     @Relationship(deleteRule: .cascade, inverse: \SetsModelDB.reportExercise)
     var targetSets: [SetsModelDB] = []
     
-    init(titleExercise: String, exerciseId: UUID, index: Int, typeId: String) {
+    init(titleExercise: String,
+         exerciseId: UUID,
+         index: Int,
+         typeId: String,
+         restTime: TimeInterval? = nil) {
         self.titleExercise = titleExercise
         self.exerciseId = exerciseId
         self.index = index
         self.typeId = typeId
+        self.restTime = restTime
     }
 }
