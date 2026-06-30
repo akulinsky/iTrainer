@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct ReportExerciseModel: ReportExerciseDataProtocol {
+struct ReportExerciseModel: ReportExerciseDataProtocol, Hashable {
     
     var id: UUID
     

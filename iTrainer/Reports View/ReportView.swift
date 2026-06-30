@@ -11,6 +11,8 @@ struct ReportView: View {
     
     @StateObject var viewModel: ReportViewModel
     
+    @Environment(\.navigation) private var navigationManager
+    
     private let horizontalPadding: CGFloat = 20
     
     init(viewModel: ReportViewModel) {
@@ -184,15 +186,10 @@ struct ReportView: View {
             
             VStack(spacing: 10) {
                 ForEach(viewModel.exerciseSummaries) { summary in
-                    ZStack {
+                    Button {
+                        navigationManager.path.append(ReportsRoute.reportExerciseView(item: summary.model))
+                    } label: {
                         ReportExerciseCell(model: summary.model, status: summary.status)
-                        
-                        NavigationLink {
-                            ReportExerciseView(viewModel: ReportExerciseViewModel(reportExercise: summary.model))
-                        } label: {
-                            EmptyView()
-                        }
-                        .opacity(0)
                     }
                     .buttonStyle(.plain)
                 }

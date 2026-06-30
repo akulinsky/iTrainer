@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct ReportSetsModel: ReportSetDataProtocol {
+struct ReportSetsModel: ReportSetDataProtocol, Hashable {
     
     var id: UUID
     

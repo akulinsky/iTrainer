@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct SetsModel: DataSetItemProtocol, Equatable {
+struct SetsModel: DataSetItemProtocol, Equatable, Hashable {
     
     var id: UUID
     var index: Int
