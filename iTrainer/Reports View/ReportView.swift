@@ -11,37 +11,26 @@ struct ReportView: View {
     
     @StateObject var viewModel: ReportViewModel
     
+    private let horizontalPadding: CGFloat = 20
+    
     init(viewModel: ReportViewModel) {
         _viewModel = StateObject(wrappedValue: viewModel)
     }
     
     var body: some View {
-        VStack {
-            List {
-                
-                VStack {
-                    logo
-                    reportDate
-                        .padding([.top], 10)
-                    reportTitle
-//                    timeWorkout
-                    reportProgress
-                }
-                .listRowInsets(EdgeInsets.init(top: 0, leading: 0,
-                                            bottom: 0, trailing: 0))
-                .listRowSeparator(.hidden)
-                .padding(.bottom)
-                
-                reportExercisesView
-                
-                Spacer(minLength: 20)
-//                    .padding(.top)
-//                    .listRowInsets(EdgeInsets.init(top: 0, leading: 10,
-//                                                    bottom: 0, trailing: 10))
+        ScrollView {
+            VStack(alignment: .leading, spacing: 18) {
+                headerCard
+                reportBanner
+                summaryGrid
+                reportExercisesSection
             }
-            .listStyle(.plain)
+            .padding(.horizontal, horizontalPadding)
+            .padding(.top, 16)
+            .padding(.bottom, 24)
         }
-        .navigationTitle("Report")
+        .background(AppColor.backgroundPrimary.ignoresSafeArea())
+        .navigationTitle("Workout Report")
         .navigationBarTitleDisplayMode(.inline)
         .task {
             viewModel.reloadData()
@@ -49,149 +38,178 @@ struct ReportView: View {
     }
     
     @ViewBuilder
-    private var logo: some View {
-        
-        Text("iTrainer")
-            .font(.largeTitle)
-            .foregroundStyle(.white)
-            .shadow(color: .black, radius: 1, x: 1.0, y: 1.0)
-            .frame(height: 80)
-            .frame(maxWidth: .infinity)
-            .background {
-                LinearGradient(gradient: Gradient(colors: [.blue, .yellow]),
-                               startPoint: .top,
-                               endPoint: .bottom)
-            }
-    }
-    
-    @ViewBuilder
-    private var reportDate: some View {
-        VStack(spacing: 10) {
-            Text(viewModel.reportDate)
-            Text(viewModel.reportRangeTime)
-                .font(.callout)
-        }
-    }
-    
-    @ViewBuilder
-    private var reportTitle: some View {
-        
-        HStack {
-            VStack(alignment: .leading, spacing: 10) {
-                Text(viewModel.titleWorkout)
-                    .font(.headline)
-                    .bold()
-                
-                Text(viewModel.titleWorkoutGroup)
-                    .font(.subheadline)
-                    .foregroundStyle(.secondary)
-                
-                Text("Workout time")
-                    .font(.subheadline)
-                    .foregroundStyle(.secondary)
-                    .padding(.top, 8)
-            }
-            Spacer()
+    private var headerCard: some View {
+        VStack(alignment: .leading, spacing: 10) {
+            Text(viewModel.titleWorkout)
+                .font(AppFont.workoutWidgetTitle)
+                .foregroundStyle(AppColor.textPrimary)
+                .lineLimit(2)
+                .minimumScaleFactor(0.86)
             
-            VStack(alignment: .trailing, spacing: 10) {
-                CircularProgressView(progress: viewModel.progressWorkout)
-                    .frame(width: 50, height: 50)
-                    .overlay {
-                        Text(viewModel.percentageProgressWorkout)
-                            .font(.footnote)
-                            .bold()
-                    }
-                
-                Text(viewModel.workoutTime)
-                    .font(.subheadline)
-                    .foregroundStyle(.secondary)
-                    .bold()
-                    .frame(width: 50)
-                    .padding(.top, 8)
+            Text(viewModel.titleWorkoutGroup)
+                .font(AppFont.rowSubtitle)
+                .foregroundStyle(AppColor.textSecondary)
+                .lineLimit(2)
+                .minimumScaleFactor(0.86)
+            
+            VStack(alignment: .leading, spacing: 10) {
+                headerInfoRow(systemImage: "calendar", text: viewModel.reportDate)
+                headerInfoRow(systemImage: "clock", text: "\(viewModel.reportRangeTime)  •  \(viewModel.workoutTime)")
             }
+            .padding(.top, 4)
         }
-        .background {
-            Rectangle()
-                .stroke(.gray, lineWidth: 1.0)
-                .padding(-10)
+        .padding(18)
+        .frame(maxWidth: .infinity, alignment: .leading)
+        .background(AppColor.surfacePrimary)
+        .clipShape(RoundedRectangle(cornerRadius: 14, style: .continuous))
+        .overlay {
+            RoundedRectangle(cornerRadius: 14, style: .continuous)
+                .stroke(AppColor.separatorSoft, lineWidth: 1)
         }
-        .padding(20)
     }
     
-//    @ViewBuilder
-//    private var timeWorkout: some View {
-//        
-//        VStack(spacing: 10) {
-//            Text("Workout time")
-//                .font(.headline)
-//                .foregroundStyle(.secondary)
-//            Text(viewModel.workoutTime)
-//                .font(.title3)
-//                .bold()
-//        }
-//        .frame(maxWidth: .infinity)
-//        .background {
-//            Rectangle()
-//                .stroke(.gray, lineWidth: 1.0)
-//                .padding(-10)
-//        }
-//        .padding([.leading, .trailing], 20)
-//        .padding([.top, .bottom], 10)
-//    }
+    @ViewBuilder
+    private func headerInfoRow(systemImage: String, text: String) -> some View {
+        HStack(spacing: 10) {
+            Image(systemName: systemImage)
+                .font(.system(size: 14, weight: .medium))
+                .frame(width: 22)
+            
+            Text(text)
+                .font(AppFont.rowSubtitle)
+                .lineLimit(1)
+                .minimumScaleFactor(0.8)
+        }
+        .foregroundStyle(AppColor.textSecondary)
+    }
     
     @ViewBuilder
-    private var reportProgress: some View {
-        
-        VStack(spacing: 10) {
-            ForEach(viewModel.reportModels) { model in
-                reportCell(model: model)
+    private var reportBanner: some View {
+        HStack(spacing: 16) {
+            Image(systemName: viewModel.bannerStyle.systemImage)
+                .font(.system(size: 24, weight: .semibold))
+                .frame(width: 34)
+            
+            Text(viewModel.bannerStyle.title)
+                .font(AppFont.workoutWidgetTitle)
+                .lineLimit(2)
+                .minimumScaleFactor(0.86)
+            
+            Spacer(minLength: 0)
+        }
+        .foregroundStyle(bannerColor)
+        .padding(.vertical, 18)
+        .padding(.horizontal, 18)
+        .frame(maxWidth: .infinity, alignment: .leading)
+        .background(bannerColor.opacity(0.08))
+        .clipShape(RoundedRectangle(cornerRadius: 14, style: .continuous))
+        .overlay {
+            RoundedRectangle(cornerRadius: 14, style: .continuous)
+                .stroke(bannerColor.opacity(0.35), lineWidth: 1)
+        }
+    }
+    
+    @ViewBuilder
+    private var summaryGrid: some View {
+        LazyVGrid(columns: [GridItem(.flexible(), spacing: 14), GridItem(.flexible(), spacing: 14)], spacing: 14) {
+            ForEach(viewModel.summaryCards) { card in
+                summaryCard(card)
             }
         }
+    }
+    
+    @ViewBuilder
+    private func summaryCard(_ card: ReportViewModel.SummaryCard) -> some View {
+        VStack(spacing: 12) {
+            Text(card.title)
+                .font(.system(size: 17, weight: .semibold))
+                .foregroundStyle(AppColor.textPrimary)
+                .lineLimit(2)
+                .minimumScaleFactor(0.85)
+                .multilineTextAlignment(.center)
+            
+            if let progress = card.progress {
+                CircularProgressView(lineWidth: 6,
+                                     progress: progress,
+                                     trackColor: AppColor.progressTrack,
+                                     progressColor: AppColor.progressGreen)
+                    .frame(width: 72, height: 72)
+                    .overlay {
+                        Text(card.value)
+                            .font(.system(size: 20, weight: .bold))
+                            .foregroundStyle(AppColor.textPrimary)
+                            .minimumScaleFactor(0.75)
+                    }
+            } else if let systemImage = card.systemImage {
+                VStack(spacing: 8) {
+                    Image(systemName: systemImage)
+                        .font(.system(size: 34, weight: .medium))
+                        .foregroundStyle(AppColor.textSecondary)
+                    
+                    Text(card.value)
+                        .font(.system(size: 26, weight: .bold))
+                        .foregroundStyle(AppColor.textPrimary)
+                        .lineLimit(1)
+                        .minimumScaleFactor(0.75)
+                }
+                .frame(height: 72)
+            }
+            
+            Text(card.detail)
+                .font(.system(size: 18, weight: .bold))
+                .foregroundStyle(AppColor.textPrimary)
+                .lineLimit(1)
+                .minimumScaleFactor(0.72)
+                .multilineTextAlignment(.center)
+        }
+        .padding(.vertical, 18)
+        .padding(.horizontal, 12)
         .frame(maxWidth: .infinity)
-        .background {
-            Rectangle()
-                .stroke(.gray, lineWidth: 1.0)
-                .padding(-10)
+        .frame(minHeight: 174)
+        .background(AppColor.surfacePrimary)
+        .clipShape(RoundedRectangle(cornerRadius: 14, style: .continuous))
+        .overlay {
+            RoundedRectangle(cornerRadius: 14, style: .continuous)
+                .stroke(AppColor.separatorSoft, lineWidth: 1)
         }
-        .padding([.leading, .trailing], 20)
-        .padding([.top, .bottom], 10)
     }
     
     @ViewBuilder
-    private func reportCell(model: ReportViewModel.ReportModel) -> some View {
-        
-        HStack {
-            VStack(alignment: .leading, spacing: 10) {
-                Text(model.primary)
-                    .font(.headline)
-                    .bold()
-                
-                Text(model.secondary)
-                    .font(.subheadline)
-                    .foregroundStyle(.secondary)
-            }
-            Spacer()
+    private var reportExercisesSection: some View {
+        VStack(alignment: .leading, spacing: 12) {
+            Text("Exercises")
+                .font(.system(size: 28, weight: .bold))
+                .foregroundStyle(AppColor.brandPrimary)
+                .padding(.horizontal, 4)
             
-            VStack(alignment: .trailing, spacing: 10) {
-                CircularProgressView(progress: model.progress)
-                    .frame(width: 50, height: 50)
-                    .overlay {
-                        Text(model.percentageProgress)
-                            .font(.footnote)
-                            .bold()
+            VStack(spacing: 10) {
+                ForEach(viewModel.exerciseSummaries) { summary in
+                    ZStack {
+                        ReportExerciseCell(model: summary.model, status: summary.status)
+                        
+                        NavigationLink {
+                            ReportExerciseView(viewModel: ReportExerciseViewModel(reportExercise: summary.model))
+                        } label: {
+                            EmptyView()
+                        }
+                        .opacity(0)
                     }
+                    .buttonStyle(.plain)
+                }
             }
         }
     }
     
-    @ViewBuilder
-    private var reportExercisesView: some View {
-        ForEach(viewModel.reportExercises) { exercise in
-            NavigationLink {
-                ReportExerciseView(viewModel: ReportExerciseViewModel(reportExercise: exercise))
-            } label: {
-                ReportExerciseCell(model: exercise)
-            }
+    private var bannerColor: Color {
+        switch viewModel.bannerStyle {
+        case .personalRecord:
+            AppColor.restAmber
+        case .progress, .goalsAchieved, .complete:
+            AppColor.progressGreen
+        case .goalsNotAchieved:
+            AppColor.progressRed
+        case .workoutIncomplete:
+            AppColor.progressAmber
         }
     }
 }

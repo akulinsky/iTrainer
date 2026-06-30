@@ -7,113 +7,118 @@
 
 import SwiftUI
 
+enum ReportExerciseStatus {
+    case personalRecord
+    case progress
+    case goalAchieved
+    case goalMissed
+    case complete
+    
+    var title: String {
+        switch self {
+        case .personalRecord:
+            "New Personal Record"
+        case .progress:
+            "Progress"
+        case .goalAchieved:
+            "Goal Achieved"
+        case .goalMissed:
+            "Goal Missed"
+        case .complete:
+            "Complete"
+        }
+    }
+    
+    var systemImage: String {
+        switch self {
+        case .personalRecord:
+            "trophy.fill"
+        case .progress:
+            "chart.line.uptrend.xyaxis"
+        case .goalAchieved, .complete:
+            "checkmark.circle"
+        case .goalMissed:
+            "exclamationmark.triangle"
+        }
+    }
+    
+    var color: Color {
+        switch self {
+        case .personalRecord:
+            AppColor.restAmber
+        case .progress, .goalAchieved, .complete:
+            AppColor.progressGreen
+        case .goalMissed:
+            AppColor.progressRed
+        }
+    }
+}
+
 struct ReportExerciseCell: View {
     
     var model: ReportExerciseModel
+    var status: ReportExerciseStatus
     
-    @Environment(\.editMode) var editMode
+    private let iconSize: CGFloat = 72
     
-    init(model: ReportExerciseModel) {
+    init(model: ReportExerciseModel,
+         status: ReportExerciseStatus = .complete) {
         self.model = model
-    }
-    
-    private var heightCell: CGFloat {
-        return 60
-    }
-    
-    private var detail: String {
-        
-        var weight: Float?
-        var reps: Int?
-        var distance: Float?
-        var time: TimeInterval?
-        
-        for set in model.sets {
-            set.parameters.forEach { param in
-                switch param {
-                case .weight(let value):
-                    var repsTmp: Int?
-                    set.parameters.forEach({
-                        switch $0 {
-                        case .repeats(let value):
-                            repsTmp = value
-                        default:
-                            break
-                        }
-                    })
-                    
-                    if let reps = repsTmp {
-                        weight = (weight ?? 0) + (value * Float(reps))
-                    } else {
-                        weight = (weight ?? 0) + value
-                    }
-                case .repeats(let value):
-                    reps = (reps ?? 0) + value
-                case .distance(let value):
-                    distance = (distance ?? 0) + value
-                case .time(let value):
-                    time = (time ?? 0) + value
-                }
-            }
-        }
-        
-        var result = ""
-        
-        if let weight = weight {
-            result = "\(SetsParameter.weight().title): \(weight)"
-        }
-        
-        if let reps = reps {
-            if !result.isEmpty {
-                result += "\n"
-            }
-            result += "\(SetsParameter.repeats().title): \(reps)"
-        }
-        
-        if let distance = distance {
-            if !result.isEmpty {
-                result += "\n"
-            }
-            result += "\(SetsParameter.distance().title): \(distance)"
-        }
-        
-        if let time = time {
-            if !result.isEmpty {
-                result += "\n"
-            }
-            result += "\(SetsParameter.time().title): \(time.timeForDisplay)"
-        }
-        
-        return result
+        self.status = status
     }
     
     var body: some View {
-        HStack {
+        HStack(spacing: 14) {
             if let icon = model.type?.icon {
                 icon
                     .resizable()
-                    .frame(width: heightCell)
+                    .scaledToFill()
+                    .frame(width: iconSize, height: iconSize)
+                    .clipShape(RoundedRectangle(cornerRadius: 12, style: .continuous))
             } else {
-                Color.red.frame(width: heightCell)
+                Image("icMissingImage")
+                    .resizable()
+                    .scaledToFill()
+                    .frame(width: iconSize, height: iconSize)
+                    .clipShape(RoundedRectangle(cornerRadius: 12, style: .continuous))
             }
-            VStack(alignment: .leading) {
+            
+            VStack(alignment: .leading, spacing: 8) {
                 Text(model.titleExercise)
-                    .font(.headline)
+                    .font(AppFont.rowTitle)
+                    .foregroundStyle(AppColor.textPrimary)
                     .lineLimit(2)
-                    .foregroundStyle(.primary)
-                Text(detail)
-                    .foregroundStyle(.secondary)
-                    .lineLimit(4)
-                    .font(.subheadline)
-                    .fixedSize()
+                    .minimumScaleFactor(0.86)
+                
+                HStack(spacing: 8) {
+                    Image(systemName: status.systemImage)
+                        .font(.system(size: 16, weight: .semibold))
+                    
+                    Text(status.title)
+                        .font(AppFont.rowSubtitle)
+                        .fontWeight(.medium)
+                        .lineLimit(1)
+                        .minimumScaleFactor(0.85)
+                }
+                .foregroundStyle(status.color)
             }
+            .frame(maxWidth: .infinity, alignment: .leading)
         }
-        .frame(height: heightCell)
+        .padding(.init(top: 12, leading: 12, bottom: 12, trailing: 12))
+        .frame(minHeight: 96)
+        .background(AppColor.surfacePrimary)
+        .clipShape(RoundedRectangle(cornerRadius: 14, style: .continuous))
+        .overlay {
+            RoundedRectangle(cornerRadius: 14, style: .continuous)
+                .stroke(AppColor.separatorSoft, lineWidth: 1)
+        }
     }
 }
 
 #Preview {
     ReportExerciseCell(model: ReportExerciseModel(titleExercise: "Title",
                                                   exerciseId: UUID(),
-                                                  index: 1, typeId: ""))
+                                                  index: 1,
+                                                  typeId: ""),
+                       status: .goalMissed)
 }

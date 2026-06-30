@@ -25,6 +25,8 @@ struct ReportExerciseModel: ReportExerciseDataProtocol {
     
     var sets = [ReportSetsModel]()
     
+    var targetSets = [SetsModel]()
+    
     init(model: ReportExerciseModelDB) {
         self.id = model.id
         self.titleExercise = model.titleExercise
@@ -38,6 +40,8 @@ struct ReportExerciseModel: ReportExerciseDataProtocol {
         for (idx, _) in self.sets.enumerated() {
             self.sets[idx].index = self.sets.count - idx
         }
+        
+        self.targetSets = model.targetSets.map { SetsModel(model: $0) }.sorted(by: { $0.index < $1.index })
     }
     
     init(id: UUID = UUID(),
@@ -45,7 +49,8 @@ struct ReportExerciseModel: ReportExerciseDataProtocol {
          exerciseId: UUID,
          index: Int,
          typeId: String,
-         restTime: TimeInterval? = nil) {
+         restTime: TimeInterval? = nil,
+         targetSets: [SetsModel] = []) {
         
         self.id = id
         self.titleExercise = titleExercise
@@ -53,6 +58,7 @@ struct ReportExerciseModel: ReportExerciseDataProtocol {
         self.index = index
         self.typeId = typeId
         self.restTime = restTime
+        self.targetSets = targetSets
     }
 }
 
