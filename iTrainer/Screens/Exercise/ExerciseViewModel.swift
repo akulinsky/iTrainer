@@ -13,6 +13,8 @@ import Combine
 
 class ExerciseViewModel: ObservableObject {
     
+    private let reportHistoryDayLimit = 10
+    
     @Observable
     class ParamData: Identifiable {
         var id: Int = 0
@@ -106,15 +108,9 @@ class ExerciseViewModel: ObservableObject {
             
             let items = await dataManager.fetchSets(for: exercise.id).map { SetsModel(model: $0) }
             
-            let reportExercise = await dataManager.fetchReportExercises(exerciseId: self.exercise.id)
-                .filter({ $0.reportSets.count > 0 })
+            let reportExercise = await dataManager.fetchRecentReportExercises(exerciseId: self.exercise.id,
+                                                                               dayLimit: reportHistoryDayLimit)
                 .map { ReportExerciseModel(model: $0) }
-                .sorted(by: {
-                    guard let date1 = $0.date, let date2 = $1.date else {
-                        return false
-                    }
-                    return date1 > date2
-                })
             
             await MainActor.run { [reportExercise] in
                 

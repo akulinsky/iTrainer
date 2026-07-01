@@ -202,6 +202,39 @@ extension DataManagerBackground {
                            sortBy: [SortDescriptor(\ReportExerciseModelDB.report?.startDate, order: .forward)])
     }
     
+    func fetchRecentReportExercises(exerciseId: UUID, dayLimit: Int) -> [ReportExerciseModelDB] {
+        let reports = fetchModels(predicate: #Predicate<ReportExerciseModelDB> { $0.exerciseId == exerciseId },
+                                  sortBy: [SortDescriptor(\ReportExerciseModelDB.report?.startDate, order: .reverse)])
+        guard dayLimit > 0 else {
+            return []
+        }
+        
+        var result = [ReportExerciseModelDB]()
+        var days = Set<Date>()
+        let calendar = Calendar.current
+        
+        for report in reports where !report.reportSets.isEmpty {
+            guard let reportDate = report.report?.startDate else {
+                continue
+            }
+            
+            let day = calendar.startOfDay(for: reportDate)
+            if days.contains(day) {
+                result.append(report)
+                continue
+            }
+            
+            guard days.count < dayLimit else {
+                break
+            }
+            
+            days.insert(day)
+            result.append(report)
+        }
+        
+        return result
+    }
+    
     func fetchReportSet(id: UUID) -> ReportSetsModelDB? {
         let uuid = id
         return fetchItem(predicate: #Predicate<ReportSetsModelDB> { $0.id == uuid })
