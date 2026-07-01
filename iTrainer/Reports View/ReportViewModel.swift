@@ -254,6 +254,16 @@ class ReportViewModel: ObservableObject {
     func refreshData() {
         
     }
+    
+    func deleteReport(complete: (() -> Void)? = nil) {
+        Task {
+            let dataManager = DataManagerBackground(container: DataContainer.shared.sharedModelContainer)
+            await dataManager.removeReportWorkout(with: self.reportWorkout.id)
+            await MainActor.run {
+                complete?()
+            }
+        }
+    }
 }
 
 private struct ReportMetrics {

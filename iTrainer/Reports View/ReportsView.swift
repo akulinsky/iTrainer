@@ -42,7 +42,7 @@ struct ReportsView: View {
             .navigationDestination(for: ReportsRoute.self, destination: { route in
                 switch route {
                 case .reportView(let report):
-                    ReportView(viewModel: ReportViewModel(report: report))
+                    ReportView(viewModel: ReportViewModel(report: report), onDelete: closeDeletedReport)
                         .environment(\.navigation, navigationManager)
                 case .reportExerciseView(let exercise):
                     ReportExerciseView(viewModel: ReportExerciseViewModel(reportExercise: exercise))
@@ -65,6 +65,13 @@ struct ReportsView: View {
                 reportRow(for: item)
             }
         }
+    }
+    
+    private func closeDeletedReport() {
+        if !navigationManager.path.isEmpty {
+            navigationManager.path.removeLast()
+        }
+        viewModel.reloadData()
     }
     
     private func reportRow(for item: ReportWorkoutModel) -> some View {

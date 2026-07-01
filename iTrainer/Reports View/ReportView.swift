@@ -13,12 +13,18 @@ struct ReportView: View {
     
     @Environment(\.navigation) private var navigationManager
     
+    @State private var isDeleteReportAlertPresented = false
+    
     private let horizontalPadding: CGFloat = 20
     private let onClose: (() -> Void)?
+    private let onDelete: (() -> Void)?
     
-    init(viewModel: ReportViewModel, onClose: (() -> Void)? = nil) {
+    init(viewModel: ReportViewModel,
+         onClose: (() -> Void)? = nil,
+         onDelete: (() -> Void)? = nil) {
         _viewModel = StateObject(wrappedValue: viewModel)
         self.onClose = onClose
+        self.onDelete = onDelete
     }
     
     var body: some View {
@@ -28,6 +34,7 @@ struct ReportView: View {
                 reportBanner
                 summaryGrid
                 reportExercisesSection
+                deleteReportButton
             }
             .padding(.horizontal, horizontalPadding)
             .padding(.top, 16)
@@ -48,6 +55,14 @@ struct ReportView: View {
         }
         .task {
             viewModel.reloadData()
+        }
+        .alert("Delete report?", isPresented: $isDeleteReportAlertPresented) {
+            Button("Cancel", role: .cancel) {}
+            Button("Delete", role: .destructive) {
+                deleteReport()
+            }
+        } message: {
+            Text("This will delete the saved report. The workout will not be restored.")
         }
     }
     
@@ -209,8 +224,31 @@ struct ReportView: View {
         }
     }
     
+    private var deleteReportButton: some View {
+        Button(role: .destructive) {
+            isDeleteReportAlertPresented = true
+        } label: {
+            HStack(spacing: 8) {
+                Image(systemName: "trash")
+                Text("Delete Report")
+            }
+            .font(.system(size: 17, weight: .semibold))
+            .frame(maxWidth: .infinity)
+            .frame(height: 50)
+        }
+        .buttonStyle(.bordered)
+        .tint(AppColor.progressRed)
+        .padding(.top, 6)
+    }
+    
     private var bannerColor: Color {
         viewModel.workoutStatus.color
+    }
+    
+    private func deleteReport() {
+        viewModel.deleteReport {
+            onDelete?()
+        }
     }
     
     private func progressColor(for card: ReportViewModel.SummaryCard) -> Color {

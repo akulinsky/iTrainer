@@ -71,12 +71,12 @@ private struct PresentedReportView: View {
     
     var body: some View {
         NavigationStack(path: $navigationManager.path) {
-            ReportView(viewModel: ReportViewModel(report: report), onClose: onClose)
+            ReportView(viewModel: ReportViewModel(report: report), onClose: onClose, onDelete: onClose)
                 .environment(\.navigation, navigationManager)
                 .navigationDestination(for: ReportsRoute.self) { route in
                     switch route {
                     case .reportView(let report):
-                        ReportView(viewModel: ReportViewModel(report: report), onClose: onClose)
+                        ReportView(viewModel: ReportViewModel(report: report), onClose: onClose, onDelete: onClose)
                             .environment(\.navigation, navigationManager)
                     case .reportExerciseView(let exercise):
                         ReportExerciseView(viewModel: ReportExerciseViewModel(reportExercise: exercise))
