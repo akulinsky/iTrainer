@@ -154,6 +154,22 @@ struct ReportExerciseView: View {
                 .minimumScaleFactor(0.86)
             
             Spacer(minLength: 0)
+            
+            if let metricPillText {
+                Text(metricPillText)
+                    .font(AppFont.caption)
+                    .foregroundStyle(AppColor.textSecondary)
+                    .lineLimit(1)
+                    .minimumScaleFactor(0.78)
+                    .padding(.horizontal, 12)
+                    .padding(.vertical, 8)
+                    .background(viewModel.status.color.opacity(0.08))
+                    .clipShape(RoundedRectangle(cornerRadius: 12, style: .continuous))
+                    .overlay {
+                        RoundedRectangle(cornerRadius: 12, style: .continuous)
+                            .stroke(viewModel.status.color.opacity(0.18), lineWidth: 1)
+                    }
+            }
         }
     }
     
@@ -165,6 +181,20 @@ struct ReportExerciseView: View {
             
             statusMetricsContent
                 .frame(maxWidth: isCompactStatus ? 230 : .infinity)
+                .padding(.vertical, isCompactStatus ? 0 : 14)
+                .padding(.horizontal, isCompactStatus ? 0 : 10)
+                .background {
+                    if !isCompactStatus {
+                        RoundedRectangle(cornerRadius: 12, style: .continuous)
+                            .fill(AppColor.surfacePrimary.opacity(0.45))
+                    }
+                }
+                .overlay {
+                    if !isCompactStatus {
+                        RoundedRectangle(cornerRadius: 12, style: .continuous)
+                            .stroke(viewModel.status.color.opacity(0.18), lineWidth: 1)
+                    }
+                }
             
             if isCompactStatus {
                 Spacer(minLength: 0)
@@ -174,10 +204,10 @@ struct ReportExerciseView: View {
     
     private var statusMetricsContent: some View {
         HStack(spacing: 0) {
-            ForEach(Array(viewModel.statusMetrics.enumerated()), id: \.element.id) { index, metric in
+            ForEach(Array(displayStatusMetrics.enumerated()), id: \.element.id) { index, metric in
                 statusMetricView(metric)
                 
-                if index < viewModel.statusMetrics.count - 1 {
+                if index < displayStatusMetrics.count - 1 {
                     Divider()
                         .frame(height: 44)
                         .padding(.horizontal, 8)
@@ -197,7 +227,7 @@ struct ReportExerciseView: View {
                 .frame(height: 30, alignment: .center)
             
             Text(metric.value)
-                .font(.system(size: 17, weight: .bold))
+                .font(.system(size: 16, weight: .semibold))
                 .foregroundStyle(metric.color)
                 .lineLimit(1)
                 .minimumScaleFactor(0.68)
@@ -339,6 +369,20 @@ struct ReportExerciseView: View {
         case .personalRecord, .progress:
             false
         }
+    }
+    
+    private var metricPillText: String? {
+        guard !isCompactStatus,
+              let metric = viewModel.statusMetrics.first,
+              metric.title == "Metric" || metric.title == "Record type" else {
+            return nil
+        }
+        return "\(metric.title): \(metric.value)"
+    }
+    
+    private var displayStatusMetrics: [ReportExerciseViewModel.StatusMetric] {
+        guard metricPillText != nil else { return viewModel.statusMetrics }
+        return Array(viewModel.statusMetrics.dropFirst())
     }
     
     private var compactStatusSubtitle: String {

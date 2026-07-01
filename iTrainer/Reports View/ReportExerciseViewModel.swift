@@ -112,7 +112,7 @@ final class ReportExerciseViewModel: ObservableObject {
         let improvement = max(current - previous, 0)
         
         return [
-            StatusMetric(title: "Record type", value: type.displayTitle, color: AppColor.textPrimary),
+            StatusMetric(title: "Metric", value: type.displayTitle, color: AppColor.textPrimary),
             StatusMetric(title: "Current", value: formatted(value: current, for: type), color: AppColor.textPrimary),
             StatusMetric(title: "Previous best", value: formatted(value: previous, for: type), color: AppColor.textPrimary),
             StatusMetric(title: "Improvement", value: "+\(formatted(value: improvement, for: type))", color: AppColor.restAmber)
