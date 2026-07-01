@@ -19,6 +19,7 @@
 		F648969A2FE705F1005B0619 /* AppEnvironment.swift in Sources */ = {isa = PBXBuildFile; fileRef = F64896992FE705F1005B0619 /* AppEnvironment.swift */; };
 		F648969C2FE70B13005B0619 /* AppState.swift in Sources */ = {isa = PBXBuildFile; fileRef = F648969B2FE70B13005B0619 /* AppState.swift */; };
 		F648969E2FE71522005B0619 /* DatabaseSeeder.swift in Sources */ = {isa = PBXBuildFile; fileRef = F648969D2FE71522005B0619 /* DatabaseSeeder.swift */; };
+		F64CF0482FF534F0009FB938 /* LoadingSpinnerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F64CF0472FF534F0009FB938 /* LoadingSpinnerView.swift */; };
 		F6536BF42FEB10080041B40B /* WorkoutStatusWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6536BF32FEB10080041B40B /* WorkoutStatusWidget.swift */; };
 		F656783D2FF42AE100250F44 /* ReportStatusService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F656783C2FF42AE100250F44 /* ReportStatusService.swift */; };
 		F657BEA02FED49F4002E5449 /* DurationPickerSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = F657BE9F2FED49F4002E5449 /* DurationPickerSheet.swift */; };
@@ -125,6 +126,7 @@
 		F64896992FE705F1005B0619 /* AppEnvironment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppEnvironment.swift; sourceTree = "<group>"; };
 		F648969B2FE70B13005B0619 /* AppState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppState.swift; sourceTree = "<group>"; };
 		F648969D2FE71522005B0619 /* DatabaseSeeder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseSeeder.swift; sourceTree = "<group>"; };
+		F64CF0472FF534F0009FB938 /* LoadingSpinnerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingSpinnerView.swift; sourceTree = "<group>"; };
 		F6536BF32FEB10080041B40B /* WorkoutStatusWidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutStatusWidget.swift; sourceTree = "<group>"; };
 		F656783C2FF42AE100250F44 /* ReportStatusService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportStatusService.swift; sourceTree = "<group>"; };
 		F657BE9F2FED49F4002E5449 /* DurationPickerSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DurationPickerSheet.swift; sourceTree = "<group>"; };
@@ -347,6 +349,7 @@
 		F69BD0F32C54F9820057080E /* Controls */ = {
 			isa = PBXGroup;
 			children = (
+				F64CF0472FF534F0009FB938 /* LoadingSpinnerView.swift */,
 				F69BD0FC2C54FB190057080E /* AKDisabledButtonStyle.swift */,
 				F69BD0FA2C54FB0E0057080E /* MailView.swift */,
 				F6180DDA2C5A6D55009A23A7 /* EditNameView.swift */,
@@ -739,6 +742,7 @@
 				F6B9B22B2C98593200115CEA /* ReportSetsCell.swift in Sources */,
 				F6CB90432C7794BF002529A6 /* SetEditCell.swift in Sources */,
 				F69BD0FB2C54FB0E0057080E /* MailView.swift in Sources */,
+				F64CF0482FF534F0009FB938 /* LoadingSpinnerView.swift in Sources */,
 				F6EA7BCA2C578BAF005225A0 /* WorkoutListViewModel.swift in Sources */,
 				F62818452C62408D003642F8 /* ExerciseTypeModel.swift in Sources */,
 				F68D60672C76193500783E54 /* TimeInterval+Utils.swift in Sources */,

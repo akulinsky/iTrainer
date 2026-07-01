@@ -1,6 +1,6 @@
 //
 //  MailView.swift
-//  AjaxTestSwiftUI
+//  
 //
 //  Created by Andrey Kulinskiy on 24.07.2024.
 //
