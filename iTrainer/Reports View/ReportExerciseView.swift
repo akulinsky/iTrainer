@@ -10,6 +10,7 @@ import SwiftUI
 struct ReportExerciseView: View {
     @StateObject var viewModel: ReportExerciseViewModel
     @Environment(\.navigation) private var navigationManager
+    @State private var isBreakdownExpanded = false
     
     private let horizontalPadding: CGFloat = 20
     
@@ -85,7 +86,9 @@ struct ReportExerciseView: View {
                 detailedStatusCardContent
             }
         }
-        .padding(20)
+        .padding(.horizontal, 20)
+        .padding(.top, 20)
+        .padding(.bottom, statusCardBottomPadding)
         .frame(maxWidth: .infinity, alignment: .leading)
         .background(viewModel.status.color.opacity(0.08))
         .clipShape(RoundedRectangle(cornerRadius: 14, style: .continuous))
@@ -118,7 +121,7 @@ struct ReportExerciseView: View {
             }
             .frame(width: 58, height: 58)
             
-            VStack(alignment: .leading, spacing: 8) {
+            VStack(alignment: .leading, spacing: isBreakdownExpanded ? 8 : 0) {
                 Text(viewModel.status.title)
                     .font(AppFont.workoutWidgetTitle)
                     .foregroundStyle(AppColor.textPrimary)
@@ -238,16 +241,41 @@ struct ReportExerciseView: View {
     }
     
     private var volumeBreakdownView: some View {
-        VStack(alignment: .leading, spacing: 10) {
-            Text("Breakdown")
-                .font(AppFont.rowTitle)
-                .foregroundStyle(AppColor.textPrimary)
-            
-            ForEach(viewModel.volumeBreakdown, id: \.self) { line in
-                Text(line)
-                    .font(.system(size: 18, weight: .regular, design: .monospaced))
-                    .foregroundStyle(AppColor.textPrimary)
+        VStack(alignment: .leading, spacing: 8) {
+            Button {
+                withAnimation(.easeInOut(duration: 0.22)) {
+                    isBreakdownExpanded.toggle()
+                }
+            } label: {
+                HStack(spacing: 8) {
+                    Text("Breakdown")
+                        .font(AppFont.rowTitle)
+                        .foregroundStyle(AppColor.textPrimary)
+                    
+                    Image(systemName: "chevron.right")
+                        .font(.system(size: 13, weight: .semibold))
+                        .foregroundStyle(AppColor.textSecondary)
+                        .rotationEffect(.degrees(isBreakdownExpanded ? 90 : 0))
+                    
+                    Spacer(minLength: 0)
+                }
+                .contentShape(Rectangle())
             }
+            .buttonStyle(.plain)
+            
+            VStack(alignment: .leading, spacing: 6) {
+                ForEach(viewModel.volumeBreakdown, id: \.self) { line in
+                    Text(line)
+                        .font(.system(size: 15, weight: .regular))
+                        .foregroundStyle(AppColor.textPrimary)
+                        .lineLimit(1)
+                        .minimumScaleFactor(0.82)
+                }
+            }
+            .padding(.top, isBreakdownExpanded ? 2 : 0)
+            .frame(maxHeight: isBreakdownExpanded ? nil : 0, alignment: .top)
+            .opacity(isBreakdownExpanded ? 1 : 0)
+            .clipped()
         }
     }
     
@@ -412,6 +440,10 @@ struct ReportExerciseView: View {
         
         let missed = max(total - achieved, 0)
         return "\(missed) of \(total) targets missed."
+    }
+    
+    private var statusCardBottomPadding: CGFloat {
+        shouldShowVolumeBreakdown && !isBreakdownExpanded ? 12 : 20
     }
     
     private var shouldShowVolumeBreakdown: Bool {

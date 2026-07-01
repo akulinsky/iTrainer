@@ -255,11 +255,17 @@ struct ReportView: View {
                 Text("Delete Report")
             }
             .font(.system(size: 17, weight: .semibold))
+            .foregroundStyle(AppColor.progressRed)
             .frame(maxWidth: .infinity)
             .frame(height: 50)
+            .background(AppColor.progressRed.opacity(0.08))
+            .clipShape(RoundedRectangle(cornerRadius: 8, style: .continuous))
+            .overlay {
+                RoundedRectangle(cornerRadius: 8, style: .continuous)
+                    .stroke(AppColor.progressRed.opacity(0.35), lineWidth: 1)
+            }
         }
-        .buttonStyle(.bordered)
-        .tint(AppColor.progressRed)
+        .buttonStyle(.plain)
         .padding(.top, 6)
     }
     
