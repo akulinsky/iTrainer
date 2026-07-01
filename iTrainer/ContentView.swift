@@ -89,6 +89,16 @@ private struct PresentedReportView: View {
                                     .accessibilityLabel("Close")
                                 }
                             }
+                    case .exerciseStatisticsView(let exercise):
+                        ExerciseStatisticsView(exercise: exercise)
+                            .toolbar {
+                                ToolbarItem(placement: .navigationBarTrailing) {
+                                    Button(action: onClose) {
+                                        Image(systemName: "xmark")
+                                    }
+                                    .accessibilityLabel("Close")
+                                }
+                            }
                     }
                 }
         }

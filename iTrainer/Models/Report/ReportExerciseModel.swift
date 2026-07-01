@@ -23,6 +23,10 @@ struct ReportExerciseModel: ReportExerciseDataProtocol, Hashable {
     
     var workoutGroupId: UUID?
     
+    var titleWorkout: String?
+    
+    var titleWorkoutGroup: String?
+    
     var restTime: TimeInterval?
     
     var date: Date?
@@ -39,6 +43,8 @@ struct ReportExerciseModel: ReportExerciseDataProtocol, Hashable {
         self.typeId = model.typeId
         self.workoutId = model.report?.workoutId
         self.workoutGroupId = model.report?.workoutGroupId
+        self.titleWorkout = model.report?.titleWorkout
+        self.titleWorkoutGroup = model.report?.titleWorkoutGroup
         self.restTime = model.restTime
         self.date = model.report?.startDate
         
@@ -57,6 +63,8 @@ struct ReportExerciseModel: ReportExerciseDataProtocol, Hashable {
          typeId: String,
          workoutId: UUID? = nil,
          workoutGroupId: UUID? = nil,
+         titleWorkout: String? = nil,
+         titleWorkoutGroup: String? = nil,
          restTime: TimeInterval? = nil,
          date: Date? = nil,
          sets: [ReportSetsModel] = [],
@@ -69,6 +77,8 @@ struct ReportExerciseModel: ReportExerciseDataProtocol, Hashable {
         self.typeId = typeId
         self.workoutId = workoutId
         self.workoutGroupId = workoutGroupId
+        self.titleWorkout = titleWorkout
+        self.titleWorkoutGroup = titleWorkoutGroup
         self.restTime = restTime
         self.date = date
         self.sets = sets

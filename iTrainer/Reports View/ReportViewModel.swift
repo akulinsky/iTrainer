@@ -65,6 +65,8 @@ class ReportViewModel: ObservableObject {
     
     var errorMessage: String? = nil
     
+    private var hasLoadedReport = false
+    
     private var reportWorkout: ReportWorkoutModel
     
     // MARK: - Init
@@ -137,6 +139,7 @@ class ReportViewModel: ObservableObject {
                 self.workoutStatus = workoutStatus
                 self.progressWorkout = metrics.exerciseProgress
                 self.percentageProgressWorkout = metrics.exercisePercentText
+                self.hasLoadedReport = true
                 self.isLoading = false
                 
                 if let complete = complete {
@@ -253,7 +256,12 @@ class ReportViewModel: ObservableObject {
     
     // MARK: - Public methods
     
-    func reloadData(complete: (()->())? = nil) {
+    func reloadData(force: Bool = false, complete: (()->())? = nil) {
+        guard force || !hasLoadedReport else {
+            complete?()
+            return
+        }
+        
         isLoading = true
         self.fetchItems(complete: complete)
     }

@@ -10,6 +10,7 @@ import SwiftUI
 enum ReportsRoute: Hashable {
     case reportView(item: ReportWorkoutModel)
     case reportExerciseView(item: ReportExerciseModel)
+    case exerciseStatisticsView(item: ReportExerciseModel)
 }
 
 struct ReportsView: View {
@@ -47,6 +48,8 @@ struct ReportsView: View {
                 case .reportExerciseView(let exercise):
                     ReportExerciseView(viewModel: ReportExerciseViewModel(reportExercise: exercise))
                         .environment(\.navigation, navigationManager)
+                case .exerciseStatisticsView(let exercise):
+                    ExerciseStatisticsView(exercise: exercise)
                 }
             })
     }
