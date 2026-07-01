@@ -37,6 +37,8 @@ class ReportViewModel: ObservableObject {
     
     @Published var isShowAlert = false
     
+    @Published var isLoading = true
+    
     @Published var reportDate: String = ""
     
     @Published var reportRangeTime: String = ""
@@ -78,8 +80,11 @@ class ReportViewModel: ObservableObject {
             let dataManager = DataManagerBackground(container: DataContainer.shared.sharedModelContainer)
             
             guard let report = await dataManager.fetchReportWorkout(id: self.reportWorkout.id) else {
-                if let complete = complete {
-                    complete()
+                await MainActor.run {
+                    self.isLoading = false
+                    if let complete = complete {
+                        complete()
+                    }
                 }
                 return
             }
@@ -132,6 +137,7 @@ class ReportViewModel: ObservableObject {
                 self.workoutStatus = workoutStatus
                 self.progressWorkout = metrics.exerciseProgress
                 self.percentageProgressWorkout = metrics.exercisePercentText
+                self.isLoading = false
                 
                 if let complete = complete {
                     complete()
@@ -248,6 +254,7 @@ class ReportViewModel: ObservableObject {
     // MARK: - Public methods
     
     func reloadData(complete: (()->())? = nil) {
+        isLoading = true
         self.fetchItems(complete: complete)
     }
     

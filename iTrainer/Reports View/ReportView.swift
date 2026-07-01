@@ -28,17 +28,12 @@ struct ReportView: View {
     }
     
     var body: some View {
-        ScrollView {
-            VStack(alignment: .leading, spacing: 18) {
-                headerCard
-                reportBanner
-                summaryGrid
-                reportExercisesSection
-                deleteReportButton
+        Group {
+            if viewModel.isLoading {
+                loadingView
+            } else {
+                reportContent
             }
-            .padding(.horizontal, horizontalPadding)
-            .padding(.top, 16)
-            .padding(.bottom, 24)
         }
         .background(AppColor.backgroundPrimary.ignoresSafeArea())
         .navigationTitle("Workout Report")
@@ -64,6 +59,33 @@ struct ReportView: View {
         } message: {
             Text("This will delete the saved report. The workout will not be restored.")
         }
+    }
+    
+    private var reportContent: some View {
+        ScrollView {
+            VStack(alignment: .leading, spacing: 18) {
+                headerCard
+                reportBanner
+                summaryGrid
+                reportExercisesSection
+                deleteReportButton
+            }
+            .padding(.horizontal, horizontalPadding)
+            .padding(.top, 16)
+            .padding(.bottom, 24)
+        }
+    }
+    
+    private var loadingView: some View {
+        VStack(spacing: 14) {
+            LoadingSpinnerView(color: AppColor.brandPrimary,
+                               size: 54,
+                               lineWidth: 5)
+            Text("Preparing report")
+                .font(AppFont.rowTitle)
+                .foregroundStyle(AppColor.textPrimary)
+        }
+        .frame(maxWidth: .infinity, maxHeight: .infinity)
     }
     
     @ViewBuilder
