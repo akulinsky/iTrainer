@@ -13,6 +13,21 @@ enum PersonalRecordType: Hashable {
     case volume
 }
 
+struct ExerciseStatusComparison: Hashable {
+    let type: PersonalRecordType
+    let current: Float
+    let previous: Float
+    
+    var improvement: Float {
+        max(current - previous, 0)
+    }
+}
+
+struct ExerciseStatusResult: Hashable {
+    let status: ExerciseReportStatus
+    let comparison: ExerciseStatusComparison?
+}
+
 enum ExerciseReportStatus: Hashable {
     case personalRecord(type: PersonalRecordType)
     case progress
@@ -33,20 +48,27 @@ enum WorkoutReportStatus: Hashable {
 struct ReportStatusService {
     static func calculateExerciseStatus(report: ReportExerciseModel,
                                         history: [ReportExerciseModel]) -> ExerciseReportStatus {
+        calculateExerciseStatusResult(report: report, history: history).status
+    }
+    
+    static func calculateExerciseStatusResult(report: ReportExerciseModel,
+                                              history: [ReportExerciseModel]) -> ExerciseStatusResult {
         let previousReports = previousReports(for: report, in: history)
         
-        if let personalRecordType = personalRecordType(for: report, comparedTo: previousReports) {
-            return .personalRecord(type: personalRecordType)
+        if let personalRecordComparison = personalRecordComparison(for: report, comparedTo: previousReports) {
+            return ExerciseStatusResult(status: .personalRecord(type: personalRecordComparison.type),
+                                        comparison: personalRecordComparison)
         }
         
         let localPreviousReports = previousReports.filter {
             $0.workoutId == report.workoutId && $0.workoutGroupId == report.workoutGroupId
         }
-        if isProgress(report, comparedTo: localPreviousReports) {
-            return .progress
+        if let progressComparison = progressComparison(for: report, comparedTo: localPreviousReports) {
+            return ExerciseStatusResult(status: .progress,
+                                        comparison: progressComparison)
         }
         
-        return goalStatus(for: report)
+        return ExerciseStatusResult(status: goalStatus(for: report), comparison: nil)
     }
     
     static func calculateWorkoutStatus(report: ReportWorkoutModel,
@@ -109,35 +131,41 @@ private extension ReportStatusService {
                                 in history: [ReportExerciseModel]) -> [ReportExerciseModel] {
         history.filter { historyItem in
             guard historyItem.id != report.id else { return false }
-            guard historyItem.exerciseId == report.exerciseId else { return false }
+            guard historyItem.typeId == report.typeId else { return false }
             guard let reportDate = report.date else { return true }
             guard let historyDate = historyItem.date else { return false }
             return historyDate < reportDate
         }
     }
     
-    static func personalRecordType(for report: ReportExerciseModel,
-                                   comparedTo previousReports: [ReportExerciseModel]) -> PersonalRecordType? {
+    static func personalRecordComparison(for report: ReportExerciseModel,
+                                         comparedTo previousReports: [ReportExerciseModel]) -> ExerciseStatusComparison? {
         guard !previousReports.isEmpty else { return nil }
         
         if let currentMaxWeight = maxWeight(for: report),
            let previousMaxWeight = previousReports.compactMap(maxWeight(for:)).max(),
            currentMaxWeight > previousMaxWeight {
-            return .weight
+            return ExerciseStatusComparison(type: .weight,
+                                            current: currentMaxWeight,
+                                            previous: previousMaxWeight)
         }
         
         if let previousMaxWeight = previousReports.compactMap(maxWeight(for:)).max() {
             let currentReps = bestReps(at: previousMaxWeight, in: report)
             let previousReps = previousReports.map { bestReps(at: previousMaxWeight, in: $0) }.max() ?? 0
             if currentReps > previousReps {
-                return .repetitions
+                return ExerciseStatusComparison(type: .repetitions,
+                                                current: Float(currentReps),
+                                                previous: Float(previousReps))
             }
         }
         
         let currentVolume = exerciseVolume(for: report)
         let previousBestVolume = previousReports.map(exerciseVolume(for:)).max() ?? 0
         if currentVolume > 0 && currentVolume > previousBestVolume {
-            return .volume
+            return ExerciseStatusComparison(type: .volume,
+                                            current: currentVolume,
+                                            previous: previousBestVolume)
         }
         
         return nil
@@ -145,27 +173,42 @@ private extension ReportStatusService {
     
     static func isProgress(_ report: ReportExerciseModel,
                            comparedTo previousReports: [ReportExerciseModel]) -> Bool {
+        progressComparison(for: report, comparedTo: previousReports) != nil
+    }
+    
+    static func progressComparison(for report: ReportExerciseModel,
+                                   comparedTo previousReports: [ReportExerciseModel]) -> ExerciseStatusComparison? {
         guard let previousReport = previousReports.max(by: { ($0.date ?? .distantPast) < ($1.date ?? .distantPast) }) else {
-            return false
+            return nil
         }
         
         if let currentMaxWeight = maxWeight(for: report),
            let previousMaxWeight = maxWeight(for: previousReport),
            currentMaxWeight > previousMaxWeight {
-            return true
+            return ExerciseStatusComparison(type: .weight,
+                                            current: currentMaxWeight,
+                                            previous: previousMaxWeight)
         }
         
         if let previousMaxWeight = maxWeight(for: previousReport) {
             let currentReps = bestReps(at: previousMaxWeight, in: report)
             let previousReps = bestReps(at: previousMaxWeight, in: previousReport)
             if currentReps > previousReps {
-                return true
+                return ExerciseStatusComparison(type: .repetitions,
+                                                current: Float(currentReps),
+                                                previous: Float(previousReps))
             }
         }
         
         let currentVolume = exerciseVolume(for: report)
         let previousVolume = exerciseVolume(for: previousReport)
-        return currentVolume > 0 && currentVolume > previousVolume
+        if currentVolume > 0 && currentVolume > previousVolume {
+            return ExerciseStatusComparison(type: .volume,
+                                            current: currentVolume,
+                                            previous: previousVolume)
+        }
+        
+        return nil
     }
     
     static func goalStatus(for report: ReportExerciseModel) -> ExerciseReportStatus {

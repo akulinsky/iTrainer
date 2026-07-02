@@ -13,6 +13,7 @@ final class ReportExerciseViewModel: ObservableObject {
         enum State {
             case achieved
             case missed
+            case recorded
             case extra
         }
         
@@ -37,6 +38,16 @@ final class ReportExerciseViewModel: ObservableObject {
         let color: Color
     }
     
+    struct VolumeBreakdownRow: Identifiable {
+        let id = UUID()
+        let text: String
+        let deltaText: String?
+        
+        var showsImprovementDot: Bool {
+            deltaText != nil
+        }
+    }
+    
     @Published var title: String
     @Published var workoutContext: String = ""
     @Published var reportDate: String = ""
@@ -44,7 +55,7 @@ final class ReportExerciseViewModel: ObservableObject {
     @Published var statusMetrics = [StatusMetric]()
     @Published var setRows = [SetComparisonRow]()
     @Published var summaryCards = [SummaryCard]()
-    @Published var volumeBreakdown = [String]()
+    @Published var volumeBreakdown = [VolumeBreakdownRow]()
     @Published var isShowAlert = false
     
     var errorMessage: String? = nil
@@ -61,7 +72,7 @@ final class ReportExerciseViewModel: ObservableObject {
     func reloadData(complete: (() -> Void)? = nil) {
         Task {
             let dataManager = DataManagerBackground(container: DataContainer.shared.sharedModelContainer)
-            let history = await dataManager.fetchReportExercises(exerciseId: reportExercise.exerciseId)
+            let history = await dataManager.fetchReportExercises(typeId: reportExercise.typeId)
                 .map { ReportExerciseModel(model: $0) }
             
             await MainActor.run {
@@ -75,19 +86,20 @@ final class ReportExerciseViewModel: ObservableObject {
         title = reportExercise.titleExercise
         workoutContext = Self.contextText(for: reportExercise)
         reportDate = Self.dateText(for: reportExercise.date)
-        status = ReportStatusService.calculateExerciseStatus(report: reportExercise, history: history)
-        statusMetrics = makeStatusMetrics(history: history)
+        let statusResult = ReportStatusService.calculateExerciseStatusResult(report: reportExercise, history: history)
+        status = statusResult.status
+        statusMetrics = makeStatusMetrics(statusResult: statusResult)
         setRows = makeSetRows()
         summaryCards = makeSummaryCards()
-        volumeBreakdown = makeVolumeBreakdown()
+        volumeBreakdown = makeVolumeBreakdown(statusResult: statusResult, history: history)
     }
     
-    private func makeStatusMetrics(history: [ReportExerciseModel]) -> [StatusMetric] {
-        switch status {
-        case .personalRecord(let type):
-            return personalRecordMetrics(type: type, history: previousReports(in: history))
+    private func makeStatusMetrics(statusResult: ExerciseStatusResult) -> [StatusMetric] {
+        switch statusResult.status {
+        case .personalRecord:
+            return comparisonMetrics(statusResult.comparison, previousTitle: "Previous best", improvementColor: AppColor.restAmber)
         case .progress:
-            return progressMetrics(history: previousReports(in: history))
+            return comparisonMetrics(statusResult.comparison, previousTitle: "Previous", improvementColor: AppColor.progressGreen)
         case .goalAchieved:
             return [
                 StatusMetric(title: "Goal", value: "Achieved", color: AppColor.progressGreen),
@@ -106,40 +118,33 @@ final class ReportExerciseViewModel: ObservableObject {
         }
     }
     
-    private func personalRecordMetrics(type: PersonalRecordType, history: [ReportExerciseModel]) -> [StatusMetric] {
-        let current = value(for: type, in: reportExercise)
-        let previous = history.map { value(for: type, in: $0) }.max() ?? 0
-        let improvement = max(current - previous, 0)
+    private func comparisonMetrics(_ comparison: ExerciseStatusComparison?,
+                                   previousTitle: String,
+                                   improvementColor: Color) -> [StatusMetric] {
+        guard let comparison else { return [] }
         
         return [
-            StatusMetric(title: "Metric", value: type.displayTitle, color: AppColor.textPrimary),
-            StatusMetric(title: "Current", value: formatted(value: current, for: type), color: AppColor.textPrimary),
-            StatusMetric(title: "Previous best", value: formatted(value: previous, for: type), color: AppColor.textPrimary),
-            StatusMetric(title: "Improvement", value: "+\(formatted(value: improvement, for: type))", color: AppColor.restAmber)
-        ]
-    }
-    
-    private func progressMetrics(history: [ReportExerciseModel]) -> [StatusMetric] {
-        let previousReport = history
-            .filter { $0.workoutId == reportExercise.workoutId && $0.workoutGroupId == reportExercise.workoutGroupId }
-            .max(by: { ($0.date ?? .distantPast) < ($1.date ?? .distantPast) })
-        let currentVolume = exerciseVolume(reportExercise)
-        let previousVolume = previousReport.map(exerciseVolume) ?? 0
-        let improvement = max(currentVolume - previousVolume, 0)
-        
-        return [
-            StatusMetric(title: "Metric", value: "Volume", color: AppColor.textPrimary),
-            StatusMetric(title: "Current", value: formattedKilograms(currentVolume), color: AppColor.textPrimary),
-            StatusMetric(title: "Previous", value: formattedKilograms(previousVolume), color: AppColor.textPrimary),
-            StatusMetric(title: "Improvement", value: "+\(formattedKilograms(improvement))", color: AppColor.progressGreen)
+            StatusMetric(title: "Metric", value: comparison.type.displayTitle, color: AppColor.textPrimary),
+            StatusMetric(title: "Current", value: formatted(value: comparison.current, for: comparison.type), color: AppColor.textPrimary),
+            StatusMetric(title: previousTitle, value: formatted(value: comparison.previous, for: comparison.type), color: AppColor.textPrimary),
+            StatusMetric(title: "Improvement", value: "+\(formatted(value: comparison.improvement, for: comparison.type))", color: improvementColor)
         ]
     }
     
     private func makeSetRows() -> [SetComparisonRow] {
         let targetSets = reportExercise.targetSets.sorted { $0.index < $1.index }
         let actualSets = reportExercise.sets.sorted { $0.index < $1.index }
-        let totalRows = max(targetSets.count, actualSets.count)
         
+        if targetSets.isEmpty {
+            return actualSets.enumerated().map { index, actual in
+                SetComparisonRow(title: "Set \(index + 1)",
+                                 target: "-",
+                                 result: parametersText(actual.parameters),
+                                 state: .recorded)
+            }
+        }
+        
+        let totalRows = max(targetSets.count, actualSets.count)
         return (0..<totalRows).map { index in
             let target = index < targetSets.count ? targetSets[index] : nil
             let actual = index < actualSets.count ? actualSets[index] : nil
@@ -172,16 +177,65 @@ final class ReportExerciseViewModel: ObservableObject {
         ]
     }
     
-    private func makeVolumeBreakdown() -> [String] {
-        reportExercise.sets
+    private func makeVolumeBreakdown(statusResult: ExerciseStatusResult, history: [ReportExerciseModel]) -> [VolumeBreakdownRow] {
+        let baselineVolumes = volumeBreakdownBaseline(statusResult: statusResult, history: history)
+            .map { setVolumes(for: $0) }
+        
+        return reportExercise.sets
             .sorted { $0.index < $1.index }
-            .compactMap { set in
-                guard let weight = weight(for: set.parameters), let reps = reps(for: set.parameters) else {
+            .enumerated()
+            .compactMap { index, set in
+                guard let weight = weight(for: set.parameters),
+                      let reps = reps(for: set.parameters),
+                      let volume = setBreakdownVolume(set.parameters) else {
                     return nil
                 }
-                let volume = weight * Float(reps)
-                return "\(formattedNumber(weight)) x \(reps) = \(formattedKilograms(volume))"
+                let previousVolume = baselineVolumes.flatMap { index < $0.count ? $0[index] : nil }
+                let delta = previousVolume.map { volume - $0 } ?? (baselineVolumes == nil ? nil : volume)
+                let deltaText = delta.flatMap { $0 > 0 ? "+\(formattedKilograms($0))" : nil }
+                return VolumeBreakdownRow(text: "\(formattedNumber(weight)) x \(reps) = \(formattedKilograms(volume))",
+                                          deltaText: deltaText)
             }
+    }
+    
+    private func volumeBreakdownBaseline(statusResult: ExerciseStatusResult,
+                                         history: [ReportExerciseModel]) -> ReportExerciseModel? {
+        guard statusResult.comparison?.type == .volume else { return nil }
+        let previousReports = previousReports(in: history)
+        
+        switch statusResult.status {
+        case .personalRecord:
+            return previousReports.max(by: { exerciseVolume($0) < exerciseVolume($1) })
+        case .progress:
+            return previousReports
+                .filter { $0.workoutId == reportExercise.workoutId && $0.workoutGroupId == reportExercise.workoutGroupId }
+                .max(by: { ($0.date ?? .distantPast) < ($1.date ?? .distantPast) })
+        case .goalAchieved, .goalMissed, .complete:
+            return nil
+        }
+    }
+    
+    private func previousReports(in history: [ReportExerciseModel]) -> [ReportExerciseModel] {
+        history.filter { item in
+            guard item.id != reportExercise.id else { return false }
+            guard item.typeId == reportExercise.typeId else { return false }
+            guard let reportDate = reportExercise.date else { return true }
+            guard let itemDate = item.date else { return false }
+            return itemDate < reportDate
+        }
+    }
+    
+    private func setVolumes(for exercise: ReportExerciseModel) -> [Float] {
+        exercise.sets
+            .sorted { $0.index < $1.index }
+            .compactMap { setBreakdownVolume($0.parameters) }
+    }
+    
+    private func setBreakdownVolume(_ parameters: [SetsParameter]) -> Float? {
+        guard let weight = weight(for: parameters), let reps = reps(for: parameters) else {
+            return nil
+        }
+        return weight * Float(reps)
     }
     
     private func achievedTargetCount() -> Int {
@@ -192,16 +246,6 @@ final class ReportExerciseViewModel: ObservableObject {
             let (index, target) = item
             guard index < actualSets.count else { return count }
             return isAchieved(target: target.parameters, actual: actualSets[index].parameters) ? count + 1 : count
-        }
-    }
-    
-    private func previousReports(in history: [ReportExerciseModel]) -> [ReportExerciseModel] {
-        history.filter { item in
-            guard item.id != reportExercise.id else { return false }
-            guard item.exerciseId == reportExercise.exerciseId else { return false }
-            guard let reportDate = reportExercise.date else { return true }
-            guard let itemDate = item.date else { return false }
-            return itemDate < reportDate
         }
     }
     

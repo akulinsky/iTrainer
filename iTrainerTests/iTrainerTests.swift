@@ -185,6 +185,52 @@ final class iTrainerTests: XCTestCase {
         
         XCTAssertEqual(status, .progress)
     }
+    
+    func testPersonalRecordIsGlobalByTypeId() {
+        let previousExerciseId = UUID()
+        let currentExerciseId = UUID()
+        let typeId = "bench_press"
+        let previous = exercise(exerciseId: previousExerciseId,
+                                typeId: typeId,
+                                date: .now.addingTimeInterval(-86_400),
+                                sets: [reportSet(weight: 100, reps: 1)])
+        let current = exercise(exerciseId: currentExerciseId,
+                               typeId: typeId,
+                               date: .now,
+                               sets: [reportSet(weight: 105, reps: 1)])
+        
+        let status = ReportStatusService.calculateExerciseStatus(report: current, history: [previous, current])
+        
+        XCTAssertEqual(status, .personalRecord(type: .weight))
+    }
+    
+    func testProgressResultUsesImprovedMetric() {
+        let ids = ContextIds()
+        let otherGroup = UUID()
+        let previousGlobalBest = exercise(exerciseId: ids.exercise,
+                                          workoutId: ids.workout,
+                                          workoutGroupId: otherGroup,
+                                          date: .now.addingTimeInterval(-172_800),
+                                          sets: [reportSet(weight: 80, reps: 10)])
+        let previousLocal = exercise(exerciseId: ids.exercise,
+                                     workoutId: ids.workout,
+                                     workoutGroupId: ids.group,
+                                     date: .now.addingTimeInterval(-86_400),
+                                     sets: [reportSet(weight: 80, reps: 6)])
+        let current = exercise(exerciseId: ids.exercise,
+                               workoutId: ids.workout,
+                               workoutGroupId: ids.group,
+                               date: .now,
+                               sets: [reportSet(weight: 80, reps: 8)])
+        
+        let result = ReportStatusService.calculateExerciseStatusResult(report: current,
+                                                                       history: [previousGlobalBest, previousLocal, current])
+        
+        XCTAssertEqual(result.status, .progress)
+        XCTAssertEqual(result.comparison?.type, .repetitions)
+        XCTAssertEqual(result.comparison?.current, 8)
+        XCTAssertEqual(result.comparison?.previous, 6)
+    }
 }
 
 private struct ContextIds {
@@ -206,6 +252,7 @@ private func workoutReport(targetExercisesCount: Int) -> ReportWorkoutModel {
 
 private func exercise(id: UUID = UUID(),
                       exerciseId: UUID = UUID(),
+                      typeId: String = "",
                       workoutId: UUID? = UUID(),
                       workoutGroupId: UUID? = UUID(),
                       date: Date? = .now,
@@ -215,7 +262,7 @@ private func exercise(id: UUID = UUID(),
                         titleExercise: "Exercise",
                         exerciseId: exerciseId,
                         index: 0,
-                        typeId: "",
+                        typeId: typeId,
                         workoutId: workoutId,
                         workoutGroupId: workoutGroupId,
                         date: date,

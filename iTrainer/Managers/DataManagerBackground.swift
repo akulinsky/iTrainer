@@ -202,6 +202,11 @@ extension DataManagerBackground {
                            sortBy: [SortDescriptor(\ReportExerciseModelDB.report?.startDate, order: .forward)])
     }
     
+    func fetchReportExercises(typeId: String) -> [ReportExerciseModelDB] {
+        return fetchModels(predicate: #Predicate<ReportExerciseModelDB> { $0.typeId == typeId },
+                           sortBy: [SortDescriptor(\ReportExerciseModelDB.report?.startDate, order: .forward)])
+    }
+    
     func fetchRecentReportExercises(exerciseId: UUID, dayLimit: Int) -> [ReportExerciseModelDB] {
         let reports = fetchModels(predicate: #Predicate<ReportExerciseModelDB> { $0.exerciseId == exerciseId },
                                   sortBy: [SortDescriptor(\ReportExerciseModelDB.report?.startDate, order: .reverse)])

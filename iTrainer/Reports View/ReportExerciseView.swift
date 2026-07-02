@@ -121,7 +121,7 @@ struct ReportExerciseView: View {
             }
             .frame(width: 58, height: 58)
             
-            VStack(alignment: .leading, spacing: isBreakdownExpanded ? 8 : 0) {
+            VStack(alignment: .leading, spacing: isBreakdownExpanded ? 8 : 5) {
                 Text(viewModel.status.title)
                     .font(AppFont.workoutWidgetTitle)
                     .foregroundStyle(AppColor.textPrimary)
@@ -264,12 +264,26 @@ struct ReportExerciseView: View {
             .buttonStyle(.plain)
             
             VStack(alignment: .leading, spacing: 6) {
-                ForEach(viewModel.volumeBreakdown, id: \.self) { line in
-                    Text(line)
-                        .font(.system(size: 15, weight: .regular))
-                        .foregroundStyle(AppColor.textPrimary)
-                        .lineLimit(1)
-                        .minimumScaleFactor(0.82)
+                ForEach(viewModel.volumeBreakdown) { row in
+                    HStack(spacing: 8) {
+                        Circle()
+                            .fill(row.showsImprovementDot ? AppColor.progressGreen : Color.clear)
+                            .frame(width: 6, height: 6)
+                        
+                        Text(row.text)
+                            .font(.system(size: 15, weight: .regular))
+                            .foregroundStyle(AppColor.textPrimary)
+                            .lineLimit(1)
+                            .minimumScaleFactor(0.82)
+                        
+                        if let deltaText = row.deltaText {
+                            Text(deltaText)
+                                .font(.system(size: 14, weight: .semibold))
+                                .foregroundStyle(AppColor.progressGreen)
+                                .lineLimit(1)
+                                .minimumScaleFactor(0.82)
+                        }
+                    }
                 }
             }
             .padding(.top, isBreakdownExpanded ? 2 : 0)
@@ -447,10 +461,12 @@ struct ReportExerciseView: View {
     }
     
     private var shouldShowVolumeBreakdown: Bool {
-        if case .personalRecord(.volume) = viewModel.status {
-            return !viewModel.volumeBreakdown.isEmpty
+        guard !isCompactStatus,
+              !viewModel.volumeBreakdown.isEmpty,
+              let metric = viewModel.statusMetrics.first(where: { $0.title == "Metric" }) else {
+            return false
         }
-        return false
+        return metric.value == "Volume"
     }
 }
 

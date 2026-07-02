@@ -100,7 +100,7 @@ class ReportViewModel: ObservableObject {
                 .sorted(by: { $0.index < $1.index })
             var exerciseHistories = [UUID: [ReportExerciseModel]]()
             for exercise in reportExercises {
-                exerciseHistories[exercise.id] = await dataManager.fetchReportExercises(exerciseId: exercise.exerciseId)
+                exerciseHistories[exercise.id] = await dataManager.fetchReportExercises(typeId: exercise.typeId)
                     .map { ReportExerciseModel(model: $0) }
             }
             
