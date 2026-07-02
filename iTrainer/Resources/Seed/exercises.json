@@ -285,6 +285,18 @@
     "iconName": "icMissingImage"
   },
   {
+    "id": "legs_squat",
+    "titleKey": "exercise.legs.squat",
+    "defaultTitle": "Squat",
+    "devTitle": "Приседание",
+    "category": "legs",
+    "parameters": [
+      "reps"
+    ],
+    "sortOrder": 6,
+    "iconName": "icExercise_legs_squat"
+  },
+  {
     "id": "glutes_glute_bridge",
     "titleKey": "exercise.glutes.glute_bridge",
     "defaultTitle": "Glute Bridge",
@@ -476,7 +488,7 @@
       "reps"
     ],
     "sortOrder": 2,
-    "iconName": "icMissingImage"
+    "iconName": "icExercise_biceps_hammer_curl"
   },
   {
     "id": "biceps_preacher_curl",
