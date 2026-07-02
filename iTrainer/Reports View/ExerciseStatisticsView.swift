@@ -153,9 +153,7 @@ struct ExerciseStatisticsView: View {
     
     @ViewBuilder
     private var chartArea: some View {
-        let points = viewModel.visibleGraphPoints
-        
-        if points.isEmpty {
+        if !viewModel.hasPeriodGraphPoints {
             VStack(spacing: 8) {
                 Text(viewModel.hasAnyReports ? "No data for this period" : "No statistics yet")
                     .font(AppFont.rowTitle)
@@ -173,47 +171,51 @@ struct ExerciseStatisticsView: View {
                     .font(AppFont.rowSubtitle)
                     .foregroundStyle(AppColor.textSecondary)
                 
-                Chart(points) { point in
-                    LineMark(
-                        x: .value("Date", point.date),
-                        y: .value(viewModel.selectedMetric.title, point.value)
-                    )
-                    .interpolationMethod(.linear)
-                    .foregroundStyle(AppColor.brandPrimary)
-                    .lineStyle(StrokeStyle(lineWidth: 3, lineCap: .round, lineJoin: .round))
+                GeometryReader { proxy in
+                    let points = viewModel.visibleGraphPoints(maxCount: viewModel.maxVisiblePoints(for: proxy.size.width))
                     
-                    PointMark(
-                        x: .value("Date", point.date),
-                        y: .value(viewModel.selectedMetric.title, point.value)
-                    )
-                    .foregroundStyle(point.isPersonalRecord ? ExerciseStatisticsViewModel.trophyGold : AppColor.brandPrimary)
-                    .symbolSize(point.isPersonalRecord ? 80 : 62)
-                }
-                .chartLegend(.hidden)
-                .chartYScale(domain: viewModel.yDomain)
-                .chartXAxis {
-                    AxisMarks(values: .automatic(desiredCount: 6)) { value in
-                        AxisGridLine(stroke: StrokeStyle(lineWidth: 1, dash: [4, 4]))
-                            .foregroundStyle(AppColor.separatorSoft)
-                        AxisValueLabel {
-                            if let date = value.as(Date.self) {
-                                Text(viewModel.selectedPeriod.axisLabel(for: date))
-                                    .foregroundStyle(AppColor.textSecondary)
+                    Chart(points) { point in
+                        LineMark(
+                            x: .value("Date", point.date),
+                            y: .value(viewModel.selectedMetric.title, point.value)
+                        )
+                        .interpolationMethod(.linear)
+                        .foregroundStyle(AppColor.brandPrimary)
+                        .lineStyle(StrokeStyle(lineWidth: 3, lineCap: .round, lineJoin: .round))
+                        
+                        PointMark(
+                            x: .value("Date", point.date),
+                            y: .value(viewModel.selectedMetric.title, point.value)
+                        )
+                        .foregroundStyle(point.isPersonalRecord ? ExerciseStatisticsViewModel.trophyGold : AppColor.brandPrimary)
+                        .symbolSize(point.isPersonalRecord ? 80 : 62)
+                    }
+                    .chartLegend(.hidden)
+                    .chartYScale(domain: viewModel.yDomain(for: points))
+                    .chartXAxis {
+                        AxisMarks(values: .automatic(desiredCount: 6)) { value in
+                            AxisGridLine(stroke: StrokeStyle(lineWidth: 1, dash: [4, 4]))
+                                .foregroundStyle(AppColor.separatorSoft)
+                            AxisValueLabel {
+                                if let date = value.as(Date.self) {
+                                    Text(viewModel.selectedPeriod.axisLabel(for: date))
+                                        .foregroundStyle(AppColor.textSecondary)
+                                }
                             }
                         }
                     }
-                }
-                .chartYAxis {
-                    AxisMarks(position: .leading, values: .automatic(desiredCount: 4)) {
-                        AxisGridLine(stroke: StrokeStyle(lineWidth: 1, dash: [4, 4]))
-                            .foregroundStyle(AppColor.separatorSoft)
-                        AxisValueLabel()
-                            .foregroundStyle(AppColor.textPrimary)
+                    .chartYAxis {
+                        AxisMarks(position: .leading, values: .automatic(desiredCount: 4)) {
+                            AxisGridLine(stroke: StrokeStyle(lineWidth: 1, dash: [4, 4]))
+                                .foregroundStyle(AppColor.separatorSoft)
+                            AxisValueLabel()
+                                .foregroundStyle(AppColor.textPrimary)
+                        }
                     }
-                }
-                .chartPlotStyle { plotArea in
-                    plotArea
-                        .background(AppColor.surfacePrimary)
+                    .chartPlotStyle { plotArea in
+                        plotArea
+                            .background(AppColor.surfacePrimary)
+                    }
                 }
                 .frame(height: 220)
             }
@@ -377,8 +379,8 @@ private final class ExerciseStatisticsViewModel: ObservableObject {
         !allGraphPoints.isEmpty
     }
     
-    var visibleGraphPoints: [ExerciseStatisticsPoint] {
-        sample(points: periodGraphPoints, maxCount: 50)
+    var hasPeriodGraphPoints: Bool {
+        !periodGraphPoints.isEmpty
     }
     
     var periodSummary: PeriodSummary {
@@ -420,8 +422,16 @@ private final class ExerciseStatisticsViewModel: ObservableObject {
                                       changeColor: color(for: change))
     }
     
-    var yDomain: ClosedRange<Double> {
-        let values = visibleGraphPoints.map(\.value)
+    func visibleGraphPoints(maxCount: Int) -> [ExerciseStatisticsPoint] {
+        sample(points: periodGraphPoints, maxCount: maxCount)
+    }
+    
+    func maxVisiblePoints(for width: CGFloat) -> Int {
+        min(max(Int(width / 28) + 4, 8), 22)
+    }
+    
+    func yDomain(for points: [ExerciseStatisticsPoint]) -> ClosedRange<Double> {
+        let values = points.map(\.value)
         guard let minValue = values.min(), let maxValue = values.max() else {
             return 0...1
         }
@@ -504,25 +514,88 @@ private final class ExerciseStatisticsViewModel: ObservableObject {
     }
     
     private func sample(points: [ExerciseStatisticsPoint], maxCount: Int) -> [ExerciseStatisticsPoint] {
-        guard points.count > maxCount else { return points }
+        let compressedPoints = compressPlateaus(points)
+        guard compressedPoints.count > maxCount else { return compressedPoints }
         
         var selected = Set<UUID>()
-        selected.insert(points[0].id)
-        selected.insert(points[points.count - 1].id)
-        points.filter(\.isPersonalRecord).forEach { selected.insert($0.id) }
+        selected.insert(compressedPoints[0].id)
+        selected.insert(compressedPoints[compressedPoints.count - 1].id)
+        
+        let extremeSlots = max(maxCount / 2, 1)
+        evenlySample(localExtremes(in: compressedPoints), maxCount: extremeSlots)
+            .forEach { selected.insert($0.id) }
         
         let remainingSlots = max(maxCount - selected.count, 0)
         if remainingSlots > 0 {
-            let candidates = points.filter { !selected.contains($0.id) }
-            if !candidates.isEmpty {
-                for slot in 0..<remainingSlots {
-                    let index = Int((Double(slot) / Double(max(remainingSlots - 1, 1))) * Double(candidates.count - 1))
-                    selected.insert(candidates[index].id)
-                }
-            }
+            let candidates = compressedPoints.filter { !selected.contains($0.id) }
+            evenlySample(candidates, maxCount: remainingSlots)
+                .forEach { selected.insert($0.id) }
         }
         
-        return points.filter { selected.contains($0.id) }
+        return compressedPoints.filter { selected.contains($0.id) }
+    }
+    
+    private func compressPlateaus(_ points: [ExerciseStatisticsPoint]) -> [ExerciseStatisticsPoint] {
+        guard points.count > 2 else { return points }
+        
+        var result = [ExerciseStatisticsPoint]()
+        var index = 0
+        
+        while index < points.count {
+            let plateauStart = index
+            var plateauEnd = index
+            
+            while plateauEnd + 1 < points.count,
+                  areSimilar(points[plateauEnd + 1].value, points[plateauStart].value) {
+                plateauEnd += 1
+            }
+            
+            result.append(points[plateauStart])
+            if plateauEnd > plateauStart {
+                result.append(points[plateauEnd])
+            }
+            
+            index = plateauEnd + 1
+        }
+        
+        return result
+    }
+    
+    private func localExtremes(in points: [ExerciseStatisticsPoint]) -> [ExerciseStatisticsPoint] {
+        guard points.count > 2 else { return [] }
+        
+        return (1..<(points.count - 1)).compactMap { index in
+            let previous = points[index - 1].value
+            let current = points[index].value
+            let next = points[index + 1].value
+            
+            let isPeak = current > previous && current > next
+            let isDip = current < previous && current < next
+            return isPeak || isDip ? points[index] : nil
+        }
+    }
+    
+    private func evenlySample(_ points: [ExerciseStatisticsPoint], maxCount: Int) -> [ExerciseStatisticsPoint] {
+        guard maxCount > 0, points.count > maxCount else { return points }
+        
+        return (0..<maxCount).map { slot in
+            let index = Int((Double(slot) / Double(max(maxCount - 1, 1))) * Double(points.count - 1))
+            return points[index]
+        }
+    }
+    
+    private func areSimilar(_ lhs: Float, _ rhs: Float) -> Bool {
+        let difference = abs(lhs - rhs)
+        
+        switch selectedMetric {
+        case .weight:
+            return difference < 1
+        case .volume:
+            let baseline = max(abs(lhs), abs(rhs), 1)
+            return difference / baseline < 0.02
+        case .repetitions:
+            return difference == 0
+        }
     }
     
     private func formatted(value: Float, for metric: ExerciseMetricSegment) -> String {
