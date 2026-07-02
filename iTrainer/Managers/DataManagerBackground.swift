@@ -198,18 +198,18 @@ extension DataManagerBackground {
     }
     
     func fetchReportExercises(exerciseId: UUID) -> [ReportExerciseModelDB] {
-        return fetchModels(predicate: #Predicate<ReportExerciseModelDB> { $0.exerciseId == exerciseId },
-                           sortBy: [SortDescriptor(\ReportExerciseModelDB.report?.startDate, order: .forward)])
+        return fetchModels(predicate: #Predicate<ReportExerciseModelDB> { $0.exerciseId == exerciseId })
+            .sorted { ($0.report?.startDate ?? .distantPast) < ($1.report?.startDate ?? .distantPast) }
     }
     
     func fetchReportExercises(typeId: String) -> [ReportExerciseModelDB] {
-        return fetchModels(predicate: #Predicate<ReportExerciseModelDB> { $0.typeId == typeId },
-                           sortBy: [SortDescriptor(\ReportExerciseModelDB.report?.startDate, order: .forward)])
+        return fetchModels(predicate: #Predicate<ReportExerciseModelDB> { $0.typeId == typeId })
+            .sorted { ($0.report?.startDate ?? .distantPast) < ($1.report?.startDate ?? .distantPast) }
     }
     
     func fetchRecentReportExercises(exerciseId: UUID, dayLimit: Int) -> [ReportExerciseModelDB] {
-        let reports = fetchModels(predicate: #Predicate<ReportExerciseModelDB> { $0.exerciseId == exerciseId },
-                                  sortBy: [SortDescriptor(\ReportExerciseModelDB.report?.startDate, order: .reverse)])
+        let reports = fetchModels(predicate: #Predicate<ReportExerciseModelDB> { $0.exerciseId == exerciseId })
+            .sorted { ($0.report?.startDate ?? .distantPast) > ($1.report?.startDate ?? .distantPast) }
         guard dayLimit > 0 else {
             return []
         }

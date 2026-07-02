@@ -135,6 +135,26 @@ struct ReportStatusService {
     static func hasGoals(in exercises: [ReportExerciseModel]) -> Bool {
         exercises.contains { !$0.targetSets.isEmpty }
     }
+    
+    static func exerciseVolumeValue(for exercise: ReportExerciseModel) -> Float {
+        exerciseVolume(for: exercise)
+    }
+    
+    static func maxWeightValue(for exercise: ReportExerciseModel) -> Float? {
+        maxWeight(for: exercise)
+    }
+    
+    static func bestRepsValue(at weight: Float, in exercise: ReportExerciseModel) -> Int {
+        bestReps(at: weight, in: exercise)
+    }
+    
+    static func weightValue(for parameters: [SetsParameter]) -> Float? {
+        weight(for: parameters)
+    }
+    
+    static func repsValue(for parameters: [SetsParameter]) -> Int? {
+        optionalReps(for: parameters)
+    }
 }
 
 private extension ReportStatusService {
