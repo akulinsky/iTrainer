@@ -190,6 +190,14 @@ private extension ReportStatusService {
                                                 previous: Float(previousReps),
                                                 contextWeight: previousMaxWeight)
             }
+        } else {
+            let currentReps = maxRepsWithoutWeight(for: report)
+            let previousReps = previousReports.map(maxRepsWithoutWeight(for:)).max() ?? 0
+            if currentReps > 0 && currentReps > previousReps {
+                return ExerciseStatusComparison(type: .repetitions,
+                                                current: Float(currentReps),
+                                                previous: Float(previousReps))
+            }
         }
         
         let currentVolume = exerciseVolume(for: report)
@@ -230,6 +238,14 @@ private extension ReportStatusService {
                                                 current: Float(currentReps),
                                                 previous: Float(previousReps),
                                                 contextWeight: previousMaxWeight)
+            }
+        } else if maxWeight(for: report) == nil {
+            let currentReps = maxRepsWithoutWeight(for: report)
+            let previousReps = maxRepsWithoutWeight(for: previousReport)
+            if currentReps > 0 && currentReps > previousReps {
+                return ExerciseStatusComparison(type: .repetitions,
+                                                current: Float(currentReps),
+                                                previous: Float(previousReps))
             }
         }
         
@@ -294,6 +310,15 @@ private extension ReportStatusService {
     static func bestReps(at weight: Float, in exercise: ReportExerciseModel) -> Int {
         exercise.sets.reduce(0) { currentBest, set in
             guard let setWeight = Self.weight(for: set.parameters), setWeight == weight else {
+                return currentBest
+            }
+            return max(currentBest, optionalReps(for: set.parameters) ?? 0)
+        }
+    }
+    
+    static func maxRepsWithoutWeight(for exercise: ReportExerciseModel) -> Int {
+        exercise.sets.reduce(0) { currentBest, set in
+            guard weight(for: set.parameters) == nil else {
                 return currentBest
             }
             return max(currentBest, optionalReps(for: set.parameters) ?? 0)

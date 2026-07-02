@@ -472,11 +472,11 @@ private final class ExerciseStatisticsViewModel: ObservableObject {
     
     private func point(for report: ReportExerciseModel) -> ExerciseStatisticsPoint? {
         guard let date = report.date else { return nil }
-        let sets = performedStrengthSets(in: report)
-        guard !sets.isEmpty else { return nil }
         
         switch selectedMetric {
         case .weight:
+            let sets = performedStrengthSets(in: report)
+            guard !sets.isEmpty else { return nil }
             guard let weight = sets.map(\.weight).max() else { return nil }
             return ExerciseStatisticsPoint(reportId: report.id,
                                            date: date,
@@ -484,6 +484,8 @@ private final class ExerciseStatisticsViewModel: ObservableObject {
                                            formattedValue: formattedKilograms(weight),
                                            isPersonalRecord: isPersonalRecord(report))
         case .volume:
+            let sets = performedStrengthSets(in: report)
+            guard !sets.isEmpty else { return nil }
             let volume = sets.reduce(Float.zero) { $0 + ($1.weight * Float($1.reps)) }
             guard volume > 0 else { return nil }
             return ExerciseStatisticsPoint(reportId: report.id,
@@ -492,18 +494,38 @@ private final class ExerciseStatisticsViewModel: ObservableObject {
                                            formattedValue: formattedKilograms(volume),
                                            isPersonalRecord: isPersonalRecord(report))
         case .repetitions:
-            guard let weight = sets.map(\.weight).max() else { return nil }
-            let reps = sets
-                .filter { $0.weight == weight }
-                .map(\.reps)
-                .max() ?? 0
-            guard reps > 0 else { return nil }
-            return ExerciseStatisticsPoint(reportId: report.id,
-                                           date: date,
-                                           value: Float(reps),
-                                           formattedValue: "\(formattedNumber(weight)) kg x \(reps)",
-                                           isPersonalRecord: isPersonalRecord(report))
+            if let weightedRepetitionPoint = weightedRepetitionPoint(for: report, date: date) {
+                return weightedRepetitionPoint
+            }
+            return bodyweightRepetitionPoint(for: report, date: date)
         }
+    }
+    
+    private func weightedRepetitionPoint(for report: ReportExerciseModel, date: Date) -> ExerciseStatisticsPoint? {
+        let sets = performedStrengthSets(in: report)
+        guard let weight = sets.map(\.weight).max() else { return nil }
+        let reps = sets
+            .filter { $0.weight == weight }
+            .map(\.reps)
+            .max() ?? 0
+        guard reps > 0 else { return nil }
+        
+        return ExerciseStatisticsPoint(reportId: report.id,
+                                       date: date,
+                                       value: Float(reps),
+                                       formattedValue: "\(formattedNumber(weight)) kg x \(reps)",
+                                       isPersonalRecord: isPersonalRecord(report))
+    }
+    
+    private func bodyweightRepetitionPoint(for report: ReportExerciseModel, date: Date) -> ExerciseStatisticsPoint? {
+        let reps = performedRepsOnlySets(in: report).max() ?? 0
+        guard reps > 0 else { return nil }
+        
+        return ExerciseStatisticsPoint(reportId: report.id,
+                                       date: date,
+                                       value: Float(reps),
+                                       formattedValue: "\(reps)",
+                                       isPersonalRecord: isPersonalRecord(report))
     }
     
     private func performedStrengthSets(in report: ReportExerciseModel) -> [PerformedStrengthSet] {
@@ -515,6 +537,17 @@ private final class ExerciseStatisticsViewModel: ObservableObject {
                 return nil
             }
             return PerformedStrengthSet(weight: weight, reps: reps)
+        }
+    }
+    
+    private func performedRepsOnlySets(in report: ReportExerciseModel) -> [Int] {
+        report.sets.compactMap { set in
+            guard ReportStatusService.weightValue(for: set.parameters) == nil,
+                  let reps = ReportStatusService.repsValue(for: set.parameters),
+                  reps > 0 else {
+                return nil
+            }
+            return reps
         }
     }
     
