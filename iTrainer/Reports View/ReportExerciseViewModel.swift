@@ -208,7 +208,7 @@ final class ReportExerciseViewModel: ObservableObject {
             return previousReports.max(by: { exerciseVolume($0) < exerciseVolume($1) })
         case .progress:
             return previousReports
-                .filter { $0.workoutId == reportExercise.workoutId && $0.workoutGroupId == reportExercise.workoutGroupId }
+                .filter { $0.exerciseId == reportExercise.exerciseId }
                 .max(by: { ($0.date ?? .distantPast) < ($1.date ?? .distantPast) })
         case .goalAchieved, .goalMissed, .complete:
             return nil
@@ -399,7 +399,7 @@ final class ReportExerciseViewModel: ObservableObject {
     }
     
     private static func contextText(for exercise: ReportExerciseModel) -> String {
-        [exercise.titleWorkoutGroup, exercise.titleWorkout]
+        [exercise.titleWorkout, exercise.titleWorkoutGroup]
             .compactMap { value in
                 guard let value, !value.isEmpty else { return nil }
                 return value

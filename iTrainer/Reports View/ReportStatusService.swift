@@ -72,7 +72,7 @@ struct ReportStatusService {
         }
         
         let localPreviousReports = previousReports.filter {
-            $0.workoutId == report.workoutId && $0.workoutGroupId == report.workoutGroupId
+            $0.exerciseId == report.exerciseId
         }
         if let progressComparison = progressComparison(for: report, comparedTo: localPreviousReports) {
             return ExerciseStatusResult(status: .progress,
