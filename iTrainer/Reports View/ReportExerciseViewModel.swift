@@ -125,9 +125,9 @@ final class ReportExerciseViewModel: ObservableObject {
         
         return [
             StatusMetric(title: "Metric", value: comparison.type.displayTitle, color: AppColor.textPrimary),
-            StatusMetric(title: "Current", value: formatted(value: comparison.current, for: comparison.type), color: AppColor.textPrimary),
-            StatusMetric(title: previousTitle, value: formatted(value: comparison.previous, for: comparison.type), color: AppColor.textPrimary),
-            StatusMetric(title: "Improvement", value: "+\(formatted(value: comparison.improvement, for: comparison.type))", color: improvementColor)
+            StatusMetric(title: "Current", value: formattedCurrentValue(for: comparison), color: AppColor.textPrimary),
+            StatusMetric(title: previousTitle, value: formattedPreviousValue(for: comparison), color: AppColor.textPrimary),
+            StatusMetric(title: "Improvement", value: formattedImprovementValue(for: comparison), color: improvementColor)
         ]
     }
     
@@ -259,6 +259,30 @@ final class ReportExerciseViewModel: ObservableObject {
         case .volume:
             return exerciseVolume(exercise)
         }
+    }
+    
+    private func formattedCurrentValue(for comparison: ExerciseStatusComparison) -> String {
+        formattedComparisonValue(comparison.current, for: comparison)
+    }
+    
+    private func formattedPreviousValue(for comparison: ExerciseStatusComparison) -> String {
+        formattedComparisonValue(comparison.previous, for: comparison)
+    }
+    
+    private func formattedImprovementValue(for comparison: ExerciseStatusComparison) -> String {
+        switch comparison.type {
+        case .repetitions:
+            return "+\(Int(comparison.improvement)) reps"
+        case .weight, .volume:
+            return "+\(formatted(value: comparison.improvement, for: comparison.type))"
+        }
+    }
+    
+    private func formattedComparisonValue(_ value: Float, for comparison: ExerciseStatusComparison) -> String {
+        if comparison.type == .repetitions, let contextWeight = comparison.contextWeight {
+            return "\(formattedNumber(contextWeight)) kg x \(Int(value))"
+        }
+        return formatted(value: value, for: comparison.type)
     }
     
     private func formatted(value: Float, for type: PersonalRecordType) -> String {

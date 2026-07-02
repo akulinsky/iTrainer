@@ -17,6 +17,17 @@ struct ExerciseStatusComparison: Hashable {
     let type: PersonalRecordType
     let current: Float
     let previous: Float
+    let contextWeight: Float?
+    
+    init(type: PersonalRecordType,
+         current: Float,
+         previous: Float,
+         contextWeight: Float? = nil) {
+        self.type = type
+        self.current = current
+        self.previous = previous
+        self.contextWeight = contextWeight
+    }
     
     var improvement: Float {
         max(current - previous, 0)
@@ -156,7 +167,8 @@ private extension ReportStatusService {
             if currentReps > previousReps {
                 return ExerciseStatusComparison(type: .repetitions,
                                                 current: Float(currentReps),
-                                                previous: Float(previousReps))
+                                                previous: Float(previousReps),
+                                                contextWeight: previousMaxWeight)
             }
         }
         
@@ -196,7 +208,8 @@ private extension ReportStatusService {
             if currentReps > previousReps {
                 return ExerciseStatusComparison(type: .repetitions,
                                                 current: Float(currentReps),
-                                                previous: Float(previousReps))
+                                                previous: Float(previousReps),
+                                                contextWeight: previousMaxWeight)
             }
         }
         
