@@ -472,17 +472,19 @@ private final class ExerciseStatisticsViewModel: ObservableObject {
     
     private func point(for report: ReportExerciseModel) -> ExerciseStatisticsPoint? {
         guard let date = report.date else { return nil }
+        let sets = performedStrengthSets(in: report)
+        guard !sets.isEmpty else { return nil }
         
         switch selectedMetric {
         case .weight:
-            guard let weight = ReportStatusService.maxWeightValue(for: report) else { return nil }
+            guard let weight = sets.map(\.weight).max() else { return nil }
             return ExerciseStatisticsPoint(reportId: report.id,
                                            date: date,
                                            value: weight,
                                            formattedValue: formattedKilograms(weight),
                                            isPersonalRecord: isPersonalRecord(report))
         case .volume:
-            let volume = ReportStatusService.exerciseVolumeValue(for: report)
+            let volume = sets.reduce(Float.zero) { $0 + ($1.weight * Float($1.reps)) }
             guard volume > 0 else { return nil }
             return ExerciseStatisticsPoint(reportId: report.id,
                                            date: date,
@@ -490,14 +492,29 @@ private final class ExerciseStatisticsViewModel: ObservableObject {
                                            formattedValue: formattedKilograms(volume),
                                            isPersonalRecord: isPersonalRecord(report))
         case .repetitions:
-            guard let weight = ReportStatusService.maxWeightValue(for: report) else { return nil }
-            let reps = ReportStatusService.bestRepsValue(at: weight, in: report)
+            guard let weight = sets.map(\.weight).max() else { return nil }
+            let reps = sets
+                .filter { $0.weight == weight }
+                .map(\.reps)
+                .max() ?? 0
             guard reps > 0 else { return nil }
             return ExerciseStatisticsPoint(reportId: report.id,
                                            date: date,
                                            value: Float(reps),
                                            formattedValue: "\(formattedNumber(weight)) kg x \(reps)",
                                            isPersonalRecord: isPersonalRecord(report))
+        }
+    }
+    
+    private func performedStrengthSets(in report: ReportExerciseModel) -> [PerformedStrengthSet] {
+        report.sets.compactMap { set in
+            guard let weight = ReportStatusService.weightValue(for: set.parameters),
+                  let reps = ReportStatusService.repsValue(for: set.parameters),
+                  weight > 0,
+                  reps > 0 else {
+                return nil
+            }
+            return PerformedStrengthSet(weight: weight, reps: reps)
         }
     }
     
@@ -756,6 +773,11 @@ private struct ExerciseStatisticsPoint: Identifiable {
     let isPersonalRecord: Bool
     
     var id: UUID { reportId }
+}
+
+private struct PerformedStrengthSet {
+    let weight: Float
+    let reps: Int
 }
 
 private struct PeriodSummary {
