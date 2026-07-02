@@ -122,13 +122,9 @@ struct ExerciseStatisticsView: View {
             
             chartArea
             
-            HStack(spacing: 8) {
-                Circle()
-                    .fill(ExerciseStatisticsViewModel.trophyGold)
-                    .frame(width: 12, height: 12)
-                Text("PR")
-                    .font(AppFont.rowSubtitle)
-                    .foregroundStyle(AppColor.textSecondary)
+            HStack(spacing: 18) {
+                chartLegendItem(color: AppColor.brandPrimary, title: "Workout")
+                chartLegendItem(color: ExerciseStatisticsViewModel.trophyGold, title: "Personal Record")
             }
             .frame(maxWidth: .infinity, alignment: .center)
             
@@ -141,6 +137,17 @@ struct ExerciseStatisticsView: View {
         .overlay {
             RoundedRectangle(cornerRadius: 14, style: .continuous)
                 .stroke(AppColor.separatorSoft, lineWidth: 1)
+        }
+    }
+    
+    private func chartLegendItem(color: Color, title: String) -> some View {
+        HStack(spacing: 8) {
+            Circle()
+                .fill(color)
+                .frame(width: 10, height: 10)
+            Text(title)
+                .font(AppFont.rowSubtitle)
+                .foregroundStyle(AppColor.textSecondary)
         }
     }
     
@@ -180,7 +187,7 @@ struct ExerciseStatisticsView: View {
                         y: .value(viewModel.selectedMetric.title, point.value)
                     )
                     .foregroundStyle(point.isPersonalRecord ? ExerciseStatisticsViewModel.trophyGold : AppColor.brandPrimary)
-                    .symbolSize(point.isPersonalRecord ? 110 : 62)
+                    .symbolSize(point.isPersonalRecord ? 80 : 62)
                 }
                 .chartLegend(.hidden)
                 .chartYScale(domain: viewModel.yDomain)
