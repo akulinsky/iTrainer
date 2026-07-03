@@ -103,12 +103,7 @@ struct ReportExerciseView: View {
             statusHeader
             
             if let metricPillText {
-                
-                Text(metricPillText)
-                    .font(.system(size: 15, weight: .semibold))
-                    .foregroundStyle(AppColor.textSecondary)
-                    .lineLimit(1)
-                    .minimumScaleFactor(0.78)
+                metricPillView(metricPillText)
                     .padding(.top, 6)
             }
             
@@ -199,6 +194,22 @@ struct ReportExerciseView: View {
             if isCompactStatus {
                 Spacer(minLength: 0)
             }
+        }
+    }
+    
+    private func metricPillView(_ metric: (title: String, value: String)) -> some View {
+        HStack(alignment: .firstTextBaseline, spacing: 6) {
+            Text(metric.title + ":")
+                .font(.system(size: 13, weight: .semibold))
+                .foregroundStyle(AppColor.textSecondary)
+                .lineLimit(1)
+                .minimumScaleFactor(0.78)
+            
+            Text(metric.value)
+                .font(.system(size: 15, weight: .medium))
+                .foregroundStyle(AppColor.textPrimary)
+                .lineLimit(1)
+                .minimumScaleFactor(0.78)
         }
     }
     
@@ -410,13 +421,13 @@ struct ReportExerciseView: View {
         }
     }
     
-    private var metricPillText: String? {
+    private var metricPillText: (title: String, value: String)? {
         guard !isCompactStatus,
               let metric = viewModel.statusMetrics.first,
               metric.title == "Metric" || metric.title == "Record type" else {
             return nil
         }
-        return "\(metric.title): \(metric.value)"
+        return (metric.title, metric.value)
     }
     
     private var displayStatusMetrics: [ReportExerciseViewModel.StatusMetric] {
