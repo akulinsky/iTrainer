@@ -99,13 +99,26 @@ struct ReportExerciseView: View {
     }
     
     private var detailedStatusCardContent: some View {
-        VStack(alignment: .leading, spacing: 18) {
+        VStack(alignment: .leading, spacing: 8) {
             statusHeader
+            
+            if let metricPillText {
+                
+                Text(metricPillText)
+                    .font(.system(size: 15, weight: .semibold))
+                    .foregroundStyle(AppColor.textSecondary)
+                    .lineLimit(1)
+                    .minimumScaleFactor(0.78)
+                    .padding(.top, 6)
+            }
+            
             statusMetricsGrid
             
             if shouldShowVolumeBreakdown {
                 Divider()
+                    .padding(.top, 8)
                 volumeBreakdownView
+                    .padding(.top, 8)
             }
         }
     }
@@ -136,7 +149,7 @@ struct ReportExerciseView: View {
             }
             .frame(maxWidth: .infinity, alignment: .leading)
         }
-        .frame(minHeight: 88)
+        .frame(minHeight: 76)
     }
     
     private var statusHeader: some View {
@@ -157,22 +170,6 @@ struct ReportExerciseView: View {
                 .minimumScaleFactor(0.86)
             
             Spacer(minLength: 0)
-            
-            if let metricPillText {
-                Text(metricPillText)
-                    .font(AppFont.caption)
-                    .foregroundStyle(AppColor.textSecondary)
-                    .lineLimit(1)
-                    .minimumScaleFactor(0.78)
-                    .padding(.horizontal, 12)
-                    .padding(.vertical, 8)
-                    .background(viewModel.status.color.opacity(0.08))
-                    .clipShape(RoundedRectangle(cornerRadius: 12, style: .continuous))
-                    .overlay {
-                        RoundedRectangle(cornerRadius: 12, style: .continuous)
-                            .stroke(viewModel.status.color.opacity(0.18), lineWidth: 1)
-                    }
-            }
         }
     }
     
@@ -184,7 +181,7 @@ struct ReportExerciseView: View {
             
             statusMetricsContent
                 .frame(maxWidth: isCompactStatus ? 230 : .infinity)
-                .padding(.vertical, isCompactStatus ? 0 : 14)
+                .padding(.vertical, isCompactStatus ? 0 : 10)
                 .padding(.horizontal, isCompactStatus ? 0 : 10)
                 .background {
                     if !isCompactStatus {
@@ -220,7 +217,7 @@ struct ReportExerciseView: View {
     }
     
     private func statusMetricView(_ metric: ReportExerciseViewModel.StatusMetric) -> some View {
-        VStack(spacing: 8) {
+        VStack(spacing: 0) {
             Text(metric.title)
                 .font(AppFont.caption)
                 .foregroundStyle(AppColor.textSecondary)
