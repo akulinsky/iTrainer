@@ -42,10 +42,7 @@ final class ReportExerciseViewModel: ObservableObject {
         let id = UUID()
         let text: String
         let deltaText: String?
-        
-        var showsImprovementDot: Bool {
-            deltaText != nil
-        }
+        let deltaColor: Color?
     }
     
     @Published var title: String
@@ -192,9 +189,11 @@ final class ReportExerciseViewModel: ObservableObject {
                 }
                 let previousVolume = baselineVolumes.flatMap { index < $0.count ? $0[index] : nil }
                 let delta = previousVolume.map { volume - $0 } ?? (baselineVolumes == nil ? nil : volume)
-                let deltaText = delta.flatMap { $0 > 0 ? "+\(formattedKilograms($0))" : nil }
+                let deltaText = delta.flatMap(formattedDeltaKilograms)
+                let deltaColor = delta.flatMap(deltaColor)
                 return VolumeBreakdownRow(text: "\(formattedNumber(weight)) x \(reps) = \(formattedKilograms(volume))",
-                                          deltaText: deltaText)
+                                          deltaText: deltaText,
+                                          deltaColor: deltaColor)
             }
     }
     
@@ -267,6 +266,17 @@ final class ReportExerciseViewModel: ObservableObject {
     
     private func formattedPreviousValue(for comparison: ExerciseStatusComparison) -> String {
         formattedComparisonValue(comparison.previous, for: comparison)
+    }
+    
+    private func formattedDeltaKilograms(_ value: Float) -> String? {
+        guard value != 0 else { return nil }
+        let sign = value > 0 ? "+" : "-"
+        return "\(sign)\(formattedKilograms(abs(value)))"
+    }
+    
+    private func deltaColor(_ value: Float) -> Color? {
+        guard value != 0 else { return nil }
+        return value > 0 ? AppColor.progressGreen : AppColor.progressRed
     }
     
     private func formattedImprovementValue(for comparison: ExerciseStatusComparison) -> String {

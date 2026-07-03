@@ -275,7 +275,7 @@ struct ReportExerciseView: View {
                 ForEach(viewModel.volumeBreakdown) { row in
                     HStack(spacing: 8) {
                         Circle()
-                            .fill(row.showsImprovementDot ? AppColor.progressGreen : Color.clear)
+                            .fill(row.deltaColor ?? Color.clear)
                             .frame(width: 6, height: 6)
                         
                         Text(row.text)
@@ -284,10 +284,10 @@ struct ReportExerciseView: View {
                             .lineLimit(1)
                             .minimumScaleFactor(0.82)
                         
-                        if let deltaText = row.deltaText {
+                        if let deltaText = row.deltaText, let deltaColor = row.deltaColor {
                             Text(deltaText)
                                 .font(.system(size: 14, weight: .semibold))
-                                .foregroundStyle(AppColor.progressGreen)
+                                .foregroundStyle(deltaColor)
                                 .lineLimit(1)
                                 .minimumScaleFactor(0.82)
                         }
