@@ -49,16 +49,17 @@ struct WorkoutStatusWidget: View {
                                         isFullRing: true,
                                         action: onWorkoutTap)
                 
-                if let restTime {
-                    WorkoutStatusMetricView(title: "Rest",
-                                            value: restTime.minuteSecond,
-                                            color: AppColor.restAmber,
-                                            progress: restProgress,
-                                            isFullRing: false,
-                                            action: onRestTap)
-                    .transition(restMetricTransition)
-                    .zIndex(1)
-                }
+                WorkoutStatusMetricView(title: "Rest",
+                                        value: restTime?.minuteSecond ?? "0:00",
+                                        color: AppColor.restAmber,
+                                        progress: restProgress,
+                                        isFullRing: false,
+                                        action: onRestTap)
+                .scaleEffect(restTime == nil ? 0.18 : 1)
+                .opacity(restTime == nil ? 0 : 1)
+                .allowsHitTesting(restTime != nil)
+                .accessibilityHidden(restTime == nil)
+                .zIndex(1)
                 
                 WorkoutStatusMetricView(title: "Progress",
                                         value: "\(workoutProgressPercent)%",
@@ -67,7 +68,7 @@ struct WorkoutStatusWidget: View {
                                         isFullRing: false,
                                         action: onProgressTap)
             }
-            .animation(.spring(response: 0.36, dampingFraction: 0.82), value: restTime != nil)
+            .animation(.spring(response: 0.34, dampingFraction: 0.72), value: restTime != nil)
         }
         .padding(18)
         .background(AppColor.surfacePrimary)
@@ -93,16 +94,6 @@ struct WorkoutStatusWidget: View {
         }
     }
     
-    private var restMetricTransition: AnyTransition {
-        .asymmetric(
-            insertion: .opacity
-                .combined(with: .scale(scale: 0.86, anchor: .center))
-                .combined(with: .move(edge: .trailing)),
-            removal: .opacity
-                .combined(with: .scale(scale: 0.82, anchor: .center))
-                .combined(with: .move(edge: .trailing))
-        )
-    }
 }
 
 private struct WorkoutStatusMetricView: View {

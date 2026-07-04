@@ -66,6 +66,16 @@ final class WorkoutManager: ObservableObject {
     
     @Published private(set) var exerciseProgressById = [UUID: Double]()
     
+    var finishWorkoutAlertMessage: String {
+        guard isWorkoutInProgress,
+              targetExercisesCount > 0,
+              completedExercisesCount < targetExercisesCount else {
+            return "Current workout will be closed."
+        }
+        
+        return "You completed \(completedExercisesCount) of \(targetExercisesCount) exercises. Finish anyway?"
+    }
+    
     private var completedExercisesCount = 0
     
     private var targetExercisesCount = 0

@@ -97,7 +97,7 @@ struct WorkoutGroupListView: View {
                     finishWorkout()
                 }
             } message: {
-                Text("Current workout will be closed.")
+                Text(workoutManager.finishWorkoutAlertMessage)
             }
         }
         .environment(\.navigation, navigationManager)

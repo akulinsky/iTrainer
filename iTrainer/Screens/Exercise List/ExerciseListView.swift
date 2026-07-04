@@ -126,7 +126,7 @@ struct ExerciseListView: View {
                 }
             }
         } message: {
-            Text("Current workout will be closed.")
+            Text(workoutManager.finishWorkoutAlertMessage)
         }
         .alert("Start workout?", isPresented: $isStartWorkoutAlertPresented) {
             Button("Cancel", role: .cancel) {}
