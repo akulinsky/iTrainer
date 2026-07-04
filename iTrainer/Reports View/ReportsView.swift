@@ -7,51 +7,21 @@
 
 import SwiftUI
 
-enum ReportsRoute: Hashable {
-    case reportView(item: ReportWorkoutModel)
-    case reportExerciseView(item: ReportExerciseModel)
-    case exerciseStatisticsView(item: ReportExerciseModel)
-}
-
 struct ReportsView: View {
     
     @StateObject var viewModel = ReportsViewModel()
-    
-    @StateObject private var navigationManager = NavigationManager()
+    @Environment(\.navigation) private var navigationManager
     
     var body: some View {
-        NavigationStack(path: $navigationManager.path) {
-            VStack {
-                calendar
-                reportsList
-            }
-            .task {
-                viewModel.reloadData()
-            }
-            .navigationTitle("Reports")
-            .navigationBarTitleDisplayMode(.inline)
-            .contentSelf(content: { view in
-                contentViewNavigation(content: view)
-            })
+        VStack {
+            calendar
+            reportsList
         }
-        .environment(\.navigation, navigationManager)
-    }
-    
-    @ViewBuilder
-    private func contentViewNavigation<T: View>(content: T) -> some View {
-        content
-            .navigationDestination(for: ReportsRoute.self, destination: { route in
-                switch route {
-                case .reportView(let report):
-                    ReportView(viewModel: ReportViewModel(report: report), onDelete: closeDeletedReport)
-                        .environment(\.navigation, navigationManager)
-                case .reportExerciseView(let exercise):
-                    ReportExerciseView(viewModel: ReportExerciseViewModel(reportExercise: exercise))
-                        .environment(\.navigation, navigationManager)
-                case .exerciseStatisticsView(let exercise):
-                    ExerciseStatisticsView(exercise: exercise)
-                }
-            })
+        .task {
+            viewModel.reloadData()
+        }
+        .navigationTitle("Reports")
+        .navigationBarTitleDisplayMode(.inline)
     }
     
     @ViewBuilder
@@ -68,13 +38,6 @@ struct ReportsView: View {
                 reportRow(for: item)
             }
         }
-    }
-    
-    private func closeDeletedReport() {
-        if !navigationManager.path.isEmpty {
-            navigationManager.path.removeLast()
-        }
-        viewModel.reloadData()
     }
     
     private func reportRow(for item: ReportWorkoutModel) -> some View {
@@ -106,5 +69,7 @@ struct ReportsView: View {
 }
 
 #Preview {
-    ReportsView()
+    NavigationStack {
+        ReportsView()
+    }
 }

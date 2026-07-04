@@ -25,7 +25,7 @@ struct ContentView: View {
                 .tabItem {
                     Label("Exercises", image: "icTabExercises")
                 }
-            ReportsView()
+            ReportDashboardView()
                 .tabItem {
                     Label("Reports", image: "icTabReports")
                 }
@@ -75,6 +75,9 @@ private struct PresentedReportView: View {
                 .environment(\.navigation, navigationManager)
                 .navigationDestination(for: ReportsRoute.self) { route in
                     switch route {
+                    case .reportsView:
+                        ReportsView()
+                            .environment(\.navigation, navigationManager)
                     case .reportView(let report):
                         ReportView(viewModel: ReportViewModel(report: report), onClose: onClose, onDelete: onClose)
                             .environment(\.navigation, navigationManager)
