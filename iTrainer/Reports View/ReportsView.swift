@@ -13,12 +13,13 @@ struct ReportsView: View {
     @Environment(\.navigation) private var navigationManager
     
     var body: some View {
-        VStack {
+        VStack(spacing: 0) {
             calendar
             reportsList
         }
+        .background(AppColor.backgroundPrimary.ignoresSafeArea())
         .task {
-            viewModel.reloadData()
+            await viewModel.reloadData()
         }
         .navigationTitle("Reports")
         .navigationBarTitleDisplayMode(.inline)
@@ -29,42 +30,78 @@ struct ReportsView: View {
         DatePicker("", selection: $viewModel.selectedDate,
                    displayedComponents: [.date])
             .datePickerStyle(.graphical)
+            .padding(.horizontal, 12)
+            .background(AppColor.surfacePrimary)
     }
     
     @ViewBuilder
     private var reportsList: some View {
         List {
-            ForEach(viewModel.reports) { item in
-                reportRow(for: item)
+            if viewModel.isLoading && viewModel.reportCards.isEmpty {
+                loadingRow
+            } else if viewModel.reportCards.isEmpty {
+                emptyRow
+            } else {
+                ForEach(viewModel.reportCards) { item in
+                    WorkoutReportCard(item: item) {
+                        navigationManager.path.append(ReportsRoute.reportView(item: item.report))
+                    }
+                    .listRowInsets(EdgeInsets(top: 7, leading: 20, bottom: 7, trailing: 20))
+                    .listRowSeparator(.hidden)
+                    .listRowBackground(AppColor.backgroundPrimary)
+                }
             }
+        }
+        .listStyle(.plain)
+        .scrollContentBackground(.hidden)
+        .background(AppColor.backgroundPrimary)
+        .refreshable {
+            viewModel.refreshData()
         }
     }
     
-    private func reportRow(for item: ReportWorkoutModel) -> some View {
-        Button {
-            navigationManager.path.append(ReportsRoute.reportView(item: item))
-        } label: {
-            HStack {
-                VStack(alignment: .leading, spacing: 8) {
-                    Text("\(item.titleWorkout)")
-                        .font(.headline)
-                        .bold()
-                    Text("\(item.titleWorkoutGroup)")
-                        .font(.footnote)
-                        .foregroundStyle(.secondary)
-                }
-                
-                Spacer()
-                if let start = item.startDate, let end = item.endDate {
-                    Text("\(start.formatted(date: .omitted, time: .shortened)) - \(end.formatted(date: .omitted, time: .shortened))")
-                        .font(.footnote)
-                        .foregroundStyle(.secondary)
-                }
-            }
-            .frame(height: 50)
-            .contentShape(Rectangle())
+    private var loadingRow: some View {
+        VStack(spacing: 14) {
+            LoadingSpinnerView(color: AppColor.brandPrimary,
+                               size: 44,
+                               lineWidth: 4)
+            Text("Loading reports")
+                .font(AppFont.rowTitle)
+                .foregroundStyle(AppColor.textPrimary)
         }
-        .buttonStyle(.plain)
+        .padding(24)
+        .frame(maxWidth: .infinity, minHeight: 140)
+        .background(AppColor.surfacePrimary)
+        .clipShape(RoundedRectangle(cornerRadius: 14, style: .continuous))
+        .overlay {
+            RoundedRectangle(cornerRadius: 14, style: .continuous)
+                .stroke(AppColor.separatorSoft, lineWidth: 1)
+        }
+        .listRowInsets(EdgeInsets(top: 7, leading: 20, bottom: 7, trailing: 20))
+        .listRowSeparator(.hidden)
+        .listRowBackground(AppColor.backgroundPrimary)
+    }
+    
+    private var emptyRow: some View {
+        VStack(alignment: .leading, spacing: 8) {
+            Text("No reports for this day")
+                .font(AppFont.rowTitle)
+                .foregroundStyle(AppColor.textPrimary)
+            Text("Completed workouts will appear here.")
+                .font(AppFont.rowSubtitle)
+                .foregroundStyle(AppColor.textSecondary)
+        }
+        .padding(18)
+        .frame(maxWidth: .infinity, minHeight: 104, alignment: .leading)
+        .background(AppColor.surfacePrimary)
+        .clipShape(RoundedRectangle(cornerRadius: 14, style: .continuous))
+        .overlay {
+            RoundedRectangle(cornerRadius: 14, style: .continuous)
+                .stroke(AppColor.separatorSoft, lineWidth: 1)
+        }
+        .listRowInsets(EdgeInsets(top: 7, leading: 20, bottom: 7, trailing: 20))
+        .listRowSeparator(.hidden)
+        .listRowBackground(AppColor.backgroundPrimary)
     }
 }
 
