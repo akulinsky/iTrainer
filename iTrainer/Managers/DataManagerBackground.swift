@@ -177,6 +177,51 @@ extension DataManagerBackground {
         return fetchModels(sortBy: [SortDescriptor(\ReportWorkoutModelDB.startDate, order: .forward)])
     }
     
+    func fetchCompletedReportDashboardSnapshots() -> [ReportDashboardWorkoutSnapshot] {
+        fetchModels(predicate: #Predicate<ReportWorkoutModelDB> { $0.endDate != nil },
+                    sortBy: [SortDescriptor(\ReportWorkoutModelDB.startDate, order: .forward)])
+            .map { report in
+                ReportDashboardWorkoutSnapshot(id: report.id,
+                                               titleWorkout: report.titleWorkout,
+                                               workoutId: report.workoutId,
+                                               titleWorkoutGroup: report.titleWorkoutGroup,
+                                               workoutGroupId: report.workoutGroupId,
+                                               startDate: report.startDate,
+                                               endDate: report.endDate,
+                                               targetExercisesCount: report.targetExercisesCount,
+                                               exercises: report.exercises.map { exercise in
+                    ReportDashboardExerciseSnapshot(id: exercise.id,
+                                                    titleExercise: exercise.titleExercise,
+                                                    exerciseId: exercise.exerciseId,
+                                                    index: exercise.index,
+                                                    typeId: exercise.typeId,
+                                                    restTime: exercise.restTime,
+                                                    date: report.startDate,
+                                                    workoutId: report.workoutId,
+                                                    workoutGroupId: report.workoutGroupId,
+                                                    titleWorkout: report.titleWorkout,
+                                                    titleWorkoutGroup: report.titleWorkoutGroup,
+                                                    sets: exercise.reportSets.map { set in
+                        ReportDashboardSetSnapshot(id: set.id,
+                                                   index: 0,
+                                                   date: set.date,
+                                                   reps: set.reps,
+                                                   weight: set.weight,
+                                                   distance: set.distance,
+                                                   time: set.time)
+                    },
+                                                    targetSets: exercise.targetSets.map { set in
+                        ReportDashboardTargetSetSnapshot(id: set.id,
+                                                         index: set.index,
+                                                         reps: set.reps,
+                                                         weight: set.weight,
+                                                         distance: set.distance,
+                                                         time: set.time)
+                    })
+                })
+            }
+    }
+    
     func fetchReportWorkout(id: UUID) -> ReportWorkoutModelDB? {
         let uuid = id
         return fetchItem(predicate: #Predicate<ReportWorkoutModelDB> { $0.id == uuid })

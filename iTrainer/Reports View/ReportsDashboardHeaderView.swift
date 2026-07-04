@@ -35,18 +35,20 @@ struct ReportsDashboardHeaderView: View {
                             .foregroundStyle(AppColor.brandPrimary)
                     }
                     
-                    Text(summary.workoutCountText)
-                        .font(.system(size: 18, weight: .bold))
-                        .foregroundStyle(AppColor.textPrimary)
-                        .lineLimit(2)
-                        .minimumScaleFactor(0.78)
+                    summaryLine(value: summary.workoutCountValueText,
+                                title: summary.workoutCountTitleText,
+                                color: AppColor.progressGreen)
+                    .lineLimit(2)
+                    .minimumScaleFactor(0.78)
                     
                     VStack(alignment: .leading, spacing: 7) {
-                        Text(summary.personalRecordCountText)
-                        Text(summary.totalVolumeText)
+                        summaryLine(value: summary.personalRecordValueText,
+                                    title: summary.personalRecordTitleText,
+                                    color: AppColor.restAmber)
+                        summaryLine(value: summary.totalVolumeValueText,
+                                    title: summary.totalVolumeTitleText,
+                                    color: AppColor.textSecondary)
                     }
-                    .font(.system(size: 18, weight: .regular))
-                    .foregroundStyle(AppColor.textSecondary)
                     .lineLimit(1)
                     .minimumScaleFactor(0.82)
                 }
@@ -63,13 +65,26 @@ struct ReportsDashboardHeaderView: View {
         }
         .buttonStyle(.plain)
     }
+    
+    private func summaryLine(value: String, title: String, color: Color) -> some View {
+        HStack(alignment: .firstTextBaseline, spacing: 5) {
+            Text(value)
+                .font(.system(size: 18, weight: .bold))
+            Text(title)
+                .font(.system(size: 18, weight: .medium))
+        }
+        .foregroundStyle(color)
+    }
 }
 
 #Preview {
     ReportsDashboardHeaderView(summary: ReportsMonthSummary(monthTitle: "May 2026",
-                                                            workoutCountText: "12 Workouts Completed",
-                                                            personalRecordCountText: "3 Personal Records",
-                                                            totalVolumeText: "52,400 kg Total Volume"),
+                                                            workoutCountValueText: "12",
+                                                            workoutCountTitleText: "Workouts Completed",
+                                                            personalRecordValueText: "3",
+                                                            personalRecordTitleText: "Personal Records",
+                                                            totalVolumeValueText: "52,400 kg",
+                                                            totalVolumeTitleText: "Total Volume"),
                                action: {})
     .padding(20)
     .background(AppColor.backgroundPrimary)

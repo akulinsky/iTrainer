@@ -148,7 +148,7 @@ struct ReportDashboardView: View {
             navigationManager.path.removeLast()
         }
         Task {
-            await viewModel.reloadReports()
+            await viewModel.reloadReports(force: true)
         }
     }
 }

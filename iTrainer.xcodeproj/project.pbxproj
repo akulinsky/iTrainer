@@ -17,6 +17,7 @@
 		F625F2B52FF927A20074FE79 /* ReportsDashboardHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F625F2B42FF927A20074FE79 /* ReportsDashboardHeaderView.swift */; };
 		F625F2B72FF927B80074FE79 /* WorkoutReportCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = F625F2B62FF927B80074FE79 /* WorkoutReportCard.swift */; };
 		F625F2B92FF927C90074FE79 /* MonthPickerSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = F625F2B82FF927C90074FE79 /* MonthPickerSheet.swift */; };
+		F625F2BB2FF93A380074FE79 /* ReportDashboardDataBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = F625F2BA2FF93A380074FE79 /* ReportDashboardDataBuilder.swift */; };
 		F62818452C62408D003642F8 /* ExerciseTypeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F62818442C62408D003642F8 /* ExerciseTypeModel.swift */; };
 		F62818482C6249B7003642F8 /* ExerciseCategory.swift in Sources */ = {isa = PBXBuildFile; fileRef = F62818472C6249B7003642F8 /* ExerciseCategory.swift */; };
 		F630C9512C79E92F00049730 /* AKTextFieldStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = F630C9502C79E92F00049730 /* AKTextFieldStyle.swift */; };
@@ -133,6 +134,7 @@
 		F625F2B42FF927A20074FE79 /* ReportsDashboardHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportsDashboardHeaderView.swift; sourceTree = "<group>"; };
 		F625F2B62FF927B80074FE79 /* WorkoutReportCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutReportCard.swift; sourceTree = "<group>"; };
 		F625F2B82FF927C90074FE79 /* MonthPickerSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonthPickerSheet.swift; sourceTree = "<group>"; };
+		F625F2BA2FF93A380074FE79 /* ReportDashboardDataBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportDashboardDataBuilder.swift; sourceTree = "<group>"; };
 		F62818442C62408D003642F8 /* ExerciseTypeModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseTypeModel.swift; sourceTree = "<group>"; };
 		F62818472C6249B7003642F8 /* ExerciseCategory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseCategory.swift; sourceTree = "<group>"; };
 		F630C9502C79E92F00049730 /* AKTextFieldStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AKTextFieldStyle.swift; sourceTree = "<group>"; };
@@ -550,6 +552,7 @@
 				F625F2B42FF927A20074FE79 /* ReportsDashboardHeaderView.swift */,
 				F625F2B62FF927B80074FE79 /* WorkoutReportCard.swift */,
 				F625F2B82FF927C90074FE79 /* MonthPickerSheet.swift */,
+				F625F2BA2FF93A380074FE79 /* ReportDashboardDataBuilder.swift */,
 			);
 			path = "Reports View";
 			sourceTree = "<group>";
@@ -798,6 +801,7 @@
 				F656783D2FF42AE100250F44 /* ReportStatusService.swift in Sources */,
 				F69BD1152C5500580057080E /* ServiceNetworkProvider.swift in Sources */,
 				F69BD1072C54FC170057080E /* NetworkClient.swift in Sources */,
+				F625F2BB2FF93A380074FE79 /* ReportDashboardDataBuilder.swift in Sources */,
 				F6CB903F2C77687E002529A6 /* ExerciseEditView.swift in Sources */,
 				F69BD1092C54FC170057080E /* NetworkProvider.swift in Sources */,
 				F6DD68AD2C6503C9004EFB03 /* ExerciseTypeCell.swift in Sources */,

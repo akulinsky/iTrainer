@@ -7,13 +7,13 @@
 
 import Foundation
 
-enum PersonalRecordType: Hashable {
+enum PersonalRecordType: Hashable, Sendable {
     case weight
     case repetitions
     case volume
 }
 
-struct ExerciseStatusComparison: Hashable {
+struct ExerciseStatusComparison: Hashable, Sendable {
     let type: PersonalRecordType
     let current: Float
     let previous: Float
@@ -34,12 +34,12 @@ struct ExerciseStatusComparison: Hashable {
     }
 }
 
-struct ExerciseStatusResult: Hashable {
+struct ExerciseStatusResult: Hashable, Sendable {
     let status: ExerciseReportStatus
     let comparison: ExerciseStatusComparison?
 }
 
-enum ExerciseReportStatus: Hashable {
+enum ExerciseReportStatus: Hashable, Sendable {
     case personalRecord(type: PersonalRecordType)
     case progress
     case goalAchieved
@@ -47,7 +47,7 @@ enum ExerciseReportStatus: Hashable {
     case complete
 }
 
-enum WorkoutReportStatus: Hashable {
+enum WorkoutReportStatus: Hashable, Sendable {
     case personalRecord(count: Int)
     case progress
     case workoutIncomplete(completed: Int, total: Int)

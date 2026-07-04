@@ -9,9 +9,12 @@ import Foundation
 
 struct ReportsMonthSummary: Hashable {
     let monthTitle: String
-    let workoutCountText: String
-    let personalRecordCountText: String
-    let totalVolumeText: String
+    let workoutCountValueText: String
+    let workoutCountTitleText: String
+    let personalRecordValueText: String
+    let personalRecordTitleText: String
+    let totalVolumeValueText: String
+    let totalVolumeTitleText: String
 }
 
 struct WorkoutReportCardItem: Identifiable, Hashable {
@@ -34,7 +37,8 @@ final class ReportDashboardViewModel: ObservableObject {
     @Published private(set) var availableYears = [Int]()
     @Published var isMonthPickerPresented = false
     
-    private var allReportRows = [DashboardReportRow]()
+    private var preparedRows = [ReportDashboardPreparedRow]()
+    private var hasLoadedReports = false
     private let calendar: Calendar
     private let volumeFormatter: NumberFormatter
     
@@ -42,9 +46,12 @@ final class ReportDashboardViewModel: ObservableObject {
         self.calendar = calendar
         self.selectedMonth = calendar.startOfMonth(for: Date())
         self.monthSummary = ReportsMonthSummary(monthTitle: Self.monthTitle(for: Date(), calendar: calendar),
-                                                workoutCountText: "0 Workouts Completed",
-                                                personalRecordCountText: "0 Personal Records",
-                                                totalVolumeText: "0 kg Total Volume")
+                                                workoutCountValueText: "0",
+                                                workoutCountTitleText: "Workouts Completed",
+                                                personalRecordValueText: "0",
+                                                personalRecordTitleText: "Personal Records",
+                                                totalVolumeValueText: "0 kg",
+                                                totalVolumeTitleText: "Total Volume")
         self.availableYears = [calendar.component(.year, from: Date())]
         
         let formatter = NumberFormatter()
@@ -53,38 +60,20 @@ final class ReportDashboardViewModel: ObservableObject {
         self.volumeFormatter = formatter
     }
     
-    func reloadReports() async {
+    func reloadReports(force: Bool = false) async {
+        guard force || !hasLoadedReports else { return }
+        
         isLoading = true
         let dataManager = DataManagerBackground(container: DataContainer.shared.sharedModelContainer)
-        let reportModels = await dataManager.fetchAllReportWorkout()
-            .filter { $0.endDate != nil }
-        let reportRows = reportModels.map { reportModel in
-            let report = ReportWorkoutModel(model: reportModel)
-            let exercises = reportModel.exercises
-                .map { ReportExerciseModel(model: $0) }
-                .sorted { $0.index < $1.index }
-            return DashboardReportRow(report: report,
-                                      exercises: exercises,
-                                      exerciseStatuses: [],
-                                      workoutStatus: .workoutComplete)
-        }
-        let exerciseHistoryByType = Dictionary(grouping: reportRows.flatMap(\.exercises), by: \.typeId)
+        let snapshots = await dataManager.fetchCompletedReportDashboardSnapshots()
+        let rows = await Task.detached(priority: .userInitiated) {
+            ReportDashboardDataBuilder().buildRows(from: snapshots)
+        }.value
         
-        allReportRows = reportRows.map { row in
-            let exerciseStatuses = row.exercises.map { exercise in
-                ReportStatusService.calculateExerciseStatus(report: exercise,
-                                                            history: exerciseHistoryByType[exercise.typeId] ?? [])
-            }
-            let workoutStatus = ReportStatusService.calculateWorkoutStatus(report: row.report,
-                                                                           exercises: row.exercises,
-                                                                           exerciseStatuses: exerciseStatuses)
-            return DashboardReportRow(report: row.report,
-                                      exercises: row.exercises,
-                                      exerciseStatuses: exerciseStatuses,
-                                      workoutStatus: workoutStatus)
-        }
-        availableYears = makeAvailableYears(from: allReportRows)
+        preparedRows = rows
+        availableYears = makeAvailableYears(from: preparedRows)
         applySelectedMonth()
+        hasLoadedReports = true
         isLoading = false
     }
     
@@ -98,7 +87,7 @@ final class ReportDashboardViewModel: ObservableObject {
     }
     
     private func applySelectedMonth() {
-        let rows = allReportRows
+        let rows = preparedRows
             .filter { row in
                 guard let startDate = row.report.startDate else { return false }
                 return calendar.isDate(startDate, equalTo: selectedMonth, toGranularity: .month) &&
@@ -110,19 +99,22 @@ final class ReportDashboardViewModel: ObservableObject {
             partialResult + row.exerciseStatuses.filter(\.isPersonalRecord).count
         }
         let totalVolume = rows.reduce(Float.zero) { partialResult, row in
-            partialResult + ReportStatusService.totalVolume(for: row.exercises)
+            partialResult + row.totalVolume
         }
         
         monthSummary = ReportsMonthSummary(monthTitle: Self.monthTitle(for: selectedMonth, calendar: calendar),
-                                           workoutCountText: "\(rows.count) \(rows.count == 1 ? "Workout" : "Workouts") Completed",
-                                           personalRecordCountText: "\(personalRecordCount) \(personalRecordCount == 1 ? "Personal Record" : "Personal Records")",
-                                           totalVolumeText: "\(formatVolume(totalVolume)) kg Total Volume")
+                                           workoutCountValueText: "\(rows.count)",
+                                           workoutCountTitleText: rows.count == 1 ? "Workout Completed" : "Workouts Completed",
+                                           personalRecordValueText: "\(personalRecordCount)",
+                                           personalRecordTitleText: personalRecordCount == 1 ? "Personal Record" : "Personal Records",
+                                           totalVolumeValueText: "\(formatVolume(totalVolume)) kg",
+                                           totalVolumeTitleText: "Total Volume")
         workoutReportCards = rows.map(makeWorkoutReportCardItem)
     }
     
-    private func makeWorkoutReportCardItem(from row: DashboardReportRow) -> WorkoutReportCardItem {
+    private func makeWorkoutReportCardItem(from row: ReportDashboardPreparedRow) -> WorkoutReportCardItem {
         WorkoutReportCardItem(id: row.report.id,
-                              report: row.report,
+                              report: row.report.reportModel,
                               title: row.report.titleWorkout,
                               groupTitle: row.report.titleWorkoutGroup,
                               dateText: formatDate(row.report.startDate),
@@ -130,7 +122,7 @@ final class ReportDashboardViewModel: ObservableObject {
                               status: row.workoutStatus)
     }
     
-    private func makeAvailableYears(from rows: [DashboardReportRow]) -> [Int] {
+    private func makeAvailableYears(from rows: [ReportDashboardPreparedRow]) -> [Int] {
         let currentYear = calendar.component(.year, from: Date())
         let years = rows.compactMap { row in
             row.report.startDate.map { calendar.component(.year, from: $0) }
@@ -174,13 +166,6 @@ final class ReportDashboardViewModel: ObservableObject {
     private static func monthTitle(for date: Date, calendar: Calendar) -> String {
         date.formatted(.dateTime.month(.wide).year())
     }
-}
-
-private struct DashboardReportRow {
-    let report: ReportWorkoutModel
-    let exercises: [ReportExerciseModel]
-    let exerciseStatuses: [ExerciseReportStatus]
-    let workoutStatus: WorkoutReportStatus
 }
 
 private extension Calendar {
