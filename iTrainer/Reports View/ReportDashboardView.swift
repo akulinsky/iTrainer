@@ -37,7 +37,7 @@ struct ReportDashboardView: View {
                     Button {
                         navigationManager.path.append(ReportsRoute.reportsView)
                     } label: {
-                        Label("History", systemImage: "clock.arrow.circlepath")
+                        Label("History", systemImage: "calendar.badge.clock")
                     }
                     .accessibilityLabel("History")
                 }
