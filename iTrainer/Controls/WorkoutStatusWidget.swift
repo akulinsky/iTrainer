@@ -41,7 +41,7 @@ struct WorkoutStatusWidget: View {
                 .font(AppFont.workoutWidgetTitle)
                 .foregroundStyle(AppColor.textPrimary)
             
-            HStack(alignment: .top, spacing: 14) {
+            HStack(alignment: .top, spacing: isRestVisible ? 14 : 7) {
                 WorkoutStatusMetricView(title: "Workout",
                                         value: workoutTime.workoutStatusDisplayTime,
                                         color: AppColor.workoutGreen,
@@ -55,10 +55,12 @@ struct WorkoutStatusWidget: View {
                                         progress: restProgress,
                                         isFullRing: false,
                                         action: onRestTap)
-                .scaleEffect(restTime == nil ? 0.18 : 1)
-                .opacity(restTime == nil ? 0 : 1)
-                .allowsHitTesting(restTime != nil)
-                .accessibilityHidden(restTime == nil)
+                .frame(width: isRestVisible ? nil : 0)
+                .scaleEffect(isRestVisible ? 1 : 0.18)
+                .opacity(isRestVisible ? 1 : 0)
+                .clipped()
+                .allowsHitTesting(isRestVisible)
+                .accessibilityHidden(!isRestVisible)
                 .zIndex(1)
                 
                 WorkoutStatusMetricView(title: "Progress",
@@ -68,7 +70,7 @@ struct WorkoutStatusWidget: View {
                                         isFullRing: false,
                                         action: onProgressTap)
             }
-            .animation(.spring(response: 0.34, dampingFraction: 0.72), value: restTime != nil)
+            .animation(.spring(response: 0.34, dampingFraction: 0.72), value: isRestVisible)
         }
         .padding(18)
         .background(AppColor.surfacePrimary)
@@ -77,6 +79,10 @@ struct WorkoutStatusWidget: View {
             RoundedRectangle(cornerRadius: 18, style: .continuous)
                 .stroke(AppColor.separatorSoft, lineWidth: 1)
         }
+    }
+    
+    private var isRestVisible: Bool {
+        restTime != nil
     }
     
     private var workoutProgressPercent: Int {
