@@ -11,6 +11,20 @@ final class WorkoutManager: ObservableObject {
     
     // MARK: - Properties
     
+    private enum Constants {
+        static let sessionSnapshotKey = "activeWorkoutSessionSnapshot"
+    }
+    
+    private struct WorkoutSessionSnapshot: Codable {
+        let reportWorkoutId: UUID
+        let workoutGroupId: UUID
+        let workoutStartedAt: Date
+        let activeExerciseId: UUID?
+        let restStartedAt: Date?
+        let restDuration: TimeInterval?
+        let lastSavedAt: Date
+    }
+    
     private var workoutId: UUID?
     
     private var workoutGroupId: UUID?
@@ -18,6 +32,7 @@ final class WorkoutManager: ObservableObject {
     /// Workout time
     private var workoutTimer: DispatchSourceTimer?
     private var workoutTimeInterval: TimeInterval = 0.0
+    private var workoutStartedAt: Date?
     private var isRunningWorkoutTimer = false
     
     /// Rest time
@@ -25,6 +40,7 @@ final class WorkoutManager: ObservableObject {
     private var restTimeInterval: TimeInterval = 0.0
     private var restTimeIntervalExercise: TimeInterval = 0.0
     private var currentRestTimeIntervalExercise: TimeInterval?
+    private var restStartedAt: Date?
     
     @Published var restTime: String = ""
     
@@ -62,32 +78,23 @@ final class WorkoutManager: ObservableObject {
     
     private func setup() {
         print("DBG_ WorkoutManager setup")
+        restoreSessionIfNeeded()
         
         Task {
-            let dataManager = DataManagerBackground(container: DataContainer.shared.sharedModelContainer)
-            if await dataManager.fetchStartedWorkout() != nil {
-                endWorkout()
-            }
-            
             print("DBG_ --------------")
             print("DBG_  ReportWorkoutModelDB: \(await ReportWorkoutModelDB.count())")
             print("DBG_  ReportExerciseModelDB: \(await ReportExerciseModelDB.count())")
             print("DBG_  ReportSetsModelDB: \(await ReportSetsModelDB.count())")
-            
-//            await dataManager.removeAll(type: ReportWorkoutModelDB.self)
-//            await dataManager.removeAll(type: ReportExerciseModelDB.self)
-//            await dataManager.removeAll(type: ReportSetsModelDB.self)
-//            await dataManager.save()
-//            
-//            print("DBG_  ReportWorkoutModelDB: \(await ReportWorkoutModelDB.count())")
-//            print("DBG_  ReportExerciseModelDB: \(await ReportExerciseModelDB.count())")
-//            print("DBG_  ReportSetsModelDB: \(await ReportSetsModelDB.count())")
         }
     }
     
     // MARK: - Private methods
     
     private func updateWorkoutTime() {
+        if let workoutStartedAt, isRunningWorkoutTimer {
+            workoutTimeInterval = max(Date().timeIntervalSince(workoutStartedAt), 0)
+        }
+        
         Task {
             await MainActor.run {
                 if !self.isRunningWorkoutTimer {
@@ -102,23 +109,24 @@ final class WorkoutManager: ObservableObject {
                 }
             }
         }
-        
-//        print("DBG_ workoutTime: \(self.workoutTime)")
     }
     
-    private func startTimer() {
-        
+    private func startTimer(startDate: Date = Date()) {
         if isRunningWorkoutTimer {
+            workoutStartedAt = startDate
+            updateWorkoutTime()
             return
         }
         
+        workoutTimer?.cancel()
         workoutTimer = DispatchSource.makeTimerSource()
         
         let deadline = DispatchTime.now().advanced(by: DispatchTimeInterval.seconds(0))
-        workoutTimer?.schedule(deadline: deadline, repeating: DispatchTimeInterval.milliseconds(100))
+        workoutTimer?.schedule(deadline: deadline, repeating: DispatchTimeInterval.milliseconds(500))
         workoutTimer?.setEventHandler { [weak self] in self?.fire() }
         
-        workoutTimeInterval = 0.0
+        workoutStartedAt = startDate
+        workoutTimeInterval = max(Date().timeIntervalSince(startDate), 0)
         isRunningWorkoutTimer = true
         isWorkoutInProgress = true
         updateWorkoutTime()
@@ -128,6 +136,9 @@ final class WorkoutManager: ObservableObject {
     
     private func stopTimer() {
         workoutTimeInterval = 0.0
+        workoutId = nil
+        workoutGroupId = nil
+        workoutStartedAt = nil
         isRunningWorkoutTimer = false
         isWorkoutInProgress = false
         workoutElapsedTime = 0
@@ -136,26 +147,23 @@ final class WorkoutManager: ObservableObject {
         currentWorkoutGroupId = nil
         activeExerciseId = nil
         currentRestTimeIntervalExercise = nil
+        restStartedAt = nil
         reportedExerciseIds = []
         exerciseProgressById = [:]
         completedExercisesCount = 0
         targetExercisesCount = 0
         updateWorkoutTime()
         workoutTimer?.cancel()
+        workoutTimer = nil
         resetRestTime()
         updateRestTime()
     }
     
     private func fire() {
-        workoutTimeInterval += 0.1
         updateWorkoutTime()
         
         if isRunningRestTime {
-            if restTimeInterval > 0 {
-                restTimeInterval -= 0.1
-            } else {
-                resetRestTime()
-            }
+            updateRestTimeIntervalFromDates()
             updateRestTime()
         }
     }
@@ -165,7 +173,6 @@ final class WorkoutManager: ObservableObject {
     }
     
     private func createReportWorkout(with groupId: UUID, dataManager: DataManagerBackground) async -> ReportWorkoutModelDB? {
-        
         guard let group = await dataManager.fetchWorkoutGroup(with: groupId),
                 let workout = group.workout else {
             print("Error: \(#file):\(#function) \(#line) group == nil or workout = nil")
@@ -182,51 +189,90 @@ final class WorkoutManager: ObservableObject {
     }
     
     private func startWorkout(with groupId: UUID, dataManager: DataManagerBackground) async {
-        
         if await dataManager.fetchStartedWorkout() != nil {
             print("Error: \(#file):\(#function) \(#line) Workout was started")
+            await restoreSession(dataManager: dataManager)
             return
         }
         guard let reportWorkout = await createReportWorkout(with: groupId, dataManager: dataManager) else {
             print("Error: \(#file):\(#function) \(#line) reportWorkout == nil")
             return
         }
-        reportWorkout.startDate = Date()
+        let startDate = Date()
+        reportWorkout.startDate = startDate
         let targetExercisesCount = await dataManager.fetchExercises(for: groupId).filter { !$0.isHeadline }.count
         await dataManager.save()
         
+        let reportWorkoutId = reportWorkout.id
         let currentWorkoutTitle = reportWorkout.titleWorkoutGroup
         await MainActor.run {
+            self.workoutId = reportWorkoutId
+            self.workoutGroupId = groupId
             self.currentWorkoutTitle = currentWorkoutTitle
             self.currentWorkoutGroupId = groupId
             self.activeExerciseId = nil
             self.currentRestTimeIntervalExercise = nil
+            self.restStartedAt = nil
             self.targetExercisesCount = targetExercisesCount
             self.exerciseProgressById = [:]
             self.completedExercisesCount = 0
             self.reportedExerciseIds = []
             self.updateWorkoutProgress()
-            startTimer()
+            self.startTimer(startDate: startDate)
         }
+        saveSessionSnapshot(reportWorkoutId: reportWorkout.id)
         print("DBG_ Workout was started")
     }
     
-    private func startRestTime() {
+    private func startRestTime(startedAt: Date = Date()) {
         guard currentRestTimeIntervalExercise != nil else {
             return
         }
-        self.isRunningRestTime = true
+        restStartedAt = startedAt
+        isRunningRestTime = true
+        updateRestTimeIntervalFromDates()
     }
     
     private func resetRestTime() {
         self.restTimeInterval = self.currentRestTimeIntervalExercise ?? 0.0
         self.restTimeIntervalExercise = self.currentRestTimeIntervalExercise ?? 0.0
         self.isRunningRestTime = false
+        self.restStartedAt = nil
         Task {
             await MainActor.run {
                 self.progressRestTime = 1.0
                 self.currentRestTime = self.currentRestTimeIntervalExercise
             }
+        }
+    }
+    
+    private func completeRestTime() {
+        restTimeInterval = 0
+        restTimeIntervalExercise = currentRestTimeIntervalExercise ?? 0
+        isRunningRestTime = false
+        restStartedAt = nil
+        currentRestTimeIntervalExercise = nil
+        Task {
+            await MainActor.run {
+                self.progressRestTime = 1.0
+                self.currentRestTime = nil
+                self.restTime = ""
+            }
+        }
+    }
+    
+    private func updateRestTimeIntervalFromDates() {
+        guard isRunningRestTime,
+              let restStartedAt,
+              let currentRestTimeIntervalExercise else {
+            return
+        }
+        
+        restTimeIntervalExercise = currentRestTimeIntervalExercise
+        let elapsed = Date().timeIntervalSince(restStartedAt)
+        restTimeInterval = max(currentRestTimeIntervalExercise - elapsed, 0)
+        if restTimeInterval <= 0 {
+            completeRestTime()
         }
     }
     
@@ -249,6 +295,115 @@ final class WorkoutManager: ObservableObject {
         workoutProgress = Double(completedExercisesCount) / Double(targetExercisesCount)
     }
     
+    private func loadSessionSnapshot() -> WorkoutSessionSnapshot? {
+        guard let data = UserDefaults.standard.data(forKey: Constants.sessionSnapshotKey) else {
+            return nil
+        }
+        return try? JSONDecoder().decode(WorkoutSessionSnapshot.self, from: data)
+    }
+    
+    private func saveSessionSnapshot(reportWorkoutId: UUID? = nil) {
+        guard let workoutStartedAt,
+              let currentWorkoutGroupId,
+              let reportWorkoutId = reportWorkoutId ?? workoutId else {
+            clearSessionSnapshot()
+            return
+        }
+        
+        let snapshot = WorkoutSessionSnapshot(
+            reportWorkoutId: reportWorkoutId,
+            workoutGroupId: currentWorkoutGroupId,
+            workoutStartedAt: workoutStartedAt,
+            activeExerciseId: activeExerciseId,
+            restStartedAt: isRunningRestTime ? restStartedAt : nil,
+            restDuration: isRunningRestTime ? currentRestTimeIntervalExercise : nil,
+            lastSavedAt: Date()
+        )
+        
+        if let data = try? JSONEncoder().encode(snapshot) {
+            UserDefaults.standard.set(data, forKey: Constants.sessionSnapshotKey)
+        }
+    }
+    
+    private func clearSessionSnapshot() {
+        UserDefaults.standard.removeObject(forKey: Constants.sessionSnapshotKey)
+    }
+    
+    private func restoredActiveExerciseId(reportWorkout: ReportWorkoutModelDB, snapshot: WorkoutSessionSnapshot?) -> UUID? {
+        if let activeExerciseId = snapshot?.activeExerciseId,
+           reportWorkout.exercises.contains(where: { $0.exerciseId == activeExerciseId }) {
+            return activeExerciseId
+        }
+        
+        return reportWorkout.exercises
+            .compactMap { reportExercise -> (UUID, Date)? in
+                guard let latestSetDate = reportExercise.reportSets.map(\.date).max() else {
+                    return nil
+                }
+                return (reportExercise.exerciseId, latestSetDate)
+            }
+            .max { $0.1 < $1.1 }?.0
+    }
+    
+    private func restoreRestState(snapshot: WorkoutSessionSnapshot?) {
+        guard let restStartedAt = snapshot?.restStartedAt,
+              let restDuration = snapshot?.restDuration,
+              restDuration > 0 else {
+            completeRestTime()
+            return
+        }
+        
+        self.restStartedAt = restStartedAt
+        currentRestTimeIntervalExercise = restDuration
+        restTimeIntervalExercise = restDuration
+        let remaining = max(restDuration - Date().timeIntervalSince(restStartedAt), 0)
+        restTimeInterval = remaining
+        isRunningRestTime = remaining > 0
+        if remaining <= 0 {
+            completeRestTime()
+        } else {
+            updateRestTime()
+        }
+    }
+    
+    private func restoreSession(dataManager: DataManagerBackground) async {
+        guard let reportWorkout = await dataManager.fetchStartedWorkout() else {
+            await MainActor.run {
+                stopTimer()
+            }
+            clearSessionSnapshot()
+            return
+        }
+        
+        let snapshot = loadSessionSnapshot()
+        let reportWorkoutId = reportWorkout.id
+        let workoutGroupId = reportWorkout.workoutGroupId
+        let currentWorkoutTitle = reportWorkout.titleWorkoutGroup
+        let startedAt = reportWorkout.startDate ?? snapshot?.workoutStartedAt ?? Date()
+        let exercises = await dataManager.fetchExercises(for: workoutGroupId)
+        let targetExercisesCount = exercises.filter { !$0.isHeadline }.count
+        let exerciseProgressById = await exerciseProgressById(for: reportWorkout, dataManager: dataManager)
+        let reportedExerciseIds = Set(reportWorkout.exercises.map(\.exerciseId))
+        let activeExerciseId = restoredActiveExerciseId(reportWorkout: reportWorkout, snapshot: snapshot)
+        
+        await MainActor.run {
+            self.workoutId = reportWorkoutId
+            self.workoutGroupId = workoutGroupId
+            self.currentWorkoutTitle = currentWorkoutTitle
+            self.currentWorkoutGroupId = workoutGroupId
+            self.activeExerciseId = activeExerciseId
+            self.reportedExerciseIds = reportedExerciseIds
+            self.exerciseProgressById = exerciseProgressById
+            self.completedExercisesCount = reportedExerciseIds.count
+            self.targetExercisesCount = targetExercisesCount
+            self.updateWorkoutProgress()
+            self.startTimer(startDate: startedAt)
+            self.restoreRestState(snapshot: snapshot)
+            self.updateWorkoutTime()
+        }
+        saveSessionSnapshot(reportWorkoutId: reportWorkoutId)
+    }
+    
     // MARK: - Public methods
     
     func startWorkout(with groupId: UUID) {
@@ -258,8 +413,19 @@ final class WorkoutManager: ObservableObject {
         }
     }
     
+    func restoreSessionIfNeeded() {
+        Task {
+            let dataManager = DataManagerBackground(container: DataContainer.shared.sharedModelContainer)
+            await restoreSession(dataManager: dataManager)
+        }
+    }
+    
+    func persistSessionState() {
+        saveSessionSnapshot()
+    }
+    
     func endWorkout(complete: ((ReportWorkoutModel?) -> Void)? = nil) {
-        
+        persistSessionState()
         stopTimer()
         
         Task {
@@ -269,6 +435,7 @@ final class WorkoutManager: ObservableObject {
                 await MainActor.run {
                     complete?(nil)
                 }
+                clearSessionSnapshot()
                 return
             }
             reportWorkout.endDate = Date()
@@ -283,6 +450,7 @@ final class WorkoutManager: ObservableObject {
                 await MainActor.run {
                     complete?(nil)
                 }
+                clearSessionSnapshot()
                 return
             }
             
@@ -292,7 +460,6 @@ final class WorkoutManager: ObservableObject {
             
             for exercise in exercises {
                 if let reportExercise = reportExercises.first(where: { $0.exerciseId == exercise.id }) {
-                    
                     let targetSets = exercise.sets.map { $0.copy() }
                     
                     for set in targetSets {
@@ -307,11 +474,11 @@ final class WorkoutManager: ObservableObject {
             await MainActor.run {
                 complete?(report)
             }
+            clearSessionSnapshot()
         }
     }
     
     func addReportSet(with params: [SetsParameter], for exerciseId: UUID) async {
-        
         let dataManager = DataManagerBackground(container: DataContainer.shared.sharedModelContainer)
         
         guard let exercise = await dataManager.fetchExercise(with: exerciseId),
@@ -324,7 +491,6 @@ final class WorkoutManager: ObservableObject {
         
         /// Start the workout
         if reportWorkout == nil {
-//                startWorkout(with: workoutGroupId)
             await self.startWorkout(with: workoutGroupId, dataManager: dataManager)
             reportWorkout = await self.reportWorkout(dataManager: dataManager)
         }
@@ -371,14 +537,18 @@ final class WorkoutManager: ObservableObject {
         
         await dataManager.save()
         
+        let reportWorkoutId = reportWorkout.id
         let currentWorkoutTitle = reportWorkout.titleWorkoutGroup
         let reportedExerciseIds = Set(reportWorkout.exercises.map(\.exerciseId))
         let exerciseProgressById = await exerciseProgressById(for: reportWorkout, dataManager: dataManager)
         let exercises = await dataManager.fetchExercises(for: workoutGroupId)
         let targetExercisesCount = exercises.filter { !$0.isHeadline }.count
-        currentRestTimeIntervalExercise = exercise.restTime
+        let restDuration = exercise.restTime
+        let restStartedAt = Date()
         
         await MainActor.run {
+            self.workoutId = reportWorkoutId
+            self.workoutGroupId = workoutGroupId
             self.currentWorkoutTitle = currentWorkoutTitle
             self.currentWorkoutGroupId = workoutGroupId
             self.activeExerciseId = exerciseId
@@ -386,12 +556,13 @@ final class WorkoutManager: ObservableObject {
             self.exerciseProgressById = exerciseProgressById
             self.completedExercisesCount = reportedExerciseIds.count
             self.targetExercisesCount = targetExercisesCount
+            self.currentRestTimeIntervalExercise = restDuration
             self.updateWorkoutProgress()
+            self.resetRestTime()
+            self.startRestTime(startedAt: restStartedAt)
+            self.updateRestTime()
         }
-        
-        resetRestTime()
-        startRestTime()
-        updateRestTime()
+        saveSessionSnapshot(reportWorkoutId: reportWorkout.id)
         
         print("DBG_ Report was added")
     }

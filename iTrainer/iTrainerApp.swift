@@ -11,6 +11,7 @@ import SwiftData
 @main
 struct iTrainerApp: App {
     
+    @Environment(\.scenePhase) private var scenePhase
     private let environment = AppEnvironment.live
     
 #if DEBUG
@@ -28,6 +29,18 @@ private let seedMode: DatabaseSeedMode = .production
                 .environmentObject(environment.dataContainer.workoutManager)
                 .task {
                     await environment.databaseSeeder.run(seedMode)
+                }
+                .onChange(of: scenePhase) { _, phase in
+                    switch phase {
+                    case .active:
+                        environment.dataContainer.workoutManager.restoreSessionIfNeeded()
+                    case .background:
+                        environment.dataContainer.workoutManager.persistSessionState()
+                    case .inactive:
+                        environment.dataContainer.workoutManager.persistSessionState()
+                    @unknown default:
+                        break
+                    }
                 }
         }
     }

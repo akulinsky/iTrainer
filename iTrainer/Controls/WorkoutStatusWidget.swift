@@ -56,6 +56,8 @@ struct WorkoutStatusWidget: View {
                                             progress: restProgress,
                                             isFullRing: false,
                                             action: onRestTap)
+                    .transition(restMetricTransition)
+                    .zIndex(1)
                 }
                 
                 WorkoutStatusMetricView(title: "Progress",
@@ -65,6 +67,7 @@ struct WorkoutStatusWidget: View {
                                         isFullRing: false,
                                         action: onProgressTap)
             }
+            .animation(.spring(response: 0.36, dampingFraction: 0.82), value: restTime != nil)
         }
         .padding(18)
         .background(AppColor.surfacePrimary)
@@ -88,6 +91,17 @@ struct WorkoutStatusWidget: View {
         default:
             AppColor.progressGreen
         }
+    }
+    
+    private var restMetricTransition: AnyTransition {
+        .asymmetric(
+            insertion: .opacity
+                .combined(with: .scale(scale: 0.86, anchor: .center))
+                .combined(with: .move(edge: .trailing)),
+            removal: .opacity
+                .combined(with: .scale(scale: 0.82, anchor: .center))
+                .combined(with: .move(edge: .trailing))
+        )
     }
 }
 
