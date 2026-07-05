@@ -548,11 +548,11 @@
 				F625F2B02FF8F6920074FE79 /* ExerciseStatisticsViewModel.swift */,
 				F61476AB2FF82B2A00B4CA74 /* ReportDashboardView.swift */,
 				F625F2AE2FF8F42A0074FE79 /* ReportDashboardViewModel.swift */,
-				F625F2B22FF9273D0074FE79 /* WorkoutReportStatusDisplay.swift */,
 				F625F2B42FF927A20074FE79 /* ReportsDashboardHeaderView.swift */,
+				F625F2BA2FF93A380074FE79 /* ReportDashboardDataBuilder.swift */,
+				F625F2B22FF9273D0074FE79 /* WorkoutReportStatusDisplay.swift */,
 				F625F2B62FF927B80074FE79 /* WorkoutReportCard.swift */,
 				F625F2B82FF927C90074FE79 /* MonthPickerSheet.swift */,
-				F625F2BA2FF93A380074FE79 /* ReportDashboardDataBuilder.swift */,
 			);
 			path = "Reports View";
 			sourceTree = "<group>";

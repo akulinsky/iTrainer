@@ -38,7 +38,6 @@ final class ReportDashboardViewModel: ObservableObject {
     @Published var isMonthPickerPresented = false
     
     private var preparedRows = [ReportDashboardPreparedRow]()
-    private var hasLoadedReports = false
     private let calendar: Calendar
     private let volumeFormatter: NumberFormatter
     
@@ -60,8 +59,7 @@ final class ReportDashboardViewModel: ObservableObject {
         self.volumeFormatter = formatter
     }
     
-    func reloadReports(force: Bool = false) async {
-        guard force || !hasLoadedReports else { return }
+    func reloadReports() async {
         
         isLoading = true
         let dataManager = DataManagerBackground(container: DataContainer.shared.sharedModelContainer)
@@ -73,7 +71,6 @@ final class ReportDashboardViewModel: ObservableObject {
         preparedRows = rows
         availableYears = makeAvailableYears(from: preparedRows)
         applySelectedMonth()
-        hasLoadedReports = true
         isLoading = false
     }
     
