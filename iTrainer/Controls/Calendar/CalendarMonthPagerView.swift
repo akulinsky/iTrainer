@@ -16,40 +16,60 @@ struct CalendarMonthPagerView: View {
     let maximumMonth: Date
     let calendar: Calendar
     
-    @State private var pageIndex = 1
-    @State private var isRecentering = false
+    @State private var scrollPosition: Int?
     
-    var body: some View {
-        TabView(selection: $pageIndex) {
-            if canMovePrevious {
-                monthGrid(offset: -1)
-                    .tag(0)
-            }
-            monthGrid(offset: 0)
-                .tag(1)
-            if canMoveNext {
-                monthGrid(offset: 1)
-                    .tag(2)
-            }
-        }
-        .tabViewStyle(.page(indexDisplayMode: .never))
-        .frame(height: 318)
-        .onChange(of: pageIndex) { _, newValue in
-            if isRecentering {
-                resetToCenterPage()
-                return
-            }
-            handlePageChange(newValue)
-        }
-        .onChange(of: visibleMonth) {
-            if pageIndex != 1 {
-                resetToCenterPage()
-            }
-        }
+    private let pagerHeight: CGFloat = 318
+    
+    private var visibleMonthIndex: Int {
+        monthIndex(for: visibleMonth)
     }
     
-    private func monthGrid(offset: Int) -> some View {
-        CalendarMonthGridView(month: displayMonth(for: offset),
+    private var monthCount: Int {
+        max(calendar.dateComponents([.month],
+                                    from: calendar.calendarControlStartOfMonth(for: minimumMonth),
+                                    to: calendar.calendarControlStartOfMonth(for: maximumMonth)).month ?? 0, 0) + 1
+    }
+    
+    var body: some View {
+        GeometryReader { proxy in
+            ScrollView(.horizontal) {
+                LazyHStack(spacing: 0) {
+                    ForEach(0..<monthCount, id: \.self) { index in
+                        monthGrid(index: index)
+                            .frame(width: proxy.size.width)
+                            .id(index)
+                    }
+                }
+                .scrollTargetLayout()
+            }
+            .scrollIndicators(.hidden)
+            .scrollTargetBehavior(.paging)
+            .scrollPosition(id: $scrollPosition)
+            .onAppear(perform: syncScrollPositionWithVisibleMonth)
+            .onChange(of: scrollPosition) { _, newValue in
+                guard let newValue else { return }
+                let month = month(for: newValue)
+                guard !calendar.calendarControlIsMonth(month, sameAs: visibleMonth) else { return }
+                visibleMonth = month
+            }
+            .onChange(of: visibleMonth) {
+                syncScrollPositionWithVisibleMonth()
+            }
+            .onChange(of: minimumMonth) {
+                syncScrollPositionAfterBoundsChange()
+            }
+            .onChange(of: maximumMonth) {
+                syncScrollPositionAfterBoundsChange()
+            }
+            .onChange(of: monthCount) {
+                syncScrollPositionAfterBoundsChange()
+            }
+        }
+        .frame(height: pagerHeight)
+    }
+    
+    private func monthGrid(index: Int) -> some View {
+        CalendarMonthGridView(month: month(for: index),
                               selectedDate: selectedDate,
                               today: Date(),
                               markers: markers,
@@ -57,52 +77,30 @@ struct CalendarMonthPagerView: View {
                               onSelectDate: selectDate)
     }
     
-    private var canMovePrevious: Bool {
-        calendar.compare(calendar.calendarControlStartOfMonth(for: visibleMonth),
-                         to: calendar.calendarControlStartOfMonth(for: minimumMonth),
-                         toGranularity: .month) == .orderedDescending
+    private func month(for index: Int) -> Date {
+        let clampedIndex = min(max(index, 0), monthCount - 1)
+        return calendar.calendarControlDateByAddingMonths(clampedIndex, to: minimumMonth)
     }
     
-    private var canMoveNext: Bool {
-        calendar.compare(calendar.calendarControlStartOfMonth(for: visibleMonth),
-                         to: calendar.calendarControlStartOfMonth(for: maximumMonth),
-                         toGranularity: .month) == .orderedAscending
+    private func monthIndex(for month: Date) -> Int {
+        let clampedMonth = calendar.calendarControlClampedMonth(month,
+                                                                minimumMonth: minimumMonth,
+                                                                maximumMonth: maximumMonth)
+        let index = calendar.dateComponents([.month],
+                                            from: calendar.calendarControlStartOfMonth(for: minimumMonth),
+                                            to: calendar.calendarControlStartOfMonth(for: clampedMonth)).month ?? 0
+        return min(max(index, 0), monthCount - 1)
     }
     
-    private func displayMonth(for offset: Int) -> Date {
-        let targetMonth = calendar.calendarControlDateByAddingMonths(offset, to: visibleMonth)
-        return calendar.calendarControlClampedMonth(targetMonth,
-                                     minimumMonth: minimumMonth,
-                                     maximumMonth: maximumMonth)
+    private func syncScrollPositionWithVisibleMonth() {
+        let index = visibleMonthIndex
+        guard scrollPosition != index else { return }
+        scrollPosition = index
     }
     
-    private func handlePageChange(_ newValue: Int) {
-        guard newValue != 1 else { return }
-        isRecentering = true
-        
-        let offset = newValue - 1
-        let targetMonth = calendar.calendarControlDateByAddingMonths(offset, to: visibleMonth)
-        let clampedMonth = calendar.calendarControlClampedMonth(targetMonth,
-                                                 minimumMonth: minimumMonth,
-                                                 maximumMonth: maximumMonth)
-        
-        if !calendar.calendarControlIsMonth(clampedMonth, sameAs: visibleMonth) {
-            visibleMonth = clampedMonth
-        }
-        
-        resetToCenterPage()
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.22) {
-            isRecentering = false
-        }
-    }
-    
-    private func resetToCenterPage() {
+    private func syncScrollPositionAfterBoundsChange() {
         DispatchQueue.main.async {
-            var transaction = Transaction()
-            transaction.disablesAnimations = true
-            withTransaction(transaction) {
-                pageIndex = 1
-            }
+            syncScrollPositionWithVisibleMonth()
         }
     }
     
