@@ -74,6 +74,8 @@
 		F69BD12E2C551B4F0057080E /* SetsModelDB.swift in Sources */ = {isa = PBXBuildFile; fileRef = F69BD12D2C551B4F0057080E /* SetsModelDB.swift */; };
 		F6A100012D14000100000001 /* exercise_categories.json in Resources */ = {isa = PBXBuildFile; fileRef = F6A100032D14000100000003 /* exercise_categories.json */; };
 		F6A100022D14000100000002 /* exercises.json in Resources */ = {isa = PBXBuildFile; fileRef = F6A100042D14000100000004 /* exercises.json */; };
+		F6A100082D15000100000008 /* exercise_info.json in Resources */ = {isa = PBXBuildFile; fileRef = F6A100072D15000100000007 /* exercise_info.json */; };
+		F6A1000D2D1500010000000D /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = F6A1000C2D1500010000000C /* Localizable.strings */; };
 		F6AB65A92FEAAB0500DE8066 /* DesignSystem.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6AB65A82FEAAB0500DE8066 /* DesignSystem.swift */; };
 		F6AB65AB2FEAB07500DE8066 /* ExerciseCatalogDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6AB65AA2FEAB07500DE8066 /* ExerciseCatalogDetailView.swift */; };
 		F6B9B2292C96BF3B00115CEA /* LifecycleLogger.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6B9B2282C96BF3B00115CEA /* LifecycleLogger.swift */; };
@@ -197,6 +199,9 @@
 		F69BD12D2C551B4F0057080E /* SetsModelDB.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetsModelDB.swift; sourceTree = "<group>"; };
 		F6A100032D14000100000003 /* exercise_categories.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = exercise_categories.json; sourceTree = "<group>"; };
 		F6A100042D14000100000004 /* exercises.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = exercises.json; sourceTree = "<group>"; };
+		F6A100072D15000100000007 /* exercise_info.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = exercise_info.json; sourceTree = "<group>"; };
+		F6A1000A2D1500010000000A /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		F6A1000B2D1500010000000B /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Localizable.strings; sourceTree = "<group>"; };
 		F6AA00012D13E7A000000001 /* iTrainer-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "iTrainer-Info.plist"; sourceTree = "<group>"; };
 		F6AB65A82FEAAB0500DE8066 /* DesignSystem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DesignSystem.swift; sourceTree = "<group>"; };
 		F6AB65AA2FEAB07500DE8066 /* ExerciseCatalogDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseCatalogDetailView.swift; sourceTree = "<group>"; };
@@ -542,6 +547,7 @@
 			isa = PBXGroup;
 			children = (
 				F6A100062D14000100000006 /* Seed */,
+				F6A100092D15000100000009 /* Localization */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -551,8 +557,17 @@
 			children = (
 				F6A100032D14000100000003 /* exercise_categories.json */,
 				F6A100042D14000100000004 /* exercises.json */,
+				F6A100072D15000100000007 /* exercise_info.json */,
 			);
 			path = Seed;
+			sourceTree = "<group>";
+		};
+		F6A100092D15000100000009 /* Localization */ = {
+			isa = PBXGroup;
+			children = (
+				F6A1000C2D1500010000000C /* Localizable.strings */,
+			);
+			path = Localization;
 			sourceTree = "<group>";
 		};
 		F6CB13092C9B16CE00B9FCFC /* Reports View */ = {
@@ -693,6 +708,7 @@
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
+				ru,
 				Base,
 			);
 			mainGroup = F69BD0BB2C54F8DA0057080E;
@@ -719,6 +735,8 @@
 				F69BD0D12C54F8DB0057080E /* Preview Assets.xcassets in Resources */,
 				F6A100012D14000100000001 /* exercise_categories.json in Resources */,
 				F6A100022D14000100000002 /* exercises.json in Resources */,
+				F6A100082D15000100000008 /* exercise_info.json in Resources */,
+				F6A1000D2D1500010000000D /* Localizable.strings in Resources */,
 				F69BD0CE2C54F8DB0057080E /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -858,6 +876,18 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		F6A1000C2D1500010000000C /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				F6A1000A2D1500010000000A /* en */,
+				F6A1000B2D1500010000000B /* ru */,
+			);
+			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
 
 /* Begin PBXTargetDependency section */
 		F69BD0D82C54F8DB0057080E /* PBXTargetDependency */ = {
