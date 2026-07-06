@@ -149,7 +149,10 @@ struct ExerciseView: View {
         }
         .navigationDestination(isPresented: $isExerciseInfoPresented) {
             if let type = viewModel.exercise.type {
-                ExerciseCatalogDetailView(model: type)
+                ExerciseCatalogDetailView(model: type,
+                                          onOpenStatistics: {
+                                            navigation.path.append(ExerciseListRoute.exerciseTypeStatisticsView(typeId: type.id))
+                                          })
             }
         }
     }

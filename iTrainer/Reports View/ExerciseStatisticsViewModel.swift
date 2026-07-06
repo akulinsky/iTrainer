@@ -15,25 +15,43 @@ final class ExerciseStatisticsViewModel: ObservableObject {
     @Published private var localReports = [ReportExerciseModel]()
     @Published private var globalReports = [ReportExerciseModel]()
     
-    let exercise: ReportExerciseModel
+    let scope: ExerciseStatisticsScope
     
     init(exercise: ReportExerciseModel) {
-        self.exercise = exercise
+        self.scope = .local(exercise)
         self.localReports = [exercise]
         self.globalReports = [exercise]
     }
     
+    init(exerciseType: ExerciseTypeModel) {
+        self.scope = .global(exerciseType)
+    }
+    
     var title: String {
-        exercise.titleExercise
+        switch scope {
+        case .local(let exercise):
+            exercise.titleExercise
+        case .global(let exerciseType):
+            exerciseType.displayName
+        }
     }
     
     var contextText: String {
-        [exercise.titleWorkout, exercise.titleWorkoutGroup]
-            .compactMap { value in
-                guard let value, !value.isEmpty else { return nil }
-                return value
-            }
-            .joined(separator: " · ")
+        switch scope {
+        case .local(let exercise):
+            [exercise.titleWorkout, exercise.titleWorkoutGroup]
+                .compactMap { value in
+                    guard let value, !value.isEmpty else { return nil }
+                    return value
+                }
+                .joined(separator: " · ")
+        case .global:
+            "Across all workouts"
+        }
+    }
+    
+    var showsBestResult: Bool {
+        scope.isGlobal
     }
     
     var hasAnyReports: Bool {
@@ -83,6 +101,33 @@ final class ExerciseStatisticsViewModel: ObservableObject {
                                       changeColor: color(for: change))
     }
     
+    var bestResult: BestResultSummary {
+        let bestPoint: ExerciseStatisticsPoint?
+        
+        if selectedMetric == .repetitions {
+            bestPoint = bestSetResult()
+        } else {
+            bestPoint = globalAllGraphPoints.max(by: { lhs, rhs in
+                if lhs.value == rhs.value {
+                    return lhs.date < rhs.date
+                }
+                return lhs.value < rhs.value
+            })
+        }
+        
+        guard let bestPoint else {
+            return BestResultSummary(title: selectedMetric.bestResultTitle,
+                                     valueText: "-",
+                                     dateText: "-",
+                                     subtitle: "Across all workouts")
+        }
+        
+        return BestResultSummary(title: selectedMetric.bestResultTitle,
+                                 valueText: bestPoint.formattedValue,
+                                 dateText: bestPoint.date.formatted(.dateTime.month(.abbreviated).day().year()),
+                                 subtitle: "Across all workouts")
+    }
+    
     func visibleGraphPoints(maxCount: Int) -> [ExerciseStatisticsPoint] {
         sample(points: periodGraphPoints, maxCount: maxCount)
     }
@@ -109,18 +154,42 @@ final class ExerciseStatisticsViewModel: ObservableObject {
     @MainActor
     func reloadData() async {
         let dataManager = DataManagerBackground(container: DataContainer.shared.sharedModelContainer)
-        let local = await dataManager.fetchReportExercises(exerciseId: exercise.exerciseId)
-            .map { ReportExerciseModel(model: $0) }
-        let global = await dataManager.fetchReportExercises(typeId: exercise.typeId)
-            .map { ReportExerciseModel(model: $0) }
         
-        localReports = mergedReports(local, fallback: exercise)
-        globalReports = mergedReports(global, fallback: exercise)
+        switch scope {
+        case .local(let exercise):
+            let local = await dataManager.fetchReportExercises(exerciseId: exercise.exerciseId)
+                .map { ReportExerciseModel(model: $0) }
+            let global = await dataManager.fetchReportExercises(typeId: exercise.typeId)
+                .map { ReportExerciseModel(model: $0) }
+            
+            localReports = mergedReports(local, fallback: exercise)
+            globalReports = mergedReports(global, fallback: exercise)
+        case .global(let exerciseType):
+            let global = await dataManager.fetchReportExercises(typeId: exerciseType.id)
+                .map { ReportExerciseModel(model: $0) }
+            
+            localReports = []
+            globalReports = global
+        }
     }
     
     private var allGraphPoints: [ExerciseStatisticsPoint] {
-        localReports.compactMap { point(for: $0) }
+        activeReports.compactMap { point(for: $0) }
             .sorted { $0.date < $1.date }
+    }
+    
+    private var globalAllGraphPoints: [ExerciseStatisticsPoint] {
+        globalReports.compactMap { point(for: $0) }
+            .sorted { $0.date < $1.date }
+    }
+    
+    private var activeReports: [ReportExerciseModel] {
+        switch scope {
+        case .local:
+            localReports
+        case .global:
+            globalReports
+        }
     }
     
     private var periodGraphPoints: [ExerciseStatisticsPoint] {
@@ -187,6 +256,39 @@ final class ExerciseStatisticsViewModel: ObservableObject {
                                        value: Float(reps),
                                        formattedValue: "\(reps)",
                                        isPersonalRecord: isPersonalRecord(report))
+    }
+    
+    private func bestSetResult() -> ExerciseStatisticsPoint? {
+        let weightedSets = globalReports.flatMap { report -> [(report: ReportExerciseModel, date: Date, set: PerformedStrengthSet)] in
+            guard let date = report.date else { return [] }
+            return performedStrengthSets(in: report).map { (report: report, date: date, set: $0) }
+        }
+        
+        if let bestWeight = weightedSets.map({ $0.set.weight }).max() {
+            let bestSet = weightedSets
+                .filter { $0.set.weight == bestWeight }
+                .max { lhs, rhs in
+                    if lhs.set.reps == rhs.set.reps {
+                        return lhs.date < rhs.date
+                    }
+                    return lhs.set.reps < rhs.set.reps
+                }
+            
+            if let bestSet {
+                return ExerciseStatisticsPoint(reportId: bestSet.report.id,
+                                               date: bestSet.date,
+                                               value: Float(bestSet.set.reps),
+                                               formattedValue: "\(formattedNumber(bestSet.set.weight)) kg x \(bestSet.set.reps)",
+                                               isPersonalRecord: isPersonalRecord(bestSet.report))
+            }
+        }
+        
+        return globalAllGraphPoints.max { lhs, rhs in
+            if lhs.value == rhs.value {
+                return lhs.date < rhs.date
+            }
+            return lhs.value < rhs.value
+        }
     }
     
     private func performedStrengthSets(in report: ReportExerciseModel) -> [PerformedStrengthSet] {
@@ -352,6 +454,18 @@ final class ExerciseStatisticsViewModel: ObservableObject {
     }
 }
 
+enum ExerciseStatisticsScope {
+    case local(ReportExerciseModel)
+    case global(ExerciseTypeModel)
+    
+    var isGlobal: Bool {
+        if case .global = self {
+            return true
+        }
+        return false
+    }
+}
+
 enum ExerciseMetricSegment: CaseIterable, Identifiable {
     case weight
     case volume
@@ -378,6 +492,17 @@ enum ExerciseMetricSegment: CaseIterable, Identifiable {
             "Total volume per report"
         case .repetitions:
             "Reps at relevant weight"
+        }
+    }
+    
+    var bestResultTitle: String {
+        switch self {
+        case .weight:
+            "Best Weight"
+        case .volume:
+            "Best Volume"
+        case .repetitions:
+            "Best Set"
         }
     }
     
@@ -485,4 +610,11 @@ struct CurrentPreviousSummary {
     let previousText: String
     let changeText: String
     let changeColor: Color
+}
+
+struct BestResultSummary {
+    let title: String
+    let valueText: String
+    let dateText: String
+    let subtitle: String
 }

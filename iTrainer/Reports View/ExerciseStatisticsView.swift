@@ -15,6 +15,10 @@ struct ExerciseStatisticsView: View {
         _viewModel = StateObject(wrappedValue: ExerciseStatisticsViewModel(exercise: exercise))
     }
     
+    init(exerciseType: ExerciseTypeModel) {
+        _viewModel = StateObject(wrappedValue: ExerciseStatisticsViewModel(exerciseType: exerciseType))
+    }
+    
     var body: some View {
         ScrollView {
             VStack(alignment: .leading, spacing: 16) {
@@ -25,7 +29,11 @@ struct ExerciseStatisticsView: View {
                     periodSummaryCard
                 }
                 
-                currentVsPreviousCard
+                if viewModel.showsBestResult {
+                    bestResultCard
+                } else {
+                    currentVsPreviousCard
+                }
             }
             .padding(.horizontal, 20)
             .padding(.top, 16)
@@ -277,6 +285,41 @@ struct ExerciseStatisticsView: View {
                 statisticColumn(title: "Change",
                                 value: viewModel.periodSummary.changeText,
                                 color: viewModel.periodSummary.changeColor)
+            }
+        }
+        .padding(20)
+        .frame(maxWidth: .infinity, alignment: .leading)
+        .background(AppColor.surfacePrimary)
+        .clipShape(RoundedRectangle(cornerRadius: 14, style: .continuous))
+        .overlay {
+            RoundedRectangle(cornerRadius: 14, style: .continuous)
+                .stroke(AppColor.separatorSoft, lineWidth: 1)
+        }
+    }
+    
+    private var bestResultCard: some View {
+        VStack(alignment: .leading, spacing: 14) {
+            VStack(alignment: .leading, spacing: 4) {
+                Text(viewModel.bestResult.title)
+                    .font(.system(size: 21, weight: .bold))
+                    .foregroundStyle(AppColor.brandPrimary)
+                Text(viewModel.bestResult.subtitle)
+                    .font(AppFont.rowSubtitle)
+                    .foregroundStyle(AppColor.textSecondary)
+            }
+            
+            HStack(spacing: 0) {
+                statisticColumn(title: "Result",
+                                value: viewModel.bestResult.valueText,
+                                color: AppColor.textPrimary)
+                
+                Divider()
+                    .frame(height: 54)
+                    .padding(.horizontal, 18)
+                
+                statisticColumn(title: "Date",
+                                value: viewModel.bestResult.dateText,
+                                color: AppColor.textPrimary)
             }
         }
         .padding(20)

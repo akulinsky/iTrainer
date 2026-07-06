@@ -10,6 +10,7 @@ import SwiftUI
 enum ExerciseTypeRoute: Hashable {
     case exerciseTypeListView(categoryId: String)
     case exerciseDetailView(exerciseId: String)
+    case exerciseStatisticsView(exerciseId: String)
 }
 
 struct ExerciseTypeView: View {
@@ -95,7 +96,14 @@ struct ExerciseTypeView: View {
                         }
                 case .exerciseDetailView(let exerciseId):
                     if let exercise = viewModel.exercise(with: exerciseId) {
-                        ExerciseCatalogDetailView(model: exercise)
+                        ExerciseCatalogDetailView(model: exercise,
+                                                  onOpenStatistics: {
+                                                    navigationManager.path.append(ExerciseTypeRoute.exerciseStatisticsView(exerciseId: exercise.id))
+                                                  })
+                    }
+                case .exerciseStatisticsView(let exerciseId):
+                    if let exercise = viewModel.exercise(with: exerciseId) {
+                        ExerciseStatisticsView(exerciseType: exercise)
                     }
                 }
             }

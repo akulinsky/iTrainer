@@ -11,99 +11,333 @@ struct ExerciseCatalogDetailView: View {
     
     let model: ExerciseTypeModel
     
-    private let iconHeight: CGFloat = 260
-    private let cardCornerRadius: CGFloat = 16
+    private let horizontalPadding: CGFloat = 20
+    private let cardCornerRadius: CGFloat = 14
+    private let exerciseInfo: ExerciseInfo?
+    private let onOpenStatistics: (() -> Void)?
+    
+    init(model: ExerciseTypeModel, onOpenStatistics: (() -> Void)? = nil) {
+        self.model = model
+        self.exerciseInfo = ExerciseInfoLoader.info(for: model.id)
+        self.onOpenStatistics = onOpenStatistics
+    }
     
     var body: some View {
         ScrollView {
-            VStack(spacing: 16) {
-                heroCard
-                titleCard
-                metadataCard
+            VStack(spacing: 14) {
+                ExerciseMediaView(model: model,
+                                  cornerRadius: cardCornerRadius)
+                ExerciseTitleCard(title: model.displayName,
+                                  category: model.type.displayName,
+                                  cornerRadius: cardCornerRadius)
+                ExerciseBasicInfoCard(category: model.type.displayName,
+                                      parameters: parametersText,
+                                      cornerRadius: cardCornerRadius)
+                ExerciseStatisticsNavigationCard(cornerRadius: cardCornerRadius,
+                                                 action: { onOpenStatistics?() })
+                
+                if exerciseInfo == nil {
+                    ExerciseMissingInfoCard(exerciseId: model.id,
+                                            cornerRadius: cardCornerRadius)
+                }
+                
+                if let descriptionText {
+                    ExerciseDescriptionCard(text: descriptionText,
+                                            cornerRadius: cardCornerRadius)
+                }
+                
+                if !techniqueTexts.isEmpty {
+                    ExerciseTechniqueCard(items: techniqueTexts,
+                                          cornerRadius: cardCornerRadius)
+                }
             }
-            .padding(.horizontal, 20)
+            .padding(.horizontal, horizontalPadding)
             .padding(.top, 12)
-            .padding(.bottom, 24)
+            .padding(.bottom, 28)
         }
-        .background(AppColor.backgroundPrimary)
+        .background(AppColor.backgroundPrimary.ignoresSafeArea())
         .navigationTitle(model.displayName)
         .navigationBarTitleDisplayMode(.inline)
     }
     
-    private var heroCard: some View {
+    private var parametersText: String {
+        model.parameters.map { $0.title }.joined(separator: " · ")
+    }
+    
+    private var descriptionText: String? {
+        guard let exerciseInfo else { return nil }
+        return localizedText(for: exerciseInfo.descriptionKey)
+    }
+    
+    private var techniqueTexts: [String] {
+        guard let exerciseInfo else { return [] }
+        return exerciseInfo.techniqueKeys.map(localizedText)
+    }
+    
+    private func localizedText(for key: String) -> String {
+        String(localized: String.LocalizationValue(key))
+    }
+}
+
+private struct ExerciseMediaView: View {
+    let model: ExerciseTypeModel
+    let cornerRadius: CGFloat
+    
+    var body: some View {
         ZStack {
             AppColor.surfacePrimary
             
             if let icon = model.icon {
                 icon
                     .resizable()
-                    .scaledToFill()
+                    .scaledToFit()
                     .frame(maxWidth: .infinity)
-                    .clipped()
             }
         }
         .frame(maxWidth: .infinity)
-        .clipShape(RoundedRectangle(cornerRadius: cardCornerRadius, style: .continuous))
+        .background(AppColor.surfacePrimary)
+        .clipShape(RoundedRectangle(cornerRadius: cornerRadius, style: .continuous))
         .overlay {
-            RoundedRectangle(cornerRadius: cardCornerRadius, style: .continuous)
+            RoundedRectangle(cornerRadius: cornerRadius, style: .continuous)
                 .stroke(AppColor.separatorSoft, lineWidth: 1)
         }
     }
+}
+
+private struct ExerciseTitleCard: View {
+    let title: String
+    let category: String
+    let cornerRadius: CGFloat
     
-    private var titleCard: some View {
-        VStack(spacing: 8) {
-            Text(model.displayName)
+    var body: some View {
+        VStack(alignment: .leading, spacing: 8) {
+            Text(title)
                 .font(AppFont.screenTitle)
                 .foregroundStyle(AppColor.textPrimary)
-                .multilineTextAlignment(.center)
                 .lineLimit(3)
                 .minimumScaleFactor(0.82)
             
-            Text(model.type.displayName)
+            Text(category)
                 .font(AppFont.categoryCardSubtitle)
                 .foregroundStyle(AppColor.textSecondary)
         }
-        .padding(.vertical, 18)
-        .padding(.horizontal, 16)
-        .frame(maxWidth: .infinity)
-        .background(AppColor.surfacePrimary)
-        .clipShape(RoundedRectangle(cornerRadius: cardCornerRadius, style: .continuous))
-        .overlay {
-            RoundedRectangle(cornerRadius: cardCornerRadius, style: .continuous)
-                .stroke(AppColor.separatorSoft, lineWidth: 1)
-        }
-    }
-    
-    private var metadataCard: some View {
-        VStack(alignment: .leading, spacing: 14) {
-            metadataRow(title: "Category", value: model.type.displayName)
-            metadataRow(title: "Parameters", value: parametersText)
-        }
-        .padding(16)
+        .padding(18)
         .frame(maxWidth: .infinity, alignment: .leading)
         .background(AppColor.surfacePrimary)
-        .clipShape(RoundedRectangle(cornerRadius: cardCornerRadius, style: .continuous))
+        .clipShape(RoundedRectangle(cornerRadius: cornerRadius, style: .continuous))
         .overlay {
-            RoundedRectangle(cornerRadius: cardCornerRadius, style: .continuous)
+            RoundedRectangle(cornerRadius: cornerRadius, style: .continuous)
+                .stroke(AppColor.separatorSoft, lineWidth: 1)
+        }
+    }
+}
+
+private struct ExerciseBasicInfoCard: View {
+    let category: String
+    let parameters: String
+    let cornerRadius: CGFloat
+    
+    var body: some View {
+        VStack(alignment: .leading, spacing: 16) {
+            cardTitle("Basic Information")
+            
+            VStack(spacing: 0) {
+                infoRow(title: "Category", value: category)
+                Divider()
+                    .padding(.vertical, 12)
+                infoRow(title: "Parameters", value: parameters)
+            }
+        }
+        .padding(18)
+        .frame(maxWidth: .infinity, alignment: .leading)
+        .background(AppColor.surfacePrimary)
+        .clipShape(RoundedRectangle(cornerRadius: cornerRadius, style: .continuous))
+        .overlay {
+            RoundedRectangle(cornerRadius: cornerRadius, style: .continuous)
                 .stroke(AppColor.separatorSoft, lineWidth: 1)
         }
     }
     
-    private func metadataRow(title: String, value: String) -> some View {
-        HStack(alignment: .firstTextBaseline) {
+    private func infoRow(title: String, value: String) -> some View {
+        HStack(alignment: .firstTextBaseline, spacing: 16) {
             Text(title)
-                .font(AppFont.caption)
+                .font(AppFont.workoutGroupCardSubtitle)
                 .foregroundStyle(AppColor.textSecondary)
-            Spacer(minLength: 16)
+                .frame(width: 120, alignment: .leading)
+            
             Text(value)
-                .font(AppFont.rowSubtitle)
+                .font(AppFont.workoutGroupCardSubtitle)
                 .foregroundStyle(AppColor.textPrimary)
-                .multilineTextAlignment(.trailing)
+                .lineLimit(2)
+                .minimumScaleFactor(0.82)
+                .frame(maxWidth: .infinity, alignment: .leading)
         }
     }
+}
+
+private struct ExerciseStatisticsNavigationCard: View {
+    let cornerRadius: CGFloat
+    let action: () -> Void
     
-    private var parametersText: String {
-        model.parameters.map { $0.title }.joined(separator: " · ")
+    var body: some View {
+        Button(action: action) {
+            HStack(spacing: 16) {
+                Image(systemName: "chart.line.uptrend.xyaxis")
+                    .font(.system(size: 34, weight: .semibold))
+                    .foregroundStyle(AppColor.progressGreen)
+                    .frame(width: 48, height: 48)
+                
+                VStack(alignment: .leading, spacing: 4) {
+                    Text("Statistics")
+                        .font(AppFont.workoutWidgetTitle)
+                        .foregroundStyle(AppColor.textPrimary)
+                    Text("View global exercise statistics")
+                        .font(AppFont.rowSubtitle)
+                        .foregroundStyle(AppColor.textSecondary)
+                        .lineLimit(2)
+                        .minimumScaleFactor(0.82)
+                }
+                
+                Spacer(minLength: 12)
+                
+                Image(systemName: "chevron.right")
+                    .font(.system(size: 18, weight: .semibold))
+                    .foregroundStyle(AppColor.textSecondary)
+            }
+            .padding(18)
+            .frame(maxWidth: .infinity, alignment: .leading)
+            .background(AppColor.surfacePrimary)
+            .clipShape(RoundedRectangle(cornerRadius: cornerRadius, style: .continuous))
+            .overlay {
+                RoundedRectangle(cornerRadius: cornerRadius, style: .continuous)
+                    .stroke(AppColor.separatorSoft, lineWidth: 1)
+            }
+            .contentShape(RoundedRectangle(cornerRadius: cornerRadius, style: .continuous))
+        }
+        .buttonStyle(.plain)
+        .accessibilityLabel("Statistics")
+        .accessibilityHint("View global exercise statistics")
+    }
+}
+
+private struct ExerciseMissingInfoCard: View {
+    let exerciseId: String
+    let cornerRadius: CGFloat
+    
+    var body: some View {
+        VStack(alignment: .leading, spacing: 8) {
+            cardTitle("Missing exercise info")
+            Text("Missing exercise info for exercise id: \(exerciseId)")
+                .font(AppFont.rowSubtitle)
+                .foregroundStyle(AppColor.textSecondary)
+                .fixedSize(horizontal: false, vertical: true)
+        }
+        .padding(18)
+        .frame(maxWidth: .infinity, alignment: .leading)
+        .background(AppColor.surfacePrimary)
+        .clipShape(RoundedRectangle(cornerRadius: cornerRadius, style: .continuous))
+        .overlay {
+            RoundedRectangle(cornerRadius: cornerRadius, style: .continuous)
+                .stroke(AppColor.separatorSoft, lineWidth: 1)
+        }
+    }
+}
+
+private struct ExerciseDescriptionCard: View {
+    let text: String
+    let cornerRadius: CGFloat
+    
+    var body: some View {
+        VStack(alignment: .leading, spacing: 12) {
+            cardTitle("Description")
+            Text(text)
+                .font(AppFont.workoutGroupCardSubtitle)
+                .foregroundStyle(AppColor.textSecondary)
+                .lineSpacing(3)
+                .fixedSize(horizontal: false, vertical: true)
+        }
+        .padding(18)
+        .frame(maxWidth: .infinity, alignment: .leading)
+        .background(AppColor.surfacePrimary)
+        .clipShape(RoundedRectangle(cornerRadius: cornerRadius, style: .continuous))
+        .overlay {
+            RoundedRectangle(cornerRadius: cornerRadius, style: .continuous)
+                .stroke(AppColor.separatorSoft, lineWidth: 1)
+        }
+    }
+}
+
+private struct ExerciseTechniqueCard: View {
+    let items: [String]
+    let cornerRadius: CGFloat
+    
+    var body: some View {
+        VStack(alignment: .leading, spacing: 16) {
+            cardTitle("Technique")
+            
+            VStack(alignment: .leading, spacing: 12) {
+                ForEach(Array(items.enumerated()), id: \.offset) { _, item in
+                    HStack(alignment: .top, spacing: 12) {
+                        Image(systemName: "checkmark.circle.fill")
+                            .font(.system(size: 22, weight: .semibold))
+                            .foregroundStyle(AppColor.progressGreen)
+                            .padding(.top, 1)
+                        Text(item)
+                            .font(AppFont.workoutGroupCardSubtitle)
+                            .foregroundStyle(AppColor.textSecondary)
+                            .fixedSize(horizontal: false, vertical: true)
+                    }
+                }
+            }
+        }
+        .padding(18)
+        .frame(maxWidth: .infinity, alignment: .leading)
+        .background(AppColor.surfacePrimary)
+        .clipShape(RoundedRectangle(cornerRadius: cornerRadius, style: .continuous))
+        .overlay {
+            RoundedRectangle(cornerRadius: cornerRadius, style: .continuous)
+                .stroke(AppColor.separatorSoft, lineWidth: 1)
+        }
+    }
+}
+
+private func cardTitle(_ title: String) -> some View {
+    Text(title)
+        .font(AppFont.workoutWidgetTitle)
+        .foregroundStyle(AppColor.textPrimary)
+}
+
+private struct ExerciseInfo: Decodable, Hashable {
+    let exerciseId: String
+    let descriptionKey: String
+    let techniqueKeys: [String]
+}
+
+private enum ExerciseInfoLoader {
+    private static let infoByExerciseId: [String: ExerciseInfo] = {
+        guard let url = Bundle.main.url(forResource: "exercise_info", withExtension: "json") else {
+            assertionFailure("Missing bundled resource: exercise_info.json")
+            return [:]
+        }
+        
+        do {
+            let data = try Data(contentsOf: url)
+            let items = try JSONDecoder().decode([ExerciseInfo].self, from: data)
+            return Dictionary(uniqueKeysWithValues: items.map { ($0.exerciseId, $0) })
+        } catch {
+            assertionFailure("Failed to decode exercise_info.json: \(error)")
+            return [:]
+        }
+    }()
+    
+    static func info(for exerciseId: String) -> ExerciseInfo? {
+        let info = infoByExerciseId[exerciseId]
+        #if DEBUG
+        if info == nil {
+            print("Missing exercise info for exercise id: \(exerciseId)")
+        }
+        #endif
+        return info
     }
 }
 
@@ -111,12 +345,18 @@ struct ExerciseCatalogDetailView: View {
     let category = ExerciseCategory(id: "chest",
                                     titleKey: "exercise.category.chest",
                                     defaultTitle: "Chest",
-                                    devTitle: "Грудь",
+                                    devTitle: "Chest",
                                     kind: "muscleGroup",
                                     iconName: "icMissingImage",
                                     sortOrder: 0)
-    ExerciseCatalogDetailView(model: ExerciseTypeModel(devTitle: "Жим лежа",
-                                                       type: category,
-                                                       parameters: [.weight(), .repeats()]
-                                                      ))
+    NavigationStack {
+        ExerciseCatalogDetailView(model: ExerciseTypeModel(id: "chest_bench_press",
+                                                           titleKey: "exercise.chest.bench_press",
+                                                           defaultTitle: "Bench Press",
+                                                           devTitle: "Bench Press",
+                                                           iconName: "icMissingImage",
+                                                           type: category,
+                                                           parameters: [.weight(), .repeats()]
+                                                          ))
+    }
 }
