@@ -10,21 +10,48 @@ import SwiftUI
 final class ExerciseStatisticsViewModel: ObservableObject {
     static let trophyGold = Color(red: 0.85, green: 0.64, blue: 0.25)
     
-    @Published var selectedMetric: ExerciseMetricSegment = .weight
-    @Published var selectedPeriod: ExerciseStatisticsPeriod = .oneMonth
+    @Published var selectedMetric: ExerciseMetricSegment = .weight {
+        didSet {
+            guard oldValue != selectedMetric else { return }
+            scheduleStatisticsPreparation()
+        }
+    }
+    
+    @Published var selectedPeriod: ExerciseStatisticsPeriod = .oneMonth {
+        didSet {
+            guard oldValue != selectedPeriod else { return }
+            scheduleStatisticsPreparation()
+        }
+    }
+    
+    @Published private(set) var isPreparingStatistics = true
     @Published private var localReports = [ReportExerciseModel]()
     @Published private var globalReports = [ReportExerciseModel]()
+    @Published private var allGraphPoints = [ExerciseStatisticsPoint]()
+    @Published private var globalAllGraphPoints = [ExerciseStatisticsPoint]()
+    @Published private var periodGraphPoints = [ExerciseStatisticsPoint]()
+    @Published private var cachedPeriodSummary = PeriodSummary.empty
+    @Published private var cachedCurrentPrevious = CurrentPreviousSummary.empty
+    @Published private var cachedBestResult = BestResultSummary.empty(title: ExerciseMetricSegment.weight.bestResultTitle)
     
     let scope: ExerciseStatisticsScope
+    
+    private var statisticsTask: Task<Void, Never>?
     
     init(exercise: ReportExerciseModel) {
         self.scope = .local(exercise)
         self.localReports = [exercise]
         self.globalReports = [exercise]
+        scheduleStatisticsPreparation()
     }
     
     init(exerciseType: ExerciseTypeModel) {
         self.scope = .global(exerciseType)
+        scheduleStatisticsPreparation()
+    }
+    
+    deinit {
+        statisticsTask?.cancel()
     }
     
     var title: String {
@@ -63,73 +90,19 @@ final class ExerciseStatisticsViewModel: ObservableObject {
     }
     
     var periodSummary: PeriodSummary {
-        let points = periodGraphPoints
-        guard !points.isEmpty else {
-            return PeriodSummary(averageText: "-", changeText: "-", changeColor: AppColor.textSecondary)
-        }
-        
-        let average = points.reduce(Float.zero) { $0 + $1.value } / Float(points.count)
-        let change = points.count > 1 ? points[points.count - 1].value - points[0].value : nil
-        
-        return PeriodSummary(averageText: formatted(value: average, for: selectedMetric),
-                             changeText: change.map { formattedChange($0, for: selectedMetric) } ?? "-",
-                             changeColor: color(for: change))
+        cachedPeriodSummary
     }
     
     var currentPrevious: CurrentPreviousSummary {
-        let points = allGraphPoints
-        guard let current = points.last else {
-            return CurrentPreviousSummary(currentText: "-",
-                                          previousText: "-",
-                                          changeText: "-",
-                                          changeColor: AppColor.textSecondary)
-        }
-        
-        guard points.count > 1 else {
-            return CurrentPreviousSummary(currentText: current.formattedValue,
-                                          previousText: "-",
-                                          changeText: "-",
-                                          changeColor: AppColor.textSecondary)
-        }
-        
-        let previous = points[points.count - 2]
-        let change = current.value - previous.value
-        
-        return CurrentPreviousSummary(currentText: current.formattedValue,
-                                      previousText: previous.formattedValue,
-                                      changeText: formattedChange(change, for: selectedMetric),
-                                      changeColor: color(for: change))
+        cachedCurrentPrevious
     }
     
     var bestResult: BestResultSummary {
-        let bestPoint: ExerciseStatisticsPoint?
-        
-        if selectedMetric == .repetitions {
-            bestPoint = bestSetResult()
-        } else {
-            bestPoint = globalAllGraphPoints.max(by: { lhs, rhs in
-                if lhs.value == rhs.value {
-                    return lhs.date < rhs.date
-                }
-                return lhs.value < rhs.value
-            })
-        }
-        
-        guard let bestPoint else {
-            return BestResultSummary(title: selectedMetric.bestResultTitle,
-                                     valueText: "-",
-                                     dateText: "-",
-                                     subtitle: "Across all workouts")
-        }
-        
-        return BestResultSummary(title: selectedMetric.bestResultTitle,
-                                 valueText: bestPoint.formattedValue,
-                                 dateText: bestPoint.date.formatted(.dateTime.month(.abbreviated).day().year()),
-                                 subtitle: "Across all workouts")
+        cachedBestResult
     }
     
     func visibleGraphPoints(maxCount: Int) -> [ExerciseStatisticsPoint] {
-        sample(points: periodGraphPoints, maxCount: maxCount)
+        Self.sample(points: periodGraphPoints, maxCount: maxCount, metric: selectedMetric)
     }
     
     func maxVisiblePoints(for width: CGFloat) -> Int {
@@ -162,8 +135,8 @@ final class ExerciseStatisticsViewModel: ObservableObject {
             let global = await dataManager.fetchReportExercises(typeId: exercise.typeId)
                 .map { ReportExerciseModel(model: $0) }
             
-            localReports = mergedReports(local, fallback: exercise)
-            globalReports = mergedReports(global, fallback: exercise)
+            localReports = Self.mergedReports(local, fallback: exercise)
+            globalReports = Self.mergedReports(global, fallback: exercise)
         case .global(let exerciseType):
             let global = await dataManager.fetchReportExercises(typeId: exerciseType.id)
                 .map { ReportExerciseModel(model: $0) }
@@ -171,19 +144,42 @@ final class ExerciseStatisticsViewModel: ObservableObject {
             localReports = []
             globalReports = global
         }
+        
+        scheduleStatisticsPreparation()
     }
     
-    private var allGraphPoints: [ExerciseStatisticsPoint] {
-        activeReports.compactMap { point(for: $0) }
-            .sorted { $0.date < $1.date }
+    private func scheduleStatisticsPreparation() {
+        statisticsTask?.cancel()
+        
+        let metric = selectedMetric
+        let period = selectedPeriod
+        let activeReports = activeReportsSnapshot
+        let globalReports = globalReports
+        
+        isPreparingStatistics = true
+        statisticsTask = Task { [weak self] in
+            let prepared = await Task.detached(priority: .userInitiated) {
+                Self.prepareStatistics(activeReports: activeReports,
+                                       globalReports: globalReports,
+                                       metric: metric,
+                                       period: period)
+            }.value
+            
+            guard !Task.isCancelled else { return }
+            await MainActor.run { [weak self] in
+                guard let self else { return }
+                self.allGraphPoints = prepared.allGraphPoints
+                self.globalAllGraphPoints = prepared.globalAllGraphPoints
+                self.periodGraphPoints = prepared.periodGraphPoints
+                self.cachedPeriodSummary = prepared.periodSummary
+                self.cachedCurrentPrevious = prepared.currentPrevious
+                self.cachedBestResult = prepared.bestResult
+                self.isPreparingStatistics = false
+            }
+        }
     }
     
-    private var globalAllGraphPoints: [ExerciseStatisticsPoint] {
-        globalReports.compactMap { point(for: $0) }
-            .sorted { $0.date < $1.date }
-    }
-    
-    private var activeReports: [ReportExerciseModel] {
+    private var activeReportsSnapshot: [ReportExerciseModel] {
         switch scope {
         case .local:
             localReports
@@ -192,18 +188,98 @@ final class ExerciseStatisticsViewModel: ObservableObject {
         }
     }
     
-    private var periodGraphPoints: [ExerciseStatisticsPoint] {
-        let points = allGraphPoints
-        guard let cutoffDate = selectedPeriod.cutoffDate(relativeTo: points.last?.date ?? Date()) else {
-            return points
-        }
-        return points.filter { $0.date >= cutoffDate }
+    private static func prepareStatistics(activeReports: [ReportExerciseModel],
+                                          globalReports: [ReportExerciseModel],
+                                          metric: ExerciseMetricSegment,
+                                          period: ExerciseStatisticsPeriod) -> PreparedStatistics {
+        let allGraphPoints = activeReports
+            .compactMap { point(for: $0, metric: metric, history: globalReports) }
+            .sorted { $0.date < $1.date }
+        let globalAllGraphPoints = globalReports
+            .compactMap { point(for: $0, metric: metric, history: globalReports) }
+            .sorted { $0.date < $1.date }
+        let cutoffDate = period.cutoffDate(relativeTo: allGraphPoints.last?.date ?? Date())
+        let periodGraphPoints = cutoffDate.map { cutoff in
+            allGraphPoints.filter { $0.date >= cutoff }
+        } ?? allGraphPoints
+        let periodSummary = makePeriodSummary(points: periodGraphPoints, metric: metric)
+        let currentPrevious = makeCurrentPrevious(points: allGraphPoints, metric: metric)
+        let bestResult = makeBestResult(points: globalAllGraphPoints,
+                                        reports: globalReports,
+                                        metric: metric,
+                                        history: globalReports)
+        
+        return PreparedStatistics(allGraphPoints: allGraphPoints,
+                                  globalAllGraphPoints: globalAllGraphPoints,
+                                  periodGraphPoints: periodGraphPoints,
+                                  periodSummary: periodSummary,
+                                  currentPrevious: currentPrevious,
+                                  bestResult: bestResult)
     }
     
-    private func point(for report: ReportExerciseModel) -> ExerciseStatisticsPoint? {
+    private static func makePeriodSummary(points: [ExerciseStatisticsPoint], metric: ExerciseMetricSegment) -> PeriodSummary {
+        guard !points.isEmpty else { return .empty }
+        
+        let average = points.reduce(Float.zero) { $0 + $1.value } / Float(points.count)
+        let change = points.count > 1 ? points[points.count - 1].value - points[0].value : nil
+        
+        return PeriodSummary(averageText: formatted(value: average, for: metric),
+                             changeText: change.map { formattedChange($0, for: metric) } ?? "-",
+                             changeColor: color(for: change))
+    }
+    
+    private static func makeCurrentPrevious(points: [ExerciseStatisticsPoint], metric: ExerciseMetricSegment) -> CurrentPreviousSummary {
+        guard let current = points.last else { return .empty }
+        
+        guard points.count > 1 else {
+            return CurrentPreviousSummary(currentText: current.formattedValue,
+                                          previousText: "-",
+                                          changeText: "-",
+                                          changeColor: AppColor.textSecondary)
+        }
+        
+        let previous = points[points.count - 2]
+        let change = current.value - previous.value
+        
+        return CurrentPreviousSummary(currentText: current.formattedValue,
+                                      previousText: previous.formattedValue,
+                                      changeText: formattedChange(change, for: metric),
+                                      changeColor: color(for: change))
+    }
+    
+    private static func makeBestResult(points: [ExerciseStatisticsPoint],
+                                       reports: [ReportExerciseModel],
+                                       metric: ExerciseMetricSegment,
+                                       history: [ReportExerciseModel]) -> BestResultSummary {
+        let bestPoint: ExerciseStatisticsPoint?
+        
+        if metric == .repetitions {
+            bestPoint = bestSetResult(reports: reports, history: history)
+        } else {
+            bestPoint = points.max(by: { lhs, rhs in
+                if lhs.value == rhs.value {
+                    return lhs.date < rhs.date
+                }
+                return lhs.value < rhs.value
+            })
+        }
+        
+        guard let bestPoint else {
+            return .empty(title: metric.bestResultTitle)
+        }
+        
+        return BestResultSummary(title: metric.bestResultTitle,
+                                 valueText: bestPoint.formattedValue,
+                                 dateText: bestPoint.date.formatted(.dateTime.month(.abbreviated).day().year()),
+                                 subtitle: "Across all workouts")
+    }
+    
+    private static func point(for report: ReportExerciseModel,
+                              metric: ExerciseMetricSegment,
+                              history: [ReportExerciseModel]) -> ExerciseStatisticsPoint? {
         guard let date = report.date else { return nil }
         
-        switch selectedMetric {
+        switch metric {
         case .weight:
             let sets = performedStrengthSets(in: report)
             guard !sets.isEmpty else { return nil }
@@ -212,7 +288,7 @@ final class ExerciseStatisticsViewModel: ObservableObject {
                                            date: date,
                                            value: weight,
                                            formattedValue: formattedKilograms(weight),
-                                           isPersonalRecord: isPersonalRecord(report))
+                                           isPersonalRecord: isPersonalRecord(report, history: history))
         case .volume:
             let sets = performedStrengthSets(in: report)
             guard !sets.isEmpty else { return nil }
@@ -222,16 +298,18 @@ final class ExerciseStatisticsViewModel: ObservableObject {
                                            date: date,
                                            value: volume,
                                            formattedValue: formattedKilograms(volume),
-                                           isPersonalRecord: isPersonalRecord(report))
+                                           isPersonalRecord: isPersonalRecord(report, history: history))
         case .repetitions:
-            if let weightedRepetitionPoint = weightedRepetitionPoint(for: report, date: date) {
+            if let weightedRepetitionPoint = weightedRepetitionPoint(for: report, date: date, history: history) {
                 return weightedRepetitionPoint
             }
-            return bodyweightRepetitionPoint(for: report, date: date)
+            return bodyweightRepetitionPoint(for: report, date: date, history: history)
         }
     }
     
-    private func weightedRepetitionPoint(for report: ReportExerciseModel, date: Date) -> ExerciseStatisticsPoint? {
+    private static func weightedRepetitionPoint(for report: ReportExerciseModel,
+                                                date: Date,
+                                                history: [ReportExerciseModel]) -> ExerciseStatisticsPoint? {
         let sets = performedStrengthSets(in: report)
         guard let weight = sets.map(\.weight).max() else { return nil }
         let reps = sets
@@ -244,10 +322,12 @@ final class ExerciseStatisticsViewModel: ObservableObject {
                                        date: date,
                                        value: Float(reps),
                                        formattedValue: "\(formattedNumber(weight)) kg x \(reps)",
-                                       isPersonalRecord: isPersonalRecord(report))
+                                       isPersonalRecord: isPersonalRecord(report, history: history))
     }
     
-    private func bodyweightRepetitionPoint(for report: ReportExerciseModel, date: Date) -> ExerciseStatisticsPoint? {
+    private static func bodyweightRepetitionPoint(for report: ReportExerciseModel,
+                                                  date: Date,
+                                                  history: [ReportExerciseModel]) -> ExerciseStatisticsPoint? {
         let reps = performedRepsOnlySets(in: report).max() ?? 0
         guard reps > 0 else { return nil }
         
@@ -255,11 +335,11 @@ final class ExerciseStatisticsViewModel: ObservableObject {
                                        date: date,
                                        value: Float(reps),
                                        formattedValue: "\(reps)",
-                                       isPersonalRecord: isPersonalRecord(report))
+                                       isPersonalRecord: isPersonalRecord(report, history: history))
     }
     
-    private func bestSetResult() -> ExerciseStatisticsPoint? {
-        let weightedSets = globalReports.flatMap { report -> [(report: ReportExerciseModel, date: Date, set: PerformedStrengthSet)] in
+    private static func bestSetResult(reports: [ReportExerciseModel], history: [ReportExerciseModel]) -> ExerciseStatisticsPoint? {
+        let weightedSets = reports.flatMap { report -> [(report: ReportExerciseModel, date: Date, set: PerformedStrengthSet)] in
             guard let date = report.date else { return [] }
             return performedStrengthSets(in: report).map { (report: report, date: date, set: $0) }
         }
@@ -279,19 +359,24 @@ final class ExerciseStatisticsViewModel: ObservableObject {
                                                date: bestSet.date,
                                                value: Float(bestSet.set.reps),
                                                formattedValue: "\(formattedNumber(bestSet.set.weight)) kg x \(bestSet.set.reps)",
-                                               isPersonalRecord: isPersonalRecord(bestSet.report))
+                                               isPersonalRecord: isPersonalRecord(bestSet.report, history: history))
             }
         }
         
-        return globalAllGraphPoints.max { lhs, rhs in
-            if lhs.value == rhs.value {
-                return lhs.date < rhs.date
+        return reports
+            .compactMap { report -> ExerciseStatisticsPoint? in
+                guard let date = report.date else { return nil }
+                return bodyweightRepetitionPoint(for: report, date: date, history: history)
             }
-            return lhs.value < rhs.value
-        }
+            .max { lhs, rhs in
+                if lhs.value == rhs.value {
+                    return lhs.date < rhs.date
+                }
+                return lhs.value < rhs.value
+            }
     }
     
-    private func performedStrengthSets(in report: ReportExerciseModel) -> [PerformedStrengthSet] {
+    private static func performedStrengthSets(in report: ReportExerciseModel) -> [PerformedStrengthSet] {
         report.sets.compactMap { set in
             guard let weight = ReportStatusService.weightValue(for: set.parameters),
                   let reps = ReportStatusService.repsValue(for: set.parameters),
@@ -303,7 +388,7 @@ final class ExerciseStatisticsViewModel: ObservableObject {
         }
     }
     
-    private func performedRepsOnlySets(in report: ReportExerciseModel) -> [Int] {
+    private static func performedRepsOnlySets(in report: ReportExerciseModel) -> [Int] {
         report.sets.compactMap { set in
             guard ReportStatusService.weightValue(for: set.parameters) == nil,
                   let reps = ReportStatusService.repsValue(for: set.parameters),
@@ -314,11 +399,11 @@ final class ExerciseStatisticsViewModel: ObservableObject {
         }
     }
     
-    private func isPersonalRecord(_ report: ReportExerciseModel) -> Bool {
-        ReportStatusService.calculateExerciseStatusResult(report: report, history: globalReports).status.isPersonalRecord
+    private static func isPersonalRecord(_ report: ReportExerciseModel, history: [ReportExerciseModel]) -> Bool {
+        ReportStatusService.calculateExerciseStatusResult(report: report, history: history).status.isPersonalRecord
     }
     
-    private func mergedReports(_ reports: [ReportExerciseModel], fallback: ReportExerciseModel) -> [ReportExerciseModel] {
+    private static func mergedReports(_ reports: [ReportExerciseModel], fallback: ReportExerciseModel) -> [ReportExerciseModel] {
         var result = reports
         if !result.contains(where: { $0.id == fallback.id }) {
             result.append(fallback)
@@ -326,8 +411,8 @@ final class ExerciseStatisticsViewModel: ObservableObject {
         return result.sorted { ($0.date ?? .distantPast) < ($1.date ?? .distantPast) }
     }
     
-    private func sample(points: [ExerciseStatisticsPoint], maxCount: Int) -> [ExerciseStatisticsPoint] {
-        let compressedPoints = compressPlateaus(points)
+    private static func sample(points: [ExerciseStatisticsPoint], maxCount: Int, metric: ExerciseMetricSegment) -> [ExerciseStatisticsPoint] {
+        let compressedPoints = compressPlateaus(points, metric: metric)
         guard compressedPoints.count > maxCount else { return compressedPoints }
         
         var selected = Set<UUID>()
@@ -348,7 +433,7 @@ final class ExerciseStatisticsViewModel: ObservableObject {
         return compressedPoints.filter { selected.contains($0.id) }
     }
     
-    private func compressPlateaus(_ points: [ExerciseStatisticsPoint]) -> [ExerciseStatisticsPoint] {
+    private static func compressPlateaus(_ points: [ExerciseStatisticsPoint], metric: ExerciseMetricSegment) -> [ExerciseStatisticsPoint] {
         guard points.count > 2 else { return points }
         
         var result = [ExerciseStatisticsPoint]()
@@ -359,7 +444,7 @@ final class ExerciseStatisticsViewModel: ObservableObject {
             var plateauEnd = index
             
             while plateauEnd + 1 < points.count,
-                  areSimilar(points[plateauEnd + 1].value, points[plateauStart].value) {
+                  areSimilar(points[plateauEnd + 1].value, points[plateauStart].value, metric: metric) {
                 plateauEnd += 1
             }
             
@@ -374,7 +459,7 @@ final class ExerciseStatisticsViewModel: ObservableObject {
         return result
     }
     
-    private func localExtremes(in points: [ExerciseStatisticsPoint]) -> [ExerciseStatisticsPoint] {
+    private static func localExtremes(in points: [ExerciseStatisticsPoint]) -> [ExerciseStatisticsPoint] {
         guard points.count > 2 else { return [] }
         
         return (1..<(points.count - 1)).compactMap { index in
@@ -388,7 +473,7 @@ final class ExerciseStatisticsViewModel: ObservableObject {
         }
     }
     
-    private func evenlySample(_ points: [ExerciseStatisticsPoint], maxCount: Int) -> [ExerciseStatisticsPoint] {
+    private static func evenlySample(_ points: [ExerciseStatisticsPoint], maxCount: Int) -> [ExerciseStatisticsPoint] {
         guard maxCount > 0, points.count > maxCount else { return points }
         
         return (0..<maxCount).map { slot in
@@ -397,10 +482,10 @@ final class ExerciseStatisticsViewModel: ObservableObject {
         }
     }
     
-    private func areSimilar(_ lhs: Float, _ rhs: Float) -> Bool {
+    private static func areSimilar(_ lhs: Float, _ rhs: Float, metric: ExerciseMetricSegment) -> Bool {
         let difference = abs(lhs - rhs)
         
-        switch selectedMetric {
+        switch metric {
         case .weight:
             return difference < 1
         case .volume:
@@ -411,7 +496,7 @@ final class ExerciseStatisticsViewModel: ObservableObject {
         }
     }
     
-    private func formatted(value: Float, for metric: ExerciseMetricSegment) -> String {
+    private static func formatted(value: Float, for metric: ExerciseMetricSegment) -> String {
         switch metric {
         case .weight, .volume:
             formattedKilograms(value)
@@ -420,7 +505,7 @@ final class ExerciseStatisticsViewModel: ObservableObject {
         }
     }
     
-    private func formattedChange(_ value: Float, for metric: ExerciseMetricSegment) -> String {
+    private static func formattedChange(_ value: Float, for metric: ExerciseMetricSegment) -> String {
         guard value != 0 else { return "0 \(metric.changeUnit)" }
         let sign = value > 0 ? "+" : "-"
         let absValue = abs(value)
@@ -434,11 +519,11 @@ final class ExerciseStatisticsViewModel: ObservableObject {
         }
     }
     
-    private func formattedKilograms(_ value: Float) -> String {
+    private static func formattedKilograms(_ value: Float) -> String {
         "\(formattedNumber(value)) kg"
     }
     
-    private func formattedNumber(_ value: Float) -> String {
+    private static func formattedNumber(_ value: Float) -> String {
         let number = Double(value)
         if number.rounded() == number {
             return Int(number).formatted(.number)
@@ -446,7 +531,7 @@ final class ExerciseStatisticsViewModel: ObservableObject {
         return number.formatted(.number.precision(.fractionLength(1)))
     }
     
-    private func color(for change: Float?) -> Color {
+    private static func color(for change: Float?) -> Color {
         guard let change else { return AppColor.textSecondary }
         if change > 0 { return AppColor.progressGreen }
         if change < 0 { return AppColor.progressRed }
@@ -603,6 +688,10 @@ struct PeriodSummary {
     let averageText: String
     let changeText: String
     let changeColor: Color
+    
+    static let empty = PeriodSummary(averageText: "-",
+                                     changeText: "-",
+                                     changeColor: AppColor.textSecondary)
 }
 
 struct CurrentPreviousSummary {
@@ -610,6 +699,11 @@ struct CurrentPreviousSummary {
     let previousText: String
     let changeText: String
     let changeColor: Color
+    
+    static let empty = CurrentPreviousSummary(currentText: "-",
+                                              previousText: "-",
+                                              changeText: "-",
+                                              changeColor: AppColor.textSecondary)
 }
 
 struct BestResultSummary {
@@ -617,4 +711,20 @@ struct BestResultSummary {
     let valueText: String
     let dateText: String
     let subtitle: String
+    
+    static func empty(title: String) -> BestResultSummary {
+        BestResultSummary(title: title,
+                          valueText: "-",
+                          dateText: "-",
+                          subtitle: "Across all workouts")
+    }
+}
+
+private struct PreparedStatistics {
+    let allGraphPoints: [ExerciseStatisticsPoint]
+    let globalAllGraphPoints: [ExerciseStatisticsPoint]
+    let periodGraphPoints: [ExerciseStatisticsPoint]
+    let periodSummary: PeriodSummary
+    let currentPrevious: CurrentPreviousSummary
+    let bestResult: BestResultSummary
 }

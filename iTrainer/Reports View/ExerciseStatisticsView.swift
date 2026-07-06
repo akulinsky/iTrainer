@@ -148,6 +148,16 @@ struct ExerciseStatisticsView: View {
         }
     }
     
+    private func statisticsLoadingState(height: CGFloat) -> some View {
+        VStack {
+            LoadingSpinnerView(color: AppColor.brandPrimary,
+                               size: 34,
+                               lineWidth: 3.5)
+        }
+        .frame(maxWidth: .infinity)
+        .frame(height: height)
+    }
+    
     private func chartLegendItem(color: Color, title: String) -> some View {
         HStack(spacing: 8) {
             Circle()
@@ -161,7 +171,9 @@ struct ExerciseStatisticsView: View {
     
     @ViewBuilder
     private var chartArea: some View {
-        if !viewModel.hasPeriodGraphPoints {
+        if viewModel.isPreparingStatistics {
+            statisticsLoadingState(height: 220)
+        } else if !viewModel.hasPeriodGraphPoints {
             VStack(spacing: 8) {
                 Text(viewModel.hasAnyReports ? "No data for this period" : "No statistics yet")
                     .font(AppFont.rowTitle)
@@ -273,18 +285,22 @@ struct ExerciseStatisticsView: View {
                 .font(.system(size: 21, weight: .bold))
                 .foregroundStyle(AppColor.brandPrimary)
             
-            HStack(spacing: 0) {
-                statisticColumn(title: "Average",
-                                value: viewModel.periodSummary.averageText,
-                                color: AppColor.textPrimary)
-                
-                Divider()
-                    .frame(height: 54)
-                    .padding(.horizontal, 18)
-                
-                statisticColumn(title: "Change",
-                                value: viewModel.periodSummary.changeText,
-                                color: viewModel.periodSummary.changeColor)
+            if viewModel.isPreparingStatistics {
+                statisticsLoadingState(height: 54)
+            } else {
+                HStack(spacing: 0) {
+                    statisticColumn(title: "Average",
+                                    value: viewModel.periodSummary.averageText,
+                                    color: AppColor.textPrimary)
+                    
+                    Divider()
+                        .frame(height: 54)
+                        .padding(.horizontal, 18)
+                    
+                    statisticColumn(title: "Change",
+                                    value: viewModel.periodSummary.changeText,
+                                    color: viewModel.periodSummary.changeColor)
+                }
             }
         }
         .padding(20)
