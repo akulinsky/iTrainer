@@ -9,13 +9,15 @@ import SwiftUI
 
 struct ReportExerciseView: View {
     @StateObject var viewModel: ReportExerciseViewModel
-    @Environment(\.navigation) private var navigationManager
     @State private var isBreakdownExpanded = false
     
     private let horizontalPadding: CGFloat = 20
+    private let onOpenStatistics: (ReportExerciseModel) -> Void
     
-    init(viewModel: ReportExerciseViewModel) {
+    init(viewModel: ReportExerciseViewModel,
+         onOpenStatistics: ((ReportExerciseModel) -> Void)? = nil) {
         _viewModel = StateObject(wrappedValue: viewModel)
+        self.onOpenStatistics = onOpenStatistics ?? { _ in }
     }
     
     var body: some View {
@@ -367,7 +369,7 @@ struct ReportExerciseView: View {
     
     private var statisticsButton: some View {
         Button {
-            navigationManager.path.append(ReportsRoute.exerciseStatisticsView(item: viewModel.reportExercise))
+            onOpenStatistics(viewModel.reportExercise)
         } label: {
             HStack(spacing: 16) {
                 Image("icTabReports")

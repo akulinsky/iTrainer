@@ -76,7 +76,10 @@ struct ReportDashboardView: View {
             ReportView(viewModel: ReportViewModel(report: report), onDelete: closeDeletedReport)
                 .environment(\.navigation, navigationManager)
         case .reportExerciseView(let exercise):
-            ReportExerciseView(viewModel: ReportExerciseViewModel(reportExercise: exercise))
+            ReportExerciseView(viewModel: ReportExerciseViewModel(reportExercise: exercise),
+                               onOpenStatistics: { exercise in
+                                navigationManager.path.append(ReportsRoute.exerciseStatisticsView(item: exercise))
+                               })
                 .environment(\.navigation, navigationManager)
         case .exerciseStatisticsView(let exercise):
             ExerciseStatisticsView(exercise: exercise)

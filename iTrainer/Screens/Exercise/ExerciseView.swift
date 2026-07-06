@@ -123,60 +123,97 @@ struct ExerciseView: View {
     }
     
     private var exerciseHeaderCard: some View {
-        Button {
-            isExerciseInfoPresented = true
-        } label: {
-            HStack(spacing: 14) {
-                exerciseIcon
-                
-                VStack(alignment: .leading, spacing: 7) {
-                    Text(viewModel.title)
-                        .font(AppFont.workoutGroupCardTitle)
-                        .foregroundStyle(AppColor.textPrimary)
-                        .lineLimit(2)
-                        .minimumScaleFactor(0.82)
-                    
-                    Text(exerciseMetadata)
-                        .font(AppFont.rowSubtitle)
-                        .foregroundStyle(AppColor.textSecondary)
-                        .lineLimit(1)
-                        .minimumScaleFactor(0.82)
-                    
-                    HStack(alignment: .center) {
-                        Text("Rest \(viewModel.exercise.restTime.minuteSecond)")
-                            .font(AppFont.rowSubtitle)
-                            .foregroundStyle(AppColor.textSecondary)
-                        
-                        Spacer(minLength: 12)
-                        
-                        Image(systemName: "info.circle")
-                            .font(.system(size: 20, weight: .semibold))
-                            .foregroundStyle(AppColor.textSecondary)
-                            .padding(.trailing, 2)
-                    }
-                }
-                .frame(maxWidth: .infinity, alignment: .leading)
+        VStack(spacing: 0) {
+            Button {
+                isExerciseInfoPresented = true
+            } label: {
+                exerciseHeaderContent
             }
-            .padding(12)
-            .frame(minHeight: 112)
-            .frame(maxWidth: .infinity, alignment: .leading)
-            .background(AppColor.surfacePrimary)
-            .clipShape(RoundedRectangle(cornerRadius: 14, style: .continuous))
-            .overlay {
-                RoundedRectangle(cornerRadius: 14, style: .continuous)
-                    .stroke(AppColor.separatorSoft, lineWidth: 1)
-            }
-            .contentShape(RoundedRectangle(cornerRadius: 14, style: .continuous))
+            .buttonStyle(.plain)
             .accessibilityElement(children: .combine)
             .accessibilityLabel("\(viewModel.title), \(exerciseMetadata)")
             .accessibilityHint("Open exercise information")
+            
+            if let latestReportExercise = viewModel.reportExercises.first {
+                Divider()
+                    .padding(.horizontal, 12)
+                latestReportButton(latestReportExercise)
+            }
         }
-        .buttonStyle(.plain)
+        .frame(maxWidth: .infinity, alignment: .leading)
+        .background(AppColor.surfacePrimary)
+        .clipShape(RoundedRectangle(cornerRadius: 14, style: .continuous))
+        .overlay {
+            RoundedRectangle(cornerRadius: 14, style: .continuous)
+                .stroke(AppColor.separatorSoft, lineWidth: 1)
+        }
         .navigationDestination(isPresented: $isExerciseInfoPresented) {
             if let type = viewModel.exercise.type {
                 ExerciseCatalogDetailView(model: type)
             }
         }
+    }
+    
+    private var exerciseHeaderContent: some View {
+        HStack(spacing: 14) {
+            exerciseIcon
+            
+            VStack(alignment: .leading, spacing: 7) {
+                Text(viewModel.title)
+                    .font(AppFont.workoutGroupCardTitle)
+                    .foregroundStyle(AppColor.textPrimary)
+                    .lineLimit(2)
+                    .minimumScaleFactor(0.82)
+                
+                Text(exerciseMetadata)
+                    .font(AppFont.rowSubtitle)
+                    .foregroundStyle(AppColor.textSecondary)
+                    .lineLimit(1)
+                    .minimumScaleFactor(0.82)
+                
+                HStack(alignment: .center) {
+                    Text("Rest \(viewModel.exercise.restTime.minuteSecond)")
+                        .font(AppFont.rowSubtitle)
+                        .foregroundStyle(AppColor.textSecondary)
+                    
+                    Spacer(minLength: 12)
+                    
+                    Image(systemName: "info.circle")
+                        .font(.system(size: 20, weight: .semibold))
+                        .foregroundStyle(AppColor.textSecondary)
+                        .padding(.trailing, 2)
+                }
+            }
+            .frame(maxWidth: .infinity, alignment: .leading)
+        }
+        .padding(12)
+        .frame(minHeight: 112)
+        .frame(maxWidth: .infinity, alignment: .leading)
+        .contentShape(Rectangle())
+    }
+    
+    private func latestReportButton(_ reportExercise: ReportExerciseModel) -> some View {
+        Button {
+            navigation.path.append(ExerciseListRoute.reportExerciseView(item: reportExercise))
+        } label: {
+            HStack(spacing: 10) {
+                Image(systemName: "doc.text.magnifyingglass")
+                    .font(.system(size: 16, weight: .semibold))
+                    .frame(width: 22)
+                Text("Latest report")
+                    .font(AppFont.rowTitle)
+                Spacer(minLength: 12)
+                Image(systemName: "chevron.right")
+                    .font(.system(size: 14, weight: .semibold))
+            }
+            .foregroundStyle(AppColor.brandPrimary)
+            .padding(.horizontal, 14)
+            .padding(.vertical, 12)
+            .frame(maxWidth: .infinity, alignment: .leading)
+            .contentShape(Rectangle())
+        }
+        .buttonStyle(.plain)
+        .accessibilityLabel("Latest report")
     }
     
     @ViewBuilder

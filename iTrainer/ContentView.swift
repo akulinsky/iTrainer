@@ -82,7 +82,10 @@ private struct PresentedReportView: View {
                         ReportView(viewModel: ReportViewModel(report: report), onClose: onClose, onDelete: onClose)
                             .environment(\.navigation, navigationManager)
                     case .reportExerciseView(let exercise):
-                        ReportExerciseView(viewModel: ReportExerciseViewModel(reportExercise: exercise))
+                        ReportExerciseView(viewModel: ReportExerciseViewModel(reportExercise: exercise),
+                                           onOpenStatistics: { exercise in
+                                            navigationManager.path.append(ReportsRoute.exerciseStatisticsView(item: exercise))
+                                           })
                             .environment(\.navigation, navigationManager)
                             .toolbar {
                                 ToolbarItem(placement: .navigationBarTrailing) {
