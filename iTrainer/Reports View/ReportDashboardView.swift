@@ -8,7 +8,7 @@
 import SwiftUI
 
 enum ReportsRoute: Hashable {
-    case reportsView
+    case reportsCalendarView
     case reportView(item: ReportWorkoutModel)
     case reportExerciseView(item: ReportExerciseModel)
     case exerciseStatisticsView(item: ReportExerciseModel)
@@ -39,11 +39,11 @@ struct ReportDashboardView: View {
             .toolbar {
                 ToolbarItem(placement: .navigationBarTrailing) {
                     Button {
-                        navigationManager.path.append(ReportsRoute.reportsView)
+                        navigationManager.path.append(ReportsRoute.reportsCalendarView)
                     } label: {
                         Image(systemName: "calendar.badge.clock")
                     }
-                    .accessibilityLabel("History")
+                    .accessibilityLabel("Calendar")
                 }
             }
             .navigationDestination(for: ReportsRoute.self, destination: destination)
@@ -69,8 +69,8 @@ struct ReportDashboardView: View {
     @ViewBuilder
     private func destination(for route: ReportsRoute) -> some View {
         switch route {
-        case .reportsView:
-            ReportsView()
+        case .reportsCalendarView:
+            ReportsCalendarView()
                 .environment(\.navigation, navigationManager)
         case .reportView(let report):
             ReportView(viewModel: ReportViewModel(report: report), onDelete: closeDeletedReport)

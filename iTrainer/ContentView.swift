@@ -75,8 +75,8 @@ private struct PresentedReportView: View {
                 .environment(\.navigation, navigationManager)
                 .navigationDestination(for: ReportsRoute.self) { route in
                     switch route {
-                    case .reportsView:
-                        ReportsView()
+                    case .reportsCalendarView:
+                        ReportsCalendarView()
                             .environment(\.navigation, navigationManager)
                     case .reportView(let report):
                         ReportView(viewModel: ReportViewModel(report: report), onClose: onClose, onDelete: onClose)

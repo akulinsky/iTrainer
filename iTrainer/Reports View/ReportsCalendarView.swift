@@ -1,5 +1,5 @@
 //
-//  ReportsView.swift
+//  ReportsCalendarView.swift
 //  iTrainer
 //
 //  Created by Andrey Kulinskiy on 18.09.2024.
@@ -7,60 +7,67 @@
 
 import SwiftUI
 
-struct ReportsView: View {
+struct ReportsCalendarView: View {
     
-    @StateObject var viewModel = ReportsViewModel()
+    @StateObject var viewModel = ReportsCalendarViewModel()
     @Environment(\.navigation) private var navigationManager
     
     var body: some View {
-        VStack(spacing: 0) {
-            calendar
-            reportsList
-        }
-        .background(AppColor.backgroundPrimary.ignoresSafeArea())
-        .task {
-            await viewModel.reloadData()
-        }
-        .navigationTitle("Reports")
-        .navigationBarTitleDisplayMode(.inline)
-    }
-    
-    @ViewBuilder
-    private var calendar: some View {
-        DatePicker("", selection: $viewModel.selectedDate,
-                   displayedComponents: [.date])
-            .datePickerStyle(.graphical)
-            .padding(.horizontal, 12)
-            .background(AppColor.surfacePrimary)
-    }
-    
-    @ViewBuilder
-    private var reportsList: some View {
-        List {
-            if viewModel.isLoading && viewModel.reportCards.isEmpty {
-                loadingRow
-            } else if viewModel.reportCards.isEmpty {
-                emptyRow
-            } else {
-                ForEach(viewModel.reportCards) { item in
-                    WorkoutReportCard(item: item) {
-                        navigationManager.path.append(ReportsRoute.reportView(item: item.report))
-                    }
-                    .listRowInsets(EdgeInsets(top: 7, leading: 20, bottom: 7, trailing: 20))
-                    .listRowSeparator(.hidden)
-                    .listRowBackground(AppColor.backgroundPrimary)
-                }
+        ScrollView {
+            VStack(alignment: .leading, spacing: 0) {
+                CalendarView(selectedDate: $viewModel.selectedDate,
+                             visibleMonth: $viewModel.visibleMonth,
+                             markers: viewModel.calendarMarkers,
+                             minimumMonth: viewModel.minimumMonth,
+                             maximumMonth: viewModel.maximumMonth)
+                selectedDateSection
             }
         }
-        .listStyle(.plain)
-        .scrollContentBackground(.hidden)
-        .background(AppColor.backgroundPrimary)
+        .background(AppColor.backgroundPrimary.ignoresSafeArea())
         .refreshable {
             viewModel.refreshData()
         }
+        .task {
+            await viewModel.reloadData()
+        }
+        .navigationTitle("Calendar")
+        .navigationBarTitleDisplayMode(.inline)
     }
     
-    private var loadingRow: some View {
+    private var selectedDateSection: some View {
+        VStack(alignment: .leading, spacing: 14) {
+            Text(viewModel.selectedDate.formatted(.dateTime.month(.wide).day().year()))
+                .font(.system(size: 20, weight: .bold))
+                .foregroundStyle(AppColor.brandPrimary)
+                .lineLimit(1)
+                .minimumScaleFactor(0.75)
+            
+            if viewModel.isLoading && viewModel.reportCards.isEmpty {
+                loadingCard
+            } else if viewModel.reportCards.isEmpty {
+                emptyStateCard
+            } else {
+                LazyVStack(spacing: 14) {
+                    ForEach(viewModel.reportCards) { item in
+                        WorkoutReportCard(item: item) {
+                            navigationManager.path.append(ReportsRoute.reportView(item: item.report))
+                        }
+                    }
+                }
+            }
+        }
+        .padding(.horizontal, 20)
+        .padding(.top, 20)
+        .padding(.bottom, 28)
+        .frame(maxWidth: .infinity, alignment: .leading)
+        .overlay(alignment: .top) {
+            Rectangle()
+                .fill(AppColor.separatorSoft)
+                .frame(height: 1)
+        }
+    }
+    
+    private var loadingCard: some View {
         VStack(spacing: 14) {
             LoadingSpinnerView(color: AppColor.brandPrimary,
                                size: 44,
@@ -77,14 +84,11 @@ struct ReportsView: View {
             RoundedRectangle(cornerRadius: 14, style: .continuous)
                 .stroke(AppColor.separatorSoft, lineWidth: 1)
         }
-        .listRowInsets(EdgeInsets(top: 7, leading: 20, bottom: 7, trailing: 20))
-        .listRowSeparator(.hidden)
-        .listRowBackground(AppColor.backgroundPrimary)
     }
     
-    private var emptyRow: some View {
+    private var emptyStateCard: some View {
         VStack(alignment: .leading, spacing: 8) {
-            Text("No reports for this day")
+            Text("No workouts on this date")
                 .font(AppFont.rowTitle)
                 .foregroundStyle(AppColor.textPrimary)
             Text("Completed workouts will appear here.")
@@ -99,14 +103,11 @@ struct ReportsView: View {
             RoundedRectangle(cornerRadius: 14, style: .continuous)
                 .stroke(AppColor.separatorSoft, lineWidth: 1)
         }
-        .listRowInsets(EdgeInsets(top: 7, leading: 20, bottom: 7, trailing: 20))
-        .listRowSeparator(.hidden)
-        .listRowBackground(AppColor.backgroundPrimary)
     }
 }
 
 #Preview {
     NavigationStack {
-        ReportsView()
+        ReportsCalendarView()
     }
 }

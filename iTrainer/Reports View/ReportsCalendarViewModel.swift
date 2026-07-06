@@ -1,5 +1,5 @@
 //
-//  ReportsViewModel.swift
+//  ReportsCalendarViewModel.swift
 //  iTrainer
 //
 //  Created by Andrey Kulinskiy on 18.09.2024.
@@ -8,16 +8,33 @@
 import Foundation
 
 @MainActor
-final class ReportsViewModel: ObservableObject {
+final class ReportsCalendarViewModel: ObservableObject {
     
     // MARK: - Properties
     
     @Published private(set) var reportCards = [WorkoutReportCardItem]()
+    @Published private(set) var calendarMarkers = [Date: CalendarDateMarker]()
+    @Published private(set) var minimumMonth = Date()
+    @Published private(set) var maximumMonth = Date()
     @Published private(set) var isLoading = false
     @Published var isShowAlert = false
     @Published var selectedDate = Date() {
         didSet {
+            let normalizedDate = calendar.startOfDay(for: selectedDate)
+            guard selectedDate == normalizedDate else {
+                selectedDate = normalizedDate
+                return
+            }
             applySelectedDate()
+        }
+    }
+    @Published var visibleMonth = Date() {
+        didSet {
+            let normalizedMonth = calendar.calendarControlStartOfMonth(for: visibleMonth)
+            guard visibleMonth == normalizedMonth else {
+                visibleMonth = normalizedMonth
+                return
+            }
         }
     }
     
@@ -29,6 +46,11 @@ final class ReportsViewModel: ObservableObject {
     
     init(calendar: Calendar = .current) {
         self.calendar = calendar
+        let today = calendar.startOfDay(for: Date())
+        self.selectedDate = today
+        self.visibleMonth = calendar.calendarControlStartOfMonth(for: today)
+        self.minimumMonth = calendar.calendarControlStartOfMonth(for: today)
+        self.maximumMonth = calendar.calendarControlStartOfMonth(for: today)
     }
     
     // MARK: - Public Methods
@@ -55,6 +77,7 @@ final class ReportsViewModel: ObservableObject {
         
         preparedRows = rows
         hasLoadedReports = true
+        rebuildCalendarState()
         applySelectedDate()
         isLoading = false
     }
@@ -64,6 +87,42 @@ final class ReportsViewModel: ObservableObject {
     }
     
     // MARK: - Private Methods
+    
+    private func rebuildCalendarState() {
+        maximumMonth = calendar.calendarControlStartOfMonth(for: Date())
+        minimumMonth = firstReportMonth() ?? maximumMonth
+        visibleMonth = calendar.calendarControlClampedMonth(visibleMonth,
+                                             minimumMonth: minimumMonth,
+                                             maximumMonth: maximumMonth)
+        selectedDate = calendar.calendarControlDate(in: visibleMonth, matchingDayFrom: selectedDate)
+        calendarMarkers = buildCalendarMarkers()
+    }
+    
+    private func firstReportMonth() -> Date? {
+        preparedRows
+            .compactMap { $0.report.startDate }
+            .min()
+            .map { calendar.calendarControlStartOfMonth(for: $0) }
+    }
+    
+    private func buildCalendarMarkers() -> [Date: CalendarDateMarker] {
+        let datedMarkers = preparedRows.compactMap { row -> (date: Date, marker: CalendarDateMarker)? in
+            guard let startDate = row.report.startDate else { return nil }
+            return (calendar.startOfDay(for: startDate), marker(for: row))
+        }
+        let groupedMarkers = Dictionary(grouping: datedMarkers, by: \.date).mapValues { values in
+            values.map(\.marker)
+        }
+        
+        return groupedMarkers.compactMapValues(CalendarDateMarker.merged)
+    }
+    
+    private func marker(for row: ReportDashboardPreparedRow) -> CalendarDateMarker {
+        if case .personalRecord = row.workoutStatus {
+            return .personalRecord
+        }
+        return .workout
+    }
     
     private func applySelectedDate() {
         reportCards = preparedRows
