@@ -11,7 +11,6 @@ enum ExerciseListRoute: Hashable {
     case exerciseView(item: ExerciseModel)
     case reportExerciseView(item: ReportExerciseModel)
     case exerciseStatisticsView(item: ReportExerciseModel)
-    case exerciseTypeStatisticsView(typeId: String)
 }
 
 struct ExerciseListView: View {
@@ -158,10 +157,6 @@ struct ExerciseListView: View {
                                        })
                 case .exerciseStatisticsView(let model):
                     ExerciseStatisticsView(exercise: model)
-                case .exerciseTypeStatisticsView(let typeId):
-                    if let exerciseType = DataContainer.shared.arrayExercises.first(where: { $0.id == typeId }) {
-                        ExerciseStatisticsView(exerciseType: exerciseType)
-                    }
                 }
             })
     }

@@ -11,6 +11,8 @@ struct ExerciseCatalogDetailView: View {
     
     let model: ExerciseTypeModel
     
+    @State private var isStatisticsPresented = false
+    
     private let horizontalPadding: CGFloat = 20
     private let cardCornerRadius: CGFloat = 14
     private let exerciseInfo: ExerciseInfo?
@@ -34,7 +36,7 @@ struct ExerciseCatalogDetailView: View {
                                       parameters: parametersText,
                                       cornerRadius: cardCornerRadius)
                 ExerciseStatisticsNavigationCard(cornerRadius: cardCornerRadius,
-                                                 action: { onOpenStatistics?() })
+                                                 action: openStatistics)
                 
                 if exerciseInfo == nil {
                     ExerciseMissingInfoCard(exerciseId: model.id,
@@ -58,6 +60,17 @@ struct ExerciseCatalogDetailView: View {
         .background(AppColor.backgroundPrimary.ignoresSafeArea())
         .navigationTitle(model.displayName)
         .navigationBarTitleDisplayMode(.inline)
+        .navigationDestination(isPresented: $isStatisticsPresented) {
+            ExerciseStatisticsView(exerciseType: model)
+        }
+    }
+    
+    private func openStatistics() {
+        if let onOpenStatistics {
+            onOpenStatistics()
+        } else {
+            isStatisticsPresented = true
+        }
     }
     
     private var parametersText: String {
