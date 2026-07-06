@@ -21,7 +21,7 @@ struct CalendarMonthGridView: View {
     var body: some View {
         VStack(spacing: 8) {
             weekdayRow
-            LazyVGrid(columns: columns, spacing: 7) {
+            LazyVGrid(columns: columns, spacing: 5) {
                 ForEach(days) { day in
                     CalendarDayCell(day: day) {
                         if let date = day.date {
@@ -31,6 +31,7 @@ struct CalendarMonthGridView: View {
                 }
             }
         }
+        .frame(maxHeight: .infinity, alignment: .top)
     }
     
     private var weekdayRow: some View {

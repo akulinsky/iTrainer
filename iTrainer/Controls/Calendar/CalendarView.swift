@@ -109,7 +109,6 @@ struct CalendarView: View {
                                                  maximumMonth: maximumMonth)
         guard !calendar.calendarControlIsMonth(clampedMonth, sameAs: visibleMonth) else { return }
         visibleMonth = clampedMonth
-        selectedDate = calendar.calendarControlDate(in: clampedMonth, matchingDayFrom: selectedDate)
     }
     
     private func clampCurrentMonth() {
@@ -118,7 +117,6 @@ struct CalendarView: View {
                                                  maximumMonth: maximumMonth)
         if !calendar.calendarControlIsMonth(clampedMonth, sameAs: visibleMonth) {
             visibleMonth = clampedMonth
-            selectedDate = calendar.calendarControlDate(in: clampedMonth, matchingDayFrom: selectedDate)
         }
     }
 }
@@ -130,6 +128,6 @@ struct CalendarView: View {
     CalendarView(selectedDate: $selectedDate,
                  visibleMonth: $visibleMonth,
                  markers: [Calendar.current.startOfDay(for: Date()): .personalRecord],
-                 minimumMonth: Calendar.current.date(byAdding: .month, value: -3, to: Date()) ?? Date(),
+                 minimumMonth: Calendar.current.date(byAdding: .month, value: -6, to: Date()) ?? Date(),
                  maximumMonth: Date())
 }

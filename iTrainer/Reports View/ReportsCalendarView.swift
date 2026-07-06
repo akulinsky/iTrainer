@@ -32,6 +32,14 @@ struct ReportsCalendarView: View {
         }
         .navigationTitle("Calendar")
         .navigationBarTitleDisplayMode(.inline)
+        .toolbar {
+            ToolbarItem(placement: .navigationBarTrailing) {
+                Button("Today") {
+                    viewModel.selectToday()
+                }
+                .disabled(viewModel.isTodaySelected)
+            }
+        }
     }
     
     private var selectedDateSection: some View {

@@ -11,7 +11,7 @@ struct CalendarDayCell: View {
     let day: CalendarDay
     let action: () -> Void
     
-    private let selectionSize: CGFloat = 36
+    private let selectionSize: CGFloat = 34
     private let markerSize: CGFloat = 7
     
     var body: some View {
@@ -26,7 +26,7 @@ struct CalendarDayCell: View {
                 markerSlot
             }
             .frame(maxWidth: .infinity)
-            .frame(height: 46)
+            .frame(height: 43)
             .contentShape(Rectangle())
         }
         .buttonStyle(.plain)

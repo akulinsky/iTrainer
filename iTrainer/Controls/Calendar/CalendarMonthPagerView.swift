@@ -17,24 +17,33 @@ struct CalendarMonthPagerView: View {
     let calendar: Calendar
     
     @State private var pageIndex = 1
+    @State private var isRecentering = false
     
     var body: some View {
         TabView(selection: $pageIndex) {
-            monthGrid(offset: -1)
-                .tag(0)
+            if canMovePrevious {
+                monthGrid(offset: -1)
+                    .tag(0)
+            }
             monthGrid(offset: 0)
                 .tag(1)
-            monthGrid(offset: 1)
-                .tag(2)
+            if canMoveNext {
+                monthGrid(offset: 1)
+                    .tag(2)
+            }
         }
         .tabViewStyle(.page(indexDisplayMode: .never))
         .frame(height: 318)
         .onChange(of: pageIndex) { _, newValue in
+            if isRecentering {
+                resetToCenterPage()
+                return
+            }
             handlePageChange(newValue)
         }
         .onChange(of: visibleMonth) {
             if pageIndex != 1 {
-                pageIndex = 1
+                resetToCenterPage()
             }
         }
     }
@@ -48,6 +57,18 @@ struct CalendarMonthPagerView: View {
                               onSelectDate: selectDate)
     }
     
+    private var canMovePrevious: Bool {
+        calendar.compare(calendar.calendarControlStartOfMonth(for: visibleMonth),
+                         to: calendar.calendarControlStartOfMonth(for: minimumMonth),
+                         toGranularity: .month) == .orderedDescending
+    }
+    
+    private var canMoveNext: Bool {
+        calendar.compare(calendar.calendarControlStartOfMonth(for: visibleMonth),
+                         to: calendar.calendarControlStartOfMonth(for: maximumMonth),
+                         toGranularity: .month) == .orderedAscending
+    }
+    
     private func displayMonth(for offset: Int) -> Date {
         let targetMonth = calendar.calendarControlDateByAddingMonths(offset, to: visibleMonth)
         return calendar.calendarControlClampedMonth(targetMonth,
@@ -57,6 +78,8 @@ struct CalendarMonthPagerView: View {
     
     private func handlePageChange(_ newValue: Int) {
         guard newValue != 1 else { return }
+        isRecentering = true
+        
         let offset = newValue - 1
         let targetMonth = calendar.calendarControlDateByAddingMonths(offset, to: visibleMonth)
         let clampedMonth = calendar.calendarControlClampedMonth(targetMonth,
@@ -65,11 +88,21 @@ struct CalendarMonthPagerView: View {
         
         if !calendar.calendarControlIsMonth(clampedMonth, sameAs: visibleMonth) {
             visibleMonth = clampedMonth
-            selectedDate = calendar.calendarControlDate(in: clampedMonth, matchingDayFrom: selectedDate)
         }
         
+        resetToCenterPage()
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.22) {
+            isRecentering = false
+        }
+    }
+    
+    private func resetToCenterPage() {
         DispatchQueue.main.async {
-            pageIndex = 1
+            var transaction = Transaction()
+            transaction.disablesAnimations = true
+            withTransaction(transaction) {
+                pageIndex = 1
+            }
         }
     }
     

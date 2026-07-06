@@ -40,6 +40,10 @@ final class ReportsCalendarViewModel: ObservableObject {
     
     var errorMessage: String? = nil
     
+    var isTodaySelected: Bool {
+        calendar.isDate(selectedDate, inSameDayAs: Date()) && calendar.calendarControlIsMonth(visibleMonth, sameAs: Date())
+    }
+    
     private var preparedRows = [ReportDashboardPreparedRow]()
     private var hasLoadedReports = false
     private let calendar: Calendar
@@ -86,6 +90,12 @@ final class ReportsCalendarViewModel: ObservableObject {
         reloadData(force: true)
     }
     
+    func selectToday() {
+        let today = calendar.startOfDay(for: Date())
+        selectedDate = today
+        visibleMonth = calendar.calendarControlStartOfMonth(for: today)
+    }
+    
     // MARK: - Private Methods
     
     private func rebuildCalendarState() {
@@ -94,7 +104,6 @@ final class ReportsCalendarViewModel: ObservableObject {
         visibleMonth = calendar.calendarControlClampedMonth(visibleMonth,
                                              minimumMonth: minimumMonth,
                                              maximumMonth: maximumMonth)
-        selectedDate = calendar.calendarControlDate(in: visibleMonth, matchingDayFrom: selectedDate)
         calendarMarkers = buildCalendarMarkers()
     }
     
