@@ -62,10 +62,10 @@ final class ReportDashboardViewModel: ObservableObject {
     func reloadReports() async {
         
         isLoading = true
-        let dataManager = DataManagerBackground(container: DataContainer.shared.sharedModelContainer)
-        let snapshots = await dataManager.fetchCompletedReportDashboardSnapshots()
         let rows = await Task.detached(priority: .userInitiated) {
-            ReportDashboardDataBuilder().buildRows(from: snapshots)
+            let dataManager = DataManagerBackground(container: DataContainer.shared.sharedModelContainer)
+            let snapshots = await dataManager.fetchCompletedReportDashboardSnapshots()
+            return ReportDashboardDataBuilder().buildRows(from: snapshots)
         }.value
         
         preparedRows = rows
