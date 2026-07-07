@@ -250,6 +250,7 @@ struct ExerciseListView: View {
                 switch item {
                 case .exerciseView(let model):
                     ExerciseView(viewModel: ExerciseViewModel(exercise: model))
+                        .id(model.id)
                         .environment(\.navigation, navigation)
                 case .reportExerciseView(let model):
                     ReportExerciseView(viewModel: ReportExerciseViewModel(reportExercise: model),

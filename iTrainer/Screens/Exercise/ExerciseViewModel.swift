@@ -60,6 +60,20 @@ class ExerciseViewModel: ObservableObject {
     
     @Published var activeReportSetCount = 0
     
+    @Published var nextExercise: ExerciseModel?
+    
+    var hasTargetSets: Bool {
+        !sets.isEmpty
+    }
+    
+    var isTargetCompleted: Bool {
+        hasTargetSets && activeReportSetCount >= sets.count
+    }
+    
+    var shouldShowCompletedGoalActions: Bool {
+        isActiveWorkoutExercise && isTargetCompleted
+    }
+    
     var paramsData = [ParamData]()
     
     var editSets: SetsModel?
@@ -88,13 +102,22 @@ class ExerciseViewModel: ObservableObject {
             if let model = await dataManager.fetchExercise(with: exercise.id) {
                 let exerciseModel = ExerciseModel(model: model)
                 let startedWorkout = await dataManager.fetchStartedWorkout()
-                let isActiveWorkoutExercise = startedWorkout?.workoutGroupId == model.workoutGroup?.id
+                let workoutGroupId = model.workoutGroup?.id
+                let isActiveWorkoutExercise = startedWorkout?.workoutGroupId == workoutGroupId
                 let activeReportSetCount = startedWorkout?.exercises.first(where: { $0.exerciseId == model.id })?.reportSets.count ?? 0
+                var nextExerciseModel: ExerciseModel?
+                if isActiveWorkoutExercise, let workoutGroupId {
+                    nextExerciseModel = await dataManager.fetchExercises(for: workoutGroupId)
+                        .first { !$0.isHeadline && $0.index > model.index }
+                        .map { ExerciseModel(model: $0) }
+                }
+                let resolvedNextExercise = nextExerciseModel
                 
                 await MainActor.run {
                     exercise = exerciseModel
                     self.isActiveWorkoutExercise = isActiveWorkoutExercise
                     self.activeReportSetCount = activeReportSetCount
+                    self.nextExercise = isActiveWorkoutExercise ? resolvedNextExercise : nil
                     
                     if paramsData.isEmpty {
                         for param in exercise.type!.parameters {

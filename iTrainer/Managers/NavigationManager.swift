@@ -45,6 +45,13 @@ final class NavigationManager: ObservableObject {
             // Handle error.
         }
     }
+    
+    func replaceLast<Value: Hashable>(with value: Value) {
+        if !path.isEmpty {
+            path.removeLast()
+        }
+        path.append(value)
+    }
 }
 
 extension EnvironmentValues {

@@ -10,6 +10,30 @@ import Combine
 
 struct ExerciseView: View {
     
+    @State private var currentExercise: ExerciseModel
+    
+    init(viewModel: ExerciseViewModel) {
+        _currentExercise = State(initialValue: viewModel.exercise)
+    }
+    
+    var body: some View {
+        ZStack {
+            ExerciseContentView(viewModel: ExerciseViewModel(exercise: currentExercise)) { nextExercise in
+                withAnimation(.easeInOut(duration: 0.28)) {
+                    currentExercise = nextExercise
+                }
+            }
+            .id(currentExercise.id)
+            .transition(.asymmetric(
+                insertion: .move(edge: .trailing).combined(with: .opacity),
+                removal: .move(edge: .leading).combined(with: .opacity)
+            ))
+        }
+    }
+}
+
+private struct ExerciseContentView: View {
+    
     @EnvironmentObject var workoutManager: WorkoutManager
     
     @Environment(AppState.self) private var appState
@@ -26,8 +50,11 @@ struct ExerciseView: View {
     
     @FocusState private var focusedParamId: Int?
     
-    init(viewModel: ExerciseViewModel) {
+    private let onNextExercise: (ExerciseModel) -> Void
+    
+    init(viewModel: ExerciseViewModel, onNextExercise: @escaping (ExerciseModel) -> Void) {
         _viewModel = StateObject(wrappedValue: viewModel)
+        self.onNextExercise = onNextExercise
     }
     
     var body: some View {
@@ -299,29 +326,31 @@ struct ExerciseView: View {
         return index < viewModel.activeReportSetCount ? .completed : .pending
     }
     
+    private var shouldShowCompletedGoalActions: Bool {
+        workoutManager.isWorkoutInProgress && viewModel.shouldShowCompletedGoalActions
+    }
+    
     private var addResultSection: some View {
         VStack(alignment: .leading, spacing: 10) {
             sectionTitle("Add result")
             
-            HStack(spacing: 10) {
-                ForEach($viewModel.paramsData) { $item in
-                    addResultTextField(item: item, value: $item.value)
+            VStack(spacing: 10) {
+                HStack(spacing: 10) {
+                    ForEach($viewModel.paramsData) { $item in
+                        addResultTextField(item: item, value: $item.value)
+                    }
+                    
+                    if !shouldShowCompletedGoalActions {
+                        compactAddResultButton
+                    }
                 }
                 
-                Button(action: prepareToSave) {
-                    HStack(spacing: 5) {
-                        Image(systemName: "plus.circle")
-                        Text("Add")
-                    }
-                    .font(AppFont.rowTitle)
-                    .foregroundStyle(.white)
-                    .frame(width: 92)
-                    .frame(height: 48)
-                    .background(AppColor.brandPrimary)
-                    .clipShape(RoundedRectangle(cornerRadius: 10, style: .continuous))
+                if shouldShowCompletedGoalActions {
+                    completedGoalActionButtons
+                        .transition(.move(edge: .bottom).combined(with: .opacity))
                 }
-                .buttonStyle(.plain)
             }
+            .animation(.easeInOut(duration: 0.22), value: shouldShowCompletedGoalActions)
             .padding(12)
             .background(AppColor.surfacePrimary)
             .clipShape(RoundedRectangle(cornerRadius: 14, style: .continuous))
@@ -330,6 +359,67 @@ struct ExerciseView: View {
                     .stroke(AppColor.separatorSoft, lineWidth: 1)
             }
         }
+    }
+    
+    private var compactAddResultButton: some View {
+        Button(action: prepareToSave) {
+            HStack(spacing: 5) {
+                Image(systemName: "plus.circle")
+                Text("Add")
+            }
+            .font(AppFont.rowTitle)
+            .foregroundStyle(.white)
+            .frame(width: 92)
+            .frame(height: 48)
+            .background(AppColor.brandPrimary)
+            .clipShape(RoundedRectangle(cornerRadius: 10, style: .continuous))
+        }
+        .buttonStyle(.plain)
+    }
+    
+    private var completedGoalActionButtons: some View {
+        HStack(spacing: 10) {
+            resultActionButton(title: "Add result",
+                               systemImage: "plus.circle",
+                               foreground: AppColor.brandPrimary,
+                               background: AppColor.surfacePrimary,
+                               border: AppColor.brandPrimary,
+                               action: prepareToSave)
+            
+            resultActionButton(title: viewModel.nextExercise == nil ? "Finish workout" : "Next exercise",
+                               systemImage: viewModel.nextExercise == nil ? "flag.checkered" : "arrow.right.circle",
+                               foreground: .white,
+                               background: viewModel.nextExercise == nil ? AppColor.workoutGreen : AppColor.brandPrimary,
+                               border: .clear,
+                               action: viewModel.nextExercise == nil ? finishWorkout : goToNextExercise)
+        }
+    }
+    
+    private func resultActionButton(title: String,
+                                    systemImage: String,
+                                    foreground: Color,
+                                    background: Color,
+                                    border: Color,
+                                    action: @escaping () -> Void) -> some View {
+        Button(action: action) {
+            HStack(spacing: 6) {
+                Image(systemName: systemImage)
+                Text(title)
+                    .lineLimit(1)
+                    .minimumScaleFactor(0.82)
+            }
+            .font(AppFont.rowTitle)
+            .foregroundStyle(foreground)
+            .frame(maxWidth: .infinity)
+            .frame(height: 48)
+            .background(background)
+            .clipShape(RoundedRectangle(cornerRadius: 10, style: .continuous))
+            .overlay {
+                RoundedRectangle(cornerRadius: 10, style: .continuous)
+                    .stroke(border, lineWidth: 1)
+            }
+        }
+        .buttonStyle(.plain)
     }
     
     private func addResultTextField(item: ExerciseViewModel.ParamData, value: Binding<String>) -> some View {
@@ -454,6 +544,14 @@ struct ExerciseView: View {
         }
     }
     
+    private func goToNextExercise() {
+        guard let nextExercise = viewModel.nextExercise else {
+            return
+        }
+        
+        onNextExercise(nextExercise)
+    }
+    
     private func navigateToActiveExercise() {
         guard let activeExerciseId = workoutManager.activeExerciseId else {
             return
@@ -470,7 +568,7 @@ struct ExerciseView: View {
             }
             
             await MainActor.run {
-                navigation.path.append(ExerciseListRoute.exerciseView(item: exercise))
+                onNextExercise(exercise)
             }
         }
     }
