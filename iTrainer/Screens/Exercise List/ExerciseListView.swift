@@ -339,8 +339,6 @@ struct ExerciseListView: View {
         if !item.isHeadline {
             Button(role: .destructive) {
                 viewModel.delete(exercise: item)
-            } label: {
-                Label("Delete", systemImage: "trash")
             }
             .tint(.red)
             
