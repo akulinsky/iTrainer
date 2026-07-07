@@ -109,6 +109,10 @@ final class ExerciseStatisticsViewModel: ObservableObject {
         min(max(Int(width / 28) + 4, 8), 22)
     }
     
+    func maxExpandedVisiblePoints(for width: CGFloat) -> Int {
+        min(max(Int(width / 18) + 8, 18), 48)
+    }
+    
     func xDomain(for points: [ExerciseStatisticsPoint]) -> ClosedRange<Date> {
         guard let firstDate = points.first?.date,
               let lastDate = points.last?.date else {

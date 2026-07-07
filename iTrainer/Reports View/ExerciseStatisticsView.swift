@@ -10,6 +10,7 @@ import Charts
 
 struct ExerciseStatisticsView: View {
     @StateObject private var viewModel: ExerciseStatisticsViewModel
+    @State private var isExpandedChartPresented = false
     
     init(exercise: ReportExerciseModel) {
         _viewModel = StateObject(wrappedValue: ExerciseStatisticsViewModel(exercise: exercise))
@@ -42,6 +43,11 @@ struct ExerciseStatisticsView: View {
         .background(AppColor.backgroundPrimary.ignoresSafeArea())
         .navigationTitle("Statistics")
         .navigationBarTitleDisplayMode(.inline)
+        .fullScreenCover(isPresented: $isExpandedChartPresented) {
+            ExerciseStatisticsExpandedChartView(viewModel: viewModel) {
+                isExpandedChartPresented = false
+            }
+        }
         .task {
             await viewModel.reloadData()
         }
@@ -129,6 +135,14 @@ struct ExerciseStatisticsView: View {
             }
             
             chartArea
+                .contentShape(Rectangle())
+                .onTapGesture {
+                    guard !viewModel.isPreparingStatistics,
+                          viewModel.hasPeriodGraphPoints else { return }
+                    withAnimation(.spring(response: 0.34, dampingFraction: 0.9)) {
+                        isExpandedChartPresented = true
+                    }
+                }
             
             HStack(spacing: 18) {
                 chartLegendItem(color: AppColor.brandPrimary, title: "Workout")
