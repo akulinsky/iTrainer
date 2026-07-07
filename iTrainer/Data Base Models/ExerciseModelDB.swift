@@ -15,6 +15,8 @@ class ExerciseModelDB: DataItemProtocol, PersistentProtocol {
     var title: String?
     var typeId: String = ""
     var restTime: TimeInterval?
+    var isArchived: Bool = false
+    var archivedAt: Date?
     
     var isHeadline: Bool = false
     

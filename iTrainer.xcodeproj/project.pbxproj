@@ -89,6 +89,8 @@
 		F6CB90432C7794BF002529A6 /* SetEditCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6CB90422C7794BF002529A6 /* SetEditCell.swift */; };
 		F6CCEE062FFD27A300686CFB /* LocalNotificationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6CCEE052FFD27A300686CFB /* LocalNotificationManager.swift */; };
 		F6CCEE082FFD374000686CFB /* ExerciseStatisticsExpandedChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6CCEE072FFD374000686CFB /* ExerciseStatisticsExpandedChartView.swift */; };
+		F6CCEE0A2FFD547000686CFB /* HiddenExerciseCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6CCEE092FFD547000686CFB /* HiddenExerciseCell.swift */; };
+		F6CCEE0C2FFD547B00686CFB /* HiddenExercisesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6CCEE0B2FFD547B00686CFB /* HiddenExercisesView.swift */; };
 		F6DD68AB2C64FF71004EFB03 /* ExerciseTypeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6DD68AA2C64FF71004EFB03 /* ExerciseTypeView.swift */; };
 		F6DD68AD2C6503C9004EFB03 /* ExerciseTypeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6DD68AC2C6503C9004EFB03 /* ExerciseTypeCell.swift */; };
 		F6DD68AF2C65050A004EFB03 /* ExerciseTypeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6DD68AE2C65050A004EFB03 /* ExerciseTypeViewModel.swift */; };
@@ -218,6 +220,8 @@
 		F6CB90422C7794BF002529A6 /* SetEditCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetEditCell.swift; sourceTree = "<group>"; };
 		F6CCEE052FFD27A300686CFB /* LocalNotificationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalNotificationManager.swift; sourceTree = "<group>"; };
 		F6CCEE072FFD374000686CFB /* ExerciseStatisticsExpandedChartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseStatisticsExpandedChartView.swift; sourceTree = "<group>"; };
+		F6CCEE092FFD547000686CFB /* HiddenExerciseCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HiddenExerciseCell.swift; sourceTree = "<group>"; };
+		F6CCEE0B2FFD547B00686CFB /* HiddenExercisesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HiddenExercisesView.swift; sourceTree = "<group>"; };
 		F6DD68AA2C64FF71004EFB03 /* ExerciseTypeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseTypeView.swift; sourceTree = "<group>"; };
 		F6DD68AC2C6503C9004EFB03 /* ExerciseTypeCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseTypeCell.swift; sourceTree = "<group>"; };
 		F6DD68AE2C65050A004EFB03 /* ExerciseTypeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseTypeViewModel.swift; sourceTree = "<group>"; };
@@ -532,6 +536,8 @@
 				F6EA7BDB2C57DDF0005225A0 /* ExerciseListView.swift */,
 				F6EA7BDD2C57DE6F005225A0 /* ExerciseCell.swift */,
 				F6EA7BDF2C57DEF6005225A0 /* ExerciseListViewModel.swift */,
+				F6CCEE092FFD547000686CFB /* HiddenExerciseCell.swift */,
+				F6CCEE0B2FFD547B00686CFB /* HiddenExercisesView.swift */,
 			);
 			path = "Exercise List";
 			sourceTree = "<group>";
@@ -794,6 +800,7 @@
 				F69BD1142C5500580057080E /* ServiceRouter.swift in Sources */,
 				F6EA7BCE2C57ACEF005225A0 /* WorkoutGroupModel.swift in Sources */,
 				F6EA7BD02C57AD03005225A0 /* ExerciseModel.swift in Sources */,
+				F6CCEE0C2FFD547B00686CFB /* HiddenExercisesView.swift in Sources */,
 				F648969E2FE71522005B0619 /* DatabaseSeeder.swift in Sources */,
 				F6F4CF282C6B71D600A5BBA9 /* ExerciseTypeListView.swift in Sources */,
 				F6F1E08D2C9DCA3500C1419A /* ReportExerciseCell.swift in Sources */,
@@ -823,6 +830,7 @@
 				F66CBE322C8DEA2A0025B87F /* ReportWorkoutModel.swift in Sources */,
 				F6DD68B12C650CAE004EFB03 /* ExerciseCategoryView.swift in Sources */,
 				F69BD0FF2C54FBC10057080E /* View+Utils.swift in Sources */,
+				F6CCEE0A2FFD547000686CFB /* HiddenExerciseCell.swift in Sources */,
 				F69BD1012C54FBEE0057080E /* NetworkUtils.swift in Sources */,
 				F625F2B12FF8F6920074FE79 /* ExerciseStatisticsViewModel.swift in Sources */,
 				F6536BF42FEB10080041B40B /* WorkoutStatusWidget.swift in Sources */,

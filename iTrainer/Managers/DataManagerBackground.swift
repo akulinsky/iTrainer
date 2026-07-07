@@ -141,6 +141,17 @@ extension DataManagerBackground {
     }
     
     func fetchExercises(for workoutGroupId: UUID) -> [ExerciseModelDB] {
+        return fetchModels(predicate: #Predicate<ExerciseModelDB> { $0.workoutGroup?.id == workoutGroupId && !$0.isArchived },
+                           sortBy: [SortDescriptor(\ExerciseModelDB.index, order: .forward)])
+    }
+    
+    func fetchHiddenExercises(for workoutGroupId: UUID) -> [ExerciseModelDB] {
+        return fetchModels(predicate: #Predicate<ExerciseModelDB> { $0.workoutGroup?.id == workoutGroupId && $0.isArchived },
+                           sortBy: [SortDescriptor(\ExerciseModelDB.archivedAt, order: .reverse),
+                                    SortDescriptor(\ExerciseModelDB.index, order: .forward)])
+    }
+    
+    func fetchAllExercises(for workoutGroupId: UUID) -> [ExerciseModelDB] {
         return fetchModels(predicate: #Predicate<ExerciseModelDB> { $0.workoutGroup?.id == workoutGroupId },
                            sortBy: [SortDescriptor(\ExerciseModelDB.index, order: .forward)])
     }
@@ -441,6 +452,8 @@ extension DataManagerBackground {
         if let item = fetchItem(predicate: #Predicate<ExerciseModelDB> { $0.id == uuid }) {
             item.title = exercise.title
             item.restTime = exercise.restTime
+            item.isArchived = exercise.isArchived
+            item.archivedAt = exercise.archivedAt
         } else if let groupId = groupId,
                     let groupModel = fetchItem(predicate: #Predicate<WorkoutGroupModelDB> { $0.id == groupId }) {
             let item = ExerciseModelDB()
@@ -451,6 +464,8 @@ extension DataManagerBackground {
             item.restTime = exercise.restTime
             item.typeId = exercise.typeId
             item.isHeadline = exercise.isHeadline
+            item.isArchived = exercise.isArchived
+            item.archivedAt = exercise.archivedAt
         } else {
             assertionFailure("Can't update the ExerciseModel, because the groupId == nil")
         }
@@ -465,6 +480,64 @@ extension DataManagerBackground {
             update(exercise: model, groupId: groupId, withSaving: false)
         }
         save()
+    }
+    
+    func addExercises(typeIds: [String], groupId: UUID) -> [UUID] {
+        guard let groupModel = fetchItem(predicate: #Predicate<WorkoutGroupModelDB> { $0.id == groupId }) else {
+            assertionFailure("Can't add exercises, because group was not found")
+            return []
+        }
+        
+        let activeExercises = fetchExercises(for: groupId)
+        var nextIndex = (activeExercises.map(\.index).max() ?? 0) + 1
+        var createdIds = [UUID]()
+        
+        for typeId in typeIds {
+            let item = ExerciseModelDB()
+            item.workoutGroup = groupModel
+            insert(model: item)
+            item.index = nextIndex
+            item.typeId = typeId
+            item.isHeadline = false
+            item.isArchived = false
+            item.archivedAt = nil
+            createdIds.append(item.id)
+            nextIndex += 1
+        }
+        
+        save()
+        return createdIds
+    }
+    
+    func hideExercise(with id: UUID) {
+        guard let item = fetchItem(predicate: #Predicate<ExerciseModelDB> { $0.id == id }) else {
+            return
+        }
+        item.isArchived = true
+        item.archivedAt = Date()
+        save()
+    }
+    
+    func restoreExercise(with id: UUID) -> UUID? {
+        guard let item = fetchItem(predicate: #Predicate<ExerciseModelDB> { $0.id == id }),
+              let groupId = item.workoutGroup?.id else {
+            return nil
+        }
+        
+        let activeExercises = fetchExercises(for: groupId)
+        item.index = (activeExercises.map(\.index).max() ?? 0) + 1
+        item.isArchived = false
+        item.archivedAt = nil
+        save()
+        return item.id
+    }
+    
+    func hiddenExercise(typeId: String, groupId: UUID) -> ExerciseModelDB? {
+        fetchHiddenExercises(for: groupId).first { $0.typeId == typeId && !$0.isHeadline }
+    }
+    
+    func activeExercise(typeId: String, groupId: UUID) -> ExerciseModelDB? {
+        fetchExercises(for: groupId).first { $0.typeId == typeId && !$0.isHeadline }
     }
     
     func update(sets: SetsModel, exerciseId: UUID, withSaving: Bool = true) {

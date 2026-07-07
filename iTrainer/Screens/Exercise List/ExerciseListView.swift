@@ -36,45 +36,61 @@ struct ExerciseListView: View {
     
     var body: some View {
         VStack(spacing: 0) {
-            List {
-                if workoutManager.isWorkoutInProgress {
-                    workoutStatusWidget
-                        .transition(.asymmetric(
-                            insertion: .move(edge: .top).combined(with: .opacity),
-                            removal: .scale(scale: 0.96).combined(with: .opacity)
-                        ))
-                        .listRowInsets(EdgeInsets(top: 10, leading: 20, bottom: 12, trailing: 20))
-                        .listRowSeparator(.hidden)
-                        .listRowBackground(AppColor.backgroundPrimary)
-                } else {
-                    startSessionCard
-                        .transition(.asymmetric(
-                            insertion: .move(edge: .top).combined(with: .opacity),
-                            removal: .scale(scale: 0.96).combined(with: .opacity)
-                        ))
-                        .listRowInsets(EdgeInsets(top: 10, leading: 20, bottom: 12, trailing: 20))
-                        .listRowSeparator(.hidden)
-                        .listRowBackground(AppColor.backgroundPrimary)
+            ScrollViewReader { proxy in
+                List {
+                    if workoutManager.isWorkoutInProgress {
+                        workoutStatusWidget
+                            .transition(.asymmetric(
+                                insertion: .move(edge: .top).combined(with: .opacity),
+                                removal: .scale(scale: 0.96).combined(with: .opacity)
+                            ))
+                            .listRowInsets(EdgeInsets(top: 10, leading: 20, bottom: 12, trailing: 20))
+                            .listRowSeparator(.hidden)
+                            .listRowBackground(AppColor.backgroundPrimary)
+                    } else {
+                        startSessionCard
+                            .transition(.asymmetric(
+                                insertion: .move(edge: .top).combined(with: .opacity),
+                                removal: .scale(scale: 0.96).combined(with: .opacity)
+                            ))
+                            .listRowInsets(EdgeInsets(top: 10, leading: 20, bottom: 12, trailing: 20))
+                            .listRowSeparator(.hidden)
+                            .listRowBackground(AppColor.backgroundPrimary)
+                    }
+                    
+                    ForEach(viewModel.exercises) { item in
+                        cells(for: item)
+                            .id(item.id)
+                            .swipeActions(edge: .trailing, allowsFullSwipe: false) {
+                                rowSwipeActions(for: item)
+                            }
+                            .listRowInsets(rowInsets(for: item))
+                            .listRowSeparator(.hidden)
+                            .listRowBackground(AppColor.backgroundPrimary)
+                    }
+                    .onDelete(perform: deleteItems)
+                    .onMove(perform: moveItems)
                 }
-                
-                ForEach(viewModel.exercises) { item in
-                    cells(for: item)
-                        .listRowInsets(rowInsets(for: item))
-                        .listRowSeparator(.hidden)
-                        .listRowBackground(AppColor.backgroundPrimary)
+                .listStyle(.plain)
+                .scrollContentBackground(.hidden)
+                .background(AppColor.backgroundPrimary)
+                .animation(.easeInOut, value: showAnimation)
+                .animation(.spring(response: 0.45, dampingFraction: 0.86), value: workoutManager.isWorkoutInProgress)
+                .refreshable {
+                    refresh()
                 }
-                .onDelete(perform: deleteItems)
-                .onMove(perform: moveItems)
+                .environment(\.editMode, $editMode)
+                .onChange(of: viewModel.pendingScrollExerciseId) { _, exerciseId in
+                    guard let exerciseId else { return }
+                    Task { @MainActor in
+                        await Task.yield()
+                        withAnimation(.spring(response: 0.42, dampingFraction: 0.86)) {
+                            proxy.scrollTo(exerciseId, anchor: .center)
+                        }
+                        viewModel.pendingScrollExerciseId = nil
+                    }
+                }
             }
-            .listStyle(.plain)
-            .scrollContentBackground(.hidden)
-            .background(AppColor.backgroundPrimary)
-            .animation(.easeInOut, value: showAnimation)
-            .animation(.spring(response: 0.45, dampingFraction: 0.86), value: workoutManager.isWorkoutInProgress)
-            .refreshable {
-                refresh()
-            }
-            .environment(\.editMode, $editMode)
         }
         .background(AppColor.backgroundPrimary)
         .environment(\.defaultMinListRowHeight, 10)
@@ -117,6 +133,16 @@ struct ExerciseListView: View {
         }, content: {
             addNewExerciseView()
         })
+        .sheet(isPresented: $viewModel.isHiddenExercisesPresented) {
+            HiddenExercisesView(exercises: viewModel.hiddenExercises) { exercise in
+                viewModel.restore(exercise: exercise)
+            }
+        }
+        .confirmationDialog(addConflictTitle,
+                            isPresented: addConflictBinding,
+                            titleVisibility: .visible,
+                            actions: addConflictActions,
+                            message: addConflictMessage)
         .contentSelf(content: { view in
             contentViewNavigation(content: view)
         })
@@ -159,6 +185,49 @@ struct ExerciseListView: View {
                     ExerciseStatisticsView(exercise: model)
                 }
             })
+    }
+    
+    private var addConflictTitle: String {
+        viewModel.addConflict?.title ?? ""
+    }
+    
+    private var addConflictBinding: Binding<Bool> {
+        Binding(get: {
+            viewModel.addConflict != nil
+        }, set: { isPresented in
+            if !isPresented {
+                viewModel.addConflict = nil
+            }
+        })
+    }
+    
+    @ViewBuilder
+    private func addConflictActions() -> some View {
+        if let conflict = viewModel.addConflict {
+            switch conflict {
+            case .activeDuplicate:
+                Button("Add anyway") {
+                    viewModel.addPendingExercisesAnyway()
+                }
+            case .hiddenDuplicate:
+                Button("Restore") {
+                    viewModel.restorePendingHiddenExercises()
+                }
+                Button("Add new copy") {
+                    viewModel.addPendingExercisesAnyway()
+                }
+            }
+            Button("Cancel", role: .cancel) {
+                viewModel.addConflict = nil
+            }
+        }
+    }
+    
+    @ViewBuilder
+    private func addConflictMessage() -> some View {
+        if let conflict = viewModel.addConflict {
+            Text(conflict.message)
+        }
     }
     
     private func cells(for item: ExerciseModel) -> some View {
@@ -265,6 +334,25 @@ struct ExerciseListView: View {
         return EdgeInsets(top: 6, leading: 20, bottom: 6, trailing: 20)
     }
     
+    @ViewBuilder
+    private func rowSwipeActions(for item: ExerciseModel) -> some View {
+        if !item.isHeadline {
+            Button(role: .destructive) {
+                viewModel.delete(exercise: item)
+            } label: {
+                Label("Delete", systemImage: "trash")
+            }
+            .tint(.red)
+            
+            Button {
+                viewModel.hide(exercise: item)
+            } label: {
+                Label("Hidden", systemImage: "eye.slash")
+            }
+            .tint(AppColor.progressAmber)
+        }
+    }
+    
     private func optionButton() -> some View {
         switch editMode {
         case .active:
@@ -279,6 +367,9 @@ struct ExerciseListView: View {
             Button("Edit", systemImage: "pencil", action: clickBtnEditint)
             Button("New exercise", systemImage: "plus.square", action: clickBtnNewExercise)
             Button("Add headline", systemImage: "text.line.first.and.arrowtriangle.forward", action: clickBtnNewHeadline)
+            if viewModel.hasHiddenExercises {
+                Button("Hidden Exercises", systemImage: "eye.slash", action: clickBtnHiddenExercises)
+            }
         } label: {
             VStack {
                 Spacer()
@@ -348,6 +439,10 @@ struct ExerciseListView: View {
         viewModel.editExercise = nil
         viewModel.isEditHeadline = true
         viewModel.isEditExercise = true
+    }
+    
+    private func clickBtnHiddenExercises() {
+        viewModel.isHiddenExercisesPresented = true
     }
     
     private func refresh() {
