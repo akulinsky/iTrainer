@@ -109,6 +109,20 @@ final class ExerciseStatisticsViewModel: ObservableObject {
         min(max(Int(width / 28) + 4, 8), 22)
     }
     
+    func xDomain(for points: [ExerciseStatisticsPoint]) -> ClosedRange<Date> {
+        guard let firstDate = points.first?.date,
+              let lastDate = points.last?.date else {
+            let now = Date()
+            return now...now.addingTimeInterval(1)
+        }
+        
+        let day: TimeInterval = 24 * 60 * 60
+        let span = max(lastDate.timeIntervalSince(firstDate), day)
+        let padding = max(span * 0.04, day * 0.35)
+        
+        return firstDate.addingTimeInterval(-padding)...lastDate.addingTimeInterval(padding)
+    }
+    
     func yDomain(for points: [ExerciseStatisticsPoint]) -> ClosedRange<Double> {
         let values = points.map(\.value)
         guard let minValue = values.min(), let maxValue = values.max() else {

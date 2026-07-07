@@ -211,6 +211,7 @@ struct ExerciseStatisticsView: View {
                         .symbolSize(point.isPersonalRecord ? 80 : 62)
                     }
                     .chartLegend(.hidden)
+                    .chartXScale(domain: viewModel.xDomain(for: points))
                     .chartYScale(domain: viewModel.yDomain(for: points))
                     .chartXAxis {
                         AxisMarks(values: .automatic(desiredCount: 6)) { value in
