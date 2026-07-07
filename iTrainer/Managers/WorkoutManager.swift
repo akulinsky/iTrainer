@@ -165,6 +165,7 @@ final class WorkoutManager: ObservableObject {
         updateWorkoutTime()
         workoutTimer?.cancel()
         workoutTimer = nil
+        LocalNotificationManager.shared.cancelAllWorkoutNotifications()
         resetRestTime()
         updateRestTime()
     }
@@ -228,6 +229,7 @@ final class WorkoutManager: ObservableObject {
             self.completedExercisesCount = 0
             self.reportedExerciseIds = []
             self.updateWorkoutProgress()
+            LocalNotificationManager.shared.requestAuthorizationIfNeeded()
             self.startTimer(startDate: startDate)
         }
         saveSessionSnapshot(reportWorkoutId: reportWorkout.id)
@@ -241,9 +243,13 @@ final class WorkoutManager: ObservableObject {
         restStartedAt = startedAt
         isRunningRestTime = true
         updateRestTimeIntervalFromDates()
+        if restTimeInterval > 0 {
+            LocalNotificationManager.shared.scheduleRestFinishedNotification(after: restTimeInterval)
+        }
     }
     
     private func resetRestTime() {
+        LocalNotificationManager.shared.cancelRestFinishedNotification()
         self.restTimeInterval = self.currentRestTimeIntervalExercise ?? 0.0
         self.restTimeIntervalExercise = self.currentRestTimeIntervalExercise ?? 0.0
         self.isRunningRestTime = false
@@ -359,6 +365,7 @@ final class WorkoutManager: ObservableObject {
         guard let restStartedAt = snapshot?.restStartedAt,
               let restDuration = snapshot?.restDuration,
               restDuration > 0 else {
+            LocalNotificationManager.shared.cancelRestFinishedNotification()
             completeRestTime()
             return
         }
@@ -373,6 +380,7 @@ final class WorkoutManager: ObservableObject {
             completeRestTime()
         } else {
             updateRestTime()
+            LocalNotificationManager.shared.scheduleRestFinishedNotification(after: remaining)
         }
     }
     
@@ -432,6 +440,17 @@ final class WorkoutManager: ObservableObject {
     
     func persistSessionState() {
         saveSessionSnapshot()
+    }
+    
+    func appDidEnterBackground() {
+        persistSessionState()
+        guard isWorkoutInProgress else { return }
+        LocalNotificationManager.shared.scheduleActiveWorkoutReminder(workoutTitle: currentWorkoutTitle)
+    }
+    
+    func appDidBecomeActive() {
+        LocalNotificationManager.shared.cancelActiveWorkoutReminder()
+        restoreSessionIfNeeded()
     }
     
     func endWorkout(complete: ((ReportWorkoutModel?) -> Void)? = nil) {

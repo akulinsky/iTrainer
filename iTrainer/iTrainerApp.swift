@@ -33,9 +33,9 @@ private let seedMode: DatabaseSeedMode = .production
                 .onChange(of: scenePhase) { _, phase in
                     switch phase {
                     case .active:
-                        environment.dataContainer.workoutManager.restoreSessionIfNeeded()
+                        environment.dataContainer.workoutManager.appDidBecomeActive()
                     case .background:
-                        environment.dataContainer.workoutManager.persistSessionState()
+                        environment.dataContainer.workoutManager.appDidEnterBackground()
                     case .inactive:
                         environment.dataContainer.workoutManager.persistSessionState()
                     @unknown default:

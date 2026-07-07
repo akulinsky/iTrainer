@@ -87,6 +87,7 @@
 		F6CB903F2C77687E002529A6 /* ExerciseEditView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6CB903E2C77687E002529A6 /* ExerciseEditView.swift */; };
 		F6CB90412C7768ED002529A6 /* ExerciseEditViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6CB90402C7768ED002529A6 /* ExerciseEditViewModel.swift */; };
 		F6CB90432C7794BF002529A6 /* SetEditCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6CB90422C7794BF002529A6 /* SetEditCell.swift */; };
+		F6CCEE062FFD27A300686CFB /* LocalNotificationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6CCEE052FFD27A300686CFB /* LocalNotificationManager.swift */; };
 		F6DD68AB2C64FF71004EFB03 /* ExerciseTypeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6DD68AA2C64FF71004EFB03 /* ExerciseTypeView.swift */; };
 		F6DD68AD2C6503C9004EFB03 /* ExerciseTypeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6DD68AC2C6503C9004EFB03 /* ExerciseTypeCell.swift */; };
 		F6DD68AF2C65050A004EFB03 /* ExerciseTypeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6DD68AE2C65050A004EFB03 /* ExerciseTypeViewModel.swift */; };
@@ -214,6 +215,7 @@
 		F6CB903E2C77687E002529A6 /* ExerciseEditView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseEditView.swift; sourceTree = "<group>"; };
 		F6CB90402C7768ED002529A6 /* ExerciseEditViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseEditViewModel.swift; sourceTree = "<group>"; };
 		F6CB90422C7794BF002529A6 /* SetEditCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetEditCell.swift; sourceTree = "<group>"; };
+		F6CCEE052FFD27A300686CFB /* LocalNotificationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalNotificationManager.swift; sourceTree = "<group>"; };
 		F6DD68AA2C64FF71004EFB03 /* ExerciseTypeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseTypeView.swift; sourceTree = "<group>"; };
 		F6DD68AC2C6503C9004EFB03 /* ExerciseTypeCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseTypeCell.swift; sourceTree = "<group>"; };
 		F6DD68AE2C65050A004EFB03 /* ExerciseTypeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseTypeViewModel.swift; sourceTree = "<group>"; };
@@ -273,6 +275,7 @@
 				F6164EAD2C9066860019C0AF /* WorkoutManager.swift */,
 				F69BD11D2C5507200057080E /* DataManagerBackground.swift */,
 				F64895BA2FE6C67F005B0619 /* NavigationManager.swift */,
+				F6CCEE052FFD27A300686CFB /* LocalNotificationManager.swift */,
 			);
 			path = Managers;
 			sourceTree = "<group>";
@@ -826,6 +829,7 @@
 				F64CF0482FF534F0009FB938 /* LoadingSpinnerView.swift in Sources */,
 				F6EA7BCA2C578BAF005225A0 /* WorkoutListViewModel.swift in Sources */,
 				F62818452C62408D003642F8 /* ExerciseTypeModel.swift in Sources */,
+				F6CCEE062FFD27A300686CFB /* LocalNotificationManager.swift in Sources */,
 				F68D60672C76193500783E54 /* TimeInterval+Utils.swift in Sources */,
 				F6EA7BE02C57DEF6005225A0 /* ExerciseListViewModel.swift in Sources */,
 				F64CF04A2FF55BE0009FB938 /* ReportExerciseSetComparisonCell.swift in Sources */,
@@ -877,18 +881,6 @@
 		};
 /* End PBXSourcesBuildPhase section */
 
-/* Begin PBXVariantGroup section */
-		F6A1000C2D1500010000000C /* Localizable.strings */ = {
-			isa = PBXVariantGroup;
-			children = (
-				F6A1000A2D1500010000000A /* en */,
-				F6A1000B2D1500010000000B /* ru */,
-			);
-			name = Localizable.strings;
-			sourceTree = "<group>";
-		};
-/* End PBXVariantGroup section */
-
 /* Begin PBXTargetDependency section */
 		F69BD0D82C54F8DB0057080E /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
@@ -901,6 +893,18 @@
 			targetProxy = F69BD0E12C54F8DB0057080E /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		F6A1000C2D1500010000000C /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				F6A1000A2D1500010000000A /* en */,
+				F6A1000B2D1500010000000B /* ru */,
+			);
+			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		F69BD0E82C54F8DB0057080E /* Debug */ = {
