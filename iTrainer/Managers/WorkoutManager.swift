@@ -489,12 +489,9 @@ final class WorkoutManager: ObservableObject {
             
             for exercise in exercises {
                 if let reportExercise = reportExercises.first(where: { $0.exerciseId == exercise.id }) {
-                    let targetSets = exercise.sets.map { $0.copy() }
-                    
-                    for set in targetSets {
-                        await dataManager.insert(model: set)
-                        set.reportExercise = reportExercise
-                    }
+                    await copyMissingTargetSnapshots(from: exercise,
+                                                     to: reportExercise,
+                                                     dataManager: dataManager)
                 }
             }
             await dataManager.save()
@@ -547,6 +544,7 @@ final class WorkoutManager: ObservableObject {
             return
         }
         
+        let newReportSetIndex = reportExercise.reportSets.count + 1
         let report = ReportSetsModelDB(date: Date())
         await dataManager.insert(model: report)
         report.reportExercise = reportExercise
@@ -563,6 +561,11 @@ final class WorkoutManager: ObservableObject {
                 report.time = value
             }
         }
+        
+        await copyTargetSnapshotIfNeeded(for: newReportSetIndex,
+                                         from: exercise,
+                                         to: reportExercise,
+                                         dataManager: dataManager)
         
         await dataManager.save()
         
@@ -598,6 +601,36 @@ final class WorkoutManager: ObservableObject {
     
     func removeReportSet(id: UUID) async {
         await DataManagerBackground(container: DataContainer.shared.sharedModelContainer).removeReportSets(with: id)
+    }
+    
+    private func copyMissingTargetSnapshots(from exercise: ExerciseModelDB,
+                                            to reportExercise: ReportExerciseModelDB,
+                                            dataManager: DataManagerBackground) async {
+        let targetIndices = Set(exercise.sets.map(\.index))
+        let snapshotIndices = Set(reportExercise.targetSets.map(\.index))
+        let missingIndices = targetIndices.subtracting(snapshotIndices).sorted()
+        
+        for index in missingIndices {
+            await copyTargetSnapshotIfNeeded(for: index,
+                                             from: exercise,
+                                             to: reportExercise,
+                                             dataManager: dataManager)
+        }
+    }
+    
+    private func copyTargetSnapshotIfNeeded(for index: Int,
+                                            from exercise: ExerciseModelDB,
+                                            to reportExercise: ReportExerciseModelDB,
+                                            dataManager: DataManagerBackground) async {
+        guard index > 0,
+              !reportExercise.targetSets.contains(where: { $0.index == index }),
+              let targetSet = exercise.sets.first(where: { $0.index == index }) else {
+            return
+        }
+        
+        let snapshot = targetSet.copy()
+        await dataManager.insert(model: snapshot)
+        snapshot.reportExercise = reportExercise
     }
     
     private func exerciseProgressById(for reportWorkout: ReportWorkoutModelDB, dataManager: DataManagerBackground) async -> [UUID: Double] {
