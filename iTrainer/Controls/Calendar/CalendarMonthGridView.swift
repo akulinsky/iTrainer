@@ -15,7 +15,6 @@ struct CalendarMonthGridView: View {
     let calendar: Calendar
     let onSelectDate: (Date) -> Void
     
-    private let weekdaySymbols = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"]
     private let columns = Array(repeating: GridItem(.flexible(), spacing: 0), count: 7)
     
     var body: some View {
@@ -36,7 +35,7 @@ struct CalendarMonthGridView: View {
     
     private var weekdayRow: some View {
         LazyVGrid(columns: columns, spacing: 0) {
-            ForEach(weekdaySymbols, id: \.self) { title in
+            ForEach(calendar.calendarControlWeekdaySymbols, id: \.self) { title in
                 Text(title)
                     .font(.system(size: 15, weight: .semibold))
                     .foregroundStyle(AppColor.textSecondary)
@@ -51,8 +50,7 @@ struct CalendarMonthGridView: View {
             return []
         }
         
-        let firstWeekday = calendar.component(.weekday, from: startOfMonth)
-        let leadingEmptyDays = (firstWeekday + 5) % 7
+        let leadingEmptyDays = calendar.calendarControlLeadingEmptyDays(for: startOfMonth)
         var result = [CalendarDay]()
         
         for index in 0..<leadingEmptyDays {

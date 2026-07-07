@@ -63,4 +63,24 @@ extension Calendar {
         let day = min(selectedDay, dayRange?.count ?? selectedDay)
         return self.date(byAdding: .day, value: max(day - 1, 0), to: targetMonth) ?? targetMonth
     }
+    
+    var calendarControlWeekdaySymbols: [String] {
+        let formatter = DateFormatter()
+        formatter.calendar = self
+        formatter.locale = locale ?? .autoupdatingCurrent
+        let symbols = formatter.shortStandaloneWeekdaySymbols ?? formatter.shortWeekdaySymbols ?? []
+        guard symbols.count == 7 else { return symbols }
+        return calendarControlRotatedWeekdays(symbols)
+    }
+    
+    func calendarControlLeadingEmptyDays(for month: Date) -> Int {
+        let startOfMonth = calendarControlStartOfMonth(for: month)
+        let weekday = component(.weekday, from: startOfMonth)
+        return (weekday - firstWeekday + 7) % 7
+    }
+    
+    private func calendarControlRotatedWeekdays(_ symbols: [String]) -> [String] {
+        let startIndex = max(min(firstWeekday - 1, symbols.count - 1), 0)
+        return Array(symbols[startIndex...] + symbols[..<startIndex])
+    }
 }

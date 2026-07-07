@@ -21,7 +21,7 @@ struct CalendarView: View {
          markers: [Date: CalendarDateMarker],
          minimumMonth: Date,
          maximumMonth: Date,
-         calendar: Calendar = .current) {
+         calendar: Calendar = .autoupdatingCurrent) {
         self._selectedDate = selectedDate
         self._visibleMonth = visibleMonth
         self.markers = markers
