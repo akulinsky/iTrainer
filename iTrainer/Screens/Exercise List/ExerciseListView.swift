@@ -13,6 +13,31 @@ enum ExerciseListRoute: Hashable {
     case exerciseStatisticsView(item: ReportExerciseModel)
 }
 
+private enum ActiveWorkoutExerciseListAction: Identifiable {
+    case hide(ExerciseModel)
+    case delete(ExerciseModel)
+    
+    var id: UUID {
+        exercise.id
+    }
+    
+    var exercise: ExerciseModel {
+        switch self {
+        case .hide(let exercise), .delete(let exercise):
+            exercise
+        }
+    }
+    
+    var title: String {
+        switch self {
+        case .hide:
+            "Hide exercise during active workout?"
+        case .delete:
+            "Delete exercise during active workout?"
+        }
+    }
+}
+
 struct ExerciseListView: View {
     
     @EnvironmentObject private var workoutManager: WorkoutManager
@@ -27,6 +52,7 @@ struct ExerciseListView: View {
     
     @State private var isEndWorkoutAlertPresented = false
     @State private var isStartWorkoutAlertPresented = false
+    @State private var pendingActiveWorkoutAction: ActiveWorkoutExerciseListAction?
     
     @Environment(\.navigation) private var navigation
     
@@ -165,6 +191,55 @@ struct ExerciseListView: View {
             }
         } message: {
             Text("Start \(viewModel.group.title ?? "this workout")?")
+        }
+        .alert(activeWorkoutActionTitle,
+               isPresented: activeWorkoutActionBinding) {
+            activeWorkoutActionButtons()
+        } message: {
+            Text("This may affect the current workout progress and final report.")
+        }
+    }
+    
+    private var activeWorkoutActionTitle: String {
+        pendingActiveWorkoutAction?.title ?? ""
+    }
+    
+    private var activeWorkoutActionBinding: Binding<Bool> {
+        Binding(get: {
+            pendingActiveWorkoutAction != nil
+        }, set: { isPresented in
+            if !isPresented {
+                pendingActiveWorkoutAction = nil
+            }
+        })
+    }
+    
+    @ViewBuilder
+    private func activeWorkoutActionButtons() -> some View {
+        if let action = pendingActiveWorkoutAction {
+            Button("Cancel", role: .cancel) {
+                pendingActiveWorkoutAction = nil
+            }
+            switch action {
+            case .hide:
+                Button("Hide") {
+                    performActiveWorkoutAction(action)
+                }
+            case .delete:
+                Button("Delete", role: .destructive) {
+                    performActiveWorkoutAction(action)
+                }
+            }
+        }
+    }
+    
+    private func performActiveWorkoutAction(_ action: ActiveWorkoutExerciseListAction) {
+        pendingActiveWorkoutAction = nil
+        switch action {
+        case .hide(let exercise):
+            viewModel.hide(exercise: exercise)
+        case .delete(let exercise):
+            viewModel.delete(exercise: exercise)
         }
     }
     
@@ -338,17 +413,29 @@ struct ExerciseListView: View {
     private func rowSwipeActions(for item: ExerciseModel) -> some View {
         if !item.isHeadline {
             Button(role: .destructive) {
-                viewModel.delete(exercise: item)
+                requestExerciseListAction(.delete(item))
             }
             .tint(.red)
             
             Button {
-                viewModel.hide(exercise: item)
+                requestExerciseListAction(.hide(item))
             } label: {
                 Label("Hidden", systemImage: "eye.slash")
             }
             .tint(AppColor.progressAmber)
         }
+    }
+    
+    private func requestExerciseListAction(_ action: ActiveWorkoutExerciseListAction) {
+        if shouldWarnBeforeChangingExercises {
+            pendingActiveWorkoutAction = action
+        } else {
+            performActiveWorkoutAction(action)
+        }
+    }
+    
+    private var shouldWarnBeforeChangingExercises: Bool {
+        workoutManager.isWorkoutInProgress && workoutManager.currentWorkoutGroupId == viewModel.group.id
     }
     
     private func optionButton() -> some View {
