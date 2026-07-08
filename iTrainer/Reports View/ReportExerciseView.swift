@@ -13,11 +13,14 @@ struct ReportExerciseView: View {
     
     private let horizontalPadding: CGFloat = 20
     private let onOpenStatistics: (ReportExerciseModel) -> Void
+    private let onOpenHistory: (ReportExerciseModel) -> Void
     
     init(viewModel: ReportExerciseViewModel,
-         onOpenStatistics: ((ReportExerciseModel) -> Void)? = nil) {
+         onOpenStatistics: ((ReportExerciseModel) -> Void)? = nil,
+         onOpenHistory: ((ReportExerciseModel) -> Void)? = nil) {
         _viewModel = StateObject(wrappedValue: viewModel)
         self.onOpenStatistics = onOpenStatistics ?? { _ in }
+        self.onOpenHistory = onOpenHistory ?? { _ in }
     }
     
     var body: some View {
@@ -28,6 +31,13 @@ struct ReportExerciseView: View {
                 targetResultSection
                 summarySection
                 statisticsButton
+                
+                if !viewModel.historyGroups.isEmpty {
+                    ReportExerciseHistorySection(groups: viewModel.historyGroups,
+                                                 onShowAll: viewModel.hasMoreHistory ? {
+                                                    onOpenHistory(viewModel.reportExercise)
+                                                 } : nil)
+                }
             }
             .padding(.horizontal, horizontalPadding)
             .padding(.top, 16)

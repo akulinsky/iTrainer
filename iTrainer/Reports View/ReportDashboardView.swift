@@ -11,6 +11,7 @@ enum ReportsRoute: Hashable {
     case reportsCalendarView
     case reportView(item: ReportWorkoutModel)
     case reportExerciseView(item: ReportExerciseModel)
+    case reportExerciseHistoryView(item: ReportExerciseModel)
     case exerciseStatisticsView(item: ReportExerciseModel)
 }
 
@@ -79,8 +80,13 @@ struct ReportDashboardView: View {
             ReportExerciseView(viewModel: ReportExerciseViewModel(reportExercise: exercise),
                                onOpenStatistics: { exercise in
                                 navigationManager.path.append(ReportsRoute.exerciseStatisticsView(item: exercise))
+                               },
+                               onOpenHistory: { exercise in
+                                navigationManager.path.append(ReportsRoute.reportExerciseHistoryView(item: exercise))
                                })
                 .environment(\.navigation, navigationManager)
+        case .reportExerciseHistoryView(let exercise):
+            ReportExerciseHistoryView(viewModel: ReportExerciseHistoryViewModel(reportExercise: exercise))
         case .exerciseStatisticsView(let exercise):
             ExerciseStatisticsView(exercise: exercise)
         }

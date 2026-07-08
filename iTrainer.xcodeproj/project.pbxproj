@@ -12,6 +12,10 @@
 		F6164EAE2C9066860019C0AF /* WorkoutManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6164EAD2C9066860019C0AF /* WorkoutManager.swift */; };
 		F6180DDB2C5A6D55009A23A7 /* EditNameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6180DDA2C5A6D55009A23A7 /* EditNameView.swift */; };
 		F6186DF02FFEAF420018B216 /* ExerciseTrackingType.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6186DEF2FFEAF420018B216 /* ExerciseTrackingType.swift */; };
+		F6186DF22FFED7BB0018B216 /* ReportExerciseHistorySection.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6186DF12FFED7BB0018B216 /* ReportExerciseHistorySection.swift */; };
+		F6186DF42FFEDBCF0018B216 /* ReportExerciseHistoryBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6186DF32FFEDBCF0018B216 /* ReportExerciseHistoryBuilder.swift */; };
+		F6186DF62FFEDBEF0018B216 /* ReportExerciseHistoryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6186DF52FFEDBEF0018B216 /* ReportExerciseHistoryViewModel.swift */; };
+		F6186DF82FFEDBF10018B216 /* ReportExerciseHistoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6186DF72FFEDBF10018B216 /* ReportExerciseHistoryView.swift */; };
 		F625F2AF2FF8F42A0074FE79 /* ReportDashboardViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F625F2AE2FF8F42A0074FE79 /* ReportDashboardViewModel.swift */; };
 		F625F2B12FF8F6920074FE79 /* ExerciseStatisticsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F625F2B02FF8F6920074FE79 /* ExerciseStatisticsViewModel.swift */; };
 		F625F2B32FF9273D0074FE79 /* WorkoutReportStatusDisplay.swift in Sources */ = {isa = PBXBuildFile; fileRef = F625F2B22FF9273D0074FE79 /* WorkoutReportStatusDisplay.swift */; };
@@ -141,6 +145,10 @@
 		F6164EAD2C9066860019C0AF /* WorkoutManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutManager.swift; sourceTree = "<group>"; };
 		F6180DDA2C5A6D55009A23A7 /* EditNameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditNameView.swift; sourceTree = "<group>"; };
 		F6186DEF2FFEAF420018B216 /* ExerciseTrackingType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseTrackingType.swift; sourceTree = "<group>"; };
+		F6186DF12FFED7BB0018B216 /* ReportExerciseHistorySection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportExerciseHistorySection.swift; sourceTree = "<group>"; };
+		F6186DF32FFEDBCF0018B216 /* ReportExerciseHistoryBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportExerciseHistoryBuilder.swift; sourceTree = "<group>"; };
+		F6186DF52FFEDBEF0018B216 /* ReportExerciseHistoryViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportExerciseHistoryViewModel.swift; sourceTree = "<group>"; };
+		F6186DF72FFEDBF10018B216 /* ReportExerciseHistoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportExerciseHistoryView.swift; sourceTree = "<group>"; };
 		F625F2AE2FF8F42A0074FE79 /* ReportDashboardViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportDashboardViewModel.swift; sourceTree = "<group>"; };
 		F625F2B02FF8F6920074FE79 /* ExerciseStatisticsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseStatisticsViewModel.swift; sourceTree = "<group>"; };
 		F625F2B22FF9273D0074FE79 /* WorkoutReportStatusDisplay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutReportStatusDisplay.swift; sourceTree = "<group>"; };
@@ -606,6 +614,10 @@
 				F625F2B62FF927B80074FE79 /* WorkoutReportCard.swift */,
 				F625F2B82FF927C90074FE79 /* MonthPickerSheet.swift */,
 				F6CCEE072FFD374000686CFB /* ExerciseStatisticsExpandedChartView.swift */,
+				F6186DF12FFED7BB0018B216 /* ReportExerciseHistorySection.swift */,
+				F6186DF32FFEDBCF0018B216 /* ReportExerciseHistoryBuilder.swift */,
+				F6186DF72FFEDBF10018B216 /* ReportExerciseHistoryView.swift */,
+				F6186DF52FFEDBEF0018B216 /* ReportExerciseHistoryViewModel.swift */,
 			);
 			path = "Reports View";
 			sourceTree = "<group>";
@@ -796,6 +808,7 @@
 				F625F2B52FF927A20074FE79 /* ReportsDashboardHeaderView.swift in Sources */,
 				F69BD12E2C551B4F0057080E /* SetsModelDB.swift in Sources */,
 				F6EA7BDE2C57DE6F005225A0 /* ExerciseCell.swift in Sources */,
+				F6186DF62FFEDBEF0018B216 /* ReportExerciseHistoryViewModel.swift in Sources */,
 				F69BD11E2C5507200057080E /* DataManagerBackground.swift in Sources */,
 				F69BD11C2C5506B70057080E /* WorkoutListView.swift in Sources */,
 				F677A0702FFBBCCD00101B33 /* CalendarMonthGridView.swift in Sources */,
@@ -811,6 +824,7 @@
 				F677A06C2FFBBCCB00101B33 /* CalendarModels.swift in Sources */,
 				F6CB13132C9B2F2F00B9FCFC /* Date+Utils.swift in Sources */,
 				F69BD0C82C54F8DA0057080E /* iTrainerApp.swift in Sources */,
+				F6186DF22FFED7BB0018B216 /* ReportExerciseHistorySection.swift in Sources */,
 				F6F1E0912CA07B8700C1419A /* ReportExerciseViewModel.swift in Sources */,
 				F69BD1272C551B040057080E /* WorkoutModelDB.swift in Sources */,
 				F625F2B72FF927B80074FE79 /* WorkoutReportCard.swift in Sources */,
@@ -834,6 +848,7 @@
 				F6DD68B12C650CAE004EFB03 /* ExerciseCategoryView.swift in Sources */,
 				F69BD0FF2C54FBC10057080E /* View+Utils.swift in Sources */,
 				F6CCEE0A2FFD547000686CFB /* HiddenExerciseCell.swift in Sources */,
+				F6186DF42FFEDBCF0018B216 /* ReportExerciseHistoryBuilder.swift in Sources */,
 				F69BD1012C54FBEE0057080E /* NetworkUtils.swift in Sources */,
 				F625F2B12FF8F6920074FE79 /* ExerciseStatisticsViewModel.swift in Sources */,
 				F6536BF42FEB10080041B40B /* WorkoutStatusWidget.swift in Sources */,
@@ -865,6 +880,7 @@
 				F6EA7BCC2C579333005225A0 /* WorkoutModel.swift in Sources */,
 				F6DD68AF2C65050A004EFB03 /* ExerciseTypeViewModel.swift in Sources */,
 				F656783D2FF42AE100250F44 /* ReportStatusService.swift in Sources */,
+				F6186DF82FFEDBF10018B216 /* ReportExerciseHistoryView.swift in Sources */,
 				F69BD1152C5500580057080E /* ServiceNetworkProvider.swift in Sources */,
 				F69BD1072C54FC170057080E /* NetworkClient.swift in Sources */,
 				F625F2BB2FF93A380074FE79 /* ReportDashboardDataBuilder.swift in Sources */,

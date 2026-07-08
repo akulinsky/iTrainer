@@ -45,6 +45,13 @@ final class ReportExerciseViewModel: ObservableObject {
         let deltaColor: Color?
     }
     
+    struct HistoryGroup: Identifiable {
+        let id: UUID
+        let dateText: String
+        let contextText: String
+        let rows: [SetComparisonRow]
+    }
+    
     @Published var title: String
     @Published var workoutContext: String = ""
     @Published var reportDate: String = ""
@@ -53,6 +60,8 @@ final class ReportExerciseViewModel: ObservableObject {
     @Published var setRows = [SetComparisonRow]()
     @Published var summaryCards = [SummaryCard]()
     @Published var volumeBreakdown = [VolumeBreakdownRow]()
+    @Published var historyGroups = [HistoryGroup]()
+    @Published var hasMoreHistory = false
     @Published var isShowAlert = false
     
     var errorMessage: String? = nil
@@ -71,24 +80,29 @@ final class ReportExerciseViewModel: ObservableObject {
             let dataManager = DataManagerBackground(container: DataContainer.shared.sharedModelContainer)
             let history = await dataManager.fetchReportExercises(typeId: reportExercise.typeId)
                 .map { ReportExerciseModel(model: $0) }
+            let exerciseHistory = await dataManager.fetchReportExercises(exerciseId: reportExercise.exerciseId)
+                .map { ReportExerciseModel(model: $0) }
             
             await MainActor.run {
-                self.rebuildPresentation(history: history)
+                self.rebuildPresentation(history: history, exerciseHistory: exerciseHistory)
                 complete?()
             }
         }
     }
     
-    private func rebuildPresentation(history: [ReportExerciseModel]) {
+    private func rebuildPresentation(history: [ReportExerciseModel], exerciseHistory: [ReportExerciseModel] = []) {
         title = reportExercise.titleExercise
         workoutContext = Self.contextText(for: reportExercise)
         reportDate = Self.dateText(for: reportExercise.date)
         let statusResult = ReportStatusService.calculateExerciseStatusResult(report: reportExercise, history: history)
         status = statusResult.status
         statusMetrics = makeStatusMetrics(statusResult: statusResult)
-        setRows = makeSetRows()
+        setRows = makeSetRows(for: reportExercise)
         summaryCards = makeSummaryCards()
         volumeBreakdown = makeVolumeBreakdown(statusResult: statusResult, history: history)
+        let previousExerciseHistory = ReportExerciseHistoryBuilder.previousLocalReports(in: exerciseHistory, current: reportExercise)
+        historyGroups = ReportExerciseHistoryBuilder.historyGroups(from: Array(previousExerciseHistory.prefix(5)))
+        hasMoreHistory = previousExerciseHistory.count > 5
     }
     
     private func makeStatusMetrics(statusResult: ExerciseStatusResult) -> [StatusMetric] {
@@ -128,9 +142,9 @@ final class ReportExerciseViewModel: ObservableObject {
         ]
     }
     
-    private func makeSetRows() -> [SetComparisonRow] {
-        let targetSets = reportExercise.targetSets.sorted { $0.index < $1.index }
-        let actualSets = reportExercise.sets.sorted { $0.index < $1.index }
+    private func makeSetRows(for exercise: ReportExerciseModel) -> [SetComparisonRow] {
+        let targetSets = exercise.targetSets.sorted { $0.index < $1.index }
+        let actualSets = exercise.sets.sorted { $0.index < $1.index }
         
         if targetSets.isEmpty {
             return actualSets.enumerated().map { index, actual in
@@ -252,6 +266,33 @@ final class ReportExerciseViewModel: ObservableObject {
             guard let itemDate = item.date else { return false }
             return itemDate < reportDate
         }
+    }
+    
+    private func makeHistoryGroups(from history: [ReportExerciseModel]) -> [HistoryGroup] {
+        previousLocalReports(in: history)
+            .prefix(5)
+            .map { item in
+                HistoryGroup(id: item.id,
+                             dateText: Self.shortDateText(for: item.date),
+                             contextText: Self.contextText(for: item),
+                             rows: makeSetRows(for: item))
+            }
+    }
+    
+    private func previousLocalReports(in history: [ReportExerciseModel]) -> [ReportExerciseModel] {
+        history
+            .filter { item in
+                guard item.id != reportExercise.id else { return false }
+                guard item.exerciseId == reportExercise.exerciseId else { return false }
+                
+                if let reportDate = reportExercise.date {
+                    guard let itemDate = item.date else { return false }
+                    return itemDate < reportDate
+                }
+                
+                return true
+            }
+            .sorted { ($0.date ?? .distantPast) > ($1.date ?? .distantPast) }
     }
     
     private func setVolumes(for exercise: ReportExerciseModel) -> [Float] {
@@ -506,6 +547,11 @@ final class ReportExerciseViewModel: ObservableObject {
     
     private static func dateText(for date: Date?) -> String {
         guard let date else { return "" }
+        return date.formatted(date: .complete, time: .omitted)
+    }
+    
+    private static func shortDateText(for date: Date?) -> String {
+        guard let date else { return "-" }
         return date.formatted(date: .complete, time: .omitted)
     }
 }

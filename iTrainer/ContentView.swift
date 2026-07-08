@@ -85,8 +85,21 @@ private struct PresentedReportView: View {
                         ReportExerciseView(viewModel: ReportExerciseViewModel(reportExercise: exercise),
                                            onOpenStatistics: { exercise in
                                             navigationManager.path.append(ReportsRoute.exerciseStatisticsView(item: exercise))
+                                           },
+                                           onOpenHistory: { exercise in
+                                            navigationManager.path.append(ReportsRoute.reportExerciseHistoryView(item: exercise))
                                            })
                             .environment(\.navigation, navigationManager)
+                            .toolbar {
+                                ToolbarItem(placement: .navigationBarTrailing) {
+                                    Button(action: onClose) {
+                                        Image(systemName: "xmark")
+                                    }
+                                    .accessibilityLabel("Close")
+                                }
+                            }
+                    case .reportExerciseHistoryView(let exercise):
+                        ReportExerciseHistoryView(viewModel: ReportExerciseHistoryViewModel(reportExercise: exercise))
                             .toolbar {
                                 ToolbarItem(placement: .navigationBarTrailing) {
                                     Button(action: onClose) {
