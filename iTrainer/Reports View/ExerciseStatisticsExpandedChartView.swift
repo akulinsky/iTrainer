@@ -13,6 +13,12 @@ struct ExerciseStatisticsExpandedChartView: View {
     let onClose: () -> Void
     
     @State private var dragOffset: CGSize = .zero
+    @State private var dimOpacity: Double = 0
+    @State private var isClosing = false
+    
+    private let dimTargetOpacity = 0.28
+    private let presentationAnimationDelay: UInt64 = 350_000_000
+    private let dimAnimationDuration = 0.18
     
     var body: some View {
         GeometryReader { proxy in
@@ -21,9 +27,9 @@ struct ExerciseStatisticsExpandedChartView: View {
             let points = viewModel.visibleGraphPoints(maxCount: viewModel.maxExpandedVisiblePoints(for: chartWidth))
             
             ZStack {
-                AppColor.backgroundPrimary
+                Color.black
                     .ignoresSafeArea()
-                    .opacity(0.98)
+                    .opacity(dimOpacity)
                 
                 rotatedChart(points: points,
                              chartWidth: chartWidth,
@@ -34,6 +40,13 @@ struct ExerciseStatisticsExpandedChartView: View {
             }
             .contentShape(Rectangle())
             .gesture(closeGesture)
+        }
+        .task {
+            try? await Task.sleep(nanoseconds: presentationAnimationDelay)
+            guard !Task.isCancelled, !isClosing else { return }
+            withAnimation(.easeInOut(duration: dimAnimationDuration)) {
+                dimOpacity = dimTargetOpacity
+            }
         }
     }
     
@@ -108,13 +121,24 @@ struct ExerciseStatisticsExpandedChartView: View {
             .onEnded { value in
                 let distance = hypot(value.translation.width, value.translation.height)
                 if distance > 90 {
-                    onClose()
+                    close()
                 } else {
                     withAnimation(.spring(response: 0.28, dampingFraction: 0.88)) {
                         dragOffset = .zero
                     }
                 }
             }
+    }
+    
+    private func close() {
+        guard !isClosing else { return }
+        isClosing = true
+        
+        dimOpacity = 0
+        
+        Task { @MainActor in
+            onClose()
+        }
     }
 }
 

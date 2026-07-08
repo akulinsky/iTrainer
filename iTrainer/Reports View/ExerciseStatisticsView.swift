@@ -47,6 +47,7 @@ struct ExerciseStatisticsView: View {
             ExerciseStatisticsExpandedChartView(viewModel: viewModel) {
                 isExpandedChartPresented = false
             }
+            .presentationBackground(.clear)
         }
         .task {
             await viewModel.reloadData()
