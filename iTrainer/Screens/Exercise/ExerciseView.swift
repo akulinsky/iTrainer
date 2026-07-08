@@ -340,9 +340,7 @@ private struct ExerciseContentView: View {
                         addResultTextField(item: item, value: $item.value)
                     }
                     
-                    if !shouldShowCompletedGoalActions {
-                        compactAddResultButton
-                    }
+                    compactAddResultButton
                 }
                 
                 if shouldShowCompletedGoalActions {
@@ -378,21 +376,12 @@ private struct ExerciseContentView: View {
     }
     
     private var completedGoalActionButtons: some View {
-        HStack(spacing: 10) {
-            resultActionButton(title: "Add result",
-                               systemImage: "plus.circle",
-                               foreground: AppColor.brandPrimary,
-                               background: AppColor.surfacePrimary,
-                               border: AppColor.brandPrimary,
-                               action: prepareToSave)
-            
-            resultActionButton(title: viewModel.nextExercise == nil ? "Finish workout" : "Next exercise",
-                               systemImage: viewModel.nextExercise == nil ? "flag.checkered" : "arrow.right.circle",
-                               foreground: .white,
-                               background: viewModel.nextExercise == nil ? AppColor.workoutGreen : AppColor.brandPrimary,
-                               border: .clear,
-                               action: viewModel.nextExercise == nil ? finishWorkout : goToNextExercise)
-        }
+        resultActionButton(title: viewModel.nextExercise == nil ? "Finish workout" : "Next exercise",
+                           systemImage: viewModel.nextExercise == nil ? "flag.checkered" : "arrow.right.circle",
+                           foreground: .white,
+                           background: viewModel.nextExercise == nil ? AppColor.workoutGreen : AppColor.brandPrimary,
+                           border: .clear,
+                           action: viewModel.nextExercise == nil ? finishWorkout : goToNextExercise)
     }
     
     private func resultActionButton(title: String,
