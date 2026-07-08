@@ -167,11 +167,41 @@ final class ReportExerciseViewModel: ObservableObject {
     }
     
     private func makeSummaryCards() -> [SummaryCard] {
-        [
-            SummaryCard(title: "Volume", value: formattedKilograms(exerciseVolume(reportExercise)), systemImage: "dumbbell.fill"),
-            SummaryCard(title: "Repetitions", value: "\(totalReps(reportExercise))", systemImage: "chart.bar.fill"),
-            SummaryCard(title: "Rest Time", value: reportExercise.restTime?.timeForDisplay ?? "-", systemImage: "clock")
-        ]
+        switch trackingType {
+        case .weightedReps:
+            return [
+                SummaryCard(title: "Volume", value: formattedKilograms(exerciseVolume(reportExercise)), systemImage: "dumbbell.fill"),
+                SummaryCard(title: "Repetitions", value: "\(totalReps(reportExercise))", systemImage: "chart.bar.fill"),
+                SummaryCard(title: "Rest Time", value: reportExercise.restTime?.timeForDisplay ?? "-", systemImage: "clock")
+            ]
+        case .repsOnly:
+            return [
+                SummaryCard(title: "Total Repetitions", value: "\(totalReps(reportExercise))", systemImage: "chart.bar.fill"),
+                SummaryCard(title: "Sets", value: "\(reportExercise.sets.count)", systemImage: "number"),
+                SummaryCard(title: "Rest Time", value: reportExercise.restTime?.timeForDisplay ?? "-", systemImage: "clock")
+            ]
+        case .timed:
+            return [
+                SummaryCard(title: "Total Time", value: totalTime(reportExercise).timeForDisplay, systemImage: "timer"),
+                SummaryCard(title: "Sets", value: "\(reportExercise.sets.count)", systemImage: "number"),
+                SummaryCard(title: "Rest Time", value: reportExercise.restTime?.timeForDisplay ?? "-", systemImage: "clock")
+            ]
+        case .distance:
+            return [
+                SummaryCard(title: "Distance", value: totalDistance(reportExercise).distanceForDisplay, systemImage: "point.topleft.down.curvedto.point.bottomright.up"),
+                SummaryCard(title: "Sets", value: "\(reportExercise.sets.count)", systemImage: "number")
+            ]
+        case .distanceTime:
+            return [
+                SummaryCard(title: "Distance", value: totalDistance(reportExercise).distanceForDisplay, systemImage: "point.topleft.down.curvedto.point.bottomright.up"),
+                SummaryCard(title: "Time", value: totalTime(reportExercise).timeForDisplay, systemImage: "timer"),
+                SummaryCard(title: "Pace", value: pace(reportExercise).map(formattedPace) ?? "-", systemImage: "speedometer")
+            ]
+        case nil:
+            return [
+                SummaryCard(title: "Sets", value: "\(reportExercise.sets.count)", systemImage: "number")
+            ]
+        }
     }
     
     private func makeVolumeBreakdown(statusResult: ExerciseStatusResult, history: [ReportExerciseModel]) -> [VolumeBreakdownRow] {
@@ -253,10 +283,17 @@ final class ReportExerciseViewModel: ObservableObject {
         case .weight:
             return maxWeight(exercise) ?? 0
         case .repetitions:
+            guard trackingType == .weightedReps else { return Float(totalReps(exercise)) }
             guard let bestWeight = maxWeight(exercise) else { return 0 }
             return Float(bestReps(at: bestWeight, in: exercise))
         case .volume:
             return exerciseVolume(exercise)
+        case .time:
+            return Float(totalTime(exercise))
+        case .distance:
+            return totalDistance(exercise)
+        case .pace:
+            return pace(exercise) ?? 0
         }
     }
     
@@ -283,6 +320,10 @@ final class ReportExerciseViewModel: ObservableObject {
         switch comparison.type {
         case .repetitions:
             return "+\(Int(comparison.improvement)) reps"
+        case .time, .pace:
+            return "-\(TimeInterval(comparison.improvement).timeForDisplay)"
+        case .distance:
+            return "+\(formatted(value: comparison.improvement, for: comparison.type))"
         case .weight, .volume:
             return "+\(formatted(value: comparison.improvement, for: comparison.type))"
         }
@@ -303,6 +344,12 @@ final class ReportExerciseViewModel: ObservableObject {
             return "\(Int(value))"
         case .volume:
             return formattedKilograms(value)
+        case .time:
+            return TimeInterval(value).timeForDisplay
+        case .distance:
+            return value.distanceForDisplay
+        case .pace:
+            return formattedPace(value)
         }
     }
     
@@ -322,6 +369,18 @@ final class ReportExerciseViewModel: ObservableObject {
     }
     
     private func isAchieved(target: [SetsParameter], actual: [SetsParameter]) -> Bool {
+        if distance(for: target) != nil, time(for: target) != nil {
+            guard let targetDistance = distance(for: target),
+                  let actualDistance = distance(for: actual),
+                  actualDistance >= targetDistance,
+                  let targetTime = time(for: target),
+                  let actualTime = time(for: actual),
+                  actualTime <= targetTime else {
+                return false
+            }
+            return true
+        }
+        
         for targetParameter in target {
             switch targetParameter {
             case .weight(let targetValue):
@@ -349,6 +408,25 @@ final class ReportExerciseViewModel: ObservableObject {
     
     private func totalReps(_ exercise: ReportExerciseModel) -> Int {
         exercise.sets.reduce(0) { $0 + (reps(for: $1.parameters) ?? 0) }
+    }
+    
+    private func totalTime(_ exercise: ReportExerciseModel) -> TimeInterval {
+        exercise.sets.reduce(TimeInterval.zero) { $0 + (time(for: $1.parameters) ?? 0) }
+    }
+    
+    private func totalDistance(_ exercise: ReportExerciseModel) -> Float {
+        exercise.sets.reduce(Float.zero) { $0 + (distance(for: $1.parameters) ?? 0) }
+    }
+    
+    private func pace(_ exercise: ReportExerciseModel) -> Float? {
+        let distance = totalDistance(exercise)
+        let time = totalTime(exercise)
+        guard distance > 0, time > 0 else { return nil }
+        return Float(time) / distance
+    }
+    
+    private var trackingType: ExerciseTrackingType? {
+        ReportStatusService.trackingTypeValue(for: reportExercise)
     }
     
     private func maxWeight(_ exercise: ReportExerciseModel) -> Float? {
@@ -408,6 +486,10 @@ final class ReportExerciseViewModel: ObservableObject {
         value.rounded() == value ? "\(Int(value))" : String(format: "%.1f", value)
     }
     
+    private func formattedPace(_ value: Float) -> String {
+        TimeInterval(value * 1000).timeForDisplay + "/km"
+    }
+    
     private static func contextText(for exercise: ReportExerciseModel) -> String {
         [exercise.titleWorkout, exercise.titleWorkoutGroup]
             .compactMap { value in
@@ -432,6 +514,12 @@ private extension PersonalRecordType {
             "Repetitions"
         case .volume:
             "Volume"
+        case .time:
+            "Time"
+        case .distance:
+            "Distance"
+        case .pace:
+            "Pace"
         }
     }
 }

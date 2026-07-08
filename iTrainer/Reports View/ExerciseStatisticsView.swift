@@ -26,7 +26,7 @@ struct ExerciseStatisticsView: View {
                 headerCard
                 graphCard
                 
-                if viewModel.selectedMetric.showsPeriodSummary {
+                if viewModel.showsPeriodSummary {
                     periodSummaryCard
                 }
                 
@@ -86,7 +86,7 @@ struct ExerciseStatisticsView: View {
     
     private var metricSegmentedControl: some View {
         HStack(spacing: 0) {
-            ForEach(ExerciseMetricSegment.allCases) { metric in
+            ForEach(viewModel.availableMetrics) { metric in
                 Button {
                     withAnimation(.easeInOut(duration: 0.2)) {
                         viewModel.selectedMetric = metric
@@ -108,7 +108,7 @@ struct ExerciseStatisticsView: View {
                 }
                 .buttonStyle(.plain)
                 
-                if metric != ExerciseMetricSegment.allCases.last {
+                if metric != viewModel.availableMetrics.last {
                     Divider()
                         .opacity(viewModel.selectedMetric == metric ? 0 : 1)
                 }
@@ -129,7 +129,7 @@ struct ExerciseStatisticsView: View {
                 Text(viewModel.selectedMetric.title)
                     .font(.system(size: 21, weight: .bold))
                     .foregroundStyle(AppColor.brandPrimary)
-                Text(viewModel.selectedMetric.subtitle)
+                Text(viewModel.selectedMetricSubtitle)
                     .font(AppFont.rowSubtitle)
                     .foregroundStyle(AppColor.textSecondary)
             }

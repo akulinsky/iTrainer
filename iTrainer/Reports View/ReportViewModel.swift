@@ -158,10 +158,15 @@ class ReportViewModel: ObservableObject {
         let plannedExercisesCount = report.targetExercisesCount > 0 ? report.targetExercisesCount : completedExercisesCount
         let exerciseProgress = progressValue(actual: Double(completedExercisesCount), target: Double(plannedExercisesCount))
         let exercisePercentText = percentText(for: exerciseProgress)
+        let trackingTypes = Set(exercises.compactMap(ReportStatusService.trackingTypeValue(for:)))
         let actualVolume = ReportStatusService.totalVolume(for: exercises)
         let actualReps = ReportStatusService.totalReps(for: exercises)
         let targetVolume = ReportStatusService.targetVolume(for: exercises)
         let targetReps = ReportStatusService.targetReps(for: exercises)
+        let actualTimedDuration = ReportStatusService.totalTimedDuration(for: exercises)
+        let targetTimedDuration = ReportStatusService.targetTimedDuration(for: exercises)
+        let actualDistance = ReportStatusService.totalDistance(for: exercises)
+        let targetDistance = ReportStatusService.targetDistance(for: exercises)
         let density = densityValue(actualVolume: actualVolume,
                                    startDate: startDate,
                                    endDate: endDate)
@@ -169,35 +174,64 @@ class ReportViewModel: ObservableObject {
         let volumeProgress = rawVolumeProgress.map(cappedProgressValue)
         let rawRepsProgress = targetReps > 0 ? rawProgressValue(actual: Double(actualReps), target: Double(targetReps)) : nil
         let repsProgress = rawRepsProgress.map(cappedProgressValue)
+        let rawTimeProgress = targetTimedDuration > 0 ? rawProgressValue(actual: actualTimedDuration, target: targetTimedDuration) : nil
+        let timeProgress = rawTimeProgress.map(cappedProgressValue)
+        let rawDistanceProgress = targetDistance > 0 ? rawProgressValue(actual: Double(actualDistance), target: Double(targetDistance)) : nil
+        let distanceProgress = rawDistanceProgress.map(cappedProgressValue)
+        var summaryCards = [
+            SummaryCard(title: "Exercises",
+                        value: exercisePercentText,
+                        detail: "\(completedExercisesCount) / \(plannedExercisesCount)",
+                        progress: exerciseProgress,
+                        colorProgress: exerciseProgress,
+                        systemImage: nil)
+        ]
+        
+        if trackingTypes.contains(.weightedReps) {
+            summaryCards.append(SummaryCard(title: "Density",
+                                           value: density.map { "\($0)" } ?? "-",
+                                           detail: "kg/min",
+                                           progress: nil,
+                                           colorProgress: nil,
+                                           systemImage: "gauge.with.dots.needle.67percent"))
+            summaryCards.append(SummaryCard(title: "Volume Goal",
+                                           value: rawVolumeProgress.map { percentText(for: $0, isCapped: false) } ?? "-",
+                                           detail: targetVolume > 0 ? "\(Int(actualVolume)) / \(Int(targetVolume)) kg" : "\(Int(actualVolume)) kg",
+                                           progress: volumeProgress,
+                                           colorProgress: rawVolumeProgress,
+                                           systemImage: nil))
+        }
+        
+        if trackingTypes.contains(.weightedReps) || trackingTypes.contains(.repsOnly) {
+            summaryCards.append(SummaryCard(title: "Repetition Goal",
+                                           value: rawRepsProgress.map { percentText(for: $0, isCapped: false) } ?? "-",
+                                           detail: targetReps > 0 ? "\(actualReps) / \(targetReps) reps" : "\(actualReps) reps",
+                                           progress: repsProgress,
+                                           colorProgress: rawRepsProgress,
+                                           systemImage: nil))
+        }
+        
+        if trackingTypes.contains(.timed) {
+            summaryCards.append(SummaryCard(title: "Time Goal",
+                                           value: rawTimeProgress.map { percentText(for: $0, isCapped: false) } ?? "-",
+                                           detail: targetTimedDuration > 0 ? "\(actualTimedDuration.timeForDisplay) / \(targetTimedDuration.timeForDisplay)" : actualTimedDuration.timeForDisplay,
+                                           progress: timeProgress,
+                                           colorProgress: rawTimeProgress,
+                                           systemImage: "timer"))
+        }
+        
+        if trackingTypes.contains(.distance) || trackingTypes.contains(.distanceTime) {
+            summaryCards.append(SummaryCard(title: "Distance Goal",
+                                           value: rawDistanceProgress.map { percentText(for: $0, isCapped: false) } ?? "-",
+                                           detail: targetDistance > 0 ? "\(actualDistance.distanceForDisplay) / \(targetDistance.distanceForDisplay)" : actualDistance.distanceForDisplay,
+                                           progress: distanceProgress,
+                                           colorProgress: rawDistanceProgress,
+                                           systemImage: nil))
+        }
         
         return ReportMetrics(exerciseProgress: exerciseProgress,
                              exercisePercentText: exercisePercentText,
-                             summaryCards: [
-                                SummaryCard(title: "Exercises",
-                                            value: exercisePercentText,
-                                            detail: "\(completedExercisesCount) / \(plannedExercisesCount)",
-                                            progress: exerciseProgress,
-                                            colorProgress: exerciseProgress,
-                                            systemImage: nil),
-                                SummaryCard(title: "Density",
-                                            value: density.map { "\($0)" } ?? "-",
-                                            detail: "kg/min",
-                                            progress: nil,
-                                            colorProgress: nil,
-                                            systemImage: "gauge.with.dots.needle.67percent"),
-                                SummaryCard(title: "Volume Goal",
-                                            value: rawVolumeProgress.map { percentText(for: $0, isCapped: false) } ?? "-",
-                                            detail: targetVolume > 0 ? "\(Int(actualVolume)) / \(Int(targetVolume)) kg" : "\(Int(actualVolume)) kg",
-                                            progress: volumeProgress,
-                                            colorProgress: rawVolumeProgress,
-                                            systemImage: nil),
-                                SummaryCard(title: "Repetition Goal",
-                                            value: rawRepsProgress.map { percentText(for: $0, isCapped: false) } ?? "-",
-                                            detail: targetReps > 0 ? "\(actualReps) / \(targetReps) reps" : "\(actualReps) reps",
-                                            progress: repsProgress,
-                                            colorProgress: rawRepsProgress,
-                                            systemImage: nil)
-                             ],
+                             summaryCards: summaryCards,
                              workoutStatus: workoutStatus,
                              actualVolume: actualVolume,
                              targetVolume: targetVolume,

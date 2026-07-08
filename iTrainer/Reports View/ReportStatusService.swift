@@ -11,6 +11,9 @@ enum PersonalRecordType: Hashable, Sendable {
     case weight
     case repetitions
     case volume
+    case time
+    case distance
+    case pace
 }
 
 struct ExerciseStatusComparison: Hashable, Sendable {
@@ -30,7 +33,10 @@ struct ExerciseStatusComparison: Hashable, Sendable {
     }
     
     var improvement: Float {
-        max(current - previous, 0)
+        if type.isLowerValueBetter {
+            return max(previous - current, 0)
+        }
+        return max(current - previous, 0)
     }
 }
 
@@ -110,25 +116,57 @@ struct ReportStatusService {
     
     static func totalVolume(for exercises: [ReportExerciseModel]) -> Float {
         exercises.reduce(Float.zero) { partialResult, exercise in
-            partialResult + exerciseVolume(for: exercise)
+            guard trackingType(for: exercise) == .weightedReps else { return partialResult }
+            return partialResult + exerciseVolume(for: exercise)
         }
     }
     
     static func totalReps(for exercises: [ReportExerciseModel]) -> Int {
         exercises.reduce(0) { partialResult, exercise in
-            partialResult + exercise.sets.reduce(0) { $0 + reps(for: $1.parameters) }
+            guard trackingType(for: exercise)?.usesRepetitions == true else { return partialResult }
+            return partialResult + exercise.sets.reduce(0) { $0 + reps(for: $1.parameters) }
         }
     }
     
     static func targetVolume(for exercises: [ReportExerciseModel]) -> Float {
         exercises.reduce(Float.zero) { partialResult, exercise in
-            partialResult + exercise.targetSets.reduce(Float.zero) { $0 + volume(for: $1.parameters) }
+            guard trackingType(for: exercise) == .weightedReps else { return partialResult }
+            return partialResult + exercise.targetSets.reduce(Float.zero) { $0 + volume(for: $1.parameters) }
         }
     }
     
     static func targetReps(for exercises: [ReportExerciseModel]) -> Int {
         exercises.reduce(0) { partialResult, exercise in
-            partialResult + exercise.targetSets.reduce(0) { $0 + reps(for: $1.parameters) }
+            guard trackingType(for: exercise)?.usesRepetitions == true else { return partialResult }
+            return partialResult + exercise.targetSets.reduce(0) { $0 + reps(for: $1.parameters) }
+        }
+    }
+    
+    static func totalTimedDuration(for exercises: [ReportExerciseModel]) -> TimeInterval {
+        exercises.reduce(TimeInterval.zero) { partialResult, exercise in
+            guard trackingType(for: exercise) == .timed else { return partialResult }
+            return partialResult + totalTime(for: exercise)
+        }
+    }
+    
+    static func targetTimedDuration(for exercises: [ReportExerciseModel]) -> TimeInterval {
+        exercises.reduce(TimeInterval.zero) { partialResult, exercise in
+            guard trackingType(for: exercise) == .timed else { return partialResult }
+            return partialResult + exercise.targetSets.reduce(TimeInterval.zero) { $0 + (time(for: $1.parameters) ?? 0) }
+        }
+    }
+    
+    static func totalDistance(for exercises: [ReportExerciseModel]) -> Float {
+        exercises.reduce(Float.zero) { partialResult, exercise in
+            guard trackingType(for: exercise)?.usesDistance == true else { return partialResult }
+            return partialResult + totalDistance(for: exercise)
+        }
+    }
+    
+    static func targetDistance(for exercises: [ReportExerciseModel]) -> Float {
+        exercises.reduce(Float.zero) { partialResult, exercise in
+            guard trackingType(for: exercise)?.usesDistance == true else { return partialResult }
+            return partialResult + exercise.targetSets.reduce(Float.zero) { $0 + (distance(for: $1.parameters) ?? 0) }
         }
     }
     
@@ -155,6 +193,18 @@ struct ReportStatusService {
     static func repsValue(for parameters: [SetsParameter]) -> Int? {
         optionalReps(for: parameters)
     }
+    
+    static func timeValue(for parameters: [SetsParameter]) -> TimeInterval? {
+        time(for: parameters)
+    }
+    
+    static func distanceValue(for parameters: [SetsParameter]) -> Float? {
+        distance(for: parameters)
+    }
+    
+    static func trackingTypeValue(for exercise: ReportExerciseModel) -> ExerciseTrackingType? {
+        trackingType(for: exercise)
+    }
 }
 
 private extension ReportStatusService {
@@ -173,6 +223,24 @@ private extension ReportStatusService {
                                          comparedTo previousReports: [ReportExerciseModel]) -> ExerciseStatusComparison? {
         guard !previousReports.isEmpty else { return nil }
         
+        switch trackingType(for: report) {
+        case .weightedReps:
+            return weightedRepsPersonalRecordComparison(for: report, comparedTo: previousReports)
+        case .repsOnly:
+            return repsOnlyPersonalRecordComparison(for: report, comparedTo: previousReports)
+        case .timed:
+            return timedPersonalRecordComparison(for: report, comparedTo: previousReports)
+        case .distance:
+            return distancePersonalRecordComparison(for: report, comparedTo: previousReports)
+        case .distanceTime:
+            return distanceTimePersonalRecordComparison(for: report, comparedTo: previousReports)
+        case nil:
+            return nil
+        }
+    }
+    
+    static func weightedRepsPersonalRecordComparison(for report: ReportExerciseModel,
+                                                     comparedTo previousReports: [ReportExerciseModel]) -> ExerciseStatusComparison? {
         if let currentMaxWeight = maxWeight(for: report),
            let previousMaxWeight = previousReports.compactMap(maxWeight(for:)).max(),
            currentMaxWeight > previousMaxWeight {
@@ -211,6 +279,52 @@ private extension ReportStatusService {
         return nil
     }
     
+    static func repsOnlyPersonalRecordComparison(for report: ReportExerciseModel,
+                                                 comparedTo previousReports: [ReportExerciseModel]) -> ExerciseStatusComparison? {
+        let currentReps = totalReps(for: report)
+        let previousReps = previousReports.map(totalReps(for:)).max() ?? 0
+        guard currentReps > 0, currentReps > previousReps else { return nil }
+        return ExerciseStatusComparison(type: .repetitions,
+                                        current: Float(currentReps),
+                                        previous: Float(previousReps))
+    }
+    
+    static func timedPersonalRecordComparison(for report: ReportExerciseModel,
+                                              comparedTo previousReports: [ReportExerciseModel]) -> ExerciseStatusComparison? {
+        let currentTime = totalTime(for: report)
+        let previousTime = previousReports.map(totalTime(for:)).max() ?? 0
+        guard currentTime > 0, currentTime > previousTime else { return nil }
+        return ExerciseStatusComparison(type: .time,
+                                        current: Float(currentTime),
+                                        previous: Float(previousTime))
+    }
+    
+    static func distancePersonalRecordComparison(for report: ReportExerciseModel,
+                                                 comparedTo previousReports: [ReportExerciseModel]) -> ExerciseStatusComparison? {
+        let currentDistance = totalDistance(for: report)
+        let previousDistance = previousReports.map(totalDistance(for:)).max() ?? 0
+        guard currentDistance > 0, currentDistance > previousDistance else { return nil }
+        return ExerciseStatusComparison(type: .distance,
+                                        current: currentDistance,
+                                        previous: previousDistance)
+    }
+    
+    static func distanceTimePersonalRecordComparison(for report: ReportExerciseModel,
+                                                     comparedTo previousReports: [ReportExerciseModel]) -> ExerciseStatusComparison? {
+        if let distanceComparison = distancePersonalRecordComparison(for: report, comparedTo: previousReports) {
+            return distanceComparison
+        }
+        
+        guard let currentPace = pace(for: report),
+              let previousBestPace = previousReports.compactMap(pace(for:)).min(),
+              currentPace < previousBestPace else {
+            return nil
+        }
+        return ExerciseStatusComparison(type: .pace,
+                                        current: currentPace,
+                                        previous: previousBestPace)
+    }
+    
     static func isProgress(_ report: ReportExerciseModel,
                            comparedTo previousReports: [ReportExerciseModel]) -> Bool {
         progressComparison(for: report, comparedTo: previousReports) != nil
@@ -222,6 +336,24 @@ private extension ReportStatusService {
             return nil
         }
         
+        switch trackingType(for: report) {
+        case .weightedReps:
+            return weightedRepsProgressComparison(for: report, comparedTo: previousReport)
+        case .repsOnly:
+            return repsOnlyProgressComparison(for: report, comparedTo: previousReport)
+        case .timed:
+            return timedProgressComparison(for: report, comparedTo: previousReport)
+        case .distance:
+            return distanceProgressComparison(for: report, comparedTo: previousReport)
+        case .distanceTime:
+            return distanceTimeProgressComparison(for: report, comparedTo: previousReport)
+        case nil:
+            return nil
+        }
+    }
+    
+    static func weightedRepsProgressComparison(for report: ReportExerciseModel,
+                                               comparedTo previousReport: ReportExerciseModel) -> ExerciseStatusComparison? {
         if let currentMaxWeight = maxWeight(for: report),
            let previousMaxWeight = maxWeight(for: previousReport),
            currentMaxWeight > previousMaxWeight {
@@ -260,6 +392,52 @@ private extension ReportStatusService {
         return nil
     }
     
+    static func repsOnlyProgressComparison(for report: ReportExerciseModel,
+                                           comparedTo previousReport: ReportExerciseModel) -> ExerciseStatusComparison? {
+        let currentReps = totalReps(for: report)
+        let previousReps = totalReps(for: previousReport)
+        guard currentReps > 0, currentReps > previousReps else { return nil }
+        return ExerciseStatusComparison(type: .repetitions,
+                                        current: Float(currentReps),
+                                        previous: Float(previousReps))
+    }
+    
+    static func timedProgressComparison(for report: ReportExerciseModel,
+                                        comparedTo previousReport: ReportExerciseModel) -> ExerciseStatusComparison? {
+        let currentTime = totalTime(for: report)
+        let previousTime = totalTime(for: previousReport)
+        guard currentTime > 0, currentTime > previousTime else { return nil }
+        return ExerciseStatusComparison(type: .time,
+                                        current: Float(currentTime),
+                                        previous: Float(previousTime))
+    }
+    
+    static func distanceProgressComparison(for report: ReportExerciseModel,
+                                           comparedTo previousReport: ReportExerciseModel) -> ExerciseStatusComparison? {
+        let currentDistance = totalDistance(for: report)
+        let previousDistance = totalDistance(for: previousReport)
+        guard currentDistance > 0, currentDistance > previousDistance else { return nil }
+        return ExerciseStatusComparison(type: .distance,
+                                        current: currentDistance,
+                                        previous: previousDistance)
+    }
+    
+    static func distanceTimeProgressComparison(for report: ReportExerciseModel,
+                                               comparedTo previousReport: ReportExerciseModel) -> ExerciseStatusComparison? {
+        if let distanceComparison = distanceProgressComparison(for: report, comparedTo: previousReport) {
+            return distanceComparison
+        }
+        
+        guard let currentPace = pace(for: report),
+              let previousPace = pace(for: previousReport),
+              currentPace < previousPace else {
+            return nil
+        }
+        return ExerciseStatusComparison(type: .pace,
+                                        current: currentPace,
+                                        previous: previousPace)
+    }
+    
     static func goalStatus(for report: ReportExerciseModel) -> ExerciseReportStatus {
         guard !report.targetSets.isEmpty else { return .complete }
         
@@ -277,6 +455,18 @@ private extension ReportStatusService {
     }
     
     static func isAchieved(target: [SetsParameter], actual: [SetsParameter]) -> Bool {
+        if distance(for: target) != nil, time(for: target) != nil {
+            guard let targetDistance = distance(for: target),
+                  let actualDistance = distance(for: actual),
+                  actualDistance >= targetDistance,
+                  let targetTime = time(for: target),
+                  let actualTime = time(for: actual),
+                  actualTime <= targetTime else {
+                return false
+            }
+            return true
+        }
+        
         for targetParameter in target {
             switch targetParameter {
             case .weight(let targetValue):
@@ -295,6 +485,25 @@ private extension ReportStatusService {
     
     static func exerciseVolume(for exercise: ReportExerciseModel) -> Float {
         exercise.sets.reduce(Float.zero) { $0 + volume(for: $1.parameters) }
+    }
+    
+    static func totalReps(for exercise: ReportExerciseModel) -> Int {
+        exercise.sets.reduce(0) { $0 + reps(for: $1.parameters) }
+    }
+    
+    static func totalTime(for exercise: ReportExerciseModel) -> TimeInterval {
+        exercise.sets.reduce(TimeInterval.zero) { $0 + (time(for: $1.parameters) ?? 0) }
+    }
+    
+    static func totalDistance(for exercise: ReportExerciseModel) -> Float {
+        exercise.sets.reduce(Float.zero) { $0 + (distance(for: $1.parameters) ?? 0) }
+    }
+    
+    static func pace(for exercise: ReportExerciseModel) -> Float? {
+        let distance = totalDistance(for: exercise)
+        let time = totalTime(for: exercise)
+        guard distance > 0, time > 0 else { return nil }
+        return Float(time) / distance
     }
     
     static func volume(for parameters: [SetsParameter]) -> Float {
@@ -364,6 +573,18 @@ private extension ReportStatusService {
         }
         return nil
     }
+    
+    static func trackingType(for exercise: ReportExerciseModel) -> ExerciseTrackingType? {
+        if let trackingType = ExerciseTrackingType(typeId: exercise.typeId) {
+            return trackingType
+        }
+        
+        if let parameters = exercise.targetSets.first?.parameters ?? exercise.sets.first?.parameters {
+            return ExerciseTrackingType(parameters: parameters)
+        }
+        
+        return nil
+    }
 }
 
 extension ExerciseReportStatus {
@@ -372,5 +593,11 @@ extension ExerciseReportStatus {
             return true
         }
         return false
+    }
+}
+
+extension PersonalRecordType {
+    var isLowerValueBetter: Bool {
+        self == .pace
     }
 }

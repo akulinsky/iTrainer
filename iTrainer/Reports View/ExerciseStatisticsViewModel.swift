@@ -35,18 +35,23 @@ final class ExerciseStatisticsViewModel: ObservableObject {
     @Published private var cachedBestResult = BestResultSummary.empty(title: ExerciseMetricSegment.weight.bestResultTitle)
     
     let scope: ExerciseStatisticsScope
+    let trackingType: ExerciseTrackingType?
     
     private var statisticsTask: Task<Void, Never>?
     
     init(exercise: ReportExerciseModel) {
         self.scope = .local(exercise)
+        self.trackingType = ReportStatusService.trackingTypeValue(for: exercise)
         self.localReports = [exercise]
         self.globalReports = [exercise]
+        self.selectedMetric = Self.defaultMetric(for: trackingType)
         scheduleStatisticsPreparation()
     }
     
     init(exerciseType: ExerciseTypeModel) {
         self.scope = .global(exerciseType)
+        self.trackingType = exerciseType.trackingType
+        self.selectedMetric = Self.defaultMetric(for: trackingType)
         scheduleStatisticsPreparation()
     }
     
@@ -79,6 +84,24 @@ final class ExerciseStatisticsViewModel: ObservableObject {
     
     var showsBestResult: Bool {
         scope.isGlobal
+    }
+    
+    var availableMetrics: [ExerciseMetricSegment] {
+        Self.availableMetrics(for: trackingType)
+    }
+    
+    var selectedMetricSubtitle: String {
+        if selectedMetric == .repetitions, trackingType == .repsOnly {
+            return "Total repetitions per report"
+        }
+        return selectedMetric.subtitle
+    }
+    
+    var showsPeriodSummary: Bool {
+        if selectedMetric == .repetitions {
+            return trackingType == .repsOnly
+        }
+        return selectedMetric.showsPeriodSummary
     }
     
     var hasAnyReports: Bool {
@@ -235,6 +258,27 @@ final class ExerciseStatisticsViewModel: ObservableObject {
                                   bestResult: bestResult)
     }
     
+    private static func defaultMetric(for trackingType: ExerciseTrackingType?) -> ExerciseMetricSegment {
+        availableMetrics(for: trackingType).first ?? .repetitions
+    }
+    
+    private static func availableMetrics(for trackingType: ExerciseTrackingType?) -> [ExerciseMetricSegment] {
+        switch trackingType {
+        case .weightedReps:
+            return [.weight, .volume, .repetitions]
+        case .repsOnly:
+            return [.repetitions]
+        case .timed:
+            return [.time]
+        case .distance:
+            return [.distance]
+        case .distanceTime:
+            return [.distance, .time, .pace]
+        case nil:
+            return [.repetitions]
+        }
+    }
+    
     private static func makePeriodSummary(points: [ExerciseStatisticsPoint], metric: ExerciseMetricSegment) -> PeriodSummary {
         guard !points.isEmpty else { return .empty }
         
@@ -243,7 +287,7 @@ final class ExerciseStatisticsViewModel: ObservableObject {
         
         return PeriodSummary(averageText: formatted(value: average, for: metric),
                              changeText: change.map { formattedChange($0, for: metric) } ?? "-",
-                             changeColor: color(for: change))
+                             changeColor: color(for: change, metric: metric))
     }
     
     private static func makeCurrentPrevious(points: [ExerciseStatisticsPoint], metric: ExerciseMetricSegment) -> CurrentPreviousSummary {
@@ -262,7 +306,7 @@ final class ExerciseStatisticsViewModel: ObservableObject {
         return CurrentPreviousSummary(currentText: current.formattedValue,
                                       previousText: previous.formattedValue,
                                       changeText: formattedChange(change, for: metric),
-                                      changeColor: color(for: change))
+                                      changeColor: color(for: change, metric: metric))
     }
     
     private static func makeBestResult(points: [ExerciseStatisticsPoint],
@@ -273,6 +317,13 @@ final class ExerciseStatisticsViewModel: ObservableObject {
         
         if metric == .repetitions {
             bestPoint = bestSetResult(reports: reports, history: history)
+        } else if metric.isLowerValueBetter {
+            bestPoint = points.min(by: { lhs, rhs in
+                if lhs.value == rhs.value {
+                    return lhs.date > rhs.date
+                }
+                return lhs.value < rhs.value
+            })
         } else {
             bestPoint = points.max(by: { lhs, rhs in
                 if lhs.value == rhs.value {
@@ -322,6 +373,29 @@ final class ExerciseStatisticsViewModel: ObservableObject {
                 return weightedRepetitionPoint
             }
             return bodyweightRepetitionPoint(for: report, date: date, history: history)
+        case .time:
+            let value = performedTime(in: report)
+            guard value > 0 else { return nil }
+            return ExerciseStatisticsPoint(reportId: report.id,
+                                           date: date,
+                                           value: Float(value),
+                                           formattedValue: value.timeForDisplay,
+                                           isPersonalRecord: isPersonalRecord(report, history: history))
+        case .distance:
+            let value = performedDistance(in: report)
+            guard value > 0 else { return nil }
+            return ExerciseStatisticsPoint(reportId: report.id,
+                                           date: date,
+                                           value: value,
+                                           formattedValue: value.distanceForDisplay,
+                                           isPersonalRecord: isPersonalRecord(report, history: history))
+        case .pace:
+            guard let value = performedPace(in: report) else { return nil }
+            return ExerciseStatisticsPoint(reportId: report.id,
+                                           date: date,
+                                           value: value,
+                                           formattedValue: formattedPace(value),
+                                           isPersonalRecord: isPersonalRecord(report, history: history))
         }
     }
     
@@ -346,7 +420,7 @@ final class ExerciseStatisticsViewModel: ObservableObject {
     private static func bodyweightRepetitionPoint(for report: ReportExerciseModel,
                                                   date: Date,
                                                   history: [ReportExerciseModel]) -> ExerciseStatisticsPoint? {
-        let reps = performedRepsOnlySets(in: report).max() ?? 0
+        let reps = performedRepsOnlySets(in: report).reduce(0, +)
         guard reps > 0 else { return nil }
         
         return ExerciseStatisticsPoint(reportId: report.id,
@@ -415,6 +489,25 @@ final class ExerciseStatisticsViewModel: ObservableObject {
             }
             return reps
         }
+    }
+    
+    private static func performedTime(in report: ReportExerciseModel) -> TimeInterval {
+        report.sets.reduce(TimeInterval.zero) { partialResult, set in
+            partialResult + (ReportStatusService.timeValue(for: set.parameters) ?? 0)
+        }
+    }
+    
+    private static func performedDistance(in report: ReportExerciseModel) -> Float {
+        report.sets.reduce(Float.zero) { partialResult, set in
+            partialResult + (ReportStatusService.distanceValue(for: set.parameters) ?? 0)
+        }
+    }
+    
+    private static func performedPace(in report: ReportExerciseModel) -> Float? {
+        let distance = performedDistance(in: report)
+        let time = performedTime(in: report)
+        guard distance > 0, time > 0 else { return nil }
+        return Float(time) / distance
     }
     
     private static func isPersonalRecord(_ report: ReportExerciseModel, history: [ReportExerciseModel]) -> Bool {
@@ -511,6 +604,13 @@ final class ExerciseStatisticsViewModel: ObservableObject {
             return difference / baseline < 0.02
         case .repetitions:
             return difference == 0
+        case .time:
+            return difference < 1
+        case .distance:
+            let baseline = max(abs(lhs), abs(rhs), 1)
+            return difference / baseline < 0.02
+        case .pace:
+            return difference < 0.01
         }
     }
     
@@ -520,12 +620,19 @@ final class ExerciseStatisticsViewModel: ObservableObject {
             formattedKilograms(value)
         case .repetitions:
             "\(Int(value.rounded()))"
+        case .time:
+            TimeInterval(value).timeForDisplay
+        case .distance:
+            value.distanceForDisplay
+        case .pace:
+            formattedPace(value)
         }
     }
     
     private static func formattedChange(_ value: Float, for metric: ExerciseMetricSegment) -> String {
         guard value != 0 else { return "0 \(metric.changeUnit)" }
-        let sign = value > 0 ? "+" : "-"
+        let isImprovement = metric.isLowerValueBetter ? value < 0 : value > 0
+        let sign = isImprovement ? "+" : "-"
         let absValue = abs(value)
         
         switch metric {
@@ -534,6 +641,12 @@ final class ExerciseStatisticsViewModel: ObservableObject {
         case .repetitions:
             let unit = Int(absValue.rounded()) == 1 ? "rep" : "reps"
             return "\(sign)\(Int(absValue.rounded())) \(unit)"
+        case .time:
+            return "\(sign)\(TimeInterval(absValue).timeForDisplay)"
+        case .distance:
+            return "\(sign)\(absValue.distanceForDisplay)"
+        case .pace:
+            return "\(sign)\(formattedPace(absValue))"
         }
     }
     
@@ -549,10 +662,20 @@ final class ExerciseStatisticsViewModel: ObservableObject {
         return number.formatted(.number.precision(.fractionLength(1)))
     }
     
-    private static func color(for change: Float?) -> Color {
+    private static func formattedPace(_ value: Float) -> String {
+        TimeInterval(value * 1000).timeForDisplay + "/km"
+    }
+    
+    private static func color(for change: Float?, metric: ExerciseMetricSegment? = nil) -> Color {
         guard let change else { return AppColor.textSecondary }
-        if change > 0 { return AppColor.progressGreen }
-        if change < 0 { return AppColor.progressRed }
+        let isLowerValueBetter = metric?.isLowerValueBetter == true
+        if isLowerValueBetter {
+            if change < 0 { return AppColor.progressGreen }
+            if change > 0 { return AppColor.progressRed }
+        } else {
+            if change > 0 { return AppColor.progressGreen }
+            if change < 0 { return AppColor.progressRed }
+        }
         return AppColor.textSecondary
     }
 }
@@ -573,6 +696,9 @@ enum ExerciseMetricSegment: CaseIterable, Identifiable {
     case weight
     case volume
     case repetitions
+    case time
+    case distance
+    case pace
     
     var id: Self { self }
     
@@ -584,6 +710,12 @@ enum ExerciseMetricSegment: CaseIterable, Identifiable {
             "Volume"
         case .repetitions:
             "Repetitions"
+        case .time:
+            "Time"
+        case .distance:
+            "Distance"
+        case .pace:
+            "Pace"
         }
     }
     
@@ -595,6 +727,12 @@ enum ExerciseMetricSegment: CaseIterable, Identifiable {
             "Total volume per report"
         case .repetitions:
             "Reps at relevant weight"
+        case .time:
+            "Total time per report"
+        case .distance:
+            "Total distance per report"
+        case .pace:
+            "Best lower pace per report"
         }
     }
     
@@ -606,6 +744,12 @@ enum ExerciseMetricSegment: CaseIterable, Identifiable {
             "Best Volume"
         case .repetitions:
             "Best Set"
+        case .time:
+            "Best Time"
+        case .distance:
+            "Best Distance"
+        case .pace:
+            "Best Pace"
         }
     }
     
@@ -615,6 +759,12 @@ enum ExerciseMetricSegment: CaseIterable, Identifiable {
             "kg"
         case .repetitions:
             "reps"
+        case .time:
+            "time"
+        case .distance:
+            "distance"
+        case .pace:
+            "pace"
         }
     }
     
@@ -624,11 +774,21 @@ enum ExerciseMetricSegment: CaseIterable, Identifiable {
             "kg"
         case .repetitions:
             "reps"
+        case .time:
+            "time"
+        case .distance:
+            "distance"
+        case .pace:
+            "pace"
         }
     }
     
     var showsPeriodSummary: Bool {
         self != .repetitions
+    }
+    
+    var isLowerValueBetter: Bool {
+        self == .pace
     }
 }
 

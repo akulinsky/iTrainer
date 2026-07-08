@@ -647,20 +647,6 @@
     "iconName": "icMissingImage"
   },
   {
-    "id": "forearms_farmer_walk",
-    "titleKey": "exercise.forearms.farmer_walk",
-    "defaultTitle": "Farmer's Walk",
-    "devTitle": "Фермерская прогулка",
-    "category": "forearms",
-    "parameters": [
-      "weight",
-      "distance",
-      "time"
-    ],
-    "sortOrder": 3,
-    "iconName": "icMissingImage"
-  },
-  {
     "id": "forearms_dead_hang",
     "titleKey": "exercise.forearms.dead_hang",
     "defaultTitle": "Dead Hang",
@@ -895,20 +881,6 @@
       "reps"
     ],
     "sortOrder": 4,
-    "iconName": "icMissingImage"
-  },
-  {
-    "id": "functional_training_farmer_walk",
-    "titleKey": "exercise.functional_training.farmer_walk",
-    "defaultTitle": "Farmer's Walk",
-    "devTitle": "Фермерская прогулка",
-    "category": "functional_training",
-    "parameters": [
-      "weight",
-      "distance",
-      "time"
-    ],
-    "sortOrder": 5,
     "iconName": "icMissingImage"
   },
   {
