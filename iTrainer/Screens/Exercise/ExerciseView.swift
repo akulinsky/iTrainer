@@ -128,7 +128,7 @@ private struct ExerciseContentView: View {
                 finishWorkout()
             }
         } message: {
-            Text("Current workout will be closed.")
+            Text(workoutManager.finishWorkoutAlertMessage)
         }
     }
     
@@ -381,7 +381,7 @@ private struct ExerciseContentView: View {
                            foreground: .white,
                            background: viewModel.nextExercise == nil ? AppColor.workoutGreen : AppColor.brandPrimary,
                            border: .clear,
-                           action: viewModel.nextExercise == nil ? finishWorkout : goToNextExercise)
+                           action: performCompletedGoalAction)
     }
     
     private func resultActionButton(title: String,
@@ -530,6 +530,14 @@ private struct ExerciseContentView: View {
     private func finishWorkout() {
         workoutManager.endWorkout { report in
             appState.reportToPresent = report
+        }
+    }
+    
+    private func performCompletedGoalAction() {
+        if viewModel.nextExercise == nil {
+            isEndWorkoutAlertPresented = true
+        } else {
+            goToNextExercise()
         }
     }
     
