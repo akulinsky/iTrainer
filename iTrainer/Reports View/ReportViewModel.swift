@@ -167,6 +167,8 @@ class ReportViewModel: ObservableObject {
         let targetTimedDuration = ReportStatusService.targetTimedDuration(for: exercises)
         let actualDistance = ReportStatusService.totalDistance(for: exercises)
         let targetDistance = ReportStatusService.targetDistance(for: exercises)
+        let actualDistanceTimePace = distanceTimePace(for: exercises)
+        let targetDistanceTimePace = targetDistanceTimePace(for: exercises)
         let density = densityValue(actualVolume: actualVolume,
                                    startDate: startDate,
                                    endDate: endDate)
@@ -178,6 +180,8 @@ class ReportViewModel: ObservableObject {
         let timeProgress = rawTimeProgress.map(cappedProgressValue)
         let rawDistanceProgress = targetDistance > 0 ? rawProgressValue(actual: Double(actualDistance), target: Double(targetDistance)) : nil
         let distanceProgress = rawDistanceProgress.map(cappedProgressValue)
+        let rawPaceProgress = paceProgress(actual: actualDistanceTimePace, target: targetDistanceTimePace)
+        let paceProgress = rawPaceProgress.map(cappedProgressValue)
         var summaryCards = [
             SummaryCard(title: "Exercises",
                         value: exercisePercentText,
@@ -229,6 +233,15 @@ class ReportViewModel: ObservableObject {
                                            systemImage: nil))
         }
         
+        if trackingTypes.contains(.distanceTime) {
+            summaryCards.append(SummaryCard(title: "Pace",
+                                           value: actualDistanceTimePace.map(formattedPace) ?? "-",
+                                           detail: targetDistanceTimePace.map { "Target \(formattedPace($0))" } ?? "Distance / time",
+                                           progress: paceProgress,
+                                           colorProgress: rawPaceProgress,
+                                           systemImage: "speedometer"))
+        }
+        
         return ReportMetrics(exerciseProgress: exerciseProgress,
                              exercisePercentText: exercisePercentText,
                              summaryCards: summaryCards,
@@ -268,6 +281,40 @@ class ReportViewModel: ObservableObject {
         guard durationMinutes > 0 else { return nil }
         
         return Int((Double(actualVolume) / durationMinutes).rounded())
+    }
+    
+    private func distanceTimePace(for exercises: [ReportExerciseModel]) -> Float? {
+        let totals = distanceTimeTotals(for: exercises, useTargets: false)
+        guard totals.distance > 0, totals.time > 0 else { return nil }
+        return Float(totals.time) / totals.distance
+    }
+    
+    private func targetDistanceTimePace(for exercises: [ReportExerciseModel]) -> Float? {
+        let totals = distanceTimeTotals(for: exercises, useTargets: true)
+        guard totals.distance > 0, totals.time > 0 else { return nil }
+        return Float(totals.time) / totals.distance
+    }
+    
+    private func distanceTimeTotals(for exercises: [ReportExerciseModel], useTargets: Bool) -> (distance: Float, time: TimeInterval) {
+        exercises.reduce((distance: Float.zero, time: TimeInterval.zero)) { partialResult, exercise in
+            guard ReportStatusService.trackingTypeValue(for: exercise) == .distanceTime else {
+                return partialResult
+            }
+            
+            let sets = useTargets ? exercise.targetSets.map(\.parameters) : exercise.sets.map(\.parameters)
+            let distance = sets.reduce(Float.zero) { $0 + (ReportStatusService.distanceValue(for: $1) ?? 0) }
+            let time = sets.reduce(TimeInterval.zero) { $0 + (ReportStatusService.timeValue(for: $1) ?? 0) }
+            return (partialResult.distance + distance, partialResult.time + time)
+        }
+    }
+    
+    private func paceProgress(actual: Float?, target: Float?) -> Double? {
+        guard let actual, let target, actual > 0, target > 0 else { return nil }
+        return rawProgressValue(actual: Double(target), target: Double(actual))
+    }
+    
+    private func formattedPace(_ value: Float) -> String {
+        TimeInterval(value * 1000).timeForDisplay + "/km"
     }
     
     private func progressValue(actual: Double, target: Double) -> Double {
