@@ -199,7 +199,7 @@ private struct ExerciseContentView: View {
                     .minimumScaleFactor(0.82)
                 
                 HStack(alignment: .center) {
-                    Text("Rest \(viewModel.exercise.restTime.minuteSecond)")
+                    Text(viewModel.exercise.restTime > 0 ? "Rest \(viewModel.exercise.restTime.minuteSecond)" : "No rest")
                         .font(AppFont.rowSubtitle)
                         .foregroundStyle(AppColor.textSecondary)
                     

@@ -172,19 +172,19 @@ final class ReportExerciseViewModel: ObservableObject {
             return [
                 SummaryCard(title: "Volume", value: formattedKilograms(exerciseVolume(reportExercise)), systemImage: "dumbbell.fill"),
                 SummaryCard(title: "Repetitions", value: "\(totalReps(reportExercise))", systemImage: "chart.bar.fill"),
-                SummaryCard(title: "Rest Time", value: reportExercise.restTime?.timeForDisplay ?? "-", systemImage: "clock")
+                SummaryCard(title: "Rest Time", value: formattedRestTime(reportExercise.restTime), systemImage: "clock")
             ]
         case .repsOnly:
             return [
                 SummaryCard(title: "Total Repetitions", value: "\(totalReps(reportExercise))", systemImage: "chart.bar.fill"),
                 SummaryCard(title: "Sets", value: "\(reportExercise.sets.count)", systemImage: "number"),
-                SummaryCard(title: "Rest Time", value: reportExercise.restTime?.timeForDisplay ?? "-", systemImage: "clock")
+                SummaryCard(title: "Rest Time", value: formattedRestTime(reportExercise.restTime), systemImage: "clock")
             ]
         case .timed:
             return [
                 SummaryCard(title: "Total Time", value: totalTime(reportExercise).timeForDisplay, systemImage: "timer"),
                 SummaryCard(title: "Sets", value: "\(reportExercise.sets.count)", systemImage: "number"),
-                SummaryCard(title: "Rest Time", value: reportExercise.restTime?.timeForDisplay ?? "-", systemImage: "clock")
+                SummaryCard(title: "Rest Time", value: formattedRestTime(reportExercise.restTime), systemImage: "clock")
             ]
         case .distance:
             return [
@@ -480,6 +480,11 @@ final class ReportExerciseViewModel: ObservableObject {
     
     private func formattedKilograms(_ value: Float) -> String {
         "\(formattedNumber(value)) kg"
+    }
+    
+    private func formattedRestTime(_ value: TimeInterval?) -> String {
+        guard let value else { return "-" }
+        return value > 0 ? value.timeForDisplay : "No rest"
     }
     
     private func formattedNumber(_ value: Float) -> String {

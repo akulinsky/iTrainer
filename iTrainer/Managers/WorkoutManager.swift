@@ -575,7 +575,8 @@ final class WorkoutManager: ObservableObject {
         let exerciseProgressById = await exerciseProgressById(for: reportWorkout, dataManager: dataManager)
         let exercises = await dataManager.fetchExercises(for: workoutGroupId)
         let targetExercisesCount = exercises.filter { !$0.isHeadline }.count
-        let restDuration = exercise.restTime
+        let exerciseRestTime = exercise.restTime ?? 0
+        let restDuration: TimeInterval? = exerciseRestTime > 0 ? exerciseRestTime : nil
         let restStartedAt = Date()
         
         await MainActor.run {
@@ -591,8 +592,10 @@ final class WorkoutManager: ObservableObject {
             self.currentRestTimeIntervalExercise = restDuration
             self.updateWorkoutProgress()
             self.resetRestTime()
-            self.startRestTime(startedAt: restStartedAt)
-            self.updateRestTime()
+            if restDuration != nil {
+                self.startRestTime(startedAt: restStartedAt)
+                self.updateRestTime()
+            }
         }
         saveSessionSnapshot(reportWorkoutId: reportWorkout.id)
         

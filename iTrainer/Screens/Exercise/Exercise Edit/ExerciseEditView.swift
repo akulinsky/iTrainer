@@ -218,7 +218,7 @@ struct ExerciseEditView: View {
             isRestTimePickerPresented = true
         } label: {
             HStack(spacing: 8) {
-                Text(viewModel.restTime)
+                Text(viewModel.restTimeDisplay)
                     .font(AppFont.rowTitle)
                     .foregroundStyle(AppColor.brandPrimary)
                     .monospacedDigit()

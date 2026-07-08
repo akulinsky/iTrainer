@@ -27,7 +27,20 @@ class ExerciseEditViewModel: ObservableObject {
     
     @Published var title: String
     
-    @Published var switchRest = false
+    @Published var switchRest = false {
+        didSet {
+            guard oldValue != switchRest else { return }
+            
+            if switchRest {
+                if restTimeInterval > 0 {
+                    previousRestTime = restTime
+                }
+                restTime = "0:00"
+            } else {
+                restTime = previousRestTime
+            }
+        }
+    }
     
     @Published var restTime = ""
     
@@ -39,6 +52,7 @@ class ExerciseEditViewModel: ObservableObject {
     
     private var isFirstTime = true
     private var deletedSets = [SetEditCellViewModel]()
+    private var previousRestTime = TimeInterval(120).minuteSecond
     
     private var restTimeInterval: TimeInterval {
         var time = TimeInterval(0)
@@ -60,7 +74,9 @@ class ExerciseEditViewModel: ObservableObject {
     init(exercise: ExerciseModel) {
         self.exercise = exercise
         title = exercise.title ?? ""
-        restTime = exercise.restTime.minuteSecond
+        switchRest = exercise.restTime <= 0
+        restTime = switchRest ? "0:00" : exercise.restTime.minuteSecond
+        previousRestTime = exercise.restTime > 0 ? exercise.restTime.minuteSecond : TimeInterval(120).minuteSecond
     }
     
     // MARK: - Private methods
@@ -119,12 +135,23 @@ class ExerciseEditViewModel: ObservableObject {
     }
     
     var restTimeSeconds: Int {
-        Int(restTimeInterval)
+        switchRest ? 0 : Int(restTimeInterval)
+    }
+    
+    var restTimeDisplay: String {
+        switchRest ? "No rest" : restTime
     }
     
     func setRestTime(seconds: Int) {
         let clampedSeconds = min(max(seconds, 0), 600)
+        guard clampedSeconds > 0 else {
+            switchRest = true
+            return
+        }
+        
         restTime = TimeInterval(clampedSeconds).minuteSecond
+        previousRestTime = restTime
+        switchRest = false
     }
     
     func focusedRestTime(_ focused: Bool) {
@@ -167,7 +194,7 @@ class ExerciseEditViewModel: ObservableObject {
             
             exercise.title = title.isEmpty ? nil : title
             
-            exercise.restTime = self.restTimeInterval
+            exercise.restTime = self.switchRest ? 0 : self.restTimeInterval
             
             await dataManager.update(exercise: exercise)
             
