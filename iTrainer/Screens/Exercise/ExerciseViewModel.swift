@@ -120,8 +120,10 @@ class ExerciseViewModel: ObservableObject {
                     self.nextExercise = isActiveWorkoutExercise ? resolvedNextExercise : nil
                     
                     if paramsData.isEmpty {
-                        for param in exercise.type!.parameters {
-                            self.paramsData.append(ParamData(param: param))
+                        if let exerciseType = exercise.type {
+                            paramsData = exerciseType.parameters.map { ParamData(param: $0) }
+                        } else {
+                            errorMessage = "Exercise type is missing"
                         }
                     }
                     
