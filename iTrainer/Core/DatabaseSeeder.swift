@@ -360,6 +360,7 @@ struct DatabaseSeeder {
                                                    exerciseId: exercise.id,
                                                    index: exercise.index,
                                                    typeId: exercise.typeId,
+                                                   trackingTypeId: exerciseType.trackingType?.rawValue,
                                                    restTime: exercise.restTime)
         await dataManager.insert(model: reportExercise)
         reportExercise.report = reportWorkout

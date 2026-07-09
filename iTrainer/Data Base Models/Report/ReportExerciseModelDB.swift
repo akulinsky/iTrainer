@@ -21,6 +21,8 @@ class ReportExerciseModelDB: ReportExerciseDataProtocol, PersistentProtocol {
     
     var typeId: String
     
+    var trackingTypeId: String?
+    
     var restTime: TimeInterval?
     
     var report: ReportWorkoutModelDB?
@@ -35,11 +37,13 @@ class ReportExerciseModelDB: ReportExerciseDataProtocol, PersistentProtocol {
          exerciseId: UUID,
          index: Int,
          typeId: String,
+         trackingTypeId: String? = nil,
          restTime: TimeInterval? = nil) {
         self.titleExercise = titleExercise
         self.exerciseId = exerciseId
         self.index = index
         self.typeId = typeId
+        self.trackingTypeId = trackingTypeId
         self.restTime = restTime
     }
 }

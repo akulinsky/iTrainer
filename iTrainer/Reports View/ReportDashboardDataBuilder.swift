@@ -37,6 +37,7 @@ struct ReportDashboardExerciseSnapshot: Hashable, Sendable {
     let exerciseId: UUID
     let index: Int
     let typeId: String
+    let trackingTypeId: String?
     let restTime: TimeInterval?
     let date: Date?
     let workoutId: UUID?
@@ -59,6 +60,7 @@ struct ReportDashboardExerciseSnapshot: Hashable, Sendable {
                                    exerciseId: exerciseId,
                                    index: index,
                                    typeId: typeId,
+                                   trackingTypeId: trackingTypeId,
                                    workoutId: workoutId,
                                    workoutGroupId: workoutGroupId,
                                    titleWorkout: titleWorkout,

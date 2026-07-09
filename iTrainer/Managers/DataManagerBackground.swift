@@ -206,6 +206,7 @@ extension DataManagerBackground {
                                                     exerciseId: exercise.exerciseId,
                                                     index: exercise.index,
                                                     typeId: exercise.typeId,
+                                                    trackingTypeId: exercise.trackingTypeId,
                                                     restTime: exercise.restTime,
                                                     date: report.startDate,
                                                     workoutId: report.workoutId,

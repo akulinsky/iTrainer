@@ -7,7 +7,7 @@
 
 import Foundation
 
-enum ExerciseTrackingType: Hashable, Sendable {
+enum ExerciseTrackingType: String, Hashable, Sendable, Codable {
     case weightedReps
     case repsOnly
     case timed

@@ -534,9 +534,14 @@ final class WorkoutManager: ObservableObject {
                                                     exerciseId: exercise.id,
                                                     index: exercise.index,
                                                     typeId: exercise.typeId,
+                                                    trackingTypeId: ExerciseTrackingType(parameters: params)?.rawValue,
                                                     restTime: exercise.restTime)
             await dataManager.insert(model: reportExercise!)
             reportExercise?.report = reportWorkout
+        }
+        
+        if reportExercise?.trackingTypeId == nil {
+            reportExercise?.trackingTypeId = ExerciseTrackingType(parameters: params)?.rawValue
         }
         
         guard let reportExercise = reportExercise else {

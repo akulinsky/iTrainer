@@ -575,6 +575,11 @@ private extension ReportStatusService {
     }
     
     static func trackingType(for exercise: ReportExerciseModel) -> ExerciseTrackingType? {
+        if let trackingTypeId = exercise.trackingTypeId,
+           let trackingType = ExerciseTrackingType(rawValue: trackingTypeId) {
+            return trackingType
+        }
+        
         if let trackingType = ExerciseTrackingType(typeId: exercise.typeId) {
             return trackingType
         }

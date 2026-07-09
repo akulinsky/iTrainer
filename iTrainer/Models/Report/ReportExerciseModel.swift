@@ -19,6 +19,8 @@ struct ReportExerciseModel: ReportExerciseDataProtocol, Hashable {
     
     var typeId: String
     
+    var trackingTypeId: String?
+    
     var workoutId: UUID?
     
     var workoutGroupId: UUID?
@@ -41,6 +43,7 @@ struct ReportExerciseModel: ReportExerciseDataProtocol, Hashable {
         self.exerciseId = model.exerciseId
         self.index = model.index
         self.typeId = model.typeId
+        self.trackingTypeId = model.trackingTypeId
         self.workoutId = model.report?.workoutId
         self.workoutGroupId = model.report?.workoutGroupId
         self.titleWorkout = model.report?.titleWorkout
@@ -61,6 +64,7 @@ struct ReportExerciseModel: ReportExerciseDataProtocol, Hashable {
          exerciseId: UUID,
          index: Int,
          typeId: String,
+         trackingTypeId: String? = nil,
          workoutId: UUID? = nil,
          workoutGroupId: UUID? = nil,
          titleWorkout: String? = nil,
@@ -75,6 +79,7 @@ struct ReportExerciseModel: ReportExerciseDataProtocol, Hashable {
         self.exerciseId = exerciseId
         self.index = index
         self.typeId = typeId
+        self.trackingTypeId = trackingTypeId
         self.workoutId = workoutId
         self.workoutGroupId = workoutGroupId
         self.titleWorkout = titleWorkout
