@@ -80,9 +80,14 @@ struct ExerciseTypeModel: Identifiable {
     let parameters: [ParameterValue<Any>]
     let sortOrder: Int
     var bookmark: Bool
+    let isCustom: Bool
+    let customDescriptionText: String?
+    let customIconSystemName: String?
+    let createdAt: Date?
     
     var icon: Image? {
-        Image(iconName)
+        guard !isCustom else { return nil }
+        return Image(iconName)
     }
     
     var title: String {
@@ -101,7 +106,11 @@ struct ExerciseTypeModel: Identifiable {
          type: ExerciseCategory,
          parameters: [ParameterValue<Any>],
          sortOrder: Int = 0,
-         bookmark: Bool = false) {
+         bookmark: Bool = false,
+         isCustom: Bool = false,
+         customDescriptionText: String? = nil,
+         customIconSystemName: String? = nil,
+         createdAt: Date? = nil) {
         self.iconName = ImageAssetName.resolved(iconName)
         self.titleKey = titleKey
         self.defaultTitle = defaultTitle
@@ -115,6 +124,10 @@ struct ExerciseTypeModel: Identifiable {
         self.parameters = parameters
         self.sortOrder = sortOrder
         self.bookmark = bookmark
+        self.isCustom = isCustom
+        self.customDescriptionText = customDescriptionText
+        self.customIconSystemName = customIconSystemName
+        self.createdAt = createdAt
     }
 }
 
@@ -186,5 +199,24 @@ enum ExerciseSeedLoader {
 extension ExerciseTypeModel {
     static var createExercises: [ExerciseTypeModel] {
         ExerciseSeedLoader.loadExercises()
+    }
+    
+    init?(customModel: CustomExerciseTypeModelDB, categories: [ExerciseCategory]) {
+        guard let category = categories.first(where: { $0.id == customModel.categoryId }),
+              let trackingType = ExerciseTrackingType(rawValue: customModel.trackingTypeId) else {
+            return nil
+        }
+        
+        self.init(id: customModel.id,
+                  titleKey: customModel.title,
+                  defaultTitle: customModel.title,
+                  devTitle: customModel.title,
+                  type: category,
+                  parameters: trackingType.parameters,
+                  sortOrder: customModel.sortOrder,
+                  isCustom: true,
+                  customDescriptionText: customModel.descriptionText,
+                  customIconSystemName: customModel.iconSystemName,
+                  createdAt: customModel.createdAt)
     }
 }

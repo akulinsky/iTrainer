@@ -22,6 +22,8 @@ struct ExerciseTypeView: View {
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
     
     @StateObject private var navigationManager = NavigationManager()
+    @State private var isCreateCustomExercisePresented = false
+    @State private var pendingCreatedExerciseId: String?
     
     let mode: ExerciseTypeViewMode
     
@@ -68,6 +70,17 @@ struct ExerciseTypeView: View {
             .searchable(text: $viewModel.searchQuery, prompt: "Search for exercise")
             .tint(AppColor.brandPrimary)
             .toolbar {
+                if mode == .showing && !presentationMode.wrappedValue.isPresented {
+                    ToolbarItem(placement: .topBarLeading) {
+                        Button {
+                            isCreateCustomExercisePresented = true
+                        } label: {
+                            Image(systemName: "plus")
+                        }
+                        .accessibilityLabel("Create Exercise")
+                    }
+                }
+                
                 if presentationMode.wrappedValue.isPresented {
                     ToolbarItem(placement: .topBarLeading) {
                         Button("Cancel") {
@@ -75,6 +88,17 @@ struct ExerciseTypeView: View {
                         }
                     }
                 }
+            }
+            .sheet(isPresented: $isCreateCustomExercisePresented) {
+                CreateCustomExerciseView { newExerciseId in
+                    pendingCreatedExerciseId = newExerciseId
+                }
+            }
+            .onChange(of: isCreateCustomExercisePresented) { _, isPresented in
+                guard !isPresented, let pendingCreatedExerciseId else { return }
+                self.pendingCreatedExerciseId = nil
+                viewModel.reloadExercises()
+                navigationManager.path.append(ExerciseTypeRoute.exerciseDetailView(exerciseId: pendingCreatedExerciseId))
             }
             .contentSelf(content: { view in
                 contentViewNavigation(content: view)
@@ -99,6 +123,10 @@ struct ExerciseTypeView: View {
                         ExerciseCatalogDetailView(model: exercise,
                                                   onOpenStatistics: {
                                                     navigationManager.path.append(ExerciseTypeRoute.exerciseStatisticsView(exerciseId: exercise.id))
+                                                  },
+                                                  onDelete: {
+                                                    viewModel.reloadExercises()
+                                                    navigationManager.path = NavigationPath()
                                                   })
                     }
                 case .exerciseStatisticsView(let exerciseId):

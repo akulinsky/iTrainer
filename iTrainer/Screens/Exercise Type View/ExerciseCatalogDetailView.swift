@@ -12,16 +12,22 @@ struct ExerciseCatalogDetailView: View {
     let model: ExerciseTypeModel
     
     @State private var isStatisticsPresented = false
+    @State private var isDeleteAlertPresented = false
+    @State private var hasActiveWorkout = true
     
     private let horizontalPadding: CGFloat = 20
     private let cardCornerRadius: CGFloat = 14
     private let exerciseInfo: ExerciseInfo?
     private let onOpenStatistics: (() -> Void)?
+    private let onDelete: (() -> Void)?
     
-    init(model: ExerciseTypeModel, onOpenStatistics: (() -> Void)? = nil) {
+    init(model: ExerciseTypeModel,
+         onOpenStatistics: (() -> Void)? = nil,
+         onDelete: (() -> Void)? = nil) {
         self.model = model
-        self.exerciseInfo = ExerciseInfoLoader.info(for: model.id)
+        self.exerciseInfo = model.isCustom ? nil : ExerciseInfoLoader.info(for: model.id)
         self.onOpenStatistics = onOpenStatistics
+        self.onDelete = onDelete
     }
     
     var body: some View {
@@ -38,7 +44,7 @@ struct ExerciseCatalogDetailView: View {
                 ExerciseStatisticsNavigationCard(cornerRadius: cardCornerRadius,
                                                  action: openStatistics)
                 
-                if exerciseInfo == nil {
+                if exerciseInfo == nil && !model.isCustom {
                     ExerciseMissingInfoCard(exerciseId: model.id,
                                             cornerRadius: cardCornerRadius)
                 }
@@ -52,6 +58,12 @@ struct ExerciseCatalogDetailView: View {
                     ExerciseTechniqueCard(items: techniqueTexts,
                                           cornerRadius: cardCornerRadius)
                 }
+                
+                if model.isCustom && !hasActiveWorkout {
+                    DeleteCustomExerciseCard(cornerRadius: cardCornerRadius) {
+                        isDeleteAlertPresented = true
+                    }
+                }
             }
             .padding(.horizontal, horizontalPadding)
             .padding(.top, 12)
@@ -63,6 +75,18 @@ struct ExerciseCatalogDetailView: View {
         .navigationDestination(isPresented: $isStatisticsPresented) {
             ExerciseStatisticsView(exerciseType: model)
         }
+        .alert("Delete this exercise?", isPresented: $isDeleteAlertPresented) {
+            Button("Cancel", role: .cancel) { }
+            Button("Delete", role: .destructive) {
+                deleteExercise()
+            }
+        } message: {
+            Text("This exercise will be removed from the catalog and all workouts. Past reports will stay unchanged.")
+        }
+        .task {
+            let dataManager = DataManagerBackground(container: DataContainer.shared.sharedModelContainer)
+            hasActiveWorkout = await dataManager.fetchStartedWorkout() != nil
+        }
     }
     
     private func openStatistics() {
@@ -73,11 +97,29 @@ struct ExerciseCatalogDetailView: View {
         }
     }
     
+    private func deleteExercise() {
+        Task {
+            let dataManager = DataManagerBackground(container: DataContainer.shared.sharedModelContainer)
+            await dataManager.deleteCustomExerciseTemplate(typeId: model.id)
+            await MainActor.run {
+                DataContainer.shared.reloadExerciseCatalog()
+                onDelete?()
+            }
+        }
+    }
+    
     private var parametersText: String {
         model.parameters.map { $0.title }.joined(separator: " · ")
     }
     
     private var descriptionText: String? {
+        if model.isCustom {
+            guard let text = model.customDescriptionText?.trimmingCharacters(in: .whitespacesAndNewlines), !text.isEmpty else {
+                return nil
+            }
+            return text
+        }
+        
         guard let exerciseInfo else { return nil }
         return localizedText(for: exerciseInfo.descriptionKey)
     }
@@ -100,7 +142,13 @@ private struct ExerciseMediaView: View {
         ZStack {
             AppColor.surfacePrimary
             
-            if let icon = model.icon {
+            if model.isCustom {
+                ExerciseTypeIconView(exerciseType: model,
+                                     size: 160,
+                                     cornerRadius: 28,
+                                     symbolSize: 74)
+                    .padding(.vertical, 42)
+            } else if let icon = model.icon {
                 icon
                     .resizable()
                     .scaledToFit()
@@ -311,6 +359,29 @@ private struct ExerciseTechniqueCard: View {
             RoundedRectangle(cornerRadius: cornerRadius, style: .continuous)
                 .stroke(AppColor.separatorSoft, lineWidth: 1)
         }
+    }
+}
+
+private struct DeleteCustomExerciseCard: View {
+    let cornerRadius: CGFloat
+    let action: () -> Void
+    
+    var body: some View {
+        Button(role: .destructive, action: action) {
+            Text("Delete Exercise")
+                .font(AppFont.workoutWidgetTitle)
+                .foregroundStyle(AppColor.progressRed)
+                .frame(maxWidth: .infinity)
+                .padding(18)
+                .background(AppColor.surfacePrimary)
+                .clipShape(RoundedRectangle(cornerRadius: cornerRadius, style: .continuous))
+                .overlay {
+                    RoundedRectangle(cornerRadius: cornerRadius, style: .continuous)
+                        .stroke(AppColor.progressRed.opacity(0.35), lineWidth: 1)
+                }
+                .contentShape(RoundedRectangle(cornerRadius: cornerRadius, style: .continuous))
+        }
+        .buttonStyle(.plain)
     }
 }
 

@@ -243,21 +243,11 @@ private struct ExerciseContentView: View {
         .accessibilityLabel("Latest report")
     }
     
-    @ViewBuilder
     private var exerciseIcon: some View {
-        if let icon = viewModel.exercise.type?.icon {
-            icon
-                .resizable()
-                .scaledToFill()
-                .frame(width: 88, height: 88)
-                .clipShape(RoundedRectangle(cornerRadius: 12, style: .continuous))
-        } else {
-            Image("icMissingImage")
-                .resizable()
-                .scaledToFill()
-                .frame(width: 88, height: 88)
-                .clipShape(RoundedRectangle(cornerRadius: 12, style: .continuous))
-        }
+        ExerciseTypeIconView(exerciseType: viewModel.exercise.type,
+                             size: 88,
+                             cornerRadius: 12,
+                             symbolSize: 36)
     }
     
     private var exerciseMetadata: String {

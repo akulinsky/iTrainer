@@ -55,19 +55,9 @@ struct ExerciseCell: View {
             } else {
                 HStack(spacing: 14) {
                     if !model.isHeadline {
-                        if let icon = model.type?.icon {
-                            icon
-                                .resizable()
-                                .scaledToFill()
-                                .frame(width: iconSize, height: iconSize)
-                                .clipShape(RoundedRectangle(cornerRadius: 12, style: .continuous))
-                        } else {
-                            Image("icMissingImage")
-                                .resizable()
-                                .scaledToFill()
-                                .frame(width: iconSize, height: iconSize)
-                                .clipShape(RoundedRectangle(cornerRadius: 12, style: .continuous))
-                        }
+                        ExerciseTypeIconView(exerciseType: model.type,
+                                             size: iconSize,
+                                             cornerRadius: 12)
                     }
                     
                     VStack(alignment: .leading, spacing: 6) {

@@ -31,13 +31,7 @@ struct ExerciseTypeCell: View {
                 selectionIcon
             }
             
-            if let icon = model.icon {
-                icon
-                    .resizable()
-                    .scaledToFill()
-                    .frame(width: iconSize, height: iconSize)
-                    .clipShape(RoundedRectangle(cornerRadius: iconCornerRadius, style: .continuous))
-            }
+            exerciseIcon
             
             VStack(alignment: .leading, spacing: 6) {
                 Text(model.displayName)
@@ -61,6 +55,13 @@ struct ExerciseTypeCell: View {
             RoundedRectangle(cornerRadius: cardCornerRadius, style: .continuous)
                 .stroke(AppColor.separatorSoft, lineWidth: 1)
         }
+    }
+    
+    private var exerciseIcon: some View {
+        ExerciseTypeIconView(exerciseType: model,
+                             size: iconSize,
+                             cornerRadius: iconCornerRadius,
+                             symbolSize: 30)
     }
     
     private var selectionIcon: some View {

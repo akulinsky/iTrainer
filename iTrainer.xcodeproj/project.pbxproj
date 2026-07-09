@@ -38,6 +38,12 @@
 		F6536BF42FEB10080041B40B /* WorkoutStatusWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6536BF32FEB10080041B40B /* WorkoutStatusWidget.swift */; };
 		F656783D2FF42AE100250F44 /* ReportStatusService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F656783C2FF42AE100250F44 /* ReportStatusService.swift */; };
 		F657BEA02FED49F4002E5449 /* DurationPickerSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = F657BE9F2FED49F4002E5449 /* DurationPickerSheet.swift */; };
+		F660FF9F2FFFF9EB00F676BD /* CustomExerciseTypeModelDB.swift in Sources */ = {isa = PBXBuildFile; fileRef = F660FF9E2FFFF9EB00F676BD /* CustomExerciseTypeModelDB.swift */; };
+		F660FFA12FFFFA7200F676BD /* CreateCustomExerciseViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F660FFA02FFFFA7200F676BD /* CreateCustomExerciseViewModel.swift */; };
+		F660FFA32FFFFA9E00F676BD /* CreateCustomExerciseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F660FFA22FFFFA9E00F676BD /* CreateCustomExerciseView.swift */; };
+		F660FFA52FFFFAB100F676BD /* SelectCustomExerciseCategoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F660FFA42FFFFAB100F676BD /* SelectCustomExerciseCategoryView.swift */; };
+		F660FFA72FFFFAC400F676BD /* SelectCustomExerciseTrackingTypeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F660FFA62FFFFAC400F676BD /* SelectCustomExerciseTrackingTypeView.swift */; };
+		F660FFA930000D0600F676BD /* ExerciseTypeIconView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F660FFA830000D0600F676BD /* ExerciseTypeIconView.swift */; };
 		F66CBE2D2C8DD8A80025B87F /* ReportExerciseModelDB.swift in Sources */ = {isa = PBXBuildFile; fileRef = F66CBE2C2C8DD8A80025B87F /* ReportExerciseModelDB.swift */; };
 		F66CBE2F2C8DDEB50025B87F /* ReportSetsModelDB.swift in Sources */ = {isa = PBXBuildFile; fileRef = F66CBE2E2C8DDEB50025B87F /* ReportSetsModelDB.swift */; };
 		F66CBE322C8DEA2A0025B87F /* ReportWorkoutModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F66CBE312C8DEA2A0025B87F /* ReportWorkoutModel.swift */; };
@@ -171,6 +177,12 @@
 		F6536BF32FEB10080041B40B /* WorkoutStatusWidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutStatusWidget.swift; sourceTree = "<group>"; };
 		F656783C2FF42AE100250F44 /* ReportStatusService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportStatusService.swift; sourceTree = "<group>"; };
 		F657BE9F2FED49F4002E5449 /* DurationPickerSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DurationPickerSheet.swift; sourceTree = "<group>"; };
+		F660FF9E2FFFF9EB00F676BD /* CustomExerciseTypeModelDB.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomExerciseTypeModelDB.swift; sourceTree = "<group>"; };
+		F660FFA02FFFFA7200F676BD /* CreateCustomExerciseViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateCustomExerciseViewModel.swift; sourceTree = "<group>"; };
+		F660FFA22FFFFA9E00F676BD /* CreateCustomExerciseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateCustomExerciseView.swift; sourceTree = "<group>"; };
+		F660FFA42FFFFAB100F676BD /* SelectCustomExerciseCategoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectCustomExerciseCategoryView.swift; sourceTree = "<group>"; };
+		F660FFA62FFFFAC400F676BD /* SelectCustomExerciseTrackingTypeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectCustomExerciseTrackingTypeView.swift; sourceTree = "<group>"; };
+		F660FFA830000D0600F676BD /* ExerciseTypeIconView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseTypeIconView.swift; sourceTree = "<group>"; };
 		F66CBE2C2C8DD8A80025B87F /* ReportExerciseModelDB.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportExerciseModelDB.swift; sourceTree = "<group>"; };
 		F66CBE2E2C8DDEB50025B87F /* ReportSetsModelDB.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportSetsModelDB.swift; sourceTree = "<group>"; };
 		F66CBE312C8DEA2A0025B87F /* ReportWorkoutModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportWorkoutModel.swift; sourceTree = "<group>"; };
@@ -308,6 +320,17 @@
 			path = Core;
 			sourceTree = "<group>";
 		};
+		F660FF9D2FFFF9E100F676BD /* Custom Exercise */ = {
+			isa = PBXGroup;
+			children = (
+				F660FFA22FFFFA9E00F676BD /* CreateCustomExerciseView.swift */,
+				F660FFA02FFFFA7200F676BD /* CreateCustomExerciseViewModel.swift */,
+				F660FFA42FFFFAB100F676BD /* SelectCustomExerciseCategoryView.swift */,
+				F660FFA62FFFFAC400F676BD /* SelectCustomExerciseTrackingTypeView.swift */,
+			);
+			path = "Custom Exercise";
+			sourceTree = "<group>";
+		};
 		F66CBE2B2C8DCA920025B87F /* Report */ = {
 			isa = PBXGroup;
 			children = (
@@ -424,6 +447,7 @@
 				F68D60642C760C4B00783E54 /* CircularProgressView.swift */,
 				F6536BF32FEB10080041B40B /* WorkoutStatusWidget.swift */,
 				F657BE9F2FED49F4002E5449 /* DurationPickerSheet.swift */,
+				F660FFA830000D0600F676BD /* ExerciseTypeIconView.swift */,
 			);
 			path = Controls;
 			sourceTree = "<group>";
@@ -437,6 +461,7 @@
 				F69BD12B2C551B400057080E /* ExerciseModelDB.swift */,
 				F69BD12D2C551B4F0057080E /* SetsModelDB.swift */,
 				F66CBE2B2C8DCA920025B87F /* Report */,
+				F660FF9E2FFFF9EB00F676BD /* CustomExerciseTypeModelDB.swift */,
 			);
 			path = "Data Base Models";
 			sourceTree = "<group>";
@@ -642,6 +667,7 @@
 				F6F4CF272C6B71D600A5BBA9 /* ExerciseTypeListView.swift */,
 				F6DD68AC2C6503C9004EFB03 /* ExerciseTypeCell.swift */,
 				F6AB65AA2FEAB07500DE8066 /* ExerciseCatalogDetailView.swift */,
+				F660FF9D2FFFF9E100F676BD /* Custom Exercise */,
 			);
 			path = "Exercise Type View";
 			sourceTree = "<group>";
@@ -820,6 +846,7 @@
 				F648969E2FE71522005B0619 /* DatabaseSeeder.swift in Sources */,
 				F6F4CF282C6B71D600A5BBA9 /* ExerciseTypeListView.swift in Sources */,
 				F6F1E08D2C9DCA3500C1419A /* ReportExerciseCell.swift in Sources */,
+				F660FFA52FFFFAB100F676BD /* SelectCustomExerciseCategoryView.swift in Sources */,
 				F69BD0FD2C54FB190057080E /* AKDisabledButtonStyle.swift in Sources */,
 				F677A06C2FFBBCCB00101B33 /* CalendarModels.swift in Sources */,
 				F6CB13132C9B2F2F00B9FCFC /* Date+Utils.swift in Sources */,
@@ -838,8 +865,11 @@
 				F6EA7BE62C57F861005225A0 /* SetsCell.swift in Sources */,
 				F64CF04C2FF55BEC009FB938 /* ExerciseStatisticsView.swift in Sources */,
 				F64895BB2FE6C67F005B0619 /* NavigationManager.swift in Sources */,
+				F660FFA12FFFFA7200F676BD /* CreateCustomExerciseViewModel.swift in Sources */,
 				F69BD12A2C551B270057080E /* WorkoutGroupModelDB.swift in Sources */,
 				F6C821C92C6FA2FF00A64CD1 /* SelectExerciseBarView.swift in Sources */,
+				F660FFA72FFFFAC400F676BD /* SelectCustomExerciseTrackingTypeView.swift in Sources */,
+				F660FF9F2FFFF9EB00F676BD /* CustomExerciseTypeModelDB.swift in Sources */,
 				F648969A2FE705F1005B0619 /* AppEnvironment.swift in Sources */,
 				F6EA7BE22C57F324005225A0 /* ExerciseView.swift in Sources */,
 				F677A0722FFBBCCE00101B33 /* CalendarMonthPagerView.swift in Sources */,
@@ -857,8 +887,10 @@
 				F6CB90432C7794BF002529A6 /* SetEditCell.swift in Sources */,
 				F69BD0FB2C54FB0E0057080E /* MailView.swift in Sources */,
 				F64CF0482FF534F0009FB938 /* LoadingSpinnerView.swift in Sources */,
+				F660FFA32FFFFA9E00F676BD /* CreateCustomExerciseView.swift in Sources */,
 				F6EA7BCA2C578BAF005225A0 /* WorkoutListViewModel.swift in Sources */,
 				F62818452C62408D003642F8 /* ExerciseTypeModel.swift in Sources */,
+				F660FFA930000D0600F676BD /* ExerciseTypeIconView.swift in Sources */,
 				F6CCEE062FFD27A300686CFB /* LocalNotificationManager.swift in Sources */,
 				F68D60672C76193500783E54 /* TimeInterval+Utils.swift in Sources */,
 				F6EA7BE02C57DEF6005225A0 /* ExerciseListViewModel.swift in Sources */,

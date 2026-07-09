@@ -170,6 +170,33 @@ extension DataManagerBackground {
         return fetchItem(predicate: #Predicate<ReportWorkoutModelDB> { $0.endDate == nil })
     }
     
+    func fetchCustomExerciseTypes() -> [CustomExerciseTypeModelDB] {
+        fetchModels(sortBy: [SortDescriptor(\CustomExerciseTypeModelDB.createdAt, order: .forward)])
+    }
+    
+    func createCustomExercise(title: String,
+                              categoryId: String,
+                              trackingType: ExerciseTrackingType,
+                              descriptionText: String?) -> String {
+        let item = CustomExerciseTypeModelDB(id: "custom_\(UUID().uuidString)",
+                                             title: title,
+                                             categoryId: categoryId,
+                                             trackingTypeId: trackingType.rawValue,
+                                             descriptionText: descriptionText,
+                                             iconSystemName: trackingType.iconSystemName,
+                                             sortOrder: count(type: CustomExerciseTypeModelDB.self) + 1)
+        insert(model: item)
+        save()
+        return item.id
+    }
+    
+    func deleteCustomExerciseTemplate(typeId: String) {
+        let templates = fetchModels(predicate: #Predicate<CustomExerciseTypeModelDB> { $0.id == typeId })
+        templates.forEach { remove(model: $0) }
+        removeExercises(typeId: typeId, withSaving: false)
+        save()
+    }
+    
     func fetchLatestCompletedReportWorkout(for workoutId: UUID) -> ReportWorkoutModelDB? {
         let uuid = workoutId
         return fetchModels(predicate: #Predicate<ReportWorkoutModelDB> { $0.workoutId == uuid && $0.endDate != nil },
@@ -368,6 +395,14 @@ extension DataManagerBackground {
     func removeSets(with ids: [UUID]) {
         for id in ids {
             removeSets(with: id, withSaving: false)
+        }
+    }
+    
+    func removeExercises(typeId: String, withSaving: Bool = true) {
+        let items = fetchModels(predicate: #Predicate<ExerciseModelDB> { $0.typeId == typeId })
+        items.forEach { removeExercise(with: $0.id, withSaving: false) }
+        if withSaving {
+            save()
         }
     }
     

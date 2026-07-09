@@ -25,6 +25,7 @@ final class DataContainer: ObservableObject {
             WorkoutGroupModelDB.self,
             ExerciseModelDB.self,
             SetsModelDB.self,
+            CustomExerciseTypeModelDB.self,
             ReportWorkoutModelDB.self,
             ReportExerciseModelDB.self,
             ReportSetsModelDB.self
@@ -43,6 +44,37 @@ final class DataContainer: ObservableObject {
     
     init() {
         resetDatabaseForStringExerciseSeedIfNeeded()
+        reloadExerciseCatalog()
+    }
+    
+    func reloadExerciseCatalog() {
+        let seedExercises = ExerciseSeedLoader.loadExercises(categories: categories)
+        let customExercises = fetchCustomExerciseTypes()
+            .compactMap { ExerciseTypeModel(customModel: $0, categories: categories) }
+        
+        arrayExercises = (seedExercises + customExercises).sorted { lhs, rhs in
+            if lhs.type.sortOrder != rhs.type.sortOrder {
+                return lhs.type.sortOrder < rhs.type.sortOrder
+            }
+            if lhs.isCustom != rhs.isCustom {
+                return lhs.isCustom
+            }
+            if lhs.isCustom, rhs.isCustom {
+                return (lhs.createdAt ?? .distantPast) < (rhs.createdAt ?? .distantPast)
+            }
+            return lhs.sortOrder < rhs.sortOrder
+        }
+    }
+    
+    private func fetchCustomExerciseTypes() -> [CustomExerciseTypeModelDB] {
+        do {
+            let context = ModelContext(sharedModelContainer)
+            let descriptor = FetchDescriptor<CustomExerciseTypeModelDB>(sortBy: [SortDescriptor(\CustomExerciseTypeModelDB.createdAt, order: .forward)])
+            return try context.fetch(descriptor)
+        } catch {
+            assertionFailure("Could not fetch custom exercises: \(error)")
+            return []
+        }
     }
     
     private func resetDatabaseForStringExerciseSeedIfNeeded() {

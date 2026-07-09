@@ -7,7 +7,7 @@
 
 import Foundation
 
-enum ExerciseTrackingType: String, Hashable, Sendable, Codable {
+enum ExerciseTrackingType: String, CaseIterable, Hashable, Sendable, Codable {
     case weightedReps
     case repsOnly
     case timed
@@ -70,6 +70,66 @@ enum ExerciseTrackingType: String, Hashable, Sendable, Codable {
     
     var usesPace: Bool {
         self == .distanceTime
+    }
+    
+    var displayTitle: String {
+        switch self {
+        case .weightedReps:
+            "Weighted reps"
+        case .repsOnly:
+            "Reps only"
+        case .timed:
+            "Timed"
+        case .distance:
+            "Distance"
+        case .distanceTime:
+            "Distance & time"
+        }
+    }
+    
+    var descriptionText: String {
+        switch self {
+        case .weightedReps:
+            "Track weight and repetitions for each set."
+        case .repsOnly:
+            "Track repetitions for each set."
+        case .timed:
+            "Track duration for each set."
+        case .distance:
+            "Track distance for each set."
+        case .distanceTime:
+            "Track distance and duration."
+        }
+    }
+    
+    var iconSystemName: String {
+        switch self {
+        case .weightedReps:
+            "dumbbell.fill"
+        case .repsOnly:
+            "figure.strengthtraining.traditional"
+        case .timed:
+            "timer"
+        case .distance:
+            "point.topleft.down.curvedto.point.bottomright.up"
+        case .distanceTime:
+            "figure.run"
+        }
+    }
+    
+    var parameters: [SetsParameter] {
+        switch self {
+        case .weightedReps:
+            [.weight(), .repeats()]
+        case .repsOnly:
+            [.repeats()]
+        case .timed:
+            [.time()]
+        case .distance:
+            [.distance()]
+        case .distanceTime:
+            [.distance(), .time()]
+        }
     }
 }
 

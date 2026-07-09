@@ -49,21 +49,10 @@ struct HiddenExerciseCell: View {
         }
     }
     
-    @ViewBuilder
     private var exerciseIcon: some View {
-        if let icon = model.type?.icon {
-            icon
-                .resizable()
-                .scaledToFill()
-                .frame(width: iconSize, height: iconSize)
-                .clipShape(RoundedRectangle(cornerRadius: iconCornerRadius, style: .continuous))
-        } else {
-            Image("icMissingImage")
-                .resizable()
-                .scaledToFill()
-                .frame(width: iconSize, height: iconSize)
-                .clipShape(RoundedRectangle(cornerRadius: iconCornerRadius, style: .continuous))
-        }
+        ExerciseTypeIconView(exerciseType: model.type,
+                             size: iconSize,
+                             cornerRadius: iconCornerRadius)
     }
 }
 
