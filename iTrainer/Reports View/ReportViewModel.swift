@@ -234,12 +234,12 @@ class ReportViewModel: ObservableObject {
         }
         
         if trackingTypes.contains(.distanceTime) {
-            summaryCards.append(SummaryCard(title: "Pace",
-                                           value: actualDistanceTimePace.map(formattedPace) ?? "-",
-                                           detail: targetDistanceTimePace.map { "Target \(formattedPace($0))" } ?? "Distance / time",
+            summaryCards.append(SummaryCard(title: "Pace Goal",
+                                           value: rawPaceProgress.map { percentText(for: $0, isCapped: false) } ?? "-",
+                                           detail: paceGoalDetail(actual: actualDistanceTimePace, target: targetDistanceTimePace),
                                            progress: paceProgress,
                                            colorProgress: rawPaceProgress,
-                                           systemImage: "speedometer"))
+                                           systemImage: nil))
         }
         
         return ReportMetrics(exerciseProgress: exerciseProgress,
@@ -313,8 +313,18 @@ class ReportViewModel: ObservableObject {
         return rawProgressValue(actual: Double(target), target: Double(actual))
     }
     
+    private func paceGoalDetail(actual: Float?, target: Float?) -> String {
+        guard let actual else { return "Distance / time" }
+        guard let target else { return formattedPace(actual) }
+        return "\(formattedPaceValue(actual)) / \(formattedPaceValue(target)) km"
+    }
+    
     private func formattedPace(_ value: Float) -> String {
-        TimeInterval(value * 1000).timeForDisplay + "/km"
+        formattedPaceValue(value) + "/km"
+    }
+    
+    private func formattedPaceValue(_ value: Float) -> String {
+        TimeInterval(value * 1000).timeForDisplay
     }
     
     private func progressValue(actual: Double, target: Double) -> Double {
