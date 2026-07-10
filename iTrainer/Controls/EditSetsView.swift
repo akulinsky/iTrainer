@@ -37,7 +37,7 @@ struct EditSetsView: View {
                 keyboardType = .numberPad
             case .distance(let value):
                 if value > 0 {
-                    self.value = value.distanceForDisplay
+                    self.value = value.distanceForTextField
                 }
                 keyboardType = .numberPad
             case .time(let value):

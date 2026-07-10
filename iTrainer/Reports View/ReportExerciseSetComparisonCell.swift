@@ -26,23 +26,53 @@ struct ReportExerciseSetComparisonCell: View {
                 .foregroundStyle(isHeader ? AppColor.textSecondary : AppColor.textPrimary)
                 .frame(maxWidth: .infinity, alignment: .leading)
             
-            Text(row.target)
-                .font(isHeader ? AppFont.caption : .system(size: 15, weight: .semibold))
-                .foregroundStyle(AppColor.textSecondary)
-                .frame(maxWidth: .infinity, alignment: .leading)
-                .lineLimit(1)
-                .minimumScaleFactor(0.78)
+            valueText(row.target, color: AppColor.textSecondary, alignment: .leading)
             
-            Text(row.result)
-                .font(isHeader ? AppFont.caption : .system(size: 15, weight: .semibold))
-                .foregroundStyle(resultColor)
-                .frame(maxWidth: .infinity, alignment: .trailing)
-                .lineLimit(1)
-                .minimumScaleFactor(0.78)
+            valueText(row.result, color: resultColor, alignment: .trailing)
         }
         .padding(.horizontal, 14)
         .padding(.vertical, isHeader ? 12 : 14)
         .frame(minHeight: isHeader ? 44 : 62)
+    }
+    
+    @ViewBuilder
+    private func valueText(_ value: String, color: Color, alignment: Alignment) -> some View {
+        if !isHeader, let lines = distanceTimeLines(from: value) {
+            VStack(alignment: horizontalAlignment(for: alignment), spacing: 2) {
+                ForEach(lines, id: \.self) { line in
+                    Text(line)
+                        .lineLimit(1)
+                }
+            }
+            .font(.system(size: 15, weight: .semibold))
+            .foregroundStyle(color)
+            .frame(maxWidth: .infinity, alignment: alignment)
+        } else {
+            Text(value)
+                .font(isHeader ? AppFont.caption : .system(size: 15, weight: .semibold))
+                .foregroundStyle(color)
+                .frame(maxWidth: .infinity, alignment: alignment)
+                .lineLimit(1)
+                .minimumScaleFactor(0.78)
+        }
+    }
+    
+    private func distanceTimeLines(from value: String) -> [String]? {
+        let parts = value.components(separatedBy: " · ")
+        guard parts.count == 2,
+              isDistanceText(parts[0]),
+              parts[1].contains(":") else {
+            return nil
+        }
+        return parts
+    }
+    
+    private func isDistanceText(_ value: String) -> Bool {
+        value.hasSuffix(" m") || value.hasSuffix(" km")
+    }
+    
+    private func horizontalAlignment(for alignment: Alignment) -> HorizontalAlignment {
+        alignment == .trailing ? .trailing : .leading
     }
     
     @ViewBuilder

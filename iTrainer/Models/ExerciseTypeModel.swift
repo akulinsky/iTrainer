@@ -37,7 +37,7 @@ enum ParameterValue<value>: Identifiable, Hashable {
         case .repeats(let value):
             "\(value)"
         case .distance(let value):
-            value.distanceForDisplay
+            value.distanceValueForDisplay
         case .time(let value):         
             value.timeForDisplay
         }
@@ -58,6 +58,8 @@ enum ParameterValue<value>: Identifiable, Hashable {
     
     var inlineUnitText: String {
         switch self {
+        case .distance(let value):
+            value.distanceUnitForDisplay
         case .time:
             ""
         default:

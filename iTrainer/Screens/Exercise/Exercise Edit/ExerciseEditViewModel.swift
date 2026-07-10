@@ -240,7 +240,7 @@ class SetEditCellViewModel: ObservableObject, Identifiable {
                 keyboardType = .numberPad
             case .distance(let value):
                 if value > 0 {
-                    self.value = value.distanceForDisplay
+                    self.value = value.distanceForTextField
                 }
                 keyboardType = .numberPad
             case .time(let value):
@@ -372,11 +372,11 @@ class SetEditCellViewModel: ObservableObject, Identifiable {
             return ""
         }
         
-        let value = formattedValue(for: parameter)
+        let value = displayValue(for: parameter)
         return "\(parameter.title): \(value.isEmpty ? "-" : value)"
     }
     
-    private func formattedValue(for parameter: SetsParameter) -> String {
+    private func displayValue(for parameter: SetsParameter) -> String {
         switch parameter {
         case .weight(let value):
             return value > 0 ? "\(value)" : ""
@@ -384,6 +384,19 @@ class SetEditCellViewModel: ObservableObject, Identifiable {
             return value > 0 ? "\(value)" : ""
         case .distance(let value):
             return value > 0 ? value.distanceForDisplay : ""
+        case .time(let value):
+            return value > 0 ? value.timeForTextField : ""
+        }
+    }
+    
+    private func textFieldValue(for parameter: SetsParameter) -> String {
+        switch parameter {
+        case .weight(let value):
+            return value > 0 ? "\(value)" : ""
+        case .repeats(let value):
+            return value > 0 ? "\(value)" : ""
+        case .distance(let value):
+            return value > 0 ? value.distanceForTextField : ""
         case .time(let value):
             return value > 0 ? value.timeForTextField : ""
         }
@@ -402,7 +415,7 @@ class SetEditCellViewModel: ObservableObject, Identifiable {
         }
         
         DispatchQueue.main.async {
-            paramData.value = self.formattedValue(for: parameter)
+            paramData.value = self.textFieldValue(for: parameter)
             paramData.valueBeforeEditing = nil
             if let complete = complete {
                 complete()

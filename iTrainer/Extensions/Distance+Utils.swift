@@ -7,11 +7,26 @@
 
 import Foundation
 
-
 extension Float {
     
     var distanceForDisplay: String {
-//        String(format:"%d.%01d", kilom, meter)
+        "\(distanceValueForDisplay) \(distanceUnitForDisplay)"
+    }
+    
+    var distanceValueForDisplay: String {
+        guard self >= 1000 else {
+            return "\(Int(self))"
+        }
+        
+        let kilometers = self / 1000
+        return kilometers.formattedTrimmed(maxFractionDigits: 2)
+    }
+    
+    var distanceUnitForDisplay: String {
+        self >= 1000 ? "km" : "m"
+    }
+    
+    var distanceForTextField: String {
         "\(Int(self))"
     }
     
@@ -26,5 +41,16 @@ extension Float {
     static func distanceForSet(value: Float) -> Float {
         
         return 0
+    }
+}
+
+private extension Float {
+    func formattedTrimmed(maxFractionDigits: Int) -> String {
+        let formatter = NumberFormatter()
+        formatter.numberStyle = .decimal
+        formatter.minimumFractionDigits = 0
+        formatter.maximumFractionDigits = maxFractionDigits
+        formatter.locale = Locale(identifier: "en_US_POSIX")
+        return formatter.string(from: NSNumber(value: self)) ?? "\(self)"
     }
 }

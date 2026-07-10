@@ -159,7 +159,7 @@ class ExerciseViewModel: ObservableObject {
             case .repeats(let value):
                 result = "\(value)"
             case .distance(let value):
-                result = "\(value)"
+                result = value.distanceForTextField
             case .time(let value):
                 result = value.minuteSecond
             }
