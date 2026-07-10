@@ -28,6 +28,7 @@
 		F630C9512C79E92F00049730 /* AKTextFieldStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = F630C9502C79E92F00049730 /* AKTextFieldStyle.swift */; };
 		F632E90C2C9C2C5C009C7BE1 /* ReportView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F632E90B2C9C2C5C009C7BE1 /* ReportView.swift */; };
 		F632E90E2C9C2C6E009C7BE1 /* ReportViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F632E90D2C9C2C6E009C7BE1 /* ReportViewModel.swift */; };
+		F6336E1A30011993006ECA08 /* View+KeyboardAccessory.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6336E1930011993006ECA08 /* View+KeyboardAccessory.swift */; };
 		F64895BB2FE6C67F005B0619 /* NavigationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F64895BA2FE6C67F005B0619 /* NavigationManager.swift */; };
 		F648969A2FE705F1005B0619 /* AppEnvironment.swift in Sources */ = {isa = PBXBuildFile; fileRef = F64896992FE705F1005B0619 /* AppEnvironment.swift */; };
 		F648969C2FE70B13005B0619 /* AppState.swift in Sources */ = {isa = PBXBuildFile; fileRef = F648969B2FE70B13005B0619 /* AppState.swift */; };
@@ -167,6 +168,7 @@
 		F630C9502C79E92F00049730 /* AKTextFieldStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AKTextFieldStyle.swift; sourceTree = "<group>"; };
 		F632E90B2C9C2C5C009C7BE1 /* ReportView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportView.swift; sourceTree = "<group>"; };
 		F632E90D2C9C2C6E009C7BE1 /* ReportViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportViewModel.swift; sourceTree = "<group>"; };
+		F6336E1930011993006ECA08 /* View+KeyboardAccessory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+KeyboardAccessory.swift"; sourceTree = "<group>"; };
 		F64895BA2FE6C67F005B0619 /* NavigationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationManager.swift; sourceTree = "<group>"; };
 		F64896992FE705F1005B0619 /* AppEnvironment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppEnvironment.swift; sourceTree = "<group>"; };
 		F648969B2FE70B13005B0619 /* AppState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppState.swift; sourceTree = "<group>"; };
@@ -495,6 +497,7 @@
 				F68D60662C76193500783E54 /* TimeInterval+Utils.swift */,
 				F6E4161E2C7F982500E77EB4 /* Distance+Utils.swift */,
 				F6CB13122C9B2F2F00B9FCFC /* Date+Utils.swift */,
+				F6336E1930011993006ECA08 /* View+KeyboardAccessory.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -913,6 +916,7 @@
 				F6DD68AF2C65050A004EFB03 /* ExerciseTypeViewModel.swift in Sources */,
 				F656783D2FF42AE100250F44 /* ReportStatusService.swift in Sources */,
 				F6186DF82FFEDBF10018B216 /* ReportExerciseHistoryView.swift in Sources */,
+				F6336E1A30011993006ECA08 /* View+KeyboardAccessory.swift in Sources */,
 				F69BD1152C5500580057080E /* ServiceNetworkProvider.swift in Sources */,
 				F69BD1072C54FC170057080E /* NetworkClient.swift in Sources */,
 				F625F2BB2FF93A380074FE79 /* ReportDashboardDataBuilder.swift in Sources */,

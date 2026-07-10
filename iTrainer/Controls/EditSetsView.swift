@@ -60,6 +60,8 @@ struct EditSetsView: View {
     
     @State private var setsParams: [SetsParameter] = []
     
+    @FocusState private var focusedParamId: Int?
+    
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
     
     @Environment(\.colorScheme) var colorScheme
@@ -98,47 +100,87 @@ struct EditSetsView: View {
     
     var body: some View {
         NavigationStack {
-            HStack(spacing: 30) {
-                
-                ForEach(self.$params) { $item in
-                    VStack(alignment: .leading, spacing: 0) {
-                        HStack(alignment: .firstTextBaseline) {
-                            Text("\(item.param.title)")
-                                    .font(.caption)
-                            
-                        }
-                        .frame(height: 30)
-                        .padding([.leading, .trailing])
-                        .foregroundStyle(.gray)
-                        
-                        HStack {
-                            TextField(item.param.title, text: $item.value, onEditingChanged: { focused in
-                                self.focused(focused, param: item)
-                            })
-                            .textFieldStyle(AKTextFieldStyle())
-                            .shakeAnimation(item.shake)
-                            .keyboardType(item.keyboardType)
-//                            .foregroundStyle(color)
-                        }
+            ScrollView {
+                HStack(spacing: 12) {
+                    ForEach(self.$params) { $item in
+                        parameterInput(item: $item)
+                            .frame(width: 74)
                     }
                 }
+                .frame(maxWidth: .infinity, alignment: .center)
+                .padding(16)
+                .background(AppColor.surfacePrimary)
+                .clipShape(RoundedRectangle(cornerRadius: 14, style: .continuous))
+                .overlay {
+                    RoundedRectangle(cornerRadius: 14, style: .continuous)
+                        .stroke(AppColor.separatorSoft, lineWidth: 1)
+                }
+                .padding(.horizontal, 20)
+                .padding(.top, 18)
             }
-            .padding([.leading, .trailing], 30)
+            .background(AppColor.backgroundPrimary)
+            .scrollDismissesKeyboard(.immediately)
             .navigationTitle(title)
+            .toolbarTitleDisplayMode(.inline)
             .toolbar {
                 ToolbarItem(placement: .topBarLeading) {
                     Button("Cancel") {
                         cancel()
                     }
+                    .foregroundStyle(AppColor.textSecondary)
                 }
                 ToolbarItem(placement: .topBarTrailing) {
                     Button("Save") {
                         prepareToSave()
                     }
+                    .font(AppFont.rowTitle)
+                    .foregroundStyle(AppColor.brandPrimary)
                 }
             }
+        }
+    }
+    
+    private func parameterInput(item: Binding<ParamData>) -> some View {
+        VStack(spacing: 6) {
+            Text(item.wrappedValue.param.title)
+                .font(AppFont.caption)
+                .foregroundStyle(AppColor.textSecondary)
+                .lineLimit(1)
+                .minimumScaleFactor(0.72)
+                .frame(maxWidth: .infinity)
             
-            Spacer()
+            ZStack {
+                TextField(item.wrappedValue.param.title, text: item.value, onEditingChanged: { focused in
+                    self.focused(focused, param: item.wrappedValue)
+                })
+                .textFieldStyle(.plain)
+                .font(AppFont.rowTitle)
+                .multilineTextAlignment(.center)
+                .foregroundStyle(AppColor.textPrimary)
+                .padding(.horizontal, 8)
+                .frame(maxWidth: .infinity, maxHeight: .infinity)
+                .shakeAnimation(item.wrappedValue.shake)
+                .keyboardType(item.wrappedValue.keyboardType)
+                .focused($focusedParamId, equals: item.wrappedValue.id)
+            }
+            .frame(height: 48)
+            .contentShape(Rectangle())
+            .onTapGesture {
+                focusedParamId = item.wrappedValue.id
+            }
+            .background(AppColor.backgroundPrimary)
+            .clipShape(RoundedRectangle(cornerRadius: 8, style: .continuous))
+            .overlay {
+                RoundedRectangle(cornerRadius: 8, style: .continuous)
+                    .stroke(AppColor.separatorSoft, lineWidth: 1)
+            }
+            
+            Text(item.wrappedValue.param.unitText)
+                .font(AppFont.rowSubtitle)
+                .foregroundStyle(AppColor.textSecondary)
+                .lineLimit(1)
+                .minimumScaleFactor(0.8)
+                .frame(height: 18)
         }
     }
     

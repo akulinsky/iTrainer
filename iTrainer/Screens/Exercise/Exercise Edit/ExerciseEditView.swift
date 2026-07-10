@@ -43,9 +43,9 @@ struct ExerciseEditView: View {
             .scrollDismissesKeyboard(.immediately)
             .navigationTitle("Edit exercise")
             .toolbarTitleDisplayMode(.inline)
-            .safeAreaInset(edge: .bottom, spacing: 0) {
-                keyboardAccessoryView
-            }
+            .keyboardAccessory(isPresented: focusedInputId != nil,
+                               onClear: clearFocusedInput,
+                               onDone: { focusedInputId = nil })
             .toolbar {
                 if presentationMode.wrappedValue.isPresented {
                     ToolbarItem(placement: .topBarLeading) {
@@ -104,38 +104,6 @@ struct ExerciseEditView: View {
         }
         
         viewModel.clearFocusedInput(id: focusedInputId)
-    }
-    
-    @ViewBuilder
-    private var keyboardAccessoryView: some View {
-        if focusedInputId != nil {
-            HStack {
-                Button("Clear") {
-                    clearFocusedInput()
-                }
-                .font(AppFont.rowTitle)
-                .foregroundStyle(AppColor.brandPrimary)
-                
-                Spacer()
-                
-                Button("Done") {
-                    focusedInputId = nil
-                }
-                .font(AppFont.rowTitle)
-                .foregroundStyle(AppColor.brandPrimary)
-            }
-            .padding(.horizontal, 18)
-            .frame(height: 50)
-            .background(AppColor.surfacePrimary)
-            .clipShape(RoundedRectangle(cornerRadius: 16, style: .continuous))
-            .overlay {
-                RoundedRectangle(cornerRadius: 16, style: .continuous)
-                    .stroke(AppColor.separatorSoft, lineWidth: 1)
-            }
-            .padding(.horizontal, 20)
-            .padding(.bottom, 8)
-            .transition(.move(edge: .bottom).combined(with: .opacity))
-        }
     }
     
     @ViewBuilder
