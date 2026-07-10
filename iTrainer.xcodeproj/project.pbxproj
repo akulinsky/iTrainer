@@ -30,6 +30,7 @@
 		F632E90E2C9C2C6E009C7BE1 /* ReportViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F632E90D2C9C2C6E009C7BE1 /* ReportViewModel.swift */; };
 		F6336E1A30011993006ECA08 /* View+KeyboardAccessory.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6336E1930011993006ECA08 /* View+KeyboardAccessory.swift */; };
 		F6336E1C300148D9006ECA08 /* ReportMetricInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6336E1B300148D9006ECA08 /* ReportMetricInfoView.swift */; };
+		F6336E1F30016236006ECA08 /* ExerciseInfo.strings in Resources */ = {isa = PBXBuildFile; fileRef = F6336E1D30016236006ECA08 /* ExerciseInfo.strings */; };
 		F64895BB2FE6C67F005B0619 /* NavigationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F64895BA2FE6C67F005B0619 /* NavigationManager.swift */; };
 		F648969A2FE705F1005B0619 /* AppEnvironment.swift in Sources */ = {isa = PBXBuildFile; fileRef = F64896992FE705F1005B0619 /* AppEnvironment.swift */; };
 		F648969C2FE70B13005B0619 /* AppState.swift in Sources */ = {isa = PBXBuildFile; fileRef = F648969B2FE70B13005B0619 /* AppState.swift */; };
@@ -171,6 +172,8 @@
 		F632E90D2C9C2C6E009C7BE1 /* ReportViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportViewModel.swift; sourceTree = "<group>"; };
 		F6336E1930011993006ECA08 /* View+KeyboardAccessory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+KeyboardAccessory.swift"; sourceTree = "<group>"; };
 		F6336E1B300148D9006ECA08 /* ReportMetricInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportMetricInfoView.swift; sourceTree = "<group>"; };
+		F6336E1E30016236006ECA08 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/ExerciseInfo.strings; sourceTree = "<group>"; };
+		F6336E2030016246006ECA08 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/ExerciseInfo.strings; sourceTree = "<group>"; };
 		F64895BA2FE6C67F005B0619 /* NavigationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationManager.swift; sourceTree = "<group>"; };
 		F64896992FE705F1005B0619 /* AppEnvironment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppEnvironment.swift; sourceTree = "<group>"; };
 		F648969B2FE70B13005B0619 /* AppState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppState.swift; sourceTree = "<group>"; };
@@ -617,6 +620,7 @@
 		F6A100092D15000100000009 /* Localization */ = {
 			isa = PBXGroup;
 			children = (
+				F6336E1D30016236006ECA08 /* ExerciseInfo.strings */,
 				F6A1000C2D1500010000000C /* Localizable.strings */,
 			);
 			path = Localization;
@@ -791,6 +795,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F6336E1F30016236006ECA08 /* ExerciseInfo.strings in Resources */,
 				F69BD0D12C54F8DB0057080E /* Preview Assets.xcassets in Resources */,
 				F6A100012D14000100000001 /* exercise_categories.json in Resources */,
 				F6A100022D14000100000002 /* exercises.json in Resources */,
@@ -967,6 +972,15 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
+		F6336E1D30016236006ECA08 /* ExerciseInfo.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				F6336E1E30016236006ECA08 /* en */,
+				F6336E2030016246006ECA08 /* ru */,
+			);
+			name = ExerciseInfo.strings;
+			sourceTree = "<group>";
+		};
 		F6A1000C2D1500010000000C /* Localizable.strings */ = {
 			isa = PBXVariantGroup;
 			children = (

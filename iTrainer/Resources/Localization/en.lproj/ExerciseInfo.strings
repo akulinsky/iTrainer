@@ -1,0 +1,176 @@
+/* Exercise Info */
+
+"exercise.info.chest_bench_press.description" = "Bench Press is a compound barbell exercise used to develop upper-body pushing strength.";
+"exercise.info.chest_bench_press.technique.1" = "Keep your shoulder blades retracted on the bench.";
+"exercise.info.chest_bench_press.technique.2" = "Lower the bar under control to the lower chest.";
+"exercise.info.chest_bench_press.technique.3" = "Press upward without bouncing or losing wrist position.";
+
+"exercise.info.chest_incline_bench_press.description" = "Incline Bench Press is a barbell press that emphasizes the upper chest and front shoulders.";
+"exercise.info.chest_incline_bench_press.technique.1" = "Set the bench to a moderate incline.";
+"exercise.info.chest_incline_bench_press.technique.2" = "Lower the bar under control toward the upper chest.";
+"exercise.info.chest_incline_bench_press.technique.3" = "Keep your elbows stable and press smoothly upward.";
+
+"exercise.info.chest_dumbbell_press.description" = "Dumbbell Press is a chest press variation that allows each arm to move independently.";
+"exercise.info.chest_dumbbell_press.technique.1" = "Start with the dumbbells above your chest.";
+"exercise.info.chest_dumbbell_press.technique.2" = "Lower both dumbbells evenly with control.";
+"exercise.info.chest_dumbbell_press.technique.3" = "Press upward while keeping your wrists stacked over your elbows.";
+
+"exercise.info.chest_incline_dumbbell_press.description" = "Incline Dumbbell Press develops upper-chest strength with independent arm movement.";
+"exercise.info.chest_incline_dumbbell_press.technique.1" = "Use a moderate bench incline.";
+"exercise.info.chest_incline_dumbbell_press.technique.2" = "Lower the dumbbells beside the upper chest.";
+"exercise.info.chest_incline_dumbbell_press.technique.3" = "Press up without letting the dumbbells drift too far forward.";
+
+"exercise.info.chest_dumbbell_fly.description" = "Dumbbell Fly is an isolation exercise that trains the chest through a wide arc.";
+"exercise.info.chest_dumbbell_fly.technique.1" = "Keep a slight bend in your elbows.";
+"exercise.info.chest_dumbbell_fly.technique.2" = "Open your arms slowly until you feel a chest stretch.";
+"exercise.info.chest_dumbbell_fly.technique.3" = "Bring the dumbbells together without turning it into a press.";
+
+"exercise.info.chest_cable_crossover.description" = "Cable Crossover is a chest isolation exercise using constant cable tension.";
+"exercise.info.chest_cable_crossover.technique.1" = "Stand stable with a slight forward lean.";
+"exercise.info.chest_cable_crossover.technique.2" = "Move your hands in a smooth arc in front of the body.";
+"exercise.info.chest_cable_crossover.technique.3" = "Control the return and avoid shrugging your shoulders.";
+
+"exercise.info.chest_machine_press.description" = "Machine Chest Press is a guided pressing exercise for training chest strength with stable support.";
+"exercise.info.chest_machine_press.technique.1" = "Adjust the seat so the handles align with your chest.";
+"exercise.info.chest_machine_press.technique.2" = "Press forward without lifting your shoulders.";
+"exercise.info.chest_machine_press.technique.3" = "Return the handles under control before the next rep.";
+
+"exercise.info.chest_dips.description" = "Dips are a bodyweight pressing exercise that can emphasize the chest with a slight forward lean.";
+"exercise.info.chest_dips.technique.1" = "Lean slightly forward and keep your shoulders controlled.";
+"exercise.info.chest_dips.technique.2" = "Lower until your upper arms are near parallel to the floor.";
+"exercise.info.chest_dips.technique.3" = "Press up smoothly without locking your elbows aggressively.";
+
+"exercise.info.chest_push_up.description" = "Push-Up is a bodyweight pressing exercise for chest, shoulders, and triceps.";
+"exercise.info.chest_push_up.technique.1" = "Keep your body in a straight line.";
+"exercise.info.chest_push_up.technique.2" = "Lower your chest toward the floor with control.";
+"exercise.info.chest_push_up.technique.3" = "Press up without letting your hips sag.";
+
+"exercise.info.back_pull_up.description" = "Pull-Up is a bodyweight pulling exercise used to build upper-back and arm strength.";
+"exercise.info.back_pull_up.technique.1" = "Start from a controlled hang.";
+"exercise.info.back_pull_up.technique.2" = "Pull your chest toward the bar by driving elbows down.";
+"exercise.info.back_pull_up.technique.3" = "Lower yourself under control without swinging.";
+
+"exercise.info.back_barbell_row.description" = "Bent-Over Barbell Row is a compound pulling exercise for the back and posterior chain.";
+"exercise.info.back_barbell_row.technique.1" = "Hinge at the hips and keep your back neutral.";
+"exercise.info.back_barbell_row.technique.2" = "Pull the bar toward the lower ribs.";
+"exercise.info.back_barbell_row.technique.3" = "Control the bar down without losing torso position.";
+
+"exercise.info.back_one_arm_dumbbell_row.description" = "One-Arm Dumbbell Row trains the back one side at a time with a supported stance.";
+"exercise.info.back_one_arm_dumbbell_row.technique.1" = "Brace your body on a bench or stable support.";
+"exercise.info.back_one_arm_dumbbell_row.technique.2" = "Pull the dumbbell toward your hip.";
+"exercise.info.back_one_arm_dumbbell_row.technique.3" = "Avoid twisting your torso during the rep.";
+
+"exercise.info.back_lat_pulldown.description" = "Lat Pulldown is a cable pulling exercise that trains the lats through a vertical pull.";
+"exercise.info.back_lat_pulldown.technique.1" = "Sit tall and secure your thighs under the pad.";
+"exercise.info.back_lat_pulldown.technique.2" = "Pull the bar toward the upper chest.";
+"exercise.info.back_lat_pulldown.technique.3" = "Control the bar upward without leaning back too far.";
+
+"exercise.info.back_seated_cable_row.description" = "Seated Cable Row is a horizontal pulling exercise for the mid-back and lats.";
+"exercise.info.back_seated_cable_row.technique.1" = "Sit tall with a neutral spine.";
+"exercise.info.back_seated_cable_row.technique.2" = "Pull the handle toward the lower ribs.";
+"exercise.info.back_seated_cable_row.technique.3" = "Pause briefly, then return with control.";
+
+"exercise.info.back_deadlift.description" = "Deadlift is a heavy hip-hinge exercise that trains full-body pulling strength.";
+"exercise.info.back_deadlift.technique.1" = "Set your feet under the bar and brace your torso.";
+"exercise.info.back_deadlift.technique.2" = "Push through the floor while keeping the bar close.";
+"exercise.info.back_deadlift.technique.3" = "Lock out with hips and knees together, not by leaning back.";
+
+"exercise.info.back_hyperextension.description" = "Hyperextension trains controlled hip extension and lower-back endurance.";
+"exercise.info.back_hyperextension.technique.1" = "Set the pad so your hips can move freely.";
+"exercise.info.back_hyperextension.technique.2" = "Lower your torso with a neutral spine.";
+"exercise.info.back_hyperextension.technique.3" = "Raise back up by squeezing the glutes, not overextending.";
+
+"exercise.info.legs_barbell_squat.description" = "Barbell Squat is a compound lower-body exercise for leg strength and full-body stability.";
+"exercise.info.legs_barbell_squat.technique.1" = "Brace your torso before each rep.";
+"exercise.info.legs_barbell_squat.technique.2" = "Sit down between your hips while keeping knees controlled.";
+"exercise.info.legs_barbell_squat.technique.3" = "Drive up through the mid-foot without collapsing forward.";
+
+"exercise.info.legs_leg_press.description" = "Leg Press is a machine exercise for training the legs with supported back position.";
+"exercise.info.legs_leg_press.technique.1" = "Place your feet firmly on the platform.";
+"exercise.info.legs_leg_press.technique.2" = "Lower the platform until your knees bend comfortably.";
+"exercise.info.legs_leg_press.technique.3" = "Press up without locking your knees hard.";
+
+"exercise.info.legs_lunge.description" = "Lunge is a single-leg movement that trains leg strength, balance, and control.";
+"exercise.info.legs_lunge.technique.1" = "Step with control and keep your torso upright.";
+"exercise.info.legs_lunge.technique.2" = "Lower until both knees bend naturally.";
+"exercise.info.legs_lunge.technique.3" = "Push through the front foot to return to standing.";
+
+"exercise.info.legs_leg_extension.description" = "Leg Extension is a machine isolation exercise for the front of the thighs.";
+"exercise.info.legs_leg_extension.technique.1" = "Align the machine pivot with your knee joint.";
+"exercise.info.legs_leg_extension.technique.2" = "Extend your legs smoothly without swinging.";
+"exercise.info.legs_leg_extension.technique.3" = "Lower the weight slowly and keep tension on the thighs.";
+
+"exercise.info.legs_leg_curl.description" = "Leg Curl is a machine isolation exercise for the hamstrings.";
+"exercise.info.legs_leg_curl.technique.1" = "Set the pad just above your heels.";
+"exercise.info.legs_leg_curl.technique.2" = "Curl the weight with control.";
+"exercise.info.legs_leg_curl.technique.3" = "Lower slowly without letting your hips lift.";
+
+"exercise.info.legs_calf_raise.description" = "Calf Raise trains the calves through ankle extension.";
+"exercise.info.legs_calf_raise.technique.1" = "Stand tall with stable foot position.";
+"exercise.info.legs_calf_raise.technique.2" = "Rise onto your toes through the full range.";
+"exercise.info.legs_calf_raise.technique.3" = "Lower under control and avoid bouncing.";
+
+"exercise.info.legs_squat.description" = "Squat is a bodyweight lower-body movement for leg strength, mobility, and control.";
+"exercise.info.legs_squat.technique.1" = "Keep your chest lifted and torso braced.";
+"exercise.info.legs_squat.technique.2" = "Lower with knees tracking in line with your feet.";
+"exercise.info.legs_squat.technique.3" = "Stand up smoothly through the mid-foot.";
+
+"exercise.info.shoulders_overhead_press.description" = "Overhead Press is a compound shoulder exercise that develops vertical pressing strength.";
+"exercise.info.shoulders_overhead_press.technique.1" = "Brace your torso before pressing.";
+"exercise.info.shoulders_overhead_press.technique.2" = "Press the bar overhead in a straight path.";
+"exercise.info.shoulders_overhead_press.technique.3" = "Finish with the bar over the shoulders, hips, and mid-foot.";
+
+"exercise.info.shoulders_seated_dumbbell_press.description" = "Seated Dumbbell Press trains shoulder pressing strength with independent arm movement.";
+"exercise.info.shoulders_seated_dumbbell_press.technique.1" = "Sit tall with your back supported.";
+"exercise.info.shoulders_seated_dumbbell_press.technique.2" = "Start with dumbbells near shoulder height.";
+"exercise.info.shoulders_seated_dumbbell_press.technique.3" = "Press upward without arching excessively.";
+
+"exercise.info.shoulders_lateral_raise.description" = "Lateral Raise is an isolation exercise for the side shoulders.";
+"exercise.info.shoulders_lateral_raise.technique.1" = "Keep a slight bend in your elbows.";
+"exercise.info.shoulders_lateral_raise.technique.2" = "Raise the dumbbells out to the sides with control.";
+"exercise.info.shoulders_lateral_raise.technique.3" = "Stop near shoulder height and avoid swinging.";
+
+"exercise.info.shoulders_front_raise.description" = "Front Raise is an isolation exercise for the front shoulders.";
+"exercise.info.shoulders_front_raise.technique.1" = "Stand tall and keep your torso still.";
+"exercise.info.shoulders_front_raise.technique.2" = "Raise the weight forward to shoulder height.";
+"exercise.info.shoulders_front_raise.technique.3" = "Lower slowly without using momentum.";
+
+"exercise.info.shoulders_reverse_fly.description" = "Reverse Fly trains the rear shoulders and upper-back control.";
+"exercise.info.shoulders_reverse_fly.technique.1" = "Hinge forward or use chest support.";
+"exercise.info.shoulders_reverse_fly.technique.2" = "Open your arms out to the sides with soft elbows.";
+"exercise.info.shoulders_reverse_fly.technique.3" = "Control the return and avoid shrugging.";
+
+"exercise.info.shoulders_upright_row.description" = "Upright Row trains the shoulders and upper back with a vertical pull.";
+"exercise.info.shoulders_upright_row.technique.1" = "Hold the bar close to your body.";
+"exercise.info.shoulders_upright_row.technique.2" = "Pull upward with control to a comfortable height.";
+"exercise.info.shoulders_upright_row.technique.3" = "Keep wrists relaxed and avoid forcing the range.";
+
+"exercise.info.biceps_barbell_curl.description" = "Barbell Curl is a basic biceps exercise that trains elbow flexion with both arms together.";
+"exercise.info.biceps_barbell_curl.technique.1" = "Stand tall with elbows close to your sides.";
+"exercise.info.biceps_barbell_curl.technique.2" = "Curl the bar without swinging your torso.";
+"exercise.info.biceps_barbell_curl.technique.3" = "Lower the bar slowly to full control.";
+
+"exercise.info.biceps_dumbbell_curl.description" = "Dumbbell Curl trains the biceps with independent arm movement.";
+"exercise.info.biceps_dumbbell_curl.technique.1" = "Keep your elbows near your sides.";
+"exercise.info.biceps_dumbbell_curl.technique.2" = "Curl the dumbbells smoothly through the full range.";
+"exercise.info.biceps_dumbbell_curl.technique.3" = "Lower with control and avoid leaning back.";
+
+"exercise.info.biceps_hammer_curl.description" = "Hammer Curl is a neutral-grip curl that trains the biceps and forearm muscles.";
+"exercise.info.biceps_hammer_curl.technique.1" = "Hold the dumbbells with palms facing each other.";
+"exercise.info.biceps_hammer_curl.technique.2" = "Curl without rotating the wrists.";
+"exercise.info.biceps_hammer_curl.technique.3" = "Keep the movement controlled from start to finish.";
+
+"exercise.info.biceps_preacher_curl.description" = "Preacher Curl isolates the biceps by supporting the upper arms on a bench.";
+"exercise.info.biceps_preacher_curl.technique.1" = "Set your upper arms firmly on the pad.";
+"exercise.info.biceps_preacher_curl.technique.2" = "Curl the weight without lifting your elbows.";
+"exercise.info.biceps_preacher_curl.technique.3" = "Lower slowly and avoid relaxing at the bottom.";
+
+"exercise.info.biceps_concentration_curl.description" = "Concentration Curl is a strict single-arm curl focused on controlled biceps contraction.";
+"exercise.info.biceps_concentration_curl.technique.1" = "Brace your upper arm against the inner thigh.";
+"exercise.info.biceps_concentration_curl.technique.2" = "Curl the dumbbell without moving the shoulder.";
+"exercise.info.biceps_concentration_curl.technique.3" = "Lower slowly and keep the rep strict.";
+
+"exercise.info.biceps_cable_curl.description" = "Cable Curl trains the biceps with constant cable tension.";
+"exercise.info.biceps_cable_curl.technique.1" = "Stand stable and keep elbows close to your sides.";
+"exercise.info.biceps_cable_curl.technique.2" = "Curl the handle smoothly toward the chest.";
+"exercise.info.biceps_cable_curl.technique.3" = "Control the return without letting the stack drop.";

@@ -130,7 +130,7 @@ struct ExerciseCatalogDetailView: View {
     }
     
     private func localizedText(for key: String) -> String {
-        String(localized: String.LocalizationValue(key))
+        String(localized: String.LocalizationValue(key), table: "ExerciseInfo")
     }
 }
 
