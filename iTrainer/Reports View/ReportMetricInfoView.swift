@@ -7,6 +7,14 @@
 
 import SwiftUI
 
+private func reportMetricLocalized(_ key: String) -> String {
+    String(localized: String.LocalizationValue(key))
+}
+
+private func reportMetricLocalizedFormat(_ key: String, _ arguments: CVarArg...) -> String {
+    String(format: reportMetricLocalized(key), arguments: arguments)
+}
+
 struct ReportMetricInfo: Identifiable, Hashable {
     let id: String
     let title: String
@@ -16,58 +24,58 @@ struct ReportMetricInfo: Identifiable, Hashable {
     
     static let volume = ReportMetricInfo(
         id: "volume",
-        title: "Volume",
-        description: "Total work for weighted sets. It combines weight and repetitions into one number.",
-        formula: "Sum of weight x reps for completed sets.",
-        example: "80 kg x 10 reps + 70 kg x 8 reps = 1,360 kg"
+        title: reportMetricLocalized("report.metric.volume.title"),
+        description: reportMetricLocalized("report.metric.volume.description"),
+        formula: reportMetricLocalized("report.metric.volume.formula"),
+        example: reportMetricLocalized("report.metric.volume.example")
     )
     
     static let volumeGoal = ReportMetricInfo(
         id: "volume-goal",
-        title: "Volume Goal",
-        description: "Compares completed volume with planned target volume for weighted exercises. Volume is total weighted work: weight x reps across completed sets.",
-        formula: "Actual volume / target volume.",
-        example: "Actual 1,360 kg, target 1,500 kg = 91%"
+        title: reportMetricLocalized("report.metric.volume_goal.title"),
+        description: reportMetricLocalized("report.metric.volume_goal.description"),
+        formula: reportMetricLocalized("report.metric.volume_goal.formula"),
+        example: reportMetricLocalized("report.metric.volume_goal.example")
     )
     
     static let density = ReportMetricInfo(
         id: "density",
-        title: "Density",
-        description: "Shows how much weighted work was completed per minute of workout time.",
-        formula: "Total volume / workout duration in minutes.",
-        example: "4,800 kg / 40 min = 120 kg/min"
+        title: reportMetricLocalized("report.metric.density.title"),
+        description: reportMetricLocalized("report.metric.density.description"),
+        formula: reportMetricLocalized("report.metric.density.formula"),
+        example: reportMetricLocalized("report.metric.density.example")
     )
     
     static let pace = ReportMetricInfo(
         id: "pace",
-        title: "Pace",
-        description: "Shows how long it takes to cover 1 km. Lower pace is better.",
-        formula: "Total time / total distance.",
-        example: "15:00 / 2 km = 7:30/km"
+        title: reportMetricLocalized("report.metric.pace.title"),
+        description: reportMetricLocalized("report.metric.pace.description"),
+        formula: reportMetricLocalized("report.metric.pace.formula"),
+        example: reportMetricLocalized("report.metric.pace.example")
     )
     
     static let paceGoal = ReportMetricInfo(
         id: "pace-goal",
-        title: "Pace Goal",
-        description: "Compares actual pace with target pace. Pace is time per 1 km, so lower pace means better performance.",
-        formula: "Target pace / actual pace.",
-        example: "Target 8:00/km, actual 7:30/km = goal exceeded"
+        title: reportMetricLocalized("report.metric.pace_goal.title"),
+        description: reportMetricLocalized("report.metric.pace_goal.description"),
+        formula: reportMetricLocalized("report.metric.pace_goal.formula"),
+        example: reportMetricLocalized("report.metric.pace_goal.example")
     )
     
     static let recordMetric = ReportMetricInfo(
         id: "record-metric",
-        title: "Record Type",
-        description: "Shows which metric caused the personal record or progress result.",
+        title: reportMetricLocalized("report.metric.record_type.title"),
+        description: reportMetricLocalized("report.metric.record_type.description"),
         formula: nil,
-        example: "Volume means the total weight x reps was higher than before. Pace means the time per km improved."
+        example: reportMetricLocalized("report.metric.record_type.example")
     )
     
     static let improvement = ReportMetricInfo(
         id: "improvement",
-        title: "Improvement",
-        description: "Shows the difference between the current result and the previous comparison result.",
-        formula: "For most metrics: current - previous. For pace: previous - current because lower pace is better.",
-        example: "Previous pace 8:00/km, current 7:30/km = -0:30 improvement"
+        title: reportMetricLocalized("report.metric.improvement.title"),
+        description: reportMetricLocalized("report.metric.improvement.description"),
+        formula: reportMetricLocalized("report.metric.improvement.formula"),
+        example: reportMetricLocalized("report.metric.improvement.example")
     )
 }
 
@@ -94,7 +102,7 @@ struct MetricInfoButton: View {
                 .contentShape(Rectangle())
         }
         .buttonStyle(.plain)
-        .accessibilityLabel("About \(info.title)")
+        .accessibilityLabel(reportMetricLocalizedFormat("report.metric.info.accessibility.about", info.title))
         .sheet(isPresented: $isPresented) {
             MetricInfoSheet(info: info)
                 .presentationDetents([.height(330)])
@@ -116,21 +124,21 @@ private struct MetricInfoSheet: View {
                 
                 Spacer(minLength: 12)
                 
-                Button("Done") {
+                Button(reportMetricLocalized("report.metric.info.done")) {
                     dismiss()
                 }
                 .font(AppFont.rowTitle)
                 .foregroundStyle(AppColor.brandPrimary)
             }
             
-            metricInfoBlock(title: "Meaning", text: info.description)
+            metricInfoBlock(title: reportMetricLocalized("report.metric.info.meaning"), text: info.description)
             
             if let formula = info.formula {
-                metricInfoBlock(title: "Formula", text: formula)
+                metricInfoBlock(title: reportMetricLocalized("report.metric.info.formula"), text: formula)
             }
             
             if let example = info.example {
-                metricInfoBlock(title: "Example", text: example)
+                metricInfoBlock(title: reportMetricLocalized("report.metric.info.example"), text: example)
             }
             
             Spacer(minLength: 0)
