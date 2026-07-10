@@ -22,19 +22,19 @@ struct ReportExerciseSetComparisonCell: View {
                 .frame(width: 34)
             
             Text(row.title)
-                .font(isHeader ? AppFont.caption : .system(size: 15, weight: .semibold))
+                .font(isHeader ? AppFont.caption : .system(size: 16, weight: .semibold))
                 .foregroundStyle(isHeader ? AppColor.textSecondary : AppColor.textPrimary)
                 .frame(maxWidth: .infinity, alignment: .leading)
             
             Text(row.target)
-                .font(isHeader ? AppFont.caption : AppFont.rowSubtitle)
+                .font(isHeader ? AppFont.caption : .system(size: 15, weight: .semibold))
                 .foregroundStyle(AppColor.textSecondary)
                 .frame(maxWidth: .infinity, alignment: .leading)
                 .lineLimit(1)
                 .minimumScaleFactor(0.78)
             
             Text(row.result)
-                .font(isHeader ? AppFont.caption : AppFont.rowSubtitle)
+                .font(isHeader ? AppFont.caption : .system(size: 15, weight: .semibold))
                 .foregroundStyle(resultColor)
                 .frame(maxWidth: .infinity, alignment: .trailing)
                 .lineLimit(1)
