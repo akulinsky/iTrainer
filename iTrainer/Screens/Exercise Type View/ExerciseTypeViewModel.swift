@@ -70,11 +70,6 @@ class ExerciseTypeViewModel: ObservableObject {
         }
         .store(in: &cancellable)
         
-        $isBookmarkFilterEnabled.sink { _ in
-            self.fetchItems()
-        }
-        .store(in: &cancellable)
-        
         DataContainer.shared.$categories.sink(receiveValue: { categories in
             self.categories = categories
         })
@@ -115,11 +110,11 @@ class ExerciseTypeViewModel: ObservableObject {
     
     func reloadExercises() {
         DataContainer.shared.reloadExerciseCatalog()
-        fetchItems()
     }
     
     func toggleBookmarkFilter() {
         isBookmarkFilterEnabled.toggle()
+        fetchItems()
     }
     
     func setBookmark(typeId: String, isBookmarked: Bool) {

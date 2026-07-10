@@ -61,10 +61,6 @@ struct ExerciseTypeView: View {
             VStack {
                 if viewModel.showsFlatExerciseList {
                     ExerciseTypeListView(viewModel: viewModel)
-                        .onAppear {
-                            viewModel.categoryId = nil
-                            viewModel.reloadExercises()
-                        }
                 } else {
                     ExerciseCategoryView(viewModel: viewModel)
                 }
@@ -104,6 +100,11 @@ struct ExerciseTypeView: View {
                 self.pendingCreatedExerciseId = nil
                 viewModel.reloadExercises()
                 navigationManager.path.append(ExerciseTypeRoute.exerciseDetailView(exerciseId: pendingCreatedExerciseId))
+            }
+            .onChange(of: navigationManager.path) { _, path in
+                guard path.isEmpty else { return }
+                viewModel.categoryId = nil
+                viewModel.reloadExercises()
             }
             .contentSelf(content: { view in
                 contentViewNavigation(content: view)

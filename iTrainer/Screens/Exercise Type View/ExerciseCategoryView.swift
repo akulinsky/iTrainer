@@ -52,9 +52,6 @@ struct ExerciseCategoryView: View {
                 .accessibilityLabel(viewModel.isBookmarkFilterEnabled ? "Show all exercises" : "Show bookmarked exercises")
             }
         }
-        .onAppear {
-            viewModel.categoryId = nil
-        }
     }
     
     private func categoryButton(for item: ExerciseCategory) -> some View {
