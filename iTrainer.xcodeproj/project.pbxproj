@@ -29,6 +29,7 @@
 		F632E90C2C9C2C5C009C7BE1 /* ReportView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F632E90B2C9C2C5C009C7BE1 /* ReportView.swift */; };
 		F632E90E2C9C2C6E009C7BE1 /* ReportViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F632E90D2C9C2C6E009C7BE1 /* ReportViewModel.swift */; };
 		F6336E1A30011993006ECA08 /* View+KeyboardAccessory.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6336E1930011993006ECA08 /* View+KeyboardAccessory.swift */; };
+		F6336E1C300148D9006ECA08 /* ReportMetricInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6336E1B300148D9006ECA08 /* ReportMetricInfoView.swift */; };
 		F64895BB2FE6C67F005B0619 /* NavigationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F64895BA2FE6C67F005B0619 /* NavigationManager.swift */; };
 		F648969A2FE705F1005B0619 /* AppEnvironment.swift in Sources */ = {isa = PBXBuildFile; fileRef = F64896992FE705F1005B0619 /* AppEnvironment.swift */; };
 		F648969C2FE70B13005B0619 /* AppState.swift in Sources */ = {isa = PBXBuildFile; fileRef = F648969B2FE70B13005B0619 /* AppState.swift */; };
@@ -169,6 +170,7 @@
 		F632E90B2C9C2C5C009C7BE1 /* ReportView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportView.swift; sourceTree = "<group>"; };
 		F632E90D2C9C2C6E009C7BE1 /* ReportViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportViewModel.swift; sourceTree = "<group>"; };
 		F6336E1930011993006ECA08 /* View+KeyboardAccessory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+KeyboardAccessory.swift"; sourceTree = "<group>"; };
+		F6336E1B300148D9006ECA08 /* ReportMetricInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportMetricInfoView.swift; sourceTree = "<group>"; };
 		F64895BA2FE6C67F005B0619 /* NavigationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationManager.swift; sourceTree = "<group>"; };
 		F64896992FE705F1005B0619 /* AppEnvironment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppEnvironment.swift; sourceTree = "<group>"; };
 		F648969B2FE70B13005B0619 /* AppState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppState.swift; sourceTree = "<group>"; };
@@ -646,6 +648,7 @@
 				F6186DF32FFEDBCF0018B216 /* ReportExerciseHistoryBuilder.swift */,
 				F6186DF72FFEDBF10018B216 /* ReportExerciseHistoryView.swift */,
 				F6186DF52FFEDBEF0018B216 /* ReportExerciseHistoryViewModel.swift */,
+				F6336E1B300148D9006ECA08 /* ReportMetricInfoView.swift */,
 			);
 			path = "Reports View";
 			sourceTree = "<group>";
@@ -892,6 +895,7 @@
 				F64CF0482FF534F0009FB938 /* LoadingSpinnerView.swift in Sources */,
 				F660FFA32FFFFA9E00F676BD /* CreateCustomExerciseView.swift in Sources */,
 				F6EA7BCA2C578BAF005225A0 /* WorkoutListViewModel.swift in Sources */,
+				F6336E1C300148D9006ECA08 /* ReportMetricInfoView.swift in Sources */,
 				F62818452C62408D003642F8 /* ExerciseTypeModel.swift in Sources */,
 				F660FFA930000D0600F676BD /* ExerciseTypeIconView.swift in Sources */,
 				F6CCEE062FFD27A300686CFB /* LocalNotificationManager.swift in Sources */,

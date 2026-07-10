@@ -25,6 +25,23 @@ class ReportViewModel: ObservableObject {
         let progress: Double?
         let colorProgress: Double?
         let systemImage: String?
+        let info: ReportMetricInfo?
+        
+        init(title: String,
+             value: String,
+             detail: String,
+             progress: Double?,
+             colorProgress: Double?,
+             systemImage: String?,
+             info: ReportMetricInfo? = nil) {
+            self.title = title
+            self.value = value
+            self.detail = detail
+            self.progress = progress
+            self.colorProgress = colorProgress
+            self.systemImage = systemImage
+            self.info = info
+        }
     }
     
     struct ReportExerciseSummary: Identifiable {
@@ -197,13 +214,15 @@ class ReportViewModel: ObservableObject {
                                            detail: "kg/min",
                                            progress: nil,
                                            colorProgress: nil,
-                                           systemImage: "gauge.with.dots.needle.67percent"))
+                                           systemImage: "gauge.with.dots.needle.67percent",
+                                           info: .density))
             summaryCards.append(SummaryCard(title: "Volume Goal",
                                            value: rawVolumeProgress.map { percentText(for: $0, isCapped: false) } ?? "-",
                                            detail: targetVolume > 0 ? "\(Int(actualVolume)) / \(Int(targetVolume)) kg" : "\(Int(actualVolume)) kg",
                                            progress: volumeProgress,
                                            colorProgress: rawVolumeProgress,
-                                           systemImage: nil))
+                                           systemImage: nil,
+                                           info: .volumeGoal))
         }
         
         if trackingTypes.contains(.weightedReps) || trackingTypes.contains(.repsOnly) {
@@ -239,7 +258,8 @@ class ReportViewModel: ObservableObject {
                                            detail: paceGoalDetail(actual: actualDistanceTimePace, target: targetDistanceTimePace),
                                            progress: paceProgress,
                                            colorProgress: rawPaceProgress,
-                                           systemImage: nil))
+                                           systemImage: nil,
+                                           info: .paceGoal))
         }
         
         return ReportMetrics(exerciseProgress: exerciseProgress,

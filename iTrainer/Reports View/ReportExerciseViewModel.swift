@@ -29,6 +29,17 @@ final class ReportExerciseViewModel: ObservableObject {
         let title: String
         let value: String
         let systemImage: String
+        let info: ReportMetricInfo?
+        
+        init(title: String,
+             value: String,
+             systemImage: String,
+             info: ReportMetricInfo? = nil) {
+            self.title = title
+            self.value = value
+            self.systemImage = systemImage
+            self.info = info
+        }
     }
     
     struct StatusMetric: Identifiable {
@@ -36,6 +47,17 @@ final class ReportExerciseViewModel: ObservableObject {
         let title: String
         let value: String
         let color: Color
+        let info: ReportMetricInfo?
+        
+        init(title: String,
+             value: String,
+             color: Color,
+             info: ReportMetricInfo? = nil) {
+            self.title = title
+            self.value = value
+            self.color = color
+            self.info = info
+        }
     }
     
     struct VolumeBreakdownRow: Identifiable {
@@ -135,10 +157,10 @@ final class ReportExerciseViewModel: ObservableObject {
         guard let comparison else { return [] }
         
         return [
-            StatusMetric(title: "Metric", value: comparison.type.displayTitle, color: AppColor.textPrimary),
+            StatusMetric(title: "Metric", value: comparison.type.displayTitle, color: AppColor.textPrimary, info: .recordMetric),
             StatusMetric(title: "Current", value: formattedCurrentValue(for: comparison), color: AppColor.textPrimary),
             StatusMetric(title: previousTitle, value: formattedPreviousValue(for: comparison), color: AppColor.textPrimary),
-            StatusMetric(title: "Improvement", value: formattedImprovementValue(for: comparison), color: improvementColor)
+            StatusMetric(title: "Improvement", value: formattedImprovementValue(for: comparison), color: improvementColor, info: .improvement)
         ]
     }
     
@@ -184,7 +206,7 @@ final class ReportExerciseViewModel: ObservableObject {
         switch trackingType {
         case .weightedReps:
             return [
-                SummaryCard(title: "Volume", value: formattedKilograms(exerciseVolume(reportExercise)), systemImage: "dumbbell.fill"),
+                SummaryCard(title: "Volume", value: formattedKilograms(exerciseVolume(reportExercise)), systemImage: "dumbbell.fill", info: .volume),
                 SummaryCard(title: "Repetitions", value: "\(totalReps(reportExercise))", systemImage: "chart.bar.fill"),
                 SummaryCard(title: "Rest Time", value: formattedRestTime(reportExercise.restTime), systemImage: "clock")
             ]
@@ -209,7 +231,7 @@ final class ReportExerciseViewModel: ObservableObject {
             return [
                 SummaryCard(title: "Distance", value: totalDistance(reportExercise).distanceForDisplay, systemImage: "point.topleft.down.curvedto.point.bottomright.up"),
                 SummaryCard(title: "Time", value: totalTime(reportExercise).timeForDisplay, systemImage: "timer"),
-                SummaryCard(title: "Pace", value: pace(reportExercise).map(formattedPace) ?? "-", systemImage: "speedometer")
+                SummaryCard(title: "Pace", value: pace(reportExercise).map(formattedPace) ?? "-", systemImage: "speedometer", info: .pace)
             ]
         case nil:
             return [

@@ -223,6 +223,13 @@ struct ReportView: View {
             RoundedRectangle(cornerRadius: 14, style: .continuous)
                 .stroke(AppColor.separatorSoft, lineWidth: 1)
         }
+        .overlay(alignment: .topTrailing) {
+            if let info = card.info {
+                MetricInfoButton(info: info, size: 28, iconSize: 16)
+                    .padding(.top, 2)
+                    .padding(.trailing, 2)
+            }
+        }
     }
     
     @ViewBuilder

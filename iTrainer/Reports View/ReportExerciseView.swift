@@ -207,10 +207,17 @@ struct ReportExerciseView: View {
                 Spacer(minLength: 0)
             }
         }
+        .overlay(alignment: .topTrailing) {
+            if let info = statusMetricsInfo {
+                MetricInfoButton(info: info, size: 22, iconSize: 13)
+                    .padding(.top, 1)
+                    .padding(.trailing, 1)
+            }
+        }
     }
     
-    private func metricPillView(_ metric: (title: String, value: String)) -> some View {
-        HStack(alignment: .firstTextBaseline, spacing: 6) {
+    private func metricPillView(_ metric: (title: String, value: String, info: ReportMetricInfo?)) -> some View {
+        HStack(alignment: .center, spacing: 6) {
             Text(metric.title + ":")
                 .font(.system(size: 13, weight: .semibold))
                 .foregroundStyle(AppColor.textSecondary)
@@ -222,6 +229,10 @@ struct ReportExerciseView: View {
                 .foregroundStyle(AppColor.textPrimary)
                 .lineLimit(1)
                 .minimumScaleFactor(0.78)
+            
+            if let info = metric.info {
+                MetricInfoButton(info: info, size: 24, iconSize: 14)
+            }
         }
     }
     
@@ -375,6 +386,13 @@ struct ReportExerciseView: View {
             RoundedRectangle(cornerRadius: 14, style: .continuous)
                 .stroke(AppColor.separatorSoft, lineWidth: 1)
         }
+        .overlay(alignment: .topTrailing) {
+            if let info = card.info {
+                MetricInfoButton(info: info, size: 26, iconSize: 15)
+                    .padding(.top, 2)
+                    .padding(.trailing, 2)
+            }
+        }
     }
     
     private var statisticsButton: some View {
@@ -433,18 +451,22 @@ struct ReportExerciseView: View {
         }
     }
     
-    private var metricPillText: (title: String, value: String)? {
+    private var metricPillText: (title: String, value: String, info: ReportMetricInfo?)? {
         guard !isCompactStatus,
               let metric = viewModel.statusMetrics.first,
               metric.title == "Metric" || metric.title == "Record type" else {
             return nil
         }
-        return (metric.title, metric.value)
+        return (metric.title, metric.value, metric.info)
     }
     
     private var displayStatusMetrics: [ReportExerciseViewModel.StatusMetric] {
         guard metricPillText != nil else { return viewModel.statusMetrics }
         return Array(viewModel.statusMetrics.dropFirst())
+    }
+    
+    private var statusMetricsInfo: ReportMetricInfo? {
+        displayStatusMetrics.first { $0.title == "Improvement" }?.info
     }
     
     private var compactStatusSubtitle: String {
