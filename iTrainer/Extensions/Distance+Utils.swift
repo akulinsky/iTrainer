@@ -7,6 +7,60 @@
 
 import Foundation
 
+enum DistanceInputUnit: String, CaseIterable, Identifiable {
+    case meters
+    case kilometers
+    
+    var id: Self { self }
+    
+    var title: String {
+        switch self {
+        case .meters:
+            "m"
+        case .kilometers:
+            "km"
+        }
+    }
+    
+    static func preferred(forMeters value: Float) -> DistanceInputUnit {
+        value >= 1000 ? .kilometers : .meters
+    }
+    
+    func textValue(forMeters value: Float) -> String {
+        switch self {
+        case .meters:
+            "\(Int(value))"
+        case .kilometers:
+            (value / 1000).formattedTrimmed(maxFractionDigits: 2)
+        }
+    }
+    
+    func meters(fromInputValue value: Float) -> Float {
+        switch self {
+        case .meters:
+            value
+        case .kilometers:
+            value * 1000
+        }
+    }
+    
+    func convertedText(from text: String, previousUnit: DistanceInputUnit) -> String {
+        guard let value = Self.inputValue(from: text), value > 0 else {
+            return text
+        }
+        
+        let meters = previousUnit.meters(fromInputValue: value)
+        return textValue(forMeters: meters)
+    }
+    
+    static func inputValue(from text: String) -> Float? {
+        let normalizedText = text
+            .trimmingCharacters(in: .whitespacesAndNewlines)
+            .replacingOccurrences(of: ",", with: ".")
+        return Float(normalizedText)
+    }
+}
+
 extension Float {
     
     var distanceForDisplay: String {

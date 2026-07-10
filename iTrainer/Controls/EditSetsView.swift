@@ -17,6 +17,23 @@ struct EditSetsView: View {
         var shake = PassthroughSubject<Void, Never>()
         
         let param: SetsParameter
+        var distanceUnit: DistanceInputUnit = .meters
+        
+        var unitText: String {
+            switch param {
+            case .distance:
+                distanceUnit.title
+            default:
+                param.unitText
+            }
+        }
+        
+        var isDistance: Bool {
+            if case .distance = param {
+                return true
+            }
+            return false
+        }
         
         let keyboardType: UIKeyboardType
         
@@ -37,9 +54,11 @@ struct EditSetsView: View {
                 keyboardType = .numberPad
             case .distance(let value):
                 if value > 0 {
-                    self.value = value.distanceForTextField
+                    let unit = DistanceInputUnit.preferred(forMeters: value)
+                    distanceUnit = unit
+                    self.value = unit.textValue(forMeters: value)
                 }
-                keyboardType = .numberPad
+                keyboardType = .decimalPad
             case .time(let value):
                 if value > 0 {
                     self.value = value.timeForTextField
@@ -98,6 +117,13 @@ struct EditSetsView: View {
         }
     }
     
+    private var focusedDistanceParam: ParamData? {
+        guard let focusedParamId else {
+            return nil
+        }
+        return params.first { $0.id == focusedParamId && $0.isDistance }
+    }
+    
     var body: some View {
         NavigationStack {
             ScrollView {
@@ -139,7 +165,12 @@ struct EditSetsView: View {
             }
             .keyboardAccessory(isPresented: focusedParamId != nil,
                                onClear: clearFocusedInput,
-                               onDone: { focusedParamId = nil })
+                               onDone: { focusedParamId = nil }) {
+                if let focusedDistanceParam {
+                    DistanceUnitPicker(selectedUnit: focusedDistanceParam.distanceUnit,
+                                       onSelect: setFocusedDistanceUnit)
+                }
+            }
         }
     }
     
@@ -178,7 +209,7 @@ struct EditSetsView: View {
                     .stroke(AppColor.separatorSoft, lineWidth: 1)
             }
             
-            Text(item.wrappedValue.param.unitText)
+            Text(item.wrappedValue.unitText)
                 .font(AppFont.rowSubtitle)
                 .foregroundStyle(AppColor.textSecondary)
                 .lineLimit(1)
@@ -216,6 +247,16 @@ struct EditSetsView: View {
         param.value = ""
     }
     
+    private func setFocusedDistanceUnit(_ unit: DistanceInputUnit) {
+        guard let param = focusedDistanceParam,
+              param.distanceUnit != unit else {
+            return
+        }
+        
+        param.value = unit.convertedText(from: param.value, previousUnit: param.distanceUnit)
+        param.distanceUnit = unit
+    }
+    
     private func prepareToSave() {
         
         var result = [SetsParameter]()
@@ -241,8 +282,8 @@ struct EditSetsView: View {
                     return
                 }
             case .distance(_):
-                if let value = Float(param.value), value > 0 {
-                    result.append(.distance(value))
+                if let value = DistanceInputUnit.inputValue(from: param.value), value > 0 {
+                    result.append(.distance(param.distanceUnit.meters(fromInputValue: value)))
                 } else {
                     param.shake.send()
                     return

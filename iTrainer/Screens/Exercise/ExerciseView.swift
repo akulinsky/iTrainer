@@ -52,6 +52,13 @@ private struct ExerciseContentView: View {
     
     private let onNextExercise: (ExerciseModel) -> Void
     
+    private var focusedDistanceParam: ExerciseViewModel.ParamData? {
+        guard let focusedParamId else {
+            return nil
+        }
+        return viewModel.paramsData.first { $0.id == focusedParamId && $0.isDistance }
+    }
+    
     init(viewModel: ExerciseViewModel, onNextExercise: @escaping (ExerciseModel) -> Void) {
         _viewModel = StateObject(wrappedValue: viewModel)
         self.onNextExercise = onNextExercise
@@ -94,7 +101,12 @@ private struct ExerciseContentView: View {
         .scrollDismissesKeyboard(.immediately)
         .keyboardAccessory(isPresented: focusedParamId != nil,
                            onClear: clearFocusedInput,
-                           onDone: { focusedParamId = nil })
+                           onDone: { focusedParamId = nil }) {
+            if let focusedDistanceParam {
+                DistanceUnitPicker(selectedUnit: focusedDistanceParam.distanceUnit,
+                                   onSelect: setFocusedDistanceUnit)
+            }
+        }
         .navigationTitle(viewModel.title)
         .navigationBarTitleDisplayMode(.inline)
         .toolbar {
@@ -488,6 +500,16 @@ private struct ExerciseContentView: View {
         }
         
         paramData.value = ""
+    }
+    
+    private func setFocusedDistanceUnit(_ unit: DistanceInputUnit) {
+        guard let paramData = focusedDistanceParam,
+              paramData.distanceUnit != unit else {
+            return
+        }
+        
+        paramData.value = unit.convertedText(from: paramData.value, previousUnit: paramData.distanceUnit)
+        paramData.distanceUnit = unit
     }
     
     @ViewBuilder

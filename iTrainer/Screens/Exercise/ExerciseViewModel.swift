@@ -22,6 +22,14 @@ class ExerciseViewModel: ObservableObject {
         var shake = PassthroughSubject<Void, Never>()
         
         var param: SetsParameter
+        var distanceUnit: DistanceInputUnit = .meters
+        
+        var isDistance: Bool {
+            if case .distance = param {
+                return true
+            }
+            return false
+        }
         
         let keyboardType: UIKeyboardType
         
@@ -35,7 +43,7 @@ class ExerciseViewModel: ObservableObject {
             case .repeats(_):
                 keyboardType = .numberPad
             case .distance(_):
-                keyboardType = .numberPad
+                keyboardType = .decimalPad
             case .time(_):
                 keyboardType = .numberPad
             }
@@ -159,7 +167,9 @@ class ExerciseViewModel: ObservableObject {
             case .repeats(let value):
                 result = "\(value)"
             case .distance(let value):
-                result = value.distanceForTextField
+                let unit = DistanceInputUnit.preferred(forMeters: value)
+                result = unit.textValue(forMeters: value)
+                paramsData.first(where: { $0.param.id == param.id })?.distanceUnit = unit
             case .time(let value):
                 result = value.minuteSecond
             }
@@ -335,8 +345,8 @@ class ExerciseViewModel: ObservableObject {
                     return
                 }
             case .distance(_):
-                if let value = Float(param.value), value >= 0 {
-                    result.append(.distance(value))
+                if let value = DistanceInputUnit.inputValue(from: param.value), value >= 0 {
+                    result.append(.distance(param.distanceUnit.meters(fromInputValue: value)))
                 } else {
                     param.shake.send()
                     return

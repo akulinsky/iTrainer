@@ -177,6 +177,31 @@ class ExerciseEditViewModel: ObservableObject {
         }
     }
     
+    func focusedDistanceUnit(id: String?) -> DistanceInputUnit? {
+        guard let id else {
+            return nil
+        }
+        
+        for setViewModel in setsViewModels {
+            if let unit = setViewModel.distanceUnit(focusId: id) {
+                return unit
+            }
+        }
+        return nil
+    }
+    
+    func setFocusedDistanceUnit(_ unit: DistanceInputUnit, id: String?) {
+        guard let id else {
+            return
+        }
+        
+        for setViewModel in setsViewModels {
+            if setViewModel.setDistanceUnit(unit, focusId: id) {
+                return
+            }
+        }
+    }
+    
     private func validateTargetSets() -> Bool {
         setsViewModels.allSatisfy { $0.commitAllInputs() && $0.hasValidValues }
     }
@@ -216,9 +241,26 @@ class SetEditCellViewModel: ObservableObject, Identifiable {
         @Published var value: String = ""
         var shake = PassthroughSubject<Void, Never>()
         var valueBeforeEditing: SetsParameter?
+        @Published var distanceUnit: DistanceInputUnit = .meters
         
         let focusId: String
         let param: SetsParameter
+        
+        var unitText: String {
+            switch param {
+            case .distance:
+                distanceUnit.title
+            default:
+                param.unitText
+            }
+        }
+        
+        var isDistance: Bool {
+            if case .distance = param {
+                return true
+            }
+            return false
+        }
         
         let keyboardType: UIKeyboardType
         
@@ -240,9 +282,11 @@ class SetEditCellViewModel: ObservableObject, Identifiable {
                 keyboardType = .numberPad
             case .distance(let value):
                 if value > 0 {
-                    self.value = value.distanceForTextField
+                    let unit = DistanceInputUnit.preferred(forMeters: value)
+                    distanceUnit = unit
+                    self.value = unit.textValue(forMeters: value)
                 }
-                keyboardType = .numberPad
+                keyboardType = .decimalPad
             case .time(let value):
                 if value > 0 {
                     self.value = value.timeForTextField
@@ -299,6 +343,26 @@ class SetEditCellViewModel: ObservableObject, Identifiable {
         return true
     }
     
+    func distanceUnit(focusId: String) -> DistanceInputUnit? {
+        guard let paramData = paramsData.first(where: { $0.focusId == focusId && $0.isDistance }) else {
+            return nil
+        }
+        return paramData.distanceUnit
+    }
+    
+    func setDistanceUnit(_ unit: DistanceInputUnit, focusId: String) -> Bool {
+        guard let paramData = paramsData.first(where: { $0.focusId == focusId && $0.isDistance }) else {
+            return false
+        }
+        guard paramData.distanceUnit != unit else {
+            return true
+        }
+        
+        paramData.value = unit.convertedText(from: paramData.value, previousUnit: paramData.distanceUnit)
+        paramData.distanceUnit = unit
+        return true
+    }
+    
     private func parameter(for paramId: Int) -> SetsParameter? {
         model.parameters.first(where: { $0.id == paramId })
     }
@@ -342,7 +406,7 @@ class SetEditCellViewModel: ObservableObject, Identifiable {
             return .repeats(value)
         case .distance:
             let value = parsedFloat(from: paramData.value)
-            return value > 0 ? .distance(value) : nil
+            return value > 0 ? .distance(paramData.distanceUnit.meters(fromInputValue: value)) : nil
         case .time:
             let textValue = paramData.value.replacingOccurrences(of: ":", with: "")
             guard let value = Double(textValue) else {
@@ -389,14 +453,14 @@ class SetEditCellViewModel: ObservableObject, Identifiable {
         }
     }
     
-    private func textFieldValue(for parameter: SetsParameter) -> String {
+    private func textFieldValue(for parameter: SetsParameter, unit: DistanceInputUnit = .meters) -> String {
         switch parameter {
         case .weight(let value):
             return value > 0 ? "\(value)" : ""
         case .repeats(let value):
             return value > 0 ? "\(value)" : ""
         case .distance(let value):
-            return value > 0 ? value.distanceForTextField : ""
+            return value > 0 ? unit.textValue(forMeters: value) : ""
         case .time(let value):
             return value > 0 ? value.timeForTextField : ""
         }
@@ -415,7 +479,7 @@ class SetEditCellViewModel: ObservableObject, Identifiable {
         }
         
         DispatchQueue.main.async {
-            paramData.value = self.textFieldValue(for: parameter)
+            paramData.value = self.textFieldValue(for: parameter, unit: paramData.distanceUnit)
             paramData.valueBeforeEditing = nil
             if let complete = complete {
                 complete()

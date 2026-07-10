@@ -251,6 +251,40 @@ extension View {
     }
 }
 
+struct DistanceUnitPicker: View {
+    let selectedUnit: DistanceInputUnit
+    let onSelect: (DistanceInputUnit) -> Void
+    
+    var body: some View {
+        HStack(spacing: 0) {
+            ForEach(DistanceInputUnit.allCases) { unit in
+                Button {
+                    onSelect(unit)
+                } label: {
+                    Text(unit.title)
+                        .font(.system(size: 14, weight: selectedUnit == unit ? .bold : .semibold))
+                        .foregroundStyle(selectedUnit == unit ? .white : AppColor.brandPrimary)
+                        .frame(width: 58, height: 30)
+                        .background {
+                            if selectedUnit == unit {
+                                RoundedRectangle(cornerRadius: 8, style: .continuous)
+                                    .fill(AppColor.brandPrimary)
+                            }
+                        }
+                }
+                .buttonStyle(.plain)
+            }
+        }
+        .padding(2)
+        .background(AppColor.backgroundPrimary.opacity(0.8))
+        .clipShape(RoundedRectangle(cornerRadius: 10, style: .continuous))
+        .overlay {
+            RoundedRectangle(cornerRadius: 10, style: .continuous)
+                .stroke(AppColor.separatorSoft, lineWidth: 1)
+        }
+    }
+}
+
 extension View {
     func keyboardAccessory(isPresented: Bool,
                            onClear: @escaping () -> Void,

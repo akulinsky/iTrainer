@@ -15,6 +15,7 @@ struct ExerciseEditView: View {
     
     @State private var showAnimation = false
     @State private var isRestTimePickerPresented = false
+    @State private var distanceUnitAccessoryRefresh = false
     
     @FocusState private var focusedInputId: String?
     
@@ -45,7 +46,14 @@ struct ExerciseEditView: View {
             .toolbarTitleDisplayMode(.inline)
             .keyboardAccessory(isPresented: focusedInputId != nil,
                                onClear: clearFocusedInput,
-                               onDone: { focusedInputId = nil })
+                               onDone: { focusedInputId = nil }) {
+                if let focusedDistanceUnit {
+                    DistanceUnitPicker(selectedUnit: focusedDistanceUnit) { unit in
+                        viewModel.setFocusedDistanceUnit(unit, id: focusedInputId)
+                        distanceUnitAccessoryRefresh.toggle()
+                    }
+                }
+            }
             .toolbar {
                 if presentationMode.wrappedValue.isPresented {
                     ToolbarItem(placement: .topBarLeading) {
@@ -96,6 +104,11 @@ struct ExerciseEditView: View {
                 presentationMode.wrappedValue.dismiss()
             }
         }
+    }
+    
+    private var focusedDistanceUnit: DistanceInputUnit? {
+        _ = distanceUnitAccessoryRefresh
+        return viewModel.focusedDistanceUnit(id: focusedInputId)
     }
     
     private func clearFocusedInput() {

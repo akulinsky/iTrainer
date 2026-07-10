@@ -133,7 +133,7 @@ private struct SetEditParameterInput: View {
                     .stroke(AppColor.separatorSoft, lineWidth: 1)
             }
             
-            Text(item.param.unitText)
+            Text(item.unitText)
                 .font(AppFont.rowSubtitle)
                 .foregroundStyle(AppColor.textSecondary)
                 .lineLimit(1)
