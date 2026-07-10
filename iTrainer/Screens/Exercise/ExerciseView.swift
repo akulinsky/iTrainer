@@ -92,6 +92,9 @@ private struct ExerciseContentView: View {
         .safeAreaPadding(.bottom, 20)
         .dismissKeyboardOnTap()
         .scrollDismissesKeyboard(.immediately)
+        .keyboardAccessory(isPresented: focusedParamId != nil,
+                           onClear: clearFocusedInput,
+                           onDone: { focusedParamId = nil })
         .navigationTitle(viewModel.title)
         .navigationBarTitleDisplayMode(.inline)
         .toolbar {
@@ -476,6 +479,15 @@ private struct ExerciseContentView: View {
             viewModel.clearParamsDataValues()
             showAnimation.toggle()
         }
+    }
+    
+    private func clearFocusedInput() {
+        guard let focusedParamId,
+              let paramData = viewModel.paramsData.first(where: { $0.id == focusedParamId }) else {
+            return
+        }
+        
+        paramData.value = ""
     }
     
     @ViewBuilder

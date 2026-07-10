@@ -250,3 +250,25 @@ extension View {
         content(self)
     }
 }
+
+extension View {
+    func keyboardAccessory(isPresented: Bool,
+                           onClear: @escaping () -> Void,
+                           onDone: @escaping () -> Void) -> some View {
+        modifier(KeyboardAccessoryModifier(isPresented: isPresented,
+                                           onClear: onClear,
+                                           onDone: onDone) {
+            EmptyView()
+        })
+    }
+    
+    func keyboardAccessory<CenterContent: View>(isPresented: Bool,
+                                                onClear: @escaping () -> Void,
+                                                onDone: @escaping () -> Void,
+                                                @ViewBuilder centerContent: @escaping () -> CenterContent) -> some View {
+        modifier(KeyboardAccessoryModifier(isPresented: isPresented,
+                                           onClear: onClear,
+                                           onDone: onDone,
+                                           centerContent: centerContent))
+    }
+}

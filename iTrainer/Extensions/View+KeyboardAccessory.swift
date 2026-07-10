@@ -43,7 +43,7 @@ struct KeyboardAccessoryView<CenterContent: View>: View {
     }
 }
 
-private struct KeyboardAccessoryModifier<CenterContent: View>: ViewModifier {
+struct KeyboardAccessoryModifier<CenterContent: View>: ViewModifier {
     let isPresented: Bool
     let onClear: () -> Void
     let onDone: () -> Void
@@ -64,24 +64,3 @@ private struct KeyboardAccessoryModifier<CenterContent: View>: ViewModifier {
     }
 }
 
-extension View {
-    func keyboardAccessory(isPresented: Bool,
-                           onClear: @escaping () -> Void,
-                           onDone: @escaping () -> Void) -> some View {
-        modifier(KeyboardAccessoryModifier(isPresented: isPresented,
-                                           onClear: onClear,
-                                           onDone: onDone) {
-            EmptyView()
-        })
-    }
-    
-    func keyboardAccessory<CenterContent: View>(isPresented: Bool,
-                                                onClear: @escaping () -> Void,
-                                                onDone: @escaping () -> Void,
-                                                @ViewBuilder centerContent: @escaping () -> CenterContent) -> some View {
-        modifier(KeyboardAccessoryModifier(isPresented: isPresented,
-                                           onClear: onClear,
-                                           onDone: onDone,
-                                           centerContent: centerContent))
-    }
-}

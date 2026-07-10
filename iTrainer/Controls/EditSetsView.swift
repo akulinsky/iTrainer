@@ -137,6 +137,9 @@ struct EditSetsView: View {
                     .foregroundStyle(AppColor.brandPrimary)
                 }
             }
+            .keyboardAccessory(isPresented: focusedParamId != nil,
+                               onClear: clearFocusedInput,
+                               onDone: { focusedParamId = nil })
         }
     }
     
@@ -202,6 +205,15 @@ struct EditSetsView: View {
         default:
             break
         }
+    }
+    
+    private func clearFocusedInput() {
+        guard let focusedParamId,
+              let param = params.first(where: { $0.id == focusedParamId }) else {
+            return
+        }
+        
+        param.value = ""
     }
     
     private func prepareToSave() {
