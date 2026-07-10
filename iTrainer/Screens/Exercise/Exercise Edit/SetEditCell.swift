@@ -133,26 +133,13 @@ private struct SetEditParameterInput: View {
                     .stroke(AppColor.separatorSoft, lineWidth: 1)
             }
             
-            Text(unitText(for: item.param))
+            Text(item.param.unitText)
                 .font(AppFont.rowSubtitle)
                 .foregroundStyle(AppColor.textSecondary)
                 .lineLimit(1)
                 .minimumScaleFactor(0.8)
                 .fixedSize(horizontal: true, vertical: false)
                 .frame(width: 66, height: 18)
-        }
-    }
-    
-    private func unitText(for param: SetsParameter) -> String {
-        switch param {
-        case .weight(_):
-            "kg"
-        case .repeats(_):
-            "reps"
-        case .distance(_):
-            "m"
-        case .time(_):
-            "sec"
         }
     }
 }

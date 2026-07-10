@@ -43,6 +43,28 @@ enum ParameterValue<value>: Identifiable, Hashable {
         }
     }
     
+    var unitText: String {
+        switch self {
+        case .weight:
+            "kg"
+        case .repeats:
+            "reps"
+        case .distance:
+            "m"
+        case .time:
+            "min"
+        }
+    }
+    
+    var inlineUnitText: String {
+        switch self {
+        case .time:
+            ""
+        default:
+            unitText
+        }
+    }
+    
     var id: Int {
         switch self {
         case .weight(_): 0

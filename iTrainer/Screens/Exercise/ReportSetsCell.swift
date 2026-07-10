@@ -82,7 +82,10 @@ struct ReportSetsCell: View {
     }
     
     private var parametersText: String {
-        model.parameters.map { "\($0.stringValue) \($0.shortTitle)" }.joined(separator: " · ")
+        model.parameters.map { parameter in
+            let unit = parameter.inlineUnitText
+            return unit.isEmpty ? parameter.stringValue : "\(parameter.stringValue) \(unit)"
+        }.joined(separator: " · ")
     }
     
     private func edit() {
@@ -99,17 +102,3 @@ struct ReportSetsCell: View {
                                               params: [.weight(50), .repeats(8)]), actionBlock: {_ in })
 }
 
-private extension SetsParameter {
-    var shortTitle: String {
-        switch self {
-        case .weight:
-            "kg"
-        case .repeats:
-            "reps"
-        case .distance:
-            "m"
-        case .time:
-            ""
-        }
-    }
-}
