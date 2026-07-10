@@ -165,6 +165,10 @@ final class ExerciseStatisticsViewModel: ObservableObject {
         return Double(max(minValue - padding, 0))...Double(maxValue + padding)
     }
     
+    func yAxisLabel(for value: Double) -> String {
+        Self.formatted(value: Float(value), for: selectedMetric)
+    }
+    
     @MainActor
     func reloadData() async {
         let dataManager = DataManagerBackground(container: DataContainer.shared.sharedModelContainer)

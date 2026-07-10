@@ -241,11 +241,15 @@ struct ExerciseStatisticsView: View {
                         }
                     }
                     .chartYAxis {
-                        AxisMarks(position: .leading, values: .automatic(desiredCount: 4)) {
+                        AxisMarks(position: .leading, values: .automatic(desiredCount: 4)) { value in
                             AxisGridLine(stroke: StrokeStyle(lineWidth: 1, dash: [4, 4]))
                                 .foregroundStyle(AppColor.separatorSoft)
-                            AxisValueLabel()
-                                .foregroundStyle(AppColor.textPrimary)
+                            AxisValueLabel {
+                                if let rawValue = value.as(Double.self) {
+                                    Text(viewModel.yAxisLabel(for: rawValue))
+                                }
+                            }
+                            .foregroundStyle(AppColor.textPrimary)
                         }
                     }
                     .chartPlotStyle { plotArea in

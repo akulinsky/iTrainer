@@ -89,12 +89,16 @@ struct ExerciseStatisticsExpandedChartView: View {
                 }
             }
             .chartYAxis {
-                AxisMarks(position: .leading, values: .automatic(desiredCount: 5)) {
+                AxisMarks(position: .leading, values: .automatic(desiredCount: 5)) { value in
                     AxisGridLine(stroke: StrokeStyle(lineWidth: 1, dash: [4, 4]))
                         .foregroundStyle(AppColor.separatorSoft)
-                    AxisValueLabel()
-                        .font(AppFont.caption)
-                        .foregroundStyle(AppColor.textPrimary)
+                    AxisValueLabel {
+                        if let rawValue = value.as(Double.self) {
+                            Text(viewModel.yAxisLabel(for: rawValue))
+                        }
+                    }
+                    .font(AppFont.caption)
+                    .foregroundStyle(AppColor.textPrimary)
                 }
             }
             .chartPlotStyle { plotArea in
