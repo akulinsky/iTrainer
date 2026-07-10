@@ -44,6 +44,26 @@ enum DistanceInputUnit: String, CaseIterable, Identifiable {
         }
     }
     
+    func sanitizedInputText(_ text: String) -> String {
+        switch self {
+        case .meters:
+            return text.filter(\.isNumber)
+        case .kilometers:
+            var hasDecimalSeparator = false
+            var result = ""
+            
+            for character in text.replacingOccurrences(of: ",", with: ".") {
+                if character.isNumber {
+                    result.append(character)
+                } else if character == ".", !hasDecimalSeparator {
+                    result.append(character)
+                    hasDecimalSeparator = true
+                }
+            }
+            return result
+        }
+    }
+    
     func convertedText(from text: String, previousUnit: DistanceInputUnit) -> String {
         guard let value = Self.inputValue(from: text), value > 0 else {
             return text

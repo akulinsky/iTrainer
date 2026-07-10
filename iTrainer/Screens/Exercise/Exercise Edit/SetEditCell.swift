@@ -124,6 +124,9 @@ private struct SetEditParameterInput: View {
                 .shakeAnimation(item.shake)
                 .keyboardType(item.keyboardType)
                 .focused(focusedInputId, equals: item.focusId)
+                .onChange(of: item.value) { _, newValue in
+                    sanitizeDistanceInput(newValue)
+                }
             }
             .frame(width: 66, height: 48)
             .background(AppColor.surfacePrimary)
@@ -140,6 +143,17 @@ private struct SetEditParameterInput: View {
                 .minimumScaleFactor(0.8)
                 .fixedSize(horizontal: true, vertical: false)
                 .frame(width: 66, height: 18)
+        }
+    }
+    
+    private func sanitizeDistanceInput(_ value: String) {
+        guard item.isDistance else {
+            return
+        }
+        
+        let sanitizedValue = item.distanceUnit.sanitizedInputText(value)
+        if sanitizedValue != value {
+            item.value = sanitizedValue
         }
     }
 }

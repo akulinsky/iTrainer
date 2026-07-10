@@ -130,7 +130,8 @@ struct EditSetsView: View {
                 HStack(spacing: 12) {
                     ForEach(self.$params) { $item in
                         parameterInput(item: $item)
-                            .frame(width: 74)
+//                            .frame(width: 74)
+                            .frame(width: 110)
                     }
                 }
                 .frame(maxWidth: .infinity, alignment: .center)
@@ -196,6 +197,9 @@ struct EditSetsView: View {
                 .shakeAnimation(item.wrappedValue.shake)
                 .keyboardType(item.wrappedValue.keyboardType)
                 .focused($focusedParamId, equals: item.wrappedValue.id)
+                .onChange(of: item.wrappedValue.value) { _, newValue in
+                    sanitizeDistanceInput(item: item, value: newValue)
+                }
             }
             .frame(height: 48)
             .contentShape(Rectangle())
@@ -245,6 +249,17 @@ struct EditSetsView: View {
         }
         
         param.value = ""
+    }
+    
+    private func sanitizeDistanceInput(item: Binding<ParamData>, value: String) {
+        guard item.wrappedValue.isDistance else {
+            return
+        }
+        
+        let sanitizedValue = item.wrappedValue.distanceUnit.sanitizedInputText(value)
+        if sanitizedValue != value {
+            item.wrappedValue.value = sanitizedValue
+        }
     }
     
     private func setFocusedDistanceUnit(_ unit: DistanceInputUnit) {

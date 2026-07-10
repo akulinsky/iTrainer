@@ -429,6 +429,9 @@ private struct ExerciseContentView: View {
         .frame(height: 46)
         .frame(maxWidth: .infinity)
         .shakeAnimation(item.shake)
+        .onChange(of: value.wrappedValue) { _, newValue in
+            sanitizeDistanceInput(item: item, value: value, newValue: newValue)
+        }
         .background(AppColor.surfacePrimary)
         .clipShape(RoundedRectangle(cornerRadius: 10, style: .continuous))
         .overlay {
@@ -500,6 +503,19 @@ private struct ExerciseContentView: View {
         }
         
         paramData.value = ""
+    }
+    
+    private func sanitizeDistanceInput(item: ExerciseViewModel.ParamData,
+                                       value: Binding<String>,
+                                       newValue: String) {
+        guard item.isDistance else {
+            return
+        }
+        
+        let sanitizedValue = item.distanceUnit.sanitizedInputText(newValue)
+        if sanitizedValue != newValue {
+            value.wrappedValue = sanitizedValue
+        }
     }
     
     private func setFocusedDistanceUnit(_ unit: DistanceInputUnit) {
