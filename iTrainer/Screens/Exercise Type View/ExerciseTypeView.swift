@@ -59,10 +59,14 @@ struct ExerciseTypeView: View {
         
         NavigationStack(path: $navigationManager.path) {
             VStack {
-                if viewModel.searchQuery.isEmpty {
-                    ExerciseCategoryView(viewModel: viewModel)
-                } else {
+                if viewModel.showsFlatExerciseList {
                     ExerciseTypeListView(viewModel: viewModel)
+                        .onAppear {
+                            viewModel.categoryId = nil
+                            viewModel.reloadExercises()
+                        }
+                } else {
+                    ExerciseCategoryView(viewModel: viewModel)
                 }
             }
             .navigationTitle("Exercises")
@@ -88,6 +92,7 @@ struct ExerciseTypeView: View {
                         }
                     }
                 }
+
             }
             .sheet(isPresented: $isCreateCustomExercisePresented) {
                 CreateCustomExerciseView { newExerciseId in
@@ -123,6 +128,9 @@ struct ExerciseTypeView: View {
                         ExerciseCatalogDetailView(model: exercise,
                                                   onOpenStatistics: {
                                                     navigationManager.path.append(ExerciseTypeRoute.exerciseStatisticsView(exerciseId: exercise.id))
+                                                  },
+                                                  onBookmarkChanged: { _ in
+                                                    viewModel.reloadExercises()
                                                   },
                                                   onDelete: {
                                                     viewModel.reloadExercises()

@@ -26,6 +26,7 @@ final class DataContainer: ObservableObject {
             ExerciseModelDB.self,
             SetsModelDB.self,
             CustomExerciseTypeModelDB.self,
+            BookmarkedExerciseTypeModelDB.self,
             ReportWorkoutModelDB.self,
             ReportExerciseModelDB.self,
             ReportSetsModelDB.self
@@ -48,22 +49,29 @@ final class DataContainer: ObservableObject {
     }
     
     func reloadExerciseCatalog() {
+        let bookmarkedTypeIds = fetchBookmarkedExerciseTypeIds()
         let seedExercises = ExerciseSeedLoader.loadExercises(categories: categories)
         let customExercises = fetchCustomExerciseTypes()
             .compactMap { ExerciseTypeModel(customModel: $0, categories: categories) }
         
-        arrayExercises = (seedExercises + customExercises).sorted { lhs, rhs in
-            if lhs.type.sortOrder != rhs.type.sortOrder {
-                return lhs.type.sortOrder < rhs.type.sortOrder
+        arrayExercises = (seedExercises + customExercises)
+            .map { exercise in
+                var exercise = exercise
+                exercise.bookmark = bookmarkedTypeIds.contains(exercise.id)
+                return exercise
             }
-            if lhs.isCustom != rhs.isCustom {
-                return lhs.isCustom
+            .sorted { lhs, rhs in
+                if lhs.type.sortOrder != rhs.type.sortOrder {
+                    return lhs.type.sortOrder < rhs.type.sortOrder
+                }
+                if lhs.isCustom != rhs.isCustom {
+                    return lhs.isCustom
+                }
+                if lhs.isCustom, rhs.isCustom {
+                    return (lhs.createdAt ?? .distantPast) < (rhs.createdAt ?? .distantPast)
+                }
+                return lhs.sortOrder < rhs.sortOrder
             }
-            if lhs.isCustom, rhs.isCustom {
-                return (lhs.createdAt ?? .distantPast) < (rhs.createdAt ?? .distantPast)
-            }
-            return lhs.sortOrder < rhs.sortOrder
-        }
     }
     
     private func fetchCustomExerciseTypes() -> [CustomExerciseTypeModelDB] {
@@ -73,6 +81,17 @@ final class DataContainer: ObservableObject {
             return try context.fetch(descriptor)
         } catch {
             assertionFailure("Could not fetch custom exercises: \(error)")
+            return []
+        }
+    }
+    
+    private func fetchBookmarkedExerciseTypeIds() -> Set<String> {
+        do {
+            let context = ModelContext(sharedModelContainer)
+            let descriptor = FetchDescriptor<BookmarkedExerciseTypeModelDB>()
+            return Set(try context.fetch(descriptor).map(\.typeId))
+        } catch {
+            assertionFailure("Could not fetch bookmarked exercises: \(error)")
             return []
         }
     }

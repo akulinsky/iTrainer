@@ -14,20 +14,25 @@ struct ExerciseCatalogDetailView: View {
     @State private var isStatisticsPresented = false
     @State private var isDeleteAlertPresented = false
     @State private var hasActiveWorkout = true
+    @State private var isBookmarked: Bool
     
     private let horizontalPadding: CGFloat = 20
     private let cardCornerRadius: CGFloat = 14
     private let exerciseInfo: ExerciseInfo?
     private let onOpenStatistics: (() -> Void)?
+    private let onBookmarkChanged: ((Bool) -> Void)?
     private let onDelete: (() -> Void)?
     
     init(model: ExerciseTypeModel,
          onOpenStatistics: (() -> Void)? = nil,
+         onBookmarkChanged: ((Bool) -> Void)? = nil,
          onDelete: (() -> Void)? = nil) {
         self.model = model
         self.exerciseInfo = model.isCustom ? nil : ExerciseInfoLoader.info(for: model.id)
         self.onOpenStatistics = onOpenStatistics
+        self.onBookmarkChanged = onBookmarkChanged
         self.onDelete = onDelete
+        _isBookmarked = State(initialValue: model.bookmark)
     }
     
     var body: some View {
@@ -72,6 +77,17 @@ struct ExerciseCatalogDetailView: View {
         .background(AppColor.backgroundPrimary.ignoresSafeArea())
         .navigationTitle(model.displayName)
         .navigationBarTitleDisplayMode(.inline)
+        .toolbar {
+            ToolbarItem(placement: .topBarTrailing) {
+                Button {
+                    toggleBookmark()
+                } label: {
+                    Image(systemName: isBookmarked ? "bookmark.fill" : "bookmark")
+                }
+                .foregroundStyle(isBookmarked ? AppColor.brandPrimary : AppColor.textSecondary)
+                .accessibilityLabel(isBookmarked ? "Remove bookmark" : "Add bookmark")
+            }
+        }
         .navigationDestination(isPresented: $isStatisticsPresented) {
             ExerciseStatisticsView(exerciseType: model)
         }
@@ -94,6 +110,20 @@ struct ExerciseCatalogDetailView: View {
             onOpenStatistics()
         } else {
             isStatisticsPresented = true
+        }
+    }
+    
+    private func toggleBookmark() {
+        let newValue = !isBookmarked
+        isBookmarked = newValue
+        
+        Task {
+            let dataManager = DataManagerBackground(container: DataContainer.shared.sharedModelContainer)
+            await dataManager.setExerciseTypeBookmark(typeId: model.id, isBookmarked: newValue)
+            await MainActor.run {
+                DataContainer.shared.reloadExerciseCatalog()
+                onBookmarkChanged?(newValue)
+            }
         }
     }
     

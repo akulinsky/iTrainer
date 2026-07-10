@@ -36,11 +36,18 @@ struct ExerciseTypeListView: View {
     private var content: some View {
         VStack(spacing: 0) {
             List {
-                ForEach(viewModel.exercises) { item in
-                    cells(for: item)
-                        .listRowInsets(EdgeInsets(top: 6, leading: 20, bottom: 6, trailing: 20))
+                if viewModel.exercises.isEmpty {
+                    emptyState
+                        .listRowInsets(EdgeInsets(top: 40, leading: 20, bottom: 40, trailing: 20))
                         .listRowSeparator(.hidden)
                         .listRowBackground(AppColor.backgroundPrimary)
+                } else {
+                    ForEach(viewModel.exercises) { item in
+                        cells(for: item)
+                            .listRowInsets(EdgeInsets(top: 6, leading: 20, bottom: 6, trailing: 20))
+                            .listRowSeparator(.hidden)
+                            .listRowBackground(AppColor.backgroundPrimary)
+                    }
                 }
             }
             .listStyle(.plain)
@@ -51,6 +58,11 @@ struct ExerciseTypeListView: View {
             .navigationBarTitleDisplayMode(.inline)
             .onAppear {
                 viewModel.reloadExercises()
+            }
+            .toolbar {
+                ToolbarItem(placement: .topBarTrailing) {
+                    ExerciseBookmarkFilterButton(viewModel: viewModel)
+                }
             }
             
             if viewModel.mode == .selecting {
@@ -63,6 +75,13 @@ struct ExerciseTypeListView: View {
             }
         }
         .background(AppColor.backgroundPrimary)
+    }
+    
+    private var emptyState: some View {
+        Text(viewModel.emptyExercisesText)
+            .font(AppFont.rowTitle)
+            .foregroundStyle(AppColor.textSecondary)
+            .frame(maxWidth: .infinity, alignment: .center)
     }
     
     private func cells(for item: ExerciseTypeModel) -> some View {

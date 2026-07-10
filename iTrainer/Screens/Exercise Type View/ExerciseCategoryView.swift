@@ -41,6 +41,17 @@ struct ExerciseCategoryView: View {
             }
         }
         .background(AppColor.backgroundPrimary)
+        .toolbar {
+            ToolbarItem(placement: .topBarTrailing) {
+                Button {
+                    viewModel.toggleBookmarkFilter()
+                } label: {
+                    Image(systemName: viewModel.isBookmarkFilterEnabled ? "bookmark.fill" : "bookmark")
+                }
+                .foregroundStyle(viewModel.isBookmarkFilterEnabled ? AppColor.brandPrimary : AppColor.textSecondary)
+                .accessibilityLabel(viewModel.isBookmarkFilterEnabled ? "Show all exercises" : "Show bookmarked exercises")
+            }
+        }
         .onAppear {
             viewModel.categoryId = nil
         }

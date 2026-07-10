@@ -194,6 +194,7 @@ extension DataManagerBackground {
         let templates = fetchModels(predicate: #Predicate<CustomExerciseTypeModelDB> { $0.id == typeId })
         templates.forEach { remove(model: $0) }
         removeExercises(typeId: typeId, withSaving: false)
+        removeExerciseTypeBookmark(typeId: typeId, withSaving: false)
         save()
     }
     
@@ -329,6 +330,11 @@ extension DataManagerBackground {
         return fetchItem(predicate: #Predicate<ReportSetsModelDB> { $0.id == uuid })
     }
     
+    func fetchBookmarkedExerciseTypeIds() -> Set<String> {
+        let bookmarks: [BookmarkedExerciseTypeModelDB] = fetchModels()
+        return Set(bookmarks.map(\.typeId))
+    }
+    
     func fetchReportSets(for exerciseId: UUID) -> [ReportSetsModelDB] {
         return fetchModels(predicate: #Predicate<ReportSetsModelDB> { $0.reportExercise?.id == exerciseId },
                            sortBy: [SortDescriptor(\ReportSetsModelDB.date, order: .forward)])
@@ -401,6 +407,29 @@ extension DataManagerBackground {
     func removeExercises(typeId: String, withSaving: Bool = true) {
         let items = fetchModels(predicate: #Predicate<ExerciseModelDB> { $0.typeId == typeId })
         items.forEach { removeExercise(with: $0.id, withSaving: false) }
+        if withSaving {
+            save()
+        }
+    }
+    
+    func setExerciseTypeBookmark(typeId: String, isBookmarked: Bool) {
+        let typeId = typeId
+        let existing = fetchItem(predicate: #Predicate<BookmarkedExerciseTypeModelDB> { $0.typeId == typeId })
+        
+        if isBookmarked {
+            if existing == nil {
+                insert(model: BookmarkedExerciseTypeModelDB(typeId: typeId))
+            }
+        } else if let existing {
+            remove(model: existing)
+        }
+        
+        save()
+    }
+    
+    func removeExerciseTypeBookmark(typeId: String, withSaving: Bool = true) {
+        let typeId = typeId
+        remove(predicate: #Predicate<BookmarkedExerciseTypeModelDB> { $0.typeId == typeId })
         if withSaving {
             save()
         }

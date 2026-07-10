@@ -31,6 +31,8 @@
 		F6336E1A30011993006ECA08 /* View+KeyboardAccessory.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6336E1930011993006ECA08 /* View+KeyboardAccessory.swift */; };
 		F6336E1C300148D9006ECA08 /* ReportMetricInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6336E1B300148D9006ECA08 /* ReportMetricInfoView.swift */; };
 		F6336E1F30016236006ECA08 /* ExerciseInfo.strings in Resources */ = {isa = PBXBuildFile; fileRef = F6336E1D30016236006ECA08 /* ExerciseInfo.strings */; };
+		F6336E2230016C13006ECA08 /* BookmarkedExerciseTypeModelDB.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6336E2130016C13006ECA08 /* BookmarkedExerciseTypeModelDB.swift */; };
+		F6336E2430016D94006ECA08 /* ExerciseBookmarkFilterButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6336E2330016D94006ECA08 /* ExerciseBookmarkFilterButton.swift */; };
 		F64895BB2FE6C67F005B0619 /* NavigationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F64895BA2FE6C67F005B0619 /* NavigationManager.swift */; };
 		F648969A2FE705F1005B0619 /* AppEnvironment.swift in Sources */ = {isa = PBXBuildFile; fileRef = F64896992FE705F1005B0619 /* AppEnvironment.swift */; };
 		F648969C2FE70B13005B0619 /* AppState.swift in Sources */ = {isa = PBXBuildFile; fileRef = F648969B2FE70B13005B0619 /* AppState.swift */; };
@@ -174,6 +176,8 @@
 		F6336E1B300148D9006ECA08 /* ReportMetricInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportMetricInfoView.swift; sourceTree = "<group>"; };
 		F6336E1E30016236006ECA08 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/ExerciseInfo.strings; sourceTree = "<group>"; };
 		F6336E2030016246006ECA08 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/ExerciseInfo.strings; sourceTree = "<group>"; };
+		F6336E2130016C13006ECA08 /* BookmarkedExerciseTypeModelDB.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookmarkedExerciseTypeModelDB.swift; sourceTree = "<group>"; };
+		F6336E2330016D94006ECA08 /* ExerciseBookmarkFilterButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseBookmarkFilterButton.swift; sourceTree = "<group>"; };
 		F64895BA2FE6C67F005B0619 /* NavigationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationManager.swift; sourceTree = "<group>"; };
 		F64896992FE705F1005B0619 /* AppEnvironment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppEnvironment.swift; sourceTree = "<group>"; };
 		F648969B2FE70B13005B0619 /* AppState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppState.swift; sourceTree = "<group>"; };
@@ -469,6 +473,7 @@
 				F69BD12D2C551B4F0057080E /* SetsModelDB.swift */,
 				F66CBE2B2C8DCA920025B87F /* Report */,
 				F660FF9E2FFFF9EB00F676BD /* CustomExerciseTypeModelDB.swift */,
+				F6336E2130016C13006ECA08 /* BookmarkedExerciseTypeModelDB.swift */,
 			);
 			path = "Data Base Models";
 			sourceTree = "<group>";
@@ -678,6 +683,7 @@
 				F6DD68AC2C6503C9004EFB03 /* ExerciseTypeCell.swift */,
 				F6AB65AA2FEAB07500DE8066 /* ExerciseCatalogDetailView.swift */,
 				F660FF9D2FFFF9E100F676BD /* Custom Exercise */,
+				F6336E2330016D94006ECA08 /* ExerciseBookmarkFilterButton.swift */,
 			);
 			path = "Exercise Type View";
 			sourceTree = "<group>";
@@ -880,6 +886,7 @@
 				F69BD12A2C551B270057080E /* WorkoutGroupModelDB.swift in Sources */,
 				F6C821C92C6FA2FF00A64CD1 /* SelectExerciseBarView.swift in Sources */,
 				F660FFA72FFFFAC400F676BD /* SelectCustomExerciseTrackingTypeView.swift in Sources */,
+				F6336E2230016C13006ECA08 /* BookmarkedExerciseTypeModelDB.swift in Sources */,
 				F660FF9F2FFFF9EB00F676BD /* CustomExerciseTypeModelDB.swift in Sources */,
 				F648969A2FE705F1005B0619 /* AppEnvironment.swift in Sources */,
 				F6EA7BE22C57F324005225A0 /* ExerciseView.swift in Sources */,
@@ -890,6 +897,7 @@
 				F69BD0FF2C54FBC10057080E /* View+Utils.swift in Sources */,
 				F6CCEE0A2FFD547000686CFB /* HiddenExerciseCell.swift in Sources */,
 				F6186DF42FFEDBCF0018B216 /* ReportExerciseHistoryBuilder.swift in Sources */,
+				F6336E2430016D94006ECA08 /* ExerciseBookmarkFilterButton.swift in Sources */,
 				F69BD1012C54FBEE0057080E /* NetworkUtils.swift in Sources */,
 				F625F2B12FF8F6920074FE79 /* ExerciseStatisticsViewModel.swift in Sources */,
 				F6536BF42FEB10080041B40B /* WorkoutStatusWidget.swift in Sources */,

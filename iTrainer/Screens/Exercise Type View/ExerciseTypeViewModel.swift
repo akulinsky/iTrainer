@@ -24,6 +24,8 @@ class ExerciseTypeViewModel: ObservableObject {
     
     @Published var searchQueryExercise = ""
     
+    @Published var isBookmarkFilterEnabled = false
+    
     @Published var countSelectedExercises = 0
     
     let mode: ExerciseTypeViewMode
@@ -33,9 +35,17 @@ class ExerciseTypeViewModel: ObservableObject {
     var categoryTitle: String {
         guard let categoryId = self.categoryId,
               let category = categories.first(where: { $0.id == categoryId }) else {
-            return ""
+            return "Exercises"
         }
         return category.displayName
+    }
+    
+    var showsFlatExerciseList: Bool {
+        !searchQuery.isEmpty || isBookmarkFilterEnabled
+    }
+    
+    var emptyExercisesText: String {
+        isBookmarkFilterEnabled ? "No bookmarked exercises" : "No exercises"
     }
     
     private var completeBlock: SelectedExerciseTypesBlock?
@@ -60,6 +70,11 @@ class ExerciseTypeViewModel: ObservableObject {
         }
         .store(in: &cancellable)
         
+        $isBookmarkFilterEnabled.sink { _ in
+            self.fetchItems()
+        }
+        .store(in: &cancellable)
+        
         DataContainer.shared.$categories.sink(receiveValue: { categories in
             self.categories = categories
         })
@@ -73,19 +88,23 @@ class ExerciseTypeViewModel: ObservableObject {
     }
     
     private func fetchItems() {
-        var result: [ExerciseTypeModel] = []
+        var result: [ExerciseTypeModel]
         
         if let categoryId = self.categoryId {
-            result = arrayExercises.filter {
-                $0.type.id == categoryId
-            }
+            result = arrayExercises.filter { $0.type.id == categoryId }
+        } else {
+            result = arrayExercises
+        }
+        
+        if isBookmarkFilterEnabled {
+            result = result.filter(\.bookmark)
         }
         
         if !searchQuery.isEmpty {
-            result = arrayExercises.filter {
+            result = result.filter {
                 $0.displayName.lowercased().contains(searchQuery.lowercased())
             }
-        } else if !searchQueryExercise.isEmpty, !result.isEmpty {
+        } else if !searchQueryExercise.isEmpty {
             result = result.filter {
                 $0.displayName.lowercased().contains(searchQueryExercise.lowercased())
             }
@@ -95,7 +114,22 @@ class ExerciseTypeViewModel: ObservableObject {
     }
     
     func reloadExercises() {
+        DataContainer.shared.reloadExerciseCatalog()
         fetchItems()
+    }
+    
+    func toggleBookmarkFilter() {
+        isBookmarkFilterEnabled.toggle()
+    }
+    
+    func setBookmark(typeId: String, isBookmarked: Bool) {
+        Task {
+            let dataManager = DataManagerBackground(container: DataContainer.shared.sharedModelContainer)
+            await dataManager.setExerciseTypeBookmark(typeId: typeId, isBookmarked: isBookmarked)
+            await MainActor.run {
+                DataContainer.shared.reloadExerciseCatalog()
+            }
+        }
     }
     
     func exerciseCount(for category: ExerciseCategory) -> Int {
