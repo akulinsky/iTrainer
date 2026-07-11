@@ -313,8 +313,17 @@ class ExerciseListViewModel: ObservableObject {
         Task {
             let dataManager = DataManagerBackground(container: DataContainer.shared.sharedModelContainer)
             await dataManager.removeExercise(with: exercise.id)
+            let items = await dataManager.fetchExercises(for: group.id).map { ExerciseModel(model: $0) }
+            let hiddenItems = await dataManager.fetchHiddenExercises(for: group.id).map { ExerciseModel(model: $0) }
+            let lastCompletedReport = await dataManager.fetchLatestCompletedReportWorkout(forWorkoutGroupId: group.id)
+            let lastCompletedProgressByExerciseId = progressByExerciseId(from: lastCompletedReport)
+            
             await MainActor.run {
-                fetchItems()
+                withAnimation(.spring(response: 0.36, dampingFraction: 0.88)) {
+                    exercises = items
+                    hiddenExercises = hiddenItems
+                    self.lastCompletedProgressByExerciseId = lastCompletedProgressByExerciseId
+                }
             }
         }
     }

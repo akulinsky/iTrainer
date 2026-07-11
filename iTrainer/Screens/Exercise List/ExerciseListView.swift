@@ -14,7 +14,7 @@ enum ExerciseListRoute: Hashable {
     case exerciseStatisticsView(item: ReportExerciseModel)
 }
 
-private enum ActiveWorkoutExerciseListAction: Identifiable {
+private enum ExerciseListAction: Identifiable {
     case hide(ExerciseModel)
     case delete(ExerciseModel)
     
@@ -29,14 +29,6 @@ private enum ActiveWorkoutExerciseListAction: Identifiable {
         }
     }
     
-    var title: String {
-        switch self {
-        case .hide:
-            "Hide exercise during active workout?"
-        case .delete:
-            "Delete exercise during active workout?"
-        }
-    }
 }
 
 struct ExerciseListView: View {
@@ -53,7 +45,7 @@ struct ExerciseListView: View {
     
     @State private var isEndWorkoutAlertPresented = false
     @State private var isStartWorkoutAlertPresented = false
-    @State private var pendingActiveWorkoutAction: ActiveWorkoutExerciseListAction?
+    @State private var pendingExerciseListAction: ExerciseListAction?
     
     @Environment(\.navigation) private var navigation
     
@@ -193,49 +185,70 @@ struct ExerciseListView: View {
         } message: {
             Text("Start \(viewModel.group.title ?? "this workout")?")
         }
-        .alert(activeWorkoutActionTitle,
-               isPresented: activeWorkoutActionBinding) {
-            activeWorkoutActionButtons()
+        .alert(exerciseListActionTitle,
+               isPresented: exerciseListActionBinding) {
+            exerciseListActionButtons()
         } message: {
-            Text("This may affect the current workout progress and final report.")
+            Text(exerciseListActionMessage)
         }
     }
     
-    private var activeWorkoutActionTitle: String {
-        pendingActiveWorkoutAction?.title ?? ""
+    private var exerciseListActionTitle: String {
+        guard let action = pendingExerciseListAction else { return "" }
+        
+        switch action {
+        case .hide:
+            return "Hide exercise during active workout?"
+        case .delete:
+            return shouldWarnBeforeChangingExercises ? "Delete exercise during active workout?" : "Delete exercise?"
+        }
     }
     
-    private var activeWorkoutActionBinding: Binding<Bool> {
+    private var exerciseListActionMessage: String {
+        guard let action = pendingExerciseListAction else { return "" }
+        
+        switch action {
+        case .hide:
+            return "This may affect the current workout progress and final report."
+        case .delete:
+            if shouldWarnBeforeChangingExercises {
+                return "This exercise will be removed from the workout and may affect current workout progress and the final report."
+            }
+            return "This exercise will be removed from this workout. Past reports will stay unchanged."
+        }
+    }
+    
+    private var exerciseListActionBinding: Binding<Bool> {
         Binding(get: {
-            pendingActiveWorkoutAction != nil
+            pendingExerciseListAction != nil
         }, set: { isPresented in
             if !isPresented {
-                pendingActiveWorkoutAction = nil
+                pendingExerciseListAction = nil
             }
         })
     }
     
     @ViewBuilder
-    private func activeWorkoutActionButtons() -> some View {
-        if let action = pendingActiveWorkoutAction {
+    private func exerciseListActionButtons() -> some View {
+        if let action = pendingExerciseListAction {
             Button("Cancel", role: .cancel) {
-                pendingActiveWorkoutAction = nil
+                pendingExerciseListAction = nil
             }
             switch action {
             case .hide:
                 Button("Hide") {
-                    performActiveWorkoutAction(action)
+                    performExerciseListAction(action)
                 }
             case .delete:
                 Button("Delete", role: .destructive) {
-                    performActiveWorkoutAction(action)
+                    performExerciseListAction(action)
                 }
             }
         }
     }
     
-    private func performActiveWorkoutAction(_ action: ActiveWorkoutExerciseListAction) {
-        pendingActiveWorkoutAction = nil
+    private func performExerciseListAction(_ action: ExerciseListAction) {
+        pendingExerciseListAction = nil
         switch action {
         case .hide(let exercise):
             viewModel.hide(exercise: exercise)
@@ -419,8 +432,10 @@ struct ExerciseListView: View {
     @ViewBuilder
     private func rowSwipeActions(for item: ExerciseModel) -> some View {
         if !item.isHeadline {
-            Button(role: .destructive) {
+            Button {
                 requestExerciseListAction(.delete(item))
+            } label: {
+                Label("Delete", systemImage: "trash")
             }
             .tint(.red)
             
@@ -433,11 +448,16 @@ struct ExerciseListView: View {
         }
     }
     
-    private func requestExerciseListAction(_ action: ActiveWorkoutExerciseListAction) {
-        if shouldWarnBeforeChangingExercises {
-            pendingActiveWorkoutAction = action
-        } else {
-            performActiveWorkoutAction(action)
+    private func requestExerciseListAction(_ action: ExerciseListAction) {
+        switch action {
+        case .delete:
+            pendingExerciseListAction = action
+        case .hide:
+            if shouldWarnBeforeChangingExercises {
+                pendingExerciseListAction = action
+            } else {
+                performExerciseListAction(action)
+            }
         }
     }
     
@@ -570,10 +590,8 @@ struct ExerciseListView: View {
     }
 
     private func deleteItems(offsets: IndexSet) {
-        withAnimation {
-            for index in offsets {
-                viewModel.delete(index: index)
-            }
+        for index in offsets {
+            viewModel.delete(index: index)
         }
     }
     

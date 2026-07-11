@@ -585,8 +585,8 @@
 				F6EA7BDB2C57DDF0005225A0 /* ExerciseListView.swift */,
 				F6EA7BDD2C57DE6F005225A0 /* ExerciseCell.swift */,
 				F6EA7BDF2C57DEF6005225A0 /* ExerciseListViewModel.swift */,
-				F6CCEE092FFD547000686CFB /* HiddenExerciseCell.swift */,
 				F6CCEE0B2FFD547B00686CFB /* HiddenExercisesView.swift */,
+				F6CCEE092FFD547000686CFB /* HiddenExerciseCell.swift */,
 			);
 			path = "Exercise List";
 			sourceTree = "<group>";
