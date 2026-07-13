@@ -386,7 +386,7 @@ final class ReportExerciseViewModel: ObservableObject {
         case .time:
             return "+\(TimeInterval(comparison.improvement).timeForDisplay)"
         case .pace:
-            return "-\(TimeInterval(comparison.improvement).timeForDisplay)"
+            return "-\(TimeInterval(comparison.improvement * 1000).timeForDisplay)"
         case .distance:
             return "+\(formatted(value: comparison.improvement, for: comparison.type))"
         case .weight, .volume:
