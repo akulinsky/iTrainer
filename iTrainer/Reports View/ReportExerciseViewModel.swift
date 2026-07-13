@@ -265,19 +265,12 @@ final class ReportExerciseViewModel: ObservableObject {
     
     private func volumeBreakdownBaseline(statusResult: ExerciseStatusResult,
                                          history: [ReportExerciseModel]) -> ReportExerciseModel? {
-        guard statusResult.comparison?.type == .volume else { return nil }
-        let previousReports = previousReports(in: history)
-        
-        switch statusResult.status {
-        case .personalRecord:
-            return previousReports.max(by: { exerciseVolume($0) < exerciseVolume($1) })
-        case .progress:
-            return previousReports
-                .filter { $0.exerciseId == reportExercise.exerciseId }
-                .max(by: { ($0.date ?? .distantPast) < ($1.date ?? .distantPast) })
-        case .goalAchieved, .goalMissed, .complete:
+        guard statusResult.comparison?.type == .volume,
+              let baselineReportId = statusResult.comparison?.baselineReportId else {
             return nil
         }
+        let previousReports = previousReports(in: history)
+        return previousReports.first { $0.id == baselineReportId }
     }
     
     private func previousReports(in history: [ReportExerciseModel]) -> [ReportExerciseModel] {
