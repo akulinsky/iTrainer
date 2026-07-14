@@ -44,41 +44,77 @@ struct EditNameView: View {
     
     var body: some View {
         NavigationStack {
-            VStack {
-//                Spacer()
-                TextField(placeholder, text: $value)
-                    .padding(.top, 30)
-                    .focused($focused)
-                    .textFieldStyle(.roundedBorder)
-//                    .shakeAnimation(shake, intensity: 6, duration: 0.08)
-                    .shakeAnimation(shake)
-                Spacer()
+            ScrollView {
+                VStack(alignment: .leading, spacing: 8) {
+                    Text("Name")
+                        .font(AppFont.caption)
+                        .foregroundStyle(AppColor.textSecondary)
+                        .lineLimit(1)
+                    
+                    TextField(placeholder, text: $value)
+                        .textFieldStyle(.plain)
+                        .font(AppFont.rowTitle)
+                        .foregroundStyle(AppColor.textPrimary)
+                        .padding(.horizontal, 12)
+                        .frame(height: 48)
+                        .focused($focused)
+                        .shakeAnimation(shake)
+                        .background(AppColor.backgroundPrimary)
+                        .clipShape(RoundedRectangle(cornerRadius: 8, style: .continuous))
+                        .overlay {
+                            RoundedRectangle(cornerRadius: 8, style: .continuous)
+                                .stroke(AppColor.separatorSoft, lineWidth: 1)
+                        }
+                }
+                .padding(16)
+                .background(AppColor.surfacePrimary)
+                .clipShape(RoundedRectangle(cornerRadius: 14, style: .continuous))
+                .overlay {
+                    RoundedRectangle(cornerRadius: 14, style: .continuous)
+                        .stroke(AppColor.separatorSoft, lineWidth: 1)
+                }
+                .padding(.horizontal, 20)
+                .padding(.top, 18)
             }
-            .padding()
+            .background(AppColor.backgroundPrimary)
+            .scrollDismissesKeyboard(.immediately)
             .navigationTitle(title)
+            .toolbarTitleDisplayMode(.inline)
             .toolbar {
                 ToolbarItem(placement: .topBarLeading) {
                     Button("Cancel") {
-                        complete(.cancel)
-                        presentationMode.wrappedValue.dismiss()
+                        cancel()
                     }
+                    .foregroundStyle(AppColor.textSecondary)
                 }
                 ToolbarItem(placement: .topBarTrailing) {
                     Button("Save") {
-                        if value.isEmpty {
-                            shake.send()
-                        } else {
-                            complete(.save(value))
-                            presentationMode.wrappedValue.dismiss()
-                        }
+                        save()
                     }
+                    .font(AppFont.rowTitle)
+                    .foregroundStyle(AppColor.brandPrimary)
                 }
             }
-            
-            Spacer()
+            .keyboardAccessory(isPresented: focused,
+                               onClear: { value = "" },
+                               onDone: { focused = false })
         }
         .onAppear {
             focused = true
+        }
+    }
+    
+    private func cancel() {
+        complete(.cancel)
+        presentationMode.wrappedValue.dismiss()
+    }
+    
+    private func save() {
+        if value.isEmpty {
+            shake.send()
+        } else {
+            complete(.save(value))
+            presentationMode.wrappedValue.dismiss()
         }
     }
 }
