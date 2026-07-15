@@ -124,8 +124,8 @@ class ExerciseListViewModel: ObservableObject {
         
         Task {
             let dataManager = DataManagerBackground(container: DataContainer.shared.sharedModelContainer)
-            let activeExercises = await dataManager.fetchExercises(for: group.id).filter { !$0.isHeadline }
-            let hiddenExercises = await dataManager.fetchHiddenExercises(for: group.id).filter { !$0.isHeadline }
+            let activeExercises = await dataManager.fetchFlattenedExercises(for: group.id)
+            let hiddenExercises = await dataManager.fetchHiddenExercises(for: group.id).filter { $0.isExerciseItem }
             let hiddenMatches = hiddenExercises.filter { orderedTypeIds.contains($0.typeId) }
             let activeMatches = activeExercises.filter { orderedTypeIds.contains($0.typeId) }
             
@@ -276,7 +276,7 @@ class ExerciseListViewModel: ObservableObject {
         }
         
         var progressById = [UUID: Double]()
-        for exercise in report.exercises {
+        for exercise in report.exercises.flattenedReportExerciseItems() {
             let targetSetCount = exercise.targetSets.count
             guard targetSetCount > 0 else {
                 progressById[exercise.exerciseId] = 1

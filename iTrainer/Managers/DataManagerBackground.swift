@@ -143,17 +143,23 @@ extension DataManagerBackground {
     func fetchExercises(for workoutGroupId: UUID) -> [ExerciseModelDB] {
         return fetchModels(predicate: #Predicate<ExerciseModelDB> { $0.workoutGroup?.id == workoutGroupId && !$0.isArchived },
                            sortBy: [SortDescriptor(\ExerciseModelDB.index, order: .forward)])
+            .topLevelWorkoutItems()
     }
     
     func fetchHiddenExercises(for workoutGroupId: UUID) -> [ExerciseModelDB] {
         return fetchModels(predicate: #Predicate<ExerciseModelDB> { $0.workoutGroup?.id == workoutGroupId && $0.isArchived },
                            sortBy: [SortDescriptor(\ExerciseModelDB.archivedAt, order: .reverse),
                                     SortDescriptor(\ExerciseModelDB.index, order: .forward)])
+            .filter { $0.isTopLevelWorkoutItem }
     }
     
     func fetchAllExercises(for workoutGroupId: UUID) -> [ExerciseModelDB] {
         return fetchModels(predicate: #Predicate<ExerciseModelDB> { $0.workoutGroup?.id == workoutGroupId },
                            sortBy: [SortDescriptor(\ExerciseModelDB.index, order: .forward)])
+    }
+    
+    func fetchFlattenedExercises(for workoutGroupId: UUID) -> [ExerciseModelDB] {
+        fetchExercises(for: workoutGroupId).flattenedExerciseItems()
     }
     
     func fetchExercise(with exerciseId: UUID) -> ExerciseModelDB? {
@@ -228,7 +234,7 @@ extension DataManagerBackground {
                                                startDate: report.startDate,
                                                endDate: report.endDate,
                                                targetExercisesCount: report.targetExercisesCount,
-                                               exercises: report.exercises.map { exercise in
+                                               exercises: report.exercises.flattenedReportExerciseItems().map { exercise in
                     ReportDashboardExerciseSnapshot(id: exercise.id,
                                                     titleExercise: exercise.titleExercise,
                                                     exerciseId: exercise.exerciseId,
@@ -270,6 +276,11 @@ extension DataManagerBackground {
     func fetchReportExercises(for workoutId: UUID) -> [ReportExerciseModelDB] {
         return fetchModels(predicate: #Predicate<ReportExerciseModelDB> { $0.report?.id == workoutId },
                            sortBy: [SortDescriptor(\ReportExerciseModelDB.index, order: .forward)])
+            .topLevelReportItems()
+    }
+    
+    func fetchFlattenedReportExercises(for workoutId: UUID) -> [ReportExerciseModelDB] {
+        fetchReportExercises(for: workoutId).flattenedReportExerciseItems()
     }
     
     func fetchReportExercise(id: UUID) -> ReportExerciseModelDB? {
@@ -284,17 +295,17 @@ extension DataManagerBackground {
     
     func fetchReportExercises(exerciseId: UUID) -> [ReportExerciseModelDB] {
         return fetchModels(predicate: #Predicate<ReportExerciseModelDB> { $0.exerciseId == exerciseId })
-            .sorted { ($0.report?.startDate ?? .distantPast) < ($1.report?.startDate ?? .distantPast) }
+            .sorted { ($0.reportDate ?? .distantPast) < ($1.reportDate ?? .distantPast) }
     }
     
     func fetchReportExercises(typeId: String) -> [ReportExerciseModelDB] {
         return fetchModels(predicate: #Predicate<ReportExerciseModelDB> { $0.typeId == typeId })
-            .sorted { ($0.report?.startDate ?? .distantPast) < ($1.report?.startDate ?? .distantPast) }
+            .sorted { ($0.reportDate ?? .distantPast) < ($1.reportDate ?? .distantPast) }
     }
     
     func fetchRecentReportExercises(exerciseId: UUID, dayLimit: Int) -> [ReportExerciseModelDB] {
         let reports = fetchModels(predicate: #Predicate<ReportExerciseModelDB> { $0.exerciseId == exerciseId })
-            .sorted { ($0.report?.startDate ?? .distantPast) > ($1.report?.startDate ?? .distantPast) }
+            .sorted { ($0.reportDate ?? .distantPast) > ($1.reportDate ?? .distantPast) }
         guard dayLimit > 0 else {
             return []
         }
@@ -304,7 +315,7 @@ extension DataManagerBackground {
         let calendar = Calendar.current
         
         for report in reports where !report.reportSets.isEmpty {
-            guard let reportDate = report.report?.startDate else {
+            guard let reportDate = report.reportDate else {
                 continue
             }
             
@@ -372,6 +383,9 @@ extension DataManagerBackground {
             return
         }
         
+        if item.isSupersetItem {
+            moveSupersetChildrenToWorkoutEnd(item)
+        }
         item.sets.forEach { removeSets(with: $0.id, withSaving: false) }
         remove(model: item)
         if withSaving {
@@ -575,10 +589,64 @@ extension DataManagerBackground {
         return createdIds
     }
     
+    func addSuperset(groupId: UUID, title: String? = nil) -> UUID? {
+        guard let groupModel = fetchItem(predicate: #Predicate<WorkoutGroupModelDB> { $0.id == groupId }) else {
+            assertionFailure("Can't add superset, because group was not found")
+            return nil
+        }
+        
+        let item = ExerciseModelDB()
+        item.workoutGroup = groupModel
+        insert(model: item)
+        item.index = nextTopLevelExerciseIndex(in: groupId)
+        item.title = title ?? nextSupersetTitle(in: groupId)
+        item.restTime = 120
+        item.kind = .superset
+        item.isArchived = false
+        item.archivedAt = nil
+        save()
+        return item.id
+    }
+    
+    func addExercisesToSuperset(exerciseIds: [UUID], supersetId: UUID) {
+        guard let superset = fetchItem(predicate: #Predicate<ExerciseModelDB> { $0.id == supersetId }),
+              superset.isSupersetItem else {
+            assertionFailure("Can't add exercises to superset, because superset was not found")
+            return
+        }
+        
+        guard let groupId = superset.workoutGroup?.id else {
+            return
+        }
+        
+        let selectedIds = Set(exerciseIds)
+        let exercises = fetchExercises(for: groupId)
+            .filter { selectedIds.contains($0.id) && $0.isExerciseItem && $0.parentSuperset == nil }
+        var nextIndex = (superset.supersetExercises.map(\.index).max() ?? 0) + 1
+        for exercise in exercises {
+            exercise.parentSuperset = superset
+            exercise.index = nextIndex
+            nextIndex += 1
+        }
+        save()
+    }
+    
+    func removeExerciseFromSuperset(exerciseId: UUID) {
+        guard let exercise = fetchExercise(with: exerciseId),
+              let groupId = exercise.workoutGroup?.id else {
+            return
+        }
+        
+        exercise.parentSuperset = nil
+        exercise.index = nextTopLevelExerciseIndex(in: groupId)
+        save()
+    }
+    
     func hideExercise(with id: UUID) {
         guard let item = fetchItem(predicate: #Predicate<ExerciseModelDB> { $0.id == id }) else {
             return
         }
+        item.parentSuperset = nil
         item.isArchived = true
         item.archivedAt = Date()
         save()
@@ -592,6 +660,7 @@ extension DataManagerBackground {
         
         let activeExercises = fetchExercises(for: groupId)
         item.index = (activeExercises.map(\.index).max() ?? 0) + 1
+        item.parentSuperset = nil
         item.isArchived = false
         item.archivedAt = nil
         save()
@@ -599,11 +668,35 @@ extension DataManagerBackground {
     }
     
     func hiddenExercise(typeId: String, groupId: UUID) -> ExerciseModelDB? {
-        fetchHiddenExercises(for: groupId).first { $0.typeId == typeId && !$0.isHeadline }
+        fetchHiddenExercises(for: groupId).first { $0.typeId == typeId && $0.isExerciseItem }
     }
     
     func activeExercise(typeId: String, groupId: UUID) -> ExerciseModelDB? {
-        fetchExercises(for: groupId).first { $0.typeId == typeId && !$0.isHeadline }
+        fetchFlattenedExercises(for: groupId).first { $0.typeId == typeId }
+    }
+    
+    private func nextTopLevelExerciseIndex(in groupId: UUID) -> Int {
+        (fetchExercises(for: groupId).map(\.index).max() ?? 0) + 1
+    }
+    
+    private func nextSupersetTitle(in groupId: UUID) -> String {
+        let nextNumber = fetchExercises(for: groupId)
+            .filter { $0.isSupersetItem }
+            .count + 1
+        return "Superset \(nextNumber)"
+    }
+    
+    private func moveSupersetChildrenToWorkoutEnd(_ superset: ExerciseModelDB) {
+        guard let groupId = superset.workoutGroup?.id else {
+            return
+        }
+        
+        var nextIndex = nextTopLevelExerciseIndex(in: groupId)
+        for child in superset.sortedSupersetExercises {
+            child.parentSuperset = nil
+            child.index = nextIndex
+            nextIndex += 1
+        }
     }
     
     func update(sets: SetsModel, exerciseId: UUID, withSaving: Bool = true) {

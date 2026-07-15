@@ -112,11 +112,13 @@ class ExerciseViewModel: ObservableObject {
                 let startedWorkout = await dataManager.fetchStartedWorkout()
                 let workoutGroupId = model.workoutGroup?.id
                 let isActiveWorkoutExercise = startedWorkout?.workoutGroupId == workoutGroupId
-                let activeReportSetCount = startedWorkout?.exercises.first(where: { $0.exerciseId == model.id })?.reportSets.count ?? 0
+                let activeReportSetCount = startedWorkout?.exercises
+                    .flattenedReportExerciseItems()
+                    .first(where: { $0.exerciseId == model.id })?.reportSets.count ?? 0
                 var nextExerciseModel: ExerciseModel?
                 if isActiveWorkoutExercise, let workoutGroupId {
-                    nextExerciseModel = await dataManager.fetchExercises(for: workoutGroupId)
-                        .first { !$0.isHeadline && $0.index > model.index }
+                    nextExerciseModel = await dataManager.fetchFlattenedExercises(for: workoutGroupId)
+                        .first { $0.index > model.index }
                         .map { ExerciseModel(model: $0) }
                 }
                 let resolvedNextExercise = nextExerciseModel

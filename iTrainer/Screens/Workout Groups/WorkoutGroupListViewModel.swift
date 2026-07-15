@@ -139,7 +139,7 @@ class WorkoutGroupListViewModel: ObservableObject {
         let groups = await dataManager.fetchWorkoutGroups(for: selectedWorkout.id).map { WorkoutGroupModel(model: $0) }
         var exerciseCountsByGroupId = [UUID: Int]()
         for group in groups {
-            exerciseCountsByGroupId[group.id] = await dataManager.fetchExercises(for: group.id).filter { !$0.isHeadline }.count
+            exerciseCountsByGroupId[group.id] = await dataManager.fetchFlattenedExercises(for: group.id).count
         }
         let lastCompletedReport = await dataManager.fetchLatestCompletedReportWorkout(for: selectedWorkout.id)
         let lastCompletedProgressByGroupId = await progressByGroupId(for: groups, dataManager: dataManager)
@@ -165,7 +165,7 @@ class WorkoutGroupListViewModel: ObservableObject {
     private func exerciseCounts(for groups: [WorkoutGroupModel], dataManager: DataManagerBackground) async -> [UUID: Int] {
         var counts = [UUID: Int]()
         for group in groups {
-            counts[group.id] = await dataManager.fetchExercises(for: group.id).filter { !$0.isHeadline }.count
+            counts[group.id] = await dataManager.fetchFlattenedExercises(for: group.id).count
         }
         return counts
     }
@@ -191,7 +191,7 @@ class WorkoutGroupListViewModel: ObservableObject {
             return 0
         }
         
-        let completedCount = report.exercises.count
+        let completedCount = report.exercises.flattenedReportExerciseItems().count
         return min(Double(completedCount) / Double(targetCount), 1)
     }
     

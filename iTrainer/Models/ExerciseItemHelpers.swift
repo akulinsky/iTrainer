@@ -45,6 +45,14 @@ extension ReportExerciseModelDB {
     var sortedSupersetExercises: [ReportExerciseModelDB] {
         supersetExercises.sortedByIndex()
     }
+    
+    var workoutReport: ReportWorkoutModelDB? {
+        report ?? superset?.report
+    }
+    
+    var reportDate: Date? {
+        workoutReport?.startDate
+    }
 }
 
 extension ExerciseModel {

@@ -211,7 +211,7 @@ final class WorkoutManager: ObservableObject {
         }
         let startDate = Date()
         reportWorkout.startDate = startDate
-        let targetExercisesCount = await dataManager.fetchExercises(for: groupId).filter { !$0.isHeadline }.count
+        let targetExercisesCount = await dataManager.fetchFlattenedExercises(for: groupId).count
         await dataManager.save()
         
         let reportWorkoutId = reportWorkout.id
@@ -347,11 +347,11 @@ final class WorkoutManager: ObservableObject {
     
     private func restoredActiveExerciseId(reportWorkout: ReportWorkoutModelDB, snapshot: WorkoutSessionSnapshot?) -> UUID? {
         if let activeExerciseId = snapshot?.activeExerciseId,
-           reportWorkout.exercises.contains(where: { $0.exerciseId == activeExerciseId }) {
+           reportWorkout.exercises.flattenedReportExerciseItems().contains(where: { $0.exerciseId == activeExerciseId }) {
             return activeExerciseId
         }
         
-        return reportWorkout.exercises
+        return reportWorkout.exercises.flattenedReportExerciseItems()
             .compactMap { reportExercise -> (UUID, Date)? in
                 guard let latestSetDate = reportExercise.reportSets.map(\.date).max() else {
                     return nil
@@ -398,10 +398,10 @@ final class WorkoutManager: ObservableObject {
         let workoutGroupId = reportWorkout.workoutGroupId
         let currentWorkoutTitle = reportWorkout.titleWorkoutGroup
         let startedAt = reportWorkout.startDate ?? snapshot?.workoutStartedAt ?? Date()
-        let exercises = await dataManager.fetchExercises(for: workoutGroupId)
-        let targetExercisesCount = exercises.filter { !$0.isHeadline }.count
+        let exercises = await dataManager.fetchFlattenedExercises(for: workoutGroupId)
+        let targetExercisesCount = exercises.count
         let exerciseProgressById = await exerciseProgressById(for: reportWorkout, dataManager: dataManager)
-        let reportedExerciseIds = Set(reportWorkout.exercises.map(\.exerciseId))
+        let reportedExerciseIds = Set(reportWorkout.exercises.flattenedReportExerciseItems().map(\.exerciseId))
         let activeExerciseId = restoredActiveExerciseId(reportWorkout: reportWorkout, snapshot: snapshot)
         
         await MainActor.run {
@@ -469,7 +469,7 @@ final class WorkoutManager: ObservableObject {
             }
             reportWorkout.endDate = Date()
             
-            let reportExercises = reportWorkout.exercises
+            let reportExercises = reportWorkout.exercises.flattenedReportExerciseItems()
             
             guard !reportExercises.isEmpty else {
                 await dataManager.remove(model: reportWorkout)
@@ -483,9 +483,9 @@ final class WorkoutManager: ObservableObject {
                 return
             }
             
-            let exercises = await dataManager.fetchExercises(for: reportWorkout.workoutGroupId)
+            let exercises = await dataManager.fetchFlattenedExercises(for: reportWorkout.workoutGroupId)
             
-            reportWorkout.targetExercisesCount = exercises.filter({ !$0.isHeadline }).count
+            reportWorkout.targetExercisesCount = exercises.count
             
             for exercise in exercises {
                 if let reportExercise = reportExercises.first(where: { $0.exerciseId == exercise.id }) {
@@ -526,7 +526,7 @@ final class WorkoutManager: ObservableObject {
             return
         }
         
-        var reportExercise = reportWorkout.exercises.first(where: { $0.exerciseId == exerciseId })
+        var reportExercise = reportWorkout.exercises.flattenedReportExerciseItems().first(where: { $0.exerciseId == exerciseId })
         
         /// Create the report exercises
         if reportExercise == nil {
@@ -576,10 +576,10 @@ final class WorkoutManager: ObservableObject {
         
         let reportWorkoutId = reportWorkout.id
         let currentWorkoutTitle = reportWorkout.titleWorkoutGroup
-        let reportedExerciseIds = Set(reportWorkout.exercises.map(\.exerciseId))
+        let reportedExerciseIds = Set(reportWorkout.exercises.flattenedReportExerciseItems().map(\.exerciseId))
         let exerciseProgressById = await exerciseProgressById(for: reportWorkout, dataManager: dataManager)
-        let exercises = await dataManager.fetchExercises(for: workoutGroupId)
-        let targetExercisesCount = exercises.filter { !$0.isHeadline }.count
+        let exercises = await dataManager.fetchFlattenedExercises(for: workoutGroupId)
+        let targetExercisesCount = exercises.count
         let exerciseRestTime = exercise.restTime ?? 0
         let restDuration: TimeInterval? = exerciseRestTime > 0 ? exerciseRestTime : nil
         let restStartedAt = Date()
@@ -644,7 +644,7 @@ final class WorkoutManager: ObservableObject {
     private func exerciseProgressById(for reportWorkout: ReportWorkoutModelDB, dataManager: DataManagerBackground) async -> [UUID: Double] {
         var progressById = [UUID: Double]()
         
-        for reportExercise in reportWorkout.exercises {
+        for reportExercise in reportWorkout.exercises.flattenedReportExerciseItems() {
             guard let exercise = await dataManager.fetchExercise(with: reportExercise.exerciseId) else {
                 continue
             }

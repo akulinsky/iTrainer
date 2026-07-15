@@ -328,11 +328,11 @@ struct DatabaseSeeder {
         await dataManager.insert(model: reportWorkout)
         reportWorkout.startDate = date
         reportWorkout.endDate = date.addingTimeInterval(52 * 60 + TimeInterval(sessionIndex % 9) * 90)
-        reportWorkout.targetExercisesCount = group.exercises.filter { !$0.isHeadline }.count
+        reportWorkout.targetExercisesCount = group.exercises.topLevelWorkoutItems().flattenedExerciseItems().count
         
         let exercises = group.exercises
-            .filter { !$0.isHeadline }
-            .sorted { $0.index < $1.index }
+            .topLevelWorkoutItems()
+            .flattenedExerciseItems()
         let completedExercises = isIncompleteSession ? Array(exercises.prefix(2)) : exercises
         
         for exercise in completedExercises {
