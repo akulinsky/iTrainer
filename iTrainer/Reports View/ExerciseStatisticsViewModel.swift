@@ -324,14 +324,14 @@ final class ExerciseStatisticsViewModel: ObservableObject {
         } else if metric.isLowerValueBetter {
             bestPoint = points.min(by: { lhs, rhs in
                 if lhs.value == rhs.value {
-                    return lhs.date > rhs.date
+                    return lhs.date < rhs.date
                 }
                 return lhs.value < rhs.value
             })
         } else {
             bestPoint = points.max(by: { lhs, rhs in
                 if lhs.value == rhs.value {
-                    return lhs.date < rhs.date
+                    return lhs.date > rhs.date
                 }
                 return lhs.value < rhs.value
             })
