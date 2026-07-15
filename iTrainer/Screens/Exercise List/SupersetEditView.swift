@@ -13,29 +13,63 @@ struct SupersetEditView: View {
     @Environment(\.navigation) private var navigation
     
     @State private var isRestTimePickerPresented = false
+    @State private var editMode = EditMode.inactive
     @FocusState private var isTitleFocused: Bool
     
     var body: some View {
-        ScrollView {
-            VStack(alignment: .leading, spacing: 26) {
-                if viewModel.isActiveWorkoutLocked {
-                    activeWorkoutLockedView
-                }
-                titleView
-                restTimeView
-                childrenView
-                deleteButton
-                Color.clear.frame(height: 24)
+        List {
+            if viewModel.isActiveWorkoutLocked {
+                activeWorkoutLockedView
+                    .listRowStyle(top: 20, bottom: 6)
             }
-            .padding(.horizontal, 20)
-            .padding(.top, 20)
+            
+            titleView
+                .listRowStyle(top: viewModel.isActiveWorkoutLocked ? 6 : 20, bottom: 10)
+            
+            restTimeView
+                .listRowStyle(top: 10, bottom: 10)
+            
+            childrenHeaderRow
+                .listRowStyle(top: 12, bottom: 4)
+            
+            if viewModel.children.isEmpty {
+                emptyChildrenPrompt
+                    .listRowStyle(top: 4, bottom: 10)
+            } else {
+                ForEach(viewModel.children) { child in
+                    childRow(child)
+                        .listRowStyle(top: 6, bottom: 6)
+                        .moveDisabled(viewModel.isActiveWorkoutLocked)
+                }
+                .onMove(perform: viewModel.moveChild)
+                
+                if viewModel.children.count == 1 {
+                    oneChildPrompt
+                        .listRowStyle(top: 2, bottom: 10)
+                }
+            }
+            
+            deleteButton
+                .listRowStyle(top: 18, bottom: 24)
         }
+        .listStyle(.plain)
+        .scrollContentBackground(.hidden)
         .background(AppColor.backgroundPrimary)
+        .environment(\.editMode, $editMode)
         .dismissKeyboardOnTap()
         .scrollDismissesKeyboard(.immediately)
         .navigationTitle("Edit superset")
         .toolbarTitleDisplayMode(.inline)
         .toolbar {
+            ToolbarItem(placement: .topBarTrailing) {
+                Button(editMode == .active ? "Done" : "Edit") {
+                    withAnimation {
+                        editMode = editMode == .active ? .inactive : .active
+                    }
+                }
+                .disabled(viewModel.isActiveWorkoutLocked || viewModel.children.count < 2)
+            }
+            
             ToolbarItem(placement: .topBarTrailing) {
                 Button {
                     viewModel.isPickerPresented = true
@@ -52,6 +86,11 @@ struct SupersetEditView: View {
                            onDone: { isTitleFocused = false })
         .onAppear {
             viewModel.reloadData()
+        }
+        .onChange(of: viewModel.isActiveWorkoutLocked) { _, isLocked in
+            if isLocked {
+                editMode = .inactive
+            }
         }
         .onDisappear {
             if !viewModel.isDeleted {
@@ -74,9 +113,7 @@ struct SupersetEditView: View {
             .presentationDetents([.height(430)])
             .presentationDragIndicator(.visible)
         }
-        .confirmationDialog("Delete superset?",
-                            isPresented: $viewModel.isDeleteConfirmationPresented,
-                            titleVisibility: .visible) {
+        .alert("Delete superset?", isPresented: $viewModel.isDeleteConfirmationPresented) {
             Button("Delete", role: .destructive) {
                 viewModel.deleteSuperset {
                     dismiss()
@@ -107,6 +144,43 @@ struct SupersetEditView: View {
             RoundedRectangle(cornerRadius: 14)
                 .stroke(AppColor.progressAmber.opacity(0.35), lineWidth: 1)
         }
+    }
+    
+    private var childrenHeaderRow: some View {
+        HStack {
+            Text("Exercises")
+                .font(AppFont.rowTitle)
+                .foregroundStyle(AppColor.textPrimary)
+            Spacer()
+            Button {
+                viewModel.isPickerPresented = true
+            } label: {
+                Image(systemName: "plus.circle.fill")
+                    .font(.system(size: 22, weight: .semibold))
+                    .foregroundStyle(AppColor.brandPrimary)
+            }
+            .buttonStyle(.plain)
+            .disabled(viewModel.isActiveWorkoutLocked)
+        }
+        .padding(.horizontal, 2)
+    }
+    
+    private var emptyChildrenPrompt: some View {
+        Text("Add at least two exercises to use this superset.")
+            .font(AppFont.rowSubtitle)
+            .foregroundStyle(AppColor.textSecondary)
+            .frame(maxWidth: .infinity, alignment: .leading)
+            .padding(.horizontal, 2)
+            .padding(.vertical, 10)
+    }
+    
+    private var oneChildPrompt: some View {
+        Text("Add one more exercise to use this superset.")
+            .font(AppFont.rowSubtitle)
+            .foregroundStyle(AppColor.textSecondary)
+            .frame(maxWidth: .infinity, alignment: .leading)
+            .padding(.horizontal, 2)
+            .padding(.vertical, 8)
     }
     
     private var titleView: some View {
@@ -195,54 +269,6 @@ struct SupersetEditView: View {
         }
     }
     
-    private var childrenView: some View {
-        VStack(alignment: .leading, spacing: 14) {
-            HStack {
-                Text("Exercises")
-                    .font(AppFont.rowTitle)
-                    .foregroundStyle(AppColor.textPrimary)
-                Spacer()
-                Button {
-                    viewModel.isPickerPresented = true
-                } label: {
-                    Image(systemName: "plus.circle.fill")
-                        .font(.system(size: 22, weight: .semibold))
-                        .foregroundStyle(AppColor.brandPrimary)
-                }
-                .buttonStyle(.plain)
-                .disabled(viewModel.isActiveWorkoutLocked)
-            }
-            
-            if viewModel.children.isEmpty {
-                Text("Add at least two exercises to use this superset.")
-                    .font(AppFont.rowSubtitle)
-                    .foregroundStyle(AppColor.textSecondary)
-                    .padding(.vertical, 14)
-                    .frame(maxWidth: .infinity, alignment: .leading)
-            } else {
-                VStack(spacing: 0) {
-                    ForEach(Array(viewModel.children.enumerated()), id: \.element.id) { index, child in
-                        if index > 0 {
-                            Divider()
-                                .padding(.leading, 78)
-                                .overlay(AppColor.separatorSoft)
-                        }
-                        childRow(child)
-                    }
-                    .onMove(perform: viewModel.moveChild)
-                }
-            }
-        }
-        .padding(18)
-        .frame(maxWidth: .infinity, alignment: .leading)
-        .background(AppColor.surfacePrimary)
-        .clipShape(RoundedRectangle(cornerRadius: 14))
-        .overlay {
-            RoundedRectangle(cornerRadius: 14)
-                .stroke(AppColor.separatorSoft, lineWidth: 1)
-        }
-    }
-    
     private func childRow(_ child: ExerciseModel) -> some View {
         Button {
             navigation.path.append(ExerciseListRoute.exerciseView(item: child))
@@ -253,7 +279,13 @@ struct SupersetEditView: View {
                                minHeight: 78,
                                showsProgress: false,
                                showsIcon: true,
-                               contentPadding: EdgeInsets(top: 10, leading: 0, bottom: 10, trailing: 0))
+                               contentPadding: EdgeInsets(top: 10, leading: 10, bottom: 10, trailing: 8))
+                .background(AppColor.surfacePrimary)
+                .clipShape(RoundedRectangle(cornerRadius: 14, style: .continuous))
+                .overlay {
+                    RoundedRectangle(cornerRadius: 14, style: .continuous)
+                        .stroke(AppColor.separatorSoft, lineWidth: 1)
+                }
         }
         .buttonStyle(.plain)
         .swipeActions(edge: .trailing, allowsFullSwipe: false) {
@@ -263,7 +295,7 @@ struct SupersetEditView: View {
                 } label: {
                     Label("Remove", systemImage: "minus.circle")
                 }
-                .tint(AppColor.textSecondary)
+                .tint(.red)
                 
                 Button {
                     viewModel.hideChild(child)
@@ -312,5 +344,14 @@ struct SupersetEditView: View {
             DurationPreset(title: "3:00", seconds: 180),
             DurationPreset(title: "5:00", seconds: 300)
         ]
+    }
+}
+
+private extension View {
+    func listRowStyle(top: CGFloat, bottom: CGFloat) -> some View {
+        self
+            .listRowInsets(EdgeInsets(top: top, leading: 20, bottom: bottom, trailing: 20))
+            .listRowSeparator(.hidden)
+            .listRowBackground(AppColor.backgroundPrimary)
     }
 }

@@ -104,17 +104,8 @@ struct ExerciseCell: View {
     
     var body: some View {
         let view = ZStack {
-            if model.isHeadlineItem, editMode?.wrappedValue != .active {
-                HStack {
-                    Text(model.displayName)
-                        .font(AppFont.caption)
-                        .foregroundStyle(AppColor.textSecondary)
-                        .textCase(.uppercase)
-                    
-                    Spacer(minLength: 8)
-                }
-                .padding(.horizontal, 4)
-                .frame(minHeight: 28)
+            if model.isHeadlineItem {
+                headlineContent
             } else {
                 ExerciseRowContent(model: model, progressStatus: progressStatus)
                     .background(AppColor.surfacePrimary)
@@ -132,6 +123,33 @@ struct ExerciseCell: View {
         }
         
         view
+    }
+    
+    private var headlineContent: some View {
+        let isEditing = editMode?.wrappedValue == .active
+        
+        return HStack {
+            Text(model.displayName)
+                .font(isEditing ? AppFont.rowTitle : AppFont.caption)
+                .foregroundStyle(isEditing ? AppColor.textPrimary : AppColor.textSecondary)
+                .textCase(.uppercase)
+            
+            Spacer(minLength: 8)
+        }
+        .padding(.horizontal, isEditing ? 14 : 4)
+        .frame(minHeight: isEditing ? 54 : 28)
+        .background {
+            if isEditing {
+                AppColor.surfacePrimary
+            }
+        }
+        .clipShape(RoundedRectangle(cornerRadius: isEditing ? 14 : 0, style: .continuous))
+        .overlay {
+            if isEditing {
+                RoundedRectangle(cornerRadius: 14, style: .continuous)
+                    .stroke(AppColor.separatorSoft, lineWidth: 1)
+            }
+        }
     }
 }
 
