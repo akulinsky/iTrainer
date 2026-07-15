@@ -33,9 +33,15 @@ struct ReportExerciseModel: ReportExerciseDataProtocol, Hashable {
     
     var date: Date?
     
+    var kind: ExerciseItemKind
+    
+    var supersetId: UUID?
+    
     var sets = [ReportSetsModel]()
     
     var targetSets = [SetsModel]()
+    
+    var supersetExercises = [ReportExerciseModel]()
     
     init(model: ReportExerciseModelDB) {
         self.id = model.id
@@ -44,12 +50,15 @@ struct ReportExerciseModel: ReportExerciseDataProtocol, Hashable {
         self.index = model.index
         self.typeId = model.typeId
         self.trackingTypeId = model.trackingTypeId
-        self.workoutId = model.report?.workoutId
-        self.workoutGroupId = model.report?.workoutGroupId
-        self.titleWorkout = model.report?.titleWorkout
-        self.titleWorkoutGroup = model.report?.titleWorkoutGroup
+        let report = model.report ?? model.superset?.report
+        self.workoutId = report?.workoutId
+        self.workoutGroupId = report?.workoutGroupId
+        self.titleWorkout = report?.titleWorkout
+        self.titleWorkoutGroup = report?.titleWorkoutGroup
         self.restTime = model.restTime
-        self.date = model.report?.startDate
+        self.date = report?.startDate
+        self.kind = model.kind
+        self.supersetId = model.superset?.id
         
         self.sets = model.reportSets.map { ReportSetsModel(model: $0) }.sorted(by: { $0.date > $1.date })
         for (idx, _) in self.sets.enumerated() {
@@ -57,6 +66,9 @@ struct ReportExerciseModel: ReportExerciseDataProtocol, Hashable {
         }
         
         self.targetSets = model.targetSets.map { SetsModel(model: $0) }.sorted(by: { $0.index < $1.index })
+        self.supersetExercises = model.supersetExercises
+            .map { ReportExerciseModel(model: $0) }
+            .sorted { $0.index < $1.index }
     }
     
     init(id: UUID = UUID(),
@@ -71,8 +83,11 @@ struct ReportExerciseModel: ReportExerciseDataProtocol, Hashable {
          titleWorkoutGroup: String? = nil,
          restTime: TimeInterval? = nil,
          date: Date? = nil,
+         kind: ExerciseItemKind = .exercise,
+         supersetId: UUID? = nil,
          sets: [ReportSetsModel] = [],
-         targetSets: [SetsModel] = []) {
+         targetSets: [SetsModel] = [],
+         supersetExercises: [ReportExerciseModel] = []) {
         
         self.id = id
         self.titleExercise = titleExercise
@@ -86,12 +101,23 @@ struct ReportExerciseModel: ReportExerciseDataProtocol, Hashable {
         self.titleWorkoutGroup = titleWorkoutGroup
         self.restTime = restTime
         self.date = date
+        self.kind = kind
+        self.supersetId = supersetId
         self.sets = sets
         self.targetSets = targetSets
+        self.supersetExercises = supersetExercises
     }
 }
 
 extension ReportExerciseModel {
+    var isSuperset: Bool {
+        kind == .superset
+    }
+    
+    var isExercise: Bool {
+        kind == .exercise
+    }
+    
     var type: ExerciseTypeModel? {
         DataContainer.shared.arrayExercises.filter({ $0.id == typeId }).first
     }

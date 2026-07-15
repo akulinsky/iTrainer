@@ -25,7 +25,14 @@ class ReportExerciseModelDB: ReportExerciseDataProtocol, PersistentProtocol {
     
     var restTime: TimeInterval?
     
+    var kindRawValue: Int = ExerciseItemKind.exercise.rawValue
+    
     var report: ReportWorkoutModelDB?
+    
+    var superset: ReportExerciseModelDB?
+    
+    @Relationship(deleteRule: .cascade, inverse: \ReportExerciseModelDB.superset)
+    var supersetExercises: [ReportExerciseModelDB] = []
     
     @Relationship(deleteRule: .cascade, inverse: \ReportSetsModelDB.reportExercise)
     var reportSets: [ReportSetsModelDB] = []
@@ -38,12 +45,25 @@ class ReportExerciseModelDB: ReportExerciseDataProtocol, PersistentProtocol {
          index: Int,
          typeId: String,
          trackingTypeId: String? = nil,
-         restTime: TimeInterval? = nil) {
+         restTime: TimeInterval? = nil,
+         kind: ExerciseItemKind = .exercise) {
         self.titleExercise = titleExercise
         self.exerciseId = exerciseId
         self.index = index
         self.typeId = typeId
         self.trackingTypeId = trackingTypeId
         self.restTime = restTime
+        self.kind = kind
+    }
+}
+
+extension ReportExerciseModelDB {
+    var kind: ExerciseItemKind {
+        get {
+            ExerciseItemKind(rawValue: kindRawValue) ?? .exercise
+        }
+        set {
+            kindRawValue = newValue.rawValue
+        }
     }
 }

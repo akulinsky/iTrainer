@@ -519,6 +519,7 @@ extension DataManagerBackground {
             item.restTime = exercise.restTime
             item.isArchived = exercise.isArchived
             item.archivedAt = exercise.archivedAt
+            item.kind = exercise.kind
         } else if let groupId = groupId,
                     let groupModel = fetchItem(predicate: #Predicate<WorkoutGroupModelDB> { $0.id == groupId }) {
             let item = ExerciseModelDB()
@@ -528,7 +529,7 @@ extension DataManagerBackground {
             item.title = exercise.title
             item.restTime = exercise.restTime
             item.typeId = exercise.typeId
-            item.isHeadline = exercise.isHeadline
+            item.kind = exercise.kind
             item.isArchived = exercise.isArchived
             item.archivedAt = exercise.archivedAt
         } else {
@@ -563,7 +564,7 @@ extension DataManagerBackground {
             insert(model: item)
             item.index = nextIndex
             item.typeId = typeId
-            item.isHeadline = false
+            item.kind = .exercise
             item.isArchived = false
             item.archivedAt = nil
             createdIds.append(item.id)

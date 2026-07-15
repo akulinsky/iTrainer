@@ -13,19 +13,27 @@ struct ExerciseModel: DataItemProtocol, Hashable {
     var title: String?
     var typeId: String
     var isHeadline: Bool
+    var kind: ExerciseItemKind
     var restTime: TimeInterval
     var isArchived: Bool
     var archivedAt: Date?
+    var parentSupersetId: UUID?
+    var supersetExercises: [ExerciseModel]
     
     init(model: ExerciseModelDB) {
         self.id = model.id
         self.index = model.index
         self.title = model.title
         self.typeId = model.typeId
-        self.isHeadline = model.isHeadline
+        self.kind = model.kind
+        self.isHeadline = model.kind == .headline
         self.restTime = model.restTime ?? 120
         self.isArchived = model.isArchived
         self.archivedAt = model.archivedAt
+        self.parentSupersetId = model.parentSuperset?.id
+        self.supersetExercises = model.supersetExercises
+            .map { ExerciseModel(model: $0) }
+            .sorted { $0.index < $1.index }
     }
     
     init(id: UUID = UUID(),
@@ -33,22 +41,36 @@ struct ExerciseModel: DataItemProtocol, Hashable {
          title: String? = nil,
          typeId: String = "",
          isHeadline: Bool = false,
+         kind: ExerciseItemKind = .exercise,
          restTime: TimeInterval = 120,
          isArchived: Bool = false,
-         archivedAt: Date? = nil) {
+         archivedAt: Date? = nil,
+         parentSupersetId: UUID? = nil,
+         supersetExercises: [ExerciseModel] = []) {
         
         self.id = id
         self.index = index
         self.title = title
         self.typeId = typeId
-        self.isHeadline = isHeadline
+        self.kind = isHeadline ? .headline : kind
+        self.isHeadline = self.kind == .headline
         self.restTime = restTime
         self.isArchived = isArchived
         self.archivedAt = archivedAt
+        self.parentSupersetId = parentSupersetId
+        self.supersetExercises = supersetExercises
     }
 }
 
 extension ExerciseModel {
+    
+    var isSuperset: Bool {
+        kind == .superset
+    }
+    
+    var isExercise: Bool {
+        kind == .exercise
+    }
     
     var displayName: String {
         title ?? type?.title ?? ""

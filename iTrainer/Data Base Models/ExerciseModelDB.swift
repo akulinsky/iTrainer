@@ -20,12 +20,34 @@ class ExerciseModelDB: DataItemProtocol, PersistentProtocol {
     
     var isHeadline: Bool = false
     
+    var kindRawValue: Int = ExerciseItemKind.exercise.rawValue
+    
     var workoutGroup: WorkoutGroupModelDB?
+    
+    var parentSuperset: ExerciseModelDB?
+    
+    @Relationship(deleteRule: .nullify, inverse: \ExerciseModelDB.parentSuperset)
+    var supersetExercises: [ExerciseModelDB] = []
     
     @Relationship(deleteRule: .cascade, inverse: \SetsModelDB.exercise) 
     var sets: [SetsModelDB] = []
     
     init() {
         
+    }
+}
+
+extension ExerciseModelDB {
+    var kind: ExerciseItemKind {
+        get {
+            if isHeadline {
+                return .headline
+            }
+            return ExerciseItemKind(rawValue: kindRawValue) ?? .exercise
+        }
+        set {
+            kindRawValue = newValue.rawValue
+            isHeadline = newValue == .headline
+        }
     }
 }
