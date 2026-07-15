@@ -78,6 +78,8 @@ class ReportViewModel: ObservableObject {
     
     @Published var exerciseSummaries = [ReportExerciseSummary]()
     
+    @Published var exerciseStatusById = [UUID: ExerciseReportStatus]()
+    
     @Published var workoutStatus: WorkoutReportStatus = .workoutComplete
     
     var errorMessage: String? = nil
@@ -113,27 +115,41 @@ class ReportViewModel: ObservableObject {
             let endDate = report.endDate
             let titleWorkout = report.titleWorkout
             let titleWorkoutGroup = report.titleWorkoutGroup
-            let reportExercises = report.exercises.map({ ReportExerciseModel(model: $0) })
+            let reportExercises = report.exercises.map { ReportExerciseModel(model: $0) }
                 .sorted(by: { $0.index < $1.index })
+                .topLevelReportItems()
+            let flattenedReportExercises = reportExercises.flattenedReportExerciseItems()
             var exerciseHistories = [UUID: [ReportExerciseModel]]()
-            for exercise in reportExercises {
+            for exercise in flattenedReportExercises {
                 exerciseHistories[exercise.id] = await dataManager.fetchReportExercises(typeId: exercise.typeId)
                     .map { ReportExerciseModel(model: $0) }
             }
             
-            let exerciseSummaries = reportExercises.map { exercise in
+            let flattenedExerciseSummaries = flattenedReportExercises.map { exercise in
                 let status = ReportStatusService.calculateExerciseStatus(report: exercise,
                                                                          history: exerciseHistories[exercise.id] ?? [])
                 return ReportExerciseSummary(id: exercise.id,
                                              model: exercise,
                                              status: status)
             }
-            let exerciseStatuses = exerciseSummaries.map(\.status)
+            let exerciseStatusById = Dictionary(uniqueKeysWithValues: flattenedExerciseSummaries.map { ($0.id, $0.status) })
+            let exerciseSummaries = reportExercises.map { exercise in
+                let status: ExerciseReportStatus
+                if exercise.isSupersetItem {
+                    status = aggregateStatus(for: exercise.sortedSupersetExercises.compactMap { exerciseStatusById[$0.id] })
+                } else {
+                    status = exerciseStatusById[exercise.id] ?? .complete
+                }
+                return ReportExerciseSummary(id: exercise.id,
+                                             model: exercise,
+                                             status: status)
+            }
+            let exerciseStatuses = flattenedExerciseSummaries.map(\.status)
             let workoutStatus = ReportStatusService.calculateWorkoutStatus(report: reportWorkout,
-                                                                           exercises: reportExercises,
+                                                                           exercises: flattenedReportExercises,
                                                                            exerciseStatuses: exerciseStatuses)
             let metrics = createReportMetrics(report: reportWorkout,
-                                              exercises: reportExercises,
+                                              exercises: flattenedReportExercises,
                                               workoutStatus: workoutStatus,
                                               startDate: startDate,
                                               endDate: endDate)
@@ -151,6 +167,7 @@ class ReportViewModel: ObservableObject {
                 self.titleWorkoutGroup = titleWorkoutGroup
                 self.reportExercises = reportExercises
                 self.exerciseSummaries = exerciseSummaries
+                self.exerciseStatusById = exerciseStatusById
                 self.reportModels = reportModels
                 self.summaryCards = metrics.summaryCards
                 self.workoutStatus = workoutStatus
@@ -164,6 +181,26 @@ class ReportViewModel: ObservableObject {
                 }
             }
         }
+    }
+    
+    private func aggregateStatus(for statuses: [ExerciseReportStatus]) -> ExerciseReportStatus {
+        if statuses.contains(where: \.isPersonalRecord) {
+            return statuses.first(where: \.isPersonalRecord) ?? .complete
+        }
+        
+        if statuses.contains(.progress) {
+            return .progress
+        }
+        
+        if statuses.contains(.goalMissed) {
+            return .goalMissed
+        }
+        
+        if statuses.contains(.goalAchieved) {
+            return .goalAchieved
+        }
+        
+        return .complete
     }
     
     private func createReportMetrics(report: ReportWorkoutModel,

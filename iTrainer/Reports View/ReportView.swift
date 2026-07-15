@@ -242,12 +242,20 @@ struct ReportView: View {
             
             VStack(spacing: 10) {
                 ForEach(viewModel.exerciseSummaries) { summary in
-                    Button {
-                        navigationManager.path.append(ReportsRoute.reportExerciseView(item: summary.model))
-                    } label: {
-                        ReportExerciseCell(model: summary.model, status: summary.status)
+                    if summary.model.isSupersetItem {
+                        ReportExerciseCell(model: summary.model,
+                                           status: summary.status,
+                                           childStatusById: viewModel.exerciseStatusById) { child in
+                            navigationManager.path.append(ReportsRoute.reportExerciseView(item: child))
+                        }
+                    } else {
+                        Button {
+                            navigationManager.path.append(ReportsRoute.reportExerciseView(item: summary.model))
+                        } label: {
+                            ReportExerciseCell(model: summary.model, status: summary.status)
+                        }
+                        .buttonStyle(.plain)
                     }
-                    .buttonStyle(.plain)
                 }
             }
         }
