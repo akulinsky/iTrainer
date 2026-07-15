@@ -110,6 +110,9 @@
 		F6CF519A3007DEF500D35E28 /* ExerciseItemKind.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6CF51993007DEF500D35E28 /* ExerciseItemKind.swift */; };
 		F6CF519C3007E3B700D35E28 /* ExerciseItemHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6CF519B3007E3B700D35E28 /* ExerciseItemHelpers.swift */; };
 		F6CF519E3007EABB00D35E28 /* SupersetCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6CF519D3007EABB00D35E28 /* SupersetCell.swift */; };
+		F6CF51A03007EC2A00D35E28 /* SupersetEditViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6CF519F3007EC2A00D35E28 /* SupersetEditViewModel.swift */; };
+		F6CF51A23007EC3F00D35E28 /* SupersetExercisePickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6CF51A13007EC3F00D35E28 /* SupersetExercisePickerView.swift */; };
+		F6CF51A43007EC7200D35E28 /* SupersetEditView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6CF51A33007EC7200D35E28 /* SupersetEditView.swift */; };
 		F6DD68AB2C64FF71004EFB03 /* ExerciseTypeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6DD68AA2C64FF71004EFB03 /* ExerciseTypeView.swift */; };
 		F6DD68AD2C6503C9004EFB03 /* ExerciseTypeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6DD68AC2C6503C9004EFB03 /* ExerciseTypeCell.swift */; };
 		F6DD68AF2C65050A004EFB03 /* ExerciseTypeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6DD68AE2C65050A004EFB03 /* ExerciseTypeViewModel.swift */; };
@@ -261,6 +264,9 @@
 		F6CF51993007DEF500D35E28 /* ExerciseItemKind.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseItemKind.swift; sourceTree = "<group>"; };
 		F6CF519B3007E3B700D35E28 /* ExerciseItemHelpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseItemHelpers.swift; sourceTree = "<group>"; };
 		F6CF519D3007EABB00D35E28 /* SupersetCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SupersetCell.swift; sourceTree = "<group>"; };
+		F6CF519F3007EC2A00D35E28 /* SupersetEditViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SupersetEditViewModel.swift; sourceTree = "<group>"; };
+		F6CF51A13007EC3F00D35E28 /* SupersetExercisePickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SupersetExercisePickerView.swift; sourceTree = "<group>"; };
+		F6CF51A33007EC7200D35E28 /* SupersetEditView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SupersetEditView.swift; sourceTree = "<group>"; };
 		F6DD68AA2C64FF71004EFB03 /* ExerciseTypeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseTypeView.swift; sourceTree = "<group>"; };
 		F6DD68AC2C6503C9004EFB03 /* ExerciseTypeCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseTypeCell.swift; sourceTree = "<group>"; };
 		F6DD68AE2C65050A004EFB03 /* ExerciseTypeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseTypeViewModel.swift; sourceTree = "<group>"; };
@@ -596,6 +602,9 @@
 				F6CCEE0B2FFD547B00686CFB /* HiddenExercisesView.swift */,
 				F6CCEE092FFD547000686CFB /* HiddenExerciseCell.swift */,
 				F6CF519D3007EABB00D35E28 /* SupersetCell.swift */,
+				F6CF519F3007EC2A00D35E28 /* SupersetEditViewModel.swift */,
+				F6CF51A13007EC3F00D35E28 /* SupersetExercisePickerView.swift */,
+				F6CF51A33007EC7200D35E28 /* SupersetEditView.swift */,
 			);
 			path = "Exercise List";
 			sourceTree = "<group>";
@@ -872,6 +881,7 @@
 				F648969E2FE71522005B0619 /* DatabaseSeeder.swift in Sources */,
 				F6F4CF282C6B71D600A5BBA9 /* ExerciseTypeListView.swift in Sources */,
 				F6F1E08D2C9DCA3500C1419A /* ReportExerciseCell.swift in Sources */,
+				F6CF51A23007EC3F00D35E28 /* SupersetExercisePickerView.swift in Sources */,
 				F660FFA52FFFFAB100F676BD /* SelectCustomExerciseCategoryView.swift in Sources */,
 				F69BD0FD2C54FB190057080E /* AKDisabledButtonStyle.swift in Sources */,
 				F677A06C2FFBBCCB00101B33 /* CalendarModels.swift in Sources */,
@@ -921,6 +931,7 @@
 				F6EA7BCA2C578BAF005225A0 /* WorkoutListViewModel.swift in Sources */,
 				F6336E1C300148D9006ECA08 /* ReportMetricInfoView.swift in Sources */,
 				F62818452C62408D003642F8 /* ExerciseTypeModel.swift in Sources */,
+				F6CF51A43007EC7200D35E28 /* SupersetEditView.swift in Sources */,
 				F660FFA930000D0600F676BD /* ExerciseTypeIconView.swift in Sources */,
 				F6CCEE062FFD27A300686CFB /* LocalNotificationManager.swift in Sources */,
 				F68D60672C76193500783E54 /* TimeInterval+Utils.swift in Sources */,
@@ -952,6 +963,7 @@
 				F6CB903F2C77687E002529A6 /* ExerciseEditView.swift in Sources */,
 				F69BD1092C54FC170057080E /* NetworkProvider.swift in Sources */,
 				F6DD68AD2C6503C9004EFB03 /* ExerciseTypeCell.swift in Sources */,
+				F6CF51A03007EC2A00D35E28 /* SupersetEditViewModel.swift in Sources */,
 				F6EA7BDC2C57DDF0005225A0 /* ExerciseListView.swift in Sources */,
 				F6DD68AB2C64FF71004EFB03 /* ExerciseTypeView.swift in Sources */,
 				F69BD12C2C551B400057080E /* ExerciseModelDB.swift in Sources */,

@@ -246,11 +246,21 @@ class ExerciseListViewModel: ObservableObject {
         await reloadDataAndScroll(to: createdIds.last)
     }
     
-    func addSuperset() {
+    func addSuperset(complete: ((ExerciseModel?) -> Void)? = nil) {
         Task {
             let dataManager = DataManagerBackground(container: DataContainer.shared.sharedModelContainer)
             let supersetId = await dataManager.addSuperset(groupId: group.id)
             await reloadDataAndScroll(to: supersetId)
+            let superset: ExerciseModel?
+            if let supersetId,
+               let model = await dataManager.fetchExercise(with: supersetId) {
+                superset = ExerciseModel(model: model)
+            } else {
+                superset = nil
+            }
+            await MainActor.run {
+                complete?(superset)
+            }
         }
     }
     

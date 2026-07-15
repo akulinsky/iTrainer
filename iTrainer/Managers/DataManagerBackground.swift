@@ -642,6 +642,23 @@ extension DataManagerBackground {
         save()
     }
     
+    func reorderSupersetExercises(supersetId: UUID, orderedIds: [UUID]) {
+        guard let superset = fetchItem(predicate: #Predicate<ExerciseModelDB> { $0.id == supersetId }),
+              superset.isSupersetItem else {
+            return
+        }
+        
+        let orderedIdPositions = Dictionary(uniqueKeysWithValues: orderedIds.enumerated().map { ($1, $0) })
+        let orderedChildren = superset.sortedSupersetExercises.sorted { lhs, rhs in
+            (orderedIdPositions[lhs.id] ?? Int.max) < (orderedIdPositions[rhs.id] ?? Int.max)
+        }
+        
+        for (index, child) in orderedChildren.enumerated() {
+            child.index = index + 1
+        }
+        save()
+    }
+    
     func hideExercise(with id: UUID) {
         guard let item = fetchItem(predicate: #Predicate<ExerciseModelDB> { $0.id == id }) else {
             return

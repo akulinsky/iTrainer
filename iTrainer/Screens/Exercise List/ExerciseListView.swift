@@ -9,6 +9,7 @@ import SwiftUI
 
 enum ExerciseListRoute: Hashable {
     case exerciseView(item: ExerciseModel)
+    case supersetEditView(item: ExerciseModel, groupId: UUID)
     case reportExerciseView(item: ReportExerciseModel)
     case reportExerciseHistoryView(item: ReportExerciseModel)
     case exerciseStatisticsView(item: ReportExerciseModel)
@@ -126,6 +127,9 @@ struct ExerciseListView: View {
                     refresh()
                 }
             }
+        }
+        .onAppear {
+            viewModel.reloadData()
         }
         .sheet(isPresented: $viewModel.isEditExercise, onDismiss: {
             viewModel.isEditHeadline = false
@@ -267,6 +271,9 @@ struct ExerciseListView: View {
                     ExerciseView(viewModel: ExerciseViewModel(exercise: model))
                         .id(model.id)
                         .environment(\.navigation, navigation)
+                case .supersetEditView(let model, let groupId):
+                    SupersetEditView(viewModel: SupersetEditViewModel(superset: model, groupId: groupId))
+                        .environment(\.navigation, navigation)
                 case .reportExerciseView(let model):
                     ReportExerciseView(viewModel: ReportExerciseViewModel(reportExercise: model),
                                        onOpenStatistics: { exercise in
@@ -357,7 +364,7 @@ struct ExerciseListView: View {
     private func handleSupersetAction(_ action: SupersetCell.Action) {
         switch action {
         case .edit(let superset):
-            viewModel.edit(exercise: superset)
+            navigation.path.append(ExerciseListRoute.supersetEditView(item: superset, groupId: viewModel.group.id))
         case .openChild(let child):
             switch editMode {
             case .active:
@@ -590,7 +597,11 @@ struct ExerciseListView: View {
     }
     
     private func clickBtnNewSuperset() {
-        viewModel.addSuperset()
+        viewModel.addSuperset { superset in
+            if let superset {
+                navigation.path.append(ExerciseListRoute.supersetEditView(item: superset, groupId: viewModel.group.id))
+            }
+        }
     }
     
     private func clickBtnHiddenExercises() {
