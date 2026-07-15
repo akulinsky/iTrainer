@@ -53,7 +53,6 @@ class ExerciseListViewModel: ObservableObject {
     @Published var isShowAlert = false
     
     @Published var isEditExercise = false
-    @Published var isEditSupersetName = false
     
     @Published var isAddNewExercise = false
     @Published var isHiddenExercisesPresented = false
@@ -112,11 +111,11 @@ class ExerciseListViewModel: ObservableObject {
     }
     
     func edit(exercise: ExerciseModel) {
+        guard !exercise.isSupersetItem else { return }
+        
         editExercise = exercise
         if exercise.isHeadlineItem {
             isEditHeadline = true
-        } else if exercise.isSupersetItem {
-            isEditSupersetName = true
         }
         isEditExercise = true
     }
@@ -230,7 +229,6 @@ class ExerciseListViewModel: ObservableObject {
         }
         editExercise = nil
         self.isEditHeadline = false
-        self.isEditSupersetName = false
     }
     
     private func update(items: [ExerciseModel]) {

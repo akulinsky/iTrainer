@@ -133,14 +133,13 @@ struct ExerciseListView: View {
         }
         .sheet(isPresented: $viewModel.isEditExercise, onDismiss: {
             viewModel.isEditHeadline = false
-            viewModel.isEditSupersetName = false
             viewModel.isEditExercise = false
             viewModel.reloadData {
                 showAnimation.toggle()
             }
         }, content: {
             
-            if viewModel.isEditHeadline || viewModel.isEditSupersetName {
+            if viewModel.isEditHeadline {
                 editNameView()
                     .presentationDetents([.height(250)])
             } else {
@@ -540,7 +539,7 @@ struct ExerciseListView: View {
             title = value
         }
         
-        let nameItem = viewModel.isEditHeadline ? "headline" : (viewModel.isEditSupersetName ? "superset" : "exercise")
+        let nameItem = viewModel.isEditHeadline ? "headline" : "exercise"
         
         return EditNameView(value: title.isEmpty ? "" : title,
                             title: viewModel.editExercise == nil ? "New \(nameItem)" : "Edit \(nameItem)",
@@ -551,7 +550,6 @@ struct ExerciseListView: View {
                 viewModel.update(name: name)
             default:
                 viewModel.isEditHeadline = false
-                viewModel.isEditSupersetName = false
                 break
             }
         }
@@ -587,14 +585,12 @@ struct ExerciseListView: View {
     private func clickBtnNewExercise() {
         viewModel.editExercise = nil
         viewModel.isEditHeadline = false
-        viewModel.isEditSupersetName = false
         viewModel.isAddNewExercise = true
     }
     
     private func clickBtnNewHeadline() {
         viewModel.editExercise = nil
         viewModel.isEditHeadline = true
-        viewModel.isEditSupersetName = false
         viewModel.isEditExercise = true
     }
     
