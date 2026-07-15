@@ -98,9 +98,8 @@ struct ReportExerciseCell: View {
                     .padding(.horizontal, 4)
             } else {
                 HStack(alignment: .top, spacing: 12) {
-                    ReportSupersetPathIcon(height: childConnectorHeight)
-                        .frame(width: 32)
-                        .padding(.top, 28)
+                    ReportSupersetPathIcon(dotCount: children.count, rowHeight: 84, rowSpacing: 10)
+                        .frame(width: 20)
                     
                     VStack(spacing: 10) {
                         ForEach(children) { child in
@@ -174,32 +173,39 @@ struct ReportExerciseCell: View {
         }
     }
     
-    private var childConnectorHeight: CGFloat {
-        guard children.count > 1 else { return 32 }
-        return CGFloat(children.count - 1) * 94 + 32
-    }
 }
 
 private struct ReportSupersetPathIcon: View {
-    let height: CGFloat
+    let dotCount: Int
+    let rowHeight: CGFloat
+    let rowSpacing: CGFloat
+    
+    private let dotSize: CGFloat = 12
+    private let width: CGFloat = 20
+    
+    private var height: CGFloat {
+        guard dotCount > 0 else { return rowHeight }
+        return CGFloat(dotCount) * rowHeight + CGFloat(max(dotCount - 1, 0)) * rowSpacing
+    }
     
     var body: some View {
         ZStack {
-            Capsule()
-                .fill(AppColor.brandPrimary)
-                .frame(width: 3, height: max(height - 16, 12))
-            
-            VStack {
-                Circle()
+            if dotCount > 1 {
+                Capsule()
                     .fill(AppColor.brandPrimary)
-                    .frame(width: 12, height: 12)
-                Spacer(minLength: 0)
-                Circle()
-                    .fill(AppColor.brandPrimary)
-                    .frame(width: 12, height: 12)
+                    .frame(width: 3, height: CGFloat(dotCount - 1) * (rowHeight + rowSpacing))
+                    .position(x: width / 2, y: height / 2)
             }
-            .frame(height: height)
+            
+            ForEach(0..<max(dotCount, 1), id: \.self) { index in
+                let y = rowHeight / 2 + CGFloat(index) * (rowHeight + rowSpacing)
+                Circle()
+                    .fill(AppColor.brandPrimary)
+                    .frame(width: dotSize, height: dotSize)
+                    .position(x: width / 2, y: y)
+            }
         }
+        .frame(width: width, height: height)
     }
 }
 

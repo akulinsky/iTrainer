@@ -70,6 +70,8 @@ class ExerciseViewModel: ObservableObject {
     
     @Published var nextExercise: ExerciseModel?
     
+    @Published var canAdvanceWorkoutExercise = false
+    
     var hasTargetSets: Bool {
         !sets.isEmpty
     }
@@ -83,11 +85,7 @@ class ExerciseViewModel: ObservableObject {
             return false
         }
         
-        if exercise.parentSupersetId != nil {
-            return activeReportSetCount > 0
-        }
-        
-        return isTargetCompleted
+        return canAdvanceWorkoutExercise
     }
     
     var paramsData = [ParamData]()
@@ -124,18 +122,23 @@ class ExerciseViewModel: ObservableObject {
                     .flattenedReportExerciseItems()
                     .first(where: { $0.exerciseId == model.id })?.reportSets.count ?? 0
                 var nextExerciseModel: ExerciseModel?
+                var canAdvanceWorkoutExercise = false
                 if isActiveWorkoutExercise, let reportWorkoutId = startedWorkout?.id {
                     nextExerciseModel = await dataManager.fetchNextWorkoutExercise(after: model.id,
                                                                                    reportWorkoutId: reportWorkoutId)
                         .map { ExerciseModel(model: $0) }
+                    canAdvanceWorkoutExercise = await dataManager.canAdvanceWorkoutExercise(model.id,
+                                                                                            reportWorkoutId: reportWorkoutId)
                 }
                 let resolvedNextExercise = nextExerciseModel
+                let resolvedCanAdvanceWorkoutExercise = canAdvanceWorkoutExercise
                 
                 await MainActor.run {
                     exercise = exerciseModel
                     self.isActiveWorkoutExercise = isActiveWorkoutExercise
                     self.activeReportSetCount = activeReportSetCount
                     self.nextExercise = isActiveWorkoutExercise ? resolvedNextExercise : nil
+                    self.canAdvanceWorkoutExercise = isActiveWorkoutExercise ? resolvedCanAdvanceWorkoutExercise : false
                     
                     if paramsData.isEmpty {
                         if let exerciseType = exercise.type {

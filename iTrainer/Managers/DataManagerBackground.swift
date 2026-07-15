@@ -194,6 +194,32 @@ extension DataManagerBackground {
         return sequence.dropFirst(currentIndex + 1).first?.exercise
     }
     
+    func canAdvanceWorkoutExercise(_ exerciseId: UUID, reportWorkoutId: UUID) -> Bool {
+        guard let currentExercise = fetchExercise(with: exerciseId),
+              let groupId = currentExercise.workoutGroup?.id,
+              let reportWorkout = fetchReportWorkout(id: reportWorkoutId) else {
+            return false
+        }
+        
+        let sequence = workoutSequence(for: groupId)
+        guard !sequence.isEmpty else {
+            return false
+        }
+        
+        let reportCounts = reportSetCountsByExerciseId(from: reportWorkout)
+        guard let firstPendingSlot = sequence.first(where: { slot in
+            (reportCounts[slot.exercise.id] ?? 0) < slot.occurrence
+        }) else {
+            return true
+        }
+        
+        if firstPendingSlot.exercise.id == exerciseId {
+            return (reportCounts[exerciseId] ?? 0) >= firstPendingSlot.occurrence
+        }
+        
+        return (reportCounts[exerciseId] ?? 0) > 0
+    }
+    
     func restDurationAfterReportSet(exerciseId: UUID, reportWorkoutId: UUID) -> TimeInterval? {
         guard let currentExercise = fetchExercise(with: exerciseId),
               let groupId = currentExercise.workoutGroup?.id,

@@ -72,12 +72,21 @@ class SupersetEditViewModel: ObservableObject {
         guard !isActiveWorkoutLocked else { return }
         
         children.move(fromOffsets: source, toOffset: destination)
-        let orderedIds = children.map(\.id)
-        Task {
-            let dataManager = DataManagerBackground(container: DataContainer.shared.sharedModelContainer)
-            await dataManager.reorderSupersetExercises(supersetId: superset.id, orderedIds: orderedIds)
-            await reloadDataAsync()
+        saveChildOrder(reloadAfterSave: true)
+    }
+    
+    @MainActor
+    func moveChild(draggedId: UUID, to targetId: UUID) {
+        guard !isActiveWorkoutLocked,
+              draggedId != targetId,
+              let sourceIndex = children.firstIndex(where: { $0.id == draggedId }),
+              let destinationIndex = children.firstIndex(where: { $0.id == targetId }) else {
+            return
         }
+        
+        let draggedChild = children.remove(at: sourceIndex)
+        children.insert(draggedChild, at: destinationIndex)
+        saveChildOrder(reloadAfterSave: false)
     }
     
     func save(complete: (() -> Void)? = nil) {
@@ -158,6 +167,17 @@ class SupersetEditViewModel: ObservableObject {
             }
             availableExercises = available
             isLoading = false
+        }
+    }
+    
+    private func saveChildOrder(reloadAfterSave: Bool) {
+        let orderedIds = children.map(\.id)
+        Task {
+            let dataManager = DataManagerBackground(container: DataContainer.shared.sharedModelContainer)
+            await dataManager.reorderSupersetExercises(supersetId: superset.id, orderedIds: orderedIds)
+            if reloadAfterSave {
+                await reloadDataAsync()
+            }
         }
     }
 }

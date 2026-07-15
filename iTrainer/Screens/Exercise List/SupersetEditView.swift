@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import UniformTypeIdentifiers
 
 struct SupersetEditView: View {
     @StateObject var viewModel: SupersetEditViewModel
@@ -13,7 +14,7 @@ struct SupersetEditView: View {
     @Environment(\.navigation) private var navigation
     
     @State private var isRestTimePickerPresented = false
-    @State private var editMode = EditMode.inactive
+    @State private var draggingChild: ExerciseModel?
     @FocusState private var isTitleFocused: Bool
     
     var body: some View {
@@ -39,7 +40,14 @@ struct SupersetEditView: View {
                 ForEach(viewModel.children) { child in
                     childRow(child)
                         .listRowStyle(top: 6, bottom: 6)
-                        .moveDisabled(viewModel.isActiveWorkoutLocked)
+                        .onDrop(of: [.text],
+                                delegate: SupersetChildDropDelegate(
+                                    target: child,
+                                    draggingChild: $draggingChild,
+                                    moveAction: { draggedId, targetId in
+                                        viewModel.moveChild(draggedId: draggedId, to: targetId)
+                                    }
+                                ))
                 }
                 .onMove(perform: viewModel.moveChild)
                 
@@ -55,21 +63,12 @@ struct SupersetEditView: View {
         .listStyle(.plain)
         .scrollContentBackground(.hidden)
         .background(AppColor.backgroundPrimary)
-        .environment(\.editMode, $editMode)
+        .animation(.spring(response: 0.36, dampingFraction: 0.88), value: viewModel.children.map(\.id))
         .dismissKeyboardOnTap()
         .scrollDismissesKeyboard(.immediately)
         .navigationTitle("Edit superset")
         .toolbarTitleDisplayMode(.inline)
         .toolbar {
-            ToolbarItem(placement: .topBarTrailing) {
-                Button(editMode == .active ? "Done" : "Edit") {
-                    withAnimation {
-                        editMode = editMode == .active ? .inactive : .active
-                    }
-                }
-                .disabled(viewModel.isActiveWorkoutLocked || viewModel.children.count < 2)
-            }
-            
             ToolbarItem(placement: .topBarTrailing) {
                 Button {
                     viewModel.isPickerPresented = true
@@ -86,11 +85,6 @@ struct SupersetEditView: View {
                            onDone: { isTitleFocused = false })
         .onAppear {
             viewModel.reloadData()
-        }
-        .onChange(of: viewModel.isActiveWorkoutLocked) { _, isLocked in
-            if isLocked {
-                editMode = .inactive
-            }
         }
         .onDisappear {
             if !viewModel.isDeleted {
@@ -270,24 +264,36 @@ struct SupersetEditView: View {
     }
     
     private func childRow(_ child: ExerciseModel) -> some View {
-        Button {
-            navigation.path.append(ExerciseListRoute.exerciseView(item: child))
-        } label: {
-            ExerciseRowContent(model: child,
-                               progressStatus: .none,
-                               iconSize: 58,
-                               minHeight: 78,
-                               showsProgress: false,
-                               showsIcon: true,
-                               contentPadding: EdgeInsets(top: 10, leading: 10, bottom: 10, trailing: 8))
-                .background(AppColor.surfacePrimary)
-                .clipShape(RoundedRectangle(cornerRadius: 14, style: .continuous))
-                .overlay {
-                    RoundedRectangle(cornerRadius: 14, style: .continuous)
-                        .stroke(AppColor.separatorSoft, lineWidth: 1)
-                }
+        HStack(spacing: 8) {
+            Button {
+                navigation.path.append(ExerciseListRoute.exerciseView(item: child))
+            } label: {
+                ExerciseRowContent(model: child,
+                                   progressStatus: .none,
+                                   iconSize: 58,
+                                   minHeight: 78,
+                                   showsProgress: false,
+                                   showsIcon: true,
+                                   contentPadding: EdgeInsets(top: 10, leading: 10, bottom: 10, trailing: 4))
+            }
+            .buttonStyle(.plain)
+            
+            if !viewModel.isActiveWorkoutLocked, viewModel.children.count > 1 {
+                dragHandle
+                    .padding(.trailing, 8)
+                    .onDrag {
+                        draggingChild = child
+                        return NSItemProvider(object: child.id.uuidString as NSString)
+                    }
+                    .accessibilityLabel("Reorder")
+            }
         }
-        .buttonStyle(.plain)
+        .background(AppColor.surfacePrimary)
+        .clipShape(RoundedRectangle(cornerRadius: 14, style: .continuous))
+        .overlay {
+            RoundedRectangle(cornerRadius: 14, style: .continuous)
+                .stroke(AppColor.separatorSoft, lineWidth: 1)
+        }
         .swipeActions(edge: .trailing, allowsFullSwipe: false) {
             if !viewModel.isActiveWorkoutLocked {
                 Button {
@@ -305,6 +311,18 @@ struct SupersetEditView: View {
                 .tint(AppColor.progressAmber)
             }
         }
+    }
+    
+    private var dragHandle: some View {
+        VStack(spacing: 3) {
+            ForEach(0..<3, id: \.self) { _ in
+                Capsule()
+                    .fill(AppColor.textSecondary)
+                    .frame(width: 14, height: 2)
+            }
+        }
+        .frame(width: 24, height: 44)
+        .contentShape(Rectangle())
     }
     
     private var deleteButton: some View {
@@ -353,5 +371,28 @@ private extension View {
             .listRowInsets(EdgeInsets(top: top, leading: 20, bottom: bottom, trailing: 20))
             .listRowSeparator(.hidden)
             .listRowBackground(AppColor.backgroundPrimary)
+    }
+}
+
+private struct SupersetChildDropDelegate: DropDelegate {
+    let target: ExerciseModel
+    @Binding var draggingChild: ExerciseModel?
+    let moveAction: (UUID, UUID) -> Void
+    
+    func dropEntered(info: DropInfo) {
+        guard let draggingChild, draggingChild.id != target.id else { return }
+        
+        withAnimation(.spring(response: 0.28, dampingFraction: 0.86)) {
+            moveAction(draggingChild.id, target.id)
+        }
+    }
+    
+    func dropUpdated(info: DropInfo) -> DropProposal? {
+        DropProposal(operation: .move)
+    }
+    
+    func performDrop(info: DropInfo) -> Bool {
+        draggingChild = nil
+        return true
     }
 }
