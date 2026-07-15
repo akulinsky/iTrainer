@@ -129,13 +129,14 @@ struct ExerciseListView: View {
         }
         .sheet(isPresented: $viewModel.isEditExercise, onDismiss: {
             viewModel.isEditHeadline = false
+            viewModel.isEditSupersetName = false
             viewModel.isEditExercise = false
             viewModel.reloadData {
                 showAnimation.toggle()
             }
         }, content: {
             
-            if viewModel.isEditHeadline {
+            if viewModel.isEditHeadline || viewModel.isEditSupersetName {
                 editNameView()
                     .presentationDetents([.height(250)])
             } else {
@@ -326,20 +327,43 @@ struct ExerciseListView: View {
     }
     
     private func cells(for item: ExerciseModel) -> some View {
-        return ExerciseCell(model: item,
-                            progressStatus: progressStatus(for: item)) {
-            switch $0 {
-            case .update(let updateModel):
-                switch editMode {
-                case .active:
-                    viewModel.edit(exercise: updateModel)
-                default:
-                    if !item.isHeadline {
-                        navigation.path.append(ExerciseListRoute.exerciseView(item: item))
+        Group {
+            if item.isSupersetItem {
+                SupersetCell(model: item,
+                             editMode: editMode,
+                             progressStatus: progressStatus(for:),
+                             action: handleSupersetAction)
+            } else {
+                ExerciseCell(model: item,
+                             progressStatus: progressStatus(for: item)) {
+                    switch $0 {
+                    case .update(let updateModel):
+                        switch editMode {
+                        case .active:
+                            viewModel.edit(exercise: updateModel)
+                        default:
+                            if !item.isHeadline {
+                                navigation.path.append(ExerciseListRoute.exerciseView(item: item))
+                            }
+                        }
+                    default:
+                        break
                     }
                 }
+            }
+        }
+    }
+    
+    private func handleSupersetAction(_ action: SupersetCell.Action) {
+        switch action {
+        case .edit(let superset):
+            viewModel.edit(exercise: superset)
+        case .openChild(let child):
+            switch editMode {
+            case .active:
+                viewModel.edit(exercise: child)
             default:
-                break
+                navigation.path.append(ExerciseListRoute.exerciseView(item: child))
             }
         }
     }
@@ -396,7 +420,7 @@ struct ExerciseListView: View {
     }
     
     private func progressStatus(for item: ExerciseModel) -> ExerciseProgressStatus {
-        guard !item.isHeadline else {
+        guard !item.isHeadline, !item.isSupersetItem else {
             return .none
         }
         
@@ -431,7 +455,14 @@ struct ExerciseListView: View {
     
     @ViewBuilder
     private func rowSwipeActions(for item: ExerciseModel) -> some View {
-        if !item.isHeadline {
+        if item.isSupersetItem {
+            Button {
+                requestExerciseListAction(.delete(item))
+            } label: {
+                Label("Delete", systemImage: "trash")
+            }
+            .tint(.red)
+        } else if !item.isHeadline {
             Button {
                 requestExerciseListAction(.delete(item))
             } label: {
@@ -478,6 +509,7 @@ struct ExerciseListView: View {
         Menu {
             Button("Edit", systemImage: "pencil", action: clickBtnEditint)
             Button("New exercise", systemImage: "plus.square", action: clickBtnNewExercise)
+            Button("Add Superset", systemImage: "link", action: clickBtnNewSuperset)
             Button("Add headline", systemImage: "text.line.first.and.arrowtriangle.forward", action: clickBtnNewHeadline)
             if viewModel.hasHiddenExercises {
                 Button("Hidden Exercises", systemImage: "eye.slash", action: clickBtnHiddenExercises)
@@ -499,7 +531,7 @@ struct ExerciseListView: View {
             title = value
         }
         
-        let nameItem = viewModel.isEditHeadline ? "headline" : "exercise"
+        let nameItem = viewModel.isEditHeadline ? "headline" : (viewModel.isEditSupersetName ? "superset" : "exercise")
         
         return EditNameView(value: title.isEmpty ? "" : title,
                             title: viewModel.editExercise == nil ? "New \(nameItem)" : "Edit \(nameItem)",
@@ -510,6 +542,7 @@ struct ExerciseListView: View {
                 viewModel.update(name: name)
             default:
                 viewModel.isEditHeadline = false
+                viewModel.isEditSupersetName = false
                 break
             }
         }
@@ -544,13 +577,20 @@ struct ExerciseListView: View {
     
     private func clickBtnNewExercise() {
         viewModel.editExercise = nil
+        viewModel.isEditHeadline = false
+        viewModel.isEditSupersetName = false
         viewModel.isAddNewExercise = true
     }
     
     private func clickBtnNewHeadline() {
         viewModel.editExercise = nil
         viewModel.isEditHeadline = true
+        viewModel.isEditSupersetName = false
         viewModel.isEditExercise = true
+    }
+    
+    private func clickBtnNewSuperset() {
+        viewModel.addSuperset()
     }
     
     private func clickBtnHiddenExercises() {
@@ -572,7 +612,7 @@ struct ExerciseListView: View {
             return
         }
         
-        if let exercise = viewModel.exercises.first(where: { $0.id == activeExerciseId }) {
+        if let exercise = viewModel.exercises.flattenedExerciseItems().first(where: { $0.id == activeExerciseId }) {
             navigation.path.append(ExerciseListRoute.exerciseView(item: exercise))
             return
         }

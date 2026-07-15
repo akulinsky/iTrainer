@@ -53,6 +53,7 @@ class ExerciseListViewModel: ObservableObject {
     @Published var isShowAlert = false
     
     @Published var isEditExercise = false
+    @Published var isEditSupersetName = false
     
     @Published var isAddNewExercise = false
     @Published var isHiddenExercisesPresented = false
@@ -114,6 +115,8 @@ class ExerciseListViewModel: ObservableObject {
         editExercise = exercise
         if exercise.isHeadline {
             isEditHeadline = true
+        } else if exercise.isSupersetItem {
+            isEditSupersetName = true
         }
         isEditExercise = true
     }
@@ -227,6 +230,7 @@ class ExerciseListViewModel: ObservableObject {
         }
         editExercise = nil
         self.isEditHeadline = false
+        self.isEditSupersetName = false
     }
     
     private func update(items: [ExerciseModel]) {
@@ -240,6 +244,14 @@ class ExerciseListViewModel: ObservableObject {
         let dataManager = DataManagerBackground(container: DataContainer.shared.sharedModelContainer)
         let createdIds = await dataManager.addExercises(typeIds: typeIds, groupId: group.id)
         await reloadDataAndScroll(to: createdIds.last)
+    }
+    
+    func addSuperset() {
+        Task {
+            let dataManager = DataManagerBackground(container: DataContainer.shared.sharedModelContainer)
+            let supersetId = await dataManager.addSuperset(groupId: group.id)
+            await reloadDataAndScroll(to: supersetId)
+        }
     }
     
     private func reloadDataAndScroll(to exerciseId: UUID?) async {

@@ -13,6 +13,71 @@ enum ExerciseProgressStatus {
     case none
 }
 
+struct ExerciseRowContent: View {
+    let model: ExerciseModel
+    let progressStatus: ExerciseProgressStatus
+    var iconSize: CGFloat = 72
+    var minHeight: CGFloat = 96
+    var showsProgress: Bool = true
+    var showsIcon: Bool = true
+    var contentPadding = EdgeInsets(top: 12, leading: 12, bottom: 12, trailing: 8)
+    
+    var body: some View {
+        HStack(spacing: 14) {
+            if showsIcon {
+                ExerciseTypeIconView(exerciseType: model.type,
+                                     size: iconSize,
+                                     cornerRadius: 12)
+            }
+            
+            VStack(alignment: .leading, spacing: 6) {
+                Text(model.displayName)
+                    .font(AppFont.rowTitle)
+                    .foregroundStyle(AppColor.textPrimary)
+                    .lineLimit(2)
+                    .minimumScaleFactor(0.86)
+                
+                if let type = model.type {
+                    HStack(alignment: .center, spacing: 8) {
+                        Text(type.type.displayName)
+                            .font(AppFont.rowSubtitle)
+                            .foregroundStyle(AppColor.textSecondary)
+                        
+                        Spacer(minLength: 8)
+                        
+                        if showsProgress {
+                            progressStatusText
+                        }
+                    }
+                }
+            }
+            .frame(maxWidth: .infinity, alignment: .leading)
+        }
+        .padding(contentPadding)
+        .frame(minHeight: minHeight)
+    }
+    
+    @ViewBuilder
+    private var progressStatusText: some View {
+        switch progressStatus {
+        case .active(let progress):
+            Text(progressText(for: progress))
+                .font(AppFont.exerciseProgressValue)
+                .foregroundStyle(AppColor.progressAmber)
+        case .completed(let progress):
+            Text(progressText(for: progress))
+                .font(AppFont.exerciseProgressValue)
+                .foregroundStyle(AppColor.progressGreen)
+        case .none:
+            EmptyView()
+        }
+    }
+    
+    private func progressText(for progress: Double) -> String {
+        "\(Int((progress.clampedProgress * 100).rounded()))%"
+    }
+}
+
 struct ExerciseCell: View {
     
     enum Action {
@@ -26,8 +91,6 @@ struct ExerciseCell: View {
     
     var model: ExerciseModel
     private let progressStatus: ExerciseProgressStatus
-    
-    private let iconSize: CGFloat = 72
     
     @Environment(\.editMode) var editMode
     
@@ -53,42 +116,13 @@ struct ExerciseCell: View {
                 .padding(.horizontal, 4)
                 .frame(minHeight: 28)
             } else {
-                HStack(spacing: 14) {
-                    if !model.isHeadline {
-                        ExerciseTypeIconView(exerciseType: model.type,
-                                             size: iconSize,
-                                             cornerRadius: 12)
+                ExerciseRowContent(model: model, progressStatus: progressStatus)
+                    .background(AppColor.surfacePrimary)
+                    .clipShape(RoundedRectangle(cornerRadius: 14, style: .continuous))
+                    .overlay {
+                        RoundedRectangle(cornerRadius: 14, style: .continuous)
+                            .stroke(AppColor.separatorSoft, lineWidth: 1)
                     }
-                    
-                    VStack(alignment: .leading, spacing: 6) {
-                        Text(model.displayName)
-                            .font(AppFont.rowTitle)
-                            .foregroundStyle(AppColor.textPrimary)
-                            .lineLimit(2)
-                            .minimumScaleFactor(0.86)
-                        
-                        if let type = model.type {
-                            HStack(alignment: .center, spacing: 8) {
-                                Text(type.type.displayName)
-                                    .font(AppFont.rowSubtitle)
-                                    .foregroundStyle(AppColor.textSecondary)
-                                
-                                Spacer(minLength: 8)
-                                
-                                progressStatusText
-                            }
-                        }
-                    }
-                    .frame(maxWidth: .infinity, alignment: .leading)
-                }
-                .padding(.init(top: 12, leading: 12, bottom: 12, trailing: 8))
-                .frame(minHeight: 96)
-                .background(AppColor.surfacePrimary)
-                .clipShape(RoundedRectangle(cornerRadius: 14, style: .continuous))
-                .overlay {
-                    RoundedRectangle(cornerRadius: 14, style: .continuous)
-                        .stroke(AppColor.separatorSoft, lineWidth: 1)
-                }
             }
             
             Button("") {
@@ -99,30 +133,6 @@ struct ExerciseCell: View {
         
         view
     }
-    
-    @ViewBuilder
-    private var progressStatusText: some View {
-        switch progressStatus {
-        case .active(let progress):
-            Text(progressText(for: progress))
-                .font(AppFont.exerciseProgressValue)
-                .foregroundStyle(AppColor.progressAmber)
-        case .completed(let progress):
-            Text(progressText(for: progress))
-                .font(AppFont.exerciseProgressValue)
-                .foregroundStyle(AppColor.progressGreen)
-        case .none:
-            EmptyView()
-        }
-    }
-    
-    private func progressText(for progress: Double) -> String {
-        "\(Int((progress.clampedProgress * 100).rounded()))%"
-    }
-}
-
-#Preview {
-    ExerciseCell(model: ExerciseModel(title: "TEST", typeId: "0")) { action in }
 }
 
 private extension Double {
