@@ -18,6 +18,9 @@ struct SupersetEditView: View {
     var body: some View {
         ScrollView {
             VStack(alignment: .leading, spacing: 26) {
+                if viewModel.isActiveWorkoutLocked {
+                    activeWorkoutLockedView
+                }
                 titleView
                 restTimeView
                 childrenView
@@ -41,6 +44,7 @@ struct SupersetEditView: View {
                         .font(.system(size: 17, weight: .semibold))
                 }
                 .foregroundStyle(AppColor.brandPrimary)
+                .disabled(viewModel.isActiveWorkoutLocked)
             }
         }
         .keyboardAccessory(isPresented: isTitleFocused,
@@ -81,6 +85,27 @@ struct SupersetEditView: View {
             Button("Cancel", role: .cancel) {}
         } message: {
             Text("The superset will be removed. Its exercises will return to the workout list.")
+        }
+    }
+    
+    private var activeWorkoutLockedView: some View {
+        HStack(alignment: .top, spacing: 12) {
+            Image(systemName: "lock.fill")
+                .font(.system(size: 16, weight: .semibold))
+                .foregroundStyle(AppColor.progressAmber)
+                .frame(width: 24, height: 24)
+            
+            Text("Active workout in progress. Finish it before changing superset exercises.")
+                .font(AppFont.rowSubtitle)
+                .foregroundStyle(AppColor.textSecondary)
+                .frame(maxWidth: .infinity, alignment: .leading)
+        }
+        .padding(14)
+        .background(AppColor.progressAmber.opacity(0.08))
+        .clipShape(RoundedRectangle(cornerRadius: 14))
+        .overlay {
+            RoundedRectangle(cornerRadius: 14)
+                .stroke(AppColor.progressAmber.opacity(0.35), lineWidth: 1)
         }
     }
     
@@ -185,6 +210,7 @@ struct SupersetEditView: View {
                         .foregroundStyle(AppColor.brandPrimary)
                 }
                 .buttonStyle(.plain)
+                .disabled(viewModel.isActiveWorkoutLocked)
             }
             
             if viewModel.children.isEmpty {
@@ -231,19 +257,21 @@ struct SupersetEditView: View {
         }
         .buttonStyle(.plain)
         .swipeActions(edge: .trailing, allowsFullSwipe: false) {
-            Button {
-                viewModel.removeChild(child)
-            } label: {
-                Label("Remove", systemImage: "minus.circle")
+            if !viewModel.isActiveWorkoutLocked {
+                Button {
+                    viewModel.removeChild(child)
+                } label: {
+                    Label("Remove", systemImage: "minus.circle")
+                }
+                .tint(AppColor.textSecondary)
+                
+                Button {
+                    viewModel.hideChild(child)
+                } label: {
+                    Label("Hide", systemImage: "eye.slash")
+                }
+                .tint(AppColor.progressAmber)
             }
-            .tint(AppColor.textSecondary)
-            
-            Button {
-                viewModel.hideChild(child)
-            } label: {
-                Label("Hide", systemImage: "eye.slash")
-            }
-            .tint(AppColor.progressAmber)
         }
     }
     
@@ -264,6 +292,8 @@ struct SupersetEditView: View {
                 }
         }
         .buttonStyle(.plain)
+        .disabled(viewModel.isActiveWorkoutLocked)
+        .opacity(viewModel.isActiveWorkoutLocked ? 0.45 : 1)
     }
     
     private var restTimeSecondsBinding: Binding<Int> {

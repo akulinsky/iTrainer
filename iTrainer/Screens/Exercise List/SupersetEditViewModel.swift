@@ -30,13 +30,15 @@ class SupersetEditViewModel: ObservableObject {
     @Published var isDeleteConfirmationPresented = false
     @Published var isLoading = false
     private(set) var isDeleted = false
+    let isActiveWorkoutLocked: Bool
     
     private var previousRestTimeSeconds = 120
     private let groupId: UUID
     
-    init(superset: ExerciseModel, groupId: UUID) {
+    init(superset: ExerciseModel, groupId: UUID, isActiveWorkoutLocked: Bool = false) {
         self.superset = superset
         self.groupId = groupId
+        self.isActiveWorkoutLocked = isActiveWorkoutLocked
         self.title = superset.title ?? superset.displayName
         self.restTimeSeconds = Int(superset.restTime)
         self.switchRest = superset.restTime <= 0
@@ -67,6 +69,8 @@ class SupersetEditViewModel: ObservableObject {
     
     @MainActor
     func moveChild(source: IndexSet, destination: Int) {
+        guard !isActiveWorkoutLocked else { return }
+        
         children.move(fromOffsets: source, toOffset: destination)
         let orderedIds = children.map(\.id)
         Task {
@@ -92,7 +96,7 @@ class SupersetEditViewModel: ObservableObject {
     }
     
     func addSelectedExercises(ids: Set<UUID>) {
-        guard !ids.isEmpty else { return }
+        guard !isActiveWorkoutLocked, !ids.isEmpty else { return }
         Task {
             let dataManager = DataManagerBackground(container: DataContainer.shared.sharedModelContainer)
             await dataManager.addExercisesToSuperset(exerciseIds: Array(ids), supersetId: superset.id)
@@ -101,6 +105,8 @@ class SupersetEditViewModel: ObservableObject {
     }
     
     func removeChild(_ child: ExerciseModel) {
+        guard !isActiveWorkoutLocked else { return }
+        
         Task {
             let dataManager = DataManagerBackground(container: DataContainer.shared.sharedModelContainer)
             await dataManager.removeExerciseFromSuperset(exerciseId: child.id)
@@ -109,6 +115,8 @@ class SupersetEditViewModel: ObservableObject {
     }
     
     func hideChild(_ child: ExerciseModel) {
+        guard !isActiveWorkoutLocked else { return }
+        
         Task {
             let dataManager = DataManagerBackground(container: DataContainer.shared.sharedModelContainer)
             await dataManager.hideExercise(with: child.id)
@@ -117,6 +125,8 @@ class SupersetEditViewModel: ObservableObject {
     }
     
     func deleteSuperset(complete: (() -> Void)? = nil) {
+        guard !isActiveWorkoutLocked else { return }
+        
         Task {
             let dataManager = DataManagerBackground(container: DataContainer.shared.sharedModelContainer)
             await dataManager.removeExercise(with: superset.id)
