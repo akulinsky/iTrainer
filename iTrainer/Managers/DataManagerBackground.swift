@@ -353,21 +353,25 @@ extension DataManagerBackground {
     
     func fetchReportExercise(exerciseId: UUID) -> ReportExerciseModelDB? {
         let uuid = exerciseId
-        return fetchItem(predicate: #Predicate<ReportExerciseModelDB> { $0.exerciseId == uuid })
+        return fetchModels(predicate: #Predicate<ReportExerciseModelDB> { $0.exerciseId == uuid })
+            .first { $0.isExerciseItem }
     }
     
     func fetchReportExercises(exerciseId: UUID) -> [ReportExerciseModelDB] {
         return fetchModels(predicate: #Predicate<ReportExerciseModelDB> { $0.exerciseId == exerciseId })
+            .filter { $0.isExerciseItem }
             .sorted { ($0.reportDate ?? .distantPast) < ($1.reportDate ?? .distantPast) }
     }
     
     func fetchReportExercises(typeId: String) -> [ReportExerciseModelDB] {
         return fetchModels(predicate: #Predicate<ReportExerciseModelDB> { $0.typeId == typeId })
+            .filter { $0.isExerciseItem }
             .sorted { ($0.reportDate ?? .distantPast) < ($1.reportDate ?? .distantPast) }
     }
     
     func fetchRecentReportExercises(exerciseId: UUID, dayLimit: Int) -> [ReportExerciseModelDB] {
         let reports = fetchModels(predicate: #Predicate<ReportExerciseModelDB> { $0.exerciseId == exerciseId })
+            .filter { $0.isExerciseItem }
             .sorted { ($0.reportDate ?? .distantPast) > ($1.reportDate ?? .distantPast) }
         guard dayLimit > 0 else {
             return []
