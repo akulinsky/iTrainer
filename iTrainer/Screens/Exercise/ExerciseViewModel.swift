@@ -79,7 +79,15 @@ class ExerciseViewModel: ObservableObject {
     }
     
     var shouldShowCompletedGoalActions: Bool {
-        isActiveWorkoutExercise && isTargetCompleted
+        guard isActiveWorkoutExercise else {
+            return false
+        }
+        
+        if exercise.parentSupersetId != nil {
+            return activeReportSetCount > 0
+        }
+        
+        return isTargetCompleted
     }
     
     var paramsData = [ParamData]()
@@ -116,9 +124,9 @@ class ExerciseViewModel: ObservableObject {
                     .flattenedReportExerciseItems()
                     .first(where: { $0.exerciseId == model.id })?.reportSets.count ?? 0
                 var nextExerciseModel: ExerciseModel?
-                if isActiveWorkoutExercise, let workoutGroupId {
-                    nextExerciseModel = await dataManager.fetchFlattenedExercises(for: workoutGroupId)
-                        .first { $0.index > model.index }
+                if isActiveWorkoutExercise, let reportWorkoutId = startedWorkout?.id {
+                    nextExerciseModel = await dataManager.fetchNextWorkoutExercise(after: model.id,
+                                                                                   reportWorkoutId: reportWorkoutId)
                         .map { ExerciseModel(model: $0) }
                 }
                 let resolvedNextExercise = nextExerciseModel

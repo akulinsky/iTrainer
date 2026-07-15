@@ -108,6 +108,13 @@ public actor DataManagerBackground: ModelActor {
 
 }
 
+private struct WorkoutSequenceSlot {
+    let exercise: ExerciseModelDB
+    let occurrence: Int
+    let supersetId: UUID?
+    let cycle: Int?
+}
+
 // MARK: - Request
 
 extension DataManagerBackground {
@@ -160,6 +167,62 @@ extension DataManagerBackground {
     
     func fetchFlattenedExercises(for workoutGroupId: UUID) -> [ExerciseModelDB] {
         fetchExercises(for: workoutGroupId).flattenedExerciseItems()
+    }
+    
+    func fetchNextWorkoutExercise(after exerciseId: UUID, reportWorkoutId: UUID) -> ExerciseModelDB? {
+        guard let currentExercise = fetchExercise(with: exerciseId),
+              let groupId = currentExercise.workoutGroup?.id,
+              let reportWorkout = fetchReportWorkout(id: reportWorkoutId) else {
+            return nil
+        }
+        
+        let sequence = workoutSequence(for: groupId)
+        guard !sequence.isEmpty else {
+            return nil
+        }
+        
+        let reportCounts = reportSetCountsByExerciseId(from: reportWorkout)
+        let completedOccurrence = max(reportCounts[exerciseId] ?? 0, 1)
+        let currentIndex = sequence.lastIndex { slot in
+            slot.exercise.id == exerciseId && slot.occurrence <= completedOccurrence
+        }
+        
+        guard let currentIndex else {
+            return sequence.first?.exercise
+        }
+        
+        return sequence.dropFirst(currentIndex + 1).first?.exercise
+    }
+    
+    func restDurationAfterReportSet(exerciseId: UUID, reportWorkoutId: UUID) -> TimeInterval? {
+        guard let currentExercise = fetchExercise(with: exerciseId),
+              let groupId = currentExercise.workoutGroup?.id,
+              let reportWorkout = fetchReportWorkout(id: reportWorkoutId) else {
+            return nil
+        }
+        
+        guard let parentSuperset = currentExercise.parentSuperset,
+              parentSuperset.sortedSupersetExercises.filter({ $0.isExerciseItem && !$0.isArchived }).count > 1 else {
+            let restTime = currentExercise.restTime ?? 0
+            return restTime > 0 ? restTime : nil
+        }
+        
+        let sequence = workoutSequence(for: groupId)
+        let reportCounts = reportSetCountsByExerciseId(from: reportWorkout)
+        let completedOccurrence = max(reportCounts[exerciseId] ?? 0, 1)
+        guard let currentIndex = sequence.lastIndex(where: { slot in
+            slot.exercise.id == exerciseId && slot.occurrence <= completedOccurrence
+        }) else {
+            return nil
+        }
+        
+        let currentSlot = sequence[currentIndex]
+        let nextSlot = sequence.dropFirst(currentIndex + 1).first
+        let shouldRestAfterCycle = nextSlot == nil ||
+            nextSlot?.supersetId != parentSuperset.id ||
+            nextSlot?.cycle != currentSlot.cycle
+        let restTime = parentSuperset.restTime ?? 0
+        return shouldRestAfterCycle && restTime > 0 ? restTime : nil
     }
     
     func fetchExercise(with exerciseId: UUID) -> ExerciseModelDB? {
@@ -690,6 +753,64 @@ extension DataManagerBackground {
     
     func activeExercise(typeId: String, groupId: UUID) -> ExerciseModelDB? {
         fetchFlattenedExercises(for: groupId).first { $0.typeId == typeId }
+    }
+    
+    private func workoutSequence(for groupId: UUID) -> [WorkoutSequenceSlot] {
+        fetchExercises(for: groupId).flatMap { item -> [WorkoutSequenceSlot] in
+            switch item.kind {
+            case .headline:
+                return []
+            case .exercise:
+                return sequenceSlots(for: item)
+            case .superset:
+                let children = item.sortedSupersetExercises.filter { $0.isExerciseItem && !$0.isArchived }
+                guard children.count > 1 else {
+                    return children.flatMap { sequenceSlots(for: $0) }
+                }
+                
+                let maxSlots = children.map(plannedSlots(for:)).max() ?? 0
+                guard maxSlots > 0 else {
+                    return []
+                }
+                
+                return (1...maxSlots).flatMap { cycle in
+                    children.compactMap { child in
+                        guard plannedSlots(for: child) >= cycle else {
+                            return nil
+                        }
+                        return WorkoutSequenceSlot(exercise: child,
+                                                   occurrence: cycle,
+                                                   supersetId: item.id,
+                                                   cycle: cycle)
+                    }
+                }
+            }
+        }
+    }
+    
+    private func sequenceSlots(for exercise: ExerciseModelDB) -> [WorkoutSequenceSlot] {
+        let count = plannedSlots(for: exercise)
+        guard count > 0 else {
+            return []
+        }
+        return (1...count).map { occurrence in
+            WorkoutSequenceSlot(exercise: exercise,
+                                occurrence: occurrence,
+                                supersetId: nil,
+                                cycle: nil)
+        }
+    }
+    
+    private func plannedSlots(for exercise: ExerciseModelDB) -> Int {
+        max(exercise.sets.count, 1)
+    }
+    
+    private func reportSetCountsByExerciseId(from reportWorkout: ReportWorkoutModelDB) -> [UUID: Int] {
+        reportWorkout.exercises
+            .flattenedReportExerciseItems()
+            .reduce(into: [UUID: Int]()) { result, reportExercise in
+                result[reportExercise.exerciseId, default: 0] += reportExercise.reportSets.count
+            }
     }
     
     private func nextTopLevelExerciseIndex(in groupId: UUID) -> Int {

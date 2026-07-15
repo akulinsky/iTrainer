@@ -526,19 +526,10 @@ final class WorkoutManager: ObservableObject {
             return
         }
         
-        var reportExercise = reportWorkout.exercises.flattenedReportExerciseItems().first(where: { $0.exerciseId == exerciseId })
-        
-        /// Create the report exercises
-        if reportExercise == nil {
-            reportExercise = ReportExerciseModelDB(titleExercise: ExerciseModel(model: exercise).displayName,
-                                                    exerciseId: exercise.id,
-                                                    index: exercise.index,
-                                                    typeId: exercise.typeId,
-                                                    trackingTypeId: ExerciseTrackingType(parameters: params)?.rawValue,
-                                                    restTime: exercise.restTime)
-            await dataManager.insert(model: reportExercise!)
-            reportExercise?.report = reportWorkout
-        }
+        let reportExercise = await reportExercise(for: exercise,
+                                                  params: params,
+                                                  reportWorkout: reportWorkout,
+                                                  dataManager: dataManager)
         
         if reportExercise?.trackingTypeId == nil {
             reportExercise?.trackingTypeId = ExerciseTrackingType(parameters: params)?.rawValue
@@ -580,8 +571,8 @@ final class WorkoutManager: ObservableObject {
         let exerciseProgressById = await exerciseProgressById(for: reportWorkout, dataManager: dataManager)
         let exercises = await dataManager.fetchFlattenedExercises(for: workoutGroupId)
         let targetExercisesCount = exercises.count
-        let exerciseRestTime = exercise.restTime ?? 0
-        let restDuration: TimeInterval? = exerciseRestTime > 0 ? exerciseRestTime : nil
+        let restDuration = await dataManager.restDurationAfterReportSet(exerciseId: exerciseId,
+                                                                         reportWorkoutId: reportWorkout.id)
         let restStartedAt = Date()
         
         await MainActor.run {
@@ -605,6 +596,57 @@ final class WorkoutManager: ObservableObject {
         saveSessionSnapshot(reportWorkoutId: reportWorkout.id)
         
         print("DBG_ Report was added")
+    }
+    
+    private func reportExercise(for exercise: ExerciseModelDB,
+                                params: [SetsParameter],
+                                reportWorkout: ReportWorkoutModelDB,
+                                dataManager: DataManagerBackground) async -> ReportExerciseModelDB? {
+        if let existingReportExercise = reportWorkout.exercises
+            .flattenedReportExerciseItems()
+            .first(where: { $0.exerciseId == exercise.id }) {
+            return existingReportExercise
+        }
+        
+        let trackingTypeId = ExerciseTrackingType(parameters: params)?.rawValue
+        
+        if let parentSuperset = exercise.parentSuperset {
+            let reportSuperset: ReportExerciseModelDB
+            if let existingReportSuperset = reportWorkout.exercises.first(where: { $0.exerciseId == parentSuperset.id }) {
+                reportSuperset = existingReportSuperset
+            } else {
+                reportSuperset = ReportExerciseModelDB(titleExercise: ExerciseModel(model: parentSuperset).displayName,
+                                                       exerciseId: parentSuperset.id,
+                                                       index: parentSuperset.index,
+                                                       typeId: parentSuperset.typeId,
+                                                       restTime: parentSuperset.restTime,
+                                                       kind: .superset)
+                await dataManager.insert(model: reportSuperset)
+                reportSuperset.report = reportWorkout
+            }
+            
+            let reportExercise = ReportExerciseModelDB(titleExercise: ExerciseModel(model: exercise).displayName,
+                                                       exerciseId: exercise.id,
+                                                       index: exercise.index,
+                                                       typeId: exercise.typeId,
+                                                       trackingTypeId: trackingTypeId,
+                                                       restTime: exercise.restTime,
+                                                       kind: .exercise)
+            await dataManager.insert(model: reportExercise)
+            reportExercise.superset = reportSuperset
+            return reportExercise
+        }
+        
+        let reportExercise = ReportExerciseModelDB(titleExercise: ExerciseModel(model: exercise).displayName,
+                                                   exerciseId: exercise.id,
+                                                   index: exercise.index,
+                                                   typeId: exercise.typeId,
+                                                   trackingTypeId: trackingTypeId,
+                                                   restTime: exercise.restTime,
+                                                   kind: .exercise)
+        await dataManager.insert(model: reportExercise)
+        reportExercise.report = reportWorkout
+        return reportExercise
     }
     
     func removeReportSet(id: UUID) async {

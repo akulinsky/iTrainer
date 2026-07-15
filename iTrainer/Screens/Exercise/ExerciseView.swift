@@ -12,6 +12,8 @@ struct ExerciseView: View {
     
     @State private var currentExercise: ExerciseModel
     
+    @State private var currentExerciseRefreshId = UUID()
+    
     init(viewModel: ExerciseViewModel) {
         _currentExercise = State(initialValue: viewModel.exercise)
     }
@@ -21,9 +23,10 @@ struct ExerciseView: View {
             ExerciseContentView(viewModel: ExerciseViewModel(exercise: currentExercise)) { nextExercise in
                 withAnimation(.easeInOut(duration: 0.28)) {
                     currentExercise = nextExercise
+                    currentExerciseRefreshId = UUID()
                 }
             }
-            .id(currentExercise.id)
+            .id(currentExerciseRefreshId)
             .transition(.asymmetric(
                 insertion: .move(edge: .trailing).combined(with: .opacity),
                 removal: .move(edge: .leading).combined(with: .opacity)
