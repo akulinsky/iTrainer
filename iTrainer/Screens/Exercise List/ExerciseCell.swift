@@ -104,7 +104,7 @@ struct ExerciseCell: View {
     
     var body: some View {
         let view = ZStack {
-            if model.isHeadline, editMode?.wrappedValue != .active {
+            if model.isHeadlineItem, editMode?.wrappedValue != .active {
                 HStack {
                     Text(model.displayName)
                         .font(AppFont.caption)

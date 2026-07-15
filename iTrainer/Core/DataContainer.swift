@@ -45,6 +45,7 @@ final class DataContainer: ObservableObject {
     
     init() {
         resetDatabaseForStringExerciseSeedIfNeeded()
+        migrateLegacyHeadlineKindIfNeeded()
         reloadExerciseCatalog()
     }
     
@@ -115,6 +116,28 @@ final class DataContainer: ObservableObject {
             UserDefaults.standard.set(true, forKey: resetKey)
         } catch {
             fatalError("Could not reset database for string exercise seed: \(error)")
+        }
+    }
+    
+    private func migrateLegacyHeadlineKindIfNeeded() {
+        let migrationKey = "didMigrateLegacyHeadlineKindV1"
+        guard !UserDefaults.standard.bool(forKey: migrationKey) else {
+            return
+        }
+        
+        do {
+            let context = ModelContext(sharedModelContainer)
+            let descriptor = FetchDescriptor<ExerciseModelDB>()
+            let exercises = try context.fetch(descriptor)
+            
+            for exercise in exercises {
+                exercise.migrateLegacyHeadlineKindIfNeeded()
+            }
+            
+            try context.save()
+            UserDefaults.standard.set(true, forKey: migrationKey)
+        } catch {
+            fatalError("Could not migrate legacy headline kind: \(error)")
         }
     }
     

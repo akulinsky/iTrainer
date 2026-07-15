@@ -168,7 +168,7 @@ struct DatabaseSeeder {
                 await dataManager.insert(model: headline)
                 headline.index = index
                 headline.title = exerciseType.type.displayName
-                headline.isHeadline = true
+                headline.kind = .headline
                 headline.workoutGroup = group
                 
                 currentCategoryId = exerciseType.type.id

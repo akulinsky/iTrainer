@@ -18,7 +18,8 @@ class ExerciseModelDB: DataItemProtocol, PersistentProtocol {
     var isArchived: Bool = false
     var archivedAt: Date?
     
-    var isHeadline: Bool = false
+    @Attribute(originalName: "isHeadline")
+    private var legacyHeadlineFlag: Bool?
     
     var kindRawValue: Int = ExerciseItemKind.exercise.rawValue
     
@@ -40,14 +41,21 @@ class ExerciseModelDB: DataItemProtocol, PersistentProtocol {
 extension ExerciseModelDB {
     var kind: ExerciseItemKind {
         get {
-            if isHeadline {
-                return .headline
-            }
             return ExerciseItemKind(rawValue: kindRawValue) ?? .exercise
         }
         set {
             kindRawValue = newValue.rawValue
-            isHeadline = newValue == .headline
         }
+    }
+    
+    var needsLegacyHeadlineKindMigration: Bool {
+        legacyHeadlineFlag == true && kind != .headline
+    }
+    
+    func migrateLegacyHeadlineKindIfNeeded() {
+        if needsLegacyHeadlineKindMigration {
+            kindRawValue = ExerciseItemKind.headline.rawValue
+        }
+        legacyHeadlineFlag = nil
     }
 }

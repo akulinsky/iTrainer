@@ -12,7 +12,6 @@ struct ExerciseModel: DataItemProtocol, Hashable {
     var index: Int
     var title: String?
     var typeId: String
-    var isHeadline: Bool
     var kind: ExerciseItemKind
     var restTime: TimeInterval
     var isArchived: Bool
@@ -26,7 +25,6 @@ struct ExerciseModel: DataItemProtocol, Hashable {
         self.title = model.title
         self.typeId = model.typeId
         self.kind = model.kind
-        self.isHeadline = model.kind == .headline
         self.restTime = model.restTime ?? 120
         self.isArchived = model.isArchived
         self.archivedAt = model.archivedAt
@@ -40,7 +38,6 @@ struct ExerciseModel: DataItemProtocol, Hashable {
          index: Int = 0,
          title: String? = nil,
          typeId: String = "",
-         isHeadline: Bool = false,
          kind: ExerciseItemKind = .exercise,
          restTime: TimeInterval = 120,
          isArchived: Bool = false,
@@ -52,8 +49,7 @@ struct ExerciseModel: DataItemProtocol, Hashable {
         self.index = index
         self.title = title
         self.typeId = typeId
-        self.kind = isHeadline ? .headline : kind
-        self.isHeadline = self.kind == .headline
+        self.kind = kind
         self.restTime = restTime
         self.isArchived = isArchived
         self.archivedAt = archivedAt

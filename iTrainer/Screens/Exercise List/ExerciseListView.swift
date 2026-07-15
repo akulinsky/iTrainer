@@ -351,7 +351,7 @@ struct ExerciseListView: View {
                         case .active:
                             viewModel.edit(exercise: updateModel)
                         default:
-                            if !item.isHeadline {
+                            if !item.isHeadlineItem {
                                 navigation.path.append(ExerciseListRoute.exerciseView(item: item))
                             }
                         }
@@ -429,7 +429,7 @@ struct ExerciseListView: View {
     }
     
     private func progressStatus(for item: ExerciseModel) -> ExerciseProgressStatus {
-        guard !item.isHeadline, !item.isSupersetItem else {
+        guard !item.isHeadlineItem, !item.isSupersetItem else {
             return .none
         }
         
@@ -456,7 +456,7 @@ struct ExerciseListView: View {
     }
     
     private func rowInsets(for item: ExerciseModel) -> EdgeInsets {
-        if item.isHeadline, editMode != .active {
+        if item.isHeadlineItem, editMode != .active {
             return EdgeInsets(top: 16, leading: 20, bottom: 4, trailing: 20)
         }
         return EdgeInsets(top: 6, leading: 20, bottom: 6, trailing: 20)
@@ -471,7 +471,7 @@ struct ExerciseListView: View {
                 Label("Delete", systemImage: "trash")
             }
             .tint(.red)
-        } else if !item.isHeadline {
+        } else if !item.isHeadlineItem {
             Button {
                 requestExerciseListAction(.delete(item))
             } label: {

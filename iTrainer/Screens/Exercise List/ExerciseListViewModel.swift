@@ -113,7 +113,7 @@ class ExerciseListViewModel: ObservableObject {
     
     func edit(exercise: ExerciseModel) {
         editExercise = exercise
-        if exercise.isHeadline {
+        if exercise.isHeadlineItem {
             isEditHeadline = true
         } else if exercise.isSupersetItem {
             isEditSupersetName = true
@@ -191,7 +191,7 @@ class ExerciseListViewModel: ObservableObject {
     }
     
     func hide(exercise: ExerciseModel) {
-        guard !exercise.isHeadline else { return }
+        guard !exercise.isHeadlineItem else { return }
         Task {
             let dataManager = DataManagerBackground(container: DataContainer.shared.sharedModelContainer)
             await dataManager.hideExercise(with: exercise.id)
@@ -226,7 +226,7 @@ class ExerciseListViewModel: ObservableObject {
             editExercise.title = name
             update(items: [editExercise])
         } else {
-            update(items: [ExerciseModel(title: name, isHeadline: self.isEditHeadline)])
+            update(items: [ExerciseModel(title: name, kind: self.isEditHeadline ? .headline : .exercise)])
         }
         editExercise = nil
         self.isEditHeadline = false
