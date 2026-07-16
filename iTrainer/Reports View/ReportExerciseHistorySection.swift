@@ -19,14 +19,14 @@ struct ReportExerciseHistorySection: View {
     var body: some View {
         VStack(alignment: .leading, spacing: 12) {
             HStack(alignment: .firstTextBaseline) {
-                Text("History")
+                Text("reports.history.title")
                     .font(.system(size: 21, weight: .bold))
                     .foregroundStyle(AppColor.brandPrimary)
                 
                 Spacer(minLength: 12)
                 
                 if let onShowAll {
-                    Button("Show all", action: onShowAll)
+                    Button("reports.history.show_all", action: onShowAll)
                         .font(.system(size: 16, weight: .semibold))
                         .foregroundStyle(AppColor.brandPrimary)
                 }
@@ -64,7 +64,11 @@ struct ReportExerciseHistorySection: View {
             
             Divider()
             
-            ReportExerciseSetComparisonCell(row: .init(title: "", target: "Target", result: "Result", state: .extra), isHeader: true)
+                    ReportExerciseSetComparisonCell(row: .init(title: "",
+                                                               target: String(localized: "reports.common.target"),
+                                                               result: String(localized: "reports.common.result"),
+                                                               state: .extra),
+                                                    isHeader: true)
             
             ForEach(group.rows) { row in
                 Divider()

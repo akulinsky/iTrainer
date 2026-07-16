@@ -239,7 +239,7 @@ class ReportViewModel: ObservableObject {
         let rawPaceProgress = paceProgress(actual: actualDistanceTimePace, target: targetDistanceTimePace)
         let paceProgress = rawPaceProgress.map(cappedProgressValue)
         var summaryCards = [
-            SummaryCard(title: "Exercises",
+            SummaryCard(title: String(localized: "reports.summary.exercises"),
                         value: exercisePercentText,
                         detail: "\(completedExercisesCount) / \(plannedExercisesCount)",
                         progress: exerciseProgress,
@@ -248,14 +248,14 @@ class ReportViewModel: ObservableObject {
         ]
         
         if trackingTypes.contains(.weightedReps) {
-            summaryCards.append(SummaryCard(title: "Density",
+            summaryCards.append(SummaryCard(title: String(localized: "reports.summary.density"),
                                            value: density.map { unitFormatter.weightText(kilograms: Float($0)) } ?? "-",
                                            detail: "\(unitFormatter.weightUnit.symbol)/min",
                                            progress: nil,
                                            colorProgress: nil,
                                            systemImage: "gauge.with.dots.needle.67percent",
                                            info: .density))
-            summaryCards.append(SummaryCard(title: "Volume Goal",
+            summaryCards.append(SummaryCard(title: String(localized: "reports.summary.volume_goal"),
                                            value: rawVolumeProgress.map { percentText(for: $0, isCapped: false) } ?? "-",
                                            detail: targetVolume > 0 ? "\(unitFormatter.weightText(kilograms: actualVolume)) / \(unitFormatter.weightTextWithUnit(kilograms: targetVolume))" : unitFormatter.weightTextWithUnit(kilograms: actualVolume),
                                            progress: volumeProgress,
@@ -265,7 +265,7 @@ class ReportViewModel: ObservableObject {
         }
         
         if trackingTypes.contains(.weightedReps) || trackingTypes.contains(.repsOnly) {
-            summaryCards.append(SummaryCard(title: "Repetition Goal",
+            summaryCards.append(SummaryCard(title: String(localized: "reports.summary.repetition_goal"),
                                            value: rawRepsProgress.map { percentText(for: $0, isCapped: false) } ?? "-",
                                            detail: targetReps > 0 ? "\(actualReps) / \(unitFormatter.repetitionsText(targetReps))" : unitFormatter.repetitionsText(actualReps),
                                            progress: repsProgress,
@@ -274,7 +274,7 @@ class ReportViewModel: ObservableObject {
         }
         
         if trackingTypes.contains(.timed) {
-            summaryCards.append(SummaryCard(title: "Time Goal",
+            summaryCards.append(SummaryCard(title: String(localized: "reports.summary.time_goal"),
                                            value: rawTimeProgress.map { percentText(for: $0, isCapped: false) } ?? "-",
                                            detail: targetTimedDuration > 0 ? "\(actualTimedDuration.timeForDisplay) / \(targetTimedDuration.timeForDisplay)" : actualTimedDuration.timeForDisplay,
                                            progress: timeProgress,
@@ -283,7 +283,7 @@ class ReportViewModel: ObservableObject {
         }
         
         if trackingTypes.contains(.distance) || trackingTypes.contains(.distanceTime) {
-            summaryCards.append(SummaryCard(title: "Distance Goal",
+            summaryCards.append(SummaryCard(title: String(localized: "reports.summary.distance_goal"),
                                            value: rawDistanceProgress.map { percentText(for: $0, isCapped: false) } ?? "-",
                                            detail: targetDistance > 0 ? "\(unitFormatter.distanceText(meters: actualDistance)) / \(unitFormatter.distanceText(meters: targetDistance))" : unitFormatter.distanceText(meters: actualDistance),
                                            progress: distanceProgress,
@@ -292,7 +292,7 @@ class ReportViewModel: ObservableObject {
         }
         
         if trackingTypes.contains(.distanceTime) {
-            summaryCards.append(SummaryCard(title: "Pace Goal",
+            summaryCards.append(SummaryCard(title: String(localized: "reports.summary.pace_goal"),
                                            value: rawPaceProgress.map { percentText(for: $0, isCapped: false) } ?? "-",
                                            detail: paceGoalDetail(actual: actualDistanceTimePace, target: targetDistanceTimePace),
                                            progress: paceProgress,
@@ -316,16 +316,20 @@ class ReportViewModel: ObservableObject {
         
         if metrics.targetVolume > 0 {
             let progress = progressValue(actual: Double(metrics.actualVolume), target: Double(metrics.targetVolume))
-            result.append(ReportModel(primary: "Weight",
-                                      secondary: "\(unitFormatter.weightText(kilograms: metrics.actualVolume)) from \(unitFormatter.weightTextWithUnit(kilograms: metrics.targetVolume))",
+            result.append(ReportModel(primary: String(localized: "reports.summary.weight"),
+                                      secondary: String.localizedStringWithFormat(String(localized: "reports.summary.actual_from_target"),
+                                                                                  unitFormatter.weightText(kilograms: metrics.actualVolume),
+                                                                                  unitFormatter.weightTextWithUnit(kilograms: metrics.targetVolume)),
                                       progress: progress,
                                       percentageProgress: percentText(for: progress)))
         }
         
         if metrics.targetReps > 0 {
             let progress = progressValue(actual: Double(metrics.actualReps), target: Double(metrics.targetReps))
-            result.append(ReportModel(primary: "Repetitions",
-                                      secondary: "\(metrics.actualReps) from \(metrics.targetReps)",
+            result.append(ReportModel(primary: String(localized: "reports.summary.repetitions"),
+                                      secondary: String.localizedStringWithFormat(String(localized: "reports.summary.actual_from_target"),
+                                                                                  "\(metrics.actualReps)",
+                                                                                  "\(metrics.targetReps)"),
                                       progress: progress,
                                       percentageProgress: percentText(for: progress)))
         }
@@ -373,7 +377,7 @@ class ReportViewModel: ObservableObject {
     }
     
     private func paceGoalDetail(actual: Float?, target: Float?) -> String {
-        guard let actual else { return "Distance / time" }
+        guard let actual else { return String(localized: "reports.summary.distance_time") }
         guard let target else { return formattedPace(actual) }
         return "\(formattedPace(actual)) / \(formattedPace(target))"
     }

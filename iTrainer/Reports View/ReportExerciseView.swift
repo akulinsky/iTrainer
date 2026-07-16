@@ -44,7 +44,7 @@ struct ReportExerciseView: View {
             .padding(.bottom, 28)
         }
         .background(AppColor.backgroundPrimary.ignoresSafeArea())
-        .navigationTitle("Exercise Report")
+        .navigationTitle("reports.exercise_report.title")
         .navigationBarTitleDisplayMode(.inline)
         .task {
             viewModel.reloadData()
@@ -279,7 +279,7 @@ struct ReportExerciseView: View {
                 }
             } label: {
                 HStack(spacing: 8) {
-                    Text("Breakdown")
+                    Text("reports.exercise_report.breakdown")
                         .font(AppFont.rowTitle)
                         .foregroundStyle(AppColor.textPrimary)
                     
@@ -326,10 +326,14 @@ struct ReportExerciseView: View {
     
     private var targetResultSection: some View {
         VStack(alignment: .leading, spacing: 12) {
-            sectionTitle("Target vs Result")
+            sectionTitle("reports.exercise_report.target_vs_result")
             
             VStack(spacing: 0) {
-                ReportExerciseSetComparisonCell(row: .init(title: "", target: "Target", result: "Result", state: .extra), isHeader: true)
+                ReportExerciseSetComparisonCell(row: .init(title: "",
+                                                           target: String(localized: "reports.common.target"),
+                                                           result: String(localized: "reports.common.result"),
+                                                           state: .extra),
+                                                isHeader: true)
                 
                 ForEach(viewModel.setRows) { row in
                     Divider()
@@ -347,7 +351,7 @@ struct ReportExerciseView: View {
     
     private var summarySection: some View {
         VStack(alignment: .leading, spacing: 12) {
-            sectionTitle("Exercise Summary")
+            sectionTitle("reports.exercise_report.summary")
             
             LazyVGrid(columns: Array(repeating: GridItem(.flexible(), spacing: 12), count: 3), spacing: 12) {
                 ForEach(viewModel.summaryCards) { card in
@@ -407,10 +411,10 @@ struct ReportExerciseView: View {
                     .frame(width: 44, height: 44)
                 
                 VStack(alignment: .leading, spacing: 4) {
-                    Text("View Statistics")
+                    Text("reports.exercise_report.view_statistics")
                         .font(AppFont.rowTitle)
                         .foregroundStyle(AppColor.textPrimary)
-                    Text("History, records, and long-term progress")
+                    Text("reports.exercise_report.view_statistics.subtitle")
                         .font(AppFont.rowSubtitle)
                         .foregroundStyle(AppColor.textSecondary)
                         .lineLimit(2)
@@ -435,8 +439,8 @@ struct ReportExerciseView: View {
         .buttonStyle(.plain)
     }
     
-    private func sectionTitle(_ title: String) -> some View {
-        Text(title)
+    private func sectionTitle(_ key: LocalizedStringKey) -> some View {
+        Text(key)
             .font(.system(size: 21, weight: .bold))
             .foregroundStyle(AppColor.brandPrimary)
             .padding(.horizontal, 4)
@@ -454,7 +458,7 @@ struct ReportExerciseView: View {
     private var metricPillText: (title: String, value: String, info: ReportMetricInfo?)? {
         guard !isCompactStatus,
               let metric = viewModel.statusMetrics.first,
-              metric.title == "Metric" || metric.title == "Record type" else {
+              metric.kind == .recordType else {
             return nil
         }
         return (metric.title, metric.value, metric.info)
@@ -466,36 +470,36 @@ struct ReportExerciseView: View {
     }
     
     private var statusMetricsInfo: ReportMetricInfo? {
-        displayStatusMetrics.first { $0.title == "Improvement" }?.info
+        displayStatusMetrics.first { $0.kind == .improvement }?.info
     }
     
     private var compactStatusSubtitle: String {
         switch viewModel.status {
         case .goalAchieved:
-            "All planned sets completed successfully."
+            String(localized: "reports.exercise_report.status.all_targets_completed")
         case .goalMissed:
             missedTargetsText
         case .complete:
-            "Exercise completed without target sets."
+            String(localized: "reports.exercise_report.status.no_target_sets")
         case .personalRecord, .progress:
             ""
         }
     }
     
     private var missedTargetsText: String {
-        guard let targets = viewModel.statusMetrics.first(where: { $0.title == "Targets" })?.value else {
-            return "Some target sets were missed."
+        guard let targets = viewModel.statusMetrics.first(where: { $0.kind == .targets })?.value else {
+            return String(localized: "reports.exercise_report.status.some_targets_missed")
         }
         
         let parts = targets.split(separator: "/").map { $0.trimmingCharacters(in: .whitespaces) }
         guard parts.count == 2,
               let achieved = Int(parts[0]),
               let total = Int(parts[1]) else {
-            return "Some target sets were missed."
+            return String(localized: "reports.exercise_report.status.some_targets_missed")
         }
         
         let missed = max(total - achieved, 0)
-        return "\(missed) of \(total) targets missed."
+        return String.localizedStringWithFormat(String(localized: "reports.exercise_report.status.missed_targets_count"), missed, total)
     }
     
     private var statusCardBottomPadding: CGFloat {
@@ -505,10 +509,10 @@ struct ReportExerciseView: View {
     private var shouldShowVolumeBreakdown: Bool {
         guard !isCompactStatus,
               !viewModel.volumeBreakdown.isEmpty,
-              let metric = viewModel.statusMetrics.first(where: { $0.title == "Metric" }) else {
+              let metric = viewModel.statusMetrics.first(where: { $0.kind == .recordType }) else {
             return false
         }
-        return metric.value == "Volume"
+        return metric.recordType == .volume
     }
 }
 

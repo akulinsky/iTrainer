@@ -40,6 +40,149 @@
 "report.metric.improvement.formula" = "Для большинства показателей: текущий - предыдущий. Для темпа: предыдущий - текущий, потому что меньший темп лучше.";
 "report.metric.improvement.example" = "Предыдущий темп 8:00 за единицу, текущий 7:30 за единицу = улучшение -0:30";
 
+/* Reports */
+
+"reports.common.close" = "Закрыть";
+"reports.common.cancel" = "Отмена";
+"reports.common.delete" = "Удалить";
+"reports.common.set" = "Сет";
+"reports.common.set_number" = "Сет %d";
+"reports.common.extra_set" = "Доп. сет";
+"reports.common.target" = "Цель";
+"reports.common.result" = "Результат";
+"reports.common.date_unavailable" = "Дата недоступна";
+"reports.common.time_unavailable" = "Время недоступно";
+"reports.common.loading_reports" = "Загрузка отчетов";
+"reports.common.completed_workouts_hint" = "Завершенные тренировки появятся здесь.";
+"reports.common.duration.hours_minutes" = "%d ч %d мин";
+"reports.common.duration.hours" = "%d ч";
+"reports.common.duration.minutes" = "%d мин";
+
+"reports.dashboard.title" = "Отчеты";
+"reports.dashboard.calendar" = "Календарь";
+"reports.dashboard.workouts" = "Тренировки";
+"reports.dashboard.empty_month.title" = "В этом месяце нет тренировок";
+"reports.dashboard.summary.workout_completed" = "Тренировка завершена";
+"reports.dashboard.summary.workouts_completed" = "Тренировки завершены";
+"reports.dashboard.summary.personal_record" = "Личный рекорд";
+"reports.dashboard.summary.personal_records" = "Личные рекорды";
+"reports.dashboard.summary.total_volume" = "Общий объем";
+
+"reports.calendar.title" = "Календарь";
+"reports.calendar.today" = "Сегодня";
+"reports.calendar.empty_date.title" = "В этот день нет тренировок";
+
+"reports.workout_report.title" = "Отчет тренировки";
+"reports.workout_report.loading" = "Подготовка отчета";
+"reports.workout_report.exercises" = "Упражнения";
+"reports.workout_report.no_exercises" = "Нет упражнений";
+"reports.workout_report.delete_button" = "Удалить отчет";
+"reports.workout_report.delete_alert.title" = "Удалить отчет?";
+"reports.workout_report.delete_alert.message" = "Это удалит сохраненный отчет. Тренировка не будет восстановлена.";
+
+"reports.exercise_report.title" = "Отчет упражнения";
+"reports.exercise_report.breakdown" = "Разбивка";
+"reports.exercise_report.target_vs_result" = "Цель и результат";
+"reports.exercise_report.summary" = "Итоги упражнения";
+"reports.exercise_report.view_statistics" = "Смотреть статистику";
+"reports.exercise_report.view_statistics.subtitle" = "История, рекорды и долгосрочный прогресс";
+"reports.exercise_report.status.previous_best" = "Предыдущий лучший";
+"reports.exercise_report.status.previous" = "Предыдущий";
+"reports.exercise_report.status.goal" = "Цель";
+"reports.exercise_report.status.achieved" = "Достигнута";
+"reports.exercise_report.status.missed" = "Не достигнута";
+"reports.exercise_report.status.targets" = "Цели";
+"reports.exercise_report.status.recorded" = "Записано";
+"reports.exercise_report.status.complete" = "Готово";
+"reports.exercise_report.status.metric" = "Метрика";
+"reports.exercise_report.status.current" = "Текущий";
+"reports.exercise_report.status.improvement" = "Улучшение";
+"reports.exercise_report.status.all_targets_completed" = "Все запланированные сеты успешно выполнены.";
+"reports.exercise_report.status.no_target_sets" = "Упражнение завершено без целевых сетов.";
+"reports.exercise_report.status.some_targets_missed" = "Часть целевых сетов не выполнена.";
+"reports.exercise_report.status.missed_targets_count" = "Не выполнено целей: %d из %d.";
+
+"reports.exercise_status.personal_record" = "Новый личный рекорд";
+"reports.exercise_status.progress" = "Прогресс";
+"reports.exercise_status.goal_achieved" = "Цель достигнута";
+"reports.exercise_status.goal_missed" = "Цель не достигнута";
+"reports.exercise_status.complete" = "Готово";
+
+"reports.workout_status.personal_record" = "Новый личный рекорд";
+"reports.workout_status.personal_records" = "%d новых личных рекордов";
+"reports.workout_status.progress" = "Прогресс";
+"reports.workout_status.incomplete" = "Тренировка не завершена";
+"reports.workout_status.goals_achieved" = "Цели достигнуты";
+"reports.workout_status.goals_not_achieved" = "Цели не достигнуты";
+"reports.workout_status.complete" = "Тренировка завершена";
+
+"reports.summary.exercises" = "Упражнения";
+"reports.summary.density" = "Плотность";
+"reports.summary.volume_goal" = "Цель по объему";
+"reports.summary.repetition_goal" = "Цель по повторениям";
+"reports.summary.time_goal" = "Цель по времени";
+"reports.summary.distance_goal" = "Цель по дистанции";
+"reports.summary.pace_goal" = "Цель по темпу";
+"reports.summary.weight" = "Вес";
+"reports.summary.repetitions" = "Повторения";
+"reports.summary.volume" = "Объем";
+"reports.summary.rest_time" = "Отдых";
+"reports.summary.total_repetitions" = "Всего повторений";
+"reports.summary.sets" = "Сеты";
+"reports.summary.total_time" = "Общее время";
+"reports.summary.distance" = "Дистанция";
+"reports.summary.time" = "Время";
+"reports.summary.pace" = "Темп";
+"reports.summary.no_rest" = "Без отдыха";
+"reports.summary.distance_time" = "Дистанция / время";
+"reports.summary.actual_from_target" = "%@ из %@";
+
+"reports.history.title" = "История";
+"reports.history.show_all" = "Показать все";
+"reports.history.screen_title" = "История упражнения";
+"reports.history.loading" = "Загрузка истории";
+"reports.history.empty.title" = "Истории упражнения нет";
+"reports.history.empty.subtitle" = "Прошлые завершенные отчеты по этому упражнению появятся здесь.";
+
+"reports.month_picker.month" = "Месяц";
+"reports.month_picker.year" = "Год";
+"reports.month_picker.title" = "Выберите месяц";
+"reports.month_picker.select" = "Выбрать";
+
+"reports.statistics.title" = "Статистика";
+"reports.statistics.legend.workout" = "Тренировка";
+"reports.statistics.legend.personal_record" = "Личный рекорд";
+"reports.statistics.empty_period.title" = "Нет данных за период";
+"reports.statistics.empty_period.subtitle" = "Попробуйте выбрать более широкий период.";
+"reports.statistics.empty.title" = "Статистики пока нет";
+"reports.statistics.empty.subtitle" = "Отчеты появятся после завершения этого упражнения.";
+"reports.statistics.period_summary" = "Итоги периода";
+"reports.statistics.current_vs_previous" = "Текущий и предыдущий";
+"reports.statistics.average" = "Среднее";
+"reports.statistics.change" = "Изменение";
+"reports.statistics.result" = "Результат";
+"reports.statistics.date" = "Дата";
+"reports.statistics.current" = "Текущий";
+"reports.statistics.previous" = "Предыдущий";
+"reports.statistics.across_all_workouts" = "По всем тренировкам";
+"reports.statistics.metric.weight.subtitle" = "Максимальный вес в отчете";
+"reports.statistics.metric.volume.subtitle" = "Общий объем в отчете";
+"reports.statistics.metric.repetitions.subtitle" = "Повторения с релевантным весом";
+"reports.statistics.metric.repetitions.total_subtitle" = "Всего повторений в отчете";
+"reports.statistics.metric.time.subtitle" = "Общее время в отчете";
+"reports.statistics.metric.distance.subtitle" = "Общая дистанция в отчете";
+"reports.statistics.metric.pace.subtitle" = "Лучший меньший темп в отчете";
+"reports.statistics.best.weight" = "Лучший вес";
+"reports.statistics.best.volume" = "Лучший объем";
+"reports.statistics.best.set" = "Лучший сет";
+"reports.statistics.best.time" = "Лучшее время";
+"reports.statistics.best.distance" = "Лучшая дистанция";
+"reports.statistics.best.pace" = "Лучший темп";
+"reports.statistics.axis.time" = "время";
+"reports.statistics.axis.pace_km" = "темп /км";
+"reports.statistics.axis.pace_mi" = "темп /mi";
+"reports.statistics.period.all" = "Все";
+
 /* Settings */
 
 "settings.title" = "Настройки";

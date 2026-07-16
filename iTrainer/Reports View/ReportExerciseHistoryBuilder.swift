@@ -41,7 +41,7 @@ enum ReportExerciseHistoryBuilder {
         
         if targetSets.isEmpty {
             return actualSets.enumerated().map { index, actual in
-                ReportExerciseViewModel.SetComparisonRow(title: "Set \(index + 1)",
+                ReportExerciseViewModel.SetComparisonRow(title: setTitle(index + 1),
                                                          target: "-",
                                                          result: parametersText(actual.parameters, unitFormatter: unitFormatter),
                                                          state: .recorded)
@@ -57,13 +57,13 @@ enum ReportExerciseHistoryBuilder {
             
             if let target, let actual {
                 state = isAchieved(target: target.parameters, actual: actual.parameters) ? .achieved : .missed
-                title = "Set \(index + 1)"
+                title = setTitle(index + 1)
             } else if target != nil {
                 state = .missed
-                title = "Set \(index + 1)"
+                title = setTitle(index + 1)
             } else {
                 state = .extra
-                title = "Extra set"
+                title = String(localized: "reports.common.extra_set")
             }
             
             return ReportExerciseViewModel.SetComparisonRow(title: title,
@@ -168,5 +168,9 @@ enum ReportExerciseHistoryBuilder {
     private static func shortDateText(for date: Date?) -> String {
         guard let date else { return "-" }
         return date.formatted(date: .complete, time: .omitted)
+    }
+    
+    private static func setTitle(_ number: Int) -> String {
+        String.localizedStringWithFormat(String(localized: "reports.common.set_number"), number)
     }
 }

@@ -44,7 +44,7 @@ struct ExerciseStatisticsView: View {
             .padding(.bottom, 28)
         }
         .background(AppColor.backgroundPrimary.ignoresSafeArea())
-        .navigationTitle("Statistics")
+        .navigationTitle("reports.statistics.title")
         .navigationBarTitleDisplayMode(.inline)
         .fullScreenCover(isPresented: $isExpandedChartPresented) {
             ExerciseStatisticsExpandedChartView(viewModel: viewModel) {
@@ -149,8 +149,8 @@ struct ExerciseStatisticsView: View {
                 }
             
             HStack(spacing: 18) {
-                chartLegendItem(color: AppColor.brandPrimary, title: "Workout")
-                chartLegendItem(color: ExerciseStatisticsViewModel.trophyGold, title: "Personal Record")
+                chartLegendItem(color: AppColor.brandPrimary, title: String(localized: "reports.statistics.legend.workout"))
+                chartLegendItem(color: ExerciseStatisticsViewModel.trophyGold, title: String(localized: "reports.statistics.legend.personal_record"))
             }
             .frame(maxWidth: .infinity, alignment: .center)
             
@@ -193,10 +193,10 @@ struct ExerciseStatisticsView: View {
             statisticsLoadingState(height: chartAreaHeight)
         } else if !viewModel.hasPeriodGraphPoints {
             VStack(spacing: 8) {
-                Text(viewModel.hasAnyReports ? "No data for this period" : "No statistics yet")
+                Text(viewModel.hasAnyReports ? String(localized: "reports.statistics.empty_period.title") : String(localized: "reports.statistics.empty.title"))
                     .font(AppFont.rowTitle)
                     .foregroundStyle(AppColor.textPrimary)
-                Text(viewModel.hasAnyReports ? "Try a wider period." : "Reports will appear after completing this exercise.")
+                Text(viewModel.hasAnyReports ? String(localized: "reports.statistics.empty_period.subtitle") : String(localized: "reports.statistics.empty.subtitle"))
                     .font(AppFont.rowSubtitle)
                     .foregroundStyle(AppColor.textSecondary)
                     .multilineTextAlignment(.center)
@@ -303,7 +303,7 @@ struct ExerciseStatisticsView: View {
     
     private var periodSummaryCard: some View {
         VStack(alignment: .leading, spacing: 14) {
-            Text("Period Summary")
+            Text("reports.statistics.period_summary")
                 .font(.system(size: 21, weight: .bold))
                 .foregroundStyle(AppColor.brandPrimary)
             
@@ -311,7 +311,7 @@ struct ExerciseStatisticsView: View {
                 statisticsLoadingState(height: 54)
             } else {
                 HStack(spacing: 0) {
-                    statisticColumn(title: "Average",
+                    statisticColumn(title: String(localized: "reports.statistics.average"),
                                     value: viewModel.periodSummary.averageText,
                                     color: AppColor.textPrimary)
                     
@@ -319,7 +319,7 @@ struct ExerciseStatisticsView: View {
                         .frame(height: 54)
                         .padding(.horizontal, 18)
                     
-                    statisticColumn(title: "Change",
+                    statisticColumn(title: String(localized: "reports.statistics.change"),
                                     value: viewModel.periodSummary.changeText,
                                     color: viewModel.periodSummary.changeColor)
                 }
@@ -347,7 +347,7 @@ struct ExerciseStatisticsView: View {
             }
             
             HStack(spacing: 0) {
-                statisticColumn(title: "Result",
+                statisticColumn(title: String(localized: "reports.statistics.result"),
                                 value: viewModel.bestResult.valueText,
                                 color: AppColor.textPrimary)
                 
@@ -355,7 +355,7 @@ struct ExerciseStatisticsView: View {
                     .frame(height: 54)
                     .padding(.horizontal, 18)
                 
-                statisticColumn(title: "Date",
+                statisticColumn(title: String(localized: "reports.statistics.date"),
                                 value: viewModel.bestResult.dateText,
                                 color: AppColor.textPrimary)
             }
@@ -372,12 +372,12 @@ struct ExerciseStatisticsView: View {
     
     private var currentVsPreviousCard: some View {
         VStack(alignment: .leading, spacing: 14) {
-            Text("Current vs Previous")
+            Text("reports.statistics.current_vs_previous")
                 .font(.system(size: 21, weight: .bold))
                 .foregroundStyle(AppColor.brandPrimary)
             
             HStack(spacing: 0) {
-                statisticColumn(title: "Current",
+                statisticColumn(title: String(localized: "reports.statistics.current"),
                                 value: viewModel.currentPrevious.currentText,
                                 color: AppColor.textPrimary)
                 
@@ -385,7 +385,7 @@ struct ExerciseStatisticsView: View {
                     .frame(height: 54)
                     .padding(.horizontal, 12)
                 
-                statisticColumn(title: "Previous",
+                statisticColumn(title: String(localized: "reports.statistics.previous"),
                                 value: viewModel.currentPrevious.previousText,
                                 color: AppColor.textPrimary)
                 
@@ -393,7 +393,7 @@ struct ExerciseStatisticsView: View {
                     .frame(height: 54)
                     .padding(.horizontal, 12)
                 
-                statisticColumn(title: "Change",
+                statisticColumn(title: String(localized: "reports.statistics.change"),
                                 value: viewModel.currentPrevious.changeText,
                                 color: viewModel.currentPrevious.changeColor)
             }

@@ -40,6 +40,149 @@
 "report.metric.improvement.formula" = "For most metrics: current - previous. For pace: previous - current because lower pace is better.";
 "report.metric.improvement.example" = "Previous pace 8:00 per unit, current 7:30 per unit = -0:30 improvement";
 
+/* Reports */
+
+"reports.common.close" = "Close";
+"reports.common.cancel" = "Cancel";
+"reports.common.delete" = "Delete";
+"reports.common.set" = "Set";
+"reports.common.set_number" = "Set %d";
+"reports.common.extra_set" = "Extra set";
+"reports.common.target" = "Target";
+"reports.common.result" = "Result";
+"reports.common.date_unavailable" = "Date unavailable";
+"reports.common.time_unavailable" = "Time unavailable";
+"reports.common.loading_reports" = "Loading reports";
+"reports.common.completed_workouts_hint" = "Completed workouts will appear here.";
+"reports.common.duration.hours_minutes" = "%d hr %d min";
+"reports.common.duration.hours" = "%d hr";
+"reports.common.duration.minutes" = "%d min";
+
+"reports.dashboard.title" = "Reports";
+"reports.dashboard.calendar" = "Calendar";
+"reports.dashboard.workouts" = "Workouts";
+"reports.dashboard.empty_month.title" = "No workouts this month";
+"reports.dashboard.summary.workout_completed" = "Workout Completed";
+"reports.dashboard.summary.workouts_completed" = "Workouts Completed";
+"reports.dashboard.summary.personal_record" = "Personal Record";
+"reports.dashboard.summary.personal_records" = "Personal Records";
+"reports.dashboard.summary.total_volume" = "Total Volume";
+
+"reports.calendar.title" = "Calendar";
+"reports.calendar.today" = "Today";
+"reports.calendar.empty_date.title" = "No workouts on this date";
+
+"reports.workout_report.title" = "Workout Report";
+"reports.workout_report.loading" = "Preparing report";
+"reports.workout_report.exercises" = "Exercises";
+"reports.workout_report.no_exercises" = "No exercises";
+"reports.workout_report.delete_button" = "Delete Report";
+"reports.workout_report.delete_alert.title" = "Delete report?";
+"reports.workout_report.delete_alert.message" = "This will delete the saved report. The workout will not be restored.";
+
+"reports.exercise_report.title" = "Exercise Report";
+"reports.exercise_report.breakdown" = "Breakdown";
+"reports.exercise_report.target_vs_result" = "Target vs Result";
+"reports.exercise_report.summary" = "Exercise Summary";
+"reports.exercise_report.view_statistics" = "View Statistics";
+"reports.exercise_report.view_statistics.subtitle" = "History, records, and long-term progress";
+"reports.exercise_report.status.previous_best" = "Previous best";
+"reports.exercise_report.status.previous" = "Previous";
+"reports.exercise_report.status.goal" = "Goal";
+"reports.exercise_report.status.achieved" = "Achieved";
+"reports.exercise_report.status.missed" = "Missed";
+"reports.exercise_report.status.targets" = "Targets";
+"reports.exercise_report.status.recorded" = "Recorded";
+"reports.exercise_report.status.complete" = "Complete";
+"reports.exercise_report.status.metric" = "Metric";
+"reports.exercise_report.status.current" = "Current";
+"reports.exercise_report.status.improvement" = "Improvement";
+"reports.exercise_report.status.all_targets_completed" = "All planned sets completed successfully.";
+"reports.exercise_report.status.no_target_sets" = "Exercise completed without target sets.";
+"reports.exercise_report.status.some_targets_missed" = "Some target sets were missed.";
+"reports.exercise_report.status.missed_targets_count" = "%d of %d targets missed.";
+
+"reports.exercise_status.personal_record" = "New Personal Record";
+"reports.exercise_status.progress" = "Progress";
+"reports.exercise_status.goal_achieved" = "Goal Achieved";
+"reports.exercise_status.goal_missed" = "Goal Missed";
+"reports.exercise_status.complete" = "Complete";
+
+"reports.workout_status.personal_record" = "New Personal Record";
+"reports.workout_status.personal_records" = "%d New Personal Records";
+"reports.workout_status.progress" = "Progress";
+"reports.workout_status.incomplete" = "Workout Incomplete";
+"reports.workout_status.goals_achieved" = "Goals Achieved";
+"reports.workout_status.goals_not_achieved" = "Goals Not Achieved";
+"reports.workout_status.complete" = "Workout Complete";
+
+"reports.summary.exercises" = "Exercises";
+"reports.summary.density" = "Density";
+"reports.summary.volume_goal" = "Volume Goal";
+"reports.summary.repetition_goal" = "Repetition Goal";
+"reports.summary.time_goal" = "Time Goal";
+"reports.summary.distance_goal" = "Distance Goal";
+"reports.summary.pace_goal" = "Pace Goal";
+"reports.summary.weight" = "Weight";
+"reports.summary.repetitions" = "Repetitions";
+"reports.summary.volume" = "Volume";
+"reports.summary.rest_time" = "Rest Time";
+"reports.summary.total_repetitions" = "Total Repetitions";
+"reports.summary.sets" = "Sets";
+"reports.summary.total_time" = "Total Time";
+"reports.summary.distance" = "Distance";
+"reports.summary.time" = "Time";
+"reports.summary.pace" = "Pace";
+"reports.summary.no_rest" = "No rest";
+"reports.summary.distance_time" = "Distance / time";
+"reports.summary.actual_from_target" = "%@ from %@";
+
+"reports.history.title" = "History";
+"reports.history.show_all" = "Show all";
+"reports.history.screen_title" = "Exercise History";
+"reports.history.loading" = "Loading history";
+"reports.history.empty.title" = "No exercise history";
+"reports.history.empty.subtitle" = "Past completed reports for this exercise will appear here.";
+
+"reports.month_picker.month" = "Month";
+"reports.month_picker.year" = "Year";
+"reports.month_picker.title" = "Select Month";
+"reports.month_picker.select" = "Select";
+
+"reports.statistics.title" = "Statistics";
+"reports.statistics.legend.workout" = "Workout";
+"reports.statistics.legend.personal_record" = "Personal Record";
+"reports.statistics.empty_period.title" = "No data for this period";
+"reports.statistics.empty_period.subtitle" = "Try a wider period.";
+"reports.statistics.empty.title" = "No statistics yet";
+"reports.statistics.empty.subtitle" = "Reports will appear after completing this exercise.";
+"reports.statistics.period_summary" = "Period Summary";
+"reports.statistics.current_vs_previous" = "Current vs Previous";
+"reports.statistics.average" = "Average";
+"reports.statistics.change" = "Change";
+"reports.statistics.result" = "Result";
+"reports.statistics.date" = "Date";
+"reports.statistics.current" = "Current";
+"reports.statistics.previous" = "Previous";
+"reports.statistics.across_all_workouts" = "Across all workouts";
+"reports.statistics.metric.weight.subtitle" = "Highest weight per report";
+"reports.statistics.metric.volume.subtitle" = "Total volume per report";
+"reports.statistics.metric.repetitions.subtitle" = "Reps at relevant weight";
+"reports.statistics.metric.repetitions.total_subtitle" = "Total repetitions per report";
+"reports.statistics.metric.time.subtitle" = "Total time per report";
+"reports.statistics.metric.distance.subtitle" = "Total distance per report";
+"reports.statistics.metric.pace.subtitle" = "Best lower pace per report";
+"reports.statistics.best.weight" = "Best Weight";
+"reports.statistics.best.volume" = "Best Volume";
+"reports.statistics.best.set" = "Best Set";
+"reports.statistics.best.time" = "Best Time";
+"reports.statistics.best.distance" = "Best Distance";
+"reports.statistics.best.pace" = "Best Pace";
+"reports.statistics.axis.time" = "time";
+"reports.statistics.axis.pace_km" = "pace /km";
+"reports.statistics.axis.pace_mi" = "pace /mi";
+"reports.statistics.period.all" = "All";
+
 /* Settings */
 
 "settings.title" = "Settings";

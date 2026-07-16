@@ -23,7 +23,7 @@ struct ReportExerciseHistoryView: View {
             }
         }
         .background(AppColor.backgroundPrimary.ignoresSafeArea())
-        .navigationTitle("Exercise History")
+        .navigationTitle("reports.history.screen_title")
         .navigationBarTitleDisplayMode(.inline)
         .task {
             await viewModel.reloadData()
@@ -73,7 +73,7 @@ struct ReportExerciseHistoryView: View {
             LoadingSpinnerView(color: AppColor.brandPrimary,
                                size: 54,
                                lineWidth: 5)
-            Text("Loading history")
+                Text("reports.history.loading")
                 .font(AppFont.rowTitle)
                 .foregroundStyle(AppColor.textPrimary)
         }
@@ -85,10 +85,10 @@ struct ReportExerciseHistoryView: View {
             Image(systemName: "clock.arrow.circlepath")
                 .font(.system(size: 42, weight: .semibold))
                 .foregroundStyle(AppColor.textSecondary)
-            Text("No exercise history")
+                Text("reports.history.empty.title")
                 .font(AppFont.workoutWidgetTitle)
                 .foregroundStyle(AppColor.textPrimary)
-            Text("Past completed reports for this exercise will appear here.")
+                Text("reports.history.empty.subtitle")
                 .font(AppFont.rowSubtitle)
                 .foregroundStyle(AppColor.textSecondary)
                 .multilineTextAlignment(.center)

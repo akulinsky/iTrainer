@@ -23,17 +23,19 @@ extension WorkoutReportStatus {
     var title: String {
         switch self {
         case .personalRecord(let count):
-            count > 1 ? "\(count) New Personal Records" : "New Personal Record"
+            count > 1
+                ? String.localizedStringWithFormat(String(localized: "reports.workout_status.personal_records"), count)
+                : String(localized: "reports.workout_status.personal_record")
         case .progress:
-            "Progress"
+            String(localized: "reports.workout_status.progress")
         case .workoutIncomplete:
-            "Workout Incomplete"
+            String(localized: "reports.workout_status.incomplete")
         case .goalsAchieved:
-            "Goals Achieved"
+            String(localized: "reports.workout_status.goals_achieved")
         case .goalsNotAchieved:
-            "Goals Not Achieved"
+            String(localized: "reports.workout_status.goals_not_achieved")
         case .workoutComplete:
-            "Workout Complete"
+            String(localized: "reports.workout_status.complete")
         }
     }
     

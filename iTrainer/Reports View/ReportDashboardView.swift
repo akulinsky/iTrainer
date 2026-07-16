@@ -35,7 +35,7 @@ struct ReportDashboardView: View {
                 .padding(.bottom, 28)
             }
             .background(AppColor.backgroundPrimary.ignoresSafeArea())
-            .navigationTitle("Reports")
+        .navigationTitle("reports.dashboard.title")
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
                 ToolbarItem(placement: .navigationBarTrailing) {
@@ -44,7 +44,7 @@ struct ReportDashboardView: View {
                     } label: {
                         Image(systemName: "calendar.badge.clock")
                     }
-                    .accessibilityLabel("Calendar")
+                    .accessibilityLabel(Text("reports.dashboard.calendar"))
                 }
             }
             .navigationDestination(for: ReportsRoute.self, destination: destination)
@@ -94,7 +94,7 @@ struct ReportDashboardView: View {
     
     private var workoutsSection: some View {
         VStack(alignment: .leading, spacing: 14) {
-            Text("Workouts")
+                Text("reports.dashboard.workouts")
                 .font(AppFont.workoutWidgetTitle)
                 .foregroundStyle(AppColor.brandPrimary)
             
@@ -119,7 +119,7 @@ struct ReportDashboardView: View {
             LoadingSpinnerView(color: AppColor.brandPrimary,
                                size: 44,
                                lineWidth: 4)
-            Text("Loading reports")
+                Text("reports.common.loading_reports")
                 .font(AppFont.rowTitle)
                 .foregroundStyle(AppColor.textPrimary)
         }
@@ -135,10 +135,10 @@ struct ReportDashboardView: View {
     
     private var emptyStateCard: some View {
         VStack(alignment: .leading, spacing: 8) {
-            Text("No workouts this month")
+                Text("reports.dashboard.empty_month.title")
                 .font(AppFont.rowTitle)
                 .foregroundStyle(AppColor.textPrimary)
-            Text("Completed workouts will appear here.")
+                Text("reports.common.completed_workouts_hint")
                 .font(AppFont.rowSubtitle)
                 .foregroundStyle(AppColor.textSecondary)
         }

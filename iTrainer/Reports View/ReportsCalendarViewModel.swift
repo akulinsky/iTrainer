@@ -154,12 +154,12 @@ final class ReportsCalendarViewModel: ObservableObject {
     }
     
     private func formatDate(_ date: Date?) -> String {
-        guard let date else { return "Date unavailable" }
+        guard let date else { return String(localized: "reports.common.date_unavailable") }
         return date.formatted(date: .complete, time: .omitted)
     }
     
     private func formatTime(_ startDate: Date?, endDate: Date?) -> String {
-        guard let startDate, let endDate else { return "Time unavailable" }
+        guard let startDate, let endDate else { return String(localized: "reports.common.time_unavailable") }
         return "\(startDate.formatted(date: .omitted, time: .shortened)) – \(endDate.formatted(date: .omitted, time: .shortened)) • \(formatDuration(endDate.timeIntervalSince(startDate)))"
     }
     
@@ -174,8 +174,10 @@ final class ReportsCalendarViewModel: ObservableObject {
         let remainingMinutes = minutes % 60
         
         if hours > 0 {
-            return remainingMinutes > 0 ? "\(hours) hr \(remainingMinutes) min" : "\(hours) hr"
+            return remainingMinutes > 0
+                ? String.localizedStringWithFormat(String(localized: "reports.common.duration.hours_minutes"), hours, remainingMinutes)
+                : String.localizedStringWithFormat(String(localized: "reports.common.duration.hours"), hours)
         }
-        return "\(minutes) min"
+        return String.localizedStringWithFormat(String(localized: "reports.common.duration.minutes"), minutes)
     }
 }

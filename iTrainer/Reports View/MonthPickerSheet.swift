@@ -35,7 +35,7 @@ struct MonthPickerSheet: View {
         NavigationStack {
             VStack(spacing: 0) {
                 HStack(spacing: 0) {
-                    Picker("Month", selection: $selectedMonthNumber) {
+                    Picker("reports.month_picker.month", selection: $selectedMonthNumber) {
                         ForEach(1...12, id: \.self) { month in
                             Text(monthSymbols[month - 1])
                                 .tag(month)
@@ -45,7 +45,7 @@ struct MonthPickerSheet: View {
                     .frame(maxWidth: .infinity)
                     .clipped()
                     
-                    Picker("Year", selection: $selectedYear) {
+                    Picker("reports.month_picker.year", selection: $selectedYear) {
                         ForEach(availableYears, id: \.self) { year in
                             Text(String(year))
                                 .tag(year)
@@ -60,14 +60,14 @@ struct MonthPickerSheet: View {
                 Spacer(minLength: 0)
             }
             .background(AppColor.backgroundPrimary.ignoresSafeArea())
-            .navigationTitle("Select Month")
+            .navigationTitle("reports.month_picker.title")
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
                 ToolbarItem(placement: .cancellationAction) {
-                    Button("Cancel", action: onCancel)
+                    Button("reports.common.cancel", action: onCancel)
                 }
                 ToolbarItem(placement: .confirmationAction) {
-                    Button("Select") {
+                    Button("reports.month_picker.select") {
                         onSelect(selectedDate)
                     }
                 }

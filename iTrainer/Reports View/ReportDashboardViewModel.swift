@@ -48,11 +48,11 @@ final class ReportDashboardViewModel: ObservableObject {
         let unitFormatter = UnitFormatter(settings: AppSettings.shared)
         self.monthSummary = ReportsMonthSummary(monthTitle: Self.monthTitle(for: Date(), calendar: calendar),
                                                 workoutCountValueText: "0",
-                                                workoutCountTitleText: "Workouts Completed",
+                                                workoutCountTitleText: String(localized: "reports.dashboard.summary.workouts_completed"),
                                                 personalRecordValueText: "0",
-                                                personalRecordTitleText: "Personal Records",
+                                                personalRecordTitleText: String(localized: "reports.dashboard.summary.personal_records"),
                                                 totalVolumeValueText: unitFormatter.weightTextWithUnit(kilograms: 0),
-                                                totalVolumeTitleText: "Total Volume")
+                                                totalVolumeTitleText: String(localized: "reports.dashboard.summary.total_volume"))
         self.availableYears = [calendar.component(.year, from: Date())]
         
         let formatter = NumberFormatter()
@@ -103,11 +103,11 @@ final class ReportDashboardViewModel: ObservableObject {
         
         monthSummary = ReportsMonthSummary(monthTitle: Self.monthTitle(for: selectedMonth, calendar: calendar),
                                            workoutCountValueText: "\(rows.count)",
-                                           workoutCountTitleText: rows.count == 1 ? "Workout Completed" : "Workouts Completed",
+                                           workoutCountTitleText: rows.count == 1 ? String(localized: "reports.dashboard.summary.workout_completed") : String(localized: "reports.dashboard.summary.workouts_completed"),
                                            personalRecordValueText: "\(personalRecordCount)",
-                                           personalRecordTitleText: personalRecordCount == 1 ? "Personal Record" : "Personal Records",
+                                           personalRecordTitleText: personalRecordCount == 1 ? String(localized: "reports.dashboard.summary.personal_record") : String(localized: "reports.dashboard.summary.personal_records"),
                                            totalVolumeValueText: unitFormatter.weightTextWithUnit(kilograms: totalVolume),
-                                           totalVolumeTitleText: "Total Volume")
+                                           totalVolumeTitleText: String(localized: "reports.dashboard.summary.total_volume"))
         workoutReportCards = rows.map(makeWorkoutReportCardItem)
     }
     
@@ -132,12 +132,12 @@ final class ReportDashboardViewModel: ObservableObject {
     }
     
     private func formatDate(_ date: Date?) -> String {
-        guard let date else { return "Date unavailable" }
+        guard let date else { return String(localized: "reports.common.date_unavailable") }
         return date.formatted(date: .complete, time: .omitted)
     }
     
     private func formatTime(_ startDate: Date?, endDate: Date?) -> String {
-        guard let startDate, let endDate else { return "Time unavailable" }
+        guard let startDate, let endDate else { return String(localized: "reports.common.time_unavailable") }
         return "\(startDate.formatted(date: .omitted, time: .shortened)) – \(endDate.formatted(date: .omitted, time: .shortened)) • \(formatDuration(endDate.timeIntervalSince(startDate)))"
     }
     
@@ -152,9 +152,11 @@ final class ReportDashboardViewModel: ObservableObject {
         let remainingMinutes = minutes % 60
         
         if hours > 0 {
-            return remainingMinutes > 0 ? "\(hours) hr \(remainingMinutes) min" : "\(hours) hr"
+            return remainingMinutes > 0
+                ? String.localizedStringWithFormat(String(localized: "reports.common.duration.hours_minutes"), hours, remainingMinutes)
+                : String.localizedStringWithFormat(String(localized: "reports.common.duration.hours"), hours)
         }
-        return "\(minutes) min"
+        return String.localizedStringWithFormat(String(localized: "reports.common.duration.minutes"), minutes)
     }
     
     private func formatVolume(_ volume: Float) -> String {

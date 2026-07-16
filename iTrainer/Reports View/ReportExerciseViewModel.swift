@@ -43,20 +43,33 @@ final class ReportExerciseViewModel: ObservableObject {
     }
     
     struct StatusMetric: Identifiable {
+        enum Kind {
+            case general
+            case recordType
+            case improvement
+            case targets
+        }
+        
         let id = UUID()
+        let kind: Kind
         let title: String
         let value: String
         let color: Color
         let info: ReportMetricInfo?
+        let recordType: PersonalRecordType?
         
-        init(title: String,
+        init(kind: Kind = .general,
+             title: String,
              value: String,
              color: Color,
-             info: ReportMetricInfo? = nil) {
+             info: ReportMetricInfo? = nil,
+             recordType: PersonalRecordType? = nil) {
+            self.kind = kind
             self.title = title
             self.value = value
             self.color = color
             self.info = info
+            self.recordType = recordType
         }
     }
     
@@ -135,23 +148,41 @@ final class ReportExerciseViewModel: ObservableObject {
     private func makeStatusMetrics(statusResult: ExerciseStatusResult) -> [StatusMetric] {
         switch statusResult.status {
         case .personalRecord:
-            return comparisonMetrics(statusResult.comparison, previousTitle: "Previous best", improvementColor: AppColor.restAmber)
+            return comparisonMetrics(statusResult.comparison,
+                                     previousTitle: String(localized: "reports.exercise_report.status.previous_best"),
+                                     improvementColor: AppColor.restAmber)
         case .progress:
-            return comparisonMetrics(statusResult.comparison, previousTitle: "Previous", improvementColor: AppColor.progressGreen)
+            return comparisonMetrics(statusResult.comparison,
+                                     previousTitle: String(localized: "reports.exercise_report.status.previous"),
+                                     improvementColor: AppColor.progressGreen)
         case .goalAchieved:
             return [
-                StatusMetric(title: "Goal", value: "Achieved", color: AppColor.progressGreen),
-                StatusMetric(title: "Targets", value: "\(achievedTargetCount()) / \(reportExercise.targetSets.count)", color: AppColor.textPrimary)
+                StatusMetric(title: String(localized: "reports.exercise_report.status.goal"),
+                             value: String(localized: "reports.exercise_report.status.achieved"),
+                             color: AppColor.progressGreen),
+                StatusMetric(kind: .targets,
+                             title: String(localized: "reports.exercise_report.status.targets"),
+                             value: "\(achievedTargetCount()) / \(reportExercise.targetSets.count)",
+                             color: AppColor.textPrimary)
             ]
         case .goalMissed:
             return [
-                StatusMetric(title: "Goal", value: "Missed", color: AppColor.progressAmber),
-                StatusMetric(title: "Targets", value: "\(achievedTargetCount()) / \(reportExercise.targetSets.count)", color: AppColor.textPrimary)
+                StatusMetric(title: String(localized: "reports.exercise_report.status.goal"),
+                             value: String(localized: "reports.exercise_report.status.missed"),
+                             color: AppColor.progressAmber),
+                StatusMetric(kind: .targets,
+                             title: String(localized: "reports.exercise_report.status.targets"),
+                             value: "\(achievedTargetCount()) / \(reportExercise.targetSets.count)",
+                             color: AppColor.textPrimary)
             ]
         case .complete:
             return [
-                StatusMetric(title: "Recorded", value: "Complete", color: AppColor.progressGreen),
-                StatusMetric(title: "Sets", value: "\(reportExercise.sets.count)", color: AppColor.textPrimary)
+                StatusMetric(title: String(localized: "reports.exercise_report.status.recorded"),
+                             value: String(localized: "reports.exercise_report.status.complete"),
+                             color: AppColor.progressGreen),
+                StatusMetric(title: String(localized: "reports.summary.sets"),
+                             value: "\(reportExercise.sets.count)",
+                             color: AppColor.textPrimary)
             ]
         }
     }
@@ -162,10 +193,23 @@ final class ReportExerciseViewModel: ObservableObject {
         guard let comparison else { return [] }
         
         return [
-            StatusMetric(title: "Metric", value: comparison.type.displayTitle, color: AppColor.textPrimary, info: .recordMetric),
-            StatusMetric(title: "Current", value: formattedCurrentValue(for: comparison), color: AppColor.textPrimary),
-            StatusMetric(title: previousTitle, value: formattedPreviousValue(for: comparison), color: AppColor.textPrimary),
-            StatusMetric(title: "Improvement", value: formattedImprovementValue(for: comparison), color: improvementColor, info: .improvement)
+            StatusMetric(kind: .recordType,
+                         title: String(localized: "reports.exercise_report.status.metric"),
+                         value: comparison.type.displayTitle,
+                         color: AppColor.textPrimary,
+                         info: .recordMetric,
+                         recordType: comparison.type),
+            StatusMetric(title: String(localized: "reports.exercise_report.status.current"),
+                         value: formattedCurrentValue(for: comparison),
+                         color: AppColor.textPrimary),
+            StatusMetric(title: previousTitle,
+                         value: formattedPreviousValue(for: comparison),
+                         color: AppColor.textPrimary),
+            StatusMetric(kind: .improvement,
+                         title: String(localized: "reports.exercise_report.status.improvement"),
+                         value: formattedImprovementValue(for: comparison),
+                         color: improvementColor,
+                         info: .improvement)
         ]
     }
     
@@ -175,7 +219,7 @@ final class ReportExerciseViewModel: ObservableObject {
         
         if targetSets.isEmpty {
             return actualSets.enumerated().map { index, actual in
-                SetComparisonRow(title: "Set \(index + 1)",
+                SetComparisonRow(title: Self.setTitle(index + 1),
                                  target: "-",
                                  result: parametersText(actual.parameters),
                                  state: .recorded)
@@ -191,13 +235,13 @@ final class ReportExerciseViewModel: ObservableObject {
             
             if let target, let actual {
                 state = isAchieved(target: target.parameters, actual: actual.parameters) ? .achieved : .missed
-                title = "Set \(index + 1)"
+                title = Self.setTitle(index + 1)
             } else if target != nil {
                 state = .missed
-                title = "Set \(index + 1)"
+                title = Self.setTitle(index + 1)
             } else {
                 state = .extra
-                title = "Extra set"
+                title = String(localized: "reports.common.extra_set")
             }
             
             return SetComparisonRow(title: title,
@@ -211,36 +255,36 @@ final class ReportExerciseViewModel: ObservableObject {
         switch trackingType {
         case .weightedReps:
             return [
-                SummaryCard(title: "Volume", value: formattedKilograms(exerciseVolume(reportExercise)), systemImage: "dumbbell.fill", info: .volume),
-                SummaryCard(title: "Repetitions", value: "\(totalReps(reportExercise))", systemImage: "chart.bar.fill"),
-                SummaryCard(title: "Rest Time", value: formattedRestTime(reportExercise.restTime), systemImage: "clock")
+                SummaryCard(title: String(localized: "reports.summary.volume"), value: formattedKilograms(exerciseVolume(reportExercise)), systemImage: "dumbbell.fill", info: .volume),
+                SummaryCard(title: String(localized: "reports.summary.repetitions"), value: "\(totalReps(reportExercise))", systemImage: "chart.bar.fill"),
+                SummaryCard(title: String(localized: "reports.summary.rest_time"), value: formattedRestTime(reportExercise.restTime), systemImage: "clock")
             ]
         case .repsOnly:
             return [
-                SummaryCard(title: "Total Repetitions", value: "\(totalReps(reportExercise))", systemImage: "chart.bar.fill"),
-                SummaryCard(title: "Sets", value: "\(reportExercise.sets.count)", systemImage: "number"),
-                SummaryCard(title: "Rest Time", value: formattedRestTime(reportExercise.restTime), systemImage: "clock")
+                SummaryCard(title: String(localized: "reports.summary.total_repetitions"), value: "\(totalReps(reportExercise))", systemImage: "chart.bar.fill"),
+                SummaryCard(title: String(localized: "reports.summary.sets"), value: "\(reportExercise.sets.count)", systemImage: "number"),
+                SummaryCard(title: String(localized: "reports.summary.rest_time"), value: formattedRestTime(reportExercise.restTime), systemImage: "clock")
             ]
         case .timed:
             return [
-                SummaryCard(title: "Total Time", value: totalTime(reportExercise).timeForDisplay, systemImage: "timer"),
-                SummaryCard(title: "Sets", value: "\(reportExercise.sets.count)", systemImage: "number"),
-                SummaryCard(title: "Rest Time", value: formattedRestTime(reportExercise.restTime), systemImage: "clock")
+                SummaryCard(title: String(localized: "reports.summary.total_time"), value: totalTime(reportExercise).timeForDisplay, systemImage: "timer"),
+                SummaryCard(title: String(localized: "reports.summary.sets"), value: "\(reportExercise.sets.count)", systemImage: "number"),
+                SummaryCard(title: String(localized: "reports.summary.rest_time"), value: formattedRestTime(reportExercise.restTime), systemImage: "clock")
             ]
         case .distance:
             return [
-                SummaryCard(title: "Distance", value: unitFormatter.distanceText(meters: totalDistance(reportExercise)), systemImage: "point.topleft.down.curvedto.point.bottomright.up"),
-                SummaryCard(title: "Sets", value: "\(reportExercise.sets.count)", systemImage: "number")
+                SummaryCard(title: String(localized: "reports.summary.distance"), value: unitFormatter.distanceText(meters: totalDistance(reportExercise)), systemImage: "point.topleft.down.curvedto.point.bottomright.up"),
+                SummaryCard(title: String(localized: "reports.summary.sets"), value: "\(reportExercise.sets.count)", systemImage: "number")
             ]
         case .distanceTime:
             return [
-                SummaryCard(title: "Distance", value: unitFormatter.distanceText(meters: totalDistance(reportExercise)), systemImage: "point.topleft.down.curvedto.point.bottomright.up"),
-                SummaryCard(title: "Time", value: totalTime(reportExercise).timeForDisplay, systemImage: "timer"),
-                SummaryCard(title: "Pace", value: pace(reportExercise).map(formattedPace) ?? "-", systemImage: "speedometer", info: .pace)
+                SummaryCard(title: String(localized: "reports.summary.distance"), value: unitFormatter.distanceText(meters: totalDistance(reportExercise)), systemImage: "point.topleft.down.curvedto.point.bottomright.up"),
+                SummaryCard(title: String(localized: "reports.summary.time"), value: totalTime(reportExercise).timeForDisplay, systemImage: "timer"),
+                SummaryCard(title: String(localized: "reports.summary.pace"), value: pace(reportExercise).map(formattedPace) ?? "-", systemImage: "speedometer", info: .pace)
             ]
         case nil:
             return [
-                SummaryCard(title: "Sets", value: "\(reportExercise.sets.count)", systemImage: "number")
+                SummaryCard(title: String(localized: "reports.summary.sets"), value: "\(reportExercise.sets.count)", systemImage: "number")
             ]
         }
     }
@@ -547,7 +591,7 @@ final class ReportExerciseViewModel: ObservableObject {
     
     private func formattedRestTime(_ value: TimeInterval?) -> String {
         guard let value else { return "-" }
-        return value > 0 ? value.timeForDisplay : "No rest"
+        return value > 0 ? value.timeForDisplay : String(localized: "reports.summary.no_rest")
     }
     
     private func formattedNumber(_ value: Float) -> String {
@@ -576,23 +620,27 @@ final class ReportExerciseViewModel: ObservableObject {
         guard let date else { return "-" }
         return date.formatted(date: .complete, time: .omitted)
     }
+    
+    private static func setTitle(_ number: Int) -> String {
+        String.localizedStringWithFormat(String(localized: "reports.common.set_number"), number)
+    }
 }
 
 private extension PersonalRecordType {
     var displayTitle: String {
         switch self {
         case .weight:
-            "Weight"
+            String(localized: "reports.summary.weight")
         case .repetitions:
-            "Repetitions"
+            String(localized: "reports.summary.repetitions")
         case .volume:
-            "Volume"
+            String(localized: "reports.summary.volume")
         case .time:
-            "Time"
+            String(localized: "reports.summary.time")
         case .distance:
-            "Distance"
+            String(localized: "reports.summary.distance")
         case .pace:
-            "Pace"
+            String(localized: "reports.summary.pace")
         }
     }
 }

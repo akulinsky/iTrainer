@@ -11,15 +11,15 @@ extension ExerciseReportStatus {
     var title: String {
         switch self {
         case .personalRecord:
-            "New Personal Record"
+            String(localized: "reports.exercise_status.personal_record")
         case .progress:
-            "Progress"
+            String(localized: "reports.exercise_status.progress")
         case .goalAchieved:
-            "Goal Achieved"
+            String(localized: "reports.exercise_status.goal_achieved")
         case .goalMissed:
-            "Goal Missed"
+            String(localized: "reports.exercise_status.goal_missed")
         case .complete:
-            "Complete"
+            String(localized: "reports.exercise_status.complete")
         }
     }
     
@@ -92,7 +92,7 @@ struct ReportExerciseCell: View {
             }
             
             if children.isEmpty {
-                Text("No exercises")
+                Text("reports.workout_report.no_exercises")
                     .font(AppFont.rowSubtitle)
                     .foregroundStyle(AppColor.textSecondary)
                     .padding(.horizontal, 4)

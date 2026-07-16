@@ -30,11 +30,11 @@ struct ReportsCalendarView: View {
         .task {
             await viewModel.reloadData()
         }
-        .navigationTitle("Calendar")
+        .navigationTitle("reports.calendar.title")
         .navigationBarTitleDisplayMode(.inline)
         .toolbar {
             ToolbarItem(placement: .navigationBarTrailing) {
-                Button("Today") {
+                    Button("reports.calendar.today") {
                     viewModel.selectToday()
                 }
                 .disabled(viewModel.isTodaySelected)
@@ -80,7 +80,7 @@ struct ReportsCalendarView: View {
             LoadingSpinnerView(color: AppColor.brandPrimary,
                                size: 44,
                                lineWidth: 4)
-            Text("Loading reports")
+                    Text("reports.common.loading_reports")
                 .font(AppFont.rowTitle)
                 .foregroundStyle(AppColor.textPrimary)
         }
@@ -96,10 +96,10 @@ struct ReportsCalendarView: View {
     
     private var emptyStateCard: some View {
         VStack(alignment: .leading, spacing: 8) {
-            Text("No workouts on this date")
+                    Text("reports.calendar.empty_date.title")
                 .font(AppFont.rowTitle)
                 .foregroundStyle(AppColor.textPrimary)
-            Text("Completed workouts will appear here.")
+                    Text("reports.common.completed_workouts_hint")
                 .font(AppFont.rowSubtitle)
                 .foregroundStyle(AppColor.textSecondary)
         }

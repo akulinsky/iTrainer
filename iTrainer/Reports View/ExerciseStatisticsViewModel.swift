@@ -78,7 +78,7 @@ final class ExerciseStatisticsViewModel: ObservableObject {
                 }
                 .joined(separator: " · ")
         case .global:
-            "Across all workouts"
+            String(localized: "reports.statistics.across_all_workouts")
         }
     }
     
@@ -92,7 +92,7 @@ final class ExerciseStatisticsViewModel: ObservableObject {
     
     var selectedMetricSubtitle: String {
         if selectedMetric == .repetitions, trackingType == .repsOnly {
-            return "Total repetitions per report"
+            return String(localized: "reports.statistics.metric.repetitions.total_subtitle")
         }
         return selectedMetric.subtitle
     }
@@ -355,7 +355,7 @@ final class ExerciseStatisticsViewModel: ObservableObject {
         return BestResultSummary(title: metric.bestResultTitle,
                                  valueText: bestPoint.formattedValue,
                                  dateText: bestPoint.date.formatted(.dateTime.month(.abbreviated).day().year()),
-                                 subtitle: "Across all workouts")
+                                 subtitle: String(localized: "reports.statistics.across_all_workouts"))
     }
     
     private static func point(for report: ReportExerciseModel,
@@ -726,51 +726,51 @@ enum ExerciseMetricSegment: CaseIterable, Identifiable {
     var title: String {
         switch self {
         case .weight:
-            "Weight"
+            String(localized: "reports.summary.weight")
         case .volume:
-            "Volume"
+            String(localized: "reports.summary.volume")
         case .repetitions:
-            "Repetitions"
+            String(localized: "reports.summary.repetitions")
         case .time:
-            "Time"
+            String(localized: "reports.summary.time")
         case .distance:
-            "Distance"
+            String(localized: "reports.summary.distance")
         case .pace:
-            "Pace"
+            String(localized: "reports.summary.pace")
         }
     }
     
     var subtitle: String {
         switch self {
         case .weight:
-            "Highest weight per report"
+            String(localized: "reports.statistics.metric.weight.subtitle")
         case .volume:
-            "Total volume per report"
+            String(localized: "reports.statistics.metric.volume.subtitle")
         case .repetitions:
-            "Reps at relevant weight"
+            String(localized: "reports.statistics.metric.repetitions.subtitle")
         case .time:
-            "Total time per report"
+            String(localized: "reports.statistics.metric.time.subtitle")
         case .distance:
-            "Total distance per report"
+            String(localized: "reports.statistics.metric.distance.subtitle")
         case .pace:
-            "Best lower pace per report"
+            String(localized: "reports.statistics.metric.pace.subtitle")
         }
     }
     
     var bestResultTitle: String {
         switch self {
         case .weight:
-            "Best Weight"
+            String(localized: "reports.statistics.best.weight")
         case .volume:
-            "Best Volume"
+            String(localized: "reports.statistics.best.volume")
         case .repetitions:
-            "Best Set"
+            String(localized: "reports.statistics.best.set")
         case .time:
-            "Best Time"
+            String(localized: "reports.statistics.best.time")
         case .distance:
-            "Best Distance"
+            String(localized: "reports.statistics.best.distance")
         case .pace:
-            "Best Pace"
+            String(localized: "reports.statistics.best.pace")
         }
     }
     
@@ -781,11 +781,11 @@ enum ExerciseMetricSegment: CaseIterable, Identifiable {
         case .repetitions:
             unitFormatter.repetitionsUnitText
         case .time:
-            "time"
+            String(localized: "reports.statistics.axis.time")
         case .distance:
             unitFormatter.distanceUnit == .metric ? "m" : "ft"
         case .pace:
-            unitFormatter.distanceUnit == .metric ? "pace /km" : "pace /mi"
+            unitFormatter.distanceUnit == .metric ? String(localized: "reports.statistics.axis.pace_km") : String(localized: "reports.statistics.axis.pace_mi")
         }
     }
     
@@ -796,11 +796,11 @@ enum ExerciseMetricSegment: CaseIterable, Identifiable {
         case .repetitions:
             unitFormatter.repetitionsUnitText
         case .time:
-            "time"
+            String(localized: "reports.statistics.axis.time")
         case .distance:
             unitFormatter.distanceUnit == .metric ? "m" : "ft"
         case .pace:
-            unitFormatter.distanceUnit == .metric ? "pace /km" : "pace /mi"
+            unitFormatter.distanceUnit == .metric ? String(localized: "reports.statistics.axis.pace_km") : String(localized: "reports.statistics.axis.pace_mi")
         }
     }
     
@@ -833,7 +833,7 @@ enum ExerciseStatisticsPeriod: CaseIterable, Identifiable {
         case .oneYear:
             "1Y"
         case .all:
-            "All"
+            String(localized: "reports.statistics.period.all")
         }
     }
     
@@ -915,7 +915,7 @@ struct BestResultSummary {
         BestResultSummary(title: title,
                           valueText: "-",
                           dateText: "-",
-                          subtitle: "Across all workouts")
+                          subtitle: String(localized: "reports.statistics.across_all_workouts"))
     }
 }
 

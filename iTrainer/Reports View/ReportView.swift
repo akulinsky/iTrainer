@@ -36,7 +36,7 @@ struct ReportView: View {
             }
         }
         .background(AppColor.backgroundPrimary.ignoresSafeArea())
-        .navigationTitle("Workout Report")
+        .navigationTitle("reports.workout_report.title")
         .navigationBarTitleDisplayMode(.inline)
         .toolbar {
             if let onClose {
@@ -44,20 +44,20 @@ struct ReportView: View {
                     Button(action: onClose) {
                         Image(systemName: "xmark")
                     }
-                    .accessibilityLabel("Close")
+                    .accessibilityLabel(Text("reports.common.close"))
                 }
             }
         }
         .task {
             viewModel.reloadData()
         }
-        .alert("Delete report?", isPresented: $isDeleteReportAlertPresented) {
-            Button("Cancel", role: .cancel) {}
-            Button("Delete", role: .destructive) {
+        .alert(Text("reports.workout_report.delete_alert.title"), isPresented: $isDeleteReportAlertPresented) {
+            Button("reports.common.cancel", role: .cancel) {}
+            Button("reports.common.delete", role: .destructive) {
                 deleteReport()
             }
         } message: {
-            Text("This will delete the saved report. The workout will not be restored.")
+            Text("reports.workout_report.delete_alert.message")
         }
     }
     
@@ -81,7 +81,7 @@ struct ReportView: View {
             LoadingSpinnerView(color: AppColor.brandPrimary,
                                size: 54,
                                lineWidth: 5)
-            Text("Preparing report")
+            Text("reports.workout_report.loading")
                 .font(AppFont.rowTitle)
                 .foregroundStyle(AppColor.textPrimary)
         }
@@ -235,7 +235,7 @@ struct ReportView: View {
     @ViewBuilder
     private var reportExercisesSection: some View {
         VStack(alignment: .leading, spacing: 12) {
-            Text("Exercises")
+            Text("reports.workout_report.exercises")
                 .font(.system(size: 28, weight: .bold))
                 .foregroundStyle(AppColor.brandPrimary)
                 .padding(.horizontal, 4)
@@ -267,7 +267,7 @@ struct ReportView: View {
         } label: {
             HStack(spacing: 8) {
                 Image(systemName: "trash")
-                Text("Delete Report")
+                Text("reports.workout_report.delete_button")
             }
             .font(.system(size: 17, weight: .semibold))
             .foregroundStyle(AppColor.progressRed)
