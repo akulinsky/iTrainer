@@ -89,6 +89,10 @@ final class ReportExerciseViewModel: ObservableObject {
     var errorMessage: String? = nil
     var reportExercise: ReportExerciseModel
     
+    private var unitFormatter: UnitFormatter {
+        UnitFormatter(settings: AppSettings.shared)
+    }
+    
     init(reportExercise: ReportExerciseModel) {
         self.reportExercise = reportExercise
         self.title = reportExercise.titleExercise
@@ -123,7 +127,8 @@ final class ReportExerciseViewModel: ObservableObject {
         summaryCards = makeSummaryCards()
         volumeBreakdown = makeVolumeBreakdown(statusResult: statusResult, history: history)
         let previousExerciseHistory = ReportExerciseHistoryBuilder.previousLocalReports(in: exerciseHistory, current: reportExercise)
-        historyGroups = ReportExerciseHistoryBuilder.historyGroups(from: Array(previousExerciseHistory.prefix(5)))
+        historyGroups = ReportExerciseHistoryBuilder.historyGroups(from: Array(previousExerciseHistory.prefix(5)),
+                                                                    unitFormatter: unitFormatter)
         hasMoreHistory = previousExerciseHistory.count > 5
     }
     
@@ -224,12 +229,12 @@ final class ReportExerciseViewModel: ObservableObject {
             ]
         case .distance:
             return [
-                SummaryCard(title: "Distance", value: totalDistance(reportExercise).distanceForDisplay, systemImage: "point.topleft.down.curvedto.point.bottomright.up"),
+                SummaryCard(title: "Distance", value: unitFormatter.distanceText(meters: totalDistance(reportExercise)), systemImage: "point.topleft.down.curvedto.point.bottomright.up"),
                 SummaryCard(title: "Sets", value: "\(reportExercise.sets.count)", systemImage: "number")
             ]
         case .distanceTime:
             return [
-                SummaryCard(title: "Distance", value: totalDistance(reportExercise).distanceForDisplay, systemImage: "point.topleft.down.curvedto.point.bottomright.up"),
+                SummaryCard(title: "Distance", value: unitFormatter.distanceText(meters: totalDistance(reportExercise)), systemImage: "point.topleft.down.curvedto.point.bottomright.up"),
                 SummaryCard(title: "Time", value: totalTime(reportExercise).timeForDisplay, systemImage: "timer"),
                 SummaryCard(title: "Pace", value: pace(reportExercise).map(formattedPace) ?? "-", systemImage: "speedometer", info: .pace)
             ]
@@ -257,7 +262,7 @@ final class ReportExerciseViewModel: ObservableObject {
                 let delta = previousVolume.map { volume - $0 } ?? (baselineVolumes == nil ? nil : volume)
                 let deltaText = delta.flatMap(formattedDeltaKilograms)
                 let deltaColor = delta.flatMap(deltaColor)
-                return VolumeBreakdownRow(text: "\(formattedNumber(weight)) x \(reps) = \(formattedKilograms(volume))",
+                return VolumeBreakdownRow(text: "\(unitFormatter.weightText(kilograms: weight)) x \(reps) = \(formattedKilograms(volume))",
                                           deltaText: deltaText,
                                           deltaColor: deltaColor)
             }
@@ -389,7 +394,7 @@ final class ReportExerciseViewModel: ObservableObject {
     
     private func formattedComparisonValue(_ value: Float, for comparison: ExerciseStatusComparison) -> String {
         if comparison.type == .repetitions, let contextWeight = comparison.contextWeight {
-            return "\(formattedNumber(contextWeight)) kg x \(Int(value))"
+            return "\(unitFormatter.weightText(kilograms: contextWeight)) \(unitFormatter.weightUnit.symbol) x \(Int(value))"
         }
         return formatted(value: value, for: comparison.type)
     }
@@ -405,16 +410,16 @@ final class ReportExerciseViewModel: ObservableObject {
         case .time:
             return TimeInterval(value).timeForDisplay
         case .distance:
-            return value.distanceForDisplay
+            return unitFormatter.distanceText(meters: value)
         case .pace:
             return formattedPace(value)
         }
     }
     
     private func parametersText(_ parameters: [SetsParameter]) -> String {
-        let weightValue = weight(for: parameters).map { "\(formattedNumber($0)) kg" }
+        let weightValue = weight(for: parameters).map { unitFormatter.weightTextWithUnit(kilograms: $0) }
         let repsValue = reps(for: parameters).map { "\($0)" }
-        let distanceValue = distance(for: parameters).map { $0.distanceForDisplay }
+        let distanceValue = distance(for: parameters).map { unitFormatter.distanceText(meters: $0) }
         let timeValue = time(for: parameters).map { $0.timeForDisplay }
         
         if let weightValue, let repsValue {
@@ -537,7 +542,7 @@ final class ReportExerciseViewModel: ObservableObject {
     }
     
     private func formattedKilograms(_ value: Float) -> String {
-        "\(formattedNumber(value)) kg"
+        unitFormatter.weightTextWithUnit(kilograms: value)
     }
     
     private func formattedRestTime(_ value: TimeInterval?) -> String {
@@ -550,7 +555,7 @@ final class ReportExerciseViewModel: ObservableObject {
     }
     
     private func formattedPace(_ value: Float) -> String {
-        TimeInterval(value * 1000).timeForDisplay + "/km"
+        unitFormatter.paceText(secondsPerMeter: value)
     }
     
     private static func contextText(for exercise: ReportExerciseModel) -> String {

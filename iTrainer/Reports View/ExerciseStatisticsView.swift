@@ -205,7 +205,7 @@ struct ExerciseStatisticsView: View {
             .frame(height: chartAreaHeight)
         } else {
             VStack(alignment: .leading, spacing: 8) {
-                Text(viewModel.selectedMetric.axisUnit)
+                Text(viewModel.selectedMetricAxisUnit)
                     .font(AppFont.rowSubtitle)
                     .foregroundStyle(AppColor.textSecondary)
                 

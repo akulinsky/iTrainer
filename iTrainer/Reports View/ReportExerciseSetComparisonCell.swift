@@ -68,7 +68,7 @@ struct ReportExerciseSetComparisonCell: View {
     }
     
     private func isDistanceText(_ value: String) -> Bool {
-        value.hasSuffix(" m") || value.hasSuffix(" km")
+        value.hasSuffix(" m") || value.hasSuffix(" km") || value.hasSuffix(" ft") || value.hasSuffix(" mi")
     }
     
     private func horizontalAlignment(for alignment: Alignment) -> HorizontalAlignment {

@@ -40,16 +40,18 @@ final class ReportDashboardViewModel: ObservableObject {
     private var preparedRows = [ReportDashboardPreparedRow]()
     private let calendar: Calendar
     private let volumeFormatter: NumberFormatter
+    private var unitFormatter: UnitFormatter { UnitFormatter(settings: AppSettings.shared) }
     
     init(calendar: Calendar = .current) {
         self.calendar = calendar
         self.selectedMonth = calendar.startOfMonth(for: Date())
+        let unitFormatter = UnitFormatter(settings: AppSettings.shared)
         self.monthSummary = ReportsMonthSummary(monthTitle: Self.monthTitle(for: Date(), calendar: calendar),
                                                 workoutCountValueText: "0",
                                                 workoutCountTitleText: "Workouts Completed",
                                                 personalRecordValueText: "0",
                                                 personalRecordTitleText: "Personal Records",
-                                                totalVolumeValueText: "0 kg",
+                                                totalVolumeValueText: unitFormatter.weightTextWithUnit(kilograms: 0),
                                                 totalVolumeTitleText: "Total Volume")
         self.availableYears = [calendar.component(.year, from: Date())]
         
@@ -104,7 +106,7 @@ final class ReportDashboardViewModel: ObservableObject {
                                            workoutCountTitleText: rows.count == 1 ? "Workout Completed" : "Workouts Completed",
                                            personalRecordValueText: "\(personalRecordCount)",
                                            personalRecordTitleText: personalRecordCount == 1 ? "Personal Record" : "Personal Records",
-                                           totalVolumeValueText: "\(formatVolume(totalVolume)) kg",
+                                           totalVolumeValueText: unitFormatter.weightTextWithUnit(kilograms: totalVolume),
                                            totalVolumeTitleText: "Total Volume")
         workoutReportCards = rows.map(makeWorkoutReportCardItem)
     }

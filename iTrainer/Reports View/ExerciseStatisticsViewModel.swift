@@ -97,6 +97,10 @@ final class ExerciseStatisticsViewModel: ObservableObject {
         return selectedMetric.subtitle
     }
     
+    var selectedMetricAxisUnit: String {
+        selectedMetric.axisUnit(unitFormatter: UnitFormatter(settings: AppSettings.shared))
+    }
+    
     var showsPeriodSummary: Bool {
         if selectedMetric == .repetitions {
             return trackingType == .repsOnly
@@ -166,7 +170,7 @@ final class ExerciseStatisticsViewModel: ObservableObject {
     }
     
     func yAxisLabel(for value: Double) -> String {
-        Self.formatted(value: Float(value), for: selectedMetric)
+        Self.formatted(value: Float(value), for: selectedMetric, unitFormatter: UnitFormatter(settings: AppSettings.shared))
     }
     
     @MainActor
@@ -237,22 +241,24 @@ final class ExerciseStatisticsViewModel: ObservableObject {
                                           globalReports: [ReportExerciseModel],
                                           metric: ExerciseMetricSegment,
                                           period: ExerciseStatisticsPeriod) -> PreparedStatistics {
+        let unitFormatter = UnitFormatter(settings: AppSettings.shared)
         let allGraphPoints = activeReports
-            .compactMap { point(for: $0, metric: metric, history: globalReports) }
+            .compactMap { point(for: $0, metric: metric, history: globalReports, unitFormatter: unitFormatter) }
             .sorted { $0.date < $1.date }
         let globalAllGraphPoints = globalReports
-            .compactMap { point(for: $0, metric: metric, history: globalReports) }
+            .compactMap { point(for: $0, metric: metric, history: globalReports, unitFormatter: unitFormatter) }
             .sorted { $0.date < $1.date }
         let cutoffDate = period.cutoffDate(relativeTo: allGraphPoints.last?.date ?? Date())
         let periodGraphPoints = cutoffDate.map { cutoff in
             allGraphPoints.filter { $0.date >= cutoff }
         } ?? allGraphPoints
-        let periodSummary = makePeriodSummary(points: periodGraphPoints, metric: metric)
-        let currentPrevious = makeCurrentPrevious(points: allGraphPoints, metric: metric)
+        let periodSummary = makePeriodSummary(points: periodGraphPoints, metric: metric, unitFormatter: unitFormatter)
+        let currentPrevious = makeCurrentPrevious(points: allGraphPoints, metric: metric, unitFormatter: unitFormatter)
         let bestResult = makeBestResult(points: globalAllGraphPoints,
                                         reports: globalReports,
                                         metric: metric,
-                                        history: globalReports)
+                                        history: globalReports,
+                                        unitFormatter: unitFormatter)
         
         return PreparedStatistics(allGraphPoints: allGraphPoints,
                                   globalAllGraphPoints: globalAllGraphPoints,
@@ -283,18 +289,22 @@ final class ExerciseStatisticsViewModel: ObservableObject {
         }
     }
     
-    private static func makePeriodSummary(points: [ExerciseStatisticsPoint], metric: ExerciseMetricSegment) -> PeriodSummary {
+    private static func makePeriodSummary(points: [ExerciseStatisticsPoint],
+                                          metric: ExerciseMetricSegment,
+                                          unitFormatter: UnitFormatter) -> PeriodSummary {
         guard !points.isEmpty else { return .empty }
         
         let average = points.reduce(Float.zero) { $0 + $1.value } / Float(points.count)
         let change = points.count > 1 ? points[points.count - 1].value - points[0].value : nil
         
-        return PeriodSummary(averageText: formatted(value: average, for: metric),
-                             changeText: change.map { formattedChange($0, for: metric) } ?? "-",
+        return PeriodSummary(averageText: formatted(value: average, for: metric, unitFormatter: unitFormatter),
+                             changeText: change.map { formattedChange($0, for: metric, unitFormatter: unitFormatter) } ?? "-",
                              changeColor: color(for: change, metric: metric))
     }
     
-    private static func makeCurrentPrevious(points: [ExerciseStatisticsPoint], metric: ExerciseMetricSegment) -> CurrentPreviousSummary {
+    private static func makeCurrentPrevious(points: [ExerciseStatisticsPoint],
+                                            metric: ExerciseMetricSegment,
+                                            unitFormatter: UnitFormatter) -> CurrentPreviousSummary {
         guard let current = points.last else { return .empty }
         
         guard points.count > 1 else {
@@ -309,18 +319,19 @@ final class ExerciseStatisticsViewModel: ObservableObject {
         
         return CurrentPreviousSummary(currentText: current.formattedValue,
                                       previousText: previous.formattedValue,
-                                      changeText: formattedChange(change, for: metric),
+                                      changeText: formattedChange(change, for: metric, unitFormatter: unitFormatter),
                                       changeColor: color(for: change, metric: metric))
     }
     
     private static func makeBestResult(points: [ExerciseStatisticsPoint],
                                        reports: [ReportExerciseModel],
                                        metric: ExerciseMetricSegment,
-                                       history: [ReportExerciseModel]) -> BestResultSummary {
+                                       history: [ReportExerciseModel],
+                                       unitFormatter: UnitFormatter) -> BestResultSummary {
         let bestPoint: ExerciseStatisticsPoint?
         
         if metric == .repetitions {
-            bestPoint = bestSetResult(reports: reports, history: history)
+            bestPoint = bestSetResult(reports: reports, history: history, unitFormatter: unitFormatter)
         } else if metric.isLowerValueBetter {
             bestPoint = points.min(by: { lhs, rhs in
                 if lhs.value == rhs.value {
@@ -349,7 +360,8 @@ final class ExerciseStatisticsViewModel: ObservableObject {
     
     private static func point(for report: ReportExerciseModel,
                               metric: ExerciseMetricSegment,
-                              history: [ReportExerciseModel]) -> ExerciseStatisticsPoint? {
+                              history: [ReportExerciseModel],
+                              unitFormatter: UnitFormatter) -> ExerciseStatisticsPoint? {
         guard let date = report.date else { return nil }
         
         switch metric {
@@ -360,7 +372,7 @@ final class ExerciseStatisticsViewModel: ObservableObject {
             return ExerciseStatisticsPoint(reportId: report.id,
                                            date: date,
                                            value: weight,
-                                           formattedValue: formattedKilograms(weight),
+                                           formattedValue: formattedKilograms(weight, unitFormatter: unitFormatter),
                                            isPersonalRecord: isPersonalRecord(report, history: history))
         case .volume:
             let sets = performedStrengthSets(in: report)
@@ -370,10 +382,10 @@ final class ExerciseStatisticsViewModel: ObservableObject {
             return ExerciseStatisticsPoint(reportId: report.id,
                                            date: date,
                                            value: volume,
-                                           formattedValue: formattedKilograms(volume),
+                                           formattedValue: formattedKilograms(volume, unitFormatter: unitFormatter),
                                            isPersonalRecord: isPersonalRecord(report, history: history))
         case .repetitions:
-            if let weightedRepetitionPoint = weightedRepetitionPoint(for: report, date: date, history: history) {
+            if let weightedRepetitionPoint = weightedRepetitionPoint(for: report, date: date, history: history, unitFormatter: unitFormatter) {
                 return weightedRepetitionPoint
             }
             return bodyweightRepetitionPoint(for: report, date: date, history: history)
@@ -391,21 +403,22 @@ final class ExerciseStatisticsViewModel: ObservableObject {
             return ExerciseStatisticsPoint(reportId: report.id,
                                            date: date,
                                            value: value,
-                                           formattedValue: value.distanceForDisplay,
+                                           formattedValue: unitFormatter.distanceText(meters: value),
                                            isPersonalRecord: isPersonalRecord(report, history: history))
         case .pace:
             guard let value = performedPace(in: report) else { return nil }
             return ExerciseStatisticsPoint(reportId: report.id,
                                            date: date,
                                            value: value,
-                                           formattedValue: formattedPace(value),
+                                           formattedValue: formattedPace(value, unitFormatter: unitFormatter),
                                            isPersonalRecord: isPersonalRecord(report, history: history))
         }
     }
     
     private static func weightedRepetitionPoint(for report: ReportExerciseModel,
                                                 date: Date,
-                                                history: [ReportExerciseModel]) -> ExerciseStatisticsPoint? {
+                                                history: [ReportExerciseModel],
+                                                unitFormatter: UnitFormatter) -> ExerciseStatisticsPoint? {
         let sets = performedStrengthSets(in: report)
         guard let weight = sets.map(\.weight).max() else { return nil }
         let reps = sets
@@ -417,7 +430,7 @@ final class ExerciseStatisticsViewModel: ObservableObject {
         return ExerciseStatisticsPoint(reportId: report.id,
                                        date: date,
                                        value: Float(reps),
-                                       formattedValue: "\(formattedNumber(weight)) kg x \(reps)",
+                                       formattedValue: "\(unitFormatter.weightText(kilograms: weight)) \(unitFormatter.weightUnit.symbol) x \(reps)",
                                        isPersonalRecord: isPersonalRecord(report, history: history))
     }
     
@@ -434,7 +447,9 @@ final class ExerciseStatisticsViewModel: ObservableObject {
                                        isPersonalRecord: isPersonalRecord(report, history: history))
     }
     
-    private static func bestSetResult(reports: [ReportExerciseModel], history: [ReportExerciseModel]) -> ExerciseStatisticsPoint? {
+    private static func bestSetResult(reports: [ReportExerciseModel],
+                                      history: [ReportExerciseModel],
+                                      unitFormatter: UnitFormatter) -> ExerciseStatisticsPoint? {
         let weightedSets = reports.flatMap { report -> [(report: ReportExerciseModel, date: Date, set: PerformedStrengthSet)] in
             guard let date = report.date else { return [] }
             return performedStrengthSets(in: report).map { (report: report, date: date, set: $0) }
@@ -454,7 +469,7 @@ final class ExerciseStatisticsViewModel: ObservableObject {
                 return ExerciseStatisticsPoint(reportId: bestSet.report.id,
                                                date: bestSet.date,
                                                value: Float(bestSet.set.reps),
-                                               formattedValue: "\(formattedNumber(bestSet.set.weight)) kg x \(bestSet.set.reps)",
+                                               formattedValue: "\(unitFormatter.weightText(kilograms: bestSet.set.weight)) \(unitFormatter.weightUnit.symbol) x \(bestSet.set.reps)",
                                                isPersonalRecord: isPersonalRecord(bestSet.report, history: history))
             }
         }
@@ -618,44 +633,46 @@ final class ExerciseStatisticsViewModel: ObservableObject {
         }
     }
     
-    private static func formatted(value: Float, for metric: ExerciseMetricSegment) -> String {
+    private static func formatted(value: Float, for metric: ExerciseMetricSegment, unitFormatter: UnitFormatter) -> String {
         switch metric {
         case .weight, .volume:
-            formattedKilograms(value)
+            formattedKilograms(value, unitFormatter: unitFormatter)
         case .repetitions:
             "\(Int(value.rounded()))"
         case .time:
             TimeInterval(value).timeForDisplay
         case .distance:
-            value.distanceForDisplay
+            unitFormatter.distanceText(meters: value)
         case .pace:
-            formattedPace(value)
+            formattedPace(value, unitFormatter: unitFormatter)
         }
     }
     
-    private static func formattedChange(_ value: Float, for metric: ExerciseMetricSegment) -> String {
-        guard value != 0 else { return "0 \(metric.changeUnit)" }
+    private static func formattedChange(_ value: Float,
+                                        for metric: ExerciseMetricSegment,
+                                        unitFormatter: UnitFormatter) -> String {
+        guard value != 0 else { return "0 \(metric.changeUnit(unitFormatter: unitFormatter))" }
         let isImprovement = metric.isLowerValueBetter ? value < 0 : value > 0
         let sign = isImprovement ? "+" : "-"
         let absValue = abs(value)
         
         switch metric {
         case .weight, .volume:
-            return "\(sign)\(formattedKilograms(absValue))"
+            return "\(sign)\(formattedKilograms(absValue, unitFormatter: unitFormatter))"
         case .repetitions:
             let unit = Int(absValue.rounded()) == 1 ? "rep" : "reps"
             return "\(sign)\(Int(absValue.rounded())) \(unit)"
         case .time:
             return "\(sign)\(TimeInterval(absValue).timeForDisplay)"
         case .distance:
-            return "\(sign)\(absValue.distanceForDisplay)"
+            return "\(sign)\(unitFormatter.distanceText(meters: absValue))"
         case .pace:
-            return "\(sign)\(formattedPace(absValue))"
+            return "\(sign)\(formattedPace(absValue, unitFormatter: unitFormatter))"
         }
     }
     
-    private static func formattedKilograms(_ value: Float) -> String {
-        "\(formattedNumber(value)) kg"
+    private static func formattedKilograms(_ value: Float, unitFormatter: UnitFormatter) -> String {
+        unitFormatter.weightTextWithUnit(kilograms: value)
     }
     
     private static func formattedNumber(_ value: Float) -> String {
@@ -666,8 +683,8 @@ final class ExerciseStatisticsViewModel: ObservableObject {
         return number.formatted(.number.precision(.fractionLength(1)))
     }
     
-    private static func formattedPace(_ value: Float) -> String {
-        TimeInterval(value * 1000).timeForDisplay + "/km"
+    private static func formattedPace(_ value: Float, unitFormatter: UnitFormatter) -> String {
+        unitFormatter.paceText(secondsPerMeter: value)
     }
     
     private static func color(for change: Float?, metric: ExerciseMetricSegment? = nil) -> Color {
@@ -757,33 +774,33 @@ enum ExerciseMetricSegment: CaseIterable, Identifiable {
         }
     }
     
-    var axisUnit: String {
+    func axisUnit(unitFormatter: UnitFormatter) -> String {
         switch self {
         case .weight, .volume:
-            "kg"
+            unitFormatter.weightUnit.symbol
         case .repetitions:
             "reps"
         case .time:
             "time"
         case .distance:
-            "distance"
+            unitFormatter.distanceUnit == .metric ? "m" : "ft"
         case .pace:
-            "pace"
+            unitFormatter.distanceUnit == .metric ? "pace /km" : "pace /mi"
         }
     }
     
-    var changeUnit: String {
+    func changeUnit(unitFormatter: UnitFormatter) -> String {
         switch self {
         case .weight, .volume:
-            "kg"
+            unitFormatter.weightUnit.symbol
         case .repetitions:
             "reps"
         case .time:
             "time"
         case .distance:
-            "distance"
+            unitFormatter.distanceUnit == .metric ? "m" : "ft"
         case .pace:
-            "pace"
+            unitFormatter.distanceUnit == .metric ? "pace /km" : "pace /mi"
         }
     }
     

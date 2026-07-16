@@ -88,6 +88,8 @@ class ReportViewModel: ObservableObject {
     
     private var reportWorkout: ReportWorkoutModel
     
+    private var unitFormatter: UnitFormatter { UnitFormatter(settings: AppSettings.shared) }
+    
     // MARK: - Init
     
     init(report: ReportWorkoutModel) {
@@ -247,15 +249,15 @@ class ReportViewModel: ObservableObject {
         
         if trackingTypes.contains(.weightedReps) {
             summaryCards.append(SummaryCard(title: "Density",
-                                           value: density.map { "\($0)" } ?? "-",
-                                           detail: "kg/min",
+                                           value: density.map { unitFormatter.weightText(kilograms: Float($0)) } ?? "-",
+                                           detail: "\(unitFormatter.weightUnit.symbol)/min",
                                            progress: nil,
                                            colorProgress: nil,
                                            systemImage: "gauge.with.dots.needle.67percent",
                                            info: .density))
             summaryCards.append(SummaryCard(title: "Volume Goal",
                                            value: rawVolumeProgress.map { percentText(for: $0, isCapped: false) } ?? "-",
-                                           detail: targetVolume > 0 ? "\(Int(actualVolume)) / \(Int(targetVolume)) kg" : "\(Int(actualVolume)) kg",
+                                           detail: targetVolume > 0 ? "\(unitFormatter.weightText(kilograms: actualVolume)) / \(unitFormatter.weightTextWithUnit(kilograms: targetVolume))" : unitFormatter.weightTextWithUnit(kilograms: actualVolume),
                                            progress: volumeProgress,
                                            colorProgress: rawVolumeProgress,
                                            systemImage: nil,
@@ -283,7 +285,7 @@ class ReportViewModel: ObservableObject {
         if trackingTypes.contains(.distance) || trackingTypes.contains(.distanceTime) {
             summaryCards.append(SummaryCard(title: "Distance Goal",
                                            value: rawDistanceProgress.map { percentText(for: $0, isCapped: false) } ?? "-",
-                                           detail: targetDistance > 0 ? "\(actualDistance.distanceForDisplay) / \(targetDistance.distanceForDisplay)" : actualDistance.distanceForDisplay,
+                                           detail: targetDistance > 0 ? "\(unitFormatter.distanceText(meters: actualDistance)) / \(unitFormatter.distanceText(meters: targetDistance))" : unitFormatter.distanceText(meters: actualDistance),
                                            progress: distanceProgress,
                                            colorProgress: rawDistanceProgress,
                                            systemImage: nil))
@@ -315,7 +317,7 @@ class ReportViewModel: ObservableObject {
         if metrics.targetVolume > 0 {
             let progress = progressValue(actual: Double(metrics.actualVolume), target: Double(metrics.targetVolume))
             result.append(ReportModel(primary: "Weight",
-                                      secondary: "\(Int(metrics.actualVolume)) from \(Int(metrics.targetVolume))",
+                                      secondary: "\(unitFormatter.weightText(kilograms: metrics.actualVolume)) from \(unitFormatter.weightTextWithUnit(kilograms: metrics.targetVolume))",
                                       progress: progress,
                                       percentageProgress: percentText(for: progress)))
         }
@@ -373,15 +375,11 @@ class ReportViewModel: ObservableObject {
     private func paceGoalDetail(actual: Float?, target: Float?) -> String {
         guard let actual else { return "Distance / time" }
         guard let target else { return formattedPace(actual) }
-        return "\(formattedPaceValue(actual)) / \(formattedPaceValue(target)) km"
+        return "\(formattedPace(actual)) / \(formattedPace(target))"
     }
     
     private func formattedPace(_ value: Float) -> String {
-        formattedPaceValue(value) + "/km"
-    }
-    
-    private func formattedPaceValue(_ value: Float) -> String {
-        TimeInterval(value * 1000).timeForDisplay
+        unitFormatter.paceText(secondsPerMeter: value)
     }
     
     private func progressValue(actual: Double, target: Double) -> Double {

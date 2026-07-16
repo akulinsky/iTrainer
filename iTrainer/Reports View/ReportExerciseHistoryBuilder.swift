@@ -24,16 +24,18 @@ enum ReportExerciseHistoryBuilder {
             .sorted { ($0.date ?? .distantPast) > ($1.date ?? .distantPast) }
     }
     
-    static func historyGroups(from reports: [ReportExerciseModel]) -> [ReportExerciseViewModel.HistoryGroup] {
+    static func historyGroups(from reports: [ReportExerciseModel],
+                              unitFormatter: UnitFormatter = UnitFormatter(settings: AppSettings.shared)) -> [ReportExerciseViewModel.HistoryGroup] {
         reports.map { item in
             ReportExerciseViewModel.HistoryGroup(id: item.id,
                                                  dateText: shortDateText(for: item.date),
                                                  contextText: contextText(for: item),
-                                                 rows: makeSetRows(for: item))
+                                                 rows: makeSetRows(for: item, unitFormatter: unitFormatter))
         }
     }
     
-    private static func makeSetRows(for exercise: ReportExerciseModel) -> [ReportExerciseViewModel.SetComparisonRow] {
+    private static func makeSetRows(for exercise: ReportExerciseModel,
+                                    unitFormatter: UnitFormatter) -> [ReportExerciseViewModel.SetComparisonRow] {
         let targetSets = exercise.targetSets.sorted { $0.index < $1.index }
         let actualSets = exercise.sets.sorted { $0.index < $1.index }
         
@@ -41,7 +43,7 @@ enum ReportExerciseHistoryBuilder {
             return actualSets.enumerated().map { index, actual in
                 ReportExerciseViewModel.SetComparisonRow(title: "Set \(index + 1)",
                                                          target: "-",
-                                                         result: parametersText(actual.parameters),
+                                                         result: parametersText(actual.parameters, unitFormatter: unitFormatter),
                                                          state: .recorded)
             }
         }
@@ -65,16 +67,16 @@ enum ReportExerciseHistoryBuilder {
             }
             
             return ReportExerciseViewModel.SetComparisonRow(title: title,
-                                                            target: target.map { parametersText($0.parameters) } ?? "-",
-                                                            result: actual.map { parametersText($0.parameters) } ?? "-",
+                                                            target: target.map { parametersText($0.parameters, unitFormatter: unitFormatter) } ?? "-",
+                                                            result: actual.map { parametersText($0.parameters, unitFormatter: unitFormatter) } ?? "-",
                                                             state: state)
         }
     }
     
-    private static func parametersText(_ parameters: [SetsParameter]) -> String {
-        let weightValue = weight(for: parameters).map { "\(formattedNumber($0)) kg" }
+    private static func parametersText(_ parameters: [SetsParameter], unitFormatter: UnitFormatter) -> String {
+        let weightValue = weight(for: parameters).map { unitFormatter.weightTextWithUnit(kilograms: $0) }
         let repsValue = reps(for: parameters).map { "\($0)" }
-        let distanceValue = distance(for: parameters).map { $0.distanceForDisplay }
+        let distanceValue = distance(for: parameters).map { unitFormatter.distanceText(meters: $0) }
         let timeValue = time(for: parameters).map { $0.timeForDisplay }
         
         if let weightValue, let repsValue {

@@ -52,7 +52,7 @@ struct ExerciseStatisticsExpandedChartView: View {
     
     private func rotatedChart(points: [ExerciseStatisticsPoint], chartWidth: CGFloat, chartHeight: CGFloat) -> some View {
         VStack(alignment: .leading, spacing: 10) {
-            Text(viewModel.selectedMetric.axisUnit)
+            Text(viewModel.selectedMetricAxisUnit)
                 .font(AppFont.rowSubtitle)
                 .foregroundStyle(AppColor.textSecondary)
             

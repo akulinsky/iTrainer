@@ -84,6 +84,15 @@ struct UnitFormatter {
         unit.meters(fromInputValue: value)
     }
     
+    func paceText(secondsPerMeter: Float) -> String {
+        switch distanceUnit {
+        case .metric:
+            return TimeInterval(secondsPerMeter * 1000).timeForDisplay + "/km"
+        case .imperial:
+            return TimeInterval(secondsPerMeter * Self.metersPerMile).timeForDisplay + "/mi"
+        }
+    }
+    
     private func metricDistanceText(meters: Float) -> String {
         let unit = metricDistanceDisplayUnit(forMeters: meters)
         return "\(unit.valueText(forMeters: meters)) \(unit.symbol)"
