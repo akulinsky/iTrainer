@@ -125,7 +125,6 @@
 "superset.prompt.two" = "Add at least two exercises to use this superset.";
 "superset.prompt.one_more" = "Add one more exercise to use this superset.";
 "superset.no_exercises" = "No exercises";
-"superset.name.keep_generated" = "Leave empty to keep the generated name.";
 "superset.rest_time" = "Rest time";
 "superset.rest_after_cycle" = "Rest after cycle";
 "superset.without_rest" = "Without rest";

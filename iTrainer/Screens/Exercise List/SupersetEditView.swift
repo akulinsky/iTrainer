@@ -10,6 +10,8 @@ import UniformTypeIdentifiers
 
 struct SupersetEditView: View {
     @StateObject var viewModel: SupersetEditViewModel
+    let onClose: () -> Void
+    
     @Environment(\.dismiss) private var dismiss
     @Environment(\.navigation) private var navigation
     
@@ -83,7 +85,11 @@ struct SupersetEditView: View {
         }
         .onDisappear {
             if !viewModel.isDeleted {
-                viewModel.save()
+                viewModel.save {
+                    onClose()
+                }
+            } else {
+                onClose()
             }
         }
         .sheet(isPresented: $viewModel.isPickerPresented) {
@@ -195,10 +201,6 @@ struct SupersetEditView: View {
                         .stroke(AppColor.separatorSoft, lineWidth: 1)
                 }
                 .focused($isTitleFocused)
-            
-            Text("superset.name.keep_generated")
-                .font(AppFont.rowSubtitle)
-                .foregroundStyle(AppColor.textSecondary)
         }
         .padding(.horizontal, 20)
         .padding(.vertical, 18)

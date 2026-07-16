@@ -125,7 +125,6 @@
 "superset.prompt.two" = "Добавьте минимум два упражнения, чтобы использовать этот суперсет.";
 "superset.prompt.one_more" = "Добавьте еще одно упражнение, чтобы использовать этот суперсет.";
 "superset.no_exercises" = "Нет упражнений";
-"superset.name.keep_generated" = "Оставьте пустым, чтобы сохранить сгенерированное название.";
 "superset.rest_time" = "Время отдыха";
 "superset.rest_after_cycle" = "Отдых после круга";
 "superset.without_rest" = "Без отдыха";

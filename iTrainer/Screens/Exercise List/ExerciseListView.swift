@@ -278,7 +278,10 @@ struct ExerciseListView: View {
                 case .supersetEditView(let model, let groupId):
                     SupersetEditView(viewModel: SupersetEditViewModel(superset: model,
                                                                        groupId: groupId,
-                                                                       isActiveWorkoutLocked: workoutManager.isWorkoutInProgress && workoutManager.currentWorkoutGroupId == groupId))
+                                                                       isActiveWorkoutLocked: workoutManager.isWorkoutInProgress && workoutManager.currentWorkoutGroupId == groupId),
+                                     onClose: {
+                                        viewModel.reloadData()
+                                     })
                         .environment(\.navigation, navigation)
                 case .reportExerciseView(let model):
                     ReportExerciseView(viewModel: ReportExerciseViewModel(reportExercise: model),
