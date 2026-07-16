@@ -84,7 +84,7 @@ struct DurationPickerSheet: View {
                 .frame(maxWidth: .infinity, alignment: .center)
 
             HStack {
-                Button("Cancel") {
+                Button("common.cancel") {
                     dismiss()
                 }
                 .font(AppFont.rowTitle)
@@ -92,7 +92,7 @@ struct DurationPickerSheet: View {
 
                 Spacer()
 
-                Button("Done") {
+                Button("common.done") {
                     value = Self.clamp(draftValue, to: range)
                     dismiss()
                 }

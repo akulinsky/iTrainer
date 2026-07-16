@@ -46,6 +46,11 @@
 "common.done" = "Готово";
 "common.edit" = "Редактировать";
 "common.save" = "Сохранить";
+"common.close" = "Закрыть";
+"common.delete" = "Удалить";
+"common.hide" = "Скрыть";
+"common.restore" = "Восстановить";
+"common.add" = "Добавить";
 "common.name" = "Название";
 "common.name.placeholder" = "Новое название";
 
@@ -79,6 +84,59 @@
 "active_workout.finish_alert.title" = "Завершить тренировку?";
 "active_workout.finish_alert.close_current" = "Текущая тренировка будет закрыта.";
 "active_workout.finish_alert.incomplete_progress" = "Вы выполнили %d из %d упражнений. Завершить все равно?";
+
+/* Exercise List */
+
+"exercise_list.start" = "Старт";
+"exercise_list.title" = "Упражнения";
+"exercise_list.start_workout" = "Начать тренировку";
+"exercise_list.workout_session" = "Тренировка";
+"exercise_list.start_alert.title" = "Начать тренировку?";
+"exercise_list.start_alert.default_workout" = "эту тренировку";
+"exercise_list.start_alert.message" = "Начать %@?";
+"exercise_list.new_exercise" = "Новое упражнение";
+"exercise_list.add_headline" = "Добавить заголовок";
+"exercise_list.hidden.title" = "Скрытые упражнения";
+"exercise_list.exercise.new" = "Новое упражнение";
+"exercise_list.exercise.edit" = "Редактировать упражнение";
+"exercise_list.exercise.name.placeholder" = "Название упражнения";
+"exercise_list.headline.new" = "Новый заголовок";
+"exercise_list.headline.edit" = "Редактировать заголовок";
+"exercise_list.headline.name.placeholder" = "Название заголовка";
+"exercise_list.action.hide_active.title" = "Скрыть упражнение во время активной тренировки?";
+"exercise_list.action.delete_active.title" = "Удалить упражнение во время активной тренировки?";
+"exercise_list.action.delete.title" = "Удалить упражнение?";
+"exercise_list.action.active.message" = "Это может повлиять на прогресс текущей тренировки и финальный отчет.";
+"exercise_list.action.delete_active.message" = "Упражнение будет удалено из тренировки и может повлиять на прогресс текущей тренировки и финальный отчет.";
+"exercise_list.action.delete.message" = "Упражнение будет удалено из этой тренировки. Прошлые отчеты останутся без изменений.";
+"exercise_list.add_conflict.active.title" = "Упражнение уже есть";
+"exercise_list.add_conflict.hidden.title" = "Упражнение скрыто";
+"exercise_list.add_conflict.active.message" = "%@ уже есть в этой тренировке. Добавить еще одну копию?";
+"exercise_list.add_conflict.hidden.message" = "%@ скрыто в этой тренировке. Восстановить его?";
+"exercise_list.add_conflict.add_anyway" = "Все равно добавить";
+"exercise_list.add_conflict.add_new_copy" = "Добавить новую копию";
+
+/* Superset */
+
+"superset.add" = "Добавить суперсет";
+"superset.edit.title" = "Редактировать суперсет";
+"superset.rest.title" = "Отдых суперсета";
+"superset.exercises" = "Упражнения";
+"superset.prompt.two" = "Добавьте минимум два упражнения, чтобы использовать этот суперсет.";
+"superset.prompt.one_more" = "Добавьте еще одно упражнение, чтобы использовать этот суперсет.";
+"superset.no_exercises" = "Нет упражнений";
+"superset.name.keep_generated" = "Оставьте пустым, чтобы сохранить сгенерированное название.";
+"superset.rest_time" = "Время отдыха";
+"superset.rest_after_cycle" = "Отдых после круга";
+"superset.without_rest" = "Без отдыха";
+"superset.reorder" = "Изменить порядок";
+"superset.remove" = "Убрать";
+"superset.delete_button" = "Удалить суперсет";
+"superset.delete_alert.title" = "Удалить суперсет?";
+"superset.delete_alert.message" = "Суперсет будет удален. Его упражнения вернутся в список тренировки.";
+"superset.active_locked" = "Активная тренировка идет. Завершите ее перед изменением упражнений суперсета.";
+"superset.picker.title" = "Добавить упражнения";
+"superset.picker.empty" = "Нет доступных упражнений";
 
 /* Reports */
 

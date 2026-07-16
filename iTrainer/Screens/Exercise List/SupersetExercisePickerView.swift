@@ -18,7 +18,7 @@ struct SupersetExercisePickerView: View {
         NavigationStack {
             List {
                 if exercises.isEmpty {
-                    Text("No available exercises")
+                    Text("superset.picker.empty")
                         .font(AppFont.rowSubtitle)
                         .foregroundStyle(AppColor.textSecondary)
                         .frame(maxWidth: .infinity, alignment: .center)
@@ -42,18 +42,18 @@ struct SupersetExercisePickerView: View {
             .listStyle(.plain)
             .scrollContentBackground(.hidden)
             .background(AppColor.backgroundPrimary)
-            .navigationTitle("Add exercises")
+            .navigationTitle("superset.picker.title")
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
                 ToolbarItem(placement: .topBarLeading) {
-                    Button("Cancel") {
+                    Button("common.cancel") {
                         dismiss()
                     }
                     .foregroundStyle(AppColor.textSecondary)
                 }
                 
                 ToolbarItem(placement: .topBarTrailing) {
-                    Button("Add") {
+                    Button("common.add") {
                         onAdd(selectedIds)
                         dismiss()
                     }

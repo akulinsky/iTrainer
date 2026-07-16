@@ -46,6 +46,11 @@
 "common.done" = "Done";
 "common.edit" = "Edit";
 "common.save" = "Save";
+"common.close" = "Close";
+"common.delete" = "Delete";
+"common.hide" = "Hide";
+"common.restore" = "Restore";
+"common.add" = "Add";
 "common.name" = "Name";
 "common.name.placeholder" = "New name";
 
@@ -79,6 +84,59 @@
 "active_workout.finish_alert.title" = "Finish workout?";
 "active_workout.finish_alert.close_current" = "Current workout will be closed.";
 "active_workout.finish_alert.incomplete_progress" = "You completed %d of %d exercises. Finish anyway?";
+
+/* Exercise List */
+
+"exercise_list.start" = "Start";
+"exercise_list.title" = "Exercises";
+"exercise_list.start_workout" = "Start workout";
+"exercise_list.workout_session" = "Workout session";
+"exercise_list.start_alert.title" = "Start workout?";
+"exercise_list.start_alert.default_workout" = "this workout";
+"exercise_list.start_alert.message" = "Start %@?";
+"exercise_list.new_exercise" = "New exercise";
+"exercise_list.add_headline" = "Add headline";
+"exercise_list.hidden.title" = "Hidden Exercises";
+"exercise_list.exercise.new" = "New exercise";
+"exercise_list.exercise.edit" = "Edit exercise";
+"exercise_list.exercise.name.placeholder" = "New exercise name";
+"exercise_list.headline.new" = "New headline";
+"exercise_list.headline.edit" = "Edit headline";
+"exercise_list.headline.name.placeholder" = "New headline name";
+"exercise_list.action.hide_active.title" = "Hide exercise during active workout?";
+"exercise_list.action.delete_active.title" = "Delete exercise during active workout?";
+"exercise_list.action.delete.title" = "Delete exercise?";
+"exercise_list.action.active.message" = "This may affect the current workout progress and final report.";
+"exercise_list.action.delete_active.message" = "This exercise will be removed from the workout and may affect current workout progress and the final report.";
+"exercise_list.action.delete.message" = "This exercise will be removed from this workout. Past reports will stay unchanged.";
+"exercise_list.add_conflict.active.title" = "Exercise already exists";
+"exercise_list.add_conflict.hidden.title" = "Exercise is hidden";
+"exercise_list.add_conflict.active.message" = "%@ is already in this workout. Add another copy?";
+"exercise_list.add_conflict.hidden.message" = "%@ is hidden in this workout. Restore it instead?";
+"exercise_list.add_conflict.add_anyway" = "Add anyway";
+"exercise_list.add_conflict.add_new_copy" = "Add new copy";
+
+/* Superset */
+
+"superset.add" = "Add Superset";
+"superset.edit.title" = "Edit superset";
+"superset.rest.title" = "Superset rest";
+"superset.exercises" = "Exercises";
+"superset.prompt.two" = "Add at least two exercises to use this superset.";
+"superset.prompt.one_more" = "Add one more exercise to use this superset.";
+"superset.no_exercises" = "No exercises";
+"superset.name.keep_generated" = "Leave empty to keep the generated name.";
+"superset.rest_time" = "Rest time";
+"superset.rest_after_cycle" = "Rest after cycle";
+"superset.without_rest" = "Without rest";
+"superset.reorder" = "Reorder";
+"superset.remove" = "Remove";
+"superset.delete_button" = "Delete Superset";
+"superset.delete_alert.title" = "Delete superset?";
+"superset.delete_alert.message" = "The superset will be removed. Its exercises will return to the workout list.";
+"superset.active_locked" = "Active workout in progress. Finish it before changing superset exercises.";
+"superset.picker.title" = "Add exercises";
+"superset.picker.empty" = "No available exercises";
 
 /* Reports */
 

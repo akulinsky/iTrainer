@@ -26,18 +26,18 @@ enum ExerciseAddConflict: Identifiable {
     var title: String {
         switch self {
         case .activeDuplicate:
-            "Exercise already exists"
+            String(localized: "exercise_list.add_conflict.active.title")
         case .hiddenDuplicate:
-            "Exercise is hidden"
+            String(localized: "exercise_list.add_conflict.hidden.title")
         }
     }
     
     var message: String {
         switch self {
         case .activeDuplicate(let title):
-            "\(title) is already in this workout. Add another copy?"
+            String.localizedStringWithFormat(String(localized: "exercise_list.add_conflict.active.message"), title)
         case .hiddenDuplicate(let title):
-            "\(title) is hidden in this workout. Restore it instead?"
+            String.localizedStringWithFormat(String(localized: "exercise_list.add_conflict.hidden.message"), title)
         }
     }
 }

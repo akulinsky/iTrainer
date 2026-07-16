@@ -28,11 +28,11 @@ struct HiddenExercisesView: View {
             .listStyle(.plain)
             .scrollContentBackground(.hidden)
             .background(AppColor.backgroundPrimary)
-            .navigationTitle("Hidden Exercises")
+            .navigationTitle("exercise_list.hidden.title")
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
                 ToolbarItem(placement: .topBarLeading) {
-                    Button("Close") {
+                    Button("common.close") {
                         dismiss()
                     }
                 }

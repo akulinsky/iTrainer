@@ -114,7 +114,7 @@ struct ExerciseListView: View {
         }
         .background(AppColor.backgroundPrimary)
         .environment(\.defaultMinListRowHeight, 10)
-        .navigationTitle(viewModel.group.title ?? "Exercises")
+        .navigationTitle(viewModel.group.title ?? String(localized: "exercise_list.title"))
         .navigationBarTitleDisplayMode(.inline)
         .toolbar {
             ToolbarItem(placement: .navigationBarTrailing) {
@@ -169,9 +169,9 @@ struct ExerciseListView: View {
         .contentSelf(content: { view in
             contentViewNavigation(content: view)
         })
-        .alert("Finish workout?", isPresented: $isEndWorkoutAlertPresented) {
-            Button("Cancel", role: .cancel) {}
-            Button("Finish", role: .destructive) {
+        .alert(Text("active_workout.finish_alert.title"), isPresented: $isEndWorkoutAlertPresented) {
+            Button("common.cancel", role: .cancel) {}
+            Button("active_workout.finish", role: .destructive) {
                 withAnimation(.spring(response: 0.45, dampingFraction: 0.86)) {
                     finishWorkout()
                 }
@@ -179,15 +179,15 @@ struct ExerciseListView: View {
         } message: {
             Text(workoutManager.finishWorkoutAlertMessage)
         }
-        .alert("Start workout?", isPresented: $isStartWorkoutAlertPresented) {
-            Button("Cancel", role: .cancel) {}
-            Button("Start") {
+        .alert(Text("exercise_list.start_alert.title"), isPresented: $isStartWorkoutAlertPresented) {
+            Button("common.cancel", role: .cancel) {}
+            Button("exercise_list.start") {
                 withAnimation(.spring(response: 0.45, dampingFraction: 0.86)) {
                     workoutManager.startWorkout(with: viewModel.group.id)
                 }
             }
         } message: {
-            Text("Start \(viewModel.group.title ?? "this workout")?")
+            Text(startWorkoutAlertMessage)
         }
         .alert(exerciseListActionTitle,
                isPresented: exerciseListActionBinding) {
@@ -202,9 +202,9 @@ struct ExerciseListView: View {
         
         switch action {
         case .hide:
-            return "Hide exercise during active workout?"
+            return String(localized: "exercise_list.action.hide_active.title")
         case .delete:
-            return shouldWarnBeforeChangingExercises ? "Delete exercise during active workout?" : "Delete exercise?"
+            return shouldWarnBeforeChangingExercises ? String(localized: "exercise_list.action.delete_active.title") : String(localized: "exercise_list.action.delete.title")
         }
     }
     
@@ -213,13 +213,18 @@ struct ExerciseListView: View {
         
         switch action {
         case .hide:
-            return "This may affect the current workout progress and final report."
+            return String(localized: "exercise_list.action.active.message")
         case .delete:
             if shouldWarnBeforeChangingExercises {
-                return "This exercise will be removed from the workout and may affect current workout progress and the final report."
+                return String(localized: "exercise_list.action.delete_active.message")
             }
-            return "This exercise will be removed from this workout. Past reports will stay unchanged."
+            return String(localized: "exercise_list.action.delete.message")
         }
+    }
+    
+    private var startWorkoutAlertMessage: String {
+        let title = viewModel.group.title ?? String(localized: "exercise_list.start_alert.default_workout")
+        return String.localizedStringWithFormat(String(localized: "exercise_list.start_alert.message"), title)
     }
     
     private var exerciseListActionBinding: Binding<Bool> {
@@ -235,16 +240,16 @@ struct ExerciseListView: View {
     @ViewBuilder
     private func exerciseListActionButtons() -> some View {
         if let action = pendingExerciseListAction {
-            Button("Cancel", role: .cancel) {
+            Button("common.cancel", role: .cancel) {
                 pendingExerciseListAction = nil
             }
             switch action {
             case .hide:
-                Button("Hide") {
+                Button("common.hide") {
                     performExerciseListAction(action)
                 }
             case .delete:
-                Button("Delete", role: .destructive) {
+                Button("common.delete", role: .destructive) {
                     performExerciseListAction(action)
                 }
             }
@@ -310,18 +315,18 @@ struct ExerciseListView: View {
         if let conflict = viewModel.addConflict {
             switch conflict {
             case .activeDuplicate:
-                Button("Add anyway") {
+                Button("exercise_list.add_conflict.add_anyway") {
                     viewModel.addPendingExercisesAnyway()
                 }
             case .hiddenDuplicate:
-                Button("Restore") {
+                Button("common.restore") {
                     viewModel.restorePendingHiddenExercises()
                 }
-                Button("Add new copy") {
+                Button("exercise_list.add_conflict.add_new_copy") {
                     viewModel.addPendingExercisesAnyway()
                 }
             }
-            Button("Cancel", role: .cancel) {
+            Button("common.cancel", role: .cancel) {
                 viewModel.addConflict = nil
             }
         }
@@ -403,11 +408,11 @@ struct ExerciseListView: View {
                     .foregroundStyle(AppColor.workoutGreen)
                 
                 VStack(alignment: .leading, spacing: 4) {
-                    Text("Start workout")
+                    Text("exercise_list.start_workout")
                         .font(AppFont.workoutGroupCardTitle)
                         .foregroundStyle(AppColor.textPrimary)
                     
-                    Text(viewModel.group.title ?? "Workout session")
+                    Text(viewModel.group.title ?? String(localized: "exercise_list.workout_session"))
                         .font(AppFont.rowSubtitle)
                         .foregroundStyle(AppColor.textSecondary)
                         .lineLimit(1)
@@ -467,21 +472,21 @@ struct ExerciseListView: View {
             Button {
                 requestExerciseListAction(.delete(item))
             } label: {
-                Label("Delete", systemImage: "trash")
+                Label("common.delete", systemImage: "trash")
             }
             .tint(.red)
         } else if !item.isHeadlineItem {
             Button {
                 requestExerciseListAction(.delete(item))
             } label: {
-                Label("Delete", systemImage: "trash")
+                Label("common.delete", systemImage: "trash")
             }
             .tint(.red)
             
             Button {
                 requestExerciseListAction(.hide(item))
             } label: {
-                Label("Hidden", systemImage: "eye.slash")
+                Label("common.hide", systemImage: "eye.slash")
             }
             .tint(AppColor.progressAmber)
         }
@@ -507,7 +512,7 @@ struct ExerciseListView: View {
     private func optionButton() -> some View {
         switch editMode {
         case .active:
-            return AnyView(Button("Done", action: clickBtnDone).bold())
+            return AnyView(Button("common.done", action: clickBtnDone).bold())
         default:
             return AnyView(menuItem())
         }
@@ -515,12 +520,12 @@ struct ExerciseListView: View {
     
     private func menuItem() -> some View {
         Menu {
-            Button("Edit", systemImage: "pencil", action: clickBtnEditint)
-            Button("New exercise", systemImage: "plus.square", action: clickBtnNewExercise)
-            Button("Add Superset", systemImage: "link", action: clickBtnNewSuperset)
-            Button("Add headline", systemImage: "text.line.first.and.arrowtriangle.forward", action: clickBtnNewHeadline)
+            Button("common.edit", systemImage: "pencil", action: clickBtnEditint)
+            Button("exercise_list.new_exercise", systemImage: "plus.square", action: clickBtnNewExercise)
+            Button("superset.add", systemImage: "link", action: clickBtnNewSuperset)
+            Button("exercise_list.add_headline", systemImage: "text.line.first.and.arrowtriangle.forward", action: clickBtnNewHeadline)
             if viewModel.hasHiddenExercises {
-                Button("Hidden Exercises", systemImage: "eye.slash", action: clickBtnHiddenExercises)
+                Button("exercise_list.hidden.title", systemImage: "eye.slash", action: clickBtnHiddenExercises)
             }
         } label: {
             VStack {
@@ -539,11 +544,19 @@ struct ExerciseListView: View {
             title = value
         }
         
-        let nameItem = viewModel.isEditHeadline ? "headline" : "exercise"
+        let editTitle: String
+        let placeholder: String
+        if viewModel.isEditHeadline {
+            editTitle = viewModel.editExercise == nil ? String(localized: "exercise_list.headline.new") : String(localized: "exercise_list.headline.edit")
+            placeholder = String(localized: "exercise_list.headline.name.placeholder")
+        } else {
+            editTitle = viewModel.editExercise == nil ? String(localized: "exercise_list.exercise.new") : String(localized: "exercise_list.exercise.edit")
+            placeholder = String(localized: "exercise_list.exercise.name.placeholder")
+        }
         
         return EditNameView(value: title.isEmpty ? "" : title,
-                            title: viewModel.editExercise == nil ? "New \(nameItem)" : "Edit \(nameItem)",
-                            placeholder: "New \(nameItem) name") {
+                            title: editTitle,
+                            placeholder: placeholder) {
             
             switch $0 {
             case .save(let name):

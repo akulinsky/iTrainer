@@ -47,7 +47,7 @@ class SupersetEditViewModel: ObservableObject {
     }
     
     var restTimeDisplay: String {
-        switchRest ? "No rest" : TimeInterval(restTimeSeconds).minuteSecond
+        switchRest ? String(localized: "superset.without_rest") : TimeInterval(restTimeSeconds).minuteSecond
     }
     
     func setRestTime(seconds: Int) {

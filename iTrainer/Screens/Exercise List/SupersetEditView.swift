@@ -61,7 +61,7 @@ struct SupersetEditView: View {
         .animation(.spring(response: 0.36, dampingFraction: 0.88), value: viewModel.children.map(\.id))
         .dismissKeyboardOnTap()
         .scrollDismissesKeyboard(.immediately)
-        .navigationTitle("Edit superset")
+        .navigationTitle("superset.edit.title")
         .toolbarTitleDisplayMode(.inline)
         .toolbar {
             ToolbarItem(placement: .topBarTrailing) {
@@ -93,7 +93,7 @@ struct SupersetEditView: View {
         }
         .sheet(isPresented: $isRestTimePickerPresented) {
             DurationPickerSheet(
-                title: "Superset rest",
+                title: String(localized: "superset.rest.title"),
                 value: restTimeSecondsBinding,
                 range: 0...600,
                 secondStep: 5,
@@ -102,15 +102,15 @@ struct SupersetEditView: View {
             .presentationDetents([.height(430)])
             .presentationDragIndicator(.visible)
         }
-        .alert("Delete superset?", isPresented: $viewModel.isDeleteConfirmationPresented) {
-            Button("Delete", role: .destructive) {
+        .alert(Text("superset.delete_alert.title"), isPresented: $viewModel.isDeleteConfirmationPresented) {
+            Button("common.delete", role: .destructive) {
                 viewModel.deleteSuperset {
                     dismiss()
                 }
             }
-            Button("Cancel", role: .cancel) {}
+            Button("common.cancel", role: .cancel) {}
         } message: {
-            Text("The superset will be removed. Its exercises will return to the workout list.")
+            Text("superset.delete_alert.message")
         }
     }
     
@@ -121,7 +121,7 @@ struct SupersetEditView: View {
                 .foregroundStyle(AppColor.progressAmber)
                 .frame(width: 24, height: 24)
             
-            Text("Active workout in progress. Finish it before changing superset exercises.")
+            Text("superset.active_locked")
                 .font(AppFont.rowSubtitle)
                 .foregroundStyle(AppColor.textSecondary)
                 .frame(maxWidth: .infinity, alignment: .leading)
@@ -137,7 +137,7 @@ struct SupersetEditView: View {
     
     private var childrenHeaderRow: some View {
         HStack {
-            Text("Exercises")
+            Text("superset.exercises")
                 .font(AppFont.rowTitle)
                 .foregroundStyle(AppColor.textPrimary)
             Spacer()
@@ -155,7 +155,7 @@ struct SupersetEditView: View {
     }
     
     private var childrenPrompt: some View {
-        Text(childrenPromptText ?? "Add one more exercise to use this superset.")
+        Text(childrenPromptText ?? String(localized: "superset.prompt.one_more"))
             .font(AppFont.rowSubtitle)
             .foregroundStyle(AppColor.textSecondary)
             .frame(maxWidth: .infinity, alignment: .leading)
@@ -167,11 +167,11 @@ struct SupersetEditView: View {
     
     private var childrenPromptText: String? {
         if viewModel.children.isEmpty {
-            return "Add at least two exercises to use this superset."
+            return String(localized: "superset.prompt.two")
         }
         
         if viewModel.children.count == 1 {
-            return "Add one more exercise to use this superset."
+            return String(localized: "superset.prompt.one_more")
         }
         
         return nil
@@ -179,7 +179,7 @@ struct SupersetEditView: View {
     
     private var titleView: some View {
         VStack(alignment: .leading, spacing: 14) {
-            Text("Name")
+            Text("common.name")
                 .font(AppFont.rowTitle)
                 .foregroundStyle(AppColor.textPrimary)
             
@@ -196,7 +196,7 @@ struct SupersetEditView: View {
                 }
                 .focused($isTitleFocused)
             
-            Text("Leave empty to keep the generated name.")
+            Text("superset.name.keep_generated")
                 .font(AppFont.rowSubtitle)
                 .foregroundStyle(AppColor.textSecondary)
         }
@@ -213,13 +213,13 @@ struct SupersetEditView: View {
     
     private var restTimeView: some View {
         VStack(alignment: .leading, spacing: 18) {
-            Text("Rest time")
+            Text("superset.rest_time")
                 .font(AppFont.rowTitle)
                 .foregroundStyle(AppColor.textPrimary)
             
             VStack(spacing: 14) {
                 HStack {
-                    Text("Rest after cycle")
+                    Text("superset.rest_after_cycle")
                         .font(AppFont.workoutGroupCardSubtitle)
                         .foregroundStyle(AppColor.textPrimary)
                     
@@ -247,7 +247,7 @@ struct SupersetEditView: View {
                 Divider()
                     .overlay(AppColor.separatorSoft)
                 
-                Toggle("Without rest", isOn: $viewModel.switchRest)
+                Toggle("superset.without_rest", isOn: $viewModel.switchRest)
                     .font(AppFont.workoutGroupCardSubtitle)
                     .foregroundStyle(AppColor.textPrimary)
                     .tint(AppColor.brandPrimary)
@@ -285,7 +285,7 @@ struct SupersetEditView: View {
                         draggingChild = child
                         return NSItemProvider(object: child.id.uuidString as NSString)
                     }
-                    .accessibilityLabel("Reorder")
+                    .accessibilityLabel(Text("superset.reorder"))
             }
         }
         .background(AppColor.surfacePrimary)
@@ -299,14 +299,14 @@ struct SupersetEditView: View {
                 Button {
                     viewModel.removeChild(child)
                 } label: {
-                    Label("Remove", systemImage: "minus.circle")
+                    Label("superset.remove", systemImage: "minus.circle")
                 }
                 .tint(.red)
                 
                 Button {
                     viewModel.hideChild(child)
                 } label: {
-                    Label("Hide", systemImage: "eye.slash")
+                    Label("common.hide", systemImage: "eye.slash")
                 }
                 .tint(AppColor.progressAmber)
             }
@@ -329,7 +329,7 @@ struct SupersetEditView: View {
         Button(role: .destructive) {
             viewModel.isDeleteConfirmationPresented = true
         } label: {
-            Text("Delete Superset")
+            Text("superset.delete_button")
                 .font(AppFont.rowTitle)
                 .foregroundStyle(.red)
                 .frame(maxWidth: .infinity)

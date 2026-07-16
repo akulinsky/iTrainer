@@ -34,7 +34,7 @@ struct HiddenExerciseCell: View {
             }
             .frame(maxWidth: .infinity, alignment: .leading)
             
-            Button("Restore", action: onRestore)
+            Button("common.restore", action: onRestore)
                 .font(AppFont.rowSubtitle.weight(.semibold))
                 .foregroundStyle(AppColor.progressGreen)
                 .buttonStyle(.plain)

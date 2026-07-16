@@ -35,10 +35,10 @@ struct SupersetCell: View {
             header
             
             if children.isEmpty {
-                emptyStateText("Add at least two exercises to use this superset.")
+                emptyStateText(String(localized: "superset.prompt.two"))
             } else if children.count == 1 {
                 childRows
-                emptyStateText("Add one more exercise to use this superset.")
+                emptyStateText(String(localized: "superset.prompt.one_more"))
             } else {
                 childRows
             }
@@ -157,7 +157,7 @@ struct SupersetCell: View {
     
     private var childNamesText: String {
         let names = children.map(\.displayName).filter { !$0.isEmpty }
-        return names.isEmpty ? "No exercises" : names.joined(separator: " · ")
+        return names.isEmpty ? String(localized: "superset.no_exercises") : names.joined(separator: " · ")
     }
     
 }
