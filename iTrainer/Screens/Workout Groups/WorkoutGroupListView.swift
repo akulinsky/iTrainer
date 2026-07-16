@@ -9,6 +9,7 @@ import SwiftUI
 
 enum WorkoutGroupListRoute: Hashable {
     case exerciseListView(item: WorkoutGroupModel)
+    case settingsView
 }
 
 struct WorkoutGroupListView: View {
@@ -65,6 +66,9 @@ struct WorkoutGroupListView: View {
             .navigationTitle(viewModel.workout?.title ?? "Groups")
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
+                ToolbarItem(placement: .navigationBarLeading) {
+                    settingsButton()
+                }
                 ToolbarItemGroup(placement: .navigationBarTrailing) {
                     chooseWorkoutButton()
                     optionButton()
@@ -111,6 +115,8 @@ struct WorkoutGroupListView: View {
                 case .exerciseListView(let model):
                     ExerciseListView(viewModel: ExerciseListViewModel(group: model))
                         .environment(\.navigation, navigationManager)
+                case .settingsView:
+                    SettingsView()
                 }
             })
     }
@@ -132,6 +138,15 @@ struct WorkoutGroupListView: View {
         .frame(maxWidth: .infinity, maxHeight: .infinity)
         .padding()
         .background(AppColor.backgroundPrimary)
+    }
+    
+    private func settingsButton() -> some View {
+        Button {
+            navigationManager.path.append(WorkoutGroupListRoute.settingsView)
+        } label: {
+            Image(systemName: "gearshape")
+        }
+        .accessibilityLabel(Text("settings.title"))
     }
     
     private func chooseWorkoutButton() -> some View {

@@ -39,3 +39,38 @@
 "report.metric.improvement.description" = "Показывает разницу между текущим результатом и предыдущим результатом для сравнения.";
 "report.metric.improvement.formula" = "Для большинства показателей: текущий - предыдущий. Для темпа: предыдущий - текущий, потому что меньший темп лучше.";
 "report.metric.improvement.example" = "Предыдущий темп 8:00/км, текущий 7:30/км = улучшение -0:30";
+
+/* Settings */
+
+"settings.title" = "Настройки";
+"settings.common.ok" = "OK";
+
+"settings.units.title" = "Единицы";
+"settings.units.weight" = "Вес";
+"settings.units.distance" = "Дистанция";
+"settings.units.system" = "Система";
+"settings.units.weight.kilograms" = "кг";
+"settings.units.weight.pounds" = "фунты";
+"settings.units.distance.metric" = "Метрическая";
+"settings.units.distance.imperial" = "Имперская";
+
+"settings.language.title" = "Язык";
+"settings.language.system.title" = "Используются настройки iTrainer";
+"settings.language.system.subtitle" = "Откройте настройки iTrainer в iOS, чтобы выбрать язык приложения.";
+
+"settings.support.title" = "Поддержка";
+"settings.support.feedback.title" = "Отправить отзыв";
+"settings.support.feedback.subtitle" = "Отправить отзыв или описание проблемы по email.";
+"settings.support.feedback.subject" = "Отзыв о iTrainer";
+"settings.support.feedback.app_info" = "Информация о приложении";
+"settings.support.mail_unavailable.title" = "Почта недоступна";
+"settings.support.mail_unavailable.message" = "Настройте Mail на этом iPhone или свяжитесь с поддержкой из другого почтового приложения.";
+
+"settings.privacy.title" = "Приватность";
+"settings.privacy.local_data.title" = "Локальные данные тренировок";
+"settings.privacy.local_data.subtitle" = "Данные тренировок хранятся на этом устройстве. Синхронизация с облаком не включена.";
+"settings.privacy.policy.title" = "Политика приватности";
+"settings.privacy.policy.pending" = "Добавьте ссылку на политику перед релизом.";
+
+"settings.about.title" = "О приложении";
+"settings.about.version" = "Версия";

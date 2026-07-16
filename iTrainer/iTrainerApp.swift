@@ -26,6 +26,7 @@ private let seedMode: DatabaseSeedMode = .production
                 .environment(\.appEnvironment, environment)
                 .environment(environment.appState)
                 .environmentObject(environment.dataContainer)
+                .environmentObject(environment.appSettings)
                 .environmentObject(environment.dataContainer.workoutManager)
                 .task {
                     await environment.databaseSeeder.run(seedMode)

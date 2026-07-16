@@ -16,6 +16,8 @@
 		F6186DF42FFEDBCF0018B216 /* ReportExerciseHistoryBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6186DF32FFEDBCF0018B216 /* ReportExerciseHistoryBuilder.swift */; };
 		F6186DF62FFEDBEF0018B216 /* ReportExerciseHistoryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6186DF52FFEDBEF0018B216 /* ReportExerciseHistoryViewModel.swift */; };
 		F6186DF82FFEDBF10018B216 /* ReportExerciseHistoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6186DF72FFEDBF10018B216 /* ReportExerciseHistoryView.swift */; };
+		F62187DD3009158800F73704 /* AppSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = F62187DC3009158800F73704 /* AppSettings.swift */; };
+		F62187DF300915DE00F73704 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F62187DE300915DE00F73704 /* SettingsView.swift */; };
 		F625F2AF2FF8F42A0074FE79 /* ReportDashboardViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F625F2AE2FF8F42A0074FE79 /* ReportDashboardViewModel.swift */; };
 		F625F2B12FF8F6920074FE79 /* ExerciseStatisticsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F625F2B02FF8F6920074FE79 /* ExerciseStatisticsViewModel.swift */; };
 		F625F2B32FF9273D0074FE79 /* WorkoutReportStatusDisplay.swift in Sources */ = {isa = PBXBuildFile; fileRef = F625F2B22FF9273D0074FE79 /* WorkoutReportStatusDisplay.swift */; };
@@ -166,6 +168,8 @@
 		F6186DF32FFEDBCF0018B216 /* ReportExerciseHistoryBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportExerciseHistoryBuilder.swift; sourceTree = "<group>"; };
 		F6186DF52FFEDBEF0018B216 /* ReportExerciseHistoryViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportExerciseHistoryViewModel.swift; sourceTree = "<group>"; };
 		F6186DF72FFEDBF10018B216 /* ReportExerciseHistoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportExerciseHistoryView.swift; sourceTree = "<group>"; };
+		F62187DC3009158800F73704 /* AppSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppSettings.swift; sourceTree = "<group>"; };
+		F62187DE300915DE00F73704 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		F625F2AE2FF8F42A0074FE79 /* ReportDashboardViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportDashboardViewModel.swift; sourceTree = "<group>"; };
 		F625F2B02FF8F6920074FE79 /* ExerciseStatisticsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseStatisticsViewModel.swift; sourceTree = "<group>"; };
 		F625F2B22FF9273D0074FE79 /* WorkoutReportStatusDisplay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutReportStatusDisplay.swift; sourceTree = "<group>"; };
@@ -320,6 +324,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		F62187DB3009157700F73704 /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				F62187DE300915DE00F73704 /* SettingsView.swift */,
+			);
+			path = Settings;
+			sourceTree = "<group>";
+		};
 		F64895B92FE6C663005B0619 /* Managers */ = {
 			isa = PBXGroup;
 			children = (
@@ -339,6 +351,7 @@
 				F648969B2FE70B13005B0619 /* AppState.swift */,
 				F648969D2FE71522005B0619 /* DatabaseSeeder.swift */,
 				F6AB65A82FEAAB0500DE8066 /* DesignSystem.swift */,
+				F62187DC3009158800F73704 /* AppSettings.swift */,
 			);
 			path = Core;
 			sourceTree = "<group>";
@@ -569,6 +582,7 @@
 				F69BD1192C5505980057080E /* Exercise List */,
 				F69BD11A2C5505CC0057080E /* Exercise */,
 				F6DD68A92C64FF40004EFB03 /* Exercise Type View */,
+				F62187DB3009157700F73704 /* Settings */,
 			);
 			path = Screens;
 			sourceTree = "<group>";
@@ -866,6 +880,7 @@
 				F6EA7BD82C57D898005225A0 /* WorkoutListCell.swift in Sources */,
 				F6F1E08F2CA07B7200C1419A /* ReportExerciseView.swift in Sources */,
 				F677A06E2FFBBCCC00101B33 /* CalendarDayCell.swift in Sources */,
+				F62187DD3009158800F73704 /* AppSettings.swift in Sources */,
 				F625F2B52FF927A20074FE79 /* ReportsDashboardHeaderView.swift in Sources */,
 				F69BD12E2C551B4F0057080E /* SetsModelDB.swift in Sources */,
 				F6EA7BDE2C57DE6F005225A0 /* ExerciseCell.swift in Sources */,
@@ -954,6 +969,7 @@
 				F68D60652C760C4B00783E54 /* CircularProgressView.swift in Sources */,
 				F6EA7BCC2C579333005225A0 /* WorkoutModel.swift in Sources */,
 				F6DD68AF2C65050A004EFB03 /* ExerciseTypeViewModel.swift in Sources */,
+				F62187DF300915DE00F73704 /* SettingsView.swift in Sources */,
 				F656783D2FF42AE100250F44 /* ReportStatusService.swift in Sources */,
 				F6186DF82FFEDBF10018B216 /* ReportExerciseHistoryView.swift in Sources */,
 				F6336E1A30011993006ECA08 /* View+KeyboardAccessory.swift in Sources */,

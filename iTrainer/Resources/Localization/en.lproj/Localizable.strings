@@ -40,3 +40,37 @@
 "report.metric.improvement.formula" = "For most metrics: current - previous. For pace: previous - current because lower pace is better.";
 "report.metric.improvement.example" = "Previous pace 8:00/km, current 7:30/km = -0:30 improvement";
 
+/* Settings */
+
+"settings.title" = "Settings";
+"settings.common.ok" = "OK";
+
+"settings.units.title" = "Units";
+"settings.units.weight" = "Weight";
+"settings.units.distance" = "Distance";
+"settings.units.system" = "System";
+"settings.units.weight.kilograms" = "kg";
+"settings.units.weight.pounds" = "lb";
+"settings.units.distance.metric" = "Metric";
+"settings.units.distance.imperial" = "Imperial";
+
+"settings.language.title" = "Language";
+"settings.language.system.title" = "Uses iTrainer iPhone settings";
+"settings.language.system.subtitle" = "Open iTrainer settings in iOS to choose the app language.";
+
+"settings.support.title" = "Support";
+"settings.support.feedback.title" = "Send Feedback";
+"settings.support.feedback.subtitle" = "Email app feedback and issue details.";
+"settings.support.feedback.subject" = "iTrainer Feedback";
+"settings.support.feedback.app_info" = "App info";
+"settings.support.mail_unavailable.title" = "Mail is unavailable";
+"settings.support.mail_unavailable.message" = "Set up Mail on this iPhone or contact support from another email app.";
+
+"settings.privacy.title" = "Privacy";
+"settings.privacy.local_data.title" = "Local workout data";
+"settings.privacy.local_data.subtitle" = "Your workout data is stored on this device. Cloud sync is not enabled.";
+"settings.privacy.policy.title" = "Privacy Policy";
+"settings.privacy.policy.pending" = "Add the policy URL before release.";
+
+"settings.about.title" = "About";
+"settings.about.version" = "Version";

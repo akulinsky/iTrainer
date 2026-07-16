@@ -11,11 +11,13 @@ struct AppEnvironment {
     
     let dataContainer: DataContainer
     let appState: AppState
+    let appSettings: AppSettings
     let databaseSeeder: DatabaseSeeder
     
     static let live = AppEnvironment(
         dataContainer: DataContainer.shared,
         appState: AppState(),
+        appSettings: AppSettings.shared,
         databaseSeeder: DatabaseSeeder(dataContainer: DataContainer.shared)
     )
 }
