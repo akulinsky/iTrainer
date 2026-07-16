@@ -31,39 +31,49 @@ enum ParameterValue<value>: Identifiable, Hashable {
     }
     
     var stringValue: String {
+        stringValue(unitFormatter: UnitFormatter(settings: AppSettings.shared))
+    }
+    
+    var unitText: String {
+        unitText(unitFormatter: UnitFormatter(settings: AppSettings.shared))
+    }
+    
+    var inlineUnitText: String {
+        inlineUnitText(unitFormatter: UnitFormatter(settings: AppSettings.shared))
+    }
+    
+    func stringValue(unitFormatter: UnitFormatter) -> String {
         switch self {
         case .weight(let value):
-            String(format: "%.1f", value)
+            unitFormatter.weightText(kilograms: value)
         case .repeats(let value):
             "\(value)"
         case .distance(let value):
-            value.distanceValueForDisplay
-        case .time(let value):         
+            unitFormatter.distanceValueText(meters: value)
+        case .time(let value):
             value.timeForDisplay
         }
     }
     
-    var unitText: String {
+    func unitText(unitFormatter: UnitFormatter) -> String {
         switch self {
         case .weight:
-            "kg"
+            unitFormatter.weightUnit.symbol
         case .repeats:
             "reps"
-        case .distance:
-            "m"
+        case .distance(let value):
+            unitFormatter.distanceUnitText(meters: value)
         case .time:
             "min"
         }
     }
     
-    var inlineUnitText: String {
+    func inlineUnitText(unitFormatter: UnitFormatter) -> String {
         switch self {
-        case .distance(let value):
-            value.distanceUnitForDisplay
         case .time:
             ""
         default:
-            unitText
+            unitText(unitFormatter: unitFormatter)
         }
     }
     

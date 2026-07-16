@@ -119,23 +119,6 @@ enum DistanceInputUnit: String, CaseIterable, Identifiable {
 
 extension Float {
     
-    var distanceForDisplay: String {
-        "\(distanceValueForDisplay) \(distanceUnitForDisplay)"
-    }
-    
-    var distanceValueForDisplay: String {
-        guard self >= 1000 else {
-            return "\(Int(self))"
-        }
-        
-        let kilometers = self / 1000
-        return kilometers.formattedTrimmed(maxFractionDigits: 2)
-    }
-    
-    var distanceUnitForDisplay: String {
-        self >= 1000 ? "km" : "m"
-    }
-    
     var distanceForTextField: String {
         "\(Int(self))"
     }
