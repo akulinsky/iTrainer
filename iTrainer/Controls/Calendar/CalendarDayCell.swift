@@ -66,7 +66,7 @@ struct CalendarDayCell: View {
     }
     
     private var accessibilityLabel: String {
-        guard let date = day.date else { return "Empty day" }
+        guard let date = day.date else { return String(localized: "calendar.empty_day") }
         return date.formatted(date: .complete, time: .omitted)
     }
     

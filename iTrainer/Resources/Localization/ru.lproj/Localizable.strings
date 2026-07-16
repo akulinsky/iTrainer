@@ -74,6 +74,12 @@
 "workouts.new" = "Новая тренировка";
 "workouts.edit" = "Редактировать тренировку";
 "workouts.name.placeholder" = "Название тренировки";
+"workouts.selected_plan" = "Выбранный план";
+"workouts.workout_plan" = "План тренировки";
+
+/* Calendar */
+
+"calendar.empty_day" = "Пустой день";
 
 /* Workout Groups */
 

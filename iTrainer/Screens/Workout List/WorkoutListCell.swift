@@ -42,7 +42,7 @@ struct WorkoutListCell: View {
                         .foregroundStyle(AppColor.textPrimary)
                         .lineLimit(1)
                     
-                    Text(model.isSelected ? "Selected plan" : "Workout plan")
+                    Text(model.isSelected ? "workouts.selected_plan" : "workouts.workout_plan")
                         .font(AppFont.rowSubtitle)
                         .foregroundStyle(AppColor.textSecondary)
                 }

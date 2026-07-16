@@ -74,6 +74,12 @@
 "workouts.new" = "New workout";
 "workouts.edit" = "Edit workout";
 "workouts.name.placeholder" = "New workout name";
+"workouts.selected_plan" = "Selected plan";
+"workouts.workout_plan" = "Workout plan";
+
+/* Calendar */
+
+"calendar.empty_day" = "Empty day";
 
 /* Workout Groups */
 

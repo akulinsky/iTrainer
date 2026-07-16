@@ -155,7 +155,7 @@ final class WorkoutManager: ObservableObject {
         isWorkoutInProgress = false
         workoutElapsedTime = 0
         workoutProgress = 0
-        currentWorkoutTitle = "Active workout"
+        currentWorkoutTitle = String(localized: "active_workout.title")
         currentWorkoutGroupId = nil
         activeExerciseId = nil
         currentRestTimeIntervalExercise = nil
