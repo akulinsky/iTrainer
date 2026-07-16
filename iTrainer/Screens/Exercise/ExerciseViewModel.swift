@@ -22,6 +22,18 @@ class ExerciseViewModel: ObservableObject {
         
         var param: SetsParameter
         var distanceUnit: DistanceInputUnit = .meters
+        var weightUnit: ResolvedWeightUnit = .kilograms
+        
+        var unitText: String {
+            switch param {
+            case .weight:
+                weightUnit.symbol
+            case .distance:
+                distanceUnit.title
+            default:
+                param.unitText
+            }
+        }
         
         var isDistance: Bool {
             if case .distance = param {
@@ -32,16 +44,18 @@ class ExerciseViewModel: ObservableObject {
         
         let keyboardType: UIKeyboardType
         
-        init(param: SetsParameter) {
+        init(param: SetsParameter, unitFormatter: UnitFormatter = UnitFormatter(settings: AppSettings.shared)) {
             self.param = param
             self.id = param.id
             
             switch param {
             case .weight(_):
+                weightUnit = unitFormatter.weightUnit
                 keyboardType = .decimalPad
             case .repeats(_):
                 keyboardType = .numberPad
             case .distance(_):
+                distanceUnit = DistanceInputUnit.units(for: unitFormatter.distanceUnit).first ?? .meters
                 keyboardType = .decimalPad
             case .time(_):
                 keyboardType = .numberPad
@@ -96,6 +110,10 @@ class ExerciseViewModel: ObservableObject {
     var errorMessage: String? = nil
     
     var exercise: ExerciseModel
+    
+    private var unitFormatter: UnitFormatter {
+        UnitFormatter(settings: AppSettings.shared)
+    }
     
     static var countExerciseViewModel = 0
     
@@ -173,11 +191,11 @@ class ExerciseViewModel: ObservableObject {
             var result = ""
             switch param {
             case .weight(let value):
-                result = "\(value)"
+                result = unitFormatter.weightText(kilograms: value)
             case .repeats(let value):
                 result = "\(value)"
             case .distance(let value):
-                let unit = DistanceInputUnit.preferred(forMeters: value)
+                let unit = DistanceInputUnit.preferred(forMeters: value, distanceUnit: unitFormatter.distanceUnit)
                 result = unit.textValue(forMeters: value)
                 paramsData.first(where: { $0.param.id == param.id })?.distanceUnit = unit
             case .time(let value):
@@ -340,9 +358,9 @@ class ExerciseViewModel: ObservableObject {
                 let numberFormatter = NumberFormatter()
                 numberFormatter.numberStyle = NumberFormatter.Style.decimal
                 if let value = numberFormatter.number(from: param.value)?.floatValue, value >= 0 {
-                    result.append(.weight(value))
-                } else if let value = Float(param.value), value >= 0 {
-                    result.append(.weight(value))
+                    result.append(.weight(unitFormatter.kilograms(fromInputValue: value)))
+                } else if let value = DistanceInputUnit.inputValue(from: param.value), value >= 0 {
+                    result.append(.weight(unitFormatter.kilograms(fromInputValue: value)))
                 } else {
                     param.shake.send()
                     return

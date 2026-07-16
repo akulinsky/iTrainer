@@ -48,7 +48,8 @@ struct ExerciseEditView: View {
                                onClear: clearFocusedInput,
                                onDone: { focusedInputId = nil }) {
                 if let focusedDistanceUnit {
-                    DistanceUnitPicker(selectedUnit: focusedDistanceUnit) { unit in
+                    DistanceUnitPicker(selectedUnit: focusedDistanceUnit,
+                                       units: viewModel.distanceInputUnits) { unit in
                         viewModel.setFocusedDistanceUnit(unit, id: focusedInputId)
                         distanceUnitAccessoryRefresh.toggle()
                     }

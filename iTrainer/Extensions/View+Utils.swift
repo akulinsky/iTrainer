@@ -253,11 +253,12 @@ extension View {
 
 struct DistanceUnitPicker: View {
     let selectedUnit: DistanceInputUnit
+    var units: [DistanceInputUnit] = DistanceInputUnit.metricUnits
     let onSelect: (DistanceInputUnit) -> Void
     
     var body: some View {
         HStack(spacing: 0) {
-            ForEach(DistanceInputUnit.allCases) { unit in
+            ForEach(units) { unit in
                 Button {
                     onSelect(unit)
                 } label: {

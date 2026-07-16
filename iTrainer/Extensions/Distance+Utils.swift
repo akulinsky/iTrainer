@@ -10,6 +10,8 @@ import Foundation
 enum DistanceInputUnit: String, CaseIterable, Identifiable {
     case meters
     case kilometers
+    case feet
+    case miles
     
     var id: Self { self }
     
@@ -19,19 +21,49 @@ enum DistanceInputUnit: String, CaseIterable, Identifiable {
             "m"
         case .kilometers:
             "km"
+        case .feet:
+            "ft"
+        case .miles:
+            "mi"
         }
     }
     
-    static func preferred(forMeters value: Float) -> DistanceInputUnit {
-        value >= 1000 ? .kilometers : .meters
+    static var metricUnits: [DistanceInputUnit] {
+        [.meters, .kilometers]
+    }
+    
+    static var imperialUnits: [DistanceInputUnit] {
+        [.feet, .miles]
+    }
+    
+    static func units(for distanceUnit: ResolvedDistanceUnit) -> [DistanceInputUnit] {
+        switch distanceUnit {
+        case .metric:
+            metricUnits
+        case .imperial:
+            imperialUnits
+        }
+    }
+    
+    static func preferred(forMeters value: Float, distanceUnit: ResolvedDistanceUnit = .metric) -> DistanceInputUnit {
+        switch distanceUnit {
+        case .metric:
+            value >= 1000 ? .kilometers : .meters
+        case .imperial:
+            value >= UnitFormatter.metersPerMile ? .miles : .feet
+        }
     }
     
     func textValue(forMeters value: Float) -> String {
         switch self {
         case .meters:
-            "\(Int(value))"
+            "\(Int(value.rounded()))"
         case .kilometers:
             (value / 1000).formattedTrimmed(maxFractionDigits: 2)
+        case .feet:
+            "\(Int((value / UnitFormatter.metersPerFoot).rounded()))"
+        case .miles:
+            (value / UnitFormatter.metersPerMile).formattedTrimmed(maxFractionDigits: 2)
         }
     }
     
@@ -41,14 +73,18 @@ enum DistanceInputUnit: String, CaseIterable, Identifiable {
             value
         case .kilometers:
             value * 1000
+        case .feet:
+            value * UnitFormatter.metersPerFoot
+        case .miles:
+            value * UnitFormatter.metersPerMile
         }
     }
     
     func sanitizedInputText(_ text: String) -> String {
         switch self {
-        case .meters:
+        case .meters, .feet:
             return text.filter(\.isNumber)
-        case .kilometers:
+        case .kilometers, .miles:
             var hasDecimalSeparator = false
             var result = ""
             

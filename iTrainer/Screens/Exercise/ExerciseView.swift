@@ -39,6 +39,8 @@ private struct ExerciseContentView: View {
     
     @EnvironmentObject var workoutManager: WorkoutManager
     
+    @EnvironmentObject private var appSettings: AppSettings
+    
     @Environment(AppState.self) private var appState
     
     @Environment(\.navigation) private var navigation
@@ -54,6 +56,10 @@ private struct ExerciseContentView: View {
     @FocusState private var focusedParamId: Int?
     
     private let onNextExercise: (ExerciseModel) -> Void
+    
+    private var distanceInputUnits: [DistanceInputUnit] {
+        DistanceInputUnit.units(for: appSettings.resolvedDistanceUnit)
+    }
     
     private var focusedDistanceParam: ExerciseViewModel.ParamData? {
         guard let focusedParamId else {
@@ -107,6 +113,7 @@ private struct ExerciseContentView: View {
                            onDone: { focusedParamId = nil }) {
             if let focusedDistanceParam {
                 DistanceUnitPicker(selectedUnit: focusedDistanceParam.distanceUnit,
+                                   units: distanceInputUnits,
                                    onSelect: setFocusedDistanceUnit)
             }
         }
@@ -426,26 +433,35 @@ private struct ExerciseContentView: View {
     }
     
     private func addResultTextField(item: ExerciseViewModel.ParamData, value: Binding<String>) -> some View {
-        TextField(item.param.title, text: value, onEditingChanged: { focused in
-            self.viewModel.focused(focused, paramData: item)
-        })
-        .font(AppFont.rowTitle)
-        .foregroundStyle(AppColor.textPrimary)
-        .keyboardType(item.keyboardType)
-        .focused($focusedParamId, equals: item.id)
-        .multilineTextAlignment(.center)
-        .padding(.horizontal, 8)
-        .frame(height: 46)
-        .frame(maxWidth: .infinity)
-        .shakeAnimation(item.shake)
-        .onChange(of: value.wrappedValue) { _, newValue in
-            sanitizeDistanceInput(item: item, value: value, newValue: newValue)
-        }
-        .background(AppColor.surfacePrimary)
-        .clipShape(RoundedRectangle(cornerRadius: 10, style: .continuous))
-        .overlay {
-            RoundedRectangle(cornerRadius: 10, style: .continuous)
-                .stroke(AppColor.separatorSoft, lineWidth: 1)
+        VStack(spacing: 4) {
+            TextField(item.param.title, text: value, onEditingChanged: { focused in
+                self.viewModel.focused(focused, paramData: item)
+            })
+            .font(AppFont.rowTitle)
+            .foregroundStyle(AppColor.textPrimary)
+            .keyboardType(item.keyboardType)
+            .focused($focusedParamId, equals: item.id)
+            .multilineTextAlignment(.center)
+            .padding(.horizontal, 8)
+            .frame(height: 46)
+            .frame(maxWidth: .infinity)
+            .shakeAnimation(item.shake)
+            .onChange(of: value.wrappedValue) { _, newValue in
+                sanitizeDistanceInput(item: item, value: value, newValue: newValue)
+            }
+            .background(AppColor.surfacePrimary)
+            .clipShape(RoundedRectangle(cornerRadius: 10, style: .continuous))
+            .overlay {
+                RoundedRectangle(cornerRadius: 10, style: .continuous)
+                    .stroke(AppColor.separatorSoft, lineWidth: 1)
+            }
+            
+            Text(item.unitText)
+                .font(AppFont.rowSubtitle)
+                .foregroundStyle(AppColor.textSecondary)
+                .lineLimit(1)
+                .minimumScaleFactor(0.8)
+                .frame(height: 16)
         }
     }
     
@@ -628,4 +644,5 @@ private struct ExerciseContentView: View {
 
 #Preview {
     ExerciseView(viewModel: ExerciseViewModel(exercise: ExerciseModel(title: "Bench Press", typeId: "0")))
+        .environmentObject(AppSettings())
 }

@@ -18,9 +18,12 @@ struct EditSetsView: View {
         
         let param: SetsParameter
         var distanceUnit: DistanceInputUnit = .meters
+        var weightUnit: ResolvedWeightUnit = .kilograms
         
         var unitText: String {
             switch param {
+            case .weight:
+                weightUnit.symbol
             case .distance:
                 distanceUnit.title
             default:
@@ -36,6 +39,26 @@ struct EditSetsView: View {
         }
         
         let keyboardType: UIKeyboardType
+        
+        func applyUnitFormatter(_ formatter: UnitFormatter) {
+            switch param {
+            case .weight(let value):
+                weightUnit = formatter.weightUnit
+                if value > 0 {
+                    self.value = formatter.weightText(kilograms: value)
+                }
+            case .distance(let value):
+                if value > 0 {
+                    let unit = DistanceInputUnit.preferred(forMeters: value, distanceUnit: formatter.distanceUnit)
+                    distanceUnit = unit
+                    self.value = unit.textValue(forMeters: value)
+                } else {
+                    distanceUnit = DistanceInputUnit.units(for: formatter.distanceUnit).first ?? .meters
+                }
+            default:
+                break
+            }
+        }
         
         init(param: SetsParameter) {
             self.param = param
@@ -65,6 +88,8 @@ struct EditSetsView: View {
                 }
                 keyboardType = .numberPad
             }
+            
+            applyUnitFormatter(UnitFormatter(settings: AppSettings.shared))
         }
     }
     
@@ -75,7 +100,11 @@ struct EditSetsView: View {
     
     typealias ResultBlock = (Result)->()
     
+    @EnvironmentObject private var appSettings: AppSettings
+    
     @State private var params  = [ParamData]()
+    
+    @State private var didApplyUnitPreferences = false
     
     @State private var setsParams: [SetsParameter] = []
     
@@ -115,6 +144,14 @@ struct EditSetsView: View {
         default:
             Color(UIColor.lightGray)
         }
+    }
+    
+    private var unitFormatter: UnitFormatter {
+        UnitFormatter(settings: appSettings)
+    }
+    
+    private var distanceInputUnits: [DistanceInputUnit] {
+        DistanceInputUnit.units(for: unitFormatter.distanceUnit)
     }
     
     private var focusedDistanceParam: ParamData? {
@@ -169,10 +206,21 @@ struct EditSetsView: View {
                                onDone: { focusedParamId = nil }) {
                 if let focusedDistanceParam {
                     DistanceUnitPicker(selectedUnit: focusedDistanceParam.distanceUnit,
+                                       units: distanceInputUnits,
                                        onSelect: setFocusedDistanceUnit)
                 }
             }
         }
+        .onAppear(perform: applyUnitPreferencesIfNeeded)
+    }
+    
+    private func applyUnitPreferencesIfNeeded() {
+        guard !didApplyUnitPreferences else {
+            return
+        }
+        
+        didApplyUnitPreferences = true
+        params.forEach { $0.applyUnitFormatter(unitFormatter) }
     }
     
     private func parameterInput(item: Binding<ParamData>) -> some View {
@@ -272,6 +320,15 @@ struct EditSetsView: View {
         param.distanceUnit = unit
     }
     
+    private func parsedFloat(from text: String) -> Float? {
+        let numberFormatter = NumberFormatter()
+        numberFormatter.numberStyle = .decimal
+        if let value = numberFormatter.number(from: text)?.floatValue {
+            return value
+        }
+        return DistanceInputUnit.inputValue(from: text)
+    }
+    
     private func prepareToSave() {
         
         var result = [SetsParameter]()
@@ -279,12 +336,8 @@ struct EditSetsView: View {
         for param in params {
             switch param.param {
             case .weight(_):
-                let numberFormatter = NumberFormatter()
-                numberFormatter.numberStyle = NumberFormatter.Style.decimal
-                if let value = numberFormatter.number(from: param.value)?.floatValue, value > 0 {
-                    result.append(.weight(value))
-                } else if let value = Float(param.value), value > 0 {
-                    result.append(.weight(value))
+                if let value = parsedFloat(from: param.value), value > 0 {
+                    result.append(.weight(unitFormatter.kilograms(fromInputValue: value)))
                 } else {
                     param.shake.send()
                     return
@@ -326,4 +379,5 @@ struct EditSetsView: View {
 
 #Preview {
     EditSetsView(title: "Add new sets", params: [.weight(100), .repeats(10)]) { result in }
+        .environmentObject(AppSettings())
 }

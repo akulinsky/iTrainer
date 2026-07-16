@@ -51,6 +51,10 @@ class ExerciseEditViewModel: ObservableObject {
     private var deletedSets = [SetEditCellViewModel]()
     private var previousRestTime = TimeInterval(120).minuteSecond
     
+    private var unitFormatter: UnitFormatter {
+        UnitFormatter(settings: AppSettings.shared)
+    }
+    
     private var restTimeInterval: TimeInterval {
         var time = TimeInterval(0)
         
@@ -86,7 +90,8 @@ class ExerciseEditViewModel: ObservableObject {
             }
             
             let dataManager = DataManagerBackground(container: DataContainer.shared.sharedModelContainer)
-            let items = await dataManager.fetchSets(for: exercise.id).map { SetEditCellViewModel(model: SetsModel(model: $0), exerciseType: type) }
+            let unitFormatter = self.unitFormatter
+            let items = await dataManager.fetchSets(for: exercise.id).map { SetEditCellViewModel(model: SetsModel(model: $0), exerciseType: type, unitFormatter: unitFormatter) }
             await MainActor.run {
                 setsViewModels = items
                 if let complete = complete {
@@ -118,7 +123,7 @@ class ExerciseEditViewModel: ObservableObject {
             set.parameters = type.parameters
         }
         
-        setsViewModels.append(SetEditCellViewModel(model: set, exerciseType: type))
+        setsViewModels.append(SetEditCellViewModel(model: set, exerciseType: type, unitFormatter: unitFormatter))
     }
     
     func delete(setsViewModel: SetEditCellViewModel) {
@@ -172,6 +177,10 @@ class ExerciseEditViewModel: ObservableObject {
                 return
             }
         }
+    }
+    
+    var distanceInputUnits: [DistanceInputUnit] {
+        DistanceInputUnit.units(for: unitFormatter.distanceUnit)
     }
     
     func focusedDistanceUnit(id: String?) -> DistanceInputUnit? {
@@ -239,12 +248,15 @@ class SetEditCellViewModel: ObservableObject, Identifiable {
         var shake = PassthroughSubject<Void, Never>()
         var valueBeforeEditing: SetsParameter?
         @Published var distanceUnit: DistanceInputUnit = .meters
+        var weightUnit: ResolvedWeightUnit = .kilograms
         
         let focusId: String
         let param: SetsParameter
         
         var unitText: String {
             switch param {
+            case .weight:
+                weightUnit.symbol
             case .distance:
                 distanceUnit.title
             default:
@@ -261,15 +273,16 @@ class SetEditCellViewModel: ObservableObject, Identifiable {
         
         let keyboardType: UIKeyboardType
         
-        init(param: SetsParameter, focusId: String) {
+        init(param: SetsParameter, focusId: String, unitFormatter: UnitFormatter = UnitFormatter(settings: AppSettings.shared)) {
             self.param = param
             self.focusId = focusId
             self.id = param.id
             
             switch param {
             case .weight(let value):
+                weightUnit = unitFormatter.weightUnit
                 if value > 0 {
-                    self.value = "\(value)"
+                    self.value = unitFormatter.weightText(kilograms: value)
                 }
                 keyboardType = .decimalPad
             case .repeats(let value):
@@ -279,9 +292,11 @@ class SetEditCellViewModel: ObservableObject, Identifiable {
                 keyboardType = .numberPad
             case .distance(let value):
                 if value > 0 {
-                    let unit = DistanceInputUnit.preferred(forMeters: value)
+                    let unit = DistanceInputUnit.preferred(forMeters: value, distanceUnit: unitFormatter.distanceUnit)
                     distanceUnit = unit
                     self.value = unit.textValue(forMeters: value)
+                } else {
+                    distanceUnit = DistanceInputUnit.units(for: unitFormatter.distanceUnit).first ?? .meters
                 }
                 keyboardType = .decimalPad
             case .time(let value):
@@ -296,6 +311,7 @@ class SetEditCellViewModel: ObservableObject, Identifiable {
     // MARK: - Properties
     
     private var exerciseType: ExerciseTypeModel
+    private let unitFormatter: UnitFormatter
     
     var id: UUID {
         model.id
@@ -311,12 +327,13 @@ class SetEditCellViewModel: ObservableObject, Identifiable {
     
     // MARK: - Init
     
-    init(model: SetsModel, exerciseType: ExerciseTypeModel) {
+    init(model: SetsModel, exerciseType: ExerciseTypeModel, unitFormatter: UnitFormatter = UnitFormatter(settings: AppSettings.shared)) {
         self.model = model
         self.exerciseType = exerciseType
+        self.unitFormatter = unitFormatter
         
         for param in self.model.parameters {
-            let paramData = ParamData(param: param, focusId: "set-\(model.id.uuidString)-\(param.id)")
+            let paramData = ParamData(param: param, focusId: "set-\(model.id.uuidString)-\(param.id)", unitFormatter: unitFormatter)
             paramsData.append(paramData)
             
         }
@@ -395,7 +412,7 @@ class SetEditCellViewModel: ObservableObject, Identifiable {
         switch paramData.param {
         case .weight:
             let value = parsedFloat(from: paramData.value)
-            return value > 0 ? .weight(value) : nil
+            return value > 0 ? .weight(unitFormatter.kilograms(fromInputValue: value)) : nil
         case .repeats:
             guard let value = Int(paramData.value), value > 0 else {
                 return nil
@@ -440,11 +457,11 @@ class SetEditCellViewModel: ObservableObject, Identifiable {
     private func displayValue(for parameter: SetsParameter) -> String {
         switch parameter {
         case .weight(let value):
-            return value > 0 ? "\(value)" : ""
+            return value > 0 ? unitFormatter.weightTextWithUnit(kilograms: value) : ""
         case .repeats(let value):
             return value > 0 ? "\(value)" : ""
         case .distance(let value):
-            return value > 0 ? value.distanceForDisplay : ""
+            return value > 0 ? unitFormatter.distanceText(meters: value) : ""
         case .time(let value):
             return value > 0 ? value.timeForTextField : ""
         }
@@ -453,7 +470,7 @@ class SetEditCellViewModel: ObservableObject, Identifiable {
     private func textFieldValue(for parameter: SetsParameter, unit: DistanceInputUnit = .meters) -> String {
         switch parameter {
         case .weight(let value):
-            return value > 0 ? "\(value)" : ""
+            return value > 0 ? unitFormatter.weightText(kilograms: value) : ""
         case .repeats(let value):
             return value > 0 ? "\(value)" : ""
         case .distance(let value):
