@@ -49,8 +49,8 @@
 "settings.units.weight" = "Вес";
 "settings.units.distance" = "Дистанция";
 "settings.units.system" = "Система";
-"settings.units.weight.kilograms" = "кг";
-"settings.units.weight.pounds" = "фунты";
+"settings.units.weight.kilograms" = "kg";
+"settings.units.weight.pounds" = "lb";
 "settings.units.distance.metric" = "Метрическая";
 "settings.units.distance.imperial" = "Имперская";
 "unit.repetitions.short" = "повт.";
