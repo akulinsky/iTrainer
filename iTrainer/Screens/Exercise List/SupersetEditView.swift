@@ -33,10 +33,7 @@ struct SupersetEditView: View {
             childrenHeaderRow
                 .listRowStyle(top: 12, bottom: 4)
             
-            if viewModel.children.isEmpty {
-                emptyChildrenPrompt
-                    .listRowStyle(top: 4, bottom: 10)
-            } else {
+            if !viewModel.children.isEmpty {
                 ForEach(viewModel.children) { child in
                     childRow(child)
                         .listRowStyle(top: 6, bottom: 6)
@@ -50,12 +47,10 @@ struct SupersetEditView: View {
                                 ))
                 }
                 .onMove(perform: viewModel.moveChild)
-                
-                if viewModel.children.count == 1 {
-                    oneChildPrompt
-                        .listRowStyle(top: 2, bottom: 10)
-                }
             }
+            
+            childrenPrompt
+                .listRowStyle(top: 2, bottom: 10)
             
             deleteButton
                 .listRowStyle(top: 18, bottom: 24)
@@ -159,22 +154,27 @@ struct SupersetEditView: View {
         .padding(.horizontal, 2)
     }
     
-    private var emptyChildrenPrompt: some View {
-        Text("Add at least two exercises to use this superset.")
-            .font(AppFont.rowSubtitle)
-            .foregroundStyle(AppColor.textSecondary)
-            .frame(maxWidth: .infinity, alignment: .leading)
-            .padding(.horizontal, 2)
-            .padding(.vertical, 10)
-    }
-    
-    private var oneChildPrompt: some View {
-        Text("Add one more exercise to use this superset.")
+    private var childrenPrompt: some View {
+        Text(childrenPromptText ?? "Add one more exercise to use this superset.")
             .font(AppFont.rowSubtitle)
             .foregroundStyle(AppColor.textSecondary)
             .frame(maxWidth: .infinity, alignment: .leading)
             .padding(.horizontal, 2)
             .padding(.vertical, 8)
+            .opacity(childrenPromptText == nil ? 0 : 1)
+            .accessibilityHidden(childrenPromptText == nil)
+    }
+    
+    private var childrenPromptText: String? {
+        if viewModel.children.isEmpty {
+            return "Add at least two exercises to use this superset."
+        }
+        
+        if viewModel.children.count == 1 {
+            return "Add one more exercise to use this superset."
+        }
+        
+        return nil
     }
     
     private var titleView: some View {
