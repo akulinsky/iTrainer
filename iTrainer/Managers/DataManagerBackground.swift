@@ -207,6 +207,11 @@ extension DataManagerBackground {
         }
         
         let reportCounts = reportSetCountsByExerciseId(from: reportWorkout)
+        let completedCount = reportCounts[exerciseId] ?? 0
+        guard sequence.contains(where: { $0.exercise.id == exerciseId }) else {
+            return completedCount >= plannedSlots(for: currentExercise)
+        }
+        
         guard let firstPendingSlot = sequence.first(where: { slot in
             (reportCounts[slot.exercise.id] ?? 0) < slot.occurrence
         }) else {
@@ -214,10 +219,10 @@ extension DataManagerBackground {
         }
         
         if firstPendingSlot.exercise.id == exerciseId {
-            return (reportCounts[exerciseId] ?? 0) >= firstPendingSlot.occurrence
+            return completedCount >= firstPendingSlot.occurrence
         }
         
-        return (reportCounts[exerciseId] ?? 0) > 0
+        return completedCount > 0
     }
     
     func restDurationAfterReportSet(exerciseId: UUID, reportWorkoutId: UUID) -> TimeInterval? {
