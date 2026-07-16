@@ -51,7 +51,7 @@ struct WorkoutListView: View {
                 }
             }
             .background(AppColor.backgroundPrimary)
-            .navigationTitle("Workouts")
+            .navigationTitle("workouts.title")
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
                 ToolbarItem(placement: .navigationBarTrailing) {
@@ -77,10 +77,10 @@ struct WorkoutListView: View {
             Image(systemName: "list.bullet.rectangle")
                 .font(.system(size: 44))
                 .foregroundStyle(AppColor.textSecondary)
-            Text("No workouts")
+            Text("workouts.empty.title")
                 .font(AppFont.rowTitle)
                 .foregroundStyle(AppColor.textPrimary)
-            Button("New workout", action: clickBtnNewWorkout)
+            Button("workouts.new", action: clickBtnNewWorkout)
                 .buttonStyle(.borderedProminent)
                 .tint(AppColor.brandPrimary)
             Spacer()
@@ -111,7 +111,7 @@ struct WorkoutListView: View {
     private func optionButton() -> some View {
         switch editMode {
         case .active:
-            return AnyView(Button("Done", action: clickBtnDone).bold())
+            return AnyView(Button("common.done", action: clickBtnDone).bold())
         default:
             return AnyView(menuItem())
         }
@@ -119,12 +119,12 @@ struct WorkoutListView: View {
     
     private func menuItem() -> some View {
         Menu {
-            Button("Edit", systemImage: "pencil", action: clickBtnEditint)
+            Button("common.edit", systemImage: "pencil", action: clickBtnEditint)
                 .disabled(viewModel.workouts.isEmpty)
 //            Button("Edit", systemImage: "thermometer.sun.fill", action: clickBtnEditint)
 //                .symbolRenderingMode(.palette)
 //                .foregroundStyle(.red, .yellow, .blue)
-            Button("New workout", systemImage: "plus.square", action: clickBtnNewWorkout)
+            Button("workouts.new", systemImage: "plus.square", action: clickBtnNewWorkout)
         } label: {
             VStack {
                 Spacer()
@@ -142,8 +142,8 @@ struct WorkoutListView: View {
         }
         
         return EditNameView(value: title.isEmpty ? "" : title,
-                            title: viewModel.editWorkout == nil ? "New workout" : "Edit workout",
-                     placeholder: "New workout name") {
+                            title: viewModel.editWorkout == nil ? String(localized: "workouts.new") : String(localized: "workouts.edit"),
+                            placeholder: String(localized: "workouts.name.placeholder")) {
             
             switch $0 {
             case .save(let name):

@@ -33,7 +33,7 @@ struct EditNameView: View {
     
     init(value: String = "", 
          title: String = "",
-         placeholder: String = "New name",
+         placeholder: String = String(localized: "common.name.placeholder"),
          complete: @escaping ResultBlock) {
         
         _value = State(wrappedValue: value)
@@ -46,7 +46,7 @@ struct EditNameView: View {
         NavigationStack {
             ScrollView {
                 VStack(alignment: .leading, spacing: 8) {
-                    Text("Name")
+                    Text("common.name")
                         .font(AppFont.caption)
                         .foregroundStyle(AppColor.textSecondary)
                         .lineLimit(1)
@@ -82,13 +82,13 @@ struct EditNameView: View {
             .toolbarTitleDisplayMode(.inline)
             .toolbar {
                 ToolbarItem(placement: .topBarLeading) {
-                    Button("Cancel") {
+                    Button("common.cancel") {
                         cancel()
                     }
                     .foregroundStyle(AppColor.textSecondary)
                 }
                 ToolbarItem(placement: .topBarTrailing) {
-                    Button("Save") {
+                    Button("common.save") {
                         save()
                     }
                     .font(AppFont.rowTitle)

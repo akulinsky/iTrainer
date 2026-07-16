@@ -104,7 +104,7 @@ struct WorkoutGroupCell: View {
     private var statusBadge: some View {
         switch status {
         case .active:
-            Text("Active")
+            Text("workout_groups.status.active")
                 .font(AppFont.workoutGroupStatus)
                 .foregroundStyle(AppColor.progressAmber)
                 .padding(.horizontal, 12)
@@ -112,7 +112,7 @@ struct WorkoutGroupCell: View {
                 .background(AppColor.progressAmber.opacity(0.14))
                 .clipShape(RoundedRectangle(cornerRadius: 8, style: .continuous))
         case .lastCompleted:
-            Text("Last")
+            Text("workout_groups.status.last")
                 .font(AppFont.workoutGroupStatus)
                 .foregroundStyle(AppColor.progressGreen)
                 .padding(.horizontal, 12)
@@ -125,7 +125,7 @@ struct WorkoutGroupCell: View {
     }
     
     private var exercisesText: String {
-        "\(exerciseCount) exercises"
+        String.localizedStringWithFormat(String(localized: "workout_groups.exercise_count"), exerciseCount)
     }
     
     private var progressPercent: Int {

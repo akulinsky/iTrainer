@@ -40,6 +40,46 @@
 "report.metric.improvement.formula" = "For most metrics: current - previous. For pace: previous - current because lower pace is better.";
 "report.metric.improvement.example" = "Previous pace 8:00 per unit, current 7:30 per unit = -0:30 improvement";
 
+/* Common */
+
+"common.cancel" = "Cancel";
+"common.done" = "Done";
+"common.edit" = "Edit";
+"common.save" = "Save";
+"common.name" = "Name";
+"common.name.placeholder" = "New name";
+
+/* Workouts */
+
+"workouts.title" = "Workouts";
+"workouts.empty.title" = "No workouts";
+"workouts.new" = "New workout";
+"workouts.edit" = "Edit workout";
+"workouts.name.placeholder" = "New workout name";
+
+/* Workout Groups */
+
+"workout_groups.title" = "Groups";
+"workout_groups.empty.title" = "No workout selected";
+"workout_groups.choose_workout" = "Choose workout";
+"workout_groups.new" = "New group";
+"workout_groups.edit" = "Edit group";
+"workout_groups.name.placeholder" = "New group name";
+"workout_groups.status.active" = "Active";
+"workout_groups.status.last" = "Last";
+"workout_groups.exercise_count" = "%d exercises";
+
+/* Active Workout */
+
+"active_workout.title" = "Active workout";
+"active_workout.metric.workout" = "Workout";
+"active_workout.metric.rest" = "Rest";
+"active_workout.metric.progress" = "Progress";
+"active_workout.finish" = "Finish";
+"active_workout.finish_alert.title" = "Finish workout?";
+"active_workout.finish_alert.close_current" = "Current workout will be closed.";
+"active_workout.finish_alert.incomplete_progress" = "You completed %d of %d exercises. Finish anyway?";
+
 /* Reports */
 
 "reports.common.close" = "Close";

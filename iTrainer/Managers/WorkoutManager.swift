@@ -56,7 +56,7 @@ final class WorkoutManager: ObservableObject {
     
     @Published private(set) var workoutProgress: Double = 0
     
-    @Published private(set) var currentWorkoutTitle: String = "Active workout"
+    @Published private(set) var currentWorkoutTitle: String = String(localized: "active_workout.title")
     
     @Published private(set) var currentWorkoutGroupId: UUID?
     
@@ -70,10 +70,12 @@ final class WorkoutManager: ObservableObject {
         guard isWorkoutInProgress,
               targetExercisesCount > 0,
               completedExercisesCount < targetExercisesCount else {
-            return "Current workout will be closed."
+            return String(localized: "active_workout.finish_alert.close_current")
         }
         
-        return "You completed \(completedExercisesCount) of \(targetExercisesCount) exercises. Finish anyway?"
+        return String.localizedStringWithFormat(String(localized: "active_workout.finish_alert.incomplete_progress"),
+                                                completedExercisesCount,
+                                                targetExercisesCount)
     }
     
     private var completedExercisesCount = 0

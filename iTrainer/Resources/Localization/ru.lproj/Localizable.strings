@@ -40,6 +40,46 @@
 "report.metric.improvement.formula" = "Для большинства показателей: текущий - предыдущий. Для темпа: предыдущий - текущий, потому что меньший темп лучше.";
 "report.metric.improvement.example" = "Предыдущий темп 8:00 за единицу, текущий 7:30 за единицу = улучшение -0:30";
 
+/* Common */
+
+"common.cancel" = "Отмена";
+"common.done" = "Готово";
+"common.edit" = "Редактировать";
+"common.save" = "Сохранить";
+"common.name" = "Название";
+"common.name.placeholder" = "Новое название";
+
+/* Workouts */
+
+"workouts.title" = "Тренировки";
+"workouts.empty.title" = "Нет тренировок";
+"workouts.new" = "Новая тренировка";
+"workouts.edit" = "Редактировать тренировку";
+"workouts.name.placeholder" = "Название тренировки";
+
+/* Workout Groups */
+
+"workout_groups.title" = "Группы";
+"workout_groups.empty.title" = "Тренировка не выбрана";
+"workout_groups.choose_workout" = "Выбрать тренировку";
+"workout_groups.new" = "Новая группа";
+"workout_groups.edit" = "Редактировать группу";
+"workout_groups.name.placeholder" = "Название группы";
+"workout_groups.status.active" = "Активна";
+"workout_groups.status.last" = "Последняя";
+"workout_groups.exercise_count" = "%d упражнений";
+
+/* Active Workout */
+
+"active_workout.title" = "Активная тренировка";
+"active_workout.metric.workout" = "Тренировка";
+"active_workout.metric.rest" = "Отдых";
+"active_workout.metric.progress" = "Прогресс";
+"active_workout.finish" = "Финиш";
+"active_workout.finish_alert.title" = "Завершить тренировку?";
+"active_workout.finish_alert.close_current" = "Текущая тренировка будет закрыта.";
+"active_workout.finish_alert.incomplete_progress" = "Вы выполнили %d из %d упражнений. Завершить все равно?";
+
 /* Reports */
 
 "reports.common.close" = "Закрыть";

@@ -17,7 +17,7 @@ struct WorkoutStatusWidget: View {
     let onRestTap: () -> Void
     let onProgressTap: () -> Void
     
-    init(title: String = "Active workout",
+    init(title: String = String(localized: "active_workout.title"),
          workoutTime: TimeInterval,
          restTime: TimeInterval? = nil,
          restProgress: Double = 0,
@@ -42,14 +42,14 @@ struct WorkoutStatusWidget: View {
                 .foregroundStyle(AppColor.textPrimary)
             
             HStack(alignment: .top, spacing: isRestVisible ? 14 : 7) {
-                WorkoutStatusMetricView(title: "Workout",
+                WorkoutStatusMetricView(title: String(localized: "active_workout.metric.workout"),
                                         value: workoutTime.workoutStatusDisplayTime,
                                         color: AppColor.workoutGreen,
                                         progress: 1,
                                         isFullRing: true,
                                         action: onWorkoutTap)
                 
-                WorkoutStatusMetricView(title: "Rest",
+                WorkoutStatusMetricView(title: String(localized: "active_workout.metric.rest"),
                                         value: restTime?.minuteSecond ?? "0:00",
                                         color: AppColor.restAmber,
                                         progress: restProgress,
@@ -63,7 +63,7 @@ struct WorkoutStatusWidget: View {
                 .accessibilityHidden(!isRestVisible)
                 .zIndex(1)
                 
-                WorkoutStatusMetricView(title: "Progress",
+                WorkoutStatusMetricView(title: String(localized: "active_workout.metric.progress"),
                                         value: "\(workoutProgressPercent)%",
                                         color: workoutProgressColor,
                                         progress: workoutProgress,

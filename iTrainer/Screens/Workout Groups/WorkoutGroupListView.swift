@@ -63,7 +63,7 @@ struct WorkoutGroupListView: View {
                 }
             }
             .background(AppColor.backgroundPrimary)
-            .navigationTitle(viewModel.workout?.title ?? "Groups")
+            .navigationTitle(viewModel.workout?.title ?? String(localized: "workout_groups.title"))
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
                 ToolbarItem(placement: .navigationBarLeading) {
@@ -95,9 +95,9 @@ struct WorkoutGroupListView: View {
             .contentSelf(content: { view in
                 contentViewNavigation(content: view)
             })
-            .alert("Finish workout?", isPresented: $isEndWorkoutAlertPresented) {
-                Button("Cancel", role: .cancel) {}
-                Button("Finish", role: .destructive) {
+            .alert(Text("active_workout.finish_alert.title"), isPresented: $isEndWorkoutAlertPresented) {
+                Button("common.cancel", role: .cancel) {}
+                Button("active_workout.finish", role: .destructive) {
                     finishWorkout()
                 }
             } message: {
@@ -127,10 +127,10 @@ struct WorkoutGroupListView: View {
             Image(systemName: "list.bullet.rectangle")
                 .font(.system(size: 44))
                 .foregroundStyle(AppColor.textSecondary)
-            Text("No workout selected")
+            Text("workout_groups.empty.title")
                 .font(AppFont.rowTitle)
                 .foregroundStyle(AppColor.textPrimary)
-            Button("Choose workout", action: viewModel.showWorkoutPicker)
+            Button("workout_groups.choose_workout", action: viewModel.showWorkoutPicker)
                 .buttonStyle(.borderedProminent)
                 .tint(AppColor.brandPrimary)
             Spacer()
@@ -214,7 +214,7 @@ struct WorkoutGroupListView: View {
     private func optionButton() -> some View {
         switch editMode {
         case .active:
-            return AnyView(Button("Done", action: clickBtnDone).bold())
+            return AnyView(Button("common.done", action: clickBtnDone).bold())
         default:
             return AnyView(menuItem())
         }
@@ -222,9 +222,9 @@ struct WorkoutGroupListView: View {
     
     private func menuItem() -> some View {
         Menu {
-            Button("Edit", systemImage: "pencil", action: clickBtnEditint)
+            Button("common.edit", systemImage: "pencil", action: clickBtnEditint)
                 .disabled(viewModel.workout == nil)
-            Button("New group", systemImage: "plus.square", action: clickBtnNewWorkoutGroup)
+            Button("workout_groups.new", systemImage: "plus.square", action: clickBtnNewWorkoutGroup)
                 .disabled(viewModel.workout == nil)
         } label: {
             VStack {
@@ -243,8 +243,8 @@ struct WorkoutGroupListView: View {
         }
         
         return EditNameView(value: title.isEmpty ? "" : title,
-                            title: viewModel.editGroup == nil ? "New group" : "Edit group",
-                            placeholder: "New group name") {
+                            title: viewModel.editGroup == nil ? String(localized: "workout_groups.new") : String(localized: "workout_groups.edit"),
+                            placeholder: String(localized: "workout_groups.name.placeholder")) {
             
             switch $0 {
             case .save(let name):
