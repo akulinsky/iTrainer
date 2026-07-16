@@ -88,16 +88,41 @@ struct UnitFormatter {
         }
     }
     
+    func distanceGoalText(actualMeters: Float, targetMeters: Float) -> String {
+        let unit: DistanceEntryUnit
+        switch distanceUnit {
+        case .metric:
+            unit = metricDistanceDisplayUnit(forMeters: targetMeters)
+        case .imperial:
+            unit = imperialDistanceDisplayUnit(forMeters: targetMeters)
+        }
+        
+        return "\(unit.valueText(forMeters: actualMeters)) / \(unit.valueText(forMeters: targetMeters)) \(unit.symbol)"
+    }
+    
     func meters(fromInputValue value: Float, unit: DistanceEntryUnit) -> Float {
         unit.meters(fromInputValue: value)
     }
     
     func paceText(secondsPerMeter: Float) -> String {
+        "\(paceValueText(secondsPerMeter: secondsPerMeter))\(paceUnitText)"
+    }
+    
+    func paceValueText(secondsPerMeter: Float) -> String {
         switch distanceUnit {
         case .metric:
-            return TimeInterval(secondsPerMeter * 1000).timeForDisplay + "/km"
+            return TimeInterval(secondsPerMeter * 1000).timeForDisplay
         case .imperial:
-            return TimeInterval(secondsPerMeter * Self.metersPerMile).timeForDisplay + "/mi"
+            return TimeInterval(secondsPerMeter * Self.metersPerMile).timeForDisplay
+        }
+    }
+    
+    var paceUnitText: String {
+        switch distanceUnit {
+        case .metric:
+            "/km"
+        case .imperial:
+            "/mi"
         }
     }
     

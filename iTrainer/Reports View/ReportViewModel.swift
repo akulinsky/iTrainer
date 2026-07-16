@@ -285,7 +285,7 @@ class ReportViewModel: ObservableObject {
         if trackingTypes.contains(.distance) || trackingTypes.contains(.distanceTime) {
             summaryCards.append(SummaryCard(title: String(localized: "reports.summary.distance_goal"),
                                            value: rawDistanceProgress.map { percentText(for: $0, isCapped: false) } ?? "-",
-                                           detail: targetDistance > 0 ? "\(unitFormatter.distanceText(meters: actualDistance)) / \(unitFormatter.distanceText(meters: targetDistance))" : unitFormatter.distanceText(meters: actualDistance),
+                                           detail: targetDistance > 0 ? unitFormatter.distanceGoalText(actualMeters: actualDistance, targetMeters: targetDistance) : unitFormatter.distanceText(meters: actualDistance),
                                            progress: distanceProgress,
                                            colorProgress: rawDistanceProgress,
                                            systemImage: nil))
@@ -379,7 +379,7 @@ class ReportViewModel: ObservableObject {
     private func paceGoalDetail(actual: Float?, target: Float?) -> String {
         guard let actual else { return String(localized: "reports.summary.distance_time") }
         guard let target else { return formattedPace(actual) }
-        return "\(formattedPace(actual)) / \(formattedPace(target))"
+        return "\(unitFormatter.paceValueText(secondsPerMeter: actual)) / \(unitFormatter.paceText(secondsPerMeter: target))"
     }
     
     private func formattedPace(_ value: Float) -> String {
