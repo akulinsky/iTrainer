@@ -48,8 +48,6 @@ class ExerciseEditViewModel: ObservableObject {
     
     var exercise: ExerciseModel
     
-    private let networkClient = ServiceNetworkClient()
-    
     private var isFirstTime = true
     private var deletedSets = [SetEditCellViewModel]()
     private var previousRestTime = TimeInterval(120).minuteSecond

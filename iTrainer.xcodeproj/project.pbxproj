@@ -75,15 +75,8 @@
 		F69BD0FD2C54FB190057080E /* AKDisabledButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = F69BD0FC2C54FB190057080E /* AKDisabledButtonStyle.swift */; };
 		F69BD0FF2C54FBC10057080E /* View+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = F69BD0FE2C54FBC10057080E /* View+Utils.swift */; };
 		F69BD1012C54FBEE0057080E /* NetworkUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = F69BD1002C54FBEE0057080E /* NetworkUtils.swift */; };
-		F69BD1072C54FC170057080E /* NetworkClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = F69BD1032C54FC170057080E /* NetworkClient.swift */; };
-		F69BD1092C54FC170057080E /* NetworkProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = F69BD1052C54FC170057080E /* NetworkProvider.swift */; };
-		F69BD10A2C54FC170057080E /* ServiceErrors.swift in Sources */ = {isa = PBXBuildFile; fileRef = F69BD1062C54FC170057080E /* ServiceErrors.swift */; };
-		F69BD1112C54FEA70057080E /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = F69BD1102C54FEA70057080E /* Alamofire */; };
-		F69BD1142C5500580057080E /* ServiceRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F69BD1122C5500570057080E /* ServiceRouter.swift */; };
-		F69BD1152C5500580057080E /* ServiceNetworkProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = F69BD1132C5500580057080E /* ServiceNetworkProvider.swift */; };
 		F69BD11C2C5506B70057080E /* WorkoutListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F69BD11B2C5506B70057080E /* WorkoutListView.swift */; };
 		F69BD11E2C5507200057080E /* DataManagerBackground.swift in Sources */ = {isa = PBXBuildFile; fileRef = F69BD11D2C5507200057080E /* DataManagerBackground.swift */; };
-		F69BD1212C550A5C0057080E /* SDWebImageSwiftUI in Frameworks */ = {isa = PBXBuildFile; productRef = F69BD1202C550A5C0057080E /* SDWebImageSwiftUI */; };
 		F69BD1232C550E8F0057080E /* DataContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = F69BD1222C550E8E0057080E /* DataContainer.swift */; };
 		F69BD1252C5519AA0057080E /* DataItemsProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = F69BD1242C5519AA0057080E /* DataItemsProtocol.swift */; };
 		F69BD1272C551B040057080E /* WorkoutModelDB.swift in Sources */ = {isa = PBXBuildFile; fileRef = F69BD1262C551B040057080E /* WorkoutModelDB.swift */; };
@@ -231,11 +224,6 @@
 		F69BD0FC2C54FB190057080E /* AKDisabledButtonStyle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AKDisabledButtonStyle.swift; sourceTree = "<group>"; };
 		F69BD0FE2C54FBC10057080E /* View+Utils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "View+Utils.swift"; sourceTree = "<group>"; };
 		F69BD1002C54FBEE0057080E /* NetworkUtils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkUtils.swift; sourceTree = "<group>"; };
-		F69BD1032C54FC170057080E /* NetworkClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkClient.swift; sourceTree = "<group>"; };
-		F69BD1052C54FC170057080E /* NetworkProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkProvider.swift; sourceTree = "<group>"; };
-		F69BD1062C54FC170057080E /* ServiceErrors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ServiceErrors.swift; sourceTree = "<group>"; };
-		F69BD1122C5500570057080E /* ServiceRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ServiceRouter.swift; sourceTree = "<group>"; };
-		F69BD1132C5500580057080E /* ServiceNetworkProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ServiceNetworkProvider.swift; sourceTree = "<group>"; };
 		F69BD11B2C5506B70057080E /* WorkoutListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutListView.swift; sourceTree = "<group>"; };
 		F69BD11D2C5507200057080E /* DataManagerBackground.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataManagerBackground.swift; sourceTree = "<group>"; };
 		F69BD1222C550E8E0057080E /* DataContainer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataContainer.swift; sourceTree = "<group>"; };
@@ -302,8 +290,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F69BD1212C550A5C0057080E /* SDWebImageSwiftUI in Frameworks */,
-				F69BD1112C54FEA70057080E /* Alamofire in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -426,9 +412,6 @@
 			children = (
 				F69BD0F92C54FA3A0057080E /* Utilities */,
 				F69BD0F72C54F9E90057080E /* Extensions */,
-				F69BD0F82C54FA230057080E /* Networking */,
-				F69BD1132C5500580057080E /* ServiceNetworkProvider.swift */,
-				F69BD1122C5500570057080E /* ServiceRouter.swift */,
 				F69BD0F62C54F9CB0057080E /* Network Models */,
 				F69BD0F42C54F9950057080E /* Data Base Models */,
 				F69BD0F52C54F9B70057080E /* Models */,
@@ -539,14 +522,6 @@
 			path = Extensions;
 			sourceTree = "<group>";
 		};
-		F69BD0F82C54FA230057080E /* Networking */ = {
-			isa = PBXGroup;
-			children = (
-				F69BD1022C54FC170057080E /* NetworkProvider */,
-			);
-			path = Networking;
-			sourceTree = "<group>";
-		};
 		F69BD0F92C54FA3A0057080E /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
@@ -555,16 +530,6 @@
 				F6B9B2282C96BF3B00115CEA /* LifecycleLogger.swift */,
 			);
 			path = Utilities;
-			sourceTree = "<group>";
-		};
-		F69BD1022C54FC170057080E /* NetworkProvider */ = {
-			isa = PBXGroup;
-			children = (
-				F69BD1032C54FC170057080E /* NetworkClient.swift */,
-				F69BD1052C54FC170057080E /* NetworkProvider.swift */,
-				F69BD1062C54FC170057080E /* ServiceErrors.swift */,
-			);
-			path = NetworkProvider;
 			sourceTree = "<group>";
 		};
 		F69BD10C2C54FD6B0057080E /* Frameworks */ = {
@@ -737,8 +702,6 @@
 			);
 			name = iTrainer;
 			packageProductDependencies = (
-				F69BD1102C54FEA70057080E /* Alamofire */,
-				F69BD1202C550A5C0057080E /* SDWebImageSwiftUI */,
 			);
 			productName = iTrainer;
 			productReference = F69BD0C42C54F8DA0057080E /* iTrainer.app */;
@@ -814,8 +777,6 @@
 			);
 			mainGroup = F69BD0BB2C54F8DA0057080E;
 			packageReferences = (
-				F69BD10F2C54FEA70057080E /* XCRemoteSwiftPackageReference "Alamofire" */,
-				F69BD11F2C550A5C0057080E /* XCRemoteSwiftPackageReference "SDWebImageSwiftUI" */,
 			);
 			productRefGroup = F69BD0C52C54F8DA0057080E /* Products */;
 			projectDirPath = "";
@@ -889,7 +850,6 @@
 				F69BD11C2C5506B70057080E /* WorkoutListView.swift in Sources */,
 				F677A0702FFBBCCD00101B33 /* CalendarMonthGridView.swift in Sources */,
 				F6B9B2292C96BF3B00115CEA /* LifecycleLogger.swift in Sources */,
-				F69BD1142C5500580057080E /* ServiceRouter.swift in Sources */,
 				F6EA7BCE2C57ACEF005225A0 /* WorkoutGroupModel.swift in Sources */,
 				F6EA7BD02C57AD03005225A0 /* ExerciseModel.swift in Sources */,
 				F6CCEE0C2FFD547B00686CFB /* HiddenExercisesView.swift in Sources */,
@@ -953,7 +913,6 @@
 				F6EA7BE02C57DEF6005225A0 /* ExerciseListViewModel.swift in Sources */,
 				F64CF04A2FF55BE0009FB938 /* ReportExerciseSetComparisonCell.swift in Sources */,
 				F6EA7BE42C57F6F9005225A0 /* ExerciseViewModel.swift in Sources */,
-				F69BD10A2C54FC170057080E /* ServiceErrors.swift in Sources */,
 				F6CF519A3007DEF500D35E28 /* ExerciseItemKind.swift in Sources */,
 				F6CB130D2C9B172700B9FCFC /* ReportsCalendarViewModel.swift in Sources */,
 				F6164EAE2C9066860019C0AF /* WorkoutManager.swift in Sources */,
@@ -973,11 +932,8 @@
 				F656783D2FF42AE100250F44 /* ReportStatusService.swift in Sources */,
 				F6186DF82FFEDBF10018B216 /* ReportExerciseHistoryView.swift in Sources */,
 				F6336E1A30011993006ECA08 /* View+KeyboardAccessory.swift in Sources */,
-				F69BD1152C5500580057080E /* ServiceNetworkProvider.swift in Sources */,
-				F69BD1072C54FC170057080E /* NetworkClient.swift in Sources */,
 				F625F2BB2FF93A380074FE79 /* ReportDashboardDataBuilder.swift in Sources */,
 				F6CB903F2C77687E002529A6 /* ExerciseEditView.swift in Sources */,
-				F69BD1092C54FC170057080E /* NetworkProvider.swift in Sources */,
 				F6DD68AD2C6503C9004EFB03 /* ExerciseTypeCell.swift in Sources */,
 				F6CF51A03007EC2A00D35E28 /* SupersetEditViewModel.swift in Sources */,
 				F6EA7BDC2C57DDF0005225A0 /* ExerciseListView.swift in Sources */,
@@ -1330,38 +1286,6 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
-
-/* Begin XCRemoteSwiftPackageReference section */
-		F69BD10F2C54FEA70057080E /* XCRemoteSwiftPackageReference "Alamofire" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/Alamofire/Alamofire.git";
-			requirement = {
-				kind = exactVersion;
-				version = 5.4.3;
-			};
-		};
-		F69BD11F2C550A5C0057080E /* XCRemoteSwiftPackageReference "SDWebImageSwiftUI" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/SDWebImage/SDWebImageSwiftUI.git";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 3.1.1;
-			};
-		};
-/* End XCRemoteSwiftPackageReference section */
-
-/* Begin XCSwiftPackageProductDependency section */
-		F69BD1102C54FEA70057080E /* Alamofire */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = F69BD10F2C54FEA70057080E /* XCRemoteSwiftPackageReference "Alamofire" */;
-			productName = Alamofire;
-		};
-		F69BD1202C550A5C0057080E /* SDWebImageSwiftUI */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = F69BD11F2C550A5C0057080E /* XCRemoteSwiftPackageReference "SDWebImageSwiftUI" */;
-			productName = SDWebImageSwiftUI;
-		};
-/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = F69BD0BC2C54F8DA0057080E /* Project object */;
 }

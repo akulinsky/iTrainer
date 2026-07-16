@@ -27,8 +27,6 @@ class WorkoutListViewModel: ObservableObject {
     
     var errorMessage: String? = nil
     
-    private let networkClient = ServiceNetworkClient()
-    
     func setup() {
         
     }

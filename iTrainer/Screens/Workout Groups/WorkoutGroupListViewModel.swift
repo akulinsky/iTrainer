@@ -33,8 +33,6 @@ class WorkoutGroupListViewModel: ObservableObject {
     
     var workout: WorkoutModel?
     
-    private let networkClient = ServiceNetworkClient()
-    
     init(workout: WorkoutModel? = nil) {
         self.workout = workout
     }

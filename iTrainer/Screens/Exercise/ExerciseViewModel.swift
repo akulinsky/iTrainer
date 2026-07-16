@@ -98,8 +98,6 @@ class ExerciseViewModel: ObservableObject {
     
     var exercise: ExerciseModel
     
-    private let networkClient = ServiceNetworkClient()
-    
     static var countExerciseViewModel = 0
     
 //    private let log = LifecycleLogger(name: "ExerciseViewModel")

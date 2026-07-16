@@ -71,7 +71,6 @@ class ExerciseListViewModel: ObservableObject {
         !hiddenExercises.isEmpty
     }
     
-    private let networkClient = ServiceNetworkClient()
     private var pendingAddTypeIds = [String]()
     private var pendingHiddenRestoreIds = [UUID]()
     
