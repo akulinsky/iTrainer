@@ -38,7 +38,7 @@ struct ReportSetsCell: View {
                 .frame(width: 26, height: 26)
             
             VStack(alignment: .leading, spacing: 4) {
-                Text("Set \(model.index)")
+                Text(String.localizedStringWithFormat(String(localized: "exercise.set_number"), model.index))
                     .font(AppFont.rowTitle)
                     .foregroundStyle(AppColor.textPrimary)
                 
@@ -117,4 +117,3 @@ struct ReportSetsCell: View {
                                               params: [.weight(50), .repeats(8)]), actionBlock: {_ in })
         .environmentObject(AppSettings())
 }
-

@@ -141,7 +141,7 @@ class ExerciseEditViewModel: ObservableObject {
     }
     
     var restTimeDisplay: String {
-        switchRest ? "No rest" : restTime
+        switchRest ? String(localized: "superset.without_rest") : restTime
     }
     
     func setRestTime(seconds: Int) {
@@ -214,7 +214,7 @@ class ExerciseEditViewModel: ObservableObject {
     
     func save(completeBlock: @escaping SaveingBlock) {
         guard validateTargetSets() else {
-            errorMessage = "Fill all target set values before saving."
+            errorMessage = String(localized: "exercise.edit.save_error.invalid_sets")
             isShowAlert = true
             completeBlock(false)
             return

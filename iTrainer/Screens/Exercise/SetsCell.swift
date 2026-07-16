@@ -51,7 +51,7 @@ struct SetsCell: View {
                 .frame(width: 24, height: 24)
             
             VStack(alignment: .leading, spacing: 4) {
-                Text("Set \(model.index)")
+                Text(String.localizedStringWithFormat(String(localized: "exercise.set_number"), model.index))
                     .font(AppFont.rowTitle)
                     .foregroundStyle(AppColor.textPrimary)
                 
@@ -129,4 +129,3 @@ struct SetsCell: View {
     SetsCell(model: SetsModel(params: [.weight(100), .repeats(10)])) { action in }
         .environmentObject(AppSettings())
 }
-

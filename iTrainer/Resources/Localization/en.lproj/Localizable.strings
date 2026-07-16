@@ -51,6 +51,7 @@
 "common.hide" = "Hide";
 "common.restore" = "Restore";
 "common.add" = "Add";
+"common.ok" = "OK";
 "common.name" = "Name";
 "common.name.placeholder" = "New name";
 
@@ -136,6 +137,54 @@
 "superset.active_locked" = "Active workout in progress. Finish it before changing superset exercises.";
 "superset.picker.title" = "Add exercises";
 "superset.picker.empty" = "No available exercises";
+
+/* Exercise */
+
+"exercise.edit.title" = "Edit exercise";
+"exercise.edit.custom_name" = "Custom name";
+"exercise.edit.name.placeholder" = "New title...";
+"exercise.edit.default_name_hint" = "Leave empty to use default name.";
+"exercise.edit.save_error.title" = "Cannot save exercise";
+"exercise.edit.save_error.message" = "Check target set values and try again.";
+"exercise.edit.save_error.invalid_sets" = "Fill all target set values before saving.";
+"exercise.info.accessibility_hint" = "Open exercise information";
+"exercise.latest_report" = "Latest report";
+"exercise.rest_time" = "Rest time";
+"exercise.rest_time.value" = "Rest %@";
+"exercise.rest_between_sets" = "Rest between sets";
+"exercise.target_sets" = "Target sets";
+"exercise.no_target_sets" = "No target sets";
+"exercise.no_target_sets.subtitle" = "Add target sets in edit";
+"exercise.add_result" = "Add result";
+"exercise.add_superset_result" = "Add superset result";
+"exercise.finish_workout" = "Finish workout";
+"exercise.next_exercise" = "Next exercise";
+"exercise.sets.new" = "New sets";
+"exercise.sets.edit" = "Edit sets";
+"exercise.report_sets.edit" = "Edit report sets";
+"exercise.add_set" = "Add set";
+"exercise.set_number" = "Set %d";
+"exercise.error.type_missing" = "Exercise type is missing";
+
+/* Sets */
+
+"sets.parameter.weight" = "Weight";
+"sets.parameter.reps" = "Reps";
+"sets.parameter.distance" = "Distance";
+"sets.parameter.time" = "Time";
+
+/* Tracking Type */
+
+"tracking_type.weighted_reps.title" = "Weighted reps";
+"tracking_type.reps_only.title" = "Reps only";
+"tracking_type.timed.title" = "Timed";
+"tracking_type.distance.title" = "Distance";
+"tracking_type.distance_time.title" = "Distance & time";
+"tracking_type.weighted_reps.description" = "Track weight and repetitions for each set.";
+"tracking_type.reps_only.description" = "Track repetitions for each set.";
+"tracking_type.timed.description" = "Track duration for each set.";
+"tracking_type.distance.description" = "Track distance for each set.";
+"tracking_type.distance_time.description" = "Track distance and duration.";
 
 /* Reports */
 

@@ -51,6 +51,7 @@
 "common.hide" = "Скрыть";
 "common.restore" = "Восстановить";
 "common.add" = "Добавить";
+"common.ok" = "OK";
 "common.name" = "Название";
 "common.name.placeholder" = "Новое название";
 
@@ -136,6 +137,54 @@
 "superset.active_locked" = "Активная тренировка идет. Завершите ее перед изменением упражнений суперсета.";
 "superset.picker.title" = "Добавить упражнения";
 "superset.picker.empty" = "Нет доступных упражнений";
+
+/* Exercise */
+
+"exercise.edit.title" = "Редактировать упражнение";
+"exercise.edit.custom_name" = "Свое название";
+"exercise.edit.name.placeholder" = "Новое название...";
+"exercise.edit.default_name_hint" = "Оставьте пустым, чтобы использовать название по умолчанию.";
+"exercise.edit.save_error.title" = "Не удалось сохранить упражнение";
+"exercise.edit.save_error.message" = "Проверьте целевые сеты и попробуйте снова.";
+"exercise.edit.save_error.invalid_sets" = "Заполните все значения целевых сетов перед сохранением.";
+"exercise.info.accessibility_hint" = "Открыть информацию об упражнении";
+"exercise.latest_report" = "Последний отчет";
+"exercise.rest_time" = "Время отдыха";
+"exercise.rest_time.value" = "Отдых %@";
+"exercise.rest_between_sets" = "Отдых между сетами";
+"exercise.target_sets" = "Целевые сеты";
+"exercise.no_target_sets" = "Нет целевых сетов";
+"exercise.no_target_sets.subtitle" = "Добавьте целевые сеты в редактировании";
+"exercise.add_result" = "Добавить результат";
+"exercise.add_superset_result" = "Добавить результат суперсета";
+"exercise.finish_workout" = "Завершить тренировку";
+"exercise.next_exercise" = "Следующее упражнение";
+"exercise.sets.new" = "Новые сеты";
+"exercise.sets.edit" = "Редактировать сеты";
+"exercise.report_sets.edit" = "Редактировать сеты отчета";
+"exercise.add_set" = "Добавить сет";
+"exercise.set_number" = "Сет %d";
+"exercise.error.type_missing" = "Тип упражнения отсутствует";
+
+/* Sets */
+
+"sets.parameter.weight" = "Вес";
+"sets.parameter.reps" = "Повт.";
+"sets.parameter.distance" = "Дист.";
+"sets.parameter.time" = "Время";
+
+/* Tracking Type */
+
+"tracking_type.weighted_reps.title" = "Вес и повт.";
+"tracking_type.reps_only.title" = "Только повт.";
+"tracking_type.timed.title" = "По времени";
+"tracking_type.distance.title" = "Дистанция";
+"tracking_type.distance_time.title" = "Дистанция и время";
+"tracking_type.weighted_reps.description" = "Отслеживает вес и повторения в каждом сете.";
+"tracking_type.reps_only.description" = "Отслеживает повторения в каждом сете.";
+"tracking_type.timed.description" = "Отслеживает длительность каждого сета.";
+"tracking_type.distance.description" = "Отслеживает дистанцию в каждом сете.";
+"tracking_type.distance_time.description" = "Отслеживает дистанцию и длительность.";
 
 /* Reports */
 

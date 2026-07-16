@@ -42,7 +42,7 @@ struct ExerciseEditView: View {
             .safeAreaPadding(.bottom, 20)
             .dismissKeyboardOnTap()
             .scrollDismissesKeyboard(.immediately)
-            .navigationTitle("Edit exercise")
+            .navigationTitle("exercise.edit.title")
             .toolbarTitleDisplayMode(.inline)
             .keyboardAccessory(isPresented: focusedInputId != nil,
                                onClear: clearFocusedInput,
@@ -58,14 +58,14 @@ struct ExerciseEditView: View {
             .toolbar {
                 if presentationMode.wrappedValue.isPresented {
                     ToolbarItem(placement: .topBarLeading) {
-                        Button("Cancel") {
+                        Button("common.cancel") {
                             cancel()
                         }
                         .foregroundStyle(AppColor.textSecondary)
                     }
                     
                     ToolbarItem(placement: .topBarTrailing) {
-                        Button("Save") {
+                        Button("common.save") {
                             save()
                         }
                         .font(AppFont.rowTitle)
@@ -76,14 +76,14 @@ struct ExerciseEditView: View {
             .onAppear {
                 viewModel.reloadData()
             }
-            .alert("Cannot save exercise", isPresented: $viewModel.isShowAlert) {
-                Button("OK", role: .cancel) {}
+            .alert(Text("exercise.edit.save_error.title"), isPresented: $viewModel.isShowAlert) {
+                Button("common.ok", role: .cancel) {}
             } message: {
-                Text(viewModel.errorMessage ?? "Check target set values and try again.")
+                Text(viewModel.errorMessage ?? String(localized: "exercise.edit.save_error.message"))
             }
             .sheet(isPresented: $isRestTimePickerPresented) {
                 DurationPickerSheet(
-                    title: "Rest time",
+                    title: String(localized: "exercise.rest_time"),
                     value: restTimeSecondsBinding,
                     range: 0...600,
                     secondStep: 5,
@@ -123,11 +123,11 @@ struct ExerciseEditView: View {
     @ViewBuilder
     private var titleView: some View {
         VStack(alignment: .leading, spacing: 14) {
-            Text("Custom name")
+            Text("exercise.edit.custom_name")
                 .font(AppFont.rowTitle)
                 .foregroundStyle(AppColor.textPrimary)
             
-            TextField(viewModel.exercise.type?.title ?? "New title...", text: $viewModel.title)
+            TextField(viewModel.exercise.type?.title ?? String(localized: "exercise.edit.name.placeholder"), text: $viewModel.title)
                 .font(AppFont.rowTitle)
                 .padding(.horizontal, 14)
                 .frame(height: 50)
@@ -140,7 +140,7 @@ struct ExerciseEditView: View {
                 }
                 .focused($focusedInputId, equals: ExerciseEditFocusId.title)
             
-            Text("Leave empty to use default name.")
+            Text("exercise.edit.default_name_hint")
                 .font(AppFont.rowSubtitle)
                 .foregroundStyle(AppColor.textSecondary)
         }
@@ -158,13 +158,13 @@ struct ExerciseEditView: View {
     @ViewBuilder
     private var restTimeView: some View {
         VStack(alignment: .leading, spacing: 18) {
-            Text("Rest time")
+            Text("exercise.rest_time")
                 .font(AppFont.rowTitle)
                 .foregroundStyle(AppColor.textPrimary)
             
             VStack(spacing: 14) {
                 HStack {
-                    Text("Rest between sets")
+                    Text("exercise.rest_between_sets")
                         .font(AppFont.workoutGroupCardSubtitle)
                         .foregroundStyle(AppColor.textPrimary)
                     
@@ -178,7 +178,7 @@ struct ExerciseEditView: View {
                 Divider()
                     .overlay(AppColor.separatorSoft)
                 
-                Toggle("Without rest", isOn: $viewModel.switchRest)
+                Toggle("superset.without_rest", isOn: $viewModel.switchRest)
                     .font(AppFont.workoutGroupCardSubtitle)
                     .foregroundStyle(AppColor.textPrimary)
                     .tint(AppColor.brandPrimary)
@@ -235,7 +235,7 @@ struct ExerciseEditView: View {
     @ViewBuilder
     private var setsView: some View {
         VStack(alignment: .leading, spacing: 14) {
-            Text("Target sets")
+            Text("exercise.target_sets")
                 .font(AppFont.rowTitle)
                 .foregroundStyle(AppColor.textPrimary)
             
@@ -278,7 +278,7 @@ struct ExerciseEditView: View {
                     Image(systemName: "plus")
                         .font(.system(size: 24, weight: .regular))
                     
-                    Text("Add set")
+                    Text("exercise.add_set")
                         .font(AppFont.rowTitle)
                 }
                 .foregroundStyle(.white)

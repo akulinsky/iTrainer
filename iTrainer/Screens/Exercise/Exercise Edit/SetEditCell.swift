@@ -43,7 +43,7 @@ struct SetEditCell: View {
                 .frame(width: 32, height: 32)
             
             VStack(alignment: .leading, spacing: 4) {
-                Text("Set \(viewModel.model.index)")
+                Text(String.localizedStringWithFormat(String(localized: "exercise.set_number"), viewModel.model.index))
                     .font(AppFont.rowTitle)
                     .foregroundStyle(AppColor.textPrimary)
                 

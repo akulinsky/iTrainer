@@ -188,13 +188,13 @@ struct EditSetsView: View {
             .toolbarTitleDisplayMode(.inline)
             .toolbar {
                 ToolbarItem(placement: .topBarLeading) {
-                    Button("Cancel") {
+                    Button("common.cancel") {
                         cancel()
                     }
                     .foregroundStyle(AppColor.textSecondary)
                 }
                 ToolbarItem(placement: .topBarTrailing) {
-                    Button("Save") {
+                    Button("common.save") {
                         prepareToSave()
                     }
                     .font(AppFont.rowTitle)

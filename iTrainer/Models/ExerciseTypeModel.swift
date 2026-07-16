@@ -20,13 +20,13 @@ enum ParameterValue<value>: Identifiable, Hashable {
     var title: String {
         switch self {
         case .weight(_):
-            "Weight"
+            String(localized: "sets.parameter.weight")
         case .repeats(_):
-            "Reps"
+            String(localized: "sets.parameter.reps")
         case .distance(_):
-            "Distance"
+            String(localized: "sets.parameter.distance")
         case .time(_):
-            "Time"
+            String(localized: "sets.parameter.time")
         }
     }
     

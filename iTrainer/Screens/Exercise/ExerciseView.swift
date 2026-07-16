@@ -121,7 +121,7 @@ private struct ExerciseContentView: View {
         .navigationBarTitleDisplayMode(.inline)
         .toolbar {
             ToolbarItem(placement: .navigationBarTrailing) {
-                Button("Edit", systemImage: "pencil", action: clickBtnEditint)
+                Button("common.edit", systemImage: "pencil", action: clickBtnEditint)
             }
         }
         .task {
@@ -147,9 +147,9 @@ private struct ExerciseContentView: View {
             editExercise()
                 .presentationDetents([.large])
         })
-        .alert("Finish workout?", isPresented: $isEndWorkoutAlertPresented) {
-            Button("Cancel", role: .cancel) {}
-            Button("Finish", role: .destructive) {
+        .alert(Text("active_workout.finish_alert.title"), isPresented: $isEndWorkoutAlertPresented) {
+            Button("common.cancel", role: .cancel) {}
+            Button("active_workout.finish", role: .destructive) {
                 finishWorkout()
             }
         } message: {
@@ -184,7 +184,7 @@ private struct ExerciseContentView: View {
             .buttonStyle(.plain)
             .accessibilityElement(children: .combine)
             .accessibilityLabel("\(viewModel.title), \(exerciseMetadata)")
-            .accessibilityHint("Open exercise information")
+            .accessibilityHint(Text("exercise.info.accessibility_hint"))
             
             if let latestReportExercise = viewModel.reportExercises.first {
                 Divider()
@@ -224,7 +224,7 @@ private struct ExerciseContentView: View {
                     .minimumScaleFactor(0.82)
                 
                 HStack(alignment: .center) {
-                    Text(viewModel.exercise.restTime > 0 ? "Rest \(viewModel.exercise.restTime.minuteSecond)" : "No rest")
+                    Text(restTimeText)
                         .font(AppFont.rowSubtitle)
                         .foregroundStyle(AppColor.textSecondary)
                     
@@ -252,7 +252,7 @@ private struct ExerciseContentView: View {
                 Image(systemName: "doc.text.magnifyingglass")
                     .font(.system(size: 16, weight: .semibold))
                     .frame(width: 22)
-                Text("Latest report")
+                Text("exercise.latest_report")
                     .font(AppFont.rowTitle)
                 Spacer(minLength: 12)
                 Image(systemName: "chevron.right")
@@ -265,7 +265,7 @@ private struct ExerciseContentView: View {
             .contentShape(Rectangle())
         }
         .buttonStyle(.plain)
-        .accessibilityLabel("Latest report")
+        .accessibilityLabel(Text("exercise.latest_report"))
     }
     
     private var exerciseIcon: some View {
@@ -280,8 +280,15 @@ private struct ExerciseContentView: View {
             return ""
         }
         
-        let groupTitle = isSupersetChild ? "Superset" : type.type.displayName
+        let groupTitle = isSupersetChild ? String(localized: "superset.title") : type.type.displayName
         return "\(groupTitle) · \(type.displayName)"
+    }
+    
+    private var restTimeText: String {
+        guard viewModel.exercise.restTime > 0 else {
+            return String(localized: "superset.without_rest")
+        }
+        return String.localizedStringWithFormat(String(localized: "exercise.rest_time.value"), viewModel.exercise.restTime.minuteSecond)
     }
     
     private var isSupersetChild: Bool {
@@ -290,7 +297,7 @@ private struct ExerciseContentView: View {
     
     private var targetSetsSection: some View {
         VStack(alignment: .leading, spacing: 10) {
-            sectionTitle("Target sets")
+            sectionTitle(String(localized: "exercise.target_sets"))
             
             if viewModel.sets.isEmpty {
                 noTargetSetsView
@@ -317,11 +324,11 @@ private struct ExerciseContentView: View {
     private var noTargetSetsView: some View {
         Button(action: clickBtnEditint) {
             VStack(alignment: .leading, spacing: 4) {
-                Text("No target sets")
+                Text("exercise.no_target_sets")
                     .font(AppFont.rowTitle)
                     .foregroundStyle(AppColor.textPrimary)
                 
-                Text("Add target sets in edit")
+                Text("exercise.no_target_sets.subtitle")
                     .font(AppFont.rowSubtitle)
                     .foregroundStyle(AppColor.textSecondary)
             }
@@ -353,10 +360,10 @@ private struct ExerciseContentView: View {
     
     private var addResultSection: some View {
         VStack(alignment: .leading, spacing: 10) {
-            sectionTitle(isSupersetChild ? "Add superset result" : "Add result")
+            sectionTitle(isSupersetChild ? String(localized: "exercise.add_superset_result") : String(localized: "exercise.add_result"))
             
             VStack(spacing: 10) {
-                HStack(spacing: 10) {
+                HStack(alignment: .top, spacing: 10) {
                     ForEach($viewModel.paramsData) { $item in
                         addResultTextField(item: item, value: $item.value)
                     }
@@ -382,22 +389,20 @@ private struct ExerciseContentView: View {
     
     private var compactAddResultButton: some View {
         Button(action: prepareToSave) {
-            HStack(spacing: 5) {
-                Image(systemName: "plus.circle")
-                Text("Add")
-            }
-            .font(AppFont.rowTitle)
+            Image(systemName: "plus")
+            .font(.system(size: 24, weight: .semibold))
             .foregroundStyle(.white)
-            .frame(width: 92)
+            .frame(width: 58)
             .frame(height: 48)
             .background(AppColor.brandPrimary)
             .clipShape(RoundedRectangle(cornerRadius: 10, style: .continuous))
         }
         .buttonStyle(.plain)
+        .accessibilityLabel(Text("common.add"))
     }
     
     private var completedGoalActionButtons: some View {
-        resultActionButton(title: viewModel.nextExercise == nil ? "Finish workout" : "Next exercise",
+        resultActionButton(title: viewModel.nextExercise == nil ? String(localized: "exercise.finish_workout") : String(localized: "exercise.next_exercise"),
                            systemImage: viewModel.nextExercise == nil ? "flag.checkered" : "arrow.right.circle",
                            foreground: .white,
                            background: viewModel.nextExercise == nil ? AppColor.workoutGreen : AppColor.brandPrimary,
@@ -503,7 +508,7 @@ private struct ExerciseContentView: View {
     
     private func reportSetsHeaderView(reportExercise: ReportExerciseModel) -> some View {
         VStack(alignment: .leading, spacing: 0) {
-            sectionTitle(reportExercise.date?.formatted(date: .long, time: .omitted) ?? "History")
+            sectionTitle(reportExercise.date?.formatted(date: .long, time: .omitted) ?? String(localized: "reports.history.title"))
                 .padding(.leading, 20)
                 .padding(.top, 12)
                 .padding(.bottom, 6)
@@ -555,7 +560,7 @@ private struct ExerciseContentView: View {
     
     @ViewBuilder
     private func editSets() -> some View {
-        EditSetsView(title: viewModel.editSets == nil ? "New sets" : "Edit sets",
+        EditSetsView(title: viewModel.editSets == nil ? String(localized: "exercise.sets.new") : String(localized: "exercise.sets.edit"),
                      params: viewModel.editSets?.parameters ?? []) {
             switch $0 {
             case .save(let params):
@@ -568,7 +573,7 @@ private struct ExerciseContentView: View {
     
     @ViewBuilder
     private func editReportSets() -> some View {
-        EditSetsView(title: "Edit report sets",
+        EditSetsView(title: String(localized: "exercise.report_sets.edit"),
                      params: viewModel.editReportSets?.parameters ?? []) {
             switch $0 {
             case .save(let params):

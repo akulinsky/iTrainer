@@ -75,30 +75,30 @@ enum ExerciseTrackingType: String, CaseIterable, Hashable, Sendable, Codable {
     var displayTitle: String {
         switch self {
         case .weightedReps:
-            "Weighted reps"
+            String(localized: "tracking_type.weighted_reps.title")
         case .repsOnly:
-            "Reps only"
+            String(localized: "tracking_type.reps_only.title")
         case .timed:
-            "Timed"
+            String(localized: "tracking_type.timed.title")
         case .distance:
-            "Distance"
+            String(localized: "tracking_type.distance.title")
         case .distanceTime:
-            "Distance & time"
+            String(localized: "tracking_type.distance_time.title")
         }
     }
     
     var descriptionText: String {
         switch self {
         case .weightedReps:
-            "Track weight and repetitions for each set."
+            String(localized: "tracking_type.weighted_reps.description")
         case .repsOnly:
-            "Track repetitions for each set."
+            String(localized: "tracking_type.reps_only.description")
         case .timed:
-            "Track duration for each set."
+            String(localized: "tracking_type.timed.description")
         case .distance:
-            "Track distance for each set."
+            String(localized: "tracking_type.distance.description")
         case .distanceTime:
-            "Track distance and duration."
+            String(localized: "tracking_type.distance_time.description")
         }
     }
     

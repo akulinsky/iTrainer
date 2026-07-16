@@ -159,7 +159,7 @@ class ExerciseViewModel: ObservableObject {
                         if let exerciseType = exercise.type {
                             paramsData = exerciseType.parameters.map { ParamData(param: $0) }
                         } else {
-                            errorMessage = "Exercise type is missing"
+                            errorMessage = String(localized: "exercise.error.type_missing")
                         }
                     }
                     
