@@ -19,15 +19,15 @@ struct ContentView: View {
         TabView {
             WorkoutGroupListView(viewModel: WorkoutGroupListViewModel())
                 .tabItem {
-                    Label("Workouts", image: "icTabPlans")
+                    Label(LocalizedStringKey("workouts.title"), image: "icTabPlans")
                 }
             ExerciseTypeView()
                 .tabItem {
-                    Label("Exercises", image: "icTabExercises")
+                    Label(LocalizedStringKey("exercise_catalog.title"), image: "icTabExercises")
                 }
             ReportDashboardView()
                 .tabItem {
-                    Label("Reports", image: "icTabReports")
+                    Label(LocalizedStringKey("reports.dashboard.title"), image: "icTabReports")
                 }
         }
         .tint(AppColor.brandPrimary)
@@ -95,7 +95,7 @@ private struct PresentedReportView: View {
                                     Button(action: onClose) {
                                         Image(systemName: "xmark")
                                     }
-                                    .accessibilityLabel("Close")
+                                    .accessibilityLabel(Text("common.close"))
                                 }
                             }
                     case .reportExerciseHistoryView(let exercise):
@@ -105,7 +105,7 @@ private struct PresentedReportView: View {
                                     Button(action: onClose) {
                                         Image(systemName: "xmark")
                                     }
-                                    .accessibilityLabel("Close")
+                                    .accessibilityLabel(Text("common.close"))
                                 }
                             }
                     case .exerciseStatisticsView(let exercise):
@@ -115,7 +115,7 @@ private struct PresentedReportView: View {
                                     Button(action: onClose) {
                                         Image(systemName: "xmark")
                                     }
-                                    .accessibilityLabel("Close")
+                                    .accessibilityLabel(Text("common.close"))
                                 }
                             }
                     }

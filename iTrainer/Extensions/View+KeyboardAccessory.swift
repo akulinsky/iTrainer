@@ -14,7 +14,7 @@ struct KeyboardAccessoryView<CenterContent: View>: View {
     
     var body: some View {
         HStack(spacing: 12) {
-            Button("Clear") {
+            Button("common.clear") {
                 onClear()
             }
             .font(AppFont.rowTitle)
@@ -26,7 +26,7 @@ struct KeyboardAccessoryView<CenterContent: View>: View {
             
             Spacer(minLength: 0)
             
-            Button("Done") {
+            Button("common.done") {
                 onDone()
             }
             .font(AppFont.rowTitle)
@@ -63,4 +63,3 @@ struct KeyboardAccessoryModifier<CenterContent: View>: ViewModifier {
             }
     }
 }
-

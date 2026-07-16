@@ -51,7 +51,9 @@
 "common.hide" = "Hide";
 "common.restore" = "Restore";
 "common.add" = "Add";
+"common.clear" = "Clear";
 "common.ok" = "OK";
+"common.loading" = "Loading";
 "common.name" = "Name";
 "common.name.placeholder" = "New name";
 "common.optional" = "Optional";

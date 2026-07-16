@@ -51,7 +51,9 @@
 "common.hide" = "Скрыть";
 "common.restore" = "Восстановить";
 "common.add" = "Добавить";
+"common.clear" = "Очистить";
 "common.ok" = "OK";
+"common.loading" = "Загрузка";
 "common.name" = "Название";
 "common.name.placeholder" = "Новое название";
 "common.optional" = "Необязательно";

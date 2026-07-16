@@ -44,7 +44,7 @@ struct LoadingSpinnerView: View {
                 .rotationEffect(.degrees(360 * animationStep.progress - 90))
         }
         .frame(width: size, height: size)
-        .accessibilityLabel("Loading")
+        .accessibilityLabel(Text("common.loading"))
         .accessibilityAddTraits(.updatesFrequently)
     }
 
