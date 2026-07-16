@@ -8,7 +8,6 @@
 import Foundation
 import SwiftData
 import SwiftUI
-import Alamofire
 import Combine
 
 enum ExerciseEditFocusId {
