@@ -19,6 +19,8 @@ struct ReportSetsCell: View {
     
     private var actionBlock: ActionBlock?
     
+    @EnvironmentObject private var appSettings: AppSettings
+    
     @State private var colorEditButton: Color = AppColor.textSecondary
     
     var model: ReportSetsModel
@@ -82,10 +84,23 @@ struct ReportSetsCell: View {
     }
     
     private var parametersText: String {
-        model.parameters.map { parameter in
+        model.parameters.map(parameterText).joined(separator: " · ")
+    }
+    
+    private var unitFormatter: UnitFormatter {
+        UnitFormatter(settings: appSettings)
+    }
+    
+    private func parameterText(_ parameter: SetsParameter) -> String {
+        switch parameter {
+        case .weight(let value):
+            return unitFormatter.weightTextWithUnit(kilograms: value)
+        case .distance(let value):
+            return unitFormatter.distanceText(meters: value)
+        case .repeats, .time:
             let unit = parameter.inlineUnitText
             return unit.isEmpty ? parameter.stringValue : "\(parameter.stringValue) \(unit)"
-        }.joined(separator: " · ")
+        }
     }
     
     private func edit() {
@@ -100,5 +115,6 @@ struct ReportSetsCell: View {
 #Preview {
     ReportSetsCell(reportSet: ReportSetsModel(date: .now,
                                               params: [.weight(50), .repeats(8)]), actionBlock: {_ in })
+        .environmentObject(AppSettings())
 }
 

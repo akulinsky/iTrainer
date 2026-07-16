@@ -25,6 +25,8 @@ struct SetsCell: View {
     
     private var actionBlock: ActionBlock
     
+    @EnvironmentObject private var appSettings: AppSettings
+    
     @State private var colorEditButton: Color = AppColor.textSecondary
     
     var model: SetsModel
@@ -86,10 +88,23 @@ struct SetsCell: View {
     }
     
     private var parametersText: String {
-        model.parameters.map { parameter in
+        model.parameters.map(parameterText).joined(separator: " · ")
+    }
+    
+    private var unitFormatter: UnitFormatter {
+        UnitFormatter(settings: appSettings)
+    }
+    
+    private func parameterText(_ parameter: SetsParameter) -> String {
+        switch parameter {
+        case .weight(let value):
+            return unitFormatter.weightTextWithUnit(kilograms: value)
+        case .distance(let value):
+            return unitFormatter.distanceText(meters: value)
+        case .repeats, .time:
             let unit = parameter.inlineUnitText
             return unit.isEmpty ? parameter.stringValue : "\(parameter.stringValue) \(unit)"
-        }.joined(separator: " · ")
+        }
     }
     
     private var targetIconColor: Color {
@@ -112,5 +127,6 @@ struct SetsCell: View {
 
 #Preview {
     SetsCell(model: SetsModel(params: [.weight(100), .repeats(10)])) { action in }
+        .environmentObject(AppSettings())
 }
 
