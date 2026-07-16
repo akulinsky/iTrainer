@@ -267,7 +267,7 @@ class ReportViewModel: ObservableObject {
         if trackingTypes.contains(.weightedReps) || trackingTypes.contains(.repsOnly) {
             summaryCards.append(SummaryCard(title: "Repetition Goal",
                                            value: rawRepsProgress.map { percentText(for: $0, isCapped: false) } ?? "-",
-                                           detail: targetReps > 0 ? "\(actualReps) / \(targetReps) reps" : "\(actualReps) reps",
+                                           detail: targetReps > 0 ? "\(actualReps) / \(unitFormatter.repetitionsText(targetReps))" : unitFormatter.repetitionsText(actualReps),
                                            progress: repsProgress,
                                            colorProgress: rawRepsProgress,
                                            systemImage: nil))

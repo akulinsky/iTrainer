@@ -53,6 +53,7 @@
 "settings.units.weight.pounds" = "lb";
 "settings.units.distance.metric" = "Metric";
 "settings.units.distance.imperial" = "Imperial";
+"unit.repetitions.short" = "reps";
 
 "settings.language.title" = "Language";
 "settings.language.system.title" = "Uses iTrainer iPhone settings";

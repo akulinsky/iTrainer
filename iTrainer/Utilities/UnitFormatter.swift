@@ -47,8 +47,16 @@ struct UnitFormatter {
         weightValueForDisplay(kilograms: kilograms).formattedTrimmed(maxFractionDigits: 1)
     }
     
+    var repetitionsUnitText: String {
+        NSLocalizedString("unit.repetitions.short", comment: "Short repetitions unit label")
+    }
+    
     func weightTextWithUnit(kilograms: Float) -> String {
         "\(weightText(kilograms: kilograms)) \(weightUnit.symbol)"
+    }
+    
+    func repetitionsText(_ value: Int) -> String {
+        "\(value) \(repetitionsUnitText)"
     }
     
     func distanceText(meters: Float) -> String {

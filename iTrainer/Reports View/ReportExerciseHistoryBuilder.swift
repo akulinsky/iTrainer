@@ -75,7 +75,7 @@ enum ReportExerciseHistoryBuilder {
     
     private static func parametersText(_ parameters: [SetsParameter], unitFormatter: UnitFormatter) -> String {
         let weightValue = weight(for: parameters).map { unitFormatter.weightTextWithUnit(kilograms: $0) }
-        let repsValue = reps(for: parameters).map { "\($0)" }
+        let repsValue = reps(for: parameters).map(unitFormatter.repetitionsText)
         let distanceValue = distance(for: parameters).map { unitFormatter.distanceText(meters: $0) }
         let timeValue = time(for: parameters).map { $0.timeForDisplay }
         

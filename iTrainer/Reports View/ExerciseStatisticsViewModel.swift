@@ -388,7 +388,7 @@ final class ExerciseStatisticsViewModel: ObservableObject {
             if let weightedRepetitionPoint = weightedRepetitionPoint(for: report, date: date, history: history, unitFormatter: unitFormatter) {
                 return weightedRepetitionPoint
             }
-            return bodyweightRepetitionPoint(for: report, date: date, history: history)
+            return bodyweightRepetitionPoint(for: report, date: date, history: history, unitFormatter: unitFormatter)
         case .time:
             let value = performedTime(in: report)
             guard value > 0 else { return nil }
@@ -430,20 +430,21 @@ final class ExerciseStatisticsViewModel: ObservableObject {
         return ExerciseStatisticsPoint(reportId: report.id,
                                        date: date,
                                        value: Float(reps),
-                                       formattedValue: "\(unitFormatter.weightText(kilograms: weight)) \(unitFormatter.weightUnit.symbol) x \(reps)",
+                                       formattedValue: "\(unitFormatter.weightText(kilograms: weight)) \(unitFormatter.weightUnit.symbol) x \(unitFormatter.repetitionsText(reps))",
                                        isPersonalRecord: isPersonalRecord(report, history: history))
     }
     
     private static func bodyweightRepetitionPoint(for report: ReportExerciseModel,
                                                   date: Date,
-                                                  history: [ReportExerciseModel]) -> ExerciseStatisticsPoint? {
+                                                  history: [ReportExerciseModel],
+                                                  unitFormatter: UnitFormatter) -> ExerciseStatisticsPoint? {
         let reps = performedRepsOnlySets(in: report).reduce(0, +)
         guard reps > 0 else { return nil }
         
         return ExerciseStatisticsPoint(reportId: report.id,
                                        date: date,
                                        value: Float(reps),
-                                       formattedValue: "\(reps)",
+                                       formattedValue: unitFormatter.repetitionsText(reps),
                                        isPersonalRecord: isPersonalRecord(report, history: history))
     }
     
@@ -469,7 +470,7 @@ final class ExerciseStatisticsViewModel: ObservableObject {
                 return ExerciseStatisticsPoint(reportId: bestSet.report.id,
                                                date: bestSet.date,
                                                value: Float(bestSet.set.reps),
-                                               formattedValue: "\(unitFormatter.weightText(kilograms: bestSet.set.weight)) \(unitFormatter.weightUnit.symbol) x \(bestSet.set.reps)",
+                                               formattedValue: "\(unitFormatter.weightText(kilograms: bestSet.set.weight)) \(unitFormatter.weightUnit.symbol) x \(unitFormatter.repetitionsText(bestSet.set.reps))",
                                                isPersonalRecord: isPersonalRecord(bestSet.report, history: history))
             }
         }
@@ -477,7 +478,7 @@ final class ExerciseStatisticsViewModel: ObservableObject {
         return reports
             .compactMap { report -> ExerciseStatisticsPoint? in
                 guard let date = report.date else { return nil }
-                return bodyweightRepetitionPoint(for: report, date: date, history: history)
+                return bodyweightRepetitionPoint(for: report, date: date, history: history, unitFormatter: unitFormatter)
             }
             .max { lhs, rhs in
                 if lhs.value == rhs.value {
@@ -660,8 +661,7 @@ final class ExerciseStatisticsViewModel: ObservableObject {
         case .weight, .volume:
             return "\(sign)\(formattedKilograms(absValue, unitFormatter: unitFormatter))"
         case .repetitions:
-            let unit = Int(absValue.rounded()) == 1 ? "rep" : "reps"
-            return "\(sign)\(Int(absValue.rounded())) \(unit)"
+            return "\(sign)\(unitFormatter.repetitionsText(Int(absValue.rounded())))"
         case .time:
             return "\(sign)\(TimeInterval(absValue).timeForDisplay)"
         case .distance:
@@ -779,7 +779,7 @@ enum ExerciseMetricSegment: CaseIterable, Identifiable {
         case .weight, .volume:
             unitFormatter.weightUnit.symbol
         case .repetitions:
-            "reps"
+            unitFormatter.repetitionsUnitText
         case .time:
             "time"
         case .distance:
@@ -794,7 +794,7 @@ enum ExerciseMetricSegment: CaseIterable, Identifiable {
         case .weight, .volume:
             unitFormatter.weightUnit.symbol
         case .repetitions:
-            "reps"
+            unitFormatter.repetitionsUnitText
         case .time:
             "time"
         case .distance:

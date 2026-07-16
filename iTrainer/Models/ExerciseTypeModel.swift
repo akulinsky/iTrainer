@@ -60,7 +60,7 @@ enum ParameterValue<value>: Identifiable, Hashable {
         case .weight:
             unitFormatter.weightUnit.symbol
         case .repeats:
-            "reps"
+            unitFormatter.repetitionsUnitText
         case .distance(let value):
             unitFormatter.distanceUnitText(meters: value)
         case .time:

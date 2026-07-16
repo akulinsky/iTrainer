@@ -53,6 +53,7 @@
 "settings.units.weight.pounds" = "фунты";
 "settings.units.distance.metric" = "Метрическая";
 "settings.units.distance.imperial" = "Имперская";
+"unit.repetitions.short" = "повт.";
 
 "settings.language.title" = "Язык";
 "settings.language.system.title" = "Используются настройки iTrainer";

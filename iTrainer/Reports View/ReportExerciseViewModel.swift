@@ -262,7 +262,7 @@ final class ReportExerciseViewModel: ObservableObject {
                 let delta = previousVolume.map { volume - $0 } ?? (baselineVolumes == nil ? nil : volume)
                 let deltaText = delta.flatMap(formattedDeltaKilograms)
                 let deltaColor = delta.flatMap(deltaColor)
-                return VolumeBreakdownRow(text: "\(unitFormatter.weightText(kilograms: weight)) x \(reps) = \(formattedKilograms(volume))",
+                return VolumeBreakdownRow(text: "\(unitFormatter.weightText(kilograms: weight)) x \(unitFormatter.repetitionsText(reps)) = \(formattedKilograms(volume))",
                                           deltaText: deltaText,
                                           deltaColor: deltaColor)
             }
@@ -380,7 +380,7 @@ final class ReportExerciseViewModel: ObservableObject {
     private func formattedImprovementValue(for comparison: ExerciseStatusComparison) -> String {
         switch comparison.type {
         case .repetitions:
-            return "+\(Int(comparison.improvement)) reps"
+            return "+\(unitFormatter.repetitionsText(Int(comparison.improvement)))"
         case .time:
             return "+\(TimeInterval(comparison.improvement).timeForDisplay)"
         case .pace:
@@ -418,7 +418,7 @@ final class ReportExerciseViewModel: ObservableObject {
     
     private func parametersText(_ parameters: [SetsParameter]) -> String {
         let weightValue = weight(for: parameters).map { unitFormatter.weightTextWithUnit(kilograms: $0) }
-        let repsValue = reps(for: parameters).map { "\($0)" }
+        let repsValue = reps(for: parameters).map(unitFormatter.repetitionsText)
         let distanceValue = distance(for: parameters).map { unitFormatter.distanceText(meters: $0) }
         let timeValue = time(for: parameters).map { $0.timeForDisplay }
         
