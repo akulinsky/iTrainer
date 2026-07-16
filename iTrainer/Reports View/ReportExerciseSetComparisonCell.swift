@@ -127,10 +127,10 @@ struct ReportExerciseSetComparisonCell: View {
 #Preview {
     VStack(spacing: 0) {
         ReportExerciseSetComparisonCell(row: .init(title: "", target: "Target", result: "Result", state: .extra), isHeader: true)
-        ReportExerciseSetComparisonCell(row: .init(title: "Set 1", target: "120 kg x 8", result: "120 kg x 8", state: .achieved))
-        ReportExerciseSetComparisonCell(row: .init(title: "Set 2", target: "100 kg x 8", result: "97.5 kg x 8", state: .missed))
-        ReportExerciseSetComparisonCell(row: .init(title: "Set 3", target: "-", result: "80 kg x 10", state: .recorded))
-        ReportExerciseSetComparisonCell(row: .init(title: "Extra set", target: "-", result: "80 kg x 10", state: .extra))
+        ReportExerciseSetComparisonCell(row: .init(title: "Set 1", target: "120 x 8", result: "120 x 8", state: .achieved))
+        ReportExerciseSetComparisonCell(row: .init(title: "Set 2", target: "100 x 8", result: "97.5 x 8", state: .missed))
+        ReportExerciseSetComparisonCell(row: .init(title: "Set 3", target: "-", result: "80 x 10", state: .recorded))
+        ReportExerciseSetComparisonCell(row: .init(title: "Extra set", target: "-", result: "80 x 10", state: .extra))
     }
     .background(AppColor.surfacePrimary)
 }

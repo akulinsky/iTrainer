@@ -9,36 +9,36 @@
 "report.metric.volume.title" = "Объем";
 "report.metric.volume.description" = "Общая работа в упражнениях с весом. Объединяет вес и повторения в один показатель.";
 "report.metric.volume.formula" = "Сумма веса x повторения по завершенным сетам.";
-"report.metric.volume.example" = "80 кг x 10 повторений + 70 кг x 8 повторений = 1 360 кг";
+"report.metric.volume.example" = "80 x 10 повторений + 70 x 8 повторений = 1 360 объема";
 
 "report.metric.volume_goal.title" = "Цель по объему";
 "report.metric.volume_goal.description" = "Сравнивает выполненный объем с запланированным целевым объемом в упражнениях с весом. Объем - это общая работа: вес x повторения по завершенным сетам.";
 "report.metric.volume_goal.formula" = "Фактический объем / целевой объем.";
-"report.metric.volume_goal.example" = "Фактически 1 360 кг, цель 1 500 кг = 91%";
+"report.metric.volume_goal.example" = "Фактически 1 360, цель 1 500 = 91%";
 
 "report.metric.density.title" = "Плотность";
 "report.metric.density.description" = "Показывает, сколько работы с весом выполнено за минуту тренировки.";
 "report.metric.density.formula" = "Общий объем / длительность тренировки в минутах.";
-"report.metric.density.example" = "4 800 кг / 40 мин = 120 кг/мин";
+"report.metric.density.example" = "4 800 объема / 40 мин = 120 в минуту";
 
 "report.metric.pace.title" = "Темп";
-"report.metric.pace.description" = "Показывает, сколько времени требуется на 1 км. Чем ниже темп, тем лучше.";
+"report.metric.pace.description" = "Показывает, сколько времени требуется на одну единицу дистанции. Чем ниже темп, тем лучше.";
 "report.metric.pace.formula" = "Общее время / общая дистанция.";
-"report.metric.pace.example" = "15:00 / 2 км = 7:30/км";
+"report.metric.pace.example" = "15:00 / 2 единицы дистанции = 7:30 за единицу";
 
 "report.metric.pace_goal.title" = "Цель по темпу";
-"report.metric.pace_goal.description" = "Сравнивает фактический темп с целевым. Темп - это время на 1 км, поэтому меньший темп означает лучший результат.";
+"report.metric.pace_goal.description" = "Сравнивает фактический темп с целевым. Темп - это время на единицу дистанции, поэтому меньший темп означает лучший результат.";
 "report.metric.pace_goal.formula" = "Целевой темп / фактический темп.";
-"report.metric.pace_goal.example" = "Цель 8:00/км, фактически 7:30/км = цель превышена";
+"report.metric.pace_goal.example" = "Цель 8:00 за единицу, фактически 7:30 за единицу = цель превышена";
 
 "report.metric.record_type.title" = "Тип рекорда";
 "report.metric.record_type.description" = "Показывает, какой показатель привел к личному рекорду или прогрессу.";
-"report.metric.record_type.example" = "Объем означает, что общий вес x повторения стал выше, чем раньше. Темп означает, что время на км улучшилось.";
+"report.metric.record_type.example" = "Объем означает, что общий вес x повторения стал выше, чем раньше. Темп означает, что время на единицу дистанции улучшилось.";
 
 "report.metric.improvement.title" = "Улучшение";
 "report.metric.improvement.description" = "Показывает разницу между текущим результатом и предыдущим результатом для сравнения.";
 "report.metric.improvement.formula" = "Для большинства показателей: текущий - предыдущий. Для темпа: предыдущий - текущий, потому что меньший темп лучше.";
-"report.metric.improvement.example" = "Предыдущий темп 8:00/км, текущий 7:30/км = улучшение -0:30";
+"report.metric.improvement.example" = "Предыдущий темп 8:00 за единицу, текущий 7:30 за единицу = улучшение -0:30";
 
 /* Settings */
 

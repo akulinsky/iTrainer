@@ -83,7 +83,7 @@ struct ReportsDashboardHeaderView: View {
                                                             workoutCountTitleText: "Workouts Completed",
                                                             personalRecordValueText: "3",
                                                             personalRecordTitleText: "Personal Records",
-                                                            totalVolumeValueText: "52,400 kg",
+                                                            totalVolumeValueText: "52,400",
                                                             totalVolumeTitleText: "Total Volume"),
                                action: {})
     .padding(20)

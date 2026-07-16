@@ -9,36 +9,36 @@
 "report.metric.volume.title" = "Volume";
 "report.metric.volume.description" = "Total work for weighted sets. It combines weight and repetitions into one number.";
 "report.metric.volume.formula" = "Sum of weight x reps for completed sets.";
-"report.metric.volume.example" = "80 kg x 10 reps + 70 kg x 8 reps = 1,360 kg";
+"report.metric.volume.example" = "80 x 10 reps + 70 x 8 reps = 1,360 volume";
 
 "report.metric.volume_goal.title" = "Volume Goal";
 "report.metric.volume_goal.description" = "Compares completed volume with planned target volume for weighted exercises. Volume is total weighted work: weight x reps across completed sets.";
 "report.metric.volume_goal.formula" = "Actual volume / target volume.";
-"report.metric.volume_goal.example" = "Actual 1,360 kg, target 1,500 kg = 91%";
+"report.metric.volume_goal.example" = "Actual 1,360, target 1,500 = 91%";
 
 "report.metric.density.title" = "Density";
 "report.metric.density.description" = "Shows how much weighted work was completed per minute of workout time.";
 "report.metric.density.formula" = "Total volume / workout duration in minutes.";
-"report.metric.density.example" = "4,800 kg / 40 min = 120 kg/min";
+"report.metric.density.example" = "4,800 volume / 40 min = 120 per min";
 
 "report.metric.pace.title" = "Pace";
-"report.metric.pace.description" = "Shows how long it takes to cover 1 km. Lower pace is better.";
+"report.metric.pace.description" = "Shows how long it takes to cover one distance unit. Lower pace is better.";
 "report.metric.pace.formula" = "Total time / total distance.";
-"report.metric.pace.example" = "15:00 / 2 km = 7:30/km";
+"report.metric.pace.example" = "15:00 / 2 distance units = 7:30 per unit";
 
 "report.metric.pace_goal.title" = "Pace Goal";
-"report.metric.pace_goal.description" = "Compares actual pace with target pace. Pace is time per 1 km, so lower pace means better performance.";
+"report.metric.pace_goal.description" = "Compares actual pace with target pace. Pace is time per distance unit, so lower pace means better performance.";
 "report.metric.pace_goal.formula" = "Target pace / actual pace.";
-"report.metric.pace_goal.example" = "Target 8:00/km, actual 7:30/km = goal exceeded";
+"report.metric.pace_goal.example" = "Target 8:00 per unit, actual 7:30 per unit = goal exceeded";
 
 "report.metric.record_type.title" = "Record Type";
 "report.metric.record_type.description" = "Shows which metric caused the personal record or progress result.";
-"report.metric.record_type.example" = "Volume means the total weight x reps was higher than before. Pace means the time per km improved.";
+"report.metric.record_type.example" = "Volume means the total weight x reps was higher than before. Pace means the time per distance unit improved.";
 
 "report.metric.improvement.title" = "Improvement";
 "report.metric.improvement.description" = "Shows the difference between the current result and the previous comparison result.";
 "report.metric.improvement.formula" = "For most metrics: current - previous. For pace: previous - current because lower pace is better.";
-"report.metric.improvement.example" = "Previous pace 8:00/km, current 7:30/km = -0:30 improvement";
+"report.metric.improvement.example" = "Previous pace 8:00 per unit, current 7:30 per unit = -0:30 improvement";
 
 /* Settings */
 
