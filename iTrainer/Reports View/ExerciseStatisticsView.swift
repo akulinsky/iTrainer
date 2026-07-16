@@ -12,6 +12,9 @@ struct ExerciseStatisticsView: View {
     @StateObject private var viewModel: ExerciseStatisticsViewModel
     @State private var isExpandedChartPresented = false
     
+    private let chartPlotHeight: CGFloat = 220
+    private let chartAreaHeight: CGFloat = 246
+    
     init(exercise: ReportExerciseModel) {
         _viewModel = StateObject(wrappedValue: ExerciseStatisticsViewModel(exercise: exercise))
     }
@@ -187,7 +190,7 @@ struct ExerciseStatisticsView: View {
     @ViewBuilder
     private var chartArea: some View {
         if viewModel.isPreparingStatistics {
-            statisticsLoadingState(height: 220)
+            statisticsLoadingState(height: chartAreaHeight)
         } else if !viewModel.hasPeriodGraphPoints {
             VStack(spacing: 8) {
                 Text(viewModel.hasAnyReports ? "No data for this period" : "No statistics yet")
@@ -199,7 +202,7 @@ struct ExerciseStatisticsView: View {
                     .multilineTextAlignment(.center)
             }
             .frame(maxWidth: .infinity)
-            .frame(height: 220)
+            .frame(height: chartAreaHeight)
         } else {
             VStack(alignment: .leading, spacing: 8) {
                 Text(viewModel.selectedMetric.axisUnit)
@@ -257,8 +260,9 @@ struct ExerciseStatisticsView: View {
                             .background(AppColor.surfacePrimary)
                     }
                 }
-                .frame(height: 220)
+                .frame(height: chartPlotHeight)
             }
+            .frame(height: chartAreaHeight, alignment: .top)
         }
     }
     
@@ -266,9 +270,7 @@ struct ExerciseStatisticsView: View {
         HStack(spacing: 0) {
             ForEach(ExerciseStatisticsPeriod.allCases) { period in
                 Button {
-                    withAnimation(.easeInOut(duration: 0.2)) {
-                        viewModel.selectedPeriod = period
-                    }
+                    viewModel.selectedPeriod = period
                 } label: {
                     Text(period.title)
                         .font(.system(size: 14, weight: viewModel.selectedPeriod == period ? .bold : .regular))

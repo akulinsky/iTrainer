@@ -187,7 +187,7 @@ struct ReportView: View {
                     .frame(width: 72, height: 72)
                     .overlay {
                         Text(card.value)
-                            .font(.system(size: 20, weight: .bold))
+                            .font(.system(size: 18, weight: .bold))
                             .foregroundStyle(AppColor.textPrimary)
                             .minimumScaleFactor(0.75)
                     }
