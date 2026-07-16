@@ -272,7 +272,13 @@ private struct ExerciseContentView: View {
         guard let type = viewModel.exercise.type else {
             return ""
         }
-        return "\(type.type.displayName) · \(type.displayName)"
+        
+        let groupTitle = isSupersetChild ? "Superset" : type.type.displayName
+        return "\(groupTitle) · \(type.displayName)"
+    }
+    
+    private var isSupersetChild: Bool {
+        viewModel.exercise.parentSupersetId != nil
     }
     
     private var targetSetsSection: some View {
@@ -340,7 +346,7 @@ private struct ExerciseContentView: View {
     
     private var addResultSection: some View {
         VStack(alignment: .leading, spacing: 10) {
-            sectionTitle("Add result")
+            sectionTitle(isSupersetChild ? "Add superset result" : "Add result")
             
             VStack(spacing: 10) {
                 HStack(spacing: 10) {
