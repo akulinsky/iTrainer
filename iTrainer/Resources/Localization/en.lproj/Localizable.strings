@@ -59,6 +59,14 @@
 "common.optional" = "Optional";
 "common.not_selected" = "Not selected";
 
+/* Notifications */
+
+"notifications.rest_finished.title" = "Rest finished";
+"notifications.rest_finished.body" = "Time for your next set.";
+"notifications.active_workout.title" = "Workout still active";
+"notifications.active_workout.body_with_title" = "%@ is still running.";
+"notifications.active_workout.body" = "Your workout is still running.";
+
 /* Workouts */
 
 "workouts.title" = "Workouts";

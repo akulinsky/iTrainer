@@ -45,8 +45,8 @@ final class LocalNotificationManager: NSObject, UNUserNotificationCenterDelegate
         notificationCenter.removePendingNotificationRequests(withIdentifiers: [NotificationID.restFinished])
         
         let content = UNMutableNotificationContent()
-        content.title = "Rest finished"
-        content.body = "Time for your next set."
+        content.title = String(localized: "notifications.rest_finished.title")
+        content.body = String(localized: "notifications.rest_finished.body")
         content.sound = .default
         content.categoryIdentifier = "workout"
         
@@ -70,11 +70,14 @@ final class LocalNotificationManager: NSObject, UNUserNotificationCenterDelegate
         notificationCenter.removePendingNotificationRequests(withIdentifiers: [NotificationID.activeWorkoutReminder])
         
         let content = UNMutableNotificationContent()
-        content.title = "Workout still active"
+        content.title = String(localized: "notifications.active_workout.title")
         if let workoutTitle, !workoutTitle.isEmpty {
-            content.body = "\(workoutTitle) is still running."
+            content.body = String.localizedStringWithFormat(
+                String(localized: "notifications.active_workout.body_with_title"),
+                workoutTitle
+            )
         } else {
-            content.body = "Your workout is still running."
+            content.body = String(localized: "notifications.active_workout.body")
         }
         content.sound = .default
         content.categoryIdentifier = "workout"

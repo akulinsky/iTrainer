@@ -59,6 +59,14 @@
 "common.optional" = "Необязательно";
 "common.not_selected" = "Не выбрано";
 
+/* Notifications */
+
+"notifications.rest_finished.title" = "Отдых завершен";
+"notifications.rest_finished.body" = "Время следующего сета.";
+"notifications.active_workout.title" = "Тренировка все еще активна";
+"notifications.active_workout.body_with_title" = "%@ все еще идет.";
+"notifications.active_workout.body" = "Тренировка все еще идет.";
+
 /* Workouts */
 
 "workouts.title" = "Тренировки";
