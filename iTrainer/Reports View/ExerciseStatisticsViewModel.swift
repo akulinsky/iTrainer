@@ -430,7 +430,7 @@ final class ExerciseStatisticsViewModel: ObservableObject {
         return ExerciseStatisticsPoint(reportId: report.id,
                                        date: date,
                                        value: Float(reps),
-                                       formattedValue: "\(unitFormatter.weightText(kilograms: weight)) \(unitFormatter.weightUnit.symbol) x \(unitFormatter.repetitionsText(reps))",
+                                       formattedValue: "\(unitFormatter.weightText(kilograms: weight)) \(unitFormatter.weightUnit.symbol) x \(unitFormatter.repetitionsValueText(reps))",
                                        isPersonalRecord: isPersonalRecord(report, history: history))
     }
     
@@ -470,7 +470,7 @@ final class ExerciseStatisticsViewModel: ObservableObject {
                 return ExerciseStatisticsPoint(reportId: bestSet.report.id,
                                                date: bestSet.date,
                                                value: Float(bestSet.set.reps),
-                                               formattedValue: "\(unitFormatter.weightText(kilograms: bestSet.set.weight)) \(unitFormatter.weightUnit.symbol) x \(unitFormatter.repetitionsText(bestSet.set.reps))",
+                                               formattedValue: "\(unitFormatter.weightText(kilograms: bestSet.set.weight)) \(unitFormatter.weightUnit.symbol) x \(unitFormatter.repetitionsValueText(bestSet.set.reps))",
                                                isPersonalRecord: isPersonalRecord(bestSet.report, history: history))
             }
         }

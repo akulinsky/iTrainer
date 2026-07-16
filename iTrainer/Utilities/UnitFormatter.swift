@@ -59,6 +59,10 @@ struct UnitFormatter {
         "\(value) \(repetitionsUnitText)"
     }
     
+    func repetitionsValueText(_ value: Int) -> String {
+        "\(value)"
+    }
+    
     func distanceText(meters: Float) -> String {
         switch distanceUnit {
         case .metric:

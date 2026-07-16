@@ -76,11 +76,12 @@ enum ReportExerciseHistoryBuilder {
     private static func parametersText(_ parameters: [SetsParameter], unitFormatter: UnitFormatter) -> String {
         let weightValue = weight(for: parameters).map { unitFormatter.weightTextWithUnit(kilograms: $0) }
         let repsValue = reps(for: parameters).map(unitFormatter.repetitionsText)
+        let compactRepsValue = reps(for: parameters).map(unitFormatter.repetitionsValueText)
         let distanceValue = distance(for: parameters).map { unitFormatter.distanceText(meters: $0) }
         let timeValue = time(for: parameters).map { $0.timeForDisplay }
         
-        if let weightValue, let repsValue {
-            return "\(weightValue) x \(repsValue)"
+        if let weightValue, let compactRepsValue {
+            return "\(weightValue) x \(compactRepsValue)"
         }
         
         return [weightValue, repsValue, distanceValue, timeValue]

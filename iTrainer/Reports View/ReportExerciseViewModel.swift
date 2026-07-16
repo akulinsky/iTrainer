@@ -306,7 +306,7 @@ final class ReportExerciseViewModel: ObservableObject {
                 let delta = previousVolume.map { volume - $0 } ?? (baselineVolumes == nil ? nil : volume)
                 let deltaText = delta.flatMap(formattedDeltaKilograms)
                 let deltaColor = delta.flatMap(deltaColor)
-                return VolumeBreakdownRow(text: "\(unitFormatter.weightText(kilograms: weight)) x \(unitFormatter.repetitionsText(reps)) = \(formattedKilograms(volume))",
+                return VolumeBreakdownRow(text: "\(unitFormatter.weightText(kilograms: weight)) x \(unitFormatter.repetitionsValueText(reps)) = \(formattedKilograms(volume))",
                                           deltaText: deltaText,
                                           deltaColor: deltaColor)
             }
@@ -463,11 +463,12 @@ final class ReportExerciseViewModel: ObservableObject {
     private func parametersText(_ parameters: [SetsParameter]) -> String {
         let weightValue = weight(for: parameters).map { unitFormatter.weightTextWithUnit(kilograms: $0) }
         let repsValue = reps(for: parameters).map(unitFormatter.repetitionsText)
+        let compactRepsValue = reps(for: parameters).map(unitFormatter.repetitionsValueText)
         let distanceValue = distance(for: parameters).map { unitFormatter.distanceText(meters: $0) }
         let timeValue = time(for: parameters).map { $0.timeForDisplay }
         
-        if let weightValue, let repsValue {
-            return "\(weightValue) x \(repsValue)"
+        if let weightValue, let compactRepsValue {
+            return "\(weightValue) x \(compactRepsValue)"
         }
         
         return [weightValue, repsValue, distanceValue, timeValue]
