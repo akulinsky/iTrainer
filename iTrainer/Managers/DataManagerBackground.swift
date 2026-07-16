@@ -201,7 +201,7 @@ extension DataManagerBackground {
             return false
         }
         
-        let sequence = workoutSequence(for: groupId)
+        let sequence = activeWorkoutSequence(for: groupId, reportWorkout: reportWorkout)
         guard !sequence.isEmpty else {
             return false
         }
@@ -816,6 +816,29 @@ extension DataManagerBackground {
                 }
             }
         }
+    }
+    
+    private func activeWorkoutSequence(for groupId: UUID, reportWorkout: ReportWorkoutModelDB) -> [WorkoutSequenceSlot] {
+        let sequence = workoutSequence(for: groupId)
+        guard let firstReportedExerciseId = firstReportedExerciseId(in: reportWorkout),
+              let firstReportedIndex = sequence.firstIndex(where: { $0.exercise.id == firstReportedExerciseId }) else {
+            return sequence
+        }
+        
+        return Array(sequence[firstReportedIndex...])
+    }
+    
+    private func firstReportedExerciseId(in reportWorkout: ReportWorkoutModelDB) -> UUID? {
+        reportWorkout.exercises
+            .flattenedReportExerciseItems()
+            .compactMap { reportExercise -> (exerciseId: UUID, date: Date)? in
+                guard let firstSetDate = reportExercise.reportSets.map(\.date).min() else {
+                    return nil
+                }
+                return (reportExercise.exerciseId, firstSetDate)
+            }
+            .min { $0.date < $1.date }?
+            .exerciseId
     }
     
     private func sequenceSlots(for exercise: ExerciseModelDB) -> [WorkoutSequenceSlot] {
