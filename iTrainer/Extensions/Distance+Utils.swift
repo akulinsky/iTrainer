@@ -118,13 +118,3 @@ extension Float {
     }
 }
 
-private extension Float {
-    func formattedTrimmed(maxFractionDigits: Int) -> String {
-        let formatter = NumberFormatter()
-        formatter.numberStyle = .decimal
-        formatter.minimumFractionDigits = 0
-        formatter.maximumFractionDigits = maxFractionDigits
-        formatter.locale = Locale(identifier: "en_US_POSIX")
-        return formatter.string(from: NSNumber(value: self)) ?? "\(self)"
-    }
-}

@@ -25,6 +25,14 @@ final class AppSettings: ObservableObject {
     private static let weightUnitPreferenceKey = "settings.weightUnitPreference"
     private static let distanceUnitPreferenceKey = "settings.distanceUnitPreference"
     
+    var resolvedWeightUnit: ResolvedWeightUnit {
+        weightUnitPreference.resolvedUnit
+    }
+    
+    var resolvedDistanceUnit: ResolvedDistanceUnit {
+        distanceUnitPreference.resolvedUnit
+    }
+    
     private let defaults: UserDefaults
     
     init(defaults: UserDefaults = .standard) {
@@ -51,6 +59,17 @@ enum WeightUnitPreference: String, CaseIterable, Identifiable {
             "settings.units.weight.pounds"
         }
     }
+    
+    var resolvedUnit: ResolvedWeightUnit {
+        switch self {
+        case .system:
+            Locale.current.usesImperialMeasurements ? .pounds : .kilograms
+        case .kilograms:
+            .kilograms
+        case .pounds:
+            .pounds
+        }
+    }
 }
 
 enum DistanceUnitPreference: String, CaseIterable, Identifiable {
@@ -70,4 +89,34 @@ enum DistanceUnitPreference: String, CaseIterable, Identifiable {
             "settings.units.distance.imperial"
         }
     }
+    
+    var resolvedUnit: ResolvedDistanceUnit {
+        switch self {
+        case .system:
+            Locale.current.usesImperialMeasurements ? .imperial : .metric
+        case .metric:
+            .metric
+        case .imperial:
+            .imperial
+        }
+    }
+}
+
+enum ResolvedWeightUnit {
+    case kilograms
+    case pounds
+    
+    var symbol: String {
+        switch self {
+        case .kilograms:
+            "kg"
+        case .pounds:
+            "lb"
+        }
+    }
+}
+
+enum ResolvedDistanceUnit {
+    case metric
+    case imperial
 }

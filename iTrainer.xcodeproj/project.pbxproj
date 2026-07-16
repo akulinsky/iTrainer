@@ -18,6 +18,7 @@
 		F6186DF82FFEDBF10018B216 /* ReportExerciseHistoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6186DF72FFEDBF10018B216 /* ReportExerciseHistoryView.swift */; };
 		F62187DD3009158800F73704 /* AppSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = F62187DC3009158800F73704 /* AppSettings.swift */; };
 		F62187DF300915DE00F73704 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F62187DE300915DE00F73704 /* SettingsView.swift */; };
+		F62187E130091D4500F73704 /* UnitFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F62187E030091D4500F73704 /* UnitFormatter.swift */; };
 		F625F2AF2FF8F42A0074FE79 /* ReportDashboardViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F625F2AE2FF8F42A0074FE79 /* ReportDashboardViewModel.swift */; };
 		F625F2B12FF8F6920074FE79 /* ExerciseStatisticsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F625F2B02FF8F6920074FE79 /* ExerciseStatisticsViewModel.swift */; };
 		F625F2B32FF9273D0074FE79 /* WorkoutReportStatusDisplay.swift in Sources */ = {isa = PBXBuildFile; fileRef = F625F2B22FF9273D0074FE79 /* WorkoutReportStatusDisplay.swift */; };
@@ -162,6 +163,7 @@
 		F6186DF72FFEDBF10018B216 /* ReportExerciseHistoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportExerciseHistoryView.swift; sourceTree = "<group>"; };
 		F62187DC3009158800F73704 /* AppSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppSettings.swift; sourceTree = "<group>"; };
 		F62187DE300915DE00F73704 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
+		F62187E030091D4500F73704 /* UnitFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnitFormatter.swift; sourceTree = "<group>"; };
 		F625F2AE2FF8F42A0074FE79 /* ReportDashboardViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportDashboardViewModel.swift; sourceTree = "<group>"; };
 		F625F2B02FF8F6920074FE79 /* ExerciseStatisticsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseStatisticsViewModel.swift; sourceTree = "<group>"; };
 		F625F2B22FF9273D0074FE79 /* WorkoutReportStatusDisplay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutReportStatusDisplay.swift; sourceTree = "<group>"; };
@@ -525,6 +527,7 @@
 			children = (
 				F630C9502C79E92F00049730 /* AKTextFieldStyle.swift */,
 				F6B9B2282C96BF3B00115CEA /* LifecycleLogger.swift */,
+				F62187E030091D4500F73704 /* UnitFormatter.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -915,6 +918,7 @@
 				F62818482C6249B7003642F8 /* ExerciseCategory.swift in Sources */,
 				F6186DF02FFEAF420018B216 /* ExerciseTrackingType.swift in Sources */,
 				F6180DDB2C5A6D55009A23A7 /* EditNameView.swift in Sources */,
+				F62187E130091D4500F73704 /* UnitFormatter.swift in Sources */,
 				F625F2B92FF927C90074FE79 /* MonthPickerSheet.swift in Sources */,
 				F677A0742FFBBCCF00101B33 /* CalendarView.swift in Sources */,
 				F69BD1232C550E8F0057080E /* DataContainer.swift in Sources */,
