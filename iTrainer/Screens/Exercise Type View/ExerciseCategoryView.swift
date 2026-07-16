@@ -49,7 +49,7 @@ struct ExerciseCategoryView: View {
                     Image(systemName: viewModel.isBookmarkFilterEnabled ? "bookmark.fill" : "bookmark")
                 }
                 .foregroundStyle(viewModel.isBookmarkFilterEnabled ? AppColor.brandPrimary : AppColor.textSecondary)
-                .accessibilityLabel(viewModel.isBookmarkFilterEnabled ? "Show all exercises" : "Show bookmarked exercises")
+                .accessibilityLabel(Text(viewModel.isBookmarkFilterEnabled ? "exercise_catalog.bookmarks.show_all" : "exercise_catalog.bookmarks.show_bookmarked"))
             }
         }
     }
@@ -110,8 +110,8 @@ private struct ExerciseCategoryRow: View {
     }
     
     private var subtitle: String {
-        guard exerciseCount > 0 else { return "Coming next" }
-        return "\(exerciseCount) exercises"
+        guard exerciseCount > 0 else { return String(localized: "exercise_catalog.category.coming_next") }
+        return String.localizedStringWithFormat(String(localized: "exercise_catalog.category.exercise_count"), exerciseCount)
     }
 }
 

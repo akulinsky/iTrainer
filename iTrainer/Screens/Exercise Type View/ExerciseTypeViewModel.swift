@@ -35,7 +35,7 @@ class ExerciseTypeViewModel: ObservableObject {
     var categoryTitle: String {
         guard let categoryId = self.categoryId,
               let category = categories.first(where: { $0.id == categoryId }) else {
-            return "Exercises"
+            return String(localized: "exercise_catalog.title")
         }
         return category.displayName
     }
@@ -45,7 +45,7 @@ class ExerciseTypeViewModel: ObservableObject {
     }
     
     var emptyExercisesText: String {
-        isBookmarkFilterEnabled ? "No bookmarked exercises" : "No exercises"
+        isBookmarkFilterEnabled ? String(localized: "exercise_catalog.empty.bookmarked") : String(localized: "exercise_catalog.empty")
     }
     
     private var completeBlock: SelectedExerciseTypesBlock?

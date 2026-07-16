@@ -54,6 +54,8 @@
 "common.ok" = "OK";
 "common.name" = "Name";
 "common.name.placeholder" = "New name";
+"common.optional" = "Optional";
+"common.not_selected" = "Not selected";
 
 /* Workouts */
 
@@ -185,6 +187,46 @@
 "tracking_type.timed.description" = "Track duration for each set.";
 "tracking_type.distance.description" = "Track distance for each set.";
 "tracking_type.distance_time.description" = "Track distance and duration.";
+
+/* Exercise Catalog */
+
+"exercise_catalog.title" = "Exercises";
+"exercise_catalog.search.prompt" = "Search for exercise";
+"exercise_catalog.create.title" = "Create Exercise";
+"exercise_catalog.empty" = "No exercises";
+"exercise_catalog.empty.bookmarked" = "No bookmarked exercises";
+"exercise_catalog.bookmarks.show_all" = "Show all exercises";
+"exercise_catalog.bookmarks.show_bookmarked" = "Show bookmarked exercises";
+"exercise_catalog.bookmarks.add" = "Add bookmark";
+"exercise_catalog.bookmarks.remove" = "Remove bookmark";
+"exercise_catalog.category.coming_next" = "Coming next";
+"exercise_catalog.category.exercise_count" = "%d exercises";
+"exercise_catalog.selected_count" = "%d selected";
+"exercise_catalog.clear_selection" = "Clear selection";
+"exercise_catalog.delete_alert.title" = "Delete this exercise?";
+"exercise_catalog.delete_alert.message" = "This exercise will be removed from the catalog and all workouts. Past reports will stay unchanged.";
+"exercise_catalog.delete_button" = "Delete Exercise";
+"exercise_catalog.detail.basic_info" = "Basic Information";
+"exercise_catalog.detail.category" = "Category";
+"exercise_catalog.detail.parameters" = "Parameters";
+"exercise_catalog.detail.description" = "Description";
+"exercise_catalog.detail.technique" = "Technique";
+"exercise_catalog.statistics.subtitle" = "View global exercise statistics";
+"exercise_catalog.missing_info.title" = "Missing exercise info";
+"exercise_catalog.missing_info.message" = "Missing exercise info for exercise id: %@";
+
+/* Custom Exercise */
+
+"custom_exercise.tracking_type" = "Tracking Type";
+"custom_exercise.select_category" = "Select category";
+"custom_exercise.select_tracking_type" = "Select tracking type";
+"custom_exercise.select_category.title" = "Select Category";
+"custom_exercise.select_tracking_type.title" = "Select Tracking Type";
+"custom_exercise.generated_name" = "Custom Exercise %d";
+"custom_exercise.generated_name_prefix" = "Custom Exercise ";
+"custom_exercise.error.category_required" = "Select a category.";
+"custom_exercise.error.tracking_type_required" = "Select a tracking type.";
+"custom_exercise.error.duplicate_name" = "An exercise with this name already exists in this category.";
 
 /* Reports */
 

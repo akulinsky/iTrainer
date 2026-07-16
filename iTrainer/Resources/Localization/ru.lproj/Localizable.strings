@@ -54,6 +54,8 @@
 "common.ok" = "OK";
 "common.name" = "Название";
 "common.name.placeholder" = "Новое название";
+"common.optional" = "Необязательно";
+"common.not_selected" = "Не выбрано";
 
 /* Workouts */
 
@@ -185,6 +187,46 @@
 "tracking_type.timed.description" = "Отслеживает длительность каждого сета.";
 "tracking_type.distance.description" = "Отслеживает дистанцию в каждом сете.";
 "tracking_type.distance_time.description" = "Отслеживает дистанцию и длительность.";
+
+/* Exercise Catalog */
+
+"exercise_catalog.title" = "Упражнения";
+"exercise_catalog.search.prompt" = "Поиск упражнения";
+"exercise_catalog.create.title" = "Создать упражнение";
+"exercise_catalog.empty" = "Нет упражнений";
+"exercise_catalog.empty.bookmarked" = "Нет избранных упражнений";
+"exercise_catalog.bookmarks.show_all" = "Показать все упражнения";
+"exercise_catalog.bookmarks.show_bookmarked" = "Показать избранные упражнения";
+"exercise_catalog.bookmarks.add" = "Добавить в избранное";
+"exercise_catalog.bookmarks.remove" = "Убрать из избранного";
+"exercise_catalog.category.coming_next" = "Скоро";
+"exercise_catalog.category.exercise_count" = "%d упражнений";
+"exercise_catalog.selected_count" = "Выбрано: %d";
+"exercise_catalog.clear_selection" = "Очистить выбор";
+"exercise_catalog.delete_alert.title" = "Удалить это упражнение?";
+"exercise_catalog.delete_alert.message" = "Упражнение будет удалено из каталога и всех тренировок. Прошлые отчеты останутся без изменений.";
+"exercise_catalog.delete_button" = "Удалить упражнение";
+"exercise_catalog.detail.basic_info" = "Основная информация";
+"exercise_catalog.detail.category" = "Категория";
+"exercise_catalog.detail.parameters" = "Параметры";
+"exercise_catalog.detail.description" = "Описание";
+"exercise_catalog.detail.technique" = "Техника";
+"exercise_catalog.statistics.subtitle" = "Смотреть общую статистику упражнения";
+"exercise_catalog.missing_info.title" = "Нет информации об упражнении";
+"exercise_catalog.missing_info.message" = "Нет информации для упражнения с id: %@";
+
+/* Custom Exercise */
+
+"custom_exercise.tracking_type" = "Тип отслеживания";
+"custom_exercise.select_category" = "Выберите категорию";
+"custom_exercise.select_tracking_type" = "Выберите тип отслеживания";
+"custom_exercise.select_category.title" = "Выбор категории";
+"custom_exercise.select_tracking_type.title" = "Выбор типа";
+"custom_exercise.generated_name" = "Свое упражнение %d";
+"custom_exercise.generated_name_prefix" = "Свое упражнение ";
+"custom_exercise.error.category_required" = "Выберите категорию.";
+"custom_exercise.error.tracking_type_required" = "Выберите тип отслеживания.";
+"custom_exercise.error.duplicate_name" = "Упражнение с таким названием уже есть в этой категории.";
 
 /* Reports */
 

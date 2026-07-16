@@ -85,19 +85,19 @@ struct ExerciseCatalogDetailView: View {
                     Image(systemName: isBookmarked ? "bookmark.fill" : "bookmark")
                 }
                 .foregroundStyle(isBookmarked ? AppColor.brandPrimary : AppColor.textSecondary)
-                .accessibilityLabel(isBookmarked ? "Remove bookmark" : "Add bookmark")
+                .accessibilityLabel(Text(isBookmarked ? "exercise_catalog.bookmarks.remove" : "exercise_catalog.bookmarks.add"))
             }
         }
         .navigationDestination(isPresented: $isStatisticsPresented) {
             ExerciseStatisticsView(exerciseType: model)
         }
-        .alert("Delete this exercise?", isPresented: $isDeleteAlertPresented) {
-            Button("Cancel", role: .cancel) { }
-            Button("Delete", role: .destructive) {
+        .alert(Text("exercise_catalog.delete_alert.title"), isPresented: $isDeleteAlertPresented) {
+            Button("common.cancel", role: .cancel) { }
+            Button("common.delete", role: .destructive) {
                 deleteExercise()
             }
         } message: {
-            Text("This exercise will be removed from the catalog and all workouts. Past reports will stay unchanged.")
+            Text("exercise_catalog.delete_alert.message")
         }
         .task {
             let dataManager = DataManagerBackground(container: DataContainer.shared.sharedModelContainer)
@@ -230,13 +230,13 @@ private struct ExerciseBasicInfoCard: View {
     
     var body: some View {
         VStack(alignment: .leading, spacing: 16) {
-            cardTitle("Basic Information")
+            cardTitle("exercise_catalog.detail.basic_info")
             
             VStack(spacing: 0) {
-                infoRow(title: "Category", value: category)
+                infoRow(title: String(localized: "exercise_catalog.detail.category"), value: category)
                 Divider()
                     .padding(.vertical, 12)
-                infoRow(title: "Parameters", value: parameters)
+                infoRow(title: String(localized: "exercise_catalog.detail.parameters"), value: parameters)
             }
         }
         .padding(18)
@@ -279,10 +279,10 @@ private struct ExerciseStatisticsNavigationCard: View {
                     .frame(width: 48, height: 48)
                 
                 VStack(alignment: .leading, spacing: 4) {
-                    Text("Statistics")
+                    Text("reports.statistics.title")
                         .font(AppFont.workoutWidgetTitle)
                         .foregroundStyle(AppColor.textPrimary)
-                    Text("View global exercise statistics")
+                    Text("exercise_catalog.statistics.subtitle")
                         .font(AppFont.rowSubtitle)
                         .foregroundStyle(AppColor.textSecondary)
                         .lineLimit(2)
@@ -306,8 +306,8 @@ private struct ExerciseStatisticsNavigationCard: View {
             .contentShape(RoundedRectangle(cornerRadius: cornerRadius, style: .continuous))
         }
         .buttonStyle(.plain)
-        .accessibilityLabel("Statistics")
-        .accessibilityHint("View global exercise statistics")
+        .accessibilityLabel(Text("reports.statistics.title"))
+        .accessibilityHint(Text("exercise_catalog.statistics.subtitle"))
     }
 }
 
@@ -317,8 +317,8 @@ private struct ExerciseMissingInfoCard: View {
     
     var body: some View {
         VStack(alignment: .leading, spacing: 8) {
-            cardTitle("Missing exercise info")
-            Text("Missing exercise info for exercise id: \(exerciseId)")
+            cardTitle("exercise_catalog.missing_info.title")
+            Text(String.localizedStringWithFormat(String(localized: "exercise_catalog.missing_info.message"), exerciseId))
                 .font(AppFont.rowSubtitle)
                 .foregroundStyle(AppColor.textSecondary)
                 .fixedSize(horizontal: false, vertical: true)
@@ -340,7 +340,7 @@ private struct ExerciseDescriptionCard: View {
     
     var body: some View {
         VStack(alignment: .leading, spacing: 12) {
-            cardTitle("Description")
+            cardTitle("exercise_catalog.detail.description")
             Text(text)
                 .font(AppFont.workoutGroupCardSubtitle)
                 .foregroundStyle(AppColor.textSecondary)
@@ -364,7 +364,7 @@ private struct ExerciseTechniqueCard: View {
     
     var body: some View {
         VStack(alignment: .leading, spacing: 16) {
-            cardTitle("Technique")
+            cardTitle("exercise_catalog.detail.technique")
             
             VStack(alignment: .leading, spacing: 12) {
                 ForEach(Array(items.enumerated()), id: \.offset) { _, item in
@@ -398,7 +398,7 @@ private struct DeleteCustomExerciseCard: View {
     
     var body: some View {
         Button(role: .destructive, action: action) {
-            Text("Delete Exercise")
+            Text("exercise_catalog.delete_button")
                 .font(AppFont.workoutWidgetTitle)
                 .foregroundStyle(AppColor.progressRed)
                 .frame(maxWidth: .infinity)
@@ -415,7 +415,7 @@ private struct DeleteCustomExerciseCard: View {
     }
 }
 
-private func cardTitle(_ title: String) -> some View {
+private func cardTitle(_ title: LocalizedStringKey) -> some View {
     Text(title)
         .font(AppFont.workoutWidgetTitle)
         .foregroundStyle(AppColor.textPrimary)

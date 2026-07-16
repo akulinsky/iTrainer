@@ -58,7 +58,7 @@ struct SelectCustomExerciseCategoryView: View {
         .listStyle(.plain)
         .scrollContentBackground(.hidden)
         .background(AppColor.backgroundPrimary)
-        .navigationTitle("Select Category")
+        .navigationTitle("custom_exercise.select_category.title")
         .navigationBarTitleDisplayMode(.inline)
         .tint(AppColor.brandPrimary)
     }

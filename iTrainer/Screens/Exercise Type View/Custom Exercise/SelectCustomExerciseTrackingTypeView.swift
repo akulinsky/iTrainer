@@ -58,7 +58,7 @@ struct SelectCustomExerciseTrackingTypeView: View {
         .listStyle(.plain)
         .scrollContentBackground(.hidden)
         .background(AppColor.backgroundPrimary)
-        .navigationTitle("Select Tracking Type")
+        .navigationTitle("custom_exercise.select_tracking_type.title")
         .navigationBarTitleDisplayMode(.inline)
         .tint(AppColor.brandPrimary)
     }

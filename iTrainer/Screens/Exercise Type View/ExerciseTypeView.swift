@@ -65,9 +65,9 @@ struct ExerciseTypeView: View {
                     ExerciseCategoryView(viewModel: viewModel)
                 }
             }
-            .navigationTitle("Exercises")
+            .navigationTitle("exercise_catalog.title")
             .navigationBarTitleDisplayMode(.inline)
-            .searchable(text: $viewModel.searchQuery, prompt: "Search for exercise")
+            .searchable(text: $viewModel.searchQuery, prompt: "exercise_catalog.search.prompt")
             .tint(AppColor.brandPrimary)
             .toolbar {
                 if mode == .showing && !presentationMode.wrappedValue.isPresented {
@@ -77,13 +77,13 @@ struct ExerciseTypeView: View {
                         } label: {
                             Image(systemName: "plus")
                         }
-                        .accessibilityLabel("Create Exercise")
+                        .accessibilityLabel(Text("exercise_catalog.create.title"))
                     }
                 }
                 
                 if presentationMode.wrappedValue.isPresented {
                     ToolbarItem(placement: .topBarLeading) {
-                        Button("Cancel") {
+                        Button("common.cancel") {
                             cancel()
                         }
                     }

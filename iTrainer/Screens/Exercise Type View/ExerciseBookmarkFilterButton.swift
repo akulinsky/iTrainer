@@ -18,6 +18,6 @@ struct ExerciseBookmarkFilterButton: View {
             Image(systemName: viewModel.isBookmarkFilterEnabled ? "bookmark.fill" : "bookmark")
         }
         .foregroundStyle(viewModel.isBookmarkFilterEnabled ? AppColor.brandPrimary : AppColor.textSecondary)
-        .accessibilityLabel(viewModel.isBookmarkFilterEnabled ? "Show all exercises" : "Show bookmarked exercises")
+        .accessibilityLabel(Text(viewModel.isBookmarkFilterEnabled ? "exercise_catalog.bookmarks.show_all" : "exercise_catalog.bookmarks.show_bookmarked"))
     }
 }

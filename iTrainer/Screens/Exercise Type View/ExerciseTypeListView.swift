@@ -26,7 +26,7 @@ struct ExerciseTypeListView: View {
     var body: some View {
         if viewModel.searchQuery.isEmpty {
             content
-                .searchable(text: $viewModel.searchQueryExercise, prompt: "Search for exercise")
+                .searchable(text: $viewModel.searchQueryExercise, prompt: "exercise_catalog.search.prompt")
         } else {
             content
         }

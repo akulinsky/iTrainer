@@ -32,18 +32,18 @@ struct CreateCustomExerciseView: View {
             }
             .scrollDismissesKeyboard(.immediately)
             .background(AppColor.backgroundPrimary.ignoresSafeArea())
-            .navigationTitle("Create Exercise")
+            .navigationTitle("exercise_catalog.create.title")
             .navigationBarTitleDisplayMode(.inline)
             .tint(AppColor.brandPrimary)
             .toolbar {
                 ToolbarItem(placement: .cancellationAction) {
-                    Button("Cancel") {
+                    Button("common.cancel") {
                         dismiss()
                     }
                     .foregroundStyle(AppColor.brandPrimary)
                 }
                 ToolbarItem(placement: .confirmationAction) {
-                    Button("Save") {
+                    Button("common.save") {
                         save()
                     }
                     .foregroundStyle(AppColor.brandPrimary)
@@ -116,8 +116,9 @@ struct CreateCustomExerciseView: View {
     private var selectionCard: some View {
         VStack(spacing: 0) {
             NavigationLink(value: CustomExerciseCreationRoute.category) {
-                selectionRow(title: "Category",
+                selectionRow(title: String(localized: "exercise_catalog.detail.category"),
                              value: viewModel.categoryTitle,
+                             isPlaceholder: viewModel.isCategoryPlaceholder,
                              error: viewModel.validationErrors.category)
             }
             .buttonStyle(.plain)
@@ -129,8 +130,9 @@ struct CreateCustomExerciseView: View {
                 .padding(.vertical, 16)
             
             NavigationLink(value: CustomExerciseCreationRoute.trackingType) {
-                selectionRow(title: "Tracking Type",
+                selectionRow(title: String(localized: "custom_exercise.tracking_type"),
                              value: viewModel.trackingTypeTitle,
+                             isPlaceholder: viewModel.isTrackingTypePlaceholder,
                              error: viewModel.validationErrors.trackingType)
             }
             .buttonStyle(.plain)
@@ -146,7 +148,7 @@ struct CreateCustomExerciseView: View {
     
     private var descriptionCard: some View {
         VStack(alignment: .leading, spacing: 12) {
-            Text("Description")
+            Text("exercise_catalog.detail.description")
                 .font(AppFont.workoutGroupCardSubtitle)
                 .fontWeight(.semibold)
                 .foregroundStyle(AppColor.textPrimary)
@@ -161,7 +163,7 @@ struct CreateCustomExerciseView: View {
                     .focused($focusedField, equals: .description)
                 
                 if viewModel.descriptionText.isEmpty {
-                    Text("Optional")
+                    Text("common.optional")
                         .font(AppFont.workoutGroupCardSubtitle)
                         .foregroundStyle(AppColor.textSecondary.opacity(0.75))
                         .padding(.top, 8)
@@ -189,7 +191,7 @@ struct CreateCustomExerciseView: View {
         return AppColor.separatorSoft
     }
     
-    private func selectionRow(title: String, value: String, error: String?) -> some View {
+    private func selectionRow(title: String, value: String, isPlaceholder: Bool, error: String?) -> some View {
         VStack(alignment: .leading, spacing: 8) {
             HStack(alignment: .firstTextBaseline, spacing: 14) {
                 Text(title)
@@ -199,7 +201,7 @@ struct CreateCustomExerciseView: View {
                     .frame(maxWidth: .infinity, alignment: .leading)
                 Text(value)
                     .font(AppFont.workoutGroupCardSubtitle)
-                    .foregroundStyle(value == "Not selected" ? AppColor.textSecondary : AppColor.textPrimary)
+                    .foregroundStyle(isPlaceholder ? AppColor.textSecondary : AppColor.textPrimary)
                     .lineLimit(1)
                     .minimumScaleFactor(0.82)
                 Image(systemName: "chevron.right")

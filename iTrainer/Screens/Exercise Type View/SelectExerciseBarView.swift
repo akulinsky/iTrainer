@@ -20,7 +20,7 @@ struct SelectExerciseBarView: View {
     
     var body: some View {
         HStack(spacing: 12) {
-            Text("\(countSelectedExercises) selected")
+            Text(String.localizedStringWithFormat(String(localized: "exercise_catalog.selected_count"), countSelectedExercises))
                 .font(AppFont.rowTitle)
                 .foregroundStyle(.white)
                 .frame(maxWidth: .infinity, alignment: .leading)
@@ -37,6 +37,7 @@ struct SelectExerciseBarView: View {
             .opacity(isActionDisabled ? 0.45 : 1)
             .disabled(isActionDisabled)
             .buttonStyle(.plain)
+            .accessibilityLabel(Text("exercise_catalog.clear_selection"))
             
             Button {
                 addBlock()
@@ -50,6 +51,7 @@ struct SelectExerciseBarView: View {
             .opacity(isActionDisabled ? 0.45 : 1)
             .disabled(isActionDisabled)
             .buttonStyle(.plain)
+            .accessibilityLabel(Text("common.add"))
         }
         .padding(.horizontal, 16)
         .padding(.top, 10)

@@ -23,7 +23,7 @@ final class CreateCustomExerciseViewModel: ObservableObject {
         didSet { validationErrors.name = nil }
     }
     @Published var descriptionText = ""
-    @Published private(set) var generatedDefaultName = "Custom Exercise 1"
+    @Published private(set) var generatedDefaultName = CreateCustomExerciseViewModel.defaultName(number: 1)
     @Published private(set) var selectedCategoryId: String? {
         didSet { validationErrors.category = nil }
     }
@@ -48,16 +48,24 @@ final class CreateCustomExerciseViewModel: ObservableObject {
     }
     
     var categoryTitle: String {
-        selectedCategory?.displayName ?? "Not selected"
+        selectedCategory?.displayName ?? String(localized: "common.not_selected")
     }
     
     var trackingTypeTitle: String {
-        selectedTrackingType?.displayTitle ?? "Not selected"
+        selectedTrackingType?.displayTitle ?? String(localized: "common.not_selected")
+    }
+    
+    var isCategoryPlaceholder: Bool {
+        selectedCategoryId == nil
+    }
+    
+    var isTrackingTypePlaceholder: Bool {
+        selectedTrackingType == nil
     }
     
     var previewSubtitle: String {
-        let category = selectedCategory?.displayName ?? "Select category"
-        let tracking = selectedTrackingType?.displayTitle ?? "Select tracking type"
+        let category = selectedCategory?.displayName ?? String(localized: "custom_exercise.select_category")
+        let tracking = selectedTrackingType?.displayTitle ?? String(localized: "custom_exercise.select_tracking_type")
         return "\(category) · \(tracking)"
     }
     
@@ -100,15 +108,15 @@ final class CreateCustomExerciseViewModel: ObservableObject {
         var errors = ValidationErrors()
         
         if selectedCategoryId == nil {
-            errors.category = "Select a category."
+            errors.category = String(localized: "custom_exercise.error.category_required")
         }
         
         if selectedTrackingType == nil {
-            errors.trackingType = "Select a tracking type."
+            errors.trackingType = String(localized: "custom_exercise.error.tracking_type_required")
         }
         
         if let selectedCategoryId, hasDuplicateName(title: effectiveTitle, categoryId: selectedCategoryId) {
-            errors.name = "An exercise with this name already exists in this category."
+            errors.name = String(localized: "custom_exercise.error.duplicate_name")
         }
         
         validationErrors = errors
@@ -127,7 +135,7 @@ final class CreateCustomExerciseViewModel: ObservableObject {
     }
     
     private static func nextDefaultName(from titles: [String]) -> String {
-        let prefix = "Custom Exercise "
+        let prefix = String(localized: "custom_exercise.generated_name_prefix")
         let maxNumber = titles.compactMap { title -> Int? in
             let trimmed = title.trimmingCharacters(in: .whitespacesAndNewlines)
             guard trimmed.hasPrefix(prefix) else { return nil }
@@ -135,6 +143,10 @@ final class CreateCustomExerciseViewModel: ObservableObject {
         }
         .max() ?? 0
         
-        return "\(prefix)\(maxNumber + 1)"
+        return defaultName(number: maxNumber + 1)
+    }
+    
+    private static func defaultName(number: Int) -> String {
+        String.localizedStringWithFormat(String(localized: "custom_exercise.generated_name"), number)
     }
 }
