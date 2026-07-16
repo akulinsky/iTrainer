@@ -601,10 +601,10 @@
 				F6EA7BDF2C57DEF6005225A0 /* ExerciseListViewModel.swift */,
 				F6CCEE0B2FFD547B00686CFB /* HiddenExercisesView.swift */,
 				F6CCEE092FFD547000686CFB /* HiddenExerciseCell.swift */,
-				F6CF519D3007EABB00D35E28 /* SupersetCell.swift */,
-				F6CF519F3007EC2A00D35E28 /* SupersetEditViewModel.swift */,
-				F6CF51A13007EC3F00D35E28 /* SupersetExercisePickerView.swift */,
 				F6CF51A33007EC7200D35E28 /* SupersetEditView.swift */,
+				F6CF519F3007EC2A00D35E28 /* SupersetEditViewModel.swift */,
+				F6CF519D3007EABB00D35E28 /* SupersetCell.swift */,
+				F6CF51A13007EC3F00D35E28 /* SupersetExercisePickerView.swift */,
 			);
 			path = "Exercise List";
 			sourceTree = "<group>";
