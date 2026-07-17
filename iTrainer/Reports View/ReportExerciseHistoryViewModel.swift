@@ -37,9 +37,6 @@ final class ReportExerciseHistoryViewModel: ObservableObject {
         }
         guard shouldLoad else { return }
         
-        // Keep the loading state visible long enough for the spinner animation to start.
-        try? await Task.sleep(for: .seconds(1))
-        
         let currentReport = reportExercise
         let dataManager = DataManagerBackground(container: DataContainer.shared.sharedModelContainer)
         let history = await dataManager.fetchReportExercises(exerciseId: currentReport.exerciseId)

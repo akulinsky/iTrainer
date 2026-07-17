@@ -33,7 +33,7 @@ struct ReportExerciseHistorySection: View {
             }
             .padding(.horizontal, 4)
             
-            VStack(spacing: 12) {
+            LazyVStack(spacing: 12) {
                 ForEach(groups) { group in
                     historyGroup(group)
                 }
