@@ -300,6 +300,114 @@
     ]
   },
   {
+    "exerciseId": "glutes_hip_thrust",
+    "descriptionKey": "exercise.info.glutes_hip_thrust.description",
+    "techniqueKeys": [
+      "exercise.info.glutes_hip_thrust.technique.1",
+      "exercise.info.glutes_hip_thrust.technique.2",
+      "exercise.info.glutes_hip_thrust.technique.3",
+      "exercise.info.glutes_hip_thrust.technique.4",
+      "exercise.info.glutes_hip_thrust.technique.5",
+      "exercise.info.glutes_hip_thrust.technique.6"
+    ]
+  },
+  {
+    "exerciseId": "glutes_glute_bridge",
+    "descriptionKey": "exercise.info.glutes_glute_bridge.description",
+    "techniqueKeys": [
+      "exercise.info.glutes_glute_bridge.technique.1",
+      "exercise.info.glutes_glute_bridge.technique.2",
+      "exercise.info.glutes_glute_bridge.technique.3",
+      "exercise.info.glutes_glute_bridge.technique.4",
+      "exercise.info.glutes_glute_bridge.technique.5",
+      "exercise.info.glutes_glute_bridge.technique.6"
+    ]
+  },
+  {
+    "exerciseId": "glutes_romanian_deadlift",
+    "descriptionKey": "exercise.info.glutes_romanian_deadlift.description",
+    "techniqueKeys": [
+      "exercise.info.glutes_romanian_deadlift.technique.1",
+      "exercise.info.glutes_romanian_deadlift.technique.2",
+      "exercise.info.glutes_romanian_deadlift.technique.3",
+      "exercise.info.glutes_romanian_deadlift.technique.4",
+      "exercise.info.glutes_romanian_deadlift.technique.5",
+      "exercise.info.glutes_romanian_deadlift.technique.6"
+    ]
+  },
+  {
+    "exerciseId": "glutes_bulgarian_split_squat",
+    "descriptionKey": "exercise.info.glutes_bulgarian_split_squat.description",
+    "techniqueKeys": [
+      "exercise.info.glutes_bulgarian_split_squat.technique.1",
+      "exercise.info.glutes_bulgarian_split_squat.technique.2",
+      "exercise.info.glutes_bulgarian_split_squat.technique.3",
+      "exercise.info.glutes_bulgarian_split_squat.technique.4",
+      "exercise.info.glutes_bulgarian_split_squat.technique.5",
+      "exercise.info.glutes_bulgarian_split_squat.technique.6"
+    ]
+  },
+  {
+    "exerciseId": "glutes_cable_kickback",
+    "descriptionKey": "exercise.info.glutes_cable_kickback.description",
+    "techniqueKeys": [
+      "exercise.info.glutes_cable_kickback.technique.1",
+      "exercise.info.glutes_cable_kickback.technique.2",
+      "exercise.info.glutes_cable_kickback.technique.3",
+      "exercise.info.glutes_cable_kickback.technique.4",
+      "exercise.info.glutes_cable_kickback.technique.5",
+      "exercise.info.glutes_cable_kickback.technique.6"
+    ]
+  },
+  {
+    "exerciseId": "glutes_leg_kickback",
+    "descriptionKey": "exercise.info.glutes_leg_kickback.description",
+    "techniqueKeys": [
+      "exercise.info.glutes_leg_kickback.technique.1",
+      "exercise.info.glutes_leg_kickback.technique.2",
+      "exercise.info.glutes_leg_kickback.technique.3",
+      "exercise.info.glutes_leg_kickback.technique.4",
+      "exercise.info.glutes_leg_kickback.technique.5",
+      "exercise.info.glutes_leg_kickback.technique.6"
+    ]
+  },
+  {
+    "exerciseId": "glutes_abduction_machine",
+    "descriptionKey": "exercise.info.glutes_abduction_machine.description",
+    "techniqueKeys": [
+      "exercise.info.glutes_abduction_machine.technique.1",
+      "exercise.info.glutes_abduction_machine.technique.2",
+      "exercise.info.glutes_abduction_machine.technique.3",
+      "exercise.info.glutes_abduction_machine.technique.4",
+      "exercise.info.glutes_abduction_machine.technique.5",
+      "exercise.info.glutes_abduction_machine.technique.6"
+    ]
+  },
+  {
+    "exerciseId": "glutes_step_up",
+    "descriptionKey": "exercise.info.glutes_step_up.description",
+    "techniqueKeys": [
+      "exercise.info.glutes_step_up.technique.1",
+      "exercise.info.glutes_step_up.technique.2",
+      "exercise.info.glutes_step_up.technique.3",
+      "exercise.info.glutes_step_up.technique.4",
+      "exercise.info.glutes_step_up.technique.5",
+      "exercise.info.glutes_step_up.technique.6"
+    ]
+  },
+  {
+    "exerciseId": "glutes_cable_side_kick",
+    "descriptionKey": "exercise.info.glutes_cable_side_kick.description",
+    "techniqueKeys": [
+      "exercise.info.glutes_cable_side_kick.technique.1",
+      "exercise.info.glutes_cable_side_kick.technique.2",
+      "exercise.info.glutes_cable_side_kick.technique.3",
+      "exercise.info.glutes_cable_side_kick.technique.4",
+      "exercise.info.glutes_cable_side_kick.technique.5",
+      "exercise.info.glutes_cable_side_kick.technique.6"
+    ]
+  },
+  {
     "exerciseId": "shoulders_overhead_press",
     "descriptionKey": "exercise.info.shoulders_overhead_press.description",
     "techniqueKeys": [

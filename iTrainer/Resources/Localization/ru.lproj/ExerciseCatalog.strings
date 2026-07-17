@@ -52,9 +52,12 @@
 "exercise.glutes.glute_bridge" = "Ягодичный мост";
 "exercise.glutes.hip_thrust" = "Хип-траст";
 "exercise.glutes.romanian_deadlift" = "Румынская тяга";
-"exercise.glutes.cable_kickback" = "Отведение ноги назад";
+"exercise.glutes.cable_kickback" = "Отведение ноги назад в кроссовере";
 "exercise.glutes.bulgarian_split_squat" = "Болгарские выпады";
 "exercise.glutes.leg_kickback" = "Махи ногой назад";
+"exercise.glutes.abduction_machine" = "Отведение ноги в тренажере";
+"exercise.glutes.step_up" = "Шаги на платформу";
+"exercise.glutes.cable_side_kick" = "Отведение ноги в сторону в кроссовере";
 "exercise.shoulders.overhead_press" = "Жим штанги стоя";
 "exercise.shoulders.seated_dumbbell_press" = "Жим гантелей сидя";
 "exercise.shoulders.lateral_raise" = "Махи гантелями в стороны";

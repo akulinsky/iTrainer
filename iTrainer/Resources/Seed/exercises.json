@@ -288,18 +288,18 @@
     "trackingType": "weightedReps"
   },
   {
-    "id": "glutes_glute_bridge",
-    "titleKey": "exercise.glutes.glute_bridge",
-    "defaultTitle": "Glute Bridge",
+    "id": "glutes_hip_thrust",
+    "titleKey": "exercise.glutes.hip_thrust",
+    "defaultTitle": "Hip Thrust",
     "category": "glutes",
     "sortOrder": 0,
     "iconName": "icMissingImage",
     "trackingType": "weightedReps"
   },
   {
-    "id": "glutes_hip_thrust",
-    "titleKey": "exercise.glutes.hip_thrust",
-    "defaultTitle": "Hip Thrust",
+    "id": "glutes_glute_bridge",
+    "titleKey": "exercise.glutes.glute_bridge",
+    "defaultTitle": "Glute Bridge",
     "category": "glutes",
     "sortOrder": 1,
     "iconName": "icMissingImage",
@@ -315,18 +315,18 @@
     "trackingType": "weightedReps"
   },
   {
-    "id": "glutes_cable_kickback",
-    "titleKey": "exercise.glutes.cable_kickback",
-    "defaultTitle": "Cable Kickback",
+    "id": "glutes_bulgarian_split_squat",
+    "titleKey": "exercise.glutes.bulgarian_split_squat",
+    "defaultTitle": "Bulgarian Split Squat",
     "category": "glutes",
     "sortOrder": 3,
     "iconName": "icMissingImage",
     "trackingType": "weightedReps"
   },
   {
-    "id": "glutes_bulgarian_split_squat",
-    "titleKey": "exercise.glutes.bulgarian_split_squat",
-    "defaultTitle": "Bulgarian Split Squat",
+    "id": "glutes_cable_kickback",
+    "titleKey": "exercise.glutes.cable_kickback",
+    "defaultTitle": "Cable Kickback",
     "category": "glutes",
     "sortOrder": 4,
     "iconName": "icMissingImage",
@@ -340,6 +340,33 @@
     "sortOrder": 5,
     "iconName": "icMissingImage",
     "trackingType": "repsOnly"
+  },
+  {
+    "id": "glutes_abduction_machine",
+    "titleKey": "exercise.glutes.abduction_machine",
+    "defaultTitle": "Hip Abduction Machine",
+    "category": "glutes",
+    "sortOrder": 6,
+    "iconName": "icMissingImage",
+    "trackingType": "weightedReps"
+  },
+  {
+    "id": "glutes_step_up",
+    "titleKey": "exercise.glutes.step_up",
+    "defaultTitle": "Step-Up",
+    "category": "glutes",
+    "sortOrder": 7,
+    "iconName": "icMissingImage",
+    "trackingType": "weightedReps"
+  },
+  {
+    "id": "glutes_cable_side_kick",
+    "titleKey": "exercise.glutes.cable_side_kick",
+    "defaultTitle": "Cable Side Kick",
+    "category": "glutes",
+    "sortOrder": 8,
+    "iconName": "icMissingImage",
+    "trackingType": "weightedReps"
   },
   {
     "id": "shoulders_overhead_press",

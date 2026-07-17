@@ -304,6 +304,78 @@
 "exercise.info.legs_hip_adduction_machine.technique.5" = "Коротко задержитесь, не форсируя амплитуду.";
 "exercise.info.legs_hip_adduction_machine.technique.6" = "Возвращайтесь медленно и контролируйте подушки.";
 
+"exercise.info.glutes_hip_thrust.description" = "Хип-траст - упражнение для ягодиц с опорой верхней части спины на скамью и возможностью использовать большой вес.";
+"exercise.info.glutes_hip_thrust.technique.1" = "Упритесь верхом спины в скамью и расположите штангу над тазом.";
+"exercise.info.glutes_hip_thrust.technique.2" = "Поставьте стопы примерно на ширине таза так, чтобы вверху голени были почти вертикальны.";
+"exercise.info.glutes_hip_thrust.technique.3" = "Напрягите корпус перед подъемом таза.";
+"exercise.info.glutes_hip_thrust.technique.4" = "Толкайтесь пятками и поднимайтесь до полного разгибания таза.";
+"exercise.info.glutes_hip_thrust.technique.5" = "Коротко задержитесь вверху и сожмите ягодицы.";
+"exercise.info.glutes_hip_thrust.technique.6" = "Опускайтесь под контролем, не переразгибая поясницу.";
+
+"exercise.info.glutes_glute_bridge.description" = "Ягодичный мост - упражнение для ягодиц с пола, с меньшей амплитудой, чем у хип-траста.";
+"exercise.info.glutes_glute_bridge.technique.1" = "Лягте на спину, согните колени и поставьте стопы на пол.";
+"exercise.info.glutes_glute_bridge.technique.2" = "Поставьте стопы примерно на ширине таза и контролируйте положение ребер.";
+"exercise.info.glutes_glute_bridge.technique.3" = "Толкайтесь пятками и поднимайте таз.";
+"exercise.info.glutes_glute_bridge.technique.4" = "Остановитесь, когда таз выпрямлен и тело образует прямую линию.";
+"exercise.info.glutes_glute_bridge.technique.5" = "Сожмите ягодицы вверху, не прогибая поясницу.";
+"exercise.info.glutes_glute_bridge.technique.6" = "Опускайтесь медленно, пока таз не вернется к полу.";
+
+"exercise.info.glutes_romanian_deadlift.description" = "Румынская тяга - упражнение с наклоном через таз для ягодиц, задней поверхности бедра и контроля задней цепи.";
+"exercise.info.glutes_romanian_deadlift.technique.1" = "Встаньте ровно с весом перед бедрами.";
+"exercise.info.glutes_romanian_deadlift.technique.2" = "Напрягите корпус и слегка согните колени.";
+"exercise.info.glutes_romanian_deadlift.technique.3" = "Наклоняйтесь через таз, отводя его назад.";
+"exercise.info.glutes_romanian_deadlift.technique.4" = "Держите вес близко к ногам при опускании.";
+"exercise.info.glutes_romanian_deadlift.technique.5" = "Опускайтесь до контролируемого растяжения задней поверхности бедра.";
+"exercise.info.glutes_romanian_deadlift.technique.6" = "Возвращайтесь вверх, подавая таз вперед.";
+
+"exercise.info.glutes_bulgarian_split_squat.description" = "Болгарские выпады - одностороннее упражнение, которое хорошо нагружает ягодицы и квадрицепсы.";
+"exercise.info.glutes_bulgarian_split_squat.technique.1" = "Поставьте заднюю стопу на скамью или устойчивую опору.";
+"exercise.info.glutes_bulgarian_split_squat.technique.2" = "Переднюю стопу поставьте достаточно далеко, чтобы контролировать колено.";
+"exercise.info.glutes_bulgarian_split_squat.technique.3" = "Слегка наклоните корпус вперед, если хотите больше акцентировать ягодицы.";
+"exercise.info.glutes_bulgarian_split_squat.technique.4" = "Опускайтесь под контролем до комфортного сгиба передней ноги.";
+"exercise.info.glutes_bulgarian_split_squat.technique.5" = "Поднимайтесь через переднюю стопу.";
+"exercise.info.glutes_bulgarian_split_squat.technique.6" = "Держите равновесие и не отбивайтесь из нижней точки.";
+
+"exercise.info.glutes_cable_kickback.description" = "Отведение ноги назад в кроссовере тренирует ягодицы через разгибание бедра назад с сопротивлением троса.";
+"exercise.info.glutes_cable_kickback.technique.1" = "Закрепите манжету блока у голеностопа и держитесь за тренажер для опоры.";
+"exercise.info.glutes_cable_kickback.technique.2" = "Встаньте ровно с небольшим наклоном вперед и напрягите корпус.";
+"exercise.info.glutes_cable_kickback.technique.3" = "Отводите рабочую ногу назад движением из тазобедренного сустава.";
+"exercise.info.glutes_cable_kickback.technique.4" = "Держите таз стабильным и не разворачивайте корпус.";
+"exercise.info.glutes_cable_kickback.technique.5" = "Коротко задержитесь при сокращении ягодицы.";
+"exercise.info.glutes_cable_kickback.technique.6" = "Возвращайтесь медленно, не позволяя весу тянуть ногу вперед.";
+
+"exercise.info.glutes_leg_kickback.description" = "Махи ногой назад - упражнение для ягодиц с весом тела или резинкой, сфокусированное на разгибании бедра.";
+"exercise.info.glutes_leg_kickback.technique.1" = "Начните из устойчивого положения стоя или на четвереньках.";
+"exercise.info.glutes_leg_kickback.technique.2" = "Напрягите корпус, чтобы поясница не переразгибалась.";
+"exercise.info.glutes_leg_kickback.technique.3" = "Отводите одну ногу назад движением из таза.";
+"exercise.info.glutes_leg_kickback.technique.4" = "Держите таз ровно и не разворачивайтесь.";
+"exercise.info.glutes_leg_kickback.technique.5" = "Коротко сожмите ягодицу в конце движения.";
+"exercise.info.glutes_leg_kickback.technique.6" = "Возвращайтесь под контролем перед следующим повторением.";
+
+"exercise.info.glutes_abduction_machine.description" = "Отведение ноги в тренажере тренирует среднюю ягодичную и наружную часть ягодиц через разведение ног в стороны.";
+"exercise.info.glutes_abduction_machine.technique.1" = "Сядьте с опорой спины и расположите подушки снаружи бедер.";
+"exercise.info.glutes_abduction_machine.technique.2" = "Выберите комфортную стартовую ширину.";
+"exercise.info.glutes_abduction_machine.technique.3" = "Держитесь за рукояти и сохраняйте корпус неподвижным.";
+"exercise.info.glutes_abduction_machine.technique.4" = "Разводите ноги наружу под контролем.";
+"exercise.info.glutes_abduction_machine.technique.5" = "Коротко задержитесь без наклона корпуса и инерции.";
+"exercise.info.glutes_abduction_machine.technique.6" = "Возвращайтесь медленно, сохраняя напряжение в ягодицах.";
+
+"exercise.info.glutes_step_up.description" = "Шаги на платформу - одностороннее упражнение для ягодиц, квадрицепсов и баланса.";
+"exercise.info.glutes_step_up.technique.1" = "Выберите высоту платформы, которую можете контролировать.";
+"exercise.info.glutes_step_up.technique.2" = "Поставьте всю рабочую стопу на платформу.";
+"exercise.info.glutes_step_up.technique.3" = "Слегка наклонитесь вперед и напрягите корпус.";
+"exercise.info.glutes_step_up.technique.4" = "Поднимайтесь через рабочую стопу.";
+"exercise.info.glutes_step_up.technique.5" = "Не отталкивайтесь сильно задней ногой.";
+"exercise.info.glutes_step_up.technique.6" = "Опускайтесь медленно и повторяйте под контролем.";
+
+"exercise.info.glutes_cable_side_kick.description" = "Отведение ноги в сторону в кроссовере тренирует наружную часть ягодиц с сопротивлением троса.";
+"exercise.info.glutes_cable_side_kick.technique.1" = "Закрепите манжету блока у голеностопа и встаньте боком к тренажеру.";
+"exercise.info.glutes_cable_side_kick.technique.2" = "Держитесь за тренажер для равновесия и сохраняйте корпус ровным.";
+"exercise.info.glutes_cable_side_kick.technique.3" = "Отводите рабочую ногу в сторону движением из тазобедренного сустава.";
+"exercise.info.glutes_cable_side_kick.technique.4" = "Держите таз стабильным и не отклоняйтесь далеко в сторону.";
+"exercise.info.glutes_cable_side_kick.technique.5" = "Коротко задержитесь в конце амплитуды.";
+"exercise.info.glutes_cable_side_kick.technique.6" = "Возвращайтесь медленно, не позволяя тросу уводить корпус.";
+
 "exercise.info.shoulders_overhead_press.description" = "Жим штанги стоя - базовое упражнение для развития силы вертикального жима.";
 "exercise.info.shoulders_overhead_press.technique.1" = "Напрягите корпус перед жимом.";
 "exercise.info.shoulders_overhead_press.technique.2" = "Жмите штангу вверх по прямой траектории.";

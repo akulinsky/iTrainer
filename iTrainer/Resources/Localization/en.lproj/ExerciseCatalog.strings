@@ -55,6 +55,9 @@
 "exercise.glutes.cable_kickback" = "Cable Kickback";
 "exercise.glutes.bulgarian_split_squat" = "Bulgarian Split Squat";
 "exercise.glutes.leg_kickback" = "Leg Kickback";
+"exercise.glutes.abduction_machine" = "Hip Abduction Machine";
+"exercise.glutes.step_up" = "Step-Up";
+"exercise.glutes.cable_side_kick" = "Cable Side Kick";
 "exercise.shoulders.overhead_press" = "Overhead Press";
 "exercise.shoulders.seated_dumbbell_press" = "Seated Dumbbell Press";
 "exercise.shoulders.lateral_raise" = "Lateral Raise";

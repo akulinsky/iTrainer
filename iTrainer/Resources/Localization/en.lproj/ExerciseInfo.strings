@@ -304,6 +304,78 @@
 "exercise.info.legs_hip_adduction_machine.technique.5" = "Pause briefly without forcing the range.";
 "exercise.info.legs_hip_adduction_machine.technique.6" = "Return slowly and keep control of the pads.";
 
+"exercise.info.glutes_hip_thrust.description" = "Hip Thrust is a loaded glute exercise performed with the upper back supported on a bench.";
+"exercise.info.glutes_hip_thrust.technique.1" = "Place your upper back against a bench and set the bar over your hips.";
+"exercise.info.glutes_hip_thrust.technique.2" = "Keep feet about hip width and close enough that shins are near vertical at the top.";
+"exercise.info.glutes_hip_thrust.technique.3" = "Brace your trunk before lifting the hips.";
+"exercise.info.glutes_hip_thrust.technique.4" = "Drive through the heels and lift until hips are fully extended.";
+"exercise.info.glutes_hip_thrust.technique.5" = "Pause briefly at the top and squeeze the glutes.";
+"exercise.info.glutes_hip_thrust.technique.6" = "Lower under control without over-arching the lower back.";
+
+"exercise.info.glutes_glute_bridge.description" = "Glute Bridge is a floor-based glute exercise with a shorter range of motion than a hip thrust.";
+"exercise.info.glutes_glute_bridge.technique.1" = "Lie on your back with knees bent and feet flat on the floor.";
+"exercise.info.glutes_glute_bridge.technique.2" = "Place feet about hip width and keep ribs controlled.";
+"exercise.info.glutes_glute_bridge.technique.3" = "Drive through the heels to lift your hips.";
+"exercise.info.glutes_glute_bridge.technique.4" = "Stop when hips are extended and the body forms a straight line.";
+"exercise.info.glutes_glute_bridge.technique.5" = "Squeeze the glutes at the top without arching the back.";
+"exercise.info.glutes_glute_bridge.technique.6" = "Lower slowly until the hips return to the floor.";
+
+"exercise.info.glutes_romanian_deadlift.description" = "Romanian Deadlift is a hip-hinge exercise that trains the glutes, hamstrings, and posterior-chain control.";
+"exercise.info.glutes_romanian_deadlift.technique.1" = "Stand tall with the weight in front of your thighs.";
+"exercise.info.glutes_romanian_deadlift.technique.2" = "Brace your torso and keep the knees softly bent.";
+"exercise.info.glutes_romanian_deadlift.technique.3" = "Hinge at the hips and push them back.";
+"exercise.info.glutes_romanian_deadlift.technique.4" = "Keep the weight close to your legs as it lowers.";
+"exercise.info.glutes_romanian_deadlift.technique.5" = "Lower until you feel a controlled stretch in the hamstrings.";
+"exercise.info.glutes_romanian_deadlift.technique.6" = "Stand back up by driving the hips forward.";
+
+"exercise.info.glutes_bulgarian_split_squat.description" = "Bulgarian Split Squat is a single-leg exercise that can strongly train the glutes and quads.";
+"exercise.info.glutes_bulgarian_split_squat.technique.1" = "Place the rear foot on a bench or stable support.";
+"exercise.info.glutes_bulgarian_split_squat.technique.2" = "Set the front foot far enough forward to control knee position.";
+"exercise.info.glutes_bulgarian_split_squat.technique.3" = "Keep the torso slightly leaned forward if targeting the glutes.";
+"exercise.info.glutes_bulgarian_split_squat.technique.4" = "Lower under control until the front leg bends comfortably.";
+"exercise.info.glutes_bulgarian_split_squat.technique.5" = "Push through the front foot to stand up.";
+"exercise.info.glutes_bulgarian_split_squat.technique.6" = "Keep balance steady and avoid bouncing from the bottom.";
+
+"exercise.info.glutes_cable_kickback.description" = "Cable Kickback trains the glutes by extending the hip backward against cable resistance.";
+"exercise.info.glutes_cable_kickback.technique.1" = "Attach the cable cuff near the ankle and hold the machine for support.";
+"exercise.info.glutes_cable_kickback.technique.2" = "Stand tall with a slight forward lean and brace your trunk.";
+"exercise.info.glutes_cable_kickback.technique.3" = "Move the working leg backward from the hip.";
+"exercise.info.glutes_cable_kickback.technique.4" = "Keep the pelvis stable and avoid rotating the torso.";
+"exercise.info.glutes_cable_kickback.technique.5" = "Pause briefly when the glute contracts.";
+"exercise.info.glutes_cable_kickback.technique.6" = "Return slowly without letting the weight pull the leg forward.";
+
+"exercise.info.glutes_leg_kickback.description" = "Leg Kickback is a bodyweight or banded glute movement focused on hip extension.";
+"exercise.info.glutes_leg_kickback.technique.1" = "Start from a stable standing or hands-and-knees position.";
+"exercise.info.glutes_leg_kickback.technique.2" = "Brace your trunk so the lower back does not over-arch.";
+"exercise.info.glutes_leg_kickback.technique.3" = "Drive one leg backward from the hip.";
+"exercise.info.glutes_leg_kickback.technique.4" = "Keep the pelvis square and avoid twisting.";
+"exercise.info.glutes_leg_kickback.technique.5" = "Squeeze the glute briefly at the end of the movement.";
+"exercise.info.glutes_leg_kickback.technique.6" = "Return with control before starting the next rep.";
+
+"exercise.info.glutes_abduction_machine.description" = "Hip Abduction Machine trains the glute medius and outer glutes by moving the legs away from the midline.";
+"exercise.info.glutes_abduction_machine.technique.1" = "Sit with your back supported and pads placed outside the thighs.";
+"exercise.info.glutes_abduction_machine.technique.2" = "Choose a starting width that feels comfortable.";
+"exercise.info.glutes_abduction_machine.technique.3" = "Hold the handles and keep the torso steady.";
+"exercise.info.glutes_abduction_machine.technique.4" = "Open the legs outward under control.";
+"exercise.info.glutes_abduction_machine.technique.5" = "Pause briefly without leaning or using momentum.";
+"exercise.info.glutes_abduction_machine.technique.6" = "Return slowly and keep tension on the glutes.";
+
+"exercise.info.glutes_step_up.description" = "Step-Up is a single-leg exercise that trains the glutes, quads, and balance by stepping onto a raised platform.";
+"exercise.info.glutes_step_up.technique.1" = "Choose a platform height you can control.";
+"exercise.info.glutes_step_up.technique.2" = "Place the full working foot on the platform.";
+"exercise.info.glutes_step_up.technique.3" = "Lean slightly forward and brace your torso.";
+"exercise.info.glutes_step_up.technique.4" = "Push through the working foot to step up.";
+"exercise.info.glutes_step_up.technique.5" = "Avoid pushing hard off the trailing leg.";
+"exercise.info.glutes_step_up.technique.6" = "Step down slowly and repeat with control.";
+
+"exercise.info.glutes_cable_side_kick.description" = "Cable Side Kick trains the outer glutes by moving the leg sideways against cable resistance.";
+"exercise.info.glutes_cable_side_kick.technique.1" = "Attach the cable cuff near the ankle and stand side-on to the machine.";
+"exercise.info.glutes_cable_side_kick.technique.2" = "Hold the machine for balance and keep the torso tall.";
+"exercise.info.glutes_cable_side_kick.technique.3" = "Move the working leg out to the side from the hip.";
+"exercise.info.glutes_cable_side_kick.technique.4" = "Keep the pelvis stable and avoid leaning far away.";
+"exercise.info.glutes_cable_side_kick.technique.5" = "Pause briefly at the end of the range.";
+"exercise.info.glutes_cable_side_kick.technique.6" = "Return slowly without letting the cable pull you out of position.";
+
 "exercise.info.shoulders_overhead_press.description" = "Overhead Press is a compound shoulder exercise that develops vertical pressing strength.";
 "exercise.info.shoulders_overhead_press.technique.1" = "Brace your torso before pressing.";
 "exercise.info.shoulders_overhead_press.technique.2" = "Press the bar overhead in a straight path.";
