@@ -96,48 +96,109 @@
 "exercise.info.chest_dumbbell_pullover.technique.5" = "Возвращайте гантель над грудью плавной дугой.";
 "exercise.info.chest_dumbbell_pullover.technique.6" = "Используйте умеренный вес и не превращайте движение в разгибание на трицепс.";
 
-"exercise.info.chest_cable_pullover.description" = "Пуловер в кроссовере - вариант с тросом, который сохраняет постоянное натяжение в движении пуловера.";
-"exercise.info.chest_cable_pullover.technique.1" = "Используйте верхний блок и отойдите так, чтобы трос оставался натянутым.";
-"exercise.info.chest_cable_pullover.technique.2" = "Держите рукоять или канат почти прямыми руками с мягким сгибом в локтях.";
-"exercise.info.chest_cable_pullover.technique.3" = "Напрягите корпус и держите плечи опущенными от ушей.";
-"exercise.info.chest_cable_pullover.technique.4" = "Тяните рукоять вниз и вперед контролируемой дугой.";
-"exercise.info.chest_cable_pullover.technique.5" = "Коротко задержитесь у нижней части груди или верхней части бедер, в зависимости от настройки.";
-"exercise.info.chest_cable_pullover.technique.6" = "Возвращайтесь медленно и не позволяйте тросу вытягивать плечи вперед.";
+"exercise.info.back_pull_up.description" = "Подтягивания - вертикальная тяга с весом тела для развития широчайших, верха спины и контроля рук.";
+"exercise.info.back_pull_up.technique.1" = "Начинайте из контролируемого виса с активными плечами, а не полностью расслабленно.";
+"exercise.info.back_pull_up.technique.2" = "Крепко держитесь за перекладину и напрягите корпус перед тягой.";
+"exercise.info.back_pull_up.technique.3" = "Тянитесь вверх, направляя локти вниз к корпусу.";
+"exercise.info.back_pull_up.technique.4" = "Ведите грудь к перекладине без сильной раскачки.";
+"exercise.info.back_pull_up.technique.5" = "Опускайтесь под контролем до выпрямления рук.";
+"exercise.info.back_pull_up.technique.6" = "Сохраняйте чистые повторения и не подбрасывайте себя ногами.";
 
-"exercise.info.back_pull_up.description" = "Подтягивания - упражнение с весом тела для развития силы спины и рук.";
-"exercise.info.back_pull_up.technique.1" = "Начинайте из контролируемого виса.";
-"exercise.info.back_pull_up.technique.2" = "Тяните грудь к перекладине, направляя локти вниз.";
-"exercise.info.back_pull_up.technique.3" = "Опускайтесь под контролем без раскачки.";
+"exercise.info.back_reverse_grip_pull_up.description" = "Подтягивания обратным хватом - вариант подтягиваний с супинированным хватом, который сильнее подключает широчайшие и бицепс.";
+"exercise.info.back_reverse_grip_pull_up.technique.1" = "Возьмитесь за перекладину обратным хватом примерно на ширине плеч.";
+"exercise.info.back_reverse_grip_pull_up.technique.2" = "Начинайте из контролируемого виса и держите ребра опущенными.";
+"exercise.info.back_reverse_grip_pull_up.technique.3" = "Тяните грудь к перекладине, удерживая локти ближе к корпусу.";
+"exercise.info.back_reverse_grip_pull_up.technique.4" = "Не вытягивайте шею, чтобы дотянуться до перекладины.";
+"exercise.info.back_reverse_grip_pull_up.technique.5" = "Опускайтесь медленно до выпрямления локтей.";
+"exercise.info.back_reverse_grip_pull_up.technique.6" = "Не проваливайте плечи в нижней точке.";
 
-"exercise.info.back_barbell_row.description" = "Тяга штанги в наклоне - базовое тяговое упражнение для спины и задней цепи.";
+"exercise.info.back_barbell_row.description" = "Тяга штанги в наклоне - базовая горизонтальная тяга для середины спины, широчайших и стабильности задней цепи.";
 "exercise.info.back_barbell_row.technique.1" = "Наклонитесь через таз и сохраняйте нейтральную спину.";
-"exercise.info.back_barbell_row.technique.2" = "Тяните штангу к нижним ребрам.";
-"exercise.info.back_barbell_row.technique.3" = "Опускайте штангу под контролем, не теряя положение корпуса.";
+"exercise.info.back_barbell_row.technique.2" = "Напрягите корпус перед подъемом штанги с пола или стоек.";
+"exercise.info.back_barbell_row.technique.3" = "Сохраняйте стабильный угол корпуса на протяжении подхода.";
+"exercise.info.back_barbell_row.technique.4" = "Тяните штангу к нижним ребрам или верхней части живота.";
+"exercise.info.back_barbell_row.technique.5" = "Коротко сожмите спину без рывка корпусом.";
+"exercise.info.back_barbell_row.technique.6" = "Опускайте штангу под контролем, не округляя спину.";
 
-"exercise.info.back_one_arm_dumbbell_row.description" = "Тяга гантели одной рукой тренирует спину поочередно с опорой корпуса.";
-"exercise.info.back_one_arm_dumbbell_row.technique.1" = "Упритесь в скамью или устойчивую опору.";
-"exercise.info.back_one_arm_dumbbell_row.technique.2" = "Тяните гантель к тазу.";
-"exercise.info.back_one_arm_dumbbell_row.technique.3" = "Не разворачивайте корпус во время повторения.";
+"exercise.info.back_one_arm_dumbbell_row.description" = "Тяга гантели одной рукой тренирует каждую сторону спины отдельно с опорой на скамью или устойчивую поверхность.";
+"exercise.info.back_one_arm_dumbbell_row.technique.1" = "Упритесь одной рукой и коленом или одной рукой в устойчивую опору.";
+"exercise.info.back_one_arm_dumbbell_row.technique.2" = "Сохраняйте нейтральную спину и неподвижный корпус.";
+"exercise.info.back_one_arm_dumbbell_row.technique.3" = "В нижней точке дайте рабочему плечу слегка потянуться вперед.";
+"exercise.info.back_one_arm_dumbbell_row.technique.4" = "Тяните гантель к тазу, а не прямо вверх к плечу.";
+"exercise.info.back_one_arm_dumbbell_row.technique.5" = "Коротко задержитесь, удерживая локоть ближе к корпусу.";
+"exercise.info.back_one_arm_dumbbell_row.technique.6" = "Не разворачивайте корпус, чтобы поднять больший вес.";
 
-"exercise.info.back_lat_pulldown.description" = "Тяга верхнего блока - вертикальная тяга для тренировки широчайших мышц спины.";
+"exercise.info.back_lat_pulldown.description" = "Тяга верхнего блока - вертикальная тяга на блоке для широчайших и верха спины с регулируемой нагрузкой.";
 "exercise.info.back_lat_pulldown.technique.1" = "Сядьте ровно и зафиксируйте бедра под валиком.";
-"exercise.info.back_lat_pulldown.technique.2" = "Тяните рукоять к верхней части груди.";
-"exercise.info.back_lat_pulldown.technique.3" = "Возвращайте рукоять вверх под контролем, не отклоняясь слишком далеко назад.";
+"exercise.info.back_lat_pulldown.technique.2" = "Возьмитесь за рукоять чуть шире плеч, если не используете другую насадку.";
+"exercise.info.back_lat_pulldown.technique.3" = "Начните движение с опускания плеч от ушей.";
+"exercise.info.back_lat_pulldown.technique.4" = "Тяните рукоять к верхней части груди.";
+"exercise.info.back_lat_pulldown.technique.5" = "Держите корпус в основном стабильным и не отклоняйтесь далеко назад.";
+"exercise.info.back_lat_pulldown.technique.6" = "Возвращайте рукоять вверх медленно, не теряя контроль.";
 
-"exercise.info.back_seated_cable_row.description" = "Тяга горизонтального блока - горизонтальная тяга для середины спины и широчайших.";
-"exercise.info.back_seated_cable_row.technique.1" = "Сидите ровно с нейтральной спиной.";
-"exercise.info.back_seated_cable_row.technique.2" = "Тяните рукоять к нижним ребрам.";
-"exercise.info.back_seated_cable_row.technique.3" = "Коротко зафиксируйте движение и вернитесь под контролем.";
+"exercise.info.back_seated_cable_row.description" = "Тяга горизонтального блока - горизонтальная тяга для середины спины, широчайших и контроля лопаток.";
+"exercise.info.back_seated_cable_row.technique.1" = "Сядьте ровно с нейтральной спиной и устойчивыми стопами.";
+"exercise.info.back_seated_cable_row.technique.2" = "Начинайте с выпрямленными руками, сохраняя грудь поднятой.";
+"exercise.info.back_seated_cable_row.technique.3" = "Тяните рукоять к нижним ребрам или верхней части живота.";
+"exercise.info.back_seated_cable_row.technique.4" = "Ведите локти назад, не поднимая плечи.";
+"exercise.info.back_seated_cable_row.technique.5" = "Коротко задержитесь с контролем лопаток.";
+"exercise.info.back_seated_cable_row.technique.6" = "Возвращайте рукоять медленно, не округляясь вперед.";
 
-"exercise.info.back_deadlift.description" = "Становая тяга - тяжелое упражнение с наклоном через таз для развития общей тяговой силы.";
-"exercise.info.back_deadlift.technique.1" = "Поставьте стопы под штангу и напрягите корпус.";
-"exercise.info.back_deadlift.technique.2" = "Отталкивайтесь от пола, удерживая штангу близко к телу.";
-"exercise.info.back_deadlift.technique.3" = "Завершайте движение тазом и коленями, не отклоняясь назад.";
+"exercise.info.back_t_bar_row.description" = "Тяга Т-грифа - тяжелый вариант тяги для середины спины и широчайших со стабильной траекторией.";
+"exercise.info.back_t_bar_row.technique.1" = "Поставьте ноги устойчиво и наклонитесь так, чтобы корпус оставался стабильным.";
+"exercise.info.back_t_bar_row.technique.2" = "Напрягите корпус перед подъемом рукояти.";
+"exercise.info.back_t_bar_row.technique.3" = "Тяните рукоять к нижней части груди или верхней части живота.";
+"exercise.info.back_t_bar_row.technique.4" = "Ведите локти назад и не поднимайте плечи к ушам.";
+"exercise.info.back_t_bar_row.technique.5" = "Не начинайте каждое повторение сильным рывком корпуса.";
+"exercise.info.back_t_bar_row.technique.6" = "Опускайте вес под контролем до выпрямления рук.";
 
-"exercise.info.back_hyperextension.description" = "Гиперэкстензия развивает контролируемое разгибание таза и выносливость нижней части спины.";
+"exercise.info.back_chest_supported_machine_row.description" = "Тяга в тренажере с упором грудью тренирует спину с поддержкой корпуса и меньше нагружает поясницу.";
+"exercise.info.back_chest_supported_machine_row.technique.1" = "Настройте сиденье или грудную опору так, чтобы рукояти были на удобной высоте.";
+"exercise.info.back_chest_supported_machine_row.technique.2" = "Держите грудь прижатой к опоре весь подход.";
+"exercise.info.back_chest_supported_machine_row.technique.3" = "Начинайте с выпрямленными руками и контролируемыми плечами.";
+"exercise.info.back_chest_supported_machine_row.technique.4" = "Тяните рукояти назад, направляя локти за корпус.";
+"exercise.info.back_chest_supported_machine_row.technique.5" = "Коротко задержитесь, не отрывая грудь от опоры.";
+"exercise.info.back_chest_supported_machine_row.technique.6" = "Возвращайтесь плавно и сохраняйте напряжение в спине.";
+
+"exercise.info.back_straight_arm_pulldown.description" = "Тяга прямыми руками - упражнение на блоке для широчайших, выполняемое движением пуловера почти прямыми руками.";
+"exercise.info.back_straight_arm_pulldown.technique.1" = "Установите верхний блок и отойдите так, чтобы трос оставался натянутым.";
+"exercise.info.back_straight_arm_pulldown.technique.2" = "Держите рукоять или канат с мягким сгибом в локтях.";
+"exercise.info.back_straight_arm_pulldown.technique.3" = "Напрягите корпус и держите плечи опущенными от ушей.";
+"exercise.info.back_straight_arm_pulldown.technique.4" = "Тяните рукоять вниз дугой к верхней части бедер.";
+"exercise.info.back_straight_arm_pulldown.technique.5" = "Двигайтесь за счет плеч, а не сгибайте локти как в разгибании на трицепс.";
+"exercise.info.back_straight_arm_pulldown.technique.6" = "Возвращайтесь медленно до контролируемого растяжения широчайших.";
+
+"exercise.info.back_deadlift.description" = "Становая тяга - тяжелое упражнение с наклоном через таз для развития общей тяговой силы и задней цепи.";
+"exercise.info.back_deadlift.technique.1" = "Поставьте стопы под штангу так, чтобы гриф был близко к середине стопы.";
+"exercise.info.back_deadlift.technique.2" = "Наклонитесь через таз, возьмитесь за штангу и сильно напрягите корпус.";
+"exercise.info.back_deadlift.technique.3" = "Держите штангу близко к ногам в начале тяги.";
+"exercise.info.back_deadlift.technique.4" = "Отталкивайтесь от пола, сохраняя нейтральную спину.";
+"exercise.info.back_deadlift.technique.5" = "Завершайте движение одновременным разгибанием таза и коленей.";
+"exercise.info.back_deadlift.technique.6" = "Не отклоняйтесь чрезмерно назад в верхней точке.";
+
+"exercise.info.back_hyperextension.description" = "Гиперэкстензия тренирует контролируемое разгибание таза, ягодицы, заднюю поверхность бедра и выносливость поясницы.";
 "exercise.info.back_hyperextension.technique.1" = "Настройте опору так, чтобы таз мог свободно двигаться.";
-"exercise.info.back_hyperextension.technique.2" = "Опускайте корпус с нейтральной спиной.";
-"exercise.info.back_hyperextension.technique.3" = "Поднимайтесь за счет ягодиц, не переразгибая спину.";
+"exercise.info.back_hyperextension.technique.2" = "Скрестите руки или держите вес близко к корпусу.";
+"exercise.info.back_hyperextension.technique.3" = "Опускайте корпус с нейтральной спиной.";
+"exercise.info.back_hyperextension.technique.4" = "Поднимайтесь за счет ягодиц и задней поверхности бедра.";
+"exercise.info.back_hyperextension.technique.5" = "Остановитесь, когда тело выровнялось, не переразгибайтесь назад.";
+"exercise.info.back_hyperextension.technique.6" = "Двигайтесь медленно и не раскачивайтесь.";
+
+"exercise.info.back_dumbbell_shrug.description" = "Шраги с гантелями тренируют верх трапеций с независимой нагрузкой на каждую руку.";
+"exercise.info.back_dumbbell_shrug.technique.1" = "Встаньте ровно с гантелями в руках.";
+"exercise.info.back_dumbbell_shrug.technique.2" = "Держите руки прямыми, а гантели по сторонам корпуса.";
+"exercise.info.back_dumbbell_shrug.technique.3" = "Поднимайте плечи строго вверх к ушам.";
+"exercise.info.back_dumbbell_shrug.technique.4" = "Коротко задержитесь вверху, не вращая плечами.";
+"exercise.info.back_dumbbell_shrug.technique.5" = "Опускайтесь под контролем до полного растяжения.";
+"exercise.info.back_dumbbell_shrug.technique.6" = "Держите шею нейтрально и не подпрыгивайте с весом.";
+
+"exercise.info.back_barbell_shrug.description" = "Шраги со штангой - упражнение для верха трапеций, которое позволяет использовать более тяжелую нагрузку.";
+"exercise.info.back_barbell_shrug.technique.1" = "Держите штангу перед бедрами крепким хватом.";
+"exercise.info.back_barbell_shrug.technique.2" = "Стойте ровно и держите корпус напряженным.";
+"exercise.info.back_barbell_shrug.technique.3" = "Поднимайте плечи строго вверх, не сгибая локти.";
+"exercise.info.back_barbell_shrug.technique.4" = "Коротко задержитесь вверху и держите штангу близко к телу.";
+"exercise.info.back_barbell_shrug.technique.5" = "Опускайте штангу под контролем, не бросая вес вниз.";
+"exercise.info.back_barbell_shrug.technique.6" = "Не вращайте плечами, движение идет вверх и вниз.";
 
 "exercise.info.legs_barbell_squat.description" = "Приседания со штангой - базовое упражнение для силы ног и стабильности всего тела.";
 "exercise.info.legs_barbell_squat.technique.1" = "Напрягайте корпус перед каждым повторением.";

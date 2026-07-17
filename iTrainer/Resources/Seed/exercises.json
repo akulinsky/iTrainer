@@ -108,15 +108,6 @@
     "trackingType": "weightedReps"
   },
   {
-    "id": "chest_cable_pullover",
-    "titleKey": "exercise.chest.cable_pullover",
-    "defaultTitle": "Cable Pullover",
-    "category": "chest",
-    "sortOrder": 12,
-    "iconName": "icMissingImage",
-    "trackingType": "weightedReps"
-  },
-  {
     "id": "back_pull_up",
     "titleKey": "exercise.back.pull_up",
     "defaultTitle": "Pull-Up",
@@ -130,7 +121,7 @@
     "titleKey": "exercise.back.barbell_row",
     "defaultTitle": "Bent-Over Barbell Row",
     "category": "back",
-    "sortOrder": 1,
+    "sortOrder": 2,
     "iconName": "icExercise_back_barbell_row",
     "trackingType": "weightedReps"
   },
@@ -139,7 +130,7 @@
     "titleKey": "exercise.back.one_arm_dumbbell_row",
     "defaultTitle": "One-Arm Dumbbell Row",
     "category": "back",
-    "sortOrder": 2,
+    "sortOrder": 3,
     "iconName": "icExercise_back_one_arm_dumbbell_row",
     "trackingType": "weightedReps"
   },
@@ -148,7 +139,7 @@
     "titleKey": "exercise.back.lat_pulldown",
     "defaultTitle": "Lat Pulldown",
     "category": "back",
-    "sortOrder": 3,
+    "sortOrder": 4,
     "iconName": "icExercise_back_lat_pulldown",
     "trackingType": "weightedReps"
   },
@@ -157,7 +148,7 @@
     "titleKey": "exercise.back.seated_cable_row",
     "defaultTitle": "Seated Cable Row",
     "category": "back",
-    "sortOrder": 4,
+    "sortOrder": 5,
     "iconName": "icExercise_back_seated_cable_row",
     "trackingType": "weightedReps"
   },
@@ -166,7 +157,7 @@
     "titleKey": "exercise.back.deadlift",
     "defaultTitle": "Deadlift",
     "category": "back",
-    "sortOrder": 5,
+    "sortOrder": 9,
     "iconName": "icExercise_back_deadlift",
     "trackingType": "weightedReps"
   },
@@ -175,7 +166,7 @@
     "titleKey": "exercise.back.hyperextension",
     "defaultTitle": "Hyperextension",
     "category": "back",
-    "sortOrder": 6,
+    "sortOrder": 10,
     "iconName": "icExercise_back_hyperextension",
     "trackingType": "weightedReps"
   },
@@ -709,5 +700,59 @@
     "sortOrder": 5,
     "iconName": "icMissingImage",
     "trackingType": "timed"
+  },
+  {
+    "id": "back_reverse_grip_pull_up",
+    "titleKey": "exercise.back.reverse_grip_pull_up",
+    "defaultTitle": "Reverse-Grip Pull-Up",
+    "category": "back",
+    "sortOrder": 1,
+    "iconName": "icMissingImage",
+    "trackingType": "weightedReps"
+  },
+  {
+    "id": "back_t_bar_row",
+    "titleKey": "exercise.back.t_bar_row",
+    "defaultTitle": "T-Bar Row",
+    "category": "back",
+    "sortOrder": 6,
+    "iconName": "icMissingImage",
+    "trackingType": "weightedReps"
+  },
+  {
+    "id": "back_chest_supported_machine_row",
+    "titleKey": "exercise.back.chest_supported_machine_row",
+    "defaultTitle": "Chest-Supported Machine Row",
+    "category": "back",
+    "sortOrder": 7,
+    "iconName": "icMissingImage",
+    "trackingType": "weightedReps"
+  },
+  {
+    "id": "back_straight_arm_pulldown",
+    "titleKey": "exercise.back.straight_arm_pulldown",
+    "defaultTitle": "Straight-Arm Pulldown",
+    "category": "back",
+    "sortOrder": 8,
+    "iconName": "icMissingImage",
+    "trackingType": "weightedReps"
+  },
+  {
+    "id": "back_dumbbell_shrug",
+    "titleKey": "exercise.back.dumbbell_shrug",
+    "defaultTitle": "Dumbbell Shrug",
+    "category": "back",
+    "sortOrder": 11,
+    "iconName": "icMissingImage",
+    "trackingType": "weightedReps"
+  },
+  {
+    "id": "back_barbell_shrug",
+    "titleKey": "exercise.back.barbell_shrug",
+    "defaultTitle": "Barbell Shrug",
+    "category": "back",
+    "sortOrder": 12,
+    "iconName": "icMissingImage",
+    "trackingType": "weightedReps"
   }
 ]

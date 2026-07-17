@@ -144,24 +144,27 @@
     ]
   },
   {
-    "exerciseId": "chest_cable_pullover",
-    "descriptionKey": "exercise.info.chest_cable_pullover.description",
-    "techniqueKeys": [
-      "exercise.info.chest_cable_pullover.technique.1",
-      "exercise.info.chest_cable_pullover.technique.2",
-      "exercise.info.chest_cable_pullover.technique.3",
-      "exercise.info.chest_cable_pullover.technique.4",
-      "exercise.info.chest_cable_pullover.technique.5",
-      "exercise.info.chest_cable_pullover.technique.6"
-    ]
-  },
-  {
     "exerciseId": "back_pull_up",
     "descriptionKey": "exercise.info.back_pull_up.description",
     "techniqueKeys": [
       "exercise.info.back_pull_up.technique.1",
       "exercise.info.back_pull_up.technique.2",
-      "exercise.info.back_pull_up.technique.3"
+      "exercise.info.back_pull_up.technique.3",
+      "exercise.info.back_pull_up.technique.4",
+      "exercise.info.back_pull_up.technique.5",
+      "exercise.info.back_pull_up.technique.6"
+    ]
+  },
+  {
+    "exerciseId": "back_reverse_grip_pull_up",
+    "descriptionKey": "exercise.info.back_reverse_grip_pull_up.description",
+    "techniqueKeys": [
+      "exercise.info.back_reverse_grip_pull_up.technique.1",
+      "exercise.info.back_reverse_grip_pull_up.technique.2",
+      "exercise.info.back_reverse_grip_pull_up.technique.3",
+      "exercise.info.back_reverse_grip_pull_up.technique.4",
+      "exercise.info.back_reverse_grip_pull_up.technique.5",
+      "exercise.info.back_reverse_grip_pull_up.technique.6"
     ]
   },
   {
@@ -170,7 +173,10 @@
     "techniqueKeys": [
       "exercise.info.back_barbell_row.technique.1",
       "exercise.info.back_barbell_row.technique.2",
-      "exercise.info.back_barbell_row.technique.3"
+      "exercise.info.back_barbell_row.technique.3",
+      "exercise.info.back_barbell_row.technique.4",
+      "exercise.info.back_barbell_row.technique.5",
+      "exercise.info.back_barbell_row.technique.6"
     ]
   },
   {
@@ -179,7 +185,10 @@
     "techniqueKeys": [
       "exercise.info.back_one_arm_dumbbell_row.technique.1",
       "exercise.info.back_one_arm_dumbbell_row.technique.2",
-      "exercise.info.back_one_arm_dumbbell_row.technique.3"
+      "exercise.info.back_one_arm_dumbbell_row.technique.3",
+      "exercise.info.back_one_arm_dumbbell_row.technique.4",
+      "exercise.info.back_one_arm_dumbbell_row.technique.5",
+      "exercise.info.back_one_arm_dumbbell_row.technique.6"
     ]
   },
   {
@@ -188,7 +197,10 @@
     "techniqueKeys": [
       "exercise.info.back_lat_pulldown.technique.1",
       "exercise.info.back_lat_pulldown.technique.2",
-      "exercise.info.back_lat_pulldown.technique.3"
+      "exercise.info.back_lat_pulldown.technique.3",
+      "exercise.info.back_lat_pulldown.technique.4",
+      "exercise.info.back_lat_pulldown.technique.5",
+      "exercise.info.back_lat_pulldown.technique.6"
     ]
   },
   {
@@ -197,7 +209,46 @@
     "techniqueKeys": [
       "exercise.info.back_seated_cable_row.technique.1",
       "exercise.info.back_seated_cable_row.technique.2",
-      "exercise.info.back_seated_cable_row.technique.3"
+      "exercise.info.back_seated_cable_row.technique.3",
+      "exercise.info.back_seated_cable_row.technique.4",
+      "exercise.info.back_seated_cable_row.technique.5",
+      "exercise.info.back_seated_cable_row.technique.6"
+    ]
+  },
+  {
+    "exerciseId": "back_t_bar_row",
+    "descriptionKey": "exercise.info.back_t_bar_row.description",
+    "techniqueKeys": [
+      "exercise.info.back_t_bar_row.technique.1",
+      "exercise.info.back_t_bar_row.technique.2",
+      "exercise.info.back_t_bar_row.technique.3",
+      "exercise.info.back_t_bar_row.technique.4",
+      "exercise.info.back_t_bar_row.technique.5",
+      "exercise.info.back_t_bar_row.technique.6"
+    ]
+  },
+  {
+    "exerciseId": "back_chest_supported_machine_row",
+    "descriptionKey": "exercise.info.back_chest_supported_machine_row.description",
+    "techniqueKeys": [
+      "exercise.info.back_chest_supported_machine_row.technique.1",
+      "exercise.info.back_chest_supported_machine_row.technique.2",
+      "exercise.info.back_chest_supported_machine_row.technique.3",
+      "exercise.info.back_chest_supported_machine_row.technique.4",
+      "exercise.info.back_chest_supported_machine_row.technique.5",
+      "exercise.info.back_chest_supported_machine_row.technique.6"
+    ]
+  },
+  {
+    "exerciseId": "back_straight_arm_pulldown",
+    "descriptionKey": "exercise.info.back_straight_arm_pulldown.description",
+    "techniqueKeys": [
+      "exercise.info.back_straight_arm_pulldown.technique.1",
+      "exercise.info.back_straight_arm_pulldown.technique.2",
+      "exercise.info.back_straight_arm_pulldown.technique.3",
+      "exercise.info.back_straight_arm_pulldown.technique.4",
+      "exercise.info.back_straight_arm_pulldown.technique.5",
+      "exercise.info.back_straight_arm_pulldown.technique.6"
     ]
   },
   {
@@ -206,7 +257,10 @@
     "techniqueKeys": [
       "exercise.info.back_deadlift.technique.1",
       "exercise.info.back_deadlift.technique.2",
-      "exercise.info.back_deadlift.technique.3"
+      "exercise.info.back_deadlift.technique.3",
+      "exercise.info.back_deadlift.technique.4",
+      "exercise.info.back_deadlift.technique.5",
+      "exercise.info.back_deadlift.technique.6"
     ]
   },
   {
@@ -215,7 +269,34 @@
     "techniqueKeys": [
       "exercise.info.back_hyperextension.technique.1",
       "exercise.info.back_hyperextension.technique.2",
-      "exercise.info.back_hyperextension.technique.3"
+      "exercise.info.back_hyperextension.technique.3",
+      "exercise.info.back_hyperextension.technique.4",
+      "exercise.info.back_hyperextension.technique.5",
+      "exercise.info.back_hyperextension.technique.6"
+    ]
+  },
+  {
+    "exerciseId": "back_dumbbell_shrug",
+    "descriptionKey": "exercise.info.back_dumbbell_shrug.description",
+    "techniqueKeys": [
+      "exercise.info.back_dumbbell_shrug.technique.1",
+      "exercise.info.back_dumbbell_shrug.technique.2",
+      "exercise.info.back_dumbbell_shrug.technique.3",
+      "exercise.info.back_dumbbell_shrug.technique.4",
+      "exercise.info.back_dumbbell_shrug.technique.5",
+      "exercise.info.back_dumbbell_shrug.technique.6"
+    ]
+  },
+  {
+    "exerciseId": "back_barbell_shrug",
+    "descriptionKey": "exercise.info.back_barbell_shrug.description",
+    "techniqueKeys": [
+      "exercise.info.back_barbell_shrug.technique.1",
+      "exercise.info.back_barbell_shrug.technique.2",
+      "exercise.info.back_barbell_shrug.technique.3",
+      "exercise.info.back_barbell_shrug.technique.4",
+      "exercise.info.back_barbell_shrug.technique.5",
+      "exercise.info.back_barbell_shrug.technique.6"
     ]
   },
   {

@@ -96,48 +96,109 @@
 "exercise.info.chest_dumbbell_pullover.technique.5" = "Pull the dumbbell back over the chest with a smooth arc.";
 "exercise.info.chest_dumbbell_pullover.technique.6" = "Use a moderate load and avoid turning the movement into a triceps extension.";
 
-"exercise.info.chest_cable_pullover.description" = "Cable Pullover is a cable variation that keeps steady tension while training the chest and lats through a pullover motion.";
-"exercise.info.chest_cable_pullover.technique.1" = "Use a high cable and stand far enough back to keep tension.";
-"exercise.info.chest_cable_pullover.technique.2" = "Hold the bar or rope with arms mostly straight and elbows softly bent.";
-"exercise.info.chest_cable_pullover.technique.3" = "Brace your torso and keep shoulders away from your ears.";
-"exercise.info.chest_cable_pullover.technique.4" = "Pull the handle down and forward in a controlled arc.";
-"exercise.info.chest_cable_pullover.technique.5" = "Pause briefly near the lower chest or upper thighs, depending on setup.";
-"exercise.info.chest_cable_pullover.technique.6" = "Return slowly without letting the cable pull your shoulders out of position.";
+"exercise.info.back_pull_up.description" = "Pull-Up is a bodyweight vertical pulling exercise for building lats, upper-back strength, and arm control.";
+"exercise.info.back_pull_up.technique.1" = "Start from a controlled hang with shoulders active, not loose.";
+"exercise.info.back_pull_up.technique.2" = "Grip the bar firmly and brace your trunk before pulling.";
+"exercise.info.back_pull_up.technique.3" = "Pull by driving elbows down toward your sides.";
+"exercise.info.back_pull_up.technique.4" = "Aim your chest toward the bar without excessive swinging.";
+"exercise.info.back_pull_up.technique.5" = "Lower under control until the arms are extended again.";
+"exercise.info.back_pull_up.technique.6" = "Keep reps clean and avoid kicking the legs for momentum.";
 
-"exercise.info.back_pull_up.description" = "Pull-Up is a bodyweight pulling exercise used to build upper-back and arm strength.";
-"exercise.info.back_pull_up.technique.1" = "Start from a controlled hang.";
-"exercise.info.back_pull_up.technique.2" = "Pull your chest toward the bar by driving elbows down.";
-"exercise.info.back_pull_up.technique.3" = "Lower yourself under control without swinging.";
+"exercise.info.back_reverse_grip_pull_up.description" = "Reverse-Grip Pull-Up is a chin-up style pull that emphasizes the lats and biceps with a supinated grip.";
+"exercise.info.back_reverse_grip_pull_up.technique.1" = "Use an underhand grip about shoulder width.";
+"exercise.info.back_reverse_grip_pull_up.technique.2" = "Start from a controlled hang with your ribs down.";
+"exercise.info.back_reverse_grip_pull_up.technique.3" = "Pull your chest toward the bar while keeping elbows close.";
+"exercise.info.back_reverse_grip_pull_up.technique.4" = "Avoid craning the neck to reach the bar.";
+"exercise.info.back_reverse_grip_pull_up.technique.5" = "Lower slowly until the elbows are extended.";
+"exercise.info.back_reverse_grip_pull_up.technique.6" = "Do not let the shoulders collapse at the bottom.";
 
-"exercise.info.back_barbell_row.description" = "Bent-Over Barbell Row is a compound pulling exercise for the back and posterior chain.";
-"exercise.info.back_barbell_row.technique.1" = "Hinge at the hips and keep your back neutral.";
-"exercise.info.back_barbell_row.technique.2" = "Pull the bar toward the lower ribs.";
-"exercise.info.back_barbell_row.technique.3" = "Control the bar down without losing torso position.";
+"exercise.info.back_barbell_row.description" = "Bent-Over Barbell Row is a compound horizontal pull for the mid-back, lats, and posterior chain stability.";
+"exercise.info.back_barbell_row.technique.1" = "Hinge at the hips and keep a neutral spine.";
+"exercise.info.back_barbell_row.technique.2" = "Brace your torso before lifting the bar from the floor or rack.";
+"exercise.info.back_barbell_row.technique.3" = "Hold the torso angle steady throughout the set.";
+"exercise.info.back_barbell_row.technique.4" = "Pull the bar toward the lower ribs or upper abdomen.";
+"exercise.info.back_barbell_row.technique.5" = "Squeeze the back briefly without jerking the weight.";
+"exercise.info.back_barbell_row.technique.6" = "Lower the bar under control without rounding your back.";
 
-"exercise.info.back_one_arm_dumbbell_row.description" = "One-Arm Dumbbell Row trains the back one side at a time with a supported stance.";
-"exercise.info.back_one_arm_dumbbell_row.technique.1" = "Brace your body on a bench or stable support.";
-"exercise.info.back_one_arm_dumbbell_row.technique.2" = "Pull the dumbbell toward your hip.";
-"exercise.info.back_one_arm_dumbbell_row.technique.3" = "Avoid twisting your torso during the rep.";
+"exercise.info.back_one_arm_dumbbell_row.description" = "One-Arm Dumbbell Row trains each side of the back independently with support from a bench or stable surface.";
+"exercise.info.back_one_arm_dumbbell_row.technique.1" = "Brace one hand and knee or one hand on a stable support.";
+"exercise.info.back_one_arm_dumbbell_row.technique.2" = "Keep your spine neutral and torso steady.";
+"exercise.info.back_one_arm_dumbbell_row.technique.3" = "Let the working shoulder reach slightly at the bottom.";
+"exercise.info.back_one_arm_dumbbell_row.technique.4" = "Pull the dumbbell toward your hip, not straight up to the shoulder.";
+"exercise.info.back_one_arm_dumbbell_row.technique.5" = "Pause briefly while keeping the elbow close to the body.";
+"exercise.info.back_one_arm_dumbbell_row.technique.6" = "Avoid twisting your torso to lift heavier weight.";
 
-"exercise.info.back_lat_pulldown.description" = "Lat Pulldown is a cable pulling exercise that trains the lats through a vertical pull.";
+"exercise.info.back_lat_pulldown.description" = "Lat Pulldown is a vertical cable pull that trains the lats and upper back with adjustable load.";
 "exercise.info.back_lat_pulldown.technique.1" = "Sit tall and secure your thighs under the pad.";
-"exercise.info.back_lat_pulldown.technique.2" = "Pull the bar toward the upper chest.";
-"exercise.info.back_lat_pulldown.technique.3" = "Control the bar upward without leaning back too far.";
+"exercise.info.back_lat_pulldown.technique.2" = "Grip the bar slightly wider than shoulder width unless using another attachment.";
+"exercise.info.back_lat_pulldown.technique.3" = "Start by setting the shoulders down away from the ears.";
+"exercise.info.back_lat_pulldown.technique.4" = "Pull the bar toward the upper chest.";
+"exercise.info.back_lat_pulldown.technique.5" = "Keep the torso mostly stable and avoid leaning far back.";
+"exercise.info.back_lat_pulldown.technique.6" = "Return the bar upward slowly without losing control.";
 
-"exercise.info.back_seated_cable_row.description" = "Seated Cable Row is a horizontal pulling exercise for the mid-back and lats.";
-"exercise.info.back_seated_cable_row.technique.1" = "Sit tall with a neutral spine.";
-"exercise.info.back_seated_cable_row.technique.2" = "Pull the handle toward the lower ribs.";
-"exercise.info.back_seated_cable_row.technique.3" = "Pause briefly, then return with control.";
+"exercise.info.back_seated_cable_row.description" = "Seated Cable Row is a horizontal pulling exercise for the mid-back, lats, and scapular control.";
+"exercise.info.back_seated_cable_row.technique.1" = "Sit tall with a neutral spine and feet supported.";
+"exercise.info.back_seated_cable_row.technique.2" = "Start with arms extended while keeping the chest lifted.";
+"exercise.info.back_seated_cable_row.technique.3" = "Pull the handle toward the lower ribs or upper abdomen.";
+"exercise.info.back_seated_cable_row.technique.4" = "Drive elbows back without shrugging the shoulders.";
+"exercise.info.back_seated_cable_row.technique.5" = "Pause briefly with shoulder blades controlled.";
+"exercise.info.back_seated_cable_row.technique.6" = "Return the handle slowly without rounding forward.";
 
-"exercise.info.back_deadlift.description" = "Deadlift is a heavy hip-hinge exercise that trains full-body pulling strength.";
-"exercise.info.back_deadlift.technique.1" = "Set your feet under the bar and brace your torso.";
-"exercise.info.back_deadlift.technique.2" = "Push through the floor while keeping the bar close.";
-"exercise.info.back_deadlift.technique.3" = "Lock out with hips and knees together, not by leaning back.";
+"exercise.info.back_t_bar_row.description" = "T-Bar Row is a heavy rowing variation that targets the mid-back and lats with a stable pulling path.";
+"exercise.info.back_t_bar_row.technique.1" = "Set your stance and hinge so your torso stays stable.";
+"exercise.info.back_t_bar_row.technique.2" = "Brace your trunk before lifting the handle.";
+"exercise.info.back_t_bar_row.technique.3" = "Pull the handle toward the lower chest or upper abdomen.";
+"exercise.info.back_t_bar_row.technique.4" = "Keep elbows driving back instead of letting shoulders shrug.";
+"exercise.info.back_t_bar_row.technique.5" = "Avoid using a big torso swing to start each rep.";
+"exercise.info.back_t_bar_row.technique.6" = "Lower the weight under control until the arms extend.";
 
-"exercise.info.back_hyperextension.description" = "Hyperextension trains controlled hip extension and lower-back endurance.";
+"exercise.info.back_chest_supported_machine_row.description" = "Chest-Supported Machine Row trains the back with torso support, reducing the need to stabilize the lower back.";
+"exercise.info.back_chest_supported_machine_row.technique.1" = "Adjust the seat or chest pad so the handles align comfortably.";
+"exercise.info.back_chest_supported_machine_row.technique.2" = "Keep your chest against the pad throughout the set.";
+"exercise.info.back_chest_supported_machine_row.technique.3" = "Start with arms extended and shoulders controlled.";
+"exercise.info.back_chest_supported_machine_row.technique.4" = "Pull the handles back by driving elbows behind you.";
+"exercise.info.back_chest_supported_machine_row.technique.5" = "Pause briefly without lifting your chest off the pad.";
+"exercise.info.back_chest_supported_machine_row.technique.6" = "Return smoothly and keep tension on the back.";
+
+"exercise.info.back_straight_arm_pulldown.description" = "Straight-Arm Pulldown is a cable exercise for the lats that uses a pullover-style motion with mostly straight arms.";
+"exercise.info.back_straight_arm_pulldown.technique.1" = "Set a cable high and stand far enough back to keep tension.";
+"exercise.info.back_straight_arm_pulldown.technique.2" = "Hold the bar or rope with elbows softly bent.";
+"exercise.info.back_straight_arm_pulldown.technique.3" = "Brace your torso and keep shoulders away from the ears.";
+"exercise.info.back_straight_arm_pulldown.technique.4" = "Pull the handle down in an arc toward the upper thighs.";
+"exercise.info.back_straight_arm_pulldown.technique.5" = "Focus on moving from the shoulders, not bending the elbows like a triceps pressdown.";
+"exercise.info.back_straight_arm_pulldown.technique.6" = "Return slowly until you feel a controlled stretch in the lats.";
+
+"exercise.info.back_deadlift.description" = "Deadlift is a heavy hip-hinge exercise that develops full-body pulling strength and posterior-chain power.";
+"exercise.info.back_deadlift.technique.1" = "Set your feet under the bar with the bar close to mid-foot.";
+"exercise.info.back_deadlift.technique.2" = "Hinge down, grip the bar, and brace your torso hard.";
+"exercise.info.back_deadlift.technique.3" = "Keep the bar close to your legs as you start the pull.";
+"exercise.info.back_deadlift.technique.4" = "Push through the floor while keeping your back neutral.";
+"exercise.info.back_deadlift.technique.5" = "Lock out by extending hips and knees together.";
+"exercise.info.back_deadlift.technique.6" = "Avoid leaning back excessively at the top.";
+
+"exercise.info.back_hyperextension.description" = "Hyperextension trains controlled hip extension, glutes, hamstrings, and lower-back endurance.";
 "exercise.info.back_hyperextension.technique.1" = "Set the pad so your hips can move freely.";
-"exercise.info.back_hyperextension.technique.2" = "Lower your torso with a neutral spine.";
-"exercise.info.back_hyperextension.technique.3" = "Raise back up by squeezing the glutes, not overextending.";
+"exercise.info.back_hyperextension.technique.2" = "Cross your arms or hold a load close to the body.";
+"exercise.info.back_hyperextension.technique.3" = "Lower your torso with a neutral spine.";
+"exercise.info.back_hyperextension.technique.4" = "Raise back up by squeezing the glutes and hamstrings.";
+"exercise.info.back_hyperextension.technique.5" = "Stop when your body is in line, not hyperextended backward.";
+"exercise.info.back_hyperextension.technique.6" = "Move slowly and avoid swinging through the reps.";
+
+"exercise.info.back_dumbbell_shrug.description" = "Dumbbell Shrug trains the upper trapezius with each arm loaded independently.";
+"exercise.info.back_dumbbell_shrug.technique.1" = "Stand tall with a dumbbell in each hand.";
+"exercise.info.back_dumbbell_shrug.technique.2" = "Keep arms straight and let the weights hang at your sides.";
+"exercise.info.back_dumbbell_shrug.technique.3" = "Raise your shoulders straight up toward your ears.";
+"exercise.info.back_dumbbell_shrug.technique.4" = "Pause briefly at the top without rolling the shoulders.";
+"exercise.info.back_dumbbell_shrug.technique.5" = "Lower under control to a full stretch.";
+"exercise.info.back_dumbbell_shrug.technique.6" = "Keep your neck neutral and avoid bouncing the weight.";
+
+"exercise.info.back_barbell_shrug.description" = "Barbell Shrug is an upper-trap exercise that allows heavier loading with a barbell.";
+"exercise.info.back_barbell_shrug.technique.1" = "Hold the bar in front of your thighs with a firm grip.";
+"exercise.info.back_barbell_shrug.technique.2" = "Stand tall with your trunk braced.";
+"exercise.info.back_barbell_shrug.technique.3" = "Lift your shoulders straight up without bending the elbows.";
+"exercise.info.back_barbell_shrug.technique.4" = "Pause briefly at the top and keep the bar close.";
+"exercise.info.back_barbell_shrug.technique.5" = "Lower the bar under control instead of dropping into the bottom.";
+"exercise.info.back_barbell_shrug.technique.6" = "Do not roll the shoulders; move up and down.";
 
 "exercise.info.legs_barbell_squat.description" = "Barbell Squat is a compound lower-body exercise for leg strength and full-body stability.";
 "exercise.info.legs_barbell_squat.technique.1" = "Brace your torso before each rep.";
