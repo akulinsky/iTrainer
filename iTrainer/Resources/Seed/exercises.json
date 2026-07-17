@@ -567,20 +567,11 @@
     "trackingType": "weightedReps"
   },
   {
-    "id": "triceps_french_press",
-    "titleKey": "exercise.triceps.french_press",
-    "defaultTitle": "French Press",
+    "id": "triceps_close_grip_bench_press",
+    "titleKey": "exercise.triceps.close_grip_bench_press",
+    "defaultTitle": "Close-Grip Bench Press",
     "category": "triceps",
     "sortOrder": 0,
-    "iconName": "icMissingImage",
-    "trackingType": "weightedReps"
-  },
-  {
-    "id": "triceps_cable_pushdown",
-    "titleKey": "exercise.triceps.cable_pushdown",
-    "defaultTitle": "Cable Pushdown",
-    "category": "triceps",
-    "sortOrder": 1,
     "iconName": "icMissingImage",
     "trackingType": "weightedReps"
   },
@@ -589,25 +580,70 @@
     "titleKey": "exercise.triceps.dips",
     "defaultTitle": "Dips",
     "category": "triceps",
+    "sortOrder": 1,
+    "iconName": "icMissingImage",
+    "trackingType": "weightedReps"
+  },
+  {
+    "id": "triceps_french_press",
+    "titleKey": "exercise.triceps.french_press",
+    "defaultTitle": "French Press",
+    "category": "triceps",
     "sortOrder": 2,
     "iconName": "icMissingImage",
     "trackingType": "weightedReps"
   },
   {
-    "id": "triceps_close_grip_bench_press",
-    "titleKey": "exercise.triceps.close_grip_bench_press",
-    "defaultTitle": "Close-Grip Bench Press",
+    "id": "triceps_cable_pushdown",
+    "titleKey": "exercise.triceps.cable_pushdown",
+    "defaultTitle": "Cable Pushdown",
     "category": "triceps",
     "sortOrder": 3,
     "iconName": "icMissingImage",
     "trackingType": "weightedReps"
   },
   {
-    "id": "triceps_overhead_dumbbell_extension",
-    "titleKey": "exercise.triceps.overhead_dumbbell_extension",
-    "defaultTitle": "Overhead Dumbbell Extension",
+    "id": "triceps_rope_pushdown",
+    "titleKey": "exercise.triceps.rope_pushdown",
+    "defaultTitle": "Rope Pushdown",
     "category": "triceps",
     "sortOrder": 4,
+    "iconName": "icMissingImage",
+    "trackingType": "weightedReps"
+  },
+  {
+    "id": "triceps_two_arm_overhead_dumbbell_extension",
+    "titleKey": "exercise.triceps.two_arm_overhead_dumbbell_extension",
+    "defaultTitle": "Two-Arm Overhead Dumbbell Extension",
+    "category": "triceps",
+    "sortOrder": 5,
+    "iconName": "icMissingImage",
+    "trackingType": "weightedReps"
+  },
+  {
+    "id": "triceps_one_arm_overhead_dumbbell_extension",
+    "titleKey": "exercise.triceps.one_arm_overhead_dumbbell_extension",
+    "defaultTitle": "One-Arm Overhead Dumbbell Extension",
+    "category": "triceps",
+    "sortOrder": 6,
+    "iconName": "icMissingImage",
+    "trackingType": "weightedReps"
+  },
+  {
+    "id": "triceps_overhead_cable_extension",
+    "titleKey": "exercise.triceps.overhead_cable_extension",
+    "defaultTitle": "Overhead Cable Extension",
+    "category": "triceps",
+    "sortOrder": 7,
+    "iconName": "icMissingImage",
+    "trackingType": "weightedReps"
+  },
+  {
+    "id": "triceps_lying_dumbbell_extension",
+    "titleKey": "exercise.triceps.lying_dumbbell_extension",
+    "defaultTitle": "Lying Dumbbell Extension",
+    "category": "triceps",
+    "sortOrder": 8,
     "iconName": "icMissingImage",
     "trackingType": "weightedReps"
   },
@@ -616,9 +652,18 @@
     "titleKey": "exercise.triceps.kickback",
     "defaultTitle": "Kickback",
     "category": "triceps",
-    "sortOrder": 5,
+    "sortOrder": 9,
     "iconName": "icMissingImage",
     "trackingType": "weightedReps"
+  },
+  {
+    "id": "triceps_close_grip_push_up",
+    "titleKey": "exercise.triceps.close_grip_push_up",
+    "defaultTitle": "Close-Grip Push-Up",
+    "category": "triceps",
+    "sortOrder": 10,
+    "iconName": "icMissingImage",
+    "trackingType": "repsOnly"
   },
   {
     "id": "forearms_wrist_curl",

@@ -551,3 +551,91 @@
 "exercise.info.biceps_spider_curl.technique.4" = "Pause briefly at the top.";
 "exercise.info.biceps_spider_curl.technique.5" = "Lower slowly to full control.";
 "exercise.info.biceps_spider_curl.technique.6" = "Use a moderate load so the movement stays strict.";
+
+"exercise.info.triceps_close_grip_bench_press.description" = "Close-Grip Bench Press is a compound press that emphasizes the triceps while still using the chest and shoulders.";
+"exercise.info.triceps_close_grip_bench_press.technique.1" = "Lie with your eyes under the bar and feet planted firmly.";
+"exercise.info.triceps_close_grip_bench_press.technique.2" = "Grip the bar slightly narrower than shoulder width.";
+"exercise.info.triceps_close_grip_bench_press.technique.3" = "Keep shoulder blades pulled back and down on the bench.";
+"exercise.info.triceps_close_grip_bench_press.technique.4" = "Lower the bar under control toward the lower chest.";
+"exercise.info.triceps_close_grip_bench_press.technique.5" = "Keep elbows closer to the body, not flared wide.";
+"exercise.info.triceps_close_grip_bench_press.technique.6" = "Press up smoothly without losing upper-back tightness.";
+
+"exercise.info.triceps_dips.description" = "Dips train the triceps strongly with bodyweight or added weight, especially when the torso stays more upright.";
+"exercise.info.triceps_dips.technique.1" = "Start on parallel bars with arms straight and shoulders controlled.";
+"exercise.info.triceps_dips.technique.2" = "Keep the torso relatively upright to emphasize the triceps.";
+"exercise.info.triceps_dips.technique.3" = "Lower until the shoulders and elbows feel comfortable.";
+"exercise.info.triceps_dips.technique.4" = "Keep elbows tracking back instead of flaring far out.";
+"exercise.info.triceps_dips.technique.5" = "Press through the handles until the arms are nearly straight.";
+"exercise.info.triceps_dips.technique.6" = "Use a controlled tempo and avoid bouncing at the bottom.";
+
+"exercise.info.triceps_french_press.description" = "French Press isolates the triceps with an elbow-extension movement, usually using a barbell or EZ-bar.";
+"exercise.info.triceps_french_press.technique.1" = "Lie or sit stable with the weight held above you.";
+"exercise.info.triceps_french_press.technique.2" = "Keep upper arms mostly fixed during the movement.";
+"exercise.info.triceps_french_press.technique.3" = "Bend the elbows and lower the weight toward the forehead or behind the head.";
+"exercise.info.triceps_french_press.technique.4" = "Use a range that feels comfortable for the elbows.";
+"exercise.info.triceps_french_press.technique.5" = "Extend the elbows without letting the shoulders take over.";
+"exercise.info.triceps_french_press.technique.6" = "Control the weight and avoid dropping it quickly.";
+
+"exercise.info.triceps_cable_pushdown.description" = "Cable Pushdown trains the triceps with steady cable tension and is one of the most common triceps isolation exercises.";
+"exercise.info.triceps_cable_pushdown.technique.1" = "Stand facing the cable with elbows close to your sides.";
+"exercise.info.triceps_cable_pushdown.technique.2" = "Keep the chest lifted and shoulders relaxed.";
+"exercise.info.triceps_cable_pushdown.technique.3" = "Push the handle down by extending the elbows.";
+"exercise.info.triceps_cable_pushdown.technique.4" = "Avoid leaning your body over the handle to finish reps.";
+"exercise.info.triceps_cable_pushdown.technique.5" = "Squeeze briefly near the bottom.";
+"exercise.info.triceps_cable_pushdown.technique.6" = "Return under control without letting the elbows drift forward.";
+
+"exercise.info.triceps_rope_pushdown.description" = "Rope Pushdown is a cable pushdown variation that allows a strong lockout and natural wrist position.";
+"exercise.info.triceps_rope_pushdown.technique.1" = "Hold both rope ends and stand close enough to keep tension.";
+"exercise.info.triceps_rope_pushdown.technique.2" = "Keep elbows pinned near the ribs.";
+"exercise.info.triceps_rope_pushdown.technique.3" = "Extend the elbows and separate the rope ends near the bottom.";
+"exercise.info.triceps_rope_pushdown.technique.4" = "Keep wrists comfortable and neutral.";
+"exercise.info.triceps_rope_pushdown.technique.5" = "Do not swing the torso to move the weight.";
+"exercise.info.triceps_rope_pushdown.technique.6" = "Let the rope return slowly while keeping the upper arms still.";
+
+"exercise.info.triceps_two_arm_overhead_dumbbell_extension.description" = "Two-Arm Overhead Dumbbell Extension trains the long head of the triceps with both hands holding one dumbbell overhead.";
+"exercise.info.triceps_two_arm_overhead_dumbbell_extension.technique.1" = "Hold one dumbbell overhead with both hands around the handle or plate.";
+"exercise.info.triceps_two_arm_overhead_dumbbell_extension.technique.2" = "Keep the ribs down and torso stable.";
+"exercise.info.triceps_two_arm_overhead_dumbbell_extension.technique.3" = "Point elbows forward and keep them from flaring too wide.";
+"exercise.info.triceps_two_arm_overhead_dumbbell_extension.technique.4" = "Lower the dumbbell behind the head under control.";
+"exercise.info.triceps_two_arm_overhead_dumbbell_extension.technique.5" = "Extend the elbows to bring the dumbbell back overhead.";
+"exercise.info.triceps_two_arm_overhead_dumbbell_extension.technique.6" = "Use a weight you can control without arching the back.";
+
+"exercise.info.triceps_one_arm_overhead_dumbbell_extension.description" = "One-Arm Overhead Dumbbell Extension is a unilateral triceps exercise that helps train each arm through a full overhead range.";
+"exercise.info.triceps_one_arm_overhead_dumbbell_extension.technique.1" = "Hold one dumbbell overhead with one arm.";
+"exercise.info.triceps_one_arm_overhead_dumbbell_extension.technique.2" = "Brace the torso and keep the shoulder stable.";
+"exercise.info.triceps_one_arm_overhead_dumbbell_extension.technique.3" = "Bend the elbow and lower the dumbbell behind the head.";
+"exercise.info.triceps_one_arm_overhead_dumbbell_extension.technique.4" = "Keep the elbow pointing mostly upward.";
+"exercise.info.triceps_one_arm_overhead_dumbbell_extension.technique.5" = "Extend back up without letting the wrist collapse.";
+"exercise.info.triceps_one_arm_overhead_dumbbell_extension.technique.6" = "Match the same range and control on both arms.";
+
+"exercise.info.triceps_overhead_cable_extension.description" = "Overhead Cable Extension keeps tension on the triceps in an overhead position and targets the long head well.";
+"exercise.info.triceps_overhead_cable_extension.technique.1" = "Set the cable low or behind you and take a stable stance.";
+"exercise.info.triceps_overhead_cable_extension.technique.2" = "Bring the handle or rope overhead with elbows bent.";
+"exercise.info.triceps_overhead_cable_extension.technique.3" = "Keep upper arms angled forward and mostly fixed.";
+"exercise.info.triceps_overhead_cable_extension.technique.4" = "Extend the elbows until the arms are nearly straight.";
+"exercise.info.triceps_overhead_cable_extension.technique.5" = "Keep the ribs controlled and avoid over-arching.";
+"exercise.info.triceps_overhead_cable_extension.technique.6" = "Return slowly and maintain cable tension.";
+
+"exercise.info.triceps_lying_dumbbell_extension.description" = "Lying Dumbbell Extension is a skull-crusher style triceps exercise using dumbbells for independent arm movement.";
+"exercise.info.triceps_lying_dumbbell_extension.technique.1" = "Lie on a bench with dumbbells held above the shoulders.";
+"exercise.info.triceps_lying_dumbbell_extension.technique.2" = "Keep upper arms steady and elbows pointing upward.";
+"exercise.info.triceps_lying_dumbbell_extension.technique.3" = "Lower the dumbbells toward the sides of the head.";
+"exercise.info.triceps_lying_dumbbell_extension.technique.4" = "Use a neutral or comfortable grip.";
+"exercise.info.triceps_lying_dumbbell_extension.technique.5" = "Extend the elbows without turning it into a press.";
+"exercise.info.triceps_lying_dumbbell_extension.technique.6" = "Keep both arms moving evenly and under control.";
+
+"exercise.info.triceps_kickback.description" = "Kickback is a strict triceps isolation exercise usually performed with a dumbbell or cable from a hinged position.";
+"exercise.info.triceps_kickback.technique.1" = "Hinge forward with the back flat and torso supported if needed.";
+"exercise.info.triceps_kickback.technique.2" = "Keep the upper arm close to the body and roughly parallel to the floor.";
+"exercise.info.triceps_kickback.technique.3" = "Extend the elbow until the arm is straight behind you.";
+"exercise.info.triceps_kickback.technique.4" = "Pause briefly at the top without swinging.";
+"exercise.info.triceps_kickback.technique.5" = "Lower slowly while keeping the shoulder still.";
+"exercise.info.triceps_kickback.technique.6" = "Use a light enough load to keep the movement strict.";
+
+"exercise.info.triceps_close_grip_push_up.description" = "Close-Grip Push-Up is a bodyweight triceps-focused push-up variation with the hands placed narrower than usual.";
+"exercise.info.triceps_close_grip_push_up.technique.1" = "Set the hands under or slightly inside shoulder width.";
+"exercise.info.triceps_close_grip_push_up.technique.2" = "Keep the body in one straight line.";
+"exercise.info.triceps_close_grip_push_up.technique.3" = "Lower with elbows close to the ribs.";
+"exercise.info.triceps_close_grip_push_up.technique.4" = "Keep the neck neutral and core braced.";
+"exercise.info.triceps_close_grip_push_up.technique.5" = "Press back up by extending the elbows.";
+"exercise.info.triceps_close_grip_push_up.technique.6" = "Adjust hand spacing if the wrists feel uncomfortable.";

@@ -551,3 +551,91 @@
 "exercise.info.biceps_spider_curl.technique.4" = "Коротко задержитесь в верхней точке.";
 "exercise.info.biceps_spider_curl.technique.5" = "Опускайте медленно и под контролем.";
 "exercise.info.biceps_spider_curl.technique.6" = "Используйте умеренный вес, чтобы техника оставалась строгой.";
+
+"exercise.info.triceps_close_grip_bench_press.description" = "Жим узким хватом - базовое жимовое упражнение с акцентом на трицепс, при этом грудь и плечи тоже помогают в движении.";
+"exercise.info.triceps_close_grip_bench_press.technique.1" = "Лягте так, чтобы глаза были под грифом, стопы плотно стояли на полу.";
+"exercise.info.triceps_close_grip_bench_press.technique.2" = "Возьмите гриф немного уже ширины плеч.";
+"exercise.info.triceps_close_grip_bench_press.technique.3" = "Сведите лопатки и удерживайте верх спины плотным на скамье.";
+"exercise.info.triceps_close_grip_bench_press.technique.4" = "Опускайте гриф под контролем к нижней части груди.";
+"exercise.info.triceps_close_grip_bench_press.technique.5" = "Держите локти ближе к корпусу, не разводите их широко.";
+"exercise.info.triceps_close_grip_bench_press.technique.6" = "Выжимайте гриф плавно, не теряя напряжение в верхе спины.";
+
+"exercise.info.triceps_dips.description" = "Отжимания на брусьях сильно нагружают трицепс с собственным или дополнительным весом, особенно если корпус остается более вертикальным.";
+"exercise.info.triceps_dips.technique.1" = "Начните на брусьях с прямыми руками и контролируемыми плечами.";
+"exercise.info.triceps_dips.technique.2" = "Держите корпус относительно вертикально, чтобы сильнее включать трицепс.";
+"exercise.info.triceps_dips.technique.3" = "Опускайтесь до комфортной глубины для плеч и локтей.";
+"exercise.info.triceps_dips.technique.4" = "Ведите локти назад, не разводите их слишком широко.";
+"exercise.info.triceps_dips.technique.5" = "Выжимайте себя вверх почти до полного выпрямления рук.";
+"exercise.info.triceps_dips.technique.6" = "Двигайтесь под контролем и не пружиньте в нижней точке.";
+
+"exercise.info.triceps_french_press.description" = "Французский жим изолирует трицепс через разгибание локтей, обычно со штангой или EZ-грифом.";
+"exercise.info.triceps_french_press.technique.1" = "Лягте или сядьте устойчиво, удерживая вес над собой.";
+"exercise.info.triceps_french_press.technique.2" = "Держите плечи почти неподвижными во время движения.";
+"exercise.info.triceps_french_press.technique.3" = "Сгибайте локти и опускайте вес ко лбу или за голову.";
+"exercise.info.triceps_french_press.technique.4" = "Работайте в амплитуде, которая комфортна для локтей.";
+"exercise.info.triceps_french_press.technique.5" = "Разгибайте локти, не превращая движение в жим плечами.";
+"exercise.info.triceps_french_press.technique.6" = "Контролируйте вес и не бросайте его вниз.";
+
+"exercise.info.triceps_cable_pushdown.description" = "Разгибание рук на блоке тренирует трицепс с постоянным натяжением троса и считается одним из самых популярных изолирующих упражнений.";
+"exercise.info.triceps_cable_pushdown.technique.1" = "Встаньте лицом к блоку, локти держите рядом с корпусом.";
+"exercise.info.triceps_cable_pushdown.technique.2" = "Держите грудь раскрытой, а плечи расслабленными.";
+"exercise.info.triceps_cable_pushdown.technique.3" = "Толкайте рукоять вниз за счет разгибания локтей.";
+"exercise.info.triceps_cable_pushdown.technique.4" = "Не наваливайтесь корпусом на рукоять, чтобы закончить повторение.";
+"exercise.info.triceps_cable_pushdown.technique.5" = "Коротко сожмите трицепс в нижней точке.";
+"exercise.info.triceps_cable_pushdown.technique.6" = "Возвращайте рукоять под контролем, не уводя локти вперед.";
+
+"exercise.info.triceps_rope_pushdown.description" = "Разгибание рук на блоке с канатом позволяет удобно держать кисти и сильнее прожимать трицепс внизу.";
+"exercise.info.triceps_rope_pushdown.technique.1" = "Возьмите концы каната и встаньте так, чтобы трос был натянут.";
+"exercise.info.triceps_rope_pushdown.technique.2" = "Держите локти прижатыми ближе к ребрам.";
+"exercise.info.triceps_rope_pushdown.technique.3" = "Разгибайте локти и разводите концы каната в нижней точке.";
+"exercise.info.triceps_rope_pushdown.technique.4" = "Сохраняйте удобное нейтральное положение кистей.";
+"exercise.info.triceps_rope_pushdown.technique.5" = "Не раскачивайте корпус, чтобы сдвинуть вес.";
+"exercise.info.triceps_rope_pushdown.technique.6" = "Медленно возвращайте канат, оставляя плечи неподвижными.";
+
+"exercise.info.triceps_two_arm_overhead_dumbbell_extension.description" = "Разгибание гантели из-за головы двумя руками нагружает длинную головку трицепса, когда одна гантель удерживается над головой обеими руками.";
+"exercise.info.triceps_two_arm_overhead_dumbbell_extension.technique.1" = "Держите одну гантель над головой обеими руками за рукоять или диск.";
+"exercise.info.triceps_two_arm_overhead_dumbbell_extension.technique.2" = "Зафиксируйте корпус и не прогибайтесь чрезмерно в пояснице.";
+"exercise.info.triceps_two_arm_overhead_dumbbell_extension.technique.3" = "Направляйте локти вперед и не разводите их слишком широко.";
+"exercise.info.triceps_two_arm_overhead_dumbbell_extension.technique.4" = "Опускайте гантель за голову под контролем.";
+"exercise.info.triceps_two_arm_overhead_dumbbell_extension.technique.5" = "Разгибайте локти, возвращая гантель над голову.";
+"exercise.info.triceps_two_arm_overhead_dumbbell_extension.technique.6" = "Выбирайте вес, который не заставляет прогибаться назад.";
+
+"exercise.info.triceps_one_arm_overhead_dumbbell_extension.description" = "Разгибание гантели из-за головы одной рукой помогает отдельно проработать каждую руку в полной верхней амплитуде.";
+"exercise.info.triceps_one_arm_overhead_dumbbell_extension.technique.1" = "Удерживайте одну гантель над головой одной рукой.";
+"exercise.info.triceps_one_arm_overhead_dumbbell_extension.technique.2" = "Напрягите корпус и стабилизируйте плечо.";
+"exercise.info.triceps_one_arm_overhead_dumbbell_extension.technique.3" = "Сгибайте локоть и опускайте гантель за голову.";
+"exercise.info.triceps_one_arm_overhead_dumbbell_extension.technique.4" = "Держите локоть направленным в основном вверх.";
+"exercise.info.triceps_one_arm_overhead_dumbbell_extension.technique.5" = "Разгибайте руку вверх, не заваливая кисть.";
+"exercise.info.triceps_one_arm_overhead_dumbbell_extension.technique.6" = "Повторяйте одинаковую амплитуду и контроль на обе руки.";
+
+"exercise.info.triceps_overhead_cable_extension.description" = "Разгибание рук из-за головы на блоке сохраняет натяжение троса в верхнем положении и хорошо нагружает длинную головку трицепса.";
+"exercise.info.triceps_overhead_cable_extension.technique.1" = "Установите блок низко или позади себя и займите устойчивую стойку.";
+"exercise.info.triceps_overhead_cable_extension.technique.2" = "Выведите рукоять или канат над головой с согнутыми локтями.";
+"exercise.info.triceps_overhead_cable_extension.technique.3" = "Держите плечи направленными вперед и почти неподвижными.";
+"exercise.info.triceps_overhead_cable_extension.technique.4" = "Разгибайте локти почти до полного выпрямления рук.";
+"exercise.info.triceps_overhead_cable_extension.technique.5" = "Контролируйте ребра и не прогибайтесь чрезмерно.";
+"exercise.info.triceps_overhead_cable_extension.technique.6" = "Медленно возвращайтесь назад, сохраняя натяжение троса.";
+
+"exercise.info.triceps_lying_dumbbell_extension.description" = "Разгибание гантелей лежа - вариант разгибаний на трицепс, где каждая рука работает независимо.";
+"exercise.info.triceps_lying_dumbbell_extension.technique.1" = "Лягте на скамью и держите гантели над плечами.";
+"exercise.info.triceps_lying_dumbbell_extension.technique.2" = "Сохраняйте плечи неподвижными, локти направлены вверх.";
+"exercise.info.triceps_lying_dumbbell_extension.technique.3" = "Опускайте гантели к сторонам головы.";
+"exercise.info.triceps_lying_dumbbell_extension.technique.4" = "Используйте нейтральный или другой удобный хват.";
+"exercise.info.triceps_lying_dumbbell_extension.technique.5" = "Разгибайте локти, не превращая движение в жим.";
+"exercise.info.triceps_lying_dumbbell_extension.technique.6" = "Двигайте обе руки ровно и под контролем.";
+
+"exercise.info.triceps_kickback.description" = "Кикбэк - строгое изолирующее упражнение на трицепс, обычно с гантелью или блоком в наклоне.";
+"exercise.info.triceps_kickback.technique.1" = "Наклонитесь вперед с ровной спиной, при необходимости используйте опору.";
+"exercise.info.triceps_kickback.technique.2" = "Держите плечо рядом с корпусом и примерно параллельно полу.";
+"exercise.info.triceps_kickback.technique.3" = "Разгибайте локоть, пока рука не станет прямой позади корпуса.";
+"exercise.info.triceps_kickback.technique.4" = "Коротко задержитесь вверху без раскачки.";
+"exercise.info.triceps_kickback.technique.5" = "Опускайте вес медленно, не двигая плечом.";
+"exercise.info.triceps_kickback.technique.6" = "Берите легкий вес, чтобы движение оставалось строгим.";
+
+"exercise.info.triceps_close_grip_push_up.description" = "Отжимания узким хватом - вариант отжиманий с акцентом на трицепс, где руки стоят уже обычного.";
+"exercise.info.triceps_close_grip_push_up.technique.1" = "Поставьте руки под плечами или немного уже ширины плеч.";
+"exercise.info.triceps_close_grip_push_up.technique.2" = "Держите тело одной прямой линией.";
+"exercise.info.triceps_close_grip_push_up.technique.3" = "Опускайтесь с локтями ближе к ребрам.";
+"exercise.info.triceps_close_grip_push_up.technique.4" = "Держите шею нейтрально, а корпус напряженным.";
+"exercise.info.triceps_close_grip_push_up.technique.5" = "Выжимайте себя вверх за счет разгибания локтей.";
+"exercise.info.triceps_close_grip_push_up.technique.6" = "Измените постановку рук, если кистям некомфортно.";

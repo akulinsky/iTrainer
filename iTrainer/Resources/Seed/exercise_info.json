@@ -826,5 +826,137 @@
       "exercise.info.biceps_spider_curl.technique.5",
       "exercise.info.biceps_spider_curl.technique.6"
     ]
+  },
+  {
+    "exerciseId": "triceps_close_grip_bench_press",
+    "descriptionKey": "exercise.info.triceps_close_grip_bench_press.description",
+    "techniqueKeys": [
+      "exercise.info.triceps_close_grip_bench_press.technique.1",
+      "exercise.info.triceps_close_grip_bench_press.technique.2",
+      "exercise.info.triceps_close_grip_bench_press.technique.3",
+      "exercise.info.triceps_close_grip_bench_press.technique.4",
+      "exercise.info.triceps_close_grip_bench_press.technique.5",
+      "exercise.info.triceps_close_grip_bench_press.technique.6"
+    ]
+  },
+  {
+    "exerciseId": "triceps_dips",
+    "descriptionKey": "exercise.info.triceps_dips.description",
+    "techniqueKeys": [
+      "exercise.info.triceps_dips.technique.1",
+      "exercise.info.triceps_dips.technique.2",
+      "exercise.info.triceps_dips.technique.3",
+      "exercise.info.triceps_dips.technique.4",
+      "exercise.info.triceps_dips.technique.5",
+      "exercise.info.triceps_dips.technique.6"
+    ]
+  },
+  {
+    "exerciseId": "triceps_french_press",
+    "descriptionKey": "exercise.info.triceps_french_press.description",
+    "techniqueKeys": [
+      "exercise.info.triceps_french_press.technique.1",
+      "exercise.info.triceps_french_press.technique.2",
+      "exercise.info.triceps_french_press.technique.3",
+      "exercise.info.triceps_french_press.technique.4",
+      "exercise.info.triceps_french_press.technique.5",
+      "exercise.info.triceps_french_press.technique.6"
+    ]
+  },
+  {
+    "exerciseId": "triceps_cable_pushdown",
+    "descriptionKey": "exercise.info.triceps_cable_pushdown.description",
+    "techniqueKeys": [
+      "exercise.info.triceps_cable_pushdown.technique.1",
+      "exercise.info.triceps_cable_pushdown.technique.2",
+      "exercise.info.triceps_cable_pushdown.technique.3",
+      "exercise.info.triceps_cable_pushdown.technique.4",
+      "exercise.info.triceps_cable_pushdown.technique.5",
+      "exercise.info.triceps_cable_pushdown.technique.6"
+    ]
+  },
+  {
+    "exerciseId": "triceps_rope_pushdown",
+    "descriptionKey": "exercise.info.triceps_rope_pushdown.description",
+    "techniqueKeys": [
+      "exercise.info.triceps_rope_pushdown.technique.1",
+      "exercise.info.triceps_rope_pushdown.technique.2",
+      "exercise.info.triceps_rope_pushdown.technique.3",
+      "exercise.info.triceps_rope_pushdown.technique.4",
+      "exercise.info.triceps_rope_pushdown.technique.5",
+      "exercise.info.triceps_rope_pushdown.technique.6"
+    ]
+  },
+  {
+    "exerciseId": "triceps_two_arm_overhead_dumbbell_extension",
+    "descriptionKey": "exercise.info.triceps_two_arm_overhead_dumbbell_extension.description",
+    "techniqueKeys": [
+      "exercise.info.triceps_two_arm_overhead_dumbbell_extension.technique.1",
+      "exercise.info.triceps_two_arm_overhead_dumbbell_extension.technique.2",
+      "exercise.info.triceps_two_arm_overhead_dumbbell_extension.technique.3",
+      "exercise.info.triceps_two_arm_overhead_dumbbell_extension.technique.4",
+      "exercise.info.triceps_two_arm_overhead_dumbbell_extension.technique.5",
+      "exercise.info.triceps_two_arm_overhead_dumbbell_extension.technique.6"
+    ]
+  },
+  {
+    "exerciseId": "triceps_one_arm_overhead_dumbbell_extension",
+    "descriptionKey": "exercise.info.triceps_one_arm_overhead_dumbbell_extension.description",
+    "techniqueKeys": [
+      "exercise.info.triceps_one_arm_overhead_dumbbell_extension.technique.1",
+      "exercise.info.triceps_one_arm_overhead_dumbbell_extension.technique.2",
+      "exercise.info.triceps_one_arm_overhead_dumbbell_extension.technique.3",
+      "exercise.info.triceps_one_arm_overhead_dumbbell_extension.technique.4",
+      "exercise.info.triceps_one_arm_overhead_dumbbell_extension.technique.5",
+      "exercise.info.triceps_one_arm_overhead_dumbbell_extension.technique.6"
+    ]
+  },
+  {
+    "exerciseId": "triceps_overhead_cable_extension",
+    "descriptionKey": "exercise.info.triceps_overhead_cable_extension.description",
+    "techniqueKeys": [
+      "exercise.info.triceps_overhead_cable_extension.technique.1",
+      "exercise.info.triceps_overhead_cable_extension.technique.2",
+      "exercise.info.triceps_overhead_cable_extension.technique.3",
+      "exercise.info.triceps_overhead_cable_extension.technique.4",
+      "exercise.info.triceps_overhead_cable_extension.technique.5",
+      "exercise.info.triceps_overhead_cable_extension.technique.6"
+    ]
+  },
+  {
+    "exerciseId": "triceps_lying_dumbbell_extension",
+    "descriptionKey": "exercise.info.triceps_lying_dumbbell_extension.description",
+    "techniqueKeys": [
+      "exercise.info.triceps_lying_dumbbell_extension.technique.1",
+      "exercise.info.triceps_lying_dumbbell_extension.technique.2",
+      "exercise.info.triceps_lying_dumbbell_extension.technique.3",
+      "exercise.info.triceps_lying_dumbbell_extension.technique.4",
+      "exercise.info.triceps_lying_dumbbell_extension.technique.5",
+      "exercise.info.triceps_lying_dumbbell_extension.technique.6"
+    ]
+  },
+  {
+    "exerciseId": "triceps_kickback",
+    "descriptionKey": "exercise.info.triceps_kickback.description",
+    "techniqueKeys": [
+      "exercise.info.triceps_kickback.technique.1",
+      "exercise.info.triceps_kickback.technique.2",
+      "exercise.info.triceps_kickback.technique.3",
+      "exercise.info.triceps_kickback.technique.4",
+      "exercise.info.triceps_kickback.technique.5",
+      "exercise.info.triceps_kickback.technique.6"
+    ]
+  },
+  {
+    "exerciseId": "triceps_close_grip_push_up",
+    "descriptionKey": "exercise.info.triceps_close_grip_push_up.description",
+    "techniqueKeys": [
+      "exercise.info.triceps_close_grip_push_up.technique.1",
+      "exercise.info.triceps_close_grip_push_up.technique.2",
+      "exercise.info.triceps_close_grip_push_up.technique.3",
+      "exercise.info.triceps_close_grip_push_up.technique.4",
+      "exercise.info.triceps_close_grip_push_up.technique.5",
+      "exercise.info.triceps_close_grip_push_up.technique.6"
+    ]
   }
 ]
