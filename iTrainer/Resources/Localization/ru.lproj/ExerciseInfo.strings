@@ -639,3 +639,51 @@
 "exercise.info.triceps_close_grip_push_up.technique.4" = "Держите шею нейтрально, а корпус напряженным.";
 "exercise.info.triceps_close_grip_push_up.technique.5" = "Выжимайте себя вверх за счет разгибания локтей.";
 "exercise.info.triceps_close_grip_push_up.technique.6" = "Измените постановку рук, если кистям некомфортно.";
+
+"exercise.info.forearms_wrist_curl.description" = "Сгибание запястий тренирует сгибатели кисти на внутренней стороне предплечья простым движением в запястье.";
+"exercise.info.forearms_wrist_curl.technique.1" = "Сядьте или встаньте с опорой для предплечий, ладони направлены вверх.";
+"exercise.info.forearms_wrist_curl.technique.2" = "Внизу позвольте кистям немного разогнуться под контролем.";
+"exercise.info.forearms_wrist_curl.technique.3" = "Поднимайте вес вверх только движением кистей.";
+"exercise.info.forearms_wrist_curl.technique.4" = "Держите предплечья неподвижными весь подход.";
+"exercise.info.forearms_wrist_curl.technique.5" = "Коротко задержитесь вверху, не поднимая локти.";
+"exercise.info.forearms_wrist_curl.technique.6" = "Опускайте медленно и не отбивайте вес.";
+
+"exercise.info.forearms_reverse_wrist_curl.description" = "Разгибание запястий нагружает разгибатели кисти на верхней стороне предплечья.";
+"exercise.info.forearms_reverse_wrist_curl.technique.1" = "Расположите предплечья на опоре ладонями вниз.";
+"exercise.info.forearms_reverse_wrist_curl.technique.2" = "Удерживайте вес контролируемым хватом.";
+"exercise.info.forearms_reverse_wrist_curl.technique.3" = "Поднимайте костяшки вверх за счет разгибания кистей.";
+"exercise.info.forearms_reverse_wrist_curl.technique.4" = "Делайте движение коротким, строгим и плавным.";
+"exercise.info.forearms_reverse_wrist_curl.technique.5" = "Не отрывайте предплечья от опоры.";
+"exercise.info.forearms_reverse_wrist_curl.technique.6" = "Медленно опускайтесь в исходное положение.";
+
+"exercise.info.forearms_reverse_barbell_curl.description" = "Обратный подъем штанги тренирует предплечья, плечевую мышцу и бицепс хватом ладонями вниз.";
+"exercise.info.forearms_reverse_barbell_curl.technique.1" = "Встаньте ровно и возьмите штангу пронированным хватом.";
+"exercise.info.forearms_reverse_barbell_curl.technique.2" = "Держите локти рядом с корпусом.";
+"exercise.info.forearms_reverse_barbell_curl.technique.3" = "Поднимайте штангу без раскачки корпуса.";
+"exercise.info.forearms_reverse_barbell_curl.technique.4" = "Держите кисти крепко и не позволяйте им заламываться назад.";
+"exercise.info.forearms_reverse_barbell_curl.technique.5" = "Коротко задержитесь около верхней точки.";
+"exercise.info.forearms_reverse_barbell_curl.technique.6" = "Опускайте вес под контролем по полной амплитуде.";
+
+"exercise.info.forearms_behind_back_wrist_curl.description" = "Сгибание запястий за спиной - стоячий вариант сгибаний, который нагружает сгибатели предплечья из положения за корпусом.";
+"exercise.info.forearms_behind_back_wrist_curl.technique.1" = "Встаньте и держите штангу за спиной ладонями назад.";
+"exercise.info.forearms_behind_back_wrist_curl.technique.2" = "Держите руки прямыми, а плечи расслабленными.";
+"exercise.info.forearms_behind_back_wrist_curl.technique.3" = "Если комфортно, слегка перекатывайте гриф к пальцам.";
+"exercise.info.forearms_behind_back_wrist_curl.technique.4" = "Сгибайте кисти вверх и сжимайте предплечья.";
+"exercise.info.forearms_behind_back_wrist_curl.technique.5" = "Держите корпус неподвижным и не пожимайте плечами.";
+"exercise.info.forearms_behind_back_wrist_curl.technique.6" = "Контролируйте опускание и сохраняйте надежный хват.";
+
+"exercise.info.forearms_wrist_roller.description" = "Роллер для запястий развивает выносливость предплечий и силу хвата за счет наматывания и разматывания груза.";
+"exercise.info.forearms_wrist_roller.technique.1" = "Держите роллер двумя руками примерно на уровне плеч или немного ниже.";
+"exercise.info.forearms_wrist_roller.technique.2" = "Опустите плечи и держите корпус стабильным.";
+"exercise.info.forearms_wrist_roller.technique.3" = "Вращайте рукоять попеременными движениями кистей.";
+"exercise.info.forearms_wrist_roller.technique.4" = "Двигайтесь ровно, без рывков.";
+"exercise.info.forearms_wrist_roller.technique.5" = "После подъема груза опускайте его под контролем.";
+"exercise.info.forearms_wrist_roller.technique.6" = "Используйте вес, с которым можете завершить полный подъем без потери хвата.";
+
+"exercise.info.forearms_dead_hang.description" = "Вис на турнике развивает выносливость хвата и контроль плеч за счет удержания собственного веса.";
+"exercise.info.forearms_dead_hang.technique.1" = "Возьмитесь за перекладину двумя руками на удобной ширине.";
+"exercise.info.forearms_dead_hang.technique.2" = "Позвольте телу висеть, но сохраняйте контроль в плечах.";
+"exercise.info.forearms_dead_hang.technique.3" = "Слегка напрягите корпус и держите ноги спокойно.";
+"exercise.info.forearms_dead_hang.technique.4" = "Не скручивайтесь и не раскачивайтесь во время удержания.";
+"exercise.info.forearms_dead_hang.technique.5" = "Дышите ровно, сохраняя хват.";
+"exercise.info.forearms_dead_hang.technique.6" = "Безопасно спуститесь до того, как хват полностью откажет.";

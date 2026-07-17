@@ -94,8 +94,9 @@
 "exercise.forearms.wrist_curl" = "Сгибание запястий";
 "exercise.forearms.reverse_wrist_curl" = "Разгибание запястий";
 "exercise.forearms.reverse_barbell_curl" = "Обратный подъем штанги";
-"exercise.forearms.dead_hang" = "Вис на турнике";
+"exercise.forearms.behind_back_wrist_curl" = "Сгибание запястий за спиной";
 "exercise.forearms.wrist_roller" = "Роллер для запястий";
+"exercise.forearms.dead_hang" = "Вис на турнике";
 "exercise.abs.crunch" = "Скручивания";
 "exercise.abs.lying_leg_raise" = "Подъем ног лежа";
 "exercise.abs.plank" = "Планка";

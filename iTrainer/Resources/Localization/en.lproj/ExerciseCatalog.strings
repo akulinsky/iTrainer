@@ -94,8 +94,9 @@
 "exercise.forearms.wrist_curl" = "Wrist Curl";
 "exercise.forearms.reverse_wrist_curl" = "Reverse Wrist Curl";
 "exercise.forearms.reverse_barbell_curl" = "Reverse Barbell Curl";
-"exercise.forearms.dead_hang" = "Dead Hang";
+"exercise.forearms.behind_back_wrist_curl" = "Behind-the-Back Wrist Curl";
 "exercise.forearms.wrist_roller" = "Wrist Roller";
+"exercise.forearms.dead_hang" = "Dead Hang";
 "exercise.abs.crunch" = "Crunch";
 "exercise.abs.lying_leg_raise" = "Lying Leg Raise";
 "exercise.abs.plank" = "Plank";

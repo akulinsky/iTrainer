@@ -958,5 +958,77 @@
       "exercise.info.triceps_close_grip_push_up.technique.5",
       "exercise.info.triceps_close_grip_push_up.technique.6"
     ]
+  },
+  {
+    "exerciseId": "forearms_wrist_curl",
+    "descriptionKey": "exercise.info.forearms_wrist_curl.description",
+    "techniqueKeys": [
+      "exercise.info.forearms_wrist_curl.technique.1",
+      "exercise.info.forearms_wrist_curl.technique.2",
+      "exercise.info.forearms_wrist_curl.technique.3",
+      "exercise.info.forearms_wrist_curl.technique.4",
+      "exercise.info.forearms_wrist_curl.technique.5",
+      "exercise.info.forearms_wrist_curl.technique.6"
+    ]
+  },
+  {
+    "exerciseId": "forearms_reverse_wrist_curl",
+    "descriptionKey": "exercise.info.forearms_reverse_wrist_curl.description",
+    "techniqueKeys": [
+      "exercise.info.forearms_reverse_wrist_curl.technique.1",
+      "exercise.info.forearms_reverse_wrist_curl.technique.2",
+      "exercise.info.forearms_reverse_wrist_curl.technique.3",
+      "exercise.info.forearms_reverse_wrist_curl.technique.4",
+      "exercise.info.forearms_reverse_wrist_curl.technique.5",
+      "exercise.info.forearms_reverse_wrist_curl.technique.6"
+    ]
+  },
+  {
+    "exerciseId": "forearms_reverse_barbell_curl",
+    "descriptionKey": "exercise.info.forearms_reverse_barbell_curl.description",
+    "techniqueKeys": [
+      "exercise.info.forearms_reverse_barbell_curl.technique.1",
+      "exercise.info.forearms_reverse_barbell_curl.technique.2",
+      "exercise.info.forearms_reverse_barbell_curl.technique.3",
+      "exercise.info.forearms_reverse_barbell_curl.technique.4",
+      "exercise.info.forearms_reverse_barbell_curl.technique.5",
+      "exercise.info.forearms_reverse_barbell_curl.technique.6"
+    ]
+  },
+  {
+    "exerciseId": "forearms_behind_back_wrist_curl",
+    "descriptionKey": "exercise.info.forearms_behind_back_wrist_curl.description",
+    "techniqueKeys": [
+      "exercise.info.forearms_behind_back_wrist_curl.technique.1",
+      "exercise.info.forearms_behind_back_wrist_curl.technique.2",
+      "exercise.info.forearms_behind_back_wrist_curl.technique.3",
+      "exercise.info.forearms_behind_back_wrist_curl.technique.4",
+      "exercise.info.forearms_behind_back_wrist_curl.technique.5",
+      "exercise.info.forearms_behind_back_wrist_curl.technique.6"
+    ]
+  },
+  {
+    "exerciseId": "forearms_wrist_roller",
+    "descriptionKey": "exercise.info.forearms_wrist_roller.description",
+    "techniqueKeys": [
+      "exercise.info.forearms_wrist_roller.technique.1",
+      "exercise.info.forearms_wrist_roller.technique.2",
+      "exercise.info.forearms_wrist_roller.technique.3",
+      "exercise.info.forearms_wrist_roller.technique.4",
+      "exercise.info.forearms_wrist_roller.technique.5",
+      "exercise.info.forearms_wrist_roller.technique.6"
+    ]
+  },
+  {
+    "exerciseId": "forearms_dead_hang",
+    "descriptionKey": "exercise.info.forearms_dead_hang.description",
+    "techniqueKeys": [
+      "exercise.info.forearms_dead_hang.technique.1",
+      "exercise.info.forearms_dead_hang.technique.2",
+      "exercise.info.forearms_dead_hang.technique.3",
+      "exercise.info.forearms_dead_hang.technique.4",
+      "exercise.info.forearms_dead_hang.technique.5",
+      "exercise.info.forearms_dead_hang.technique.6"
+    ]
   }
 ]

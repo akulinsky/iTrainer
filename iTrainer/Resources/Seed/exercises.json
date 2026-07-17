@@ -693,22 +693,31 @@
     "trackingType": "weightedReps"
   },
   {
-    "id": "forearms_dead_hang",
-    "titleKey": "exercise.forearms.dead_hang",
-    "defaultTitle": "Dead Hang",
+    "id": "forearms_behind_back_wrist_curl",
+    "titleKey": "exercise.forearms.behind_back_wrist_curl",
+    "defaultTitle": "Behind-the-Back Wrist Curl",
     "category": "forearms",
-    "sortOrder": 4,
+    "sortOrder": 3,
     "iconName": "icMissingImage",
-    "trackingType": "timed"
+    "trackingType": "weightedReps"
   },
   {
     "id": "forearms_wrist_roller",
     "titleKey": "exercise.forearms.wrist_roller",
     "defaultTitle": "Wrist Roller",
     "category": "forearms",
-    "sortOrder": 5,
+    "sortOrder": 4,
     "iconName": "icMissingImage",
     "trackingType": "weightedReps"
+  },
+  {
+    "id": "forearms_dead_hang",
+    "titleKey": "exercise.forearms.dead_hang",
+    "defaultTitle": "Dead Hang",
+    "category": "forearms",
+    "sortOrder": 5,
+    "iconName": "icMissingImage",
+    "trackingType": "timed"
   },
   {
     "id": "abs_crunch",

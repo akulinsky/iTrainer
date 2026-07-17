@@ -639,3 +639,51 @@
 "exercise.info.triceps_close_grip_push_up.technique.4" = "Keep the neck neutral and core braced.";
 "exercise.info.triceps_close_grip_push_up.technique.5" = "Press back up by extending the elbows.";
 "exercise.info.triceps_close_grip_push_up.technique.6" = "Adjust hand spacing if the wrists feel uncomfortable.";
+
+"exercise.info.forearms_wrist_curl.description" = "Wrist Curl trains the wrist flexors on the inside of the forearm with a simple curling motion at the wrist.";
+"exercise.info.forearms_wrist_curl.technique.1" = "Sit or stand with the forearms supported and palms facing up.";
+"exercise.info.forearms_wrist_curl.technique.2" = "Let the wrists extend slightly under control at the bottom.";
+"exercise.info.forearms_wrist_curl.technique.3" = "Curl the weight up by moving only the wrists.";
+"exercise.info.forearms_wrist_curl.technique.4" = "Keep the forearms still throughout the set.";
+"exercise.info.forearms_wrist_curl.technique.5" = "Pause briefly at the top without lifting the elbows.";
+"exercise.info.forearms_wrist_curl.technique.6" = "Lower slowly and avoid bouncing the weight.";
+
+"exercise.info.forearms_reverse_wrist_curl.description" = "Reverse Wrist Curl targets the wrist extensors on the top side of the forearm.";
+"exercise.info.forearms_reverse_wrist_curl.technique.1" = "Support the forearms with palms facing down.";
+"exercise.info.forearms_reverse_wrist_curl.technique.2" = "Hold the weight with a controlled grip.";
+"exercise.info.forearms_reverse_wrist_curl.technique.3" = "Lift the knuckles upward by extending the wrists.";
+"exercise.info.forearms_reverse_wrist_curl.technique.4" = "Keep the movement small, strict, and smooth.";
+"exercise.info.forearms_reverse_wrist_curl.technique.5" = "Do not lift the forearms off the support.";
+"exercise.info.forearms_reverse_wrist_curl.technique.6" = "Lower slowly to the starting position.";
+
+"exercise.info.forearms_reverse_barbell_curl.description" = "Reverse Barbell Curl trains the forearms, brachialis, and biceps using a palms-down grip.";
+"exercise.info.forearms_reverse_barbell_curl.technique.1" = "Stand tall and hold the bar with a pronated grip.";
+"exercise.info.forearms_reverse_barbell_curl.technique.2" = "Keep elbows close to the sides.";
+"exercise.info.forearms_reverse_barbell_curl.technique.3" = "Curl the bar up without swinging the torso.";
+"exercise.info.forearms_reverse_barbell_curl.technique.4" = "Keep wrists firm and avoid letting them bend back.";
+"exercise.info.forearms_reverse_barbell_curl.technique.5" = "Pause briefly near the top.";
+"exercise.info.forearms_reverse_barbell_curl.technique.6" = "Lower under control through the full range.";
+
+"exercise.info.forearms_behind_back_wrist_curl.description" = "Behind-the-Back Wrist Curl is a standing wrist-curl variation that loads the forearm flexors from behind the body.";
+"exercise.info.forearms_behind_back_wrist_curl.technique.1" = "Stand holding a barbell behind your body with palms facing backward.";
+"exercise.info.forearms_behind_back_wrist_curl.technique.2" = "Keep the arms straight and shoulders relaxed.";
+"exercise.info.forearms_behind_back_wrist_curl.technique.3" = "Let the bar roll slightly toward the fingers if comfortable.";
+"exercise.info.forearms_behind_back_wrist_curl.technique.4" = "Curl the wrists upward and squeeze the forearms.";
+"exercise.info.forearms_behind_back_wrist_curl.technique.5" = "Keep the torso still and avoid shrugging.";
+"exercise.info.forearms_behind_back_wrist_curl.technique.6" = "Control the lowering phase and keep the grip secure.";
+
+"exercise.info.forearms_wrist_roller.description" = "Wrist Roller builds forearm endurance and grip strength by rolling a loaded cord up and down.";
+"exercise.info.forearms_wrist_roller.technique.1" = "Hold the roller with both hands at about shoulder height or slightly lower.";
+"exercise.info.forearms_wrist_roller.technique.2" = "Keep the shoulders down and torso stable.";
+"exercise.info.forearms_wrist_roller.technique.3" = "Roll the handle with alternating wrist movements.";
+"exercise.info.forearms_wrist_roller.technique.4" = "Keep the movement steady instead of jerky.";
+"exercise.info.forearms_wrist_roller.technique.5" = "Lower the weight under control after rolling it up.";
+"exercise.info.forearms_wrist_roller.technique.6" = "Use a load that lets you finish the full roll without losing grip.";
+
+"exercise.info.forearms_dead_hang.description" = "Dead Hang develops grip endurance and shoulder control by hanging from a pull-up bar.";
+"exercise.info.forearms_dead_hang.technique.1" = "Grip the bar with both hands at a comfortable width.";
+"exercise.info.forearms_dead_hang.technique.2" = "Let the body hang while keeping the shoulders controlled.";
+"exercise.info.forearms_dead_hang.technique.3" = "Keep the core lightly braced and legs still.";
+"exercise.info.forearms_dead_hang.technique.4" = "Avoid twisting or swinging during the hold.";
+"exercise.info.forearms_dead_hang.technique.5" = "Breathe steadily while maintaining the grip.";
+"exercise.info.forearms_dead_hang.technique.6" = "Step down safely before the grip fully fails.";
