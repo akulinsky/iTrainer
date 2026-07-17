@@ -80,11 +80,11 @@ struct ExerciseTypeCell: View {
     let category = ExerciseCategory(id: "chest",
                                     titleKey: "exercise.category.chest",
                                     defaultTitle: "Chest",
-                                    devTitle: "Грудь",
                                     kind: "muscleGroup",
                                     iconName: "icMissingImage",
                                     sortOrder: 0)
-    ExerciseTypeCell(model: ExerciseTypeModel(devTitle: "Жим лежа",
+    ExerciseTypeCell(model: ExerciseTypeModel(titleKey: "exercise.chest.bench_press",
+                                              defaultTitle: "Bench Press",
                                               type: category,
                                               parameters: [.weight(), .repeats()]
                                              ),

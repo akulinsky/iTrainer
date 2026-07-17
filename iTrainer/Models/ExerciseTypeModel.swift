@@ -95,7 +95,6 @@ struct ExerciseTypeModel: Identifiable {
     let iconName: String
     let titleKey: String
     let defaultTitle: String
-    let devTitle: String
     let type: ExerciseCategory
     let parameters: [ParameterValue<Any>]
     let sortOrder: Int
@@ -115,13 +114,12 @@ struct ExerciseTypeModel: Identifiable {
     }
     
     var displayName: String {
-        devTitle
+        ExerciseCatalogLocalization.title(for: titleKey, fallback: defaultTitle)
     }
     
     init(id: String? = nil,
          titleKey: String = "",
          defaultTitle: String = "",
-         devTitle: String,
          iconName: String = ImageAssetName.missing,
          type: ExerciseCategory,
          parameters: [ParameterValue<Any>],
@@ -134,7 +132,6 @@ struct ExerciseTypeModel: Identifiable {
         self.iconName = ImageAssetName.resolved(iconName)
         self.titleKey = titleKey
         self.defaultTitle = defaultTitle
-        self.devTitle = devTitle
         
         if let id = id {
             self.id = id
@@ -155,7 +152,6 @@ private struct ExerciseSeedModel: Decodable {
     let id: String
     let titleKey: String
     let defaultTitle: String
-    let devTitle: String
     let category: String
     let iconName: String?
     let trackingType: String
@@ -187,7 +183,6 @@ enum ExerciseSeedLoader {
             return ExerciseTypeModel(id: seed.id,
                                      titleKey: seed.titleKey,
                                      defaultTitle: seed.defaultTitle,
-                                     devTitle: seed.devTitle,
                                      iconName: ImageAssetName.resolved(seed.iconName),
                                      type: category,
                                      parameters: trackingType.parameters,
@@ -229,7 +224,6 @@ extension ExerciseTypeModel {
         self.init(id: customModel.id,
                   titleKey: customModel.title,
                   defaultTitle: customModel.title,
-                  devTitle: customModel.title,
                   type: category,
                   parameters: trackingType.parameters,
                   sortOrder: customModel.sortOrder,

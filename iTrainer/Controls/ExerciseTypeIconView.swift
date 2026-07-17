@@ -58,17 +58,18 @@ struct ExerciseTypeIconView: View {
     let category = ExerciseCategory(id: "chest",
                                     titleKey: "exercise.category.chest",
                                     defaultTitle: "Chest",
-                                    devTitle: "Chest",
                                     kind: "muscleGroup",
                                     iconName: "icMissingImage",
                                     sortOrder: 0)
     HStack {
-        ExerciseTypeIconView(exerciseType: ExerciseTypeModel(devTitle: "Bench Press",
+        ExerciseTypeIconView(exerciseType: ExerciseTypeModel(titleKey: "exercise.chest.bench_press",
+                                                            defaultTitle: "Bench Press",
                                                             iconName: "icMissingImage",
                                                             type: category,
                                                             parameters: [.weight(), .repeats()]),
                              size: 72)
-        ExerciseTypeIconView(exerciseType: ExerciseTypeModel(devTitle: "Custom Exercise",
+        ExerciseTypeIconView(exerciseType: ExerciseTypeModel(titleKey: "Custom Exercise",
+                                                            defaultTitle: "Custom Exercise",
                                                             type: category,
                                                             parameters: [.weight(), .repeats()],
                                                             isCustom: true,

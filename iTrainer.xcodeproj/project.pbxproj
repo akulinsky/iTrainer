@@ -36,6 +36,7 @@
 		F6336E1F30016236006ECA08 /* ExerciseInfo.strings in Resources */ = {isa = PBXBuildFile; fileRef = F6336E1D30016236006ECA08 /* ExerciseInfo.strings */; };
 		F6336E2230016C13006ECA08 /* BookmarkedExerciseTypeModelDB.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6336E2130016C13006ECA08 /* BookmarkedExerciseTypeModelDB.swift */; };
 		F6336E2430016D94006ECA08 /* ExerciseBookmarkFilterButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6336E2330016D94006ECA08 /* ExerciseBookmarkFilterButton.swift */; };
+		F6336E28300172A0006ECA08 /* ExerciseCatalog.strings in Resources */ = {isa = PBXBuildFile; fileRef = F6336E25300172A0006ECA08 /* ExerciseCatalog.strings */; };
 		F64895BB2FE6C67F005B0619 /* NavigationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F64895BA2FE6C67F005B0619 /* NavigationManager.swift */; };
 		F648969A2FE705F1005B0619 /* AppEnvironment.swift in Sources */ = {isa = PBXBuildFile; fileRef = F64896992FE705F1005B0619 /* AppEnvironment.swift */; };
 		F648969C2FE70B13005B0619 /* AppState.swift in Sources */ = {isa = PBXBuildFile; fileRef = F648969B2FE70B13005B0619 /* AppState.swift */; };
@@ -182,6 +183,8 @@
 		F6336E2030016246006ECA08 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/ExerciseInfo.strings; sourceTree = "<group>"; };
 		F6336E2130016C13006ECA08 /* BookmarkedExerciseTypeModelDB.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookmarkedExerciseTypeModelDB.swift; sourceTree = "<group>"; };
 		F6336E2330016D94006ECA08 /* ExerciseBookmarkFilterButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseBookmarkFilterButton.swift; sourceTree = "<group>"; };
+		F6336E26300172A0006ECA08 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/ExerciseCatalog.strings; sourceTree = "<group>"; };
+		F6336E27300172A0006ECA08 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/ExerciseCatalog.strings; sourceTree = "<group>"; };
 		F64895BA2FE6C67F005B0619 /* NavigationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationManager.swift; sourceTree = "<group>"; };
 		F64896992FE705F1005B0619 /* AppEnvironment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppEnvironment.swift; sourceTree = "<group>"; };
 		F648969B2FE70B13005B0619 /* AppState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppState.swift; sourceTree = "<group>"; };
@@ -622,6 +625,7 @@
 		F6A100092D15000100000009 /* Localization */ = {
 			isa = PBXGroup;
 			children = (
+				F6336E25300172A0006ECA08 /* ExerciseCatalog.strings */,
 				F6336E1D30016236006ECA08 /* ExerciseInfo.strings */,
 				F6A1000C2D1500010000000C /* Localizable.strings */,
 			);
@@ -794,6 +798,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F6336E28300172A0006ECA08 /* ExerciseCatalog.strings in Resources */,
 				F6336E1F30016236006ECA08 /* ExerciseInfo.strings in Resources */,
 				F69BD0D12C54F8DB0057080E /* Preview Assets.xcassets in Resources */,
 				F6A100012D14000100000001 /* exercise_categories.json in Resources */,
@@ -976,6 +981,15 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
+		F6336E25300172A0006ECA08 /* ExerciseCatalog.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				F6336E26300172A0006ECA08 /* en */,
+				F6336E27300172A0006ECA08 /* ru */,
+			);
+			name = ExerciseCatalog.strings;
+			sourceTree = "<group>";
+		};
 		F6336E1D30016236006ECA08 /* ExerciseInfo.strings */ = {
 			isa = PBXVariantGroup;
 			children = (

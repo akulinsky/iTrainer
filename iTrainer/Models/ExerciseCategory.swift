@@ -27,11 +27,16 @@ enum ImageAssetName {
     }
 }
 
+enum ExerciseCatalogLocalization {
+    static func title(for key: String, fallback: String) -> String {
+        Bundle.main.localizedString(forKey: key, value: fallback, table: "ExerciseCatalog")
+    }
+}
+
 struct ExerciseCategory: Decodable, Identifiable, Equatable {
     let id: String
     let titleKey: String
     let defaultTitle: String
-    let devTitle: String
     let kind: String
     let iconName: String
     let sortOrder: Int
@@ -41,7 +46,7 @@ struct ExerciseCategory: Decodable, Identifiable, Equatable {
     }
     
     var displayName: String {
-        devTitle
+        ExerciseCatalogLocalization.title(for: titleKey, fallback: defaultTitle)
     }
     
     var icon: Image {
@@ -51,14 +56,12 @@ struct ExerciseCategory: Decodable, Identifiable, Equatable {
     init(id: String,
          titleKey: String,
          defaultTitle: String,
-         devTitle: String,
          kind: String,
          iconName: String = ImageAssetName.missing,
          sortOrder: Int) {
         self.id = id
         self.titleKey = titleKey
         self.defaultTitle = defaultTitle
-        self.devTitle = devTitle
         self.kind = kind
         self.iconName = ImageAssetName.resolved(iconName)
         self.sortOrder = sortOrder
@@ -68,7 +71,6 @@ struct ExerciseCategory: Decodable, Identifiable, Equatable {
         case id
         case titleKey
         case defaultTitle
-        case devTitle
         case kind
         case iconName
         case sortOrder
@@ -80,7 +82,6 @@ struct ExerciseCategory: Decodable, Identifiable, Equatable {
         id = try container.decode(String.self, forKey: .id)
         titleKey = try container.decode(String.self, forKey: .titleKey)
         defaultTitle = try container.decode(String.self, forKey: .defaultTitle)
-        devTitle = try container.decode(String.self, forKey: .devTitle)
         kind = try container.decode(String.self, forKey: .kind)
         iconName = ImageAssetName.resolved(try container.decodeIfPresent(String.self, forKey: .iconName))
         sortOrder = try container.decode(Int.self, forKey: .sortOrder)

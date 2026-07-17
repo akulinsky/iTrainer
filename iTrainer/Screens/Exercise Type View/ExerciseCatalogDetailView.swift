@@ -459,7 +459,6 @@ private enum ExerciseInfoLoader {
     let category = ExerciseCategory(id: "chest",
                                     titleKey: "exercise.category.chest",
                                     defaultTitle: "Chest",
-                                    devTitle: "Chest",
                                     kind: "muscleGroup",
                                     iconName: "icMissingImage",
                                     sortOrder: 0)
@@ -467,7 +466,6 @@ private enum ExerciseInfoLoader {
         ExerciseCatalogDetailView(model: ExerciseTypeModel(id: "chest_bench_press",
                                                            titleKey: "exercise.chest.bench_press",
                                                            defaultTitle: "Bench Press",
-                                                           devTitle: "Bench Press",
                                                            iconName: "icMissingImage",
                                                            type: category,
                                                            parameters: [.weight(), .repeats()]

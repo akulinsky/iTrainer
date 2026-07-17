@@ -3,7 +3,6 @@
     "id": "chest",
     "titleKey": "exercise.category.chest",
     "defaultTitle": "Chest",
-    "devTitle": "Грудь",
     "kind": "muscleGroup",
     "sortOrder": 0,
     "iconName": "icExerciseCategory_chest"
@@ -12,7 +11,6 @@
     "id": "back",
     "titleKey": "exercise.category.back",
     "defaultTitle": "Back",
-    "devTitle": "Спина",
     "kind": "muscleGroup",
     "sortOrder": 1,
     "iconName": "icExerciseCategory_back"
@@ -21,7 +19,6 @@
     "id": "legs",
     "titleKey": "exercise.category.legs",
     "defaultTitle": "Legs",
-    "devTitle": "Ноги",
     "kind": "muscleGroup",
     "sortOrder": 2,
     "iconName": "icExerciseCategory_legs"
@@ -30,7 +27,6 @@
     "id": "glutes",
     "titleKey": "exercise.category.glutes",
     "defaultTitle": "Glutes",
-    "devTitle": "Ягодицы",
     "kind": "muscleGroup",
     "sortOrder": 3,
     "iconName": "icExerciseCategory_glutes"
@@ -39,7 +35,6 @@
     "id": "shoulders",
     "titleKey": "exercise.category.shoulders",
     "defaultTitle": "Shoulders",
-    "devTitle": "Плечи",
     "kind": "muscleGroup",
     "sortOrder": 4,
     "iconName": "icExerciseCategory_shoulders"
@@ -48,7 +43,6 @@
     "id": "biceps",
     "titleKey": "exercise.category.biceps",
     "defaultTitle": "Biceps",
-    "devTitle": "Бицепс",
     "kind": "muscleGroup",
     "sortOrder": 5,
     "iconName": "icExerciseCategory_biceps"
@@ -57,7 +51,6 @@
     "id": "triceps",
     "titleKey": "exercise.category.triceps",
     "defaultTitle": "Triceps",
-    "devTitle": "Трицепс",
     "kind": "muscleGroup",
     "sortOrder": 6,
     "iconName": "icExerciseCategory_triceps"
@@ -66,7 +59,6 @@
     "id": "forearms",
     "titleKey": "exercise.category.forearms",
     "defaultTitle": "Forearms",
-    "devTitle": "Предплечья",
     "kind": "muscleGroup",
     "sortOrder": 7,
     "iconName": "icExerciseCategory_forearms"
@@ -75,7 +67,6 @@
     "id": "abs",
     "titleKey": "exercise.category.abs",
     "defaultTitle": "Abs",
-    "devTitle": "Пресс",
     "kind": "muscleGroup",
     "sortOrder": 8,
     "iconName": "icExerciseCategory_abs"
@@ -84,7 +75,6 @@
     "id": "cardio",
     "titleKey": "exercise.category.cardio",
     "defaultTitle": "Cardio",
-    "devTitle": "Кардио",
     "kind": "fitness",
     "sortOrder": 9,
     "iconName": "icExerciseCategory_cardio"
@@ -93,7 +83,6 @@
     "id": "functional_training",
     "titleKey": "exercise.category.functional_training",
     "defaultTitle": "Functional Training",
-    "devTitle": "Функциональная тренировка",
     "kind": "fitness",
     "sortOrder": 10,
     "iconName": "icExerciseCategory_functional_training"
@@ -102,7 +91,6 @@
     "id": "stretching",
     "titleKey": "exercise.category.stretching",
     "defaultTitle": "Stretching",
-    "devTitle": "Растяжка",
     "kind": "fitness",
     "sortOrder": 11,
     "iconName": "icExerciseCategory_stretching"
