@@ -5,7 +5,10 @@
     "techniqueKeys": [
       "exercise.info.chest_bench_press.technique.1",
       "exercise.info.chest_bench_press.technique.2",
-      "exercise.info.chest_bench_press.technique.3"
+      "exercise.info.chest_bench_press.technique.3",
+      "exercise.info.chest_bench_press.technique.4",
+      "exercise.info.chest_bench_press.technique.5",
+      "exercise.info.chest_bench_press.technique.6"
     ]
   },
   {
@@ -14,7 +17,10 @@
     "techniqueKeys": [
       "exercise.info.chest_incline_bench_press.technique.1",
       "exercise.info.chest_incline_bench_press.technique.2",
-      "exercise.info.chest_incline_bench_press.technique.3"
+      "exercise.info.chest_incline_bench_press.technique.3",
+      "exercise.info.chest_incline_bench_press.technique.4",
+      "exercise.info.chest_incline_bench_press.technique.5",
+      "exercise.info.chest_incline_bench_press.technique.6"
     ]
   },
   {
@@ -23,7 +29,10 @@
     "techniqueKeys": [
       "exercise.info.chest_dumbbell_press.technique.1",
       "exercise.info.chest_dumbbell_press.technique.2",
-      "exercise.info.chest_dumbbell_press.technique.3"
+      "exercise.info.chest_dumbbell_press.technique.3",
+      "exercise.info.chest_dumbbell_press.technique.4",
+      "exercise.info.chest_dumbbell_press.technique.5",
+      "exercise.info.chest_dumbbell_press.technique.6"
     ]
   },
   {
@@ -32,7 +41,10 @@
     "techniqueKeys": [
       "exercise.info.chest_incline_dumbbell_press.technique.1",
       "exercise.info.chest_incline_dumbbell_press.technique.2",
-      "exercise.info.chest_incline_dumbbell_press.technique.3"
+      "exercise.info.chest_incline_dumbbell_press.technique.3",
+      "exercise.info.chest_incline_dumbbell_press.technique.4",
+      "exercise.info.chest_incline_dumbbell_press.technique.5",
+      "exercise.info.chest_incline_dumbbell_press.technique.6"
     ]
   },
   {
@@ -41,7 +53,10 @@
     "techniqueKeys": [
       "exercise.info.chest_dumbbell_fly.technique.1",
       "exercise.info.chest_dumbbell_fly.technique.2",
-      "exercise.info.chest_dumbbell_fly.technique.3"
+      "exercise.info.chest_dumbbell_fly.technique.3",
+      "exercise.info.chest_dumbbell_fly.technique.4",
+      "exercise.info.chest_dumbbell_fly.technique.5",
+      "exercise.info.chest_dumbbell_fly.technique.6"
     ]
   },
   {
@@ -50,7 +65,10 @@
     "techniqueKeys": [
       "exercise.info.chest_cable_crossover.technique.1",
       "exercise.info.chest_cable_crossover.technique.2",
-      "exercise.info.chest_cable_crossover.technique.3"
+      "exercise.info.chest_cable_crossover.technique.3",
+      "exercise.info.chest_cable_crossover.technique.4",
+      "exercise.info.chest_cable_crossover.technique.5",
+      "exercise.info.chest_cable_crossover.technique.6"
     ]
   },
   {
@@ -59,7 +77,10 @@
     "techniqueKeys": [
       "exercise.info.chest_machine_press.technique.1",
       "exercise.info.chest_machine_press.technique.2",
-      "exercise.info.chest_machine_press.technique.3"
+      "exercise.info.chest_machine_press.technique.3",
+      "exercise.info.chest_machine_press.technique.4",
+      "exercise.info.chest_machine_press.technique.5",
+      "exercise.info.chest_machine_press.technique.6"
     ]
   },
   {
@@ -68,7 +89,10 @@
     "techniqueKeys": [
       "exercise.info.chest_dips.technique.1",
       "exercise.info.chest_dips.technique.2",
-      "exercise.info.chest_dips.technique.3"
+      "exercise.info.chest_dips.technique.3",
+      "exercise.info.chest_dips.technique.4",
+      "exercise.info.chest_dips.technique.5",
+      "exercise.info.chest_dips.technique.6"
     ]
   },
   {
@@ -77,7 +101,58 @@
     "techniqueKeys": [
       "exercise.info.chest_push_up.technique.1",
       "exercise.info.chest_push_up.technique.2",
-      "exercise.info.chest_push_up.technique.3"
+      "exercise.info.chest_push_up.technique.3",
+      "exercise.info.chest_push_up.technique.4",
+      "exercise.info.chest_push_up.technique.5",
+      "exercise.info.chest_push_up.technique.6"
+    ]
+  },
+  {
+    "exerciseId": "chest_smith_machine_press",
+    "descriptionKey": "exercise.info.chest_smith_machine_press.description",
+    "techniqueKeys": [
+      "exercise.info.chest_smith_machine_press.technique.1",
+      "exercise.info.chest_smith_machine_press.technique.2",
+      "exercise.info.chest_smith_machine_press.technique.3",
+      "exercise.info.chest_smith_machine_press.technique.4",
+      "exercise.info.chest_smith_machine_press.technique.5",
+      "exercise.info.chest_smith_machine_press.technique.6"
+    ]
+  },
+  {
+    "exerciseId": "chest_pec_deck",
+    "descriptionKey": "exercise.info.chest_pec_deck.description",
+    "techniqueKeys": [
+      "exercise.info.chest_pec_deck.technique.1",
+      "exercise.info.chest_pec_deck.technique.2",
+      "exercise.info.chest_pec_deck.technique.3",
+      "exercise.info.chest_pec_deck.technique.4",
+      "exercise.info.chest_pec_deck.technique.5",
+      "exercise.info.chest_pec_deck.technique.6"
+    ]
+  },
+  {
+    "exerciseId": "chest_dumbbell_pullover",
+    "descriptionKey": "exercise.info.chest_dumbbell_pullover.description",
+    "techniqueKeys": [
+      "exercise.info.chest_dumbbell_pullover.technique.1",
+      "exercise.info.chest_dumbbell_pullover.technique.2",
+      "exercise.info.chest_dumbbell_pullover.technique.3",
+      "exercise.info.chest_dumbbell_pullover.technique.4",
+      "exercise.info.chest_dumbbell_pullover.technique.5",
+      "exercise.info.chest_dumbbell_pullover.technique.6"
+    ]
+  },
+  {
+    "exerciseId": "chest_cable_pullover",
+    "descriptionKey": "exercise.info.chest_cable_pullover.description",
+    "techniqueKeys": [
+      "exercise.info.chest_cable_pullover.technique.1",
+      "exercise.info.chest_cable_pullover.technique.2",
+      "exercise.info.chest_cable_pullover.technique.3",
+      "exercise.info.chest_cable_pullover.technique.4",
+      "exercise.info.chest_cable_pullover.technique.5",
+      "exercise.info.chest_cable_pullover.technique.6"
     ]
   },
   {

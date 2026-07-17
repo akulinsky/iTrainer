@@ -40,7 +40,7 @@
     "titleKey": "exercise.chest.dumbbell_fly",
     "defaultTitle": "Dumbbell Fly",
     "category": "chest",
-    "sortOrder": 4,
+    "sortOrder": 8,
     "iconName": "icExercise_chest_dumbbell_fly",
     "trackingType": "weightedReps"
   },
@@ -49,7 +49,7 @@
     "titleKey": "exercise.chest.cable_crossover",
     "defaultTitle": "Cable Crossover",
     "category": "chest",
-    "sortOrder": 5,
+    "sortOrder": 10,
     "iconName": "icExercise_chest_cable_crossover",
     "trackingType": "weightedReps"
   },
@@ -67,7 +67,7 @@
     "titleKey": "exercise.chest.dips",
     "defaultTitle": "Dips",
     "category": "chest",
-    "sortOrder": 7,
+    "sortOrder": 4,
     "iconName": "icExercise_chest_dips",
     "trackingType": "weightedReps"
   },
@@ -76,9 +76,45 @@
     "titleKey": "exercise.chest.push_up",
     "defaultTitle": "Push-Up",
     "category": "chest",
-    "sortOrder": 8,
+    "sortOrder": 5,
     "iconName": "icExercise_chest_push_up",
     "trackingType": "repsOnly"
+  },
+  {
+    "id": "chest_smith_machine_press",
+    "titleKey": "exercise.chest.smith_machine_press",
+    "defaultTitle": "Smith Machine Press",
+    "category": "chest",
+    "sortOrder": 7,
+    "iconName": "icMissingImage",
+    "trackingType": "weightedReps"
+  },
+  {
+    "id": "chest_pec_deck",
+    "titleKey": "exercise.chest.pec_deck",
+    "defaultTitle": "Pec Deck",
+    "category": "chest",
+    "sortOrder": 9,
+    "iconName": "icMissingImage",
+    "trackingType": "weightedReps"
+  },
+  {
+    "id": "chest_dumbbell_pullover",
+    "titleKey": "exercise.chest.dumbbell_pullover",
+    "defaultTitle": "Dumbbell Pullover",
+    "category": "chest",
+    "sortOrder": 11,
+    "iconName": "icMissingImage",
+    "trackingType": "weightedReps"
+  },
+  {
+    "id": "chest_cable_pullover",
+    "titleKey": "exercise.chest.cable_pullover",
+    "defaultTitle": "Cable Pullover",
+    "category": "chest",
+    "sortOrder": 12,
+    "iconName": "icMissingImage",
+    "trackingType": "weightedReps"
   },
   {
     "id": "back_pull_up",

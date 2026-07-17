@@ -1,49 +1,108 @@
 /* Exercise Info */
 
-"exercise.info.chest_bench_press.description" = "Жим лежа - базовое упражнение со штангой для развития жимовой силы верхней части тела.";
-"exercise.info.chest_bench_press.technique.1" = "Сведите лопатки и удерживайте их на скамье.";
-"exercise.info.chest_bench_press.technique.2" = "Опускайте штангу под контролем к нижней части груди.";
-"exercise.info.chest_bench_press.technique.3" = "Выжимайте штангу вверх без отбива и потери положения кистей.";
+"exercise.info.chest_bench_press.description" = "Жим лежа - базовое жимовое упражнение со штангой для развития груди, плеч и трицепсов.";
+"exercise.info.chest_bench_press.technique.1" = "Поставьте стопы устойчиво на пол перед снятием штанги.";
+"exercise.info.chest_bench_press.technique.2" = "Сведите и опустите лопатки, чтобы создать стабильную опору верхом спины.";
+"exercise.info.chest_bench_press.technique.3" = "Держите хват чуть шире плеч, а кисти над локтями.";
+"exercise.info.chest_bench_press.technique.4" = "Опускайте штангу под контролем к нижней или средней части груди.";
+"exercise.info.chest_bench_press.technique.5" = "Не отбивайте штангу от груди и не отрывайте таз от скамьи.";
+"exercise.info.chest_bench_press.technique.6" = "Жмите штангу вверх по стабильной траектории, сохраняя напряжение верха спины.";
 
 "exercise.info.chest_incline_bench_press.description" = "Жим лежа на наклонной скамье делает акцент на верхней части груди и передних дельтах.";
-"exercise.info.chest_incline_bench_press.technique.1" = "Установите скамью на умеренный наклон.";
-"exercise.info.chest_incline_bench_press.technique.2" = "Опускайте штангу под контролем к верхней части груди.";
-"exercise.info.chest_incline_bench_press.technique.3" = "Держите локти стабильно и выжимайте штангу плавно вверх.";
+"exercise.info.chest_incline_bench_press.technique.1" = "Установите скамью на умеренный наклон, обычно около 30-45 градусов.";
+"exercise.info.chest_incline_bench_press.technique.2" = "Держите стопы устойчиво, а лопатки зафиксированными на скамье.";
+"exercise.info.chest_incline_bench_press.technique.3" = "Возьмитесь за штангу чуть шире плеч.";
+"exercise.info.chest_incline_bench_press.technique.4" = "Опускайте штангу под контролем к верхней части груди.";
+"exercise.info.chest_incline_bench_press.technique.5" = "Контролируйте локти и не разводите их строго в стороны.";
+"exercise.info.chest_incline_bench_press.technique.6" = "Жмите плавно вверх, не теряя положения на скамье.";
 
-"exercise.info.chest_dumbbell_press.description" = "Жим гантелей развивает грудные мышцы и позволяет каждой руке двигаться независимо.";
-"exercise.info.chest_dumbbell_press.technique.1" = "Начинайте с гантелями над грудью.";
-"exercise.info.chest_dumbbell_press.technique.2" = "Опускайте обе гантели ровно и под контролем.";
-"exercise.info.chest_dumbbell_press.technique.3" = "Выжимайте вверх, удерживая кисти над локтями.";
+"exercise.info.chest_dumbbell_press.description" = "Жим гантелей - вариант жима для груди, где каждая рука работает независимо и движется естественнее.";
+"exercise.info.chest_dumbbell_press.technique.1" = "Сядьте с гантелями под контролем, затем лягте, удерживая их близко к груди.";
+"exercise.info.chest_dumbbell_press.technique.2" = "Зафиксируйте лопатки и поставьте стопы на пол.";
+"exercise.info.chest_dumbbell_press.technique.3" = "Начинайте с кистями над локтями, не заламывая запястья назад.";
+"exercise.info.chest_dumbbell_press.technique.4" = "Опускайте обе гантели ровно до комфортного растяжения груди.";
+"exercise.info.chest_dumbbell_press.technique.5" = "Жмите вверх, не сталкивая гантели в верхней точке.";
+"exercise.info.chest_dumbbell_press.technique.6" = "Двигайте обе стороны равномерно и не разворачивайте корпус.";
 
-"exercise.info.chest_incline_dumbbell_press.description" = "Жим гантелей на наклонной скамье развивает верх груди с независимой работой рук.";
-"exercise.info.chest_incline_dumbbell_press.technique.1" = "Используйте умеренный наклон скамьи.";
-"exercise.info.chest_incline_dumbbell_press.technique.2" = "Опускайте гантели по сторонам верхней части груди.";
-"exercise.info.chest_incline_dumbbell_press.technique.3" = "Жмите вверх, не уводя гантели слишком далеко вперед.";
+"exercise.info.chest_incline_dumbbell_press.description" = "Жим гантелей на наклонной скамье развивает верх груди с независимой работой рук и чуть большей амплитудой.";
+"exercise.info.chest_incline_dumbbell_press.technique.1" = "Используйте умеренный наклон, чтобы движение оставалось грудным.";
+"exercise.info.chest_incline_dumbbell_press.technique.2" = "Сохраняйте стабильные лопатки и контролируйте поясницу.";
+"exercise.info.chest_incline_dumbbell_press.technique.3" = "Начинайте с гантелями над верхней частью груди.";
+"exercise.info.chest_incline_dumbbell_press.technique.4" = "Опускайте гантели по сторонам верхней части груди под контролем.";
+"exercise.info.chest_incline_dumbbell_press.technique.5" = "Не уводите локти слишком далеко за линию плеч.";
+"exercise.info.chest_incline_dumbbell_press.technique.6" = "Жмите вверх плавно, не уводя гантели слишком далеко вперед.";
 
-"exercise.info.chest_dumbbell_fly.description" = "Разводка гантелей - изолирующее упражнение для грудных мышц через широкую амплитуду.";
-"exercise.info.chest_dumbbell_fly.technique.1" = "Сохраняйте небольшой сгиб в локтях.";
-"exercise.info.chest_dumbbell_fly.technique.2" = "Медленно разводите руки до ощущения растяжения груди.";
-"exercise.info.chest_dumbbell_fly.technique.3" = "Сводите гантели без превращения движения в жим.";
+"exercise.info.chest_dips.description" = "Отжимания на брусьях - жимовое упражнение с весом тела, которое при небольшом наклоне вперед сильнее нагружает грудь.";
+"exercise.info.chest_dips.technique.1" = "Начинайте с прямыми руками и плечами, опущенными от ушей.";
+"exercise.info.chest_dips.technique.2" = "Слегка наклонитесь вперед, чтобы сместить нагрузку на грудь.";
+"exercise.info.chest_dips.technique.3" = "Опускайтесь под контролем, пока плечи не будут примерно параллельны полу.";
+"exercise.info.chest_dips.technique.4" = "Ведите локти естественно и не разводите их слишком широко.";
+"exercise.info.chest_dips.technique.5" = "Поднимайтесь плавно без отбива из нижней точки.";
+"exercise.info.chest_dips.technique.6" = "Остановите подход, если появляется резкий дискомфорт в плечах.";
 
-"exercise.info.chest_cable_crossover.description" = "Кроссовер - изолирующее упражнение для груди с постоянным натяжением тросов.";
-"exercise.info.chest_cable_crossover.technique.1" = "Стойте устойчиво с небольшим наклоном вперед.";
-"exercise.info.chest_cable_crossover.technique.2" = "Сводите руки перед корпусом плавной дугой.";
-"exercise.info.chest_cable_crossover.technique.3" = "Контролируйте возврат и не поднимайте плечи.";
+"exercise.info.chest_push_up.description" = "Отжимания от пола - упражнение с весом тела для груди, плеч, трицепсов и контроля корпуса.";
+"exercise.info.chest_push_up.technique.1" = "Поставьте ладони немного шире плеч.";
+"exercise.info.chest_push_up.technique.2" = "Держите тело одной прямой линией от головы до пяток.";
+"exercise.info.chest_push_up.technique.3" = "Напрягите корпус, чтобы таз не проваливался и не поднимался.";
+"exercise.info.chest_push_up.technique.4" = "Опускайте грудь к полу под контролем.";
+"exercise.info.chest_push_up.technique.5" = "Держите локти под комфортным углом, а не строго в стороны.";
+"exercise.info.chest_push_up.technique.6" = "Выжимайтесь вверх до полного подъема, сохраняя линию тела.";
 
-"exercise.info.chest_machine_press.description" = "Жим в тренажере - направляемое жимовое упражнение для тренировки грудных мышц с устойчивой опорой.";
-"exercise.info.chest_machine_press.technique.1" = "Настройте сиденье так, чтобы рукояти были на уровне груди.";
-"exercise.info.chest_machine_press.technique.2" = "Жмите вперед, не поднимая плечи.";
-"exercise.info.chest_machine_press.technique.3" = "Возвращайте рукояти под контролем перед следующим повторением.";
+"exercise.info.chest_machine_press.description" = "Жим в тренажере - направляемое жимовое упражнение для груди с устойчивой опорой корпуса.";
+"exercise.info.chest_machine_press.technique.1" = "Настройте сиденье так, чтобы рукояти были примерно на уровне середины груди.";
+"exercise.info.chest_machine_press.technique.2" = "Держите спину и таз прижатыми к опоре.";
+"exercise.info.chest_machine_press.technique.3" = "Возьмитесь за рукояти нейтральными кистями и расслабьте плечи.";
+"exercise.info.chest_machine_press.technique.4" = "Жмите вперед плавно, не поднимая плечи.";
+"exercise.info.chest_machine_press.technique.5" = "Не блокируйте локти резко в конце жима.";
+"exercise.info.chest_machine_press.technique.6" = "Возвращайте рукояти под контролем перед следующим повторением.";
 
-"exercise.info.chest_dips.description" = "Отжимания на брусьях - упражнение с весом тела, которое при небольшом наклоне вперед сильнее нагружает грудь.";
-"exercise.info.chest_dips.technique.1" = "Слегка наклонитесь вперед и держите плечи под контролем.";
-"exercise.info.chest_dips.technique.2" = "Опускайтесь, пока плечи не будут примерно параллельны полу.";
-"exercise.info.chest_dips.technique.3" = "Поднимайтесь плавно, не блокируя локти слишком резко.";
+"exercise.info.chest_smith_machine_press.description" = "Жим в Смите - жим со штангой по фиксированной траектории, который помогает тренировать грудь с направляемым движением.";
+"exercise.info.chest_smith_machine_press.technique.1" = "Поставьте скамью так, чтобы штанга опускалась к средней или нижней части груди.";
+"exercise.info.chest_smith_machine_press.technique.2" = "Зафиксируйте лопатки и поставьте стопы устойчиво.";
+"exercise.info.chest_smith_machine_press.technique.3" = "Выберите хват, при котором кисти остаются над локтями.";
+"exercise.info.chest_smith_machine_press.technique.4" = "Аккуратно снимите штангу с фиксаторов и опускайте ее под контролем.";
+"exercise.info.chest_smith_machine_press.technique.5" = "Не заставляйте плечи работать в неудобной фиксированной траектории.";
+"exercise.info.chest_smith_machine_press.technique.6" = "Жмите плавно и ставьте штангу на фиксаторы только при полном контроле.";
 
-"exercise.info.chest_push_up.description" = "Отжимания от пола - упражнение с весом тела для груди, плеч и трицепсов.";
-"exercise.info.chest_push_up.technique.1" = "Держите тело одной прямой линией.";
-"exercise.info.chest_push_up.technique.2" = "Опускайте грудь к полу под контролем.";
-"exercise.info.chest_push_up.technique.3" = "Выжимайтесь вверх, не проваливая таз.";
+"exercise.info.chest_dumbbell_fly.description" = "Разводка гантелей - изолирующее упражнение для груди через широкую дугу и контролируемое растяжение.";
+"exercise.info.chest_dumbbell_fly.technique.1" = "Лягте с гантелями над грудью, ладони смотрят друг на друга.";
+"exercise.info.chest_dumbbell_fly.technique.2" = "Сохраняйте небольшой сгиб в локтях на протяжении всего движения.";
+"exercise.info.chest_dumbbell_fly.technique.3" = "Медленно раскрывайте руки до контролируемого растяжения груди.";
+"exercise.info.chest_dumbbell_fly.technique.4" = "Не опускайте гантели настолько низко, чтобы плечи испытывали напряжение.";
+"exercise.info.chest_dumbbell_fly.technique.5" = "Сводите гантели обратно по той же дуге.";
+"exercise.info.chest_dumbbell_fly.technique.6" = "Сохраняйте движение разводкой, а не скрытым жимом гантелей.";
+
+"exercise.info.chest_pec_deck.description" = "Пек-дек - изолирующее упражнение в тренажере, где грудные мышцы работают по направляемой траектории сведения рук.";
+"exercise.info.chest_pec_deck.technique.1" = "Настройте сиденье так, чтобы рукояти или подушки были на уровне груди.";
+"exercise.info.chest_pec_deck.technique.2" = "Держите спину на опоре, а грудь слегка поднятой.";
+"exercise.info.chest_pec_deck.technique.3" = "Держитесь за рукояти или подушки, не поднимая плечи.";
+"exercise.info.chest_pec_deck.technique.4" = "Сводите руки перед грудью плавно.";
+"exercise.info.chest_pec_deck.technique.5" = "Коротко задержитесь, не округляя плечи вперед.";
+"exercise.info.chest_pec_deck.technique.6" = "Возвращайтесь медленно до комфортного растяжения.";
+
+"exercise.info.chest_cable_crossover.description" = "Кроссовер - изолирующее упражнение для груди, которое сохраняет натяжение тросов почти по всей амплитуде.";
+"exercise.info.chest_cable_crossover.technique.1" = "Установите блоки на высоту, которая соответствует нужному углу работы груди.";
+"exercise.info.chest_cable_crossover.technique.2" = "Встаньте устойчиво с небольшим наклоном вперед, при необходимости выставьте одну ногу вперед.";
+"exercise.info.chest_cable_crossover.technique.3" = "Держите локти слегка согнутыми, а плечи опущенными.";
+"exercise.info.chest_cable_crossover.technique.4" = "Сводите руки перед корпусом плавной дугой.";
+"exercise.info.chest_cable_crossover.technique.5" = "Коротко сожмите грудь, не округляя плечи.";
+"exercise.info.chest_cable_crossover.technique.6" = "Контролируйте возврат и не позволяйте тросам тянуть корпус назад.";
+
+"exercise.info.chest_dumbbell_pullover.description" = "Пуловер с гантелью - контролируемое упражнение для верха тела, которое может нагружать грудь и широчайшие через движение плеча.";
+"exercise.info.chest_dumbbell_pullover.technique.1" = "Лягте на скамью и надежно удерживайте одну гантель двумя руками.";
+"exercise.info.chest_dumbbell_pullover.technique.2" = "Начинайте с гантелью над грудью и слегка согнутыми локтями.";
+"exercise.info.chest_dumbbell_pullover.technique.3" = "Опускайте гантель за голову только до комфортной амплитуды плеч.";
+"exercise.info.chest_dumbbell_pullover.technique.4" = "Контролируйте ребра и поясницу, не прогибайтесь чрезмерно.";
+"exercise.info.chest_dumbbell_pullover.technique.5" = "Возвращайте гантель над грудью плавной дугой.";
+"exercise.info.chest_dumbbell_pullover.technique.6" = "Используйте умеренный вес и не превращайте движение в разгибание на трицепс.";
+
+"exercise.info.chest_cable_pullover.description" = "Пуловер в кроссовере - вариант с тросом, который сохраняет постоянное натяжение в движении пуловера.";
+"exercise.info.chest_cable_pullover.technique.1" = "Используйте верхний блок и отойдите так, чтобы трос оставался натянутым.";
+"exercise.info.chest_cable_pullover.technique.2" = "Держите рукоять или канат почти прямыми руками с мягким сгибом в локтях.";
+"exercise.info.chest_cable_pullover.technique.3" = "Напрягите корпус и держите плечи опущенными от ушей.";
+"exercise.info.chest_cable_pullover.technique.4" = "Тяните рукоять вниз и вперед контролируемой дугой.";
+"exercise.info.chest_cable_pullover.technique.5" = "Коротко задержитесь у нижней части груди или верхней части бедер, в зависимости от настройки.";
+"exercise.info.chest_cable_pullover.technique.6" = "Возвращайтесь медленно и не позволяйте тросу вытягивать плечи вперед.";
 
 "exercise.info.back_pull_up.description" = "Подтягивания - упражнение с весом тела для развития силы спины и рук.";
 "exercise.info.back_pull_up.technique.1" = "Начинайте из контролируемого виса.";
@@ -174,4 +233,3 @@
 "exercise.info.biceps_cable_curl.technique.1" = "Стойте устойчиво и держите локти рядом с корпусом.";
 "exercise.info.biceps_cable_curl.technique.2" = "Плавно тяните рукоять к груди.";
 "exercise.info.biceps_cable_curl.technique.3" = "Контролируйте возврат и не давайте блоку резко опускаться.";
-

@@ -20,6 +20,10 @@
 "exercise.chest.machine_press" = "Machine Chest Press";
 "exercise.chest.dips" = "Dips";
 "exercise.chest.push_up" = "Push-Up";
+"exercise.chest.smith_machine_press" = "Smith Machine Press";
+"exercise.chest.pec_deck" = "Pec Deck";
+"exercise.chest.dumbbell_pullover" = "Dumbbell Pullover";
+"exercise.chest.cable_pullover" = "Cable Pullover";
 "exercise.back.pull_up" = "Pull-Up";
 "exercise.back.barbell_row" = "Bent-Over Barbell Row";
 "exercise.back.one_arm_dumbbell_row" = "One-Arm Dumbbell Row";

@@ -1,49 +1,108 @@
 /* Exercise Info */
 
-"exercise.info.chest_bench_press.description" = "Bench Press is a compound barbell exercise used to develop upper-body pushing strength.";
-"exercise.info.chest_bench_press.technique.1" = "Keep your shoulder blades retracted on the bench.";
-"exercise.info.chest_bench_press.technique.2" = "Lower the bar under control to the lower chest.";
-"exercise.info.chest_bench_press.technique.3" = "Press upward without bouncing or losing wrist position.";
+"exercise.info.chest_bench_press.description" = "Bench Press is a foundational barbell press for building chest, shoulder, and triceps strength.";
+"exercise.info.chest_bench_press.technique.1" = "Plant your feet firmly on the floor before unracking the bar.";
+"exercise.info.chest_bench_press.technique.2" = "Retract and depress your shoulder blades to create a stable upper back.";
+"exercise.info.chest_bench_press.technique.3" = "Use a grip slightly wider than shoulder width with wrists stacked over elbows.";
+"exercise.info.chest_bench_press.technique.4" = "Lower the bar under control toward the lower or mid chest.";
+"exercise.info.chest_bench_press.technique.5" = "Do not bounce the bar off your chest or let your hips lift from the bench.";
+"exercise.info.chest_bench_press.technique.6" = "Press the bar upward on a steady path while keeping your upper back tight.";
 
 "exercise.info.chest_incline_bench_press.description" = "Incline Bench Press is a barbell press that emphasizes the upper chest and front shoulders.";
-"exercise.info.chest_incline_bench_press.technique.1" = "Set the bench to a moderate incline.";
-"exercise.info.chest_incline_bench_press.technique.2" = "Lower the bar under control toward the upper chest.";
-"exercise.info.chest_incline_bench_press.technique.3" = "Keep your elbows stable and press smoothly upward.";
+"exercise.info.chest_incline_bench_press.technique.1" = "Set the bench to a moderate incline, usually about 30 to 45 degrees.";
+"exercise.info.chest_incline_bench_press.technique.2" = "Keep your feet stable and your shoulder blades set against the bench.";
+"exercise.info.chest_incline_bench_press.technique.3" = "Grip the bar slightly wider than shoulder width.";
+"exercise.info.chest_incline_bench_press.technique.4" = "Lower the bar under control toward the upper chest.";
+"exercise.info.chest_incline_bench_press.technique.5" = "Keep elbows controlled instead of flaring them straight out.";
+"exercise.info.chest_incline_bench_press.technique.6" = "Press smoothly upward without losing the bench position.";
 
-"exercise.info.chest_dumbbell_press.description" = "Dumbbell Press is a chest press variation that allows each arm to move independently.";
-"exercise.info.chest_dumbbell_press.technique.1" = "Start with the dumbbells above your chest.";
-"exercise.info.chest_dumbbell_press.technique.2" = "Lower both dumbbells evenly with control.";
-"exercise.info.chest_dumbbell_press.technique.3" = "Press upward while keeping your wrists stacked over your elbows.";
+"exercise.info.chest_dumbbell_press.description" = "Dumbbell Press is a chest press variation that lets each arm work independently through a natural range of motion.";
+"exercise.info.chest_dumbbell_press.technique.1" = "Sit back with the dumbbells controlled, then lie down with them close to your chest.";
+"exercise.info.chest_dumbbell_press.technique.2" = "Set your shoulder blades and keep your feet planted.";
+"exercise.info.chest_dumbbell_press.technique.3" = "Start with wrists stacked over elbows, not bent backward.";
+"exercise.info.chest_dumbbell_press.technique.4" = "Lower both dumbbells evenly until you feel a comfortable chest stretch.";
+"exercise.info.chest_dumbbell_press.technique.5" = "Press upward without letting the dumbbells collide at the top.";
+"exercise.info.chest_dumbbell_press.technique.6" = "Keep both sides moving evenly and avoid twisting your torso.";
 
-"exercise.info.chest_incline_dumbbell_press.description" = "Incline Dumbbell Press develops upper-chest strength with independent arm movement.";
-"exercise.info.chest_incline_dumbbell_press.technique.1" = "Use a moderate bench incline.";
-"exercise.info.chest_incline_dumbbell_press.technique.2" = "Lower the dumbbells beside the upper chest.";
-"exercise.info.chest_incline_dumbbell_press.technique.3" = "Press up without letting the dumbbells drift too far forward.";
+"exercise.info.chest_incline_dumbbell_press.description" = "Incline Dumbbell Press develops upper-chest strength with independent arm movement and a slightly longer range of motion.";
+"exercise.info.chest_incline_dumbbell_press.technique.1" = "Use a moderate incline so the movement still feels chest-focused.";
+"exercise.info.chest_incline_dumbbell_press.technique.2" = "Keep your shoulder blades stable and your lower back controlled.";
+"exercise.info.chest_incline_dumbbell_press.technique.3" = "Start with the dumbbells above the upper chest.";
+"exercise.info.chest_incline_dumbbell_press.technique.4" = "Lower the dumbbells beside the upper chest with control.";
+"exercise.info.chest_incline_dumbbell_press.technique.5" = "Do not let the elbows drift too far behind the shoulders.";
+"exercise.info.chest_incline_dumbbell_press.technique.6" = "Press up smoothly without letting the dumbbells move too far forward.";
 
-"exercise.info.chest_dumbbell_fly.description" = "Dumbbell Fly is an isolation exercise that trains the chest through a wide arc.";
-"exercise.info.chest_dumbbell_fly.technique.1" = "Keep a slight bend in your elbows.";
-"exercise.info.chest_dumbbell_fly.technique.2" = "Open your arms slowly until you feel a chest stretch.";
-"exercise.info.chest_dumbbell_fly.technique.3" = "Bring the dumbbells together without turning it into a press.";
+"exercise.info.chest_dips.description" = "Dips are a bodyweight pressing exercise that can emphasize the chest when performed with a slight forward lean.";
+"exercise.info.chest_dips.technique.1" = "Start with straight arms and shoulders controlled away from your ears.";
+"exercise.info.chest_dips.technique.2" = "Lean slightly forward to shift more work toward the chest.";
+"exercise.info.chest_dips.technique.3" = "Lower under control until your upper arms are near parallel to the floor.";
+"exercise.info.chest_dips.technique.4" = "Keep elbows tracking naturally instead of flaring them wide.";
+"exercise.info.chest_dips.technique.5" = "Press up smoothly without bouncing from the bottom.";
+"exercise.info.chest_dips.technique.6" = "Stop the set if you feel sharp shoulder discomfort.";
 
-"exercise.info.chest_cable_crossover.description" = "Cable Crossover is a chest isolation exercise using constant cable tension.";
-"exercise.info.chest_cable_crossover.technique.1" = "Stand stable with a slight forward lean.";
-"exercise.info.chest_cable_crossover.technique.2" = "Move your hands in a smooth arc in front of the body.";
-"exercise.info.chest_cable_crossover.technique.3" = "Control the return and avoid shrugging your shoulders.";
+"exercise.info.chest_push_up.description" = "Push-Up is a bodyweight pressing exercise for the chest, shoulders, triceps, and trunk control.";
+"exercise.info.chest_push_up.technique.1" = "Place your hands slightly wider than shoulder width.";
+"exercise.info.chest_push_up.technique.2" = "Keep your body in a straight line from head to heels.";
+"exercise.info.chest_push_up.technique.3" = "Brace your trunk so the hips do not sag or rise.";
+"exercise.info.chest_push_up.technique.4" = "Lower your chest toward the floor with control.";
+"exercise.info.chest_push_up.technique.5" = "Keep elbows at a comfortable angle, not straight out to the sides.";
+"exercise.info.chest_push_up.technique.6" = "Press up fully while maintaining the same body line.";
 
-"exercise.info.chest_machine_press.description" = "Machine Chest Press is a guided pressing exercise for training chest strength with stable support.";
-"exercise.info.chest_machine_press.technique.1" = "Adjust the seat so the handles align with your chest.";
-"exercise.info.chest_machine_press.technique.2" = "Press forward without lifting your shoulders.";
-"exercise.info.chest_machine_press.technique.3" = "Return the handles under control before the next rep.";
+"exercise.info.chest_machine_press.description" = "Machine Chest Press is a guided pressing exercise that trains chest strength with stable body support.";
+"exercise.info.chest_machine_press.technique.1" = "Adjust the seat so the handles line up around mid chest.";
+"exercise.info.chest_machine_press.technique.2" = "Keep your back and hips supported against the pad.";
+"exercise.info.chest_machine_press.technique.3" = "Grip the handles with wrists neutral and shoulders relaxed.";
+"exercise.info.chest_machine_press.technique.4" = "Press forward smoothly without shrugging.";
+"exercise.info.chest_machine_press.technique.5" = "Avoid locking the elbows aggressively at the end of the press.";
+"exercise.info.chest_machine_press.technique.6" = "Return the handles under control before starting the next rep.";
 
-"exercise.info.chest_dips.description" = "Dips are a bodyweight pressing exercise that can emphasize the chest with a slight forward lean.";
-"exercise.info.chest_dips.technique.1" = "Lean slightly forward and keep your shoulders controlled.";
-"exercise.info.chest_dips.technique.2" = "Lower until your upper arms are near parallel to the floor.";
-"exercise.info.chest_dips.technique.3" = "Press up smoothly without locking your elbows aggressively.";
+"exercise.info.chest_smith_machine_press.description" = "Smith Machine Press is a guided barbell press that can help train the chest with a fixed bar path.";
+"exercise.info.chest_smith_machine_press.technique.1" = "Position the bench so the bar lowers to the mid or lower chest.";
+"exercise.info.chest_smith_machine_press.technique.2" = "Set your shoulder blades and keep your feet stable.";
+"exercise.info.chest_smith_machine_press.technique.3" = "Use a grip that keeps wrists stacked over elbows.";
+"exercise.info.chest_smith_machine_press.technique.4" = "Unlock the bar carefully and lower it with control.";
+"exercise.info.chest_smith_machine_press.technique.5" = "Do not force your shoulders into an uncomfortable fixed path.";
+"exercise.info.chest_smith_machine_press.technique.6" = "Press up smoothly and re-rack only when the bar is fully controlled.";
 
-"exercise.info.chest_push_up.description" = "Push-Up is a bodyweight pressing exercise for chest, shoulders, and triceps.";
-"exercise.info.chest_push_up.technique.1" = "Keep your body in a straight line.";
-"exercise.info.chest_push_up.technique.2" = "Lower your chest toward the floor with control.";
-"exercise.info.chest_push_up.technique.3" = "Press up without letting your hips sag.";
+"exercise.info.chest_dumbbell_fly.description" = "Dumbbell Fly is an isolation exercise that trains the chest through a wide arc and loaded stretch.";
+"exercise.info.chest_dumbbell_fly.technique.1" = "Lie back with dumbbells above the chest and palms facing each other.";
+"exercise.info.chest_dumbbell_fly.technique.2" = "Keep a slight bend in the elbows throughout the movement.";
+"exercise.info.chest_dumbbell_fly.technique.3" = "Open your arms slowly until you feel a controlled chest stretch.";
+"exercise.info.chest_dumbbell_fly.technique.4" = "Do not lower so far that the shoulders feel strained.";
+"exercise.info.chest_dumbbell_fly.technique.5" = "Bring the dumbbells back together through the same arc.";
+"exercise.info.chest_dumbbell_fly.technique.6" = "Keep the movement as a fly, not a hidden dumbbell press.";
+
+"exercise.info.chest_pec_deck.description" = "Pec Deck is a machine chest isolation exercise that uses a guided arm path to train chest adduction.";
+"exercise.info.chest_pec_deck.technique.1" = "Adjust the seat so the handles or pads align with your chest.";
+"exercise.info.chest_pec_deck.technique.2" = "Keep your back supported and chest lifted.";
+"exercise.info.chest_pec_deck.technique.3" = "Hold the handles or pads with shoulders relaxed.";
+"exercise.info.chest_pec_deck.technique.4" = "Bring the arms together smoothly in front of the chest.";
+"exercise.info.chest_pec_deck.technique.5" = "Pause briefly without letting the shoulders roll forward.";
+"exercise.info.chest_pec_deck.technique.6" = "Return slowly until you feel a comfortable stretch.";
+
+"exercise.info.chest_cable_crossover.description" = "Cable Crossover is a chest isolation exercise that keeps tension on the chest through the full range.";
+"exercise.info.chest_cable_crossover.technique.1" = "Set the pulleys to the height that matches the chest angle you want to train.";
+"exercise.info.chest_cable_crossover.technique.2" = "Stand stable with a slight forward lean and one foot forward if needed.";
+"exercise.info.chest_cable_crossover.technique.3" = "Keep elbows softly bent and shoulders down.";
+"exercise.info.chest_cable_crossover.technique.4" = "Move your hands in a smooth arc in front of the body.";
+"exercise.info.chest_cable_crossover.technique.5" = "Squeeze the chest briefly without rounding the shoulders.";
+"exercise.info.chest_cable_crossover.technique.6" = "Control the return and avoid letting the weight stack pull you back.";
+
+"exercise.info.chest_dumbbell_pullover.description" = "Dumbbell Pullover is a controlled upper-body exercise that can train the chest and lats through shoulder extension.";
+"exercise.info.chest_dumbbell_pullover.technique.1" = "Lie on a bench and hold one dumbbell securely with both hands.";
+"exercise.info.chest_dumbbell_pullover.technique.2" = "Start with the dumbbell above the chest and elbows slightly bent.";
+"exercise.info.chest_dumbbell_pullover.technique.3" = "Lower the dumbbell behind your head only as far as your shoulders allow.";
+"exercise.info.chest_dumbbell_pullover.technique.4" = "Keep ribs and lower back controlled instead of over-arching.";
+"exercise.info.chest_dumbbell_pullover.technique.5" = "Pull the dumbbell back over the chest with a smooth arc.";
+"exercise.info.chest_dumbbell_pullover.technique.6" = "Use a moderate load and avoid turning the movement into a triceps extension.";
+
+"exercise.info.chest_cable_pullover.description" = "Cable Pullover is a cable variation that keeps steady tension while training the chest and lats through a pullover motion.";
+"exercise.info.chest_cable_pullover.technique.1" = "Use a high cable and stand far enough back to keep tension.";
+"exercise.info.chest_cable_pullover.technique.2" = "Hold the bar or rope with arms mostly straight and elbows softly bent.";
+"exercise.info.chest_cable_pullover.technique.3" = "Brace your torso and keep shoulders away from your ears.";
+"exercise.info.chest_cable_pullover.technique.4" = "Pull the handle down and forward in a controlled arc.";
+"exercise.info.chest_cable_pullover.technique.5" = "Pause briefly near the lower chest or upper thighs, depending on setup.";
+"exercise.info.chest_cable_pullover.technique.6" = "Return slowly without letting the cable pull your shoulders out of position.";
 
 "exercise.info.back_pull_up.description" = "Pull-Up is a bodyweight pulling exercise used to build upper-back and arm strength.";
 "exercise.info.back_pull_up.technique.1" = "Start from a controlled hang.";
