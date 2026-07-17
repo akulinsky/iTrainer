@@ -200,40 +200,109 @@
 "exercise.info.back_barbell_shrug.technique.5" = "Lower the bar under control instead of dropping into the bottom.";
 "exercise.info.back_barbell_shrug.technique.6" = "Do not roll the shoulders; move up and down.";
 
-"exercise.info.legs_barbell_squat.description" = "Barbell Squat is a compound lower-body exercise for leg strength and full-body stability.";
-"exercise.info.legs_barbell_squat.technique.1" = "Brace your torso before each rep.";
-"exercise.info.legs_barbell_squat.technique.2" = "Sit down between your hips while keeping knees controlled.";
-"exercise.info.legs_barbell_squat.technique.3" = "Drive up through the mid-foot without collapsing forward.";
+"exercise.info.legs_barbell_squat.description" = "Barbell Squat is a foundational lower-body strength exercise for the quads, glutes, and full-body stability.";
+"exercise.info.legs_barbell_squat.technique.1" = "Set the bar securely on your upper back and grip it evenly.";
+"exercise.info.legs_barbell_squat.technique.2" = "Place your feet about shoulder width and brace your torso.";
+"exercise.info.legs_barbell_squat.technique.3" = "Lower by bending hips and knees together.";
+"exercise.info.legs_barbell_squat.technique.4" = "Keep knees tracking in line with your feet.";
+"exercise.info.legs_barbell_squat.technique.5" = "Maintain a neutral spine and avoid collapsing forward.";
+"exercise.info.legs_barbell_squat.technique.6" = "Drive up through the mid-foot until hips and knees extend.";
 
-"exercise.info.legs_leg_press.description" = "Leg Press is a machine exercise for training the legs with supported back position.";
-"exercise.info.legs_leg_press.technique.1" = "Place your feet firmly on the platform.";
-"exercise.info.legs_leg_press.technique.2" = "Lower the platform until your knees bend comfortably.";
-"exercise.info.legs_leg_press.technique.3" = "Press up without locking your knees hard.";
+"exercise.info.legs_leg_press.description" = "Leg Press is a machine exercise for training the legs with the back supported and load guided by the sled.";
+"exercise.info.legs_leg_press.technique.1" = "Place your feet firmly on the platform at a comfortable width.";
+"exercise.info.legs_leg_press.technique.2" = "Keep your hips and lower back against the pad.";
+"exercise.info.legs_leg_press.technique.3" = "Unlock the sled only when you are stable.";
+"exercise.info.legs_leg_press.technique.4" = "Lower the platform until your knees bend comfortably.";
+"exercise.info.legs_leg_press.technique.5" = "Press through the whole foot without letting knees collapse inward.";
+"exercise.info.legs_leg_press.technique.6" = "Avoid locking the knees aggressively at the top.";
 
-"exercise.info.legs_lunge.description" = "Lunge is a single-leg movement that trains leg strength, balance, and control.";
-"exercise.info.legs_lunge.technique.1" = "Step with control and keep your torso upright.";
-"exercise.info.legs_lunge.technique.2" = "Lower until both knees bend naturally.";
-"exercise.info.legs_lunge.technique.3" = "Push through the front foot to return to standing.";
+"exercise.info.legs_squat.description" = "Squat is a bodyweight lower-body movement for leg strength, mobility, and movement control.";
+"exercise.info.legs_squat.technique.1" = "Stand with feet around shoulder width.";
+"exercise.info.legs_squat.technique.2" = "Brace your torso and keep your chest lifted.";
+"exercise.info.legs_squat.technique.3" = "Lower by sitting between your hips.";
+"exercise.info.legs_squat.technique.4" = "Keep knees tracking in line with your toes.";
+"exercise.info.legs_squat.technique.5" = "Go as low as you can while keeping control.";
+"exercise.info.legs_squat.technique.6" = "Stand up smoothly through the mid-foot.";
 
-"exercise.info.legs_leg_extension.description" = "Leg Extension is a machine isolation exercise for the front of the thighs.";
-"exercise.info.legs_leg_extension.technique.1" = "Align the machine pivot with your knee joint.";
-"exercise.info.legs_leg_extension.technique.2" = "Extend your legs smoothly without swinging.";
-"exercise.info.legs_leg_extension.technique.3" = "Lower the weight slowly and keep tension on the thighs.";
+"exercise.info.legs_dumbbell_lunge.description" = "Dumbbell Lunge is a single-leg exercise for the quads, glutes, balance, and leg control.";
+"exercise.info.legs_dumbbell_lunge.technique.1" = "Hold dumbbells at your sides and stand tall.";
+"exercise.info.legs_dumbbell_lunge.technique.2" = "Step forward or backward with control.";
+"exercise.info.legs_dumbbell_lunge.technique.3" = "Lower until both knees bend naturally.";
+"exercise.info.legs_dumbbell_lunge.technique.4" = "Keep the front knee tracking over the foot.";
+"exercise.info.legs_dumbbell_lunge.technique.5" = "Push through the front foot to return.";
+"exercise.info.legs_dumbbell_lunge.technique.6" = "Keep the torso steady and avoid wobbling side to side.";
 
-"exercise.info.legs_leg_curl.description" = "Leg Curl is a machine isolation exercise for the hamstrings.";
-"exercise.info.legs_leg_curl.technique.1" = "Set the pad just above your heels.";
-"exercise.info.legs_leg_curl.technique.2" = "Curl the weight with control.";
-"exercise.info.legs_leg_curl.technique.3" = "Lower slowly without letting your hips lift.";
+"exercise.info.legs_barbell_lunge.description" = "Barbell Lunge is a loaded single-leg exercise that challenges leg strength, balance, and trunk stability.";
+"exercise.info.legs_barbell_lunge.technique.1" = "Set the bar securely on your upper back.";
+"exercise.info.legs_barbell_lunge.technique.2" = "Brace your torso before stepping.";
+"exercise.info.legs_barbell_lunge.technique.3" = "Step with control and keep the bar level.";
+"exercise.info.legs_barbell_lunge.technique.4" = "Lower until both knees bend comfortably.";
+"exercise.info.legs_barbell_lunge.technique.5" = "Push through the front foot without letting the knee collapse inward.";
+"exercise.info.legs_barbell_lunge.technique.6" = "Use a lighter load if balance breaks down.";
 
-"exercise.info.legs_calf_raise.description" = "Calf Raise trains the calves through ankle extension.";
-"exercise.info.legs_calf_raise.technique.1" = "Stand tall with stable foot position.";
-"exercise.info.legs_calf_raise.technique.2" = "Rise onto your toes through the full range.";
-"exercise.info.legs_calf_raise.technique.3" = "Lower under control and avoid bouncing.";
+"exercise.info.legs_hack_squat.description" = "Hack Squat is a machine squat variation that emphasizes the quads with a guided path and supported torso.";
+"exercise.info.legs_hack_squat.technique.1" = "Set your shoulders and back firmly against the pads.";
+"exercise.info.legs_hack_squat.technique.2" = "Place your feet on the platform at a comfortable stance.";
+"exercise.info.legs_hack_squat.technique.3" = "Unlock the machine only after bracing.";
+"exercise.info.legs_hack_squat.technique.4" = "Lower under control while knees follow the toes.";
+"exercise.info.legs_hack_squat.technique.5" = "Press through the platform without lifting your heels.";
+"exercise.info.legs_hack_squat.technique.6" = "Avoid hard knee lockout at the top.";
 
-"exercise.info.legs_squat.description" = "Squat is a bodyweight lower-body movement for leg strength, mobility, and control.";
-"exercise.info.legs_squat.technique.1" = "Keep your chest lifted and torso braced.";
-"exercise.info.legs_squat.technique.2" = "Lower with knees tracking in line with your feet.";
-"exercise.info.legs_squat.technique.3" = "Stand up smoothly through the mid-foot.";
+"exercise.info.legs_front_squat.description" = "Front Squat is a squat variation with the bar held in front, emphasizing the quads and upright torso control.";
+"exercise.info.legs_front_squat.technique.1" = "Rest the bar on the front of your shoulders with elbows lifted.";
+"exercise.info.legs_front_squat.technique.2" = "Brace your torso and keep your chest tall.";
+"exercise.info.legs_front_squat.technique.3" = "Lower by bending hips and knees together.";
+"exercise.info.legs_front_squat.technique.4" = "Keep elbows high so the bar does not roll forward.";
+"exercise.info.legs_front_squat.technique.5" = "Drive up through the mid-foot.";
+"exercise.info.legs_front_squat.technique.6" = "Use a load you can control without collapsing forward.";
+
+"exercise.info.legs_leg_extension.description" = "Leg Extension is a machine isolation exercise for the quadriceps.";
+"exercise.info.legs_leg_extension.technique.1" = "Adjust the seat so the machine pivot aligns with your knee.";
+"exercise.info.legs_leg_extension.technique.2" = "Set the pad just above the ankles.";
+"exercise.info.legs_leg_extension.technique.3" = "Hold the handles and keep hips down.";
+"exercise.info.legs_leg_extension.technique.4" = "Extend the legs smoothly without swinging.";
+"exercise.info.legs_leg_extension.technique.5" = "Pause briefly near the top if comfortable.";
+"exercise.info.legs_leg_extension.technique.6" = "Lower the weight slowly and keep tension on the quads.";
+
+"exercise.info.legs_lying_leg_curl.description" = "Lying Leg Curl is a machine isolation exercise for the hamstrings performed face down.";
+"exercise.info.legs_lying_leg_curl.technique.1" = "Lie face down and align your knees with the machine pivot.";
+"exercise.info.legs_lying_leg_curl.technique.2" = "Set the pad just above your heels.";
+"exercise.info.legs_lying_leg_curl.technique.3" = "Keep hips pressed into the pad.";
+"exercise.info.legs_lying_leg_curl.technique.4" = "Curl the weight toward your glutes with control.";
+"exercise.info.legs_lying_leg_curl.technique.5" = "Avoid lifting the hips to finish the rep.";
+"exercise.info.legs_lying_leg_curl.technique.6" = "Lower slowly until the legs are extended.";
+
+"exercise.info.legs_seated_leg_curl.description" = "Seated Leg Curl is a hamstring isolation exercise performed with the hips flexed and torso supported.";
+"exercise.info.legs_seated_leg_curl.technique.1" = "Adjust the seat so your knees align with the machine pivot.";
+"exercise.info.legs_seated_leg_curl.technique.2" = "Secure the thigh pad comfortably above the knees.";
+"exercise.info.legs_seated_leg_curl.technique.3" = "Keep your hips and back against the seat.";
+"exercise.info.legs_seated_leg_curl.technique.4" = "Curl the pad down with control.";
+"exercise.info.legs_seated_leg_curl.technique.5" = "Pause briefly in the contracted position.";
+"exercise.info.legs_seated_leg_curl.technique.6" = "Return slowly without letting the weight stack slam.";
+
+"exercise.info.legs_standing_calf_raise.description" = "Standing Calf Raise trains the calves through ankle extension with the legs mostly straight.";
+"exercise.info.legs_standing_calf_raise.technique.1" = "Stand tall with the balls of your feet on the platform or floor.";
+"exercise.info.legs_standing_calf_raise.technique.2" = "Keep knees mostly straight but not locked hard.";
+"exercise.info.legs_standing_calf_raise.technique.3" = "Lower heels under control to a comfortable stretch.";
+"exercise.info.legs_standing_calf_raise.technique.4" = "Rise onto your toes through the full range.";
+"exercise.info.legs_standing_calf_raise.technique.5" = "Pause briefly at the top.";
+"exercise.info.legs_standing_calf_raise.technique.6" = "Avoid bouncing through the reps.";
+
+"exercise.info.legs_seated_calf_raise.description" = "Seated Calf Raise trains the calves with the knees bent, often emphasizing the soleus.";
+"exercise.info.legs_seated_calf_raise.technique.1" = "Sit with the balls of your feet on the platform.";
+"exercise.info.legs_seated_calf_raise.technique.2" = "Position the pad comfortably over the thighs.";
+"exercise.info.legs_seated_calf_raise.technique.3" = "Lower the heels slowly to a comfortable stretch.";
+"exercise.info.legs_seated_calf_raise.technique.4" = "Press through the balls of the feet to raise the heels.";
+"exercise.info.legs_seated_calf_raise.technique.5" = "Pause briefly at the top.";
+"exercise.info.legs_seated_calf_raise.technique.6" = "Keep the motion controlled and avoid bouncing.";
+
+"exercise.info.legs_hip_adduction_machine.description" = "Hip Adduction Machine trains the inner thighs by bringing the legs toward the midline.";
+"exercise.info.legs_hip_adduction_machine.technique.1" = "Sit tall and adjust the pads to a comfortable starting width.";
+"exercise.info.legs_hip_adduction_machine.technique.2" = "Keep your back supported against the seat.";
+"exercise.info.legs_hip_adduction_machine.technique.3" = "Hold the handles and brace lightly.";
+"exercise.info.legs_hip_adduction_machine.technique.4" = "Bring the legs together smoothly.";
+"exercise.info.legs_hip_adduction_machine.technique.5" = "Pause briefly without forcing the range.";
+"exercise.info.legs_hip_adduction_machine.technique.6" = "Return slowly and keep control of the pads.";
 
 "exercise.info.shoulders_overhead_press.description" = "Overhead Press is a compound shoulder exercise that develops vertical pressing strength.";
 "exercise.info.shoulders_overhead_press.technique.1" = "Brace your torso before pressing.";

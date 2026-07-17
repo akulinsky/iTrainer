@@ -300,69 +300,6 @@
     ]
   },
   {
-    "exerciseId": "legs_barbell_squat",
-    "descriptionKey": "exercise.info.legs_barbell_squat.description",
-    "techniqueKeys": [
-      "exercise.info.legs_barbell_squat.technique.1",
-      "exercise.info.legs_barbell_squat.technique.2",
-      "exercise.info.legs_barbell_squat.technique.3"
-    ]
-  },
-  {
-    "exerciseId": "legs_leg_press",
-    "descriptionKey": "exercise.info.legs_leg_press.description",
-    "techniqueKeys": [
-      "exercise.info.legs_leg_press.technique.1",
-      "exercise.info.legs_leg_press.technique.2",
-      "exercise.info.legs_leg_press.technique.3"
-    ]
-  },
-  {
-    "exerciseId": "legs_lunge",
-    "descriptionKey": "exercise.info.legs_lunge.description",
-    "techniqueKeys": [
-      "exercise.info.legs_lunge.technique.1",
-      "exercise.info.legs_lunge.technique.2",
-      "exercise.info.legs_lunge.technique.3"
-    ]
-  },
-  {
-    "exerciseId": "legs_leg_extension",
-    "descriptionKey": "exercise.info.legs_leg_extension.description",
-    "techniqueKeys": [
-      "exercise.info.legs_leg_extension.technique.1",
-      "exercise.info.legs_leg_extension.technique.2",
-      "exercise.info.legs_leg_extension.technique.3"
-    ]
-  },
-  {
-    "exerciseId": "legs_leg_curl",
-    "descriptionKey": "exercise.info.legs_leg_curl.description",
-    "techniqueKeys": [
-      "exercise.info.legs_leg_curl.technique.1",
-      "exercise.info.legs_leg_curl.technique.2",
-      "exercise.info.legs_leg_curl.technique.3"
-    ]
-  },
-  {
-    "exerciseId": "legs_calf_raise",
-    "descriptionKey": "exercise.info.legs_calf_raise.description",
-    "techniqueKeys": [
-      "exercise.info.legs_calf_raise.technique.1",
-      "exercise.info.legs_calf_raise.technique.2",
-      "exercise.info.legs_calf_raise.technique.3"
-    ]
-  },
-  {
-    "exerciseId": "legs_squat",
-    "descriptionKey": "exercise.info.legs_squat.description",
-    "techniqueKeys": [
-      "exercise.info.legs_squat.technique.1",
-      "exercise.info.legs_squat.technique.2",
-      "exercise.info.legs_squat.technique.3"
-    ]
-  },
-  {
     "exerciseId": "shoulders_overhead_press",
     "descriptionKey": "exercise.info.shoulders_overhead_press.description",
     "techniqueKeys": [
@@ -468,6 +405,162 @@
       "exercise.info.biceps_cable_curl.technique.1",
       "exercise.info.biceps_cable_curl.technique.2",
       "exercise.info.biceps_cable_curl.technique.3"
+    ]
+  },
+  {
+    "exerciseId": "legs_barbell_squat",
+    "descriptionKey": "exercise.info.legs_barbell_squat.description",
+    "techniqueKeys": [
+      "exercise.info.legs_barbell_squat.technique.1",
+      "exercise.info.legs_barbell_squat.technique.2",
+      "exercise.info.legs_barbell_squat.technique.3",
+      "exercise.info.legs_barbell_squat.technique.4",
+      "exercise.info.legs_barbell_squat.technique.5",
+      "exercise.info.legs_barbell_squat.technique.6"
+    ]
+  },
+  {
+    "exerciseId": "legs_leg_press",
+    "descriptionKey": "exercise.info.legs_leg_press.description",
+    "techniqueKeys": [
+      "exercise.info.legs_leg_press.technique.1",
+      "exercise.info.legs_leg_press.technique.2",
+      "exercise.info.legs_leg_press.technique.3",
+      "exercise.info.legs_leg_press.technique.4",
+      "exercise.info.legs_leg_press.technique.5",
+      "exercise.info.legs_leg_press.technique.6"
+    ]
+  },
+  {
+    "exerciseId": "legs_squat",
+    "descriptionKey": "exercise.info.legs_squat.description",
+    "techniqueKeys": [
+      "exercise.info.legs_squat.technique.1",
+      "exercise.info.legs_squat.technique.2",
+      "exercise.info.legs_squat.technique.3",
+      "exercise.info.legs_squat.technique.4",
+      "exercise.info.legs_squat.technique.5",
+      "exercise.info.legs_squat.technique.6"
+    ]
+  },
+  {
+    "exerciseId": "legs_dumbbell_lunge",
+    "descriptionKey": "exercise.info.legs_dumbbell_lunge.description",
+    "techniqueKeys": [
+      "exercise.info.legs_dumbbell_lunge.technique.1",
+      "exercise.info.legs_dumbbell_lunge.technique.2",
+      "exercise.info.legs_dumbbell_lunge.technique.3",
+      "exercise.info.legs_dumbbell_lunge.technique.4",
+      "exercise.info.legs_dumbbell_lunge.technique.5",
+      "exercise.info.legs_dumbbell_lunge.technique.6"
+    ]
+  },
+  {
+    "exerciseId": "legs_barbell_lunge",
+    "descriptionKey": "exercise.info.legs_barbell_lunge.description",
+    "techniqueKeys": [
+      "exercise.info.legs_barbell_lunge.technique.1",
+      "exercise.info.legs_barbell_lunge.technique.2",
+      "exercise.info.legs_barbell_lunge.technique.3",
+      "exercise.info.legs_barbell_lunge.technique.4",
+      "exercise.info.legs_barbell_lunge.technique.5",
+      "exercise.info.legs_barbell_lunge.technique.6"
+    ]
+  },
+  {
+    "exerciseId": "legs_hack_squat",
+    "descriptionKey": "exercise.info.legs_hack_squat.description",
+    "techniqueKeys": [
+      "exercise.info.legs_hack_squat.technique.1",
+      "exercise.info.legs_hack_squat.technique.2",
+      "exercise.info.legs_hack_squat.technique.3",
+      "exercise.info.legs_hack_squat.technique.4",
+      "exercise.info.legs_hack_squat.technique.5",
+      "exercise.info.legs_hack_squat.technique.6"
+    ]
+  },
+  {
+    "exerciseId": "legs_front_squat",
+    "descriptionKey": "exercise.info.legs_front_squat.description",
+    "techniqueKeys": [
+      "exercise.info.legs_front_squat.technique.1",
+      "exercise.info.legs_front_squat.technique.2",
+      "exercise.info.legs_front_squat.technique.3",
+      "exercise.info.legs_front_squat.technique.4",
+      "exercise.info.legs_front_squat.technique.5",
+      "exercise.info.legs_front_squat.technique.6"
+    ]
+  },
+  {
+    "exerciseId": "legs_leg_extension",
+    "descriptionKey": "exercise.info.legs_leg_extension.description",
+    "techniqueKeys": [
+      "exercise.info.legs_leg_extension.technique.1",
+      "exercise.info.legs_leg_extension.technique.2",
+      "exercise.info.legs_leg_extension.technique.3",
+      "exercise.info.legs_leg_extension.technique.4",
+      "exercise.info.legs_leg_extension.technique.5",
+      "exercise.info.legs_leg_extension.technique.6"
+    ]
+  },
+  {
+    "exerciseId": "legs_lying_leg_curl",
+    "descriptionKey": "exercise.info.legs_lying_leg_curl.description",
+    "techniqueKeys": [
+      "exercise.info.legs_lying_leg_curl.technique.1",
+      "exercise.info.legs_lying_leg_curl.technique.2",
+      "exercise.info.legs_lying_leg_curl.technique.3",
+      "exercise.info.legs_lying_leg_curl.technique.4",
+      "exercise.info.legs_lying_leg_curl.technique.5",
+      "exercise.info.legs_lying_leg_curl.technique.6"
+    ]
+  },
+  {
+    "exerciseId": "legs_seated_leg_curl",
+    "descriptionKey": "exercise.info.legs_seated_leg_curl.description",
+    "techniqueKeys": [
+      "exercise.info.legs_seated_leg_curl.technique.1",
+      "exercise.info.legs_seated_leg_curl.technique.2",
+      "exercise.info.legs_seated_leg_curl.technique.3",
+      "exercise.info.legs_seated_leg_curl.technique.4",
+      "exercise.info.legs_seated_leg_curl.technique.5",
+      "exercise.info.legs_seated_leg_curl.technique.6"
+    ]
+  },
+  {
+    "exerciseId": "legs_standing_calf_raise",
+    "descriptionKey": "exercise.info.legs_standing_calf_raise.description",
+    "techniqueKeys": [
+      "exercise.info.legs_standing_calf_raise.technique.1",
+      "exercise.info.legs_standing_calf_raise.technique.2",
+      "exercise.info.legs_standing_calf_raise.technique.3",
+      "exercise.info.legs_standing_calf_raise.technique.4",
+      "exercise.info.legs_standing_calf_raise.technique.5",
+      "exercise.info.legs_standing_calf_raise.technique.6"
+    ]
+  },
+  {
+    "exerciseId": "legs_seated_calf_raise",
+    "descriptionKey": "exercise.info.legs_seated_calf_raise.description",
+    "techniqueKeys": [
+      "exercise.info.legs_seated_calf_raise.technique.1",
+      "exercise.info.legs_seated_calf_raise.technique.2",
+      "exercise.info.legs_seated_calf_raise.technique.3",
+      "exercise.info.legs_seated_calf_raise.technique.4",
+      "exercise.info.legs_seated_calf_raise.technique.5",
+      "exercise.info.legs_seated_calf_raise.technique.6"
+    ]
+  },
+  {
+    "exerciseId": "legs_hip_adduction_machine",
+    "descriptionKey": "exercise.info.legs_hip_adduction_machine.description",
+    "techniqueKeys": [
+      "exercise.info.legs_hip_adduction_machine.technique.1",
+      "exercise.info.legs_hip_adduction_machine.technique.2",
+      "exercise.info.legs_hip_adduction_machine.technique.3",
+      "exercise.info.legs_hip_adduction_machine.technique.4",
+      "exercise.info.legs_hip_adduction_machine.technique.5",
+      "exercise.info.legs_hip_adduction_machine.technique.6"
     ]
   }
 ]

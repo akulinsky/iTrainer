@@ -200,40 +200,109 @@
 "exercise.info.back_barbell_shrug.technique.5" = "Опускайте штангу под контролем, не бросая вес вниз.";
 "exercise.info.back_barbell_shrug.technique.6" = "Не вращайте плечами, движение идет вверх и вниз.";
 
-"exercise.info.legs_barbell_squat.description" = "Приседания со штангой - базовое упражнение для силы ног и стабильности всего тела.";
-"exercise.info.legs_barbell_squat.technique.1" = "Напрягайте корпус перед каждым повторением.";
-"exercise.info.legs_barbell_squat.technique.2" = "Садитесь между бедер, контролируя положение коленей.";
-"exercise.info.legs_barbell_squat.technique.3" = "Поднимайтесь через середину стопы, не заваливаясь вперед.";
+"exercise.info.legs_barbell_squat.description" = "Приседания со штангой - базовое упражнение для силы ног, квадрицепсов, ягодиц и стабильности всего тела.";
+"exercise.info.legs_barbell_squat.technique.1" = "Надежно расположите штангу на верхней части спины и возьмитесь симметрично.";
+"exercise.info.legs_barbell_squat.technique.2" = "Поставьте стопы примерно на ширине плеч и напрягите корпус.";
+"exercise.info.legs_barbell_squat.technique.3" = "Опускайтесь, одновременно сгибая таз и колени.";
+"exercise.info.legs_barbell_squat.technique.4" = "Ведите колени по линии стоп.";
+"exercise.info.legs_barbell_squat.technique.5" = "Сохраняйте нейтральную спину и не заваливайтесь вперед.";
+"exercise.info.legs_barbell_squat.technique.6" = "Поднимайтесь через середину стопы до выпрямления таза и коленей.";
 
-"exercise.info.legs_leg_press.description" = "Жим ногами - упражнение в тренажере для тренировки ног с поддержкой спины.";
-"exercise.info.legs_leg_press.technique.1" = "Поставьте стопы устойчиво на платформу.";
-"exercise.info.legs_leg_press.technique.2" = "Опускайте платформу до комфортного сгиба коленей.";
-"exercise.info.legs_leg_press.technique.3" = "Жмите вверх без резкой блокировки коленей.";
+"exercise.info.legs_leg_press.description" = "Жим ногами - упражнение в тренажере для тренировки ног с поддержкой спины и направляемой траекторией платформы.";
+"exercise.info.legs_leg_press.technique.1" = "Поставьте стопы устойчиво на платформу на комфортной ширине.";
+"exercise.info.legs_leg_press.technique.2" = "Держите таз и поясницу прижатыми к спинке.";
+"exercise.info.legs_leg_press.technique.3" = "Снимайте платформу с фиксаторов только когда положение стабильное.";
+"exercise.info.legs_leg_press.technique.4" = "Опускайте платформу до комфортного сгиба коленей.";
+"exercise.info.legs_leg_press.technique.5" = "Жмите всей стопой и не позволяйте коленям заваливаться внутрь.";
+"exercise.info.legs_leg_press.technique.6" = "Не блокируйте колени резко в верхней точке.";
 
-"exercise.info.legs_lunge.description" = "Выпады - одностороннее упражнение для силы ног, баланса и контроля.";
-"exercise.info.legs_lunge.technique.1" = "Шагайте под контролем и держите корпус ровно.";
-"exercise.info.legs_lunge.technique.2" = "Опускайтесь, пока оба колена не согнутся естественно.";
-"exercise.info.legs_lunge.technique.3" = "Возвращайтесь вверх через переднюю стопу.";
+"exercise.info.legs_squat.description" = "Приседание - упражнение с весом тела для силы ног, подвижности и контроля движения.";
+"exercise.info.legs_squat.technique.1" = "Поставьте стопы примерно на ширине плеч.";
+"exercise.info.legs_squat.technique.2" = "Напрягите корпус и держите грудь поднятой.";
+"exercise.info.legs_squat.technique.3" = "Опускайтесь, садясь между бедер.";
+"exercise.info.legs_squat.technique.4" = "Ведите колени по линии носков.";
+"exercise.info.legs_squat.technique.5" = "Опускайтесь настолько низко, насколько можете контролировать движение.";
+"exercise.info.legs_squat.technique.6" = "Вставайте плавно через середину стопы.";
 
-"exercise.info.legs_leg_extension.description" = "Разгибание ног в тренажере - изолирующее упражнение для передней поверхности бедра.";
-"exercise.info.legs_leg_extension.technique.1" = "Совместите ось тренажера с коленным суставом.";
-"exercise.info.legs_leg_extension.technique.2" = "Разгибайте ноги плавно, без рывков.";
-"exercise.info.legs_leg_extension.technique.3" = "Опускайте вес медленно и сохраняйте напряжение в бедрах.";
+"exercise.info.legs_dumbbell_lunge.description" = "Выпады с гантелями - одностороннее упражнение для квадрицепсов, ягодиц, баланса и контроля ног.";
+"exercise.info.legs_dumbbell_lunge.technique.1" = "Держите гантели по сторонам корпуса и стойте ровно.";
+"exercise.info.legs_dumbbell_lunge.technique.2" = "Шагайте вперед или назад под контролем.";
+"exercise.info.legs_dumbbell_lunge.technique.3" = "Опускайтесь, пока оба колена не согнутся естественно.";
+"exercise.info.legs_dumbbell_lunge.technique.4" = "Держите переднее колено по линии стопы.";
+"exercise.info.legs_dumbbell_lunge.technique.5" = "Возвращайтесь через переднюю стопу.";
+"exercise.info.legs_dumbbell_lunge.technique.6" = "Держите корпус стабильным и не заваливайтесь в стороны.";
 
-"exercise.info.legs_leg_curl.description" = "Сгибание ног в тренажере - изолирующее упражнение для задней поверхности бедра.";
-"exercise.info.legs_leg_curl.technique.1" = "Расположите валик чуть выше пяток.";
-"exercise.info.legs_leg_curl.technique.2" = "Сгибайте ноги под контролем.";
-"exercise.info.legs_leg_curl.technique.3" = "Опускайте вес медленно и не поднимайте таз.";
+"exercise.info.legs_barbell_lunge.description" = "Выпады со штангой - нагруженное одностороннее упражнение для силы ног, баланса и стабильности корпуса.";
+"exercise.info.legs_barbell_lunge.technique.1" = "Надежно расположите штангу на верхней части спины.";
+"exercise.info.legs_barbell_lunge.technique.2" = "Напрягите корпус перед шагом.";
+"exercise.info.legs_barbell_lunge.technique.3" = "Шагайте под контролем и держите штангу ровно.";
+"exercise.info.legs_barbell_lunge.technique.4" = "Опускайтесь до комфортного сгиба обоих коленей.";
+"exercise.info.legs_barbell_lunge.technique.5" = "Отталкивайтесь передней стопой и не позволяйте колену заваливаться внутрь.";
+"exercise.info.legs_barbell_lunge.technique.6" = "Уменьшите вес, если теряется равновесие.";
 
-"exercise.info.legs_calf_raise.description" = "Подъемы на носки тренируют икроножные мышцы через разгибание голеностопа.";
-"exercise.info.legs_calf_raise.technique.1" = "Стойте ровно и устойчиво.";
-"exercise.info.legs_calf_raise.technique.2" = "Поднимайтесь на носки через полную амплитуду.";
-"exercise.info.legs_calf_raise.technique.3" = "Опускайтесь под контролем и не пружиньте.";
+"exercise.info.legs_hack_squat.description" = "Гакк-приседания - вариант приседаний в тренажере с акцентом на квадрицепсы и поддержкой корпуса.";
+"exercise.info.legs_hack_squat.technique.1" = "Плотно прижмите плечи и спину к опорам.";
+"exercise.info.legs_hack_squat.technique.2" = "Поставьте стопы на платформу в комфортной позиции.";
+"exercise.info.legs_hack_squat.technique.3" = "Снимайте тренажер с фиксаторов только после напряжения корпуса.";
+"exercise.info.legs_hack_squat.technique.4" = "Опускайтесь под контролем, ведя колени по линии носков.";
+"exercise.info.legs_hack_squat.technique.5" = "Жмите платформу всей стопой и не отрывайте пятки.";
+"exercise.info.legs_hack_squat.technique.6" = "Не блокируйте колени резко в верхней точке.";
 
-"exercise.info.legs_squat.description" = "Приседание - упражнение с весом тела для силы ног, подвижности и контроля.";
-"exercise.info.legs_squat.technique.1" = "Держите грудь поднятой и корпус напряженным.";
-"exercise.info.legs_squat.technique.2" = "Опускайтесь, направляя колени по линии стоп.";
-"exercise.info.legs_squat.technique.3" = "Вставайте плавно через середину стопы.";
+"exercise.info.legs_front_squat.description" = "Фронтальные приседания - вариант приседаний со штангой спереди, который сильнее нагружает квадрицепсы и требует ровного корпуса.";
+"exercise.info.legs_front_squat.technique.1" = "Расположите штангу на передней части плеч и поднимите локти.";
+"exercise.info.legs_front_squat.technique.2" = "Напрягите корпус и держите грудь высокой.";
+"exercise.info.legs_front_squat.technique.3" = "Опускайтесь, одновременно сгибая таз и колени.";
+"exercise.info.legs_front_squat.technique.4" = "Держите локти высоко, чтобы штанга не скатывалась вперед.";
+"exercise.info.legs_front_squat.technique.5" = "Поднимайтесь через середину стопы.";
+"exercise.info.legs_front_squat.technique.6" = "Используйте вес, который можете контролировать без завала вперед.";
+
+"exercise.info.legs_leg_extension.description" = "Разгибание ног в тренажере - изолирующее упражнение для квадрицепсов.";
+"exercise.info.legs_leg_extension.technique.1" = "Настройте сиденье так, чтобы ось тренажера совпадала с коленом.";
+"exercise.info.legs_leg_extension.technique.2" = "Расположите валик чуть выше голеностопа.";
+"exercise.info.legs_leg_extension.technique.3" = "Держитесь за рукояти и не отрывайте таз.";
+"exercise.info.legs_leg_extension.technique.4" = "Разгибайте ноги плавно, без маха.";
+"exercise.info.legs_leg_extension.technique.5" = "Коротко задержитесь в верхней точке, если комфортно.";
+"exercise.info.legs_leg_extension.technique.6" = "Опускайте вес медленно и сохраняйте напряжение в квадрицепсах.";
+
+"exercise.info.legs_lying_leg_curl.description" = "Сгибание ног лежа - изолирующее упражнение для задней поверхности бедра, выполняемое лежа лицом вниз.";
+"exercise.info.legs_lying_leg_curl.technique.1" = "Лягте лицом вниз и совместите колени с осью тренажера.";
+"exercise.info.legs_lying_leg_curl.technique.2" = "Расположите валик чуть выше пяток.";
+"exercise.info.legs_lying_leg_curl.technique.3" = "Держите таз прижатым к опоре.";
+"exercise.info.legs_lying_leg_curl.technique.4" = "Сгибайте ноги к ягодицам под контролем.";
+"exercise.info.legs_lying_leg_curl.technique.5" = "Не поднимайте таз, чтобы завершить повторение.";
+"exercise.info.legs_lying_leg_curl.technique.6" = "Опускайте вес медленно до выпрямления ног.";
+
+"exercise.info.legs_seated_leg_curl.description" = "Сгибание ног сидя - изолирующее упражнение для задней поверхности бедра с согнутым тазом и опорой корпуса.";
+"exercise.info.legs_seated_leg_curl.technique.1" = "Настройте сиденье так, чтобы колени совпадали с осью тренажера.";
+"exercise.info.legs_seated_leg_curl.technique.2" = "Зафиксируйте валик над бедрами комфортно выше коленей.";
+"exercise.info.legs_seated_leg_curl.technique.3" = "Держите таз и спину прижатыми к сиденью.";
+"exercise.info.legs_seated_leg_curl.technique.4" = "Сгибайте ноги вниз под контролем.";
+"exercise.info.legs_seated_leg_curl.technique.5" = "Коротко задержитесь в сокращенной позиции.";
+"exercise.info.legs_seated_leg_curl.technique.6" = "Возвращайтесь медленно и не бросайте вес.";
+
+"exercise.info.legs_standing_calf_raise.description" = "Подъемы на носки стоя тренируют икроножные мышцы через разгибание голеностопа с почти прямыми ногами.";
+"exercise.info.legs_standing_calf_raise.technique.1" = "Встаньте ровно, расположив переднюю часть стоп на платформе или полу.";
+"exercise.info.legs_standing_calf_raise.technique.2" = "Держите колени почти прямыми, но не блокируйте их жестко.";
+"exercise.info.legs_standing_calf_raise.technique.3" = "Опускайте пятки под контролем до комфортного растяжения.";
+"exercise.info.legs_standing_calf_raise.technique.4" = "Поднимайтесь на носки через полную амплитуду.";
+"exercise.info.legs_standing_calf_raise.technique.5" = "Коротко задержитесь в верхней точке.";
+"exercise.info.legs_standing_calf_raise.technique.6" = "Не пружиньте и не отбивайте повторения.";
+
+"exercise.info.legs_seated_calf_raise.description" = "Подъемы на носки сидя тренируют икры при согнутых коленях, часто с большим акцентом на камбаловидную мышцу.";
+"exercise.info.legs_seated_calf_raise.technique.1" = "Сядьте, расположив переднюю часть стоп на платформе.";
+"exercise.info.legs_seated_calf_raise.technique.2" = "Поставьте валик удобно поверх бедер.";
+"exercise.info.legs_seated_calf_raise.technique.3" = "Медленно опустите пятки до комфортного растяжения.";
+"exercise.info.legs_seated_calf_raise.technique.4" = "Нажмите через переднюю часть стоп, поднимая пятки.";
+"exercise.info.legs_seated_calf_raise.technique.5" = "Коротко задержитесь вверху.";
+"exercise.info.legs_seated_calf_raise.technique.6" = "Двигайтесь под контролем и не пружиньте.";
+
+"exercise.info.legs_hip_adduction_machine.description" = "Приведение ног в тренажере тренирует внутреннюю поверхность бедра через сведение ног к средней линии.";
+"exercise.info.legs_hip_adduction_machine.technique.1" = "Сядьте ровно и настройте подушки на комфортную стартовую ширину.";
+"exercise.info.legs_hip_adduction_machine.technique.2" = "Держите спину прижатой к сиденью.";
+"exercise.info.legs_hip_adduction_machine.technique.3" = "Возьмитесь за рукояти и слегка напрягите корпус.";
+"exercise.info.legs_hip_adduction_machine.technique.4" = "Сводите ноги плавно.";
+"exercise.info.legs_hip_adduction_machine.technique.5" = "Коротко задержитесь, не форсируя амплитуду.";
+"exercise.info.legs_hip_adduction_machine.technique.6" = "Возвращайтесь медленно и контролируйте подушки.";
 
 "exercise.info.shoulders_overhead_press.description" = "Жим штанги стоя - базовое упражнение для развития силы вертикального жима.";
 "exercise.info.shoulders_overhead_press.technique.1" = "Напрягите корпус перед жимом.";
