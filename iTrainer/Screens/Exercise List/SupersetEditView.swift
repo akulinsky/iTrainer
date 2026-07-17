@@ -61,7 +61,6 @@ struct SupersetEditView: View {
         .scrollContentBackground(.hidden)
         .background(AppColor.backgroundPrimary)
         .animation(.spring(response: 0.36, dampingFraction: 0.88), value: viewModel.children.map(\.id))
-        .dismissKeyboardOnTap()
         .scrollDismissesKeyboard(.immediately)
         .navigationTitle("superset.edit.title")
         .toolbarTitleDisplayMode(.inline)

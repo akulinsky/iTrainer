@@ -106,7 +106,6 @@ private struct ExerciseContentView: View {
         .animation(.easeInOut(duration: 0.24), value: workoutManager.isWorkoutInProgress)
         .animation(.easeInOut, value: showAnimation)
         .safeAreaPadding(.bottom, 20)
-        .dismissKeyboardOnTap()
         .scrollDismissesKeyboard(.immediately)
         .keyboardAccessory(isPresented: focusedParamId != nil,
                            onClear: clearFocusedInput,

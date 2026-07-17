@@ -40,7 +40,6 @@ struct ExerciseEditView: View {
             .background(AppColor.backgroundPrimary)
             .animation(.easeInOut, value: showAnimation)
             .safeAreaPadding(.bottom, 20)
-            .dismissKeyboardOnTap()
             .scrollDismissesKeyboard(.immediately)
             .navigationTitle("exercise.edit.title")
             .toolbarTitleDisplayMode(.inline)
