@@ -86,20 +86,6 @@ enum ParameterValue<value>: Identifiable, Hashable {
         }
     }
     
-    static func seedParameter(for id: String) -> ParameterValue<Any>? {
-        switch id {
-        case "weight":
-            .weight()
-        case "reps":
-            .repeats()
-        case "distance":
-            .distance()
-        case "time":
-            .time()
-        default:
-            nil
-        }
-    }
 }
 
 struct ExerciseTypeModel: Identifiable {
@@ -172,7 +158,7 @@ private struct ExerciseSeedModel: Decodable {
     let devTitle: String
     let category: String
     let iconName: String?
-    let parameters: [String]
+    let trackingType: String
     let sortOrder: Int
 }
 
@@ -193,9 +179,8 @@ enum ExerciseSeedLoader {
                 return nil
             }
             
-            let parameters = seed.parameters.compactMap { ParameterValue<Any>.seedParameter(for: $0) }
-            guard parameters.count == seed.parameters.count else {
-                assertionFailure("Unsupported exercise parameters for id: \(seed.id)")
+            guard let trackingType = ExerciseTrackingType(rawValue: seed.trackingType) else {
+                assertionFailure("Unsupported exercise tracking type for id: \(seed.id): \(seed.trackingType)")
                 return nil
             }
             
@@ -205,7 +190,7 @@ enum ExerciseSeedLoader {
                                      devTitle: seed.devTitle,
                                      iconName: ImageAssetName.resolved(seed.iconName),
                                      type: category,
-                                     parameters: parameters,
+                                     parameters: trackingType.parameters,
                                      sortOrder: seed.sortOrder)
         }
         .sorted {

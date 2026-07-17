@@ -5,12 +5,9 @@
     "defaultTitle": "Bench Press",
     "devTitle": "Жим лежа",
     "category": "chest",
-    "parameters": [
-      "weight",
-      "reps"
-    ],
     "sortOrder": 0,
-    "iconName": "icExercise_chest_bench_press"
+    "iconName": "icExercise_chest_bench_press",
+    "trackingType": "weightedReps"
   },
   {
     "id": "chest_incline_bench_press",
@@ -18,12 +15,9 @@
     "defaultTitle": "Incline Bench Press",
     "devTitle": "Жим лежа на наклонной скамье",
     "category": "chest",
-    "parameters": [
-      "weight",
-      "reps"
-    ],
     "sortOrder": 1,
-    "iconName": "icExercise_chest_incline_bench_press"
+    "iconName": "icExercise_chest_incline_bench_press",
+    "trackingType": "weightedReps"
   },
   {
     "id": "chest_dumbbell_press",
@@ -31,12 +25,9 @@
     "defaultTitle": "Dumbbell Press",
     "devTitle": "Жим гантелей",
     "category": "chest",
-    "parameters": [
-      "weight",
-      "reps"
-    ],
     "sortOrder": 2,
-    "iconName": "icExercise_chest_dumbbell_press"
+    "iconName": "icExercise_chest_dumbbell_press",
+    "trackingType": "weightedReps"
   },
   {
     "id": "chest_incline_dumbbell_press",
@@ -44,12 +35,9 @@
     "defaultTitle": "Incline Dumbbell Press",
     "devTitle": "Жим гантелей на наклонной скамье",
     "category": "chest",
-    "parameters": [
-      "weight",
-      "reps"
-    ],
     "sortOrder": 3,
-    "iconName": "icExercise_chest_incline_dumbbell_press"
+    "iconName": "icExercise_chest_incline_dumbbell_press",
+    "trackingType": "weightedReps"
   },
   {
     "id": "chest_dumbbell_fly",
@@ -57,12 +45,9 @@
     "defaultTitle": "Dumbbell Fly",
     "devTitle": "Разводка гантелей",
     "category": "chest",
-    "parameters": [
-      "weight",
-      "reps"
-    ],
     "sortOrder": 4,
-    "iconName": "icExercise_chest_dumbbell_fly"
+    "iconName": "icExercise_chest_dumbbell_fly",
+    "trackingType": "weightedReps"
   },
   {
     "id": "chest_cable_crossover",
@@ -70,12 +55,9 @@
     "defaultTitle": "Cable Crossover",
     "devTitle": "Кроссовер",
     "category": "chest",
-    "parameters": [
-      "weight",
-      "reps"
-    ],
     "sortOrder": 5,
-    "iconName": "icExercise_chest_cable_crossover"
+    "iconName": "icExercise_chest_cable_crossover",
+    "trackingType": "weightedReps"
   },
   {
     "id": "chest_machine_press",
@@ -83,12 +65,9 @@
     "defaultTitle": "Machine Chest Press",
     "devTitle": "Жим в тренажере",
     "category": "chest",
-    "parameters": [
-      "weight",
-      "reps"
-    ],
     "sortOrder": 6,
-    "iconName": "icExercise_chest_machine_press"
+    "iconName": "icExercise_chest_machine_press",
+    "trackingType": "weightedReps"
   },
   {
     "id": "chest_dips",
@@ -96,12 +75,9 @@
     "defaultTitle": "Dips",
     "devTitle": "Отжимания на брусьях",
     "category": "chest",
-    "parameters": [
-      "weight",
-      "reps"
-    ],
     "sortOrder": 7,
-    "iconName": "icExercise_chest_dips"
+    "iconName": "icExercise_chest_dips",
+    "trackingType": "weightedReps"
   },
   {
     "id": "chest_push_up",
@@ -109,11 +85,9 @@
     "defaultTitle": "Push-Up",
     "devTitle": "Отжимания от пола",
     "category": "chest",
-    "parameters": [
-      "reps"
-    ],
     "sortOrder": 8,
-    "iconName": "icExercise_chest_push_up"
+    "iconName": "icExercise_chest_push_up",
+    "trackingType": "repsOnly"
   },
   {
     "id": "back_pull_up",
@@ -121,12 +95,9 @@
     "defaultTitle": "Pull-Up",
     "devTitle": "Подтягивания",
     "category": "back",
-    "parameters": [
-      "weight",
-      "reps"
-    ],
     "sortOrder": 0,
-    "iconName": "icExercise_back_pull_up"
+    "iconName": "icExercise_back_pull_up",
+    "trackingType": "weightedReps"
   },
   {
     "id": "back_barbell_row",
@@ -134,12 +105,9 @@
     "defaultTitle": "Bent-Over Barbell Row",
     "devTitle": "Тяга штанги в наклоне",
     "category": "back",
-    "parameters": [
-      "weight",
-      "reps"
-    ],
     "sortOrder": 1,
-    "iconName": "icExercise_back_barbell_row"
+    "iconName": "icExercise_back_barbell_row",
+    "trackingType": "weightedReps"
   },
   {
     "id": "back_one_arm_dumbbell_row",
@@ -147,12 +115,9 @@
     "defaultTitle": "One-Arm Dumbbell Row",
     "devTitle": "Тяга гантели одной рукой",
     "category": "back",
-    "parameters": [
-      "weight",
-      "reps"
-    ],
     "sortOrder": 2,
-    "iconName": "icExercise_back_one_arm_dumbbell_row"
+    "iconName": "icExercise_back_one_arm_dumbbell_row",
+    "trackingType": "weightedReps"
   },
   {
     "id": "back_lat_pulldown",
@@ -160,12 +125,9 @@
     "defaultTitle": "Lat Pulldown",
     "devTitle": "Тяга верхнего блока",
     "category": "back",
-    "parameters": [
-      "weight",
-      "reps"
-    ],
     "sortOrder": 3,
-    "iconName": "icExercise_back_lat_pulldown"
+    "iconName": "icExercise_back_lat_pulldown",
+    "trackingType": "weightedReps"
   },
   {
     "id": "back_seated_cable_row",
@@ -173,12 +135,9 @@
     "defaultTitle": "Seated Cable Row",
     "devTitle": "Тяга горизонтального блока",
     "category": "back",
-    "parameters": [
-      "weight",
-      "reps"
-    ],
     "sortOrder": 4,
-    "iconName": "icExercise_back_seated_cable_row"
+    "iconName": "icExercise_back_seated_cable_row",
+    "trackingType": "weightedReps"
   },
   {
     "id": "back_deadlift",
@@ -186,12 +145,9 @@
     "defaultTitle": "Deadlift",
     "devTitle": "Становая тяга",
     "category": "back",
-    "parameters": [
-      "weight",
-      "reps"
-    ],
     "sortOrder": 5,
-    "iconName": "icExercise_back_deadlift"
+    "iconName": "icExercise_back_deadlift",
+    "trackingType": "weightedReps"
   },
   {
     "id": "back_hyperextension",
@@ -199,12 +155,9 @@
     "defaultTitle": "Hyperextension",
     "devTitle": "Гиперэкстензия",
     "category": "back",
-    "parameters": [
-      "weight",
-      "reps"
-    ],
     "sortOrder": 6,
-    "iconName": "icExercise_back_hyperextension"
+    "iconName": "icExercise_back_hyperextension",
+    "trackingType": "weightedReps"
   },
   {
     "id": "legs_barbell_squat",
@@ -212,12 +165,9 @@
     "defaultTitle": "Barbell Squat",
     "devTitle": "Приседания со штангой",
     "category": "legs",
-    "parameters": [
-      "weight",
-      "reps"
-    ],
     "sortOrder": 0,
-    "iconName": "icMissingImage"
+    "iconName": "icMissingImage",
+    "trackingType": "weightedReps"
   },
   {
     "id": "legs_leg_press",
@@ -225,12 +175,9 @@
     "defaultTitle": "Leg Press",
     "devTitle": "Жим ногами",
     "category": "legs",
-    "parameters": [
-      "weight",
-      "reps"
-    ],
     "sortOrder": 1,
-    "iconName": "icMissingImage"
+    "iconName": "icMissingImage",
+    "trackingType": "weightedReps"
   },
   {
     "id": "legs_lunge",
@@ -238,12 +185,9 @@
     "defaultTitle": "Lunge",
     "devTitle": "Выпады",
     "category": "legs",
-    "parameters": [
-      "weight",
-      "reps"
-    ],
     "sortOrder": 2,
-    "iconName": "icMissingImage"
+    "iconName": "icMissingImage",
+    "trackingType": "weightedReps"
   },
   {
     "id": "legs_leg_extension",
@@ -251,12 +195,9 @@
     "defaultTitle": "Leg Extension",
     "devTitle": "Разгибание ног в тренажере",
     "category": "legs",
-    "parameters": [
-      "weight",
-      "reps"
-    ],
     "sortOrder": 3,
-    "iconName": "icMissingImage"
+    "iconName": "icMissingImage",
+    "trackingType": "weightedReps"
   },
   {
     "id": "legs_leg_curl",
@@ -264,12 +205,9 @@
     "defaultTitle": "Leg Curl",
     "devTitle": "Сгибание ног в тренажере",
     "category": "legs",
-    "parameters": [
-      "weight",
-      "reps"
-    ],
     "sortOrder": 4,
-    "iconName": "icMissingImage"
+    "iconName": "icMissingImage",
+    "trackingType": "weightedReps"
   },
   {
     "id": "legs_calf_raise",
@@ -277,12 +215,9 @@
     "defaultTitle": "Calf Raise",
     "devTitle": "Подъемы на носки",
     "category": "legs",
-    "parameters": [
-      "weight",
-      "reps"
-    ],
     "sortOrder": 5,
-    "iconName": "icMissingImage"
+    "iconName": "icMissingImage",
+    "trackingType": "weightedReps"
   },
   {
     "id": "legs_squat",
@@ -290,11 +225,9 @@
     "defaultTitle": "Squat",
     "devTitle": "Приседание",
     "category": "legs",
-    "parameters": [
-      "reps"
-    ],
     "sortOrder": 6,
-    "iconName": "icExercise_legs_squat"
+    "iconName": "icExercise_legs_squat",
+    "trackingType": "repsOnly"
   },
   {
     "id": "glutes_glute_bridge",
@@ -302,12 +235,9 @@
     "defaultTitle": "Glute Bridge",
     "devTitle": "Ягодичный мост",
     "category": "glutes",
-    "parameters": [
-      "weight",
-      "reps"
-    ],
     "sortOrder": 0,
-    "iconName": "icMissingImage"
+    "iconName": "icMissingImage",
+    "trackingType": "weightedReps"
   },
   {
     "id": "glutes_hip_thrust",
@@ -315,12 +245,9 @@
     "defaultTitle": "Hip Thrust",
     "devTitle": "Хип-траст",
     "category": "glutes",
-    "parameters": [
-      "weight",
-      "reps"
-    ],
     "sortOrder": 1,
-    "iconName": "icMissingImage"
+    "iconName": "icMissingImage",
+    "trackingType": "weightedReps"
   },
   {
     "id": "glutes_romanian_deadlift",
@@ -328,12 +255,9 @@
     "defaultTitle": "Romanian Deadlift",
     "devTitle": "Румынская тяга",
     "category": "glutes",
-    "parameters": [
-      "weight",
-      "reps"
-    ],
     "sortOrder": 2,
-    "iconName": "icMissingImage"
+    "iconName": "icMissingImage",
+    "trackingType": "weightedReps"
   },
   {
     "id": "glutes_cable_kickback",
@@ -341,12 +265,9 @@
     "defaultTitle": "Cable Kickback",
     "devTitle": "Отведение ноги назад",
     "category": "glutes",
-    "parameters": [
-      "weight",
-      "reps"
-    ],
     "sortOrder": 3,
-    "iconName": "icMissingImage"
+    "iconName": "icMissingImage",
+    "trackingType": "weightedReps"
   },
   {
     "id": "glutes_bulgarian_split_squat",
@@ -354,12 +275,9 @@
     "defaultTitle": "Bulgarian Split Squat",
     "devTitle": "Болгарские выпады",
     "category": "glutes",
-    "parameters": [
-      "weight",
-      "reps"
-    ],
     "sortOrder": 4,
-    "iconName": "icMissingImage"
+    "iconName": "icMissingImage",
+    "trackingType": "weightedReps"
   },
   {
     "id": "glutes_leg_kickback",
@@ -367,11 +285,9 @@
     "defaultTitle": "Leg Kickback",
     "devTitle": "Махи ногой назад",
     "category": "glutes",
-    "parameters": [
-      "reps"
-    ],
     "sortOrder": 5,
-    "iconName": "icMissingImage"
+    "iconName": "icMissingImage",
+    "trackingType": "repsOnly"
   },
   {
     "id": "shoulders_overhead_press",
@@ -379,12 +295,9 @@
     "defaultTitle": "Overhead Press",
     "devTitle": "Жим штанги стоя",
     "category": "shoulders",
-    "parameters": [
-      "weight",
-      "reps"
-    ],
     "sortOrder": 0,
-    "iconName": "icExercise_shoulders_overhead_press"
+    "iconName": "icExercise_shoulders_overhead_press",
+    "trackingType": "weightedReps"
   },
   {
     "id": "shoulders_seated_dumbbell_press",
@@ -392,12 +305,9 @@
     "defaultTitle": "Seated Dumbbell Press",
     "devTitle": "Жим гантелей сидя",
     "category": "shoulders",
-    "parameters": [
-      "weight",
-      "reps"
-    ],
     "sortOrder": 1,
-    "iconName": "icExercise_shoulders_seated_dumbbell_press"
+    "iconName": "icExercise_shoulders_seated_dumbbell_press",
+    "trackingType": "weightedReps"
   },
   {
     "id": "shoulders_lateral_raise",
@@ -405,12 +315,9 @@
     "defaultTitle": "Lateral Raise",
     "devTitle": "Махи гантелями в стороны",
     "category": "shoulders",
-    "parameters": [
-      "weight",
-      "reps"
-    ],
     "sortOrder": 2,
-    "iconName": "icExercise_shoulders_lateral_raise"
+    "iconName": "icExercise_shoulders_lateral_raise",
+    "trackingType": "weightedReps"
   },
   {
     "id": "shoulders_front_raise",
@@ -418,12 +325,9 @@
     "defaultTitle": "Front Raise",
     "devTitle": "Подъем гантелей перед собой",
     "category": "shoulders",
-    "parameters": [
-      "weight",
-      "reps"
-    ],
     "sortOrder": 3,
-    "iconName": "icExercise_shoulders_front_raise"
+    "iconName": "icExercise_shoulders_front_raise",
+    "trackingType": "weightedReps"
   },
   {
     "id": "shoulders_reverse_fly",
@@ -431,12 +335,9 @@
     "defaultTitle": "Reverse Fly",
     "devTitle": "Обратная разводка",
     "category": "shoulders",
-    "parameters": [
-      "weight",
-      "reps"
-    ],
     "sortOrder": 4,
-    "iconName": "icExercise_shoulders_reverse_fly"
+    "iconName": "icExercise_shoulders_reverse_fly",
+    "trackingType": "weightedReps"
   },
   {
     "id": "shoulders_upright_row",
@@ -444,12 +345,9 @@
     "defaultTitle": "Upright Row",
     "devTitle": "Тяга штанги к подбородку",
     "category": "shoulders",
-    "parameters": [
-      "weight",
-      "reps"
-    ],
     "sortOrder": 5,
-    "iconName": "icExercise_shoulders_upright_row"
+    "iconName": "icExercise_shoulders_upright_row",
+    "trackingType": "weightedReps"
   },
   {
     "id": "biceps_barbell_curl",
@@ -457,12 +355,9 @@
     "defaultTitle": "Barbell Curl",
     "devTitle": "Подъем штанги на бицепс",
     "category": "biceps",
-    "parameters": [
-      "weight",
-      "reps"
-    ],
     "sortOrder": 0,
-    "iconName": "icMissingImage"
+    "iconName": "icMissingImage",
+    "trackingType": "weightedReps"
   },
   {
     "id": "biceps_dumbbell_curl",
@@ -470,12 +365,9 @@
     "defaultTitle": "Dumbbell Curl",
     "devTitle": "Подъем гантелей на бицепс",
     "category": "biceps",
-    "parameters": [
-      "weight",
-      "reps"
-    ],
     "sortOrder": 1,
-    "iconName": "icMissingImage"
+    "iconName": "icMissingImage",
+    "trackingType": "weightedReps"
   },
   {
     "id": "biceps_hammer_curl",
@@ -483,12 +375,9 @@
     "defaultTitle": "Hammer Curl",
     "devTitle": "Молотковые сгибания",
     "category": "biceps",
-    "parameters": [
-      "weight",
-      "reps"
-    ],
     "sortOrder": 2,
-    "iconName": "icExercise_biceps_hammer_curl"
+    "iconName": "icExercise_biceps_hammer_curl",
+    "trackingType": "weightedReps"
   },
   {
     "id": "biceps_preacher_curl",
@@ -496,12 +385,9 @@
     "defaultTitle": "Preacher Curl",
     "devTitle": "Сгибания на скамье Скотта",
     "category": "biceps",
-    "parameters": [
-      "weight",
-      "reps"
-    ],
     "sortOrder": 3,
-    "iconName": "icMissingImage"
+    "iconName": "icMissingImage",
+    "trackingType": "weightedReps"
   },
   {
     "id": "biceps_concentration_curl",
@@ -509,12 +395,9 @@
     "defaultTitle": "Concentration Curl",
     "devTitle": "Концентрированный подъем",
     "category": "biceps",
-    "parameters": [
-      "weight",
-      "reps"
-    ],
     "sortOrder": 4,
-    "iconName": "icMissingImage"
+    "iconName": "icMissingImage",
+    "trackingType": "weightedReps"
   },
   {
     "id": "biceps_cable_curl",
@@ -522,12 +405,9 @@
     "defaultTitle": "Cable Curl",
     "devTitle": "Сгибания рук на блоке",
     "category": "biceps",
-    "parameters": [
-      "weight",
-      "reps"
-    ],
     "sortOrder": 5,
-    "iconName": "icMissingImage"
+    "iconName": "icMissingImage",
+    "trackingType": "weightedReps"
   },
   {
     "id": "triceps_french_press",
@@ -535,12 +415,9 @@
     "defaultTitle": "French Press",
     "devTitle": "Французский жим",
     "category": "triceps",
-    "parameters": [
-      "weight",
-      "reps"
-    ],
     "sortOrder": 0,
-    "iconName": "icMissingImage"
+    "iconName": "icMissingImage",
+    "trackingType": "weightedReps"
   },
   {
     "id": "triceps_cable_pushdown",
@@ -548,12 +425,9 @@
     "defaultTitle": "Cable Pushdown",
     "devTitle": "Разгибание рук на блоке",
     "category": "triceps",
-    "parameters": [
-      "weight",
-      "reps"
-    ],
     "sortOrder": 1,
-    "iconName": "icMissingImage"
+    "iconName": "icMissingImage",
+    "trackingType": "weightedReps"
   },
   {
     "id": "triceps_dips",
@@ -561,12 +435,9 @@
     "defaultTitle": "Dips",
     "devTitle": "Отжимания на брусьях",
     "category": "triceps",
-    "parameters": [
-      "weight",
-      "reps"
-    ],
     "sortOrder": 2,
-    "iconName": "icMissingImage"
+    "iconName": "icMissingImage",
+    "trackingType": "weightedReps"
   },
   {
     "id": "triceps_close_grip_bench_press",
@@ -574,12 +445,9 @@
     "defaultTitle": "Close-Grip Bench Press",
     "devTitle": "Жим узким хватом",
     "category": "triceps",
-    "parameters": [
-      "weight",
-      "reps"
-    ],
     "sortOrder": 3,
-    "iconName": "icMissingImage"
+    "iconName": "icMissingImage",
+    "trackingType": "weightedReps"
   },
   {
     "id": "triceps_overhead_dumbbell_extension",
@@ -587,12 +455,9 @@
     "defaultTitle": "Overhead Dumbbell Extension",
     "devTitle": "Разгибание гантели из-за головы",
     "category": "triceps",
-    "parameters": [
-      "weight",
-      "reps"
-    ],
     "sortOrder": 4,
-    "iconName": "icMissingImage"
+    "iconName": "icMissingImage",
+    "trackingType": "weightedReps"
   },
   {
     "id": "triceps_kickback",
@@ -600,12 +465,9 @@
     "defaultTitle": "Kickback",
     "devTitle": "Кикбэк",
     "category": "triceps",
-    "parameters": [
-      "weight",
-      "reps"
-    ],
     "sortOrder": 5,
-    "iconName": "icMissingImage"
+    "iconName": "icMissingImage",
+    "trackingType": "weightedReps"
   },
   {
     "id": "forearms_wrist_curl",
@@ -613,12 +475,9 @@
     "defaultTitle": "Wrist Curl",
     "devTitle": "Сгибание запястий",
     "category": "forearms",
-    "parameters": [
-      "weight",
-      "reps"
-    ],
     "sortOrder": 0,
-    "iconName": "icMissingImage"
+    "iconName": "icMissingImage",
+    "trackingType": "weightedReps"
   },
   {
     "id": "forearms_reverse_wrist_curl",
@@ -626,12 +485,9 @@
     "defaultTitle": "Reverse Wrist Curl",
     "devTitle": "Разгибание запястий",
     "category": "forearms",
-    "parameters": [
-      "weight",
-      "reps"
-    ],
     "sortOrder": 1,
-    "iconName": "icMissingImage"
+    "iconName": "icMissingImage",
+    "trackingType": "weightedReps"
   },
   {
     "id": "forearms_reverse_barbell_curl",
@@ -639,12 +495,9 @@
     "defaultTitle": "Reverse Barbell Curl",
     "devTitle": "Обратный подъем штанги",
     "category": "forearms",
-    "parameters": [
-      "weight",
-      "reps"
-    ],
     "sortOrder": 2,
-    "iconName": "icMissingImage"
+    "iconName": "icMissingImage",
+    "trackingType": "weightedReps"
   },
   {
     "id": "forearms_dead_hang",
@@ -652,11 +505,9 @@
     "defaultTitle": "Dead Hang",
     "devTitle": "Вис на турнике",
     "category": "forearms",
-    "parameters": [
-      "time"
-    ],
     "sortOrder": 4,
-    "iconName": "icMissingImage"
+    "iconName": "icMissingImage",
+    "trackingType": "timed"
   },
   {
     "id": "forearms_wrist_roller",
@@ -664,12 +515,9 @@
     "defaultTitle": "Wrist Roller",
     "devTitle": "Роллер для запястий",
     "category": "forearms",
-    "parameters": [
-      "weight",
-      "reps"
-    ],
     "sortOrder": 5,
-    "iconName": "icMissingImage"
+    "iconName": "icMissingImage",
+    "trackingType": "weightedReps"
   },
   {
     "id": "abs_crunch",
@@ -677,11 +525,9 @@
     "defaultTitle": "Crunch",
     "devTitle": "Скручивания",
     "category": "abs",
-    "parameters": [
-      "reps"
-    ],
     "sortOrder": 0,
-    "iconName": "icMissingImage"
+    "iconName": "icMissingImage",
+    "trackingType": "repsOnly"
   },
   {
     "id": "abs_lying_leg_raise",
@@ -689,11 +535,9 @@
     "defaultTitle": "Lying Leg Raise",
     "devTitle": "Подъем ног лежа",
     "category": "abs",
-    "parameters": [
-      "reps"
-    ],
     "sortOrder": 1,
-    "iconName": "icMissingImage"
+    "iconName": "icMissingImage",
+    "trackingType": "repsOnly"
   },
   {
     "id": "abs_plank",
@@ -701,11 +545,9 @@
     "defaultTitle": "Plank",
     "devTitle": "Планка",
     "category": "abs",
-    "parameters": [
-      "time"
-    ],
     "sortOrder": 2,
-    "iconName": "icMissingImage"
+    "iconName": "icMissingImage",
+    "trackingType": "timed"
   },
   {
     "id": "abs_bicycle_crunch",
@@ -713,11 +555,9 @@
     "defaultTitle": "Bicycle Crunch",
     "devTitle": "Велосипед",
     "category": "abs",
-    "parameters": [
-      "reps"
-    ],
     "sortOrder": 3,
-    "iconName": "icMissingImage"
+    "iconName": "icMissingImage",
+    "trackingType": "repsOnly"
   },
   {
     "id": "abs_reverse_crunch",
@@ -725,11 +565,9 @@
     "defaultTitle": "Reverse Crunch",
     "devTitle": "Обратные скручивания",
     "category": "abs",
-    "parameters": [
-      "reps"
-    ],
     "sortOrder": 4,
-    "iconName": "icMissingImage"
+    "iconName": "icMissingImage",
+    "trackingType": "repsOnly"
   },
   {
     "id": "abs_cable_crunch",
@@ -737,12 +575,9 @@
     "defaultTitle": "Cable Crunch",
     "devTitle": "Скручивания на блоке",
     "category": "abs",
-    "parameters": [
-      "weight",
-      "reps"
-    ],
     "sortOrder": 5,
-    "iconName": "icMissingImage"
+    "iconName": "icMissingImage",
+    "trackingType": "weightedReps"
   },
   {
     "id": "cardio_running",
@@ -750,12 +585,9 @@
     "defaultTitle": "Running",
     "devTitle": "Бег",
     "category": "cardio",
-    "parameters": [
-      "distance",
-      "time"
-    ],
     "sortOrder": 0,
-    "iconName": "icMissingImage"
+    "iconName": "icMissingImage",
+    "trackingType": "distanceTime"
   },
   {
     "id": "cardio_walking",
@@ -763,12 +595,9 @@
     "defaultTitle": "Walking",
     "devTitle": "Ходьба",
     "category": "cardio",
-    "parameters": [
-      "distance",
-      "time"
-    ],
     "sortOrder": 1,
-    "iconName": "icMissingImage"
+    "iconName": "icMissingImage",
+    "trackingType": "distanceTime"
   },
   {
     "id": "cardio_cycling",
@@ -776,12 +605,9 @@
     "defaultTitle": "Cycling",
     "devTitle": "Велосипед",
     "category": "cardio",
-    "parameters": [
-      "distance",
-      "time"
-    ],
     "sortOrder": 2,
-    "iconName": "icMissingImage"
+    "iconName": "icMissingImage",
+    "trackingType": "distanceTime"
   },
   {
     "id": "cardio_elliptical",
@@ -789,11 +615,9 @@
     "defaultTitle": "Elliptical",
     "devTitle": "Эллипс",
     "category": "cardio",
-    "parameters": [
-      "time"
-    ],
     "sortOrder": 3,
-    "iconName": "icMissingImage"
+    "iconName": "icMissingImage",
+    "trackingType": "timed"
   },
   {
     "id": "cardio_rowing",
@@ -801,12 +625,9 @@
     "defaultTitle": "Rowing",
     "devTitle": "Гребля",
     "category": "cardio",
-    "parameters": [
-      "distance",
-      "time"
-    ],
     "sortOrder": 4,
-    "iconName": "icMissingImage"
+    "iconName": "icMissingImage",
+    "trackingType": "distanceTime"
   },
   {
     "id": "cardio_jump_rope",
@@ -814,11 +635,9 @@
     "defaultTitle": "Jump Rope",
     "devTitle": "Скакалка",
     "category": "cardio",
-    "parameters": [
-      "time"
-    ],
     "sortOrder": 5,
-    "iconName": "icMissingImage"
+    "iconName": "icMissingImage",
+    "trackingType": "timed"
   },
   {
     "id": "functional_training_burpee",
@@ -826,11 +645,9 @@
     "defaultTitle": "Burpee",
     "devTitle": "Берпи",
     "category": "functional_training",
-    "parameters": [
-      "reps"
-    ],
     "sortOrder": 0,
-    "iconName": "icMissingImage"
+    "iconName": "icMissingImage",
+    "trackingType": "repsOnly"
   },
   {
     "id": "functional_training_thruster",
@@ -838,12 +655,9 @@
     "defaultTitle": "Thruster",
     "devTitle": "Трастеры",
     "category": "functional_training",
-    "parameters": [
-      "weight",
-      "reps"
-    ],
     "sortOrder": 1,
-    "iconName": "icMissingImage"
+    "iconName": "icMissingImage",
+    "trackingType": "weightedReps"
   },
   {
     "id": "functional_training_kettlebell_swing",
@@ -851,12 +665,9 @@
     "defaultTitle": "Kettlebell Swing",
     "devTitle": "Махи гирей",
     "category": "functional_training",
-    "parameters": [
-      "weight",
-      "reps"
-    ],
     "sortOrder": 2,
-    "iconName": "icMissingImage"
+    "iconName": "icMissingImage",
+    "trackingType": "weightedReps"
   },
   {
     "id": "functional_training_mountain_climber",
@@ -864,11 +675,9 @@
     "defaultTitle": "Mountain Climber",
     "devTitle": "Альпинист",
     "category": "functional_training",
-    "parameters": [
-      "reps"
-    ],
     "sortOrder": 3,
-    "iconName": "icMissingImage"
+    "iconName": "icMissingImage",
+    "trackingType": "repsOnly"
   },
   {
     "id": "functional_training_wall_ball",
@@ -876,12 +685,9 @@
     "defaultTitle": "Wall Ball",
     "devTitle": "Броски мяча в стену",
     "category": "functional_training",
-    "parameters": [
-      "weight",
-      "reps"
-    ],
     "sortOrder": 4,
-    "iconName": "icMissingImage"
+    "iconName": "icMissingImage",
+    "trackingType": "weightedReps"
   },
   {
     "id": "stretching_hamstring_stretch",
@@ -889,11 +695,9 @@
     "defaultTitle": "Hamstring Stretch",
     "devTitle": "Растяжка задней поверхности бедра",
     "category": "stretching",
-    "parameters": [
-      "time"
-    ],
     "sortOrder": 0,
-    "iconName": "icMissingImage"
+    "iconName": "icMissingImage",
+    "trackingType": "timed"
   },
   {
     "id": "stretching_quadriceps_stretch",
@@ -901,11 +705,9 @@
     "defaultTitle": "Quadriceps Stretch",
     "devTitle": "Растяжка квадрицепса",
     "category": "stretching",
-    "parameters": [
-      "time"
-    ],
     "sortOrder": 1,
-    "iconName": "icMissingImage"
+    "iconName": "icMissingImage",
+    "trackingType": "timed"
   },
   {
     "id": "stretching_chest_stretch",
@@ -913,11 +715,9 @@
     "defaultTitle": "Chest Stretch",
     "devTitle": "Растяжка грудных мышц",
     "category": "stretching",
-    "parameters": [
-      "time"
-    ],
     "sortOrder": 2,
-    "iconName": "icMissingImage"
+    "iconName": "icMissingImage",
+    "trackingType": "timed"
   },
   {
     "id": "stretching_shoulder_stretch",
@@ -925,11 +725,9 @@
     "defaultTitle": "Shoulder Stretch",
     "devTitle": "Растяжка плеч",
     "category": "stretching",
-    "parameters": [
-      "time"
-    ],
     "sortOrder": 3,
-    "iconName": "icMissingImage"
+    "iconName": "icMissingImage",
+    "trackingType": "timed"
   },
   {
     "id": "stretching_glute_stretch",
@@ -937,11 +735,9 @@
     "defaultTitle": "Glute Stretch",
     "devTitle": "Растяжка ягодичных мышц",
     "category": "stretching",
-    "parameters": [
-      "time"
-    ],
     "sortOrder": 4,
-    "iconName": "icMissingImage"
+    "iconName": "icMissingImage",
+    "trackingType": "timed"
   },
   {
     "id": "stretching_calf_stretch",
@@ -949,10 +745,8 @@
     "defaultTitle": "Calf Stretch",
     "devTitle": "Растяжка икроножных мышц",
     "category": "stretching",
-    "parameters": [
-      "time"
-    ],
     "sortOrder": 5,
-    "iconName": "icMissingImage"
+    "iconName": "icMissingImage",
+    "trackingType": "timed"
   }
 ]
