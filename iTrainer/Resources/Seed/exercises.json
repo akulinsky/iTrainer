@@ -387,12 +387,39 @@
     "trackingType": "weightedReps"
   },
   {
+    "id": "shoulders_machine_press",
+    "titleKey": "exercise.shoulders.machine_press",
+    "defaultTitle": "Machine Shoulder Press",
+    "category": "shoulders",
+    "sortOrder": 2,
+    "iconName": "icMissingImage",
+    "trackingType": "weightedReps"
+  },
+  {
+    "id": "shoulders_arnold_press",
+    "titleKey": "exercise.shoulders.arnold_press",
+    "defaultTitle": "Arnold Press",
+    "category": "shoulders",
+    "sortOrder": 3,
+    "iconName": "icMissingImage",
+    "trackingType": "weightedReps"
+  },
+  {
     "id": "shoulders_lateral_raise",
     "titleKey": "exercise.shoulders.lateral_raise",
     "defaultTitle": "Lateral Raise",
     "category": "shoulders",
-    "sortOrder": 2,
+    "sortOrder": 4,
     "iconName": "icExercise_shoulders_lateral_raise",
+    "trackingType": "weightedReps"
+  },
+  {
+    "id": "shoulders_cable_lateral_raise",
+    "titleKey": "exercise.shoulders.cable_lateral_raise",
+    "defaultTitle": "Cable Lateral Raise",
+    "category": "shoulders",
+    "sortOrder": 5,
+    "iconName": "icMissingImage",
     "trackingType": "weightedReps"
   },
   {
@@ -400,7 +427,7 @@
     "titleKey": "exercise.shoulders.front_raise",
     "defaultTitle": "Front Raise",
     "category": "shoulders",
-    "sortOrder": 3,
+    "sortOrder": 6,
     "iconName": "icExercise_shoulders_front_raise",
     "trackingType": "weightedReps"
   },
@@ -409,8 +436,17 @@
     "titleKey": "exercise.shoulders.reverse_fly",
     "defaultTitle": "Reverse Fly",
     "category": "shoulders",
-    "sortOrder": 4,
+    "sortOrder": 7,
     "iconName": "icExercise_shoulders_reverse_fly",
+    "trackingType": "weightedReps"
+  },
+  {
+    "id": "shoulders_reverse_pec_deck",
+    "titleKey": "exercise.shoulders.reverse_pec_deck",
+    "defaultTitle": "Reverse Pec Deck",
+    "category": "shoulders",
+    "sortOrder": 8,
+    "iconName": "icMissingImage",
     "trackingType": "weightedReps"
   },
   {
@@ -418,8 +454,17 @@
     "titleKey": "exercise.shoulders.upright_row",
     "defaultTitle": "Upright Row",
     "category": "shoulders",
-    "sortOrder": 5,
+    "sortOrder": 9,
     "iconName": "icExercise_shoulders_upright_row",
+    "trackingType": "weightedReps"
+  },
+  {
+    "id": "shoulders_face_pull",
+    "titleKey": "exercise.shoulders.face_pull",
+    "defaultTitle": "Face Pull",
+    "category": "shoulders",
+    "sortOrder": 10,
+    "iconName": "icMissingImage",
     "trackingType": "weightedReps"
   },
   {
@@ -432,11 +477,29 @@
     "trackingType": "weightedReps"
   },
   {
+    "id": "biceps_ez_bar_curl",
+    "titleKey": "exercise.biceps.ez_bar_curl",
+    "defaultTitle": "EZ-Bar Curl",
+    "category": "biceps",
+    "sortOrder": 1,
+    "iconName": "icMissingImage",
+    "trackingType": "weightedReps"
+  },
+  {
     "id": "biceps_dumbbell_curl",
     "titleKey": "exercise.biceps.dumbbell_curl",
     "defaultTitle": "Dumbbell Curl",
     "category": "biceps",
-    "sortOrder": 1,
+    "sortOrder": 2,
+    "iconName": "icMissingImage",
+    "trackingType": "weightedReps"
+  },
+  {
+    "id": "biceps_alternating_dumbbell_curl",
+    "titleKey": "exercise.biceps.alternating_dumbbell_curl",
+    "defaultTitle": "Alternating Dumbbell Curl",
+    "category": "biceps",
+    "sortOrder": 3,
     "iconName": "icMissingImage",
     "trackingType": "weightedReps"
   },
@@ -445,7 +508,7 @@
     "titleKey": "exercise.biceps.hammer_curl",
     "defaultTitle": "Hammer Curl",
     "category": "biceps",
-    "sortOrder": 2,
+    "sortOrder": 4,
     "iconName": "icExercise_biceps_hammer_curl",
     "trackingType": "weightedReps"
   },
@@ -454,7 +517,25 @@
     "titleKey": "exercise.biceps.preacher_curl",
     "defaultTitle": "Preacher Curl",
     "category": "biceps",
-    "sortOrder": 3,
+    "sortOrder": 5,
+    "iconName": "icMissingImage",
+    "trackingType": "weightedReps"
+  },
+  {
+    "id": "biceps_dumbbell_preacher_curl",
+    "titleKey": "exercise.biceps.dumbbell_preacher_curl",
+    "defaultTitle": "Dumbbell Preacher Curl",
+    "category": "biceps",
+    "sortOrder": 6,
+    "iconName": "icMissingImage",
+    "trackingType": "weightedReps"
+  },
+  {
+    "id": "biceps_incline_dumbbell_curl",
+    "titleKey": "exercise.biceps.incline_dumbbell_curl",
+    "defaultTitle": "Incline Dumbbell Curl",
+    "category": "biceps",
+    "sortOrder": 7,
     "iconName": "icMissingImage",
     "trackingType": "weightedReps"
   },
@@ -463,7 +544,7 @@
     "titleKey": "exercise.biceps.concentration_curl",
     "defaultTitle": "Concentration Curl",
     "category": "biceps",
-    "sortOrder": 4,
+    "sortOrder": 8,
     "iconName": "icMissingImage",
     "trackingType": "weightedReps"
   },
@@ -472,7 +553,16 @@
     "titleKey": "exercise.biceps.cable_curl",
     "defaultTitle": "Cable Curl",
     "category": "biceps",
-    "sortOrder": 5,
+    "sortOrder": 9,
+    "iconName": "icMissingImage",
+    "trackingType": "weightedReps"
+  },
+  {
+    "id": "biceps_spider_curl",
+    "titleKey": "exercise.biceps.spider_curl",
+    "defaultTitle": "Spider Curl",
+    "category": "biceps",
+    "sortOrder": 10,
     "iconName": "icMissingImage",
     "trackingType": "weightedReps"
   },

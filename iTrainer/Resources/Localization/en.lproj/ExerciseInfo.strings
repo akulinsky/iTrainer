@@ -376,62 +376,178 @@
 "exercise.info.glutes_cable_side_kick.technique.5" = "Pause briefly at the end of the range.";
 "exercise.info.glutes_cable_side_kick.technique.6" = "Return slowly without letting the cable pull you out of position.";
 
-"exercise.info.shoulders_overhead_press.description" = "Overhead Press is a compound shoulder exercise that develops vertical pressing strength.";
-"exercise.info.shoulders_overhead_press.technique.1" = "Brace your torso before pressing.";
-"exercise.info.shoulders_overhead_press.technique.2" = "Press the bar overhead in a straight path.";
-"exercise.info.shoulders_overhead_press.technique.3" = "Finish with the bar over the shoulders, hips, and mid-foot.";
+"exercise.info.shoulders_overhead_press.description" = "Overhead Press is a compound shoulder exercise that develops vertical pressing strength and trunk stability.";
+"exercise.info.shoulders_overhead_press.technique.1" = "Stand with feet stable and the bar near the upper chest.";
+"exercise.info.shoulders_overhead_press.technique.2" = "Brace your torso and keep ribs controlled.";
+"exercise.info.shoulders_overhead_press.technique.3" = "Press the bar upward in a mostly straight path.";
+"exercise.info.shoulders_overhead_press.technique.4" = "Move your head slightly back, then through as the bar passes.";
+"exercise.info.shoulders_overhead_press.technique.5" = "Finish with the bar over shoulders, hips, and mid-foot.";
+"exercise.info.shoulders_overhead_press.technique.6" = "Lower under control without leaning back excessively.";
 
-"exercise.info.shoulders_seated_dumbbell_press.description" = "Seated Dumbbell Press trains shoulder pressing strength with independent arm movement.";
-"exercise.info.shoulders_seated_dumbbell_press.technique.1" = "Sit tall with your back supported.";
-"exercise.info.shoulders_seated_dumbbell_press.technique.2" = "Start with dumbbells near shoulder height.";
-"exercise.info.shoulders_seated_dumbbell_press.technique.3" = "Press upward without arching excessively.";
+"exercise.info.shoulders_seated_dumbbell_press.description" = "Seated Dumbbell Press builds shoulder pressing strength with independent arm movement and stable torso support.";
+"exercise.info.shoulders_seated_dumbbell_press.technique.1" = "Sit tall with your back supported and feet planted.";
+"exercise.info.shoulders_seated_dumbbell_press.technique.2" = "Start with dumbbells near shoulder level.";
+"exercise.info.shoulders_seated_dumbbell_press.technique.3" = "Keep wrists stacked over elbows.";
+"exercise.info.shoulders_seated_dumbbell_press.technique.4" = "Press upward without letting the lower back over-arch.";
+"exercise.info.shoulders_seated_dumbbell_press.technique.5" = "Do not bang the dumbbells together at the top.";
+"exercise.info.shoulders_seated_dumbbell_press.technique.6" = "Lower both dumbbells evenly with control.";
 
-"exercise.info.shoulders_lateral_raise.description" = "Lateral Raise is an isolation exercise for the side shoulders.";
-"exercise.info.shoulders_lateral_raise.technique.1" = "Keep a slight bend in your elbows.";
+"exercise.info.shoulders_machine_press.description" = "Machine Shoulder Press trains vertical pressing strength with a guided path and stable body support.";
+"exercise.info.shoulders_machine_press.technique.1" = "Adjust the seat so the handles start around shoulder height.";
+"exercise.info.shoulders_machine_press.technique.2" = "Keep your back and hips supported against the pad.";
+"exercise.info.shoulders_machine_press.technique.3" = "Grip the handles with wrists neutral.";
+"exercise.info.shoulders_machine_press.technique.4" = "Press upward smoothly without shrugging.";
+"exercise.info.shoulders_machine_press.technique.5" = "Avoid locking the elbows aggressively.";
+"exercise.info.shoulders_machine_press.technique.6" = "Return the handles under control before the next rep.";
+
+"exercise.info.shoulders_arnold_press.description" = "Arnold Press is a dumbbell shoulder press variation that combines rotation with an overhead press.";
+"exercise.info.shoulders_arnold_press.technique.1" = "Start seated or standing with dumbbells in front of the shoulders.";
+"exercise.info.shoulders_arnold_press.technique.2" = "Begin with palms facing you and elbows in front.";
+"exercise.info.shoulders_arnold_press.technique.3" = "Rotate the dumbbells outward as you press overhead.";
+"exercise.info.shoulders_arnold_press.technique.4" = "Keep the motion smooth and controlled.";
+"exercise.info.shoulders_arnold_press.technique.5" = "Avoid excessive back arch during the press.";
+"exercise.info.shoulders_arnold_press.technique.6" = "Reverse the rotation as you lower to the start.";
+
+"exercise.info.shoulders_lateral_raise.description" = "Lateral Raise is an isolation exercise for the side delts and shoulder width.";
+"exercise.info.shoulders_lateral_raise.technique.1" = "Stand tall with a slight bend in your elbows.";
 "exercise.info.shoulders_lateral_raise.technique.2" = "Raise the dumbbells out to the sides with control.";
-"exercise.info.shoulders_lateral_raise.technique.3" = "Stop near shoulder height and avoid swinging.";
+"exercise.info.shoulders_lateral_raise.technique.3" = "Lead with elbows rather than hands.";
+"exercise.info.shoulders_lateral_raise.technique.4" = "Stop around shoulder height.";
+"exercise.info.shoulders_lateral_raise.technique.5" = "Lower slowly without dropping the weights.";
+"exercise.info.shoulders_lateral_raise.technique.6" = "Avoid swinging your torso to start the rep.";
 
-"exercise.info.shoulders_front_raise.description" = "Front Raise is an isolation exercise for the front shoulders.";
-"exercise.info.shoulders_front_raise.technique.1" = "Stand tall and keep your torso still.";
-"exercise.info.shoulders_front_raise.technique.2" = "Raise the weight forward to shoulder height.";
-"exercise.info.shoulders_front_raise.technique.3" = "Lower slowly without using momentum.";
+"exercise.info.shoulders_cable_lateral_raise.description" = "Cable Lateral Raise trains the side delts with constant cable tension through the range of motion.";
+"exercise.info.shoulders_cable_lateral_raise.technique.1" = "Set the cable low and stand side-on to the machine.";
+"exercise.info.shoulders_cable_lateral_raise.technique.2" = "Hold the handle with the outside hand and brace your torso.";
+"exercise.info.shoulders_cable_lateral_raise.technique.3" = "Keep a soft bend in the elbow.";
+"exercise.info.shoulders_cable_lateral_raise.technique.4" = "Raise the arm out to the side to about shoulder height.";
+"exercise.info.shoulders_cable_lateral_raise.technique.5" = "Control the return and keep tension on the cable.";
+"exercise.info.shoulders_cable_lateral_raise.technique.6" = "Do not lean or twist to lift more weight.";
 
-"exercise.info.shoulders_reverse_fly.description" = "Reverse Fly trains the rear shoulders and upper-back control.";
-"exercise.info.shoulders_reverse_fly.technique.1" = "Hinge forward or use chest support.";
-"exercise.info.shoulders_reverse_fly.technique.2" = "Open your arms out to the sides with soft elbows.";
-"exercise.info.shoulders_reverse_fly.technique.3" = "Control the return and avoid shrugging.";
+"exercise.info.shoulders_front_raise.description" = "Front Raise trains the front delts through controlled shoulder flexion.";
+"exercise.info.shoulders_front_raise.technique.1" = "Stand tall and brace your torso.";
+"exercise.info.shoulders_front_raise.technique.2" = "Hold the weights in front of your thighs.";
+"exercise.info.shoulders_front_raise.technique.3" = "Raise the weight forward to about shoulder height.";
+"exercise.info.shoulders_front_raise.technique.4" = "Keep elbows softly bent and wrists neutral.";
+"exercise.info.shoulders_front_raise.technique.5" = "Lower slowly without leaning backward.";
+"exercise.info.shoulders_front_raise.technique.6" = "Avoid swinging the weight from the hips.";
 
-"exercise.info.shoulders_upright_row.description" = "Upright Row trains the shoulders and upper back with a vertical pull.";
-"exercise.info.shoulders_upright_row.technique.1" = "Hold the bar close to your body.";
-"exercise.info.shoulders_upright_row.technique.2" = "Pull upward with control to a comfortable height.";
-"exercise.info.shoulders_upright_row.technique.3" = "Keep wrists relaxed and avoid forcing the range.";
+"exercise.info.shoulders_reverse_fly.description" = "Reverse Fly trains the rear delts and upper-back control through horizontal arm movement.";
+"exercise.info.shoulders_reverse_fly.technique.1" = "Hinge at the hips or lie chest-down on an incline bench.";
+"exercise.info.shoulders_reverse_fly.technique.2" = "Keep a soft bend in the elbows.";
+"exercise.info.shoulders_reverse_fly.technique.3" = "Open the arms out to the sides.";
+"exercise.info.shoulders_reverse_fly.technique.4" = "Focus on the rear delts rather than shrugging.";
+"exercise.info.shoulders_reverse_fly.technique.5" = "Pause briefly at the top if controlled.";
+"exercise.info.shoulders_reverse_fly.technique.6" = "Lower slowly without letting the weights swing.";
 
-"exercise.info.biceps_barbell_curl.description" = "Barbell Curl is a basic biceps exercise that trains elbow flexion with both arms together.";
-"exercise.info.biceps_barbell_curl.technique.1" = "Stand tall with elbows close to your sides.";
-"exercise.info.biceps_barbell_curl.technique.2" = "Curl the bar without swinging your torso.";
-"exercise.info.biceps_barbell_curl.technique.3" = "Lower the bar slowly to full control.";
+"exercise.info.shoulders_reverse_pec_deck.description" = "Reverse Pec Deck is a machine exercise for the rear delts and upper-back stability.";
+"exercise.info.shoulders_reverse_pec_deck.technique.1" = "Adjust the seat so the handles are around shoulder height.";
+"exercise.info.shoulders_reverse_pec_deck.technique.2" = "Sit facing the pad with chest supported.";
+"exercise.info.shoulders_reverse_pec_deck.technique.3" = "Grip the handles and keep shoulders down.";
+"exercise.info.shoulders_reverse_pec_deck.technique.4" = "Open the arms back in a wide arc.";
+"exercise.info.shoulders_reverse_pec_deck.technique.5" = "Pause briefly without leaning away from the pad.";
+"exercise.info.shoulders_reverse_pec_deck.technique.6" = "Return slowly and keep control of the stack.";
 
-"exercise.info.biceps_dumbbell_curl.description" = "Dumbbell Curl trains the biceps with independent arm movement.";
-"exercise.info.biceps_dumbbell_curl.technique.1" = "Keep your elbows near your sides.";
-"exercise.info.biceps_dumbbell_curl.technique.2" = "Curl the dumbbells smoothly through the full range.";
-"exercise.info.biceps_dumbbell_curl.technique.3" = "Lower with control and avoid leaning back.";
+"exercise.info.shoulders_upright_row.description" = "Upright Row trains the shoulders and upper traps with a vertical pulling motion.";
+"exercise.info.shoulders_upright_row.technique.1" = "Hold the bar or dumbbells in front of your thighs.";
+"exercise.info.shoulders_upright_row.technique.2" = "Keep the weight close to your body.";
+"exercise.info.shoulders_upright_row.technique.3" = "Pull upward with elbows leading.";
+"exercise.info.shoulders_upright_row.technique.4" = "Stop around lower chest or upper chest height.";
+"exercise.info.shoulders_upright_row.technique.5" = "Lower under control without swinging.";
+"exercise.info.shoulders_upright_row.technique.6" = "Stop if the movement feels uncomfortable in the shoulders.";
 
-"exercise.info.biceps_hammer_curl.description" = "Hammer Curl is a neutral-grip curl that trains the biceps and forearm muscles.";
+"exercise.info.shoulders_face_pull.description" = "Face Pull is a cable exercise for rear delts, external rotators, and upper-back control.";
+"exercise.info.shoulders_face_pull.technique.1" = "Set the cable around upper chest or face height.";
+"exercise.info.shoulders_face_pull.technique.2" = "Use a rope attachment and step back to create tension.";
+"exercise.info.shoulders_face_pull.technique.3" = "Pull the rope toward your face with elbows high.";
+"exercise.info.shoulders_face_pull.technique.4" = "Separate the rope ends as you pull.";
+"exercise.info.shoulders_face_pull.technique.5" = "Keep ribs down and avoid leaning back.";
+"exercise.info.shoulders_face_pull.technique.6" = "Return slowly with shoulders controlled.";
+
+"exercise.info.biceps_barbell_curl.description" = "Barbell Curl is a classic biceps exercise that trains elbow flexion with both arms working together.";
+"exercise.info.biceps_barbell_curl.technique.1" = "Stand tall with feet stable and the bar in front of your thighs.";
+"exercise.info.biceps_barbell_curl.technique.2" = "Keep elbows close to your sides.";
+"exercise.info.biceps_barbell_curl.technique.3" = "Curl the bar upward without swinging your torso.";
+"exercise.info.biceps_barbell_curl.technique.4" = "Keep wrists neutral and avoid bending them back.";
+"exercise.info.biceps_barbell_curl.technique.5" = "Squeeze briefly near the top.";
+"exercise.info.biceps_barbell_curl.technique.6" = "Lower slowly until the arms are extended with control.";
+
+"exercise.info.biceps_ez_bar_curl.description" = "EZ-Bar Curl is a biceps curl variation that uses an angled bar to reduce wrist strain for many lifters.";
+"exercise.info.biceps_ez_bar_curl.technique.1" = "Hold the EZ-bar with a comfortable angled grip.";
+"exercise.info.biceps_ez_bar_curl.technique.2" = "Stand tall and brace your torso.";
+"exercise.info.biceps_ez_bar_curl.technique.3" = "Keep elbows near your sides throughout the rep.";
+"exercise.info.biceps_ez_bar_curl.technique.4" = "Curl the bar smoothly without leaning back.";
+"exercise.info.biceps_ez_bar_curl.technique.5" = "Pause briefly near the top if controlled.";
+"exercise.info.biceps_ez_bar_curl.technique.6" = "Lower under control and avoid relaxing at the bottom.";
+
+"exercise.info.biceps_dumbbell_curl.description" = "Dumbbell Curl trains the biceps with independent arm movement and a natural wrist path.";
+"exercise.info.biceps_dumbbell_curl.technique.1" = "Stand or sit tall with dumbbells at your sides.";
+"exercise.info.biceps_dumbbell_curl.technique.2" = "Keep elbows close to your torso.";
+"exercise.info.biceps_dumbbell_curl.technique.3" = "Curl both dumbbells smoothly through the full range.";
+"exercise.info.biceps_dumbbell_curl.technique.4" = "Rotate the palms up if using a supinating curl.";
+"exercise.info.biceps_dumbbell_curl.technique.5" = "Avoid leaning back or swinging the weights.";
+"exercise.info.biceps_dumbbell_curl.technique.6" = "Lower with control until arms are extended.";
+
+"exercise.info.biceps_alternating_dumbbell_curl.description" = "Alternating Dumbbell Curl trains each arm one at a time while keeping the movement controlled.";
+"exercise.info.biceps_alternating_dumbbell_curl.technique.1" = "Hold dumbbells at your sides and stand tall.";
+"exercise.info.biceps_alternating_dumbbell_curl.technique.2" = "Curl one dumbbell while the other arm stays still.";
+"exercise.info.biceps_alternating_dumbbell_curl.technique.3" = "Keep the working elbow close to your side.";
+"exercise.info.biceps_alternating_dumbbell_curl.technique.4" = "Control the wrist and avoid twisting the shoulder forward.";
+"exercise.info.biceps_alternating_dumbbell_curl.technique.5" = "Lower fully before switching arms.";
+"exercise.info.biceps_alternating_dumbbell_curl.technique.6" = "Keep reps even between both sides.";
+
+"exercise.info.biceps_hammer_curl.description" = "Hammer Curl uses a neutral grip to train the biceps, brachialis, and forearm muscles.";
 "exercise.info.biceps_hammer_curl.technique.1" = "Hold the dumbbells with palms facing each other.";
-"exercise.info.biceps_hammer_curl.technique.2" = "Curl without rotating the wrists.";
-"exercise.info.biceps_hammer_curl.technique.3" = "Keep the movement controlled from start to finish.";
+"exercise.info.biceps_hammer_curl.technique.2" = "Keep elbows near your sides.";
+"exercise.info.biceps_hammer_curl.technique.3" = "Curl without rotating the wrists.";
+"exercise.info.biceps_hammer_curl.technique.4" = "Lift until the forearms are near vertical.";
+"exercise.info.biceps_hammer_curl.technique.5" = "Avoid swinging the dumbbells forward.";
+"exercise.info.biceps_hammer_curl.technique.6" = "Lower slowly and keep the grip neutral.";
 
-"exercise.info.biceps_preacher_curl.description" = "Preacher Curl isolates the biceps by supporting the upper arms on a bench.";
-"exercise.info.biceps_preacher_curl.technique.1" = "Set your upper arms firmly on the pad.";
-"exercise.info.biceps_preacher_curl.technique.2" = "Curl the weight without lifting your elbows.";
-"exercise.info.biceps_preacher_curl.technique.3" = "Lower slowly and avoid relaxing at the bottom.";
+"exercise.info.biceps_preacher_curl.description" = "Preacher Curl supports the upper arms on a pad to isolate the biceps and limit body momentum.";
+"exercise.info.biceps_preacher_curl.technique.1" = "Set the seat so your upper arms rest fully on the pad.";
+"exercise.info.biceps_preacher_curl.technique.2" = "Keep the chest close to the bench.";
+"exercise.info.biceps_preacher_curl.technique.3" = "Start with elbows slightly bent, not forcefully locked.";
+"exercise.info.biceps_preacher_curl.technique.4" = "Curl the weight without lifting the upper arms from the pad.";
+"exercise.info.biceps_preacher_curl.technique.5" = "Pause briefly near the top.";
+"exercise.info.biceps_preacher_curl.technique.6" = "Lower slowly and avoid dropping into the bottom.";
+
+"exercise.info.biceps_dumbbell_preacher_curl.description" = "Dumbbell Preacher Curl is a single-arm preacher variation for stricter side-to-side biceps work.";
+"exercise.info.biceps_dumbbell_preacher_curl.technique.1" = "Place one upper arm firmly on the preacher pad.";
+"exercise.info.biceps_dumbbell_preacher_curl.technique.2" = "Hold the dumbbell with the wrist neutral.";
+"exercise.info.biceps_dumbbell_preacher_curl.technique.3" = "Curl without lifting the elbow from the pad.";
+"exercise.info.biceps_dumbbell_preacher_curl.technique.4" = "Keep the movement slow and strict.";
+"exercise.info.biceps_dumbbell_preacher_curl.technique.5" = "Lower until the arm is extended but not relaxed.";
+"exercise.info.biceps_dumbbell_preacher_curl.technique.6" = "Repeat the same range and control on both arms.";
+
+"exercise.info.biceps_incline_dumbbell_curl.description" = "Incline Dumbbell Curl stretches the biceps by curling with the arms behind the torso on an incline bench.";
+"exercise.info.biceps_incline_dumbbell_curl.technique.1" = "Set the bench to a moderate incline.";
+"exercise.info.biceps_incline_dumbbell_curl.technique.2" = "Let the arms hang down with shoulders relaxed.";
+"exercise.info.biceps_incline_dumbbell_curl.technique.3" = "Keep elbows mostly fixed as you curl.";
+"exercise.info.biceps_incline_dumbbell_curl.technique.4" = "Curl through a comfortable range without swinging.";
+"exercise.info.biceps_incline_dumbbell_curl.technique.5" = "Avoid letting the shoulders roll forward.";
+"exercise.info.biceps_incline_dumbbell_curl.technique.6" = "Lower slowly to feel a controlled stretch.";
 
 "exercise.info.biceps_concentration_curl.description" = "Concentration Curl is a strict single-arm curl focused on controlled biceps contraction.";
-"exercise.info.biceps_concentration_curl.technique.1" = "Brace your upper arm against the inner thigh.";
-"exercise.info.biceps_concentration_curl.technique.2" = "Curl the dumbbell without moving the shoulder.";
-"exercise.info.biceps_concentration_curl.technique.3" = "Lower slowly and keep the rep strict.";
+"exercise.info.biceps_concentration_curl.technique.1" = "Sit and brace the upper arm against the inner thigh.";
+"exercise.info.biceps_concentration_curl.technique.2" = "Start with the arm extended under control.";
+"exercise.info.biceps_concentration_curl.technique.3" = "Curl the dumbbell without moving the shoulder.";
+"exercise.info.biceps_concentration_curl.technique.4" = "Pause briefly near the top.";
+"exercise.info.biceps_concentration_curl.technique.5" = "Lower slowly and keep the rep strict.";
+"exercise.info.biceps_concentration_curl.technique.6" = "Avoid twisting the torso to finish the rep.";
 
-"exercise.info.biceps_cable_curl.description" = "Cable Curl trains the biceps with constant cable tension.";
-"exercise.info.biceps_cable_curl.technique.1" = "Stand stable and keep elbows close to your sides.";
-"exercise.info.biceps_cable_curl.technique.2" = "Curl the handle smoothly toward the chest.";
-"exercise.info.biceps_cable_curl.technique.3" = "Control the return without letting the stack drop.";
+"exercise.info.biceps_cable_curl.description" = "Cable Curl trains the biceps with constant cable tension through the movement.";
+"exercise.info.biceps_cable_curl.technique.1" = "Stand stable facing the cable stack.";
+"exercise.info.biceps_cable_curl.technique.2" = "Keep elbows close to your sides.";
+"exercise.info.biceps_cable_curl.technique.3" = "Curl the handle smoothly toward the chest.";
+"exercise.info.biceps_cable_curl.technique.4" = "Keep shoulders down and torso still.";
+"exercise.info.biceps_cable_curl.technique.5" = "Squeeze briefly near the top.";
+"exercise.info.biceps_cable_curl.technique.6" = "Control the return without letting the stack drop.";
+
+"exercise.info.biceps_spider_curl.description" = "Spider Curl is a strict curl variation performed chest-down on an incline bench to limit momentum.";
+"exercise.info.biceps_spider_curl.technique.1" = "Lie chest-down on an incline bench with arms hanging.";
+"exercise.info.biceps_spider_curl.technique.2" = "Keep the chest supported and shoulders relaxed.";
+"exercise.info.biceps_spider_curl.technique.3" = "Curl the weight without moving the upper arms much.";
+"exercise.info.biceps_spider_curl.technique.4" = "Pause briefly at the top.";
+"exercise.info.biceps_spider_curl.technique.5" = "Lower slowly to full control.";
+"exercise.info.biceps_spider_curl.technique.6" = "Use a moderate load so the movement stays strict.";

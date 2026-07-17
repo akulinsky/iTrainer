@@ -376,62 +376,178 @@
 "exercise.info.glutes_cable_side_kick.technique.5" = "Коротко задержитесь в конце амплитуды.";
 "exercise.info.glutes_cable_side_kick.technique.6" = "Возвращайтесь медленно, не позволяя тросу уводить корпус.";
 
-"exercise.info.shoulders_overhead_press.description" = "Жим штанги стоя - базовое упражнение для развития силы вертикального жима.";
-"exercise.info.shoulders_overhead_press.technique.1" = "Напрягите корпус перед жимом.";
-"exercise.info.shoulders_overhead_press.technique.2" = "Жмите штангу вверх по прямой траектории.";
-"exercise.info.shoulders_overhead_press.technique.3" = "Завершайте движение со штангой над плечами, тазом и серединой стопы.";
+"exercise.info.shoulders_overhead_press.description" = "Жим штанги стоя - базовое упражнение для развития силы вертикального жима и стабильности корпуса.";
+"exercise.info.shoulders_overhead_press.technique.1" = "Встаньте устойчиво, штанга находится около верхней части груди.";
+"exercise.info.shoulders_overhead_press.technique.2" = "Напрягите корпус и контролируйте положение ребер.";
+"exercise.info.shoulders_overhead_press.technique.3" = "Жмите штангу вверх по почти прямой траектории.";
+"exercise.info.shoulders_overhead_press.technique.4" = "Слегка отведите голову назад, а затем проведите ее вперед после прохождения штанги.";
+"exercise.info.shoulders_overhead_press.technique.5" = "Завершайте движение со штангой над плечами, тазом и серединой стопы.";
+"exercise.info.shoulders_overhead_press.technique.6" = "Опускайте под контролем и не отклоняйтесь назад чрезмерно.";
 
-"exercise.info.shoulders_seated_dumbbell_press.description" = "Жим гантелей сидя развивает силу плеч с независимой работой рук.";
-"exercise.info.shoulders_seated_dumbbell_press.technique.1" = "Сидите ровно с поддержкой спины.";
+"exercise.info.shoulders_seated_dumbbell_press.description" = "Жим гантелей сидя развивает силу плеч с независимой работой рук и стабильной опорой корпуса.";
+"exercise.info.shoulders_seated_dumbbell_press.technique.1" = "Сидите ровно с опорой спины и стопами на полу.";
 "exercise.info.shoulders_seated_dumbbell_press.technique.2" = "Начинайте с гантелями около уровня плеч.";
-"exercise.info.shoulders_seated_dumbbell_press.technique.3" = "Жмите вверх без чрезмерного прогиба в спине.";
+"exercise.info.shoulders_seated_dumbbell_press.technique.3" = "Держите кисти над локтями.";
+"exercise.info.shoulders_seated_dumbbell_press.technique.4" = "Жмите вверх, не прогибая поясницу чрезмерно.";
+"exercise.info.shoulders_seated_dumbbell_press.technique.5" = "Не сталкивайте гантели в верхней точке.";
+"exercise.info.shoulders_seated_dumbbell_press.technique.6" = "Опускайте обе гантели ровно и под контролем.";
 
-"exercise.info.shoulders_lateral_raise.description" = "Махи гантелями в стороны - изолирующее упражнение для средней части плеч.";
-"exercise.info.shoulders_lateral_raise.technique.1" = "Сохраняйте небольшой сгиб в локтях.";
+"exercise.info.shoulders_machine_press.description" = "Жим в тренажере на плечи развивает силу вертикального жима с направляемой траекторией и стабильной опорой.";
+"exercise.info.shoulders_machine_press.technique.1" = "Настройте сиденье так, чтобы рукояти начинались примерно на уровне плеч.";
+"exercise.info.shoulders_machine_press.technique.2" = "Держите спину и таз прижатыми к опоре.";
+"exercise.info.shoulders_machine_press.technique.3" = "Возьмитесь за рукояти с нейтральными кистями.";
+"exercise.info.shoulders_machine_press.technique.4" = "Жмите вверх плавно, не поднимая плечи к ушам.";
+"exercise.info.shoulders_machine_press.technique.5" = "Не блокируйте локти резко.";
+"exercise.info.shoulders_machine_press.technique.6" = "Возвращайте рукояти под контролем перед следующим повторением.";
+
+"exercise.info.shoulders_arnold_press.description" = "Жим Арнольда - вариант жима гантелей, который сочетает вращение рук и жим над головой.";
+"exercise.info.shoulders_arnold_press.technique.1" = "Начинайте сидя или стоя с гантелями перед плечами.";
+"exercise.info.shoulders_arnold_press.technique.2" = "В начале ладони смотрят на вас, локти находятся впереди.";
+"exercise.info.shoulders_arnold_press.technique.3" = "Разворачивайте гантели наружу во время жима вверх.";
+"exercise.info.shoulders_arnold_press.technique.4" = "Двигайтесь плавно и под контролем.";
+"exercise.info.shoulders_arnold_press.technique.5" = "Не прогибайтесь чрезмерно в пояснице.";
+"exercise.info.shoulders_arnold_press.technique.6" = "Возвращайтесь вниз с обратным разворотом.";
+
+"exercise.info.shoulders_lateral_raise.description" = "Махи гантелями в стороны - изолирующее упражнение для средней дельты и визуальной ширины плеч.";
+"exercise.info.shoulders_lateral_raise.technique.1" = "Стойте ровно с небольшим сгибом в локтях.";
 "exercise.info.shoulders_lateral_raise.technique.2" = "Поднимайте гантели в стороны под контролем.";
-"exercise.info.shoulders_lateral_raise.technique.3" = "Останавливайтесь около уровня плеч и не раскачивайтесь.";
+"exercise.info.shoulders_lateral_raise.technique.3" = "Ведите движение локтями, а не кистями.";
+"exercise.info.shoulders_lateral_raise.technique.4" = "Останавливайтесь примерно на уровне плеч.";
+"exercise.info.shoulders_lateral_raise.technique.5" = "Опускайте вес медленно, не бросая его вниз.";
+"exercise.info.shoulders_lateral_raise.technique.6" = "Не раскачивайте корпус, чтобы начать повторение.";
 
-"exercise.info.shoulders_front_raise.description" = "Подъем гантелей перед собой - изолирующее упражнение для передних дельт.";
-"exercise.info.shoulders_front_raise.technique.1" = "Стойте ровно и не раскачивайте корпус.";
-"exercise.info.shoulders_front_raise.technique.2" = "Поднимайте вес вперед до уровня плеч.";
-"exercise.info.shoulders_front_raise.technique.3" = "Опускайте медленно, не используя инерцию.";
+"exercise.info.shoulders_cable_lateral_raise.description" = "Махи в стороны в кроссовере тренируют среднюю дельту с постоянным натяжением троса.";
+"exercise.info.shoulders_cable_lateral_raise.technique.1" = "Установите нижний блок и встаньте боком к тренажеру.";
+"exercise.info.shoulders_cable_lateral_raise.technique.2" = "Возьмите рукоять внешней рукой и напрягите корпус.";
+"exercise.info.shoulders_cable_lateral_raise.technique.3" = "Сохраняйте мягкий сгиб в локте.";
+"exercise.info.shoulders_cable_lateral_raise.technique.4" = "Поднимайте руку в сторону примерно до уровня плеч.";
+"exercise.info.shoulders_cable_lateral_raise.technique.5" = "Возвращайтесь под контролем, сохраняя натяжение троса.";
+"exercise.info.shoulders_cable_lateral_raise.technique.6" = "Не наклоняйтесь и не разворачивайтесь ради большего веса.";
 
-"exercise.info.shoulders_reverse_fly.description" = "Обратная разводка тренирует задние дельты и контроль верхней части спины.";
-"exercise.info.shoulders_reverse_fly.technique.1" = "Наклонитесь вперед или используйте опору грудью.";
-"exercise.info.shoulders_reverse_fly.technique.2" = "Разводите руки в стороны с мягким сгибом локтей.";
-"exercise.info.shoulders_reverse_fly.technique.3" = "Контролируйте возврат и не поднимайте плечи.";
+"exercise.info.shoulders_front_raise.description" = "Подъем гантелей перед собой тренирует передние дельты через контролируемое сгибание плеча.";
+"exercise.info.shoulders_front_raise.technique.1" = "Стойте ровно и напрягите корпус.";
+"exercise.info.shoulders_front_raise.technique.2" = "Держите вес перед бедрами.";
+"exercise.info.shoulders_front_raise.technique.3" = "Поднимайте вес перед собой примерно до уровня плеч.";
+"exercise.info.shoulders_front_raise.technique.4" = "Сохраняйте мягкий сгиб локтей и нейтральные кисти.";
+"exercise.info.shoulders_front_raise.technique.5" = "Опускайте медленно, не отклоняясь назад.";
+"exercise.info.shoulders_front_raise.technique.6" = "Не раскачивайте вес тазом.";
 
-"exercise.info.shoulders_upright_row.description" = "Тяга штанги к подбородку тренирует плечи и верх спины вертикальной тягой.";
-"exercise.info.shoulders_upright_row.technique.1" = "Держите штангу близко к телу.";
-"exercise.info.shoulders_upright_row.technique.2" = "Тяните вверх под контролем до комфортной высоты.";
-"exercise.info.shoulders_upright_row.technique.3" = "Держите кисти расслабленно и не форсируйте амплитуду.";
+"exercise.info.shoulders_reverse_fly.description" = "Обратная разводка тренирует задние дельты и контроль верхней части спины через разведение рук.";
+"exercise.info.shoulders_reverse_fly.technique.1" = "Наклонитесь через таз или лягте грудью на наклонную скамью.";
+"exercise.info.shoulders_reverse_fly.technique.2" = "Сохраняйте мягкий сгиб в локтях.";
+"exercise.info.shoulders_reverse_fly.technique.3" = "Разводите руки в стороны.";
+"exercise.info.shoulders_reverse_fly.technique.4" = "Фокусируйтесь на задних дельтах, а не на подъеме плеч.";
+"exercise.info.shoulders_reverse_fly.technique.5" = "Коротко задержитесь вверху, если движение контролируемое.";
+"exercise.info.shoulders_reverse_fly.technique.6" = "Опускайте медленно и не раскачивайте вес.";
 
-"exercise.info.biceps_barbell_curl.description" = "Подъем штанги на бицепс - базовое упражнение для сгибания рук двумя руками.";
-"exercise.info.biceps_barbell_curl.technique.1" = "Стойте ровно и держите локти близко к корпусу.";
-"exercise.info.biceps_barbell_curl.technique.2" = "Поднимайте штангу без раскачки корпуса.";
-"exercise.info.biceps_barbell_curl.technique.3" = "Опускайте штангу медленно и под контролем.";
+"exercise.info.shoulders_reverse_pec_deck.description" = "Обратная разводка в тренажере тренирует задние дельты и стабильность верхней части спины.";
+"exercise.info.shoulders_reverse_pec_deck.technique.1" = "Настройте сиденье так, чтобы рукояти были примерно на уровне плеч.";
+"exercise.info.shoulders_reverse_pec_deck.technique.2" = "Сядьте лицом к опоре и прижмите грудь.";
+"exercise.info.shoulders_reverse_pec_deck.technique.3" = "Возьмитесь за рукояти и держите плечи опущенными.";
+"exercise.info.shoulders_reverse_pec_deck.technique.4" = "Разводите руки назад широкой дугой.";
+"exercise.info.shoulders_reverse_pec_deck.technique.5" = "Коротко задержитесь, не отрываясь от опоры.";
+"exercise.info.shoulders_reverse_pec_deck.technique.6" = "Возвращайтесь медленно и контролируйте вес.";
 
-"exercise.info.biceps_dumbbell_curl.description" = "Подъем гантелей на бицепс тренирует руки с независимой работой каждой стороны.";
-"exercise.info.biceps_dumbbell_curl.technique.1" = "Держите локти рядом с корпусом.";
-"exercise.info.biceps_dumbbell_curl.technique.2" = "Поднимайте гантели плавно через полную амплитуду.";
-"exercise.info.biceps_dumbbell_curl.technique.3" = "Опускайте под контролем и не отклоняйтесь назад.";
+"exercise.info.shoulders_upright_row.description" = "Тяга штанги к подбородку тренирует плечи и верх трапеций вертикальным тяговым движением.";
+"exercise.info.shoulders_upright_row.technique.1" = "Держите штангу или гантели перед бедрами.";
+"exercise.info.shoulders_upright_row.technique.2" = "Ведите вес близко к телу.";
+"exercise.info.shoulders_upright_row.technique.3" = "Тяните вверх, ведя локти первыми.";
+"exercise.info.shoulders_upright_row.technique.4" = "Останавливайтесь примерно на уровне нижней или верхней части груди.";
+"exercise.info.shoulders_upright_row.technique.5" = "Опускайте под контролем без раскачки.";
+"exercise.info.shoulders_upright_row.technique.6" = "Остановитесь, если движение вызывает дискомфорт в плечах.";
 
-"exercise.info.biceps_hammer_curl.description" = "Молотковые сгибания используют нейтральный хват и тренируют бицепс вместе с мышцами предплечья.";
+"exercise.info.shoulders_face_pull.description" = "Тяга к лицу - упражнение на блоке для задних дельт, ротаторов плеча и контроля верха спины.";
+"exercise.info.shoulders_face_pull.technique.1" = "Установите блок примерно на уровне верхней части груди или лица.";
+"exercise.info.shoulders_face_pull.technique.2" = "Используйте канатную рукоять и отойдите, чтобы создать натяжение.";
+"exercise.info.shoulders_face_pull.technique.3" = "Тяните канат к лицу, удерживая локти высоко.";
+"exercise.info.shoulders_face_pull.technique.4" = "Разводите концы каната во время тяги.";
+"exercise.info.shoulders_face_pull.technique.5" = "Держите ребра опущенными и не отклоняйтесь назад.";
+"exercise.info.shoulders_face_pull.technique.6" = "Возвращайтесь медленно с контролем плеч.";
+
+"exercise.info.biceps_barbell_curl.description" = "Подъем штанги на бицепс - классическое упражнение для сгибания рук, где обе руки работают вместе.";
+"exercise.info.biceps_barbell_curl.technique.1" = "Встаньте ровно, штанга находится перед бедрами.";
+"exercise.info.biceps_barbell_curl.technique.2" = "Держите локти близко к корпусу.";
+"exercise.info.biceps_barbell_curl.technique.3" = "Поднимайте штангу без раскачки корпуса.";
+"exercise.info.biceps_barbell_curl.technique.4" = "Держите кисти нейтрально и не заламывайте их назад.";
+"exercise.info.biceps_barbell_curl.technique.5" = "Коротко сожмите бицепс в верхней точке.";
+"exercise.info.biceps_barbell_curl.technique.6" = "Опускайте штангу медленно до контролируемого выпрямления рук.";
+
+"exercise.info.biceps_ez_bar_curl.description" = "Подъем EZ-штанги на бицепс - вариант сгибаний с изогнутым грифом, который многим удобнее для кистей.";
+"exercise.info.biceps_ez_bar_curl.technique.1" = "Возьмитесь за EZ-гриф удобным угловым хватом.";
+"exercise.info.biceps_ez_bar_curl.technique.2" = "Стойте ровно и напрягите корпус.";
+"exercise.info.biceps_ez_bar_curl.technique.3" = "Держите локти рядом с корпусом на протяжении повторения.";
+"exercise.info.biceps_ez_bar_curl.technique.4" = "Поднимайте гриф плавно, не отклоняясь назад.";
+"exercise.info.biceps_ez_bar_curl.technique.5" = "Коротко задержитесь вверху, если движение контролируемое.";
+"exercise.info.biceps_ez_bar_curl.technique.6" = "Опускайте под контролем и не расслабляйтесь внизу.";
+
+"exercise.info.biceps_dumbbell_curl.description" = "Подъем гантелей на бицепс тренирует руки независимо и позволяет кистям двигаться естественнее.";
+"exercise.info.biceps_dumbbell_curl.technique.1" = "Стойте или сидите ровно с гантелями по сторонам.";
+"exercise.info.biceps_dumbbell_curl.technique.2" = "Держите локти близко к корпусу.";
+"exercise.info.biceps_dumbbell_curl.technique.3" = "Поднимайте обе гантели плавно через полную амплитуду.";
+"exercise.info.biceps_dumbbell_curl.technique.4" = "Разворачивайте ладони вверх, если выполняете супинированный вариант.";
+"exercise.info.biceps_dumbbell_curl.technique.5" = "Не отклоняйтесь назад и не раскачивайте вес.";
+"exercise.info.biceps_dumbbell_curl.technique.6" = "Опускайте под контролем до выпрямления рук.";
+
+"exercise.info.biceps_alternating_dumbbell_curl.description" = "Попеременный подъем гантелей тренирует каждую руку по очереди и помогает лучше контролировать движение.";
+"exercise.info.biceps_alternating_dumbbell_curl.technique.1" = "Держите гантели по сторонам и стойте ровно.";
+"exercise.info.biceps_alternating_dumbbell_curl.technique.2" = "Поднимайте одну гантель, пока другая рука остается неподвижной.";
+"exercise.info.biceps_alternating_dumbbell_curl.technique.3" = "Держите рабочий локоть рядом с корпусом.";
+"exercise.info.biceps_alternating_dumbbell_curl.technique.4" = "Контролируйте кисть и не уводите плечо вперед.";
+"exercise.info.biceps_alternating_dumbbell_curl.technique.5" = "Полностью опустите гантель перед сменой руки.";
+"exercise.info.biceps_alternating_dumbbell_curl.technique.6" = "Делайте одинаковое количество повторений на обе стороны.";
+
+"exercise.info.biceps_hammer_curl.description" = "Молотковые сгибания используют нейтральный хват и тренируют бицепс, плечевую мышцу и предплечья.";
 "exercise.info.biceps_hammer_curl.technique.1" = "Держите гантели ладонями друг к другу.";
-"exercise.info.biceps_hammer_curl.technique.2" = "Поднимайте гантели без вращения кистей.";
-"exercise.info.biceps_hammer_curl.technique.3" = "Контролируйте движение от начала до конца.";
+"exercise.info.biceps_hammer_curl.technique.2" = "Держите локти рядом с корпусом.";
+"exercise.info.biceps_hammer_curl.technique.3" = "Поднимайте гантели без вращения кистей.";
+"exercise.info.biceps_hammer_curl.technique.4" = "Поднимайте до положения, где предплечья почти вертикальны.";
+"exercise.info.biceps_hammer_curl.technique.5" = "Не раскачивайте гантели вперед.";
+"exercise.info.biceps_hammer_curl.technique.6" = "Опускайте медленно, сохраняя нейтральный хват.";
 
-"exercise.info.biceps_preacher_curl.description" = "Сгибания на скамье Скотта изолируют бицепс за счет опоры плеч.";
-"exercise.info.biceps_preacher_curl.technique.1" = "Плотно расположите плечи на подушке.";
-"exercise.info.biceps_preacher_curl.technique.2" = "Поднимайте вес, не отрывая локти.";
-"exercise.info.biceps_preacher_curl.technique.3" = "Опускайте медленно и не расслабляйтесь внизу.";
+"exercise.info.biceps_preacher_curl.description" = "Сгибания на скамье Скотта изолируют бицепс за счет опоры плеч и ограничения инерции корпуса.";
+"exercise.info.biceps_preacher_curl.technique.1" = "Настройте сиденье так, чтобы плечи полностью лежали на подушке.";
+"exercise.info.biceps_preacher_curl.technique.2" = "Держите грудь близко к скамье.";
+"exercise.info.biceps_preacher_curl.technique.3" = "Начинайте с немного согнутыми локтями, не блокируйте их жестко.";
+"exercise.info.biceps_preacher_curl.technique.4" = "Поднимайте вес, не отрывая плечи от подушки.";
+"exercise.info.biceps_preacher_curl.technique.5" = "Коротко задержитесь в верхней точке.";
+"exercise.info.biceps_preacher_curl.technique.6" = "Опускайте медленно и не проваливайтесь в нижней точке.";
+
+"exercise.info.biceps_dumbbell_preacher_curl.description" = "Сгибания на скамье Скотта с гантелью - односторонний вариант для более строгой работы каждой руки.";
+"exercise.info.biceps_dumbbell_preacher_curl.technique.1" = "Плотно расположите одно плечо на подушке скамьи Скотта.";
+"exercise.info.biceps_dumbbell_preacher_curl.technique.2" = "Держите гантель с нейтральным положением кисти.";
+"exercise.info.biceps_dumbbell_preacher_curl.technique.3" = "Поднимайте гантель, не отрывая локоть от подушки.";
+"exercise.info.biceps_dumbbell_preacher_curl.technique.4" = "Двигайтесь медленно и строго.";
+"exercise.info.biceps_dumbbell_preacher_curl.technique.5" = "Опускайте до выпрямления руки, но не расслабляйтесь полностью.";
+"exercise.info.biceps_dumbbell_preacher_curl.technique.6" = "Повторяйте ту же амплитуду и контроль на обе руки.";
+
+"exercise.info.biceps_incline_dumbbell_curl.description" = "Сгибания рук на наклонной скамье растягивают бицепс за счет положения рук позади корпуса.";
+"exercise.info.biceps_incline_dumbbell_curl.technique.1" = "Установите скамью на умеренный наклон.";
+"exercise.info.biceps_incline_dumbbell_curl.technique.2" = "Позвольте рукам свободно опуститься вниз, плечи расслаблены.";
+"exercise.info.biceps_incline_dumbbell_curl.technique.3" = "Держите локти почти неподвижными во время подъема.";
+"exercise.info.biceps_incline_dumbbell_curl.technique.4" = "Поднимайте гантели через комфортную амплитуду без раскачки.";
+"exercise.info.biceps_incline_dumbbell_curl.technique.5" = "Не позволяйте плечам уходить вперед.";
+"exercise.info.biceps_incline_dumbbell_curl.technique.6" = "Опускайте медленно до контролируемого растяжения.";
 
 "exercise.info.biceps_concentration_curl.description" = "Концентрированный подъем - строгий подъем одной рукой с акцентом на контроль сокращения бицепса.";
-"exercise.info.biceps_concentration_curl.technique.1" = "Уприте плечо во внутреннюю часть бедра.";
-"exercise.info.biceps_concentration_curl.technique.2" = "Поднимайте гантель без движения плечом.";
-"exercise.info.biceps_concentration_curl.technique.3" = "Опускайте медленно и сохраняйте строгую технику.";
+"exercise.info.biceps_concentration_curl.technique.1" = "Сядьте и уприте плечо во внутреннюю часть бедра.";
+"exercise.info.biceps_concentration_curl.technique.2" = "Начинайте с контролируемо выпрямленной рукой.";
+"exercise.info.biceps_concentration_curl.technique.3" = "Поднимайте гантель без движения плечом.";
+"exercise.info.biceps_concentration_curl.technique.4" = "Коротко задержитесь в верхней точке.";
+"exercise.info.biceps_concentration_curl.technique.5" = "Опускайте медленно и сохраняйте строгую технику.";
+"exercise.info.biceps_concentration_curl.technique.6" = "Не разворачивайте корпус, чтобы завершить повторение.";
 
 "exercise.info.biceps_cable_curl.description" = "Сгибания рук на блоке тренируют бицепс с постоянным натяжением троса.";
-"exercise.info.biceps_cable_curl.technique.1" = "Стойте устойчиво и держите локти рядом с корпусом.";
-"exercise.info.biceps_cable_curl.technique.2" = "Плавно тяните рукоять к груди.";
-"exercise.info.biceps_cable_curl.technique.3" = "Контролируйте возврат и не давайте блоку резко опускаться.";
+"exercise.info.biceps_cable_curl.technique.1" = "Встаньте устойчиво лицом к блоку.";
+"exercise.info.biceps_cable_curl.technique.2" = "Держите локти рядом с корпусом.";
+"exercise.info.biceps_cable_curl.technique.3" = "Плавно тяните рукоять к груди.";
+"exercise.info.biceps_cable_curl.technique.4" = "Держите плечи опущенными, а корпус неподвижным.";
+"exercise.info.biceps_cable_curl.technique.5" = "Коротко сожмите бицепс вверху.";
+"exercise.info.biceps_cable_curl.technique.6" = "Контролируйте возврат и не давайте блоку резко опускаться.";
+
+"exercise.info.biceps_spider_curl.description" = "Паучьи сгибания - строгий вариант сгибаний лежа грудью на наклонной скамье, который ограничивает инерцию.";
+"exercise.info.biceps_spider_curl.technique.1" = "Лягте грудью на наклонную скамью, руки свободно свисают вниз.";
+"exercise.info.biceps_spider_curl.technique.2" = "Держите грудь на опоре, а плечи расслабленными.";
+"exercise.info.biceps_spider_curl.technique.3" = "Поднимайте вес почти без движения плеч.";
+"exercise.info.biceps_spider_curl.technique.4" = "Коротко задержитесь в верхней точке.";
+"exercise.info.biceps_spider_curl.technique.5" = "Опускайте медленно и под контролем.";
+"exercise.info.biceps_spider_curl.technique.6" = "Используйте умеренный вес, чтобы техника оставалась строгой.";

@@ -413,7 +413,10 @@
     "techniqueKeys": [
       "exercise.info.shoulders_overhead_press.technique.1",
       "exercise.info.shoulders_overhead_press.technique.2",
-      "exercise.info.shoulders_overhead_press.technique.3"
+      "exercise.info.shoulders_overhead_press.technique.3",
+      "exercise.info.shoulders_overhead_press.technique.4",
+      "exercise.info.shoulders_overhead_press.technique.5",
+      "exercise.info.shoulders_overhead_press.technique.6"
     ]
   },
   {
@@ -422,7 +425,34 @@
     "techniqueKeys": [
       "exercise.info.shoulders_seated_dumbbell_press.technique.1",
       "exercise.info.shoulders_seated_dumbbell_press.technique.2",
-      "exercise.info.shoulders_seated_dumbbell_press.technique.3"
+      "exercise.info.shoulders_seated_dumbbell_press.technique.3",
+      "exercise.info.shoulders_seated_dumbbell_press.technique.4",
+      "exercise.info.shoulders_seated_dumbbell_press.technique.5",
+      "exercise.info.shoulders_seated_dumbbell_press.technique.6"
+    ]
+  },
+  {
+    "exerciseId": "shoulders_machine_press",
+    "descriptionKey": "exercise.info.shoulders_machine_press.description",
+    "techniqueKeys": [
+      "exercise.info.shoulders_machine_press.technique.1",
+      "exercise.info.shoulders_machine_press.technique.2",
+      "exercise.info.shoulders_machine_press.technique.3",
+      "exercise.info.shoulders_machine_press.technique.4",
+      "exercise.info.shoulders_machine_press.technique.5",
+      "exercise.info.shoulders_machine_press.technique.6"
+    ]
+  },
+  {
+    "exerciseId": "shoulders_arnold_press",
+    "descriptionKey": "exercise.info.shoulders_arnold_press.description",
+    "techniqueKeys": [
+      "exercise.info.shoulders_arnold_press.technique.1",
+      "exercise.info.shoulders_arnold_press.technique.2",
+      "exercise.info.shoulders_arnold_press.technique.3",
+      "exercise.info.shoulders_arnold_press.technique.4",
+      "exercise.info.shoulders_arnold_press.technique.5",
+      "exercise.info.shoulders_arnold_press.technique.6"
     ]
   },
   {
@@ -431,7 +461,22 @@
     "techniqueKeys": [
       "exercise.info.shoulders_lateral_raise.technique.1",
       "exercise.info.shoulders_lateral_raise.technique.2",
-      "exercise.info.shoulders_lateral_raise.technique.3"
+      "exercise.info.shoulders_lateral_raise.technique.3",
+      "exercise.info.shoulders_lateral_raise.technique.4",
+      "exercise.info.shoulders_lateral_raise.technique.5",
+      "exercise.info.shoulders_lateral_raise.technique.6"
+    ]
+  },
+  {
+    "exerciseId": "shoulders_cable_lateral_raise",
+    "descriptionKey": "exercise.info.shoulders_cable_lateral_raise.description",
+    "techniqueKeys": [
+      "exercise.info.shoulders_cable_lateral_raise.technique.1",
+      "exercise.info.shoulders_cable_lateral_raise.technique.2",
+      "exercise.info.shoulders_cable_lateral_raise.technique.3",
+      "exercise.info.shoulders_cable_lateral_raise.technique.4",
+      "exercise.info.shoulders_cable_lateral_raise.technique.5",
+      "exercise.info.shoulders_cable_lateral_raise.technique.6"
     ]
   },
   {
@@ -440,7 +485,10 @@
     "techniqueKeys": [
       "exercise.info.shoulders_front_raise.technique.1",
       "exercise.info.shoulders_front_raise.technique.2",
-      "exercise.info.shoulders_front_raise.technique.3"
+      "exercise.info.shoulders_front_raise.technique.3",
+      "exercise.info.shoulders_front_raise.technique.4",
+      "exercise.info.shoulders_front_raise.technique.5",
+      "exercise.info.shoulders_front_raise.technique.6"
     ]
   },
   {
@@ -449,7 +497,22 @@
     "techniqueKeys": [
       "exercise.info.shoulders_reverse_fly.technique.1",
       "exercise.info.shoulders_reverse_fly.technique.2",
-      "exercise.info.shoulders_reverse_fly.technique.3"
+      "exercise.info.shoulders_reverse_fly.technique.3",
+      "exercise.info.shoulders_reverse_fly.technique.4",
+      "exercise.info.shoulders_reverse_fly.technique.5",
+      "exercise.info.shoulders_reverse_fly.technique.6"
+    ]
+  },
+  {
+    "exerciseId": "shoulders_reverse_pec_deck",
+    "descriptionKey": "exercise.info.shoulders_reverse_pec_deck.description",
+    "techniqueKeys": [
+      "exercise.info.shoulders_reverse_pec_deck.technique.1",
+      "exercise.info.shoulders_reverse_pec_deck.technique.2",
+      "exercise.info.shoulders_reverse_pec_deck.technique.3",
+      "exercise.info.shoulders_reverse_pec_deck.technique.4",
+      "exercise.info.shoulders_reverse_pec_deck.technique.5",
+      "exercise.info.shoulders_reverse_pec_deck.technique.6"
     ]
   },
   {
@@ -458,61 +521,22 @@
     "techniqueKeys": [
       "exercise.info.shoulders_upright_row.technique.1",
       "exercise.info.shoulders_upright_row.technique.2",
-      "exercise.info.shoulders_upright_row.technique.3"
+      "exercise.info.shoulders_upright_row.technique.3",
+      "exercise.info.shoulders_upright_row.technique.4",
+      "exercise.info.shoulders_upright_row.technique.5",
+      "exercise.info.shoulders_upright_row.technique.6"
     ]
   },
   {
-    "exerciseId": "biceps_barbell_curl",
-    "descriptionKey": "exercise.info.biceps_barbell_curl.description",
+    "exerciseId": "shoulders_face_pull",
+    "descriptionKey": "exercise.info.shoulders_face_pull.description",
     "techniqueKeys": [
-      "exercise.info.biceps_barbell_curl.technique.1",
-      "exercise.info.biceps_barbell_curl.technique.2",
-      "exercise.info.biceps_barbell_curl.technique.3"
-    ]
-  },
-  {
-    "exerciseId": "biceps_dumbbell_curl",
-    "descriptionKey": "exercise.info.biceps_dumbbell_curl.description",
-    "techniqueKeys": [
-      "exercise.info.biceps_dumbbell_curl.technique.1",
-      "exercise.info.biceps_dumbbell_curl.technique.2",
-      "exercise.info.biceps_dumbbell_curl.technique.3"
-    ]
-  },
-  {
-    "exerciseId": "biceps_hammer_curl",
-    "descriptionKey": "exercise.info.biceps_hammer_curl.description",
-    "techniqueKeys": [
-      "exercise.info.biceps_hammer_curl.technique.1",
-      "exercise.info.biceps_hammer_curl.technique.2",
-      "exercise.info.biceps_hammer_curl.technique.3"
-    ]
-  },
-  {
-    "exerciseId": "biceps_preacher_curl",
-    "descriptionKey": "exercise.info.biceps_preacher_curl.description",
-    "techniqueKeys": [
-      "exercise.info.biceps_preacher_curl.technique.1",
-      "exercise.info.biceps_preacher_curl.technique.2",
-      "exercise.info.biceps_preacher_curl.technique.3"
-    ]
-  },
-  {
-    "exerciseId": "biceps_concentration_curl",
-    "descriptionKey": "exercise.info.biceps_concentration_curl.description",
-    "techniqueKeys": [
-      "exercise.info.biceps_concentration_curl.technique.1",
-      "exercise.info.biceps_concentration_curl.technique.2",
-      "exercise.info.biceps_concentration_curl.technique.3"
-    ]
-  },
-  {
-    "exerciseId": "biceps_cable_curl",
-    "descriptionKey": "exercise.info.biceps_cable_curl.description",
-    "techniqueKeys": [
-      "exercise.info.biceps_cable_curl.technique.1",
-      "exercise.info.biceps_cable_curl.technique.2",
-      "exercise.info.biceps_cable_curl.technique.3"
+      "exercise.info.shoulders_face_pull.technique.1",
+      "exercise.info.shoulders_face_pull.technique.2",
+      "exercise.info.shoulders_face_pull.technique.3",
+      "exercise.info.shoulders_face_pull.technique.4",
+      "exercise.info.shoulders_face_pull.technique.5",
+      "exercise.info.shoulders_face_pull.technique.6"
     ]
   },
   {
@@ -669,6 +693,138 @@
       "exercise.info.legs_hip_adduction_machine.technique.4",
       "exercise.info.legs_hip_adduction_machine.technique.5",
       "exercise.info.legs_hip_adduction_machine.technique.6"
+    ]
+  },
+  {
+    "exerciseId": "biceps_barbell_curl",
+    "descriptionKey": "exercise.info.biceps_barbell_curl.description",
+    "techniqueKeys": [
+      "exercise.info.biceps_barbell_curl.technique.1",
+      "exercise.info.biceps_barbell_curl.technique.2",
+      "exercise.info.biceps_barbell_curl.technique.3",
+      "exercise.info.biceps_barbell_curl.technique.4",
+      "exercise.info.biceps_barbell_curl.technique.5",
+      "exercise.info.biceps_barbell_curl.technique.6"
+    ]
+  },
+  {
+    "exerciseId": "biceps_ez_bar_curl",
+    "descriptionKey": "exercise.info.biceps_ez_bar_curl.description",
+    "techniqueKeys": [
+      "exercise.info.biceps_ez_bar_curl.technique.1",
+      "exercise.info.biceps_ez_bar_curl.technique.2",
+      "exercise.info.biceps_ez_bar_curl.technique.3",
+      "exercise.info.biceps_ez_bar_curl.technique.4",
+      "exercise.info.biceps_ez_bar_curl.technique.5",
+      "exercise.info.biceps_ez_bar_curl.technique.6"
+    ]
+  },
+  {
+    "exerciseId": "biceps_dumbbell_curl",
+    "descriptionKey": "exercise.info.biceps_dumbbell_curl.description",
+    "techniqueKeys": [
+      "exercise.info.biceps_dumbbell_curl.technique.1",
+      "exercise.info.biceps_dumbbell_curl.technique.2",
+      "exercise.info.biceps_dumbbell_curl.technique.3",
+      "exercise.info.biceps_dumbbell_curl.technique.4",
+      "exercise.info.biceps_dumbbell_curl.technique.5",
+      "exercise.info.biceps_dumbbell_curl.technique.6"
+    ]
+  },
+  {
+    "exerciseId": "biceps_alternating_dumbbell_curl",
+    "descriptionKey": "exercise.info.biceps_alternating_dumbbell_curl.description",
+    "techniqueKeys": [
+      "exercise.info.biceps_alternating_dumbbell_curl.technique.1",
+      "exercise.info.biceps_alternating_dumbbell_curl.technique.2",
+      "exercise.info.biceps_alternating_dumbbell_curl.technique.3",
+      "exercise.info.biceps_alternating_dumbbell_curl.technique.4",
+      "exercise.info.biceps_alternating_dumbbell_curl.technique.5",
+      "exercise.info.biceps_alternating_dumbbell_curl.technique.6"
+    ]
+  },
+  {
+    "exerciseId": "biceps_hammer_curl",
+    "descriptionKey": "exercise.info.biceps_hammer_curl.description",
+    "techniqueKeys": [
+      "exercise.info.biceps_hammer_curl.technique.1",
+      "exercise.info.biceps_hammer_curl.technique.2",
+      "exercise.info.biceps_hammer_curl.technique.3",
+      "exercise.info.biceps_hammer_curl.technique.4",
+      "exercise.info.biceps_hammer_curl.technique.5",
+      "exercise.info.biceps_hammer_curl.technique.6"
+    ]
+  },
+  {
+    "exerciseId": "biceps_preacher_curl",
+    "descriptionKey": "exercise.info.biceps_preacher_curl.description",
+    "techniqueKeys": [
+      "exercise.info.biceps_preacher_curl.technique.1",
+      "exercise.info.biceps_preacher_curl.technique.2",
+      "exercise.info.biceps_preacher_curl.technique.3",
+      "exercise.info.biceps_preacher_curl.technique.4",
+      "exercise.info.biceps_preacher_curl.technique.5",
+      "exercise.info.biceps_preacher_curl.technique.6"
+    ]
+  },
+  {
+    "exerciseId": "biceps_dumbbell_preacher_curl",
+    "descriptionKey": "exercise.info.biceps_dumbbell_preacher_curl.description",
+    "techniqueKeys": [
+      "exercise.info.biceps_dumbbell_preacher_curl.technique.1",
+      "exercise.info.biceps_dumbbell_preacher_curl.technique.2",
+      "exercise.info.biceps_dumbbell_preacher_curl.technique.3",
+      "exercise.info.biceps_dumbbell_preacher_curl.technique.4",
+      "exercise.info.biceps_dumbbell_preacher_curl.technique.5",
+      "exercise.info.biceps_dumbbell_preacher_curl.technique.6"
+    ]
+  },
+  {
+    "exerciseId": "biceps_incline_dumbbell_curl",
+    "descriptionKey": "exercise.info.biceps_incline_dumbbell_curl.description",
+    "techniqueKeys": [
+      "exercise.info.biceps_incline_dumbbell_curl.technique.1",
+      "exercise.info.biceps_incline_dumbbell_curl.technique.2",
+      "exercise.info.biceps_incline_dumbbell_curl.technique.3",
+      "exercise.info.biceps_incline_dumbbell_curl.technique.4",
+      "exercise.info.biceps_incline_dumbbell_curl.technique.5",
+      "exercise.info.biceps_incline_dumbbell_curl.technique.6"
+    ]
+  },
+  {
+    "exerciseId": "biceps_concentration_curl",
+    "descriptionKey": "exercise.info.biceps_concentration_curl.description",
+    "techniqueKeys": [
+      "exercise.info.biceps_concentration_curl.technique.1",
+      "exercise.info.biceps_concentration_curl.technique.2",
+      "exercise.info.biceps_concentration_curl.technique.3",
+      "exercise.info.biceps_concentration_curl.technique.4",
+      "exercise.info.biceps_concentration_curl.technique.5",
+      "exercise.info.biceps_concentration_curl.technique.6"
+    ]
+  },
+  {
+    "exerciseId": "biceps_cable_curl",
+    "descriptionKey": "exercise.info.biceps_cable_curl.description",
+    "techniqueKeys": [
+      "exercise.info.biceps_cable_curl.technique.1",
+      "exercise.info.biceps_cable_curl.technique.2",
+      "exercise.info.biceps_cable_curl.technique.3",
+      "exercise.info.biceps_cable_curl.technique.4",
+      "exercise.info.biceps_cable_curl.technique.5",
+      "exercise.info.biceps_cable_curl.technique.6"
+    ]
+  },
+  {
+    "exerciseId": "biceps_spider_curl",
+    "descriptionKey": "exercise.info.biceps_spider_curl.description",
+    "techniqueKeys": [
+      "exercise.info.biceps_spider_curl.technique.1",
+      "exercise.info.biceps_spider_curl.technique.2",
+      "exercise.info.biceps_spider_curl.technique.3",
+      "exercise.info.biceps_spider_curl.technique.4",
+      "exercise.info.biceps_spider_curl.technique.5",
+      "exercise.info.biceps_spider_curl.technique.6"
     ]
   }
 ]
