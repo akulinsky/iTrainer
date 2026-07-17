@@ -281,7 +281,7 @@ class SetEditCellViewModel: ObservableObject, Identifiable {
             switch param {
             case .weight(let value):
                 weightUnit = unitFormatter.weightUnit
-                if value > 0 {
+                if value >= 0 {
                     self.value = unitFormatter.weightText(kilograms: value)
                 }
                 keyboardType = .decimalPad
@@ -394,7 +394,7 @@ class SetEditCellViewModel: ObservableObject, Identifiable {
     private func isValid(parameter: SetsParameter) -> Bool {
         switch parameter {
         case .weight(let value):
-            return value > 0
+            return value >= 0
         case .repeats(let value):
             return value > 0
         case .distance(let value):
@@ -412,7 +412,7 @@ class SetEditCellViewModel: ObservableObject, Identifiable {
         switch paramData.param {
         case .weight:
             let value = parsedFloat(from: paramData.value)
-            return value > 0 ? .weight(unitFormatter.kilograms(fromInputValue: value)) : nil
+            return value >= 0 ? .weight(unitFormatter.kilograms(fromInputValue: value)) : nil
         case .repeats:
             guard let value = Int(paramData.value), value > 0 else {
                 return nil
@@ -457,7 +457,7 @@ class SetEditCellViewModel: ObservableObject, Identifiable {
     private func displayValue(for parameter: SetsParameter) -> String {
         switch parameter {
         case .weight(let value):
-            return value > 0 ? unitFormatter.weightTextWithUnit(kilograms: value) : ""
+            return value >= 0 ? unitFormatter.weightTextWithUnit(kilograms: value) : ""
         case .repeats(let value):
             return value > 0 ? "\(value)" : ""
         case .distance(let value):
@@ -470,7 +470,7 @@ class SetEditCellViewModel: ObservableObject, Identifiable {
     private func textFieldValue(for parameter: SetsParameter, unit: DistanceInputUnit = .meters) -> String {
         switch parameter {
         case .weight(let value):
-            return value > 0 ? unitFormatter.weightText(kilograms: value) : ""
+            return value >= 0 ? unitFormatter.weightText(kilograms: value) : ""
         case .repeats(let value):
             return value > 0 ? "\(value)" : ""
         case .distance(let value):

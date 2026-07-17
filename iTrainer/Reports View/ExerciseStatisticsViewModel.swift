@@ -38,6 +38,7 @@ final class ExerciseStatisticsViewModel: ObservableObject {
     let trackingType: ExerciseTrackingType?
     
     private var statisticsTask: Task<Void, Never>?
+    private var hasAppliedDataDrivenDefaultMetric = false
     
     init(exercise: ReportExerciseModel) {
         self.scope = .local(exercise)
@@ -194,7 +195,9 @@ final class ExerciseStatisticsViewModel: ObservableObject {
             globalReports = global
         }
         
-        scheduleStatisticsPreparation()
+        if !applyDataDrivenDefaultMetricIfNeeded() {
+            scheduleStatisticsPreparation()
+        }
     }
     
     private func scheduleStatisticsPreparation() {
@@ -235,6 +238,24 @@ final class ExerciseStatisticsViewModel: ObservableObject {
         case .global:
             globalReports
         }
+    }
+    
+    @discardableResult
+    private func applyDataDrivenDefaultMetricIfNeeded() -> Bool {
+        guard !hasAppliedDataDrivenDefaultMetric,
+              trackingType == .weightedReps else {
+            return false
+        }
+        
+        hasAppliedDataDrivenDefaultMetric = true
+        
+        guard selectedMetric == Self.defaultMetric(for: trackingType),
+              Self.shouldPreferRepetitionsMetric(for: activeReportsSnapshot) else {
+            return false
+        }
+        
+        selectedMetric = .repetitions
+        return true
     }
     
     private static func prepareStatistics(activeReports: [ReportExerciseModel],
@@ -287,6 +308,12 @@ final class ExerciseStatisticsViewModel: ObservableObject {
         case nil:
             return [.repetitions]
         }
+    }
+    
+    private static func shouldPreferRepetitionsMetric(for reports: [ReportExerciseModel]) -> Bool {
+        let sets = reports.flatMap(performedStrengthSets)
+        guard !sets.isEmpty else { return false }
+        return !sets.contains { $0.weight > 0 }
     }
     
     private static func makePeriodSummary(points: [ExerciseStatisticsPoint],
@@ -492,7 +519,7 @@ final class ExerciseStatisticsViewModel: ObservableObject {
         report.sets.compactMap { set in
             guard let weight = ReportStatusService.weightValue(for: set.parameters),
                   let reps = ReportStatusService.repsValue(for: set.parameters),
-                  weight > 0,
+                  weight >= 0,
                   reps > 0 else {
                 return nil
             }

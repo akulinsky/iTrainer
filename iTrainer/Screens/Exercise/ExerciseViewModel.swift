@@ -366,14 +366,14 @@ class ExerciseViewModel: ObservableObject {
                     return
                 }
             case .repeats(_):
-                if let value = Int(param.value), value >= 0 {
+                if let value = Int(param.value), value > 0 {
                     result.append(.repeats(value))
                 } else {
                     param.shake.send()
                     return
                 }
             case .distance(_):
-                if let value = DistanceInputUnit.inputValue(from: param.value), value >= 0 {
+                if let value = DistanceInputUnit.inputValue(from: param.value), value > 0 {
                     result.append(.distance(param.distanceUnit.meters(fromInputValue: value)))
                 } else {
                     param.shake.send()
@@ -381,7 +381,7 @@ class ExerciseViewModel: ObservableObject {
                 }
             case .time(_):
                 let value = param.value.replacingOccurrences(of: ":", with: "")
-                if let value = Double(value), value >= 0 {
+                if let value = Double(value), value > 0 {
                     let time = TimeInterval.timeForSet(value: value)
                     result.append(.time(time))
                 } else {

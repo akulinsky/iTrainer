@@ -44,7 +44,7 @@ struct EditSetsView: View {
             switch param {
             case .weight(let value):
                 weightUnit = formatter.weightUnit
-                if value > 0 {
+                if value >= 0 {
                     self.value = formatter.weightText(kilograms: value)
                 }
             case .distance(let value):
@@ -66,7 +66,7 @@ struct EditSetsView: View {
             
             switch param {
             case .weight(let value):
-                if value > 0 {
+                if value >= 0 {
                     self.value = "\(value)"
                 }
                 keyboardType = .decimalPad
@@ -336,7 +336,7 @@ struct EditSetsView: View {
         for param in params {
             switch param.param {
             case .weight(_):
-                if let value = parsedFloat(from: param.value), value > 0 {
+                if let value = parsedFloat(from: param.value), value >= 0 {
                     result.append(.weight(unitFormatter.kilograms(fromInputValue: value)))
                 } else {
                     param.shake.send()
