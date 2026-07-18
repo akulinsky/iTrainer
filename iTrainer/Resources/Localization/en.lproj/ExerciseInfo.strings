@@ -775,3 +775,91 @@
 "exercise.info.abs_ab_wheel_rollout.technique.4" = "Do not let the lower back sag.";
 "exercise.info.abs_ab_wheel_rollout.technique.5" = "Pull the wheel back by tightening the abs.";
 "exercise.info.abs_ab_wheel_rollout.technique.6" = "Use a shorter range until the full movement is stable.";
+
+"exercise.info.cardio_running.description" = "Running is a rhythmic cardio exercise that builds aerobic endurance and can be tracked by distance and time.";
+"exercise.info.cardio_running.technique.1" = "Start with a short warm-up walk or easy jog.";
+"exercise.info.cardio_running.technique.2" = "Keep the torso tall with a slight natural lean forward.";
+"exercise.info.cardio_running.technique.3" = "Land softly with the foot close to under the body.";
+"exercise.info.cardio_running.technique.4" = "Use a comfortable stride instead of reaching too far forward.";
+"exercise.info.cardio_running.technique.5" = "Let the arms swing naturally beside the torso.";
+"exercise.info.cardio_running.technique.6" = "Increase distance or pace gradually over time.";
+
+"exercise.info.cardio_walking.description" = "Walking is a low-impact cardio exercise for general activity, recovery, and aerobic endurance.";
+"exercise.info.cardio_walking.technique.1" = "Walk at a pace that raises breathing while remaining controlled.";
+"exercise.info.cardio_walking.technique.2" = "Keep the head up and the torso tall.";
+"exercise.info.cardio_walking.technique.3" = "Roll through the foot smoothly from heel to toe.";
+"exercise.info.cardio_walking.technique.4" = "Let the arms swing naturally without tensing the shoulders.";
+"exercise.info.cardio_walking.technique.5" = "Choose stable footwear and a safe route.";
+"exercise.info.cardio_walking.technique.6" = "Build duration and distance gradually.";
+
+"exercise.info.cardio_treadmill.description" = "Treadmill walking or running is gym cardio tracked by session time rather than route distance.";
+"exercise.info.cardio_treadmill.technique.1" = "Step onto the side rails before starting the belt.";
+"exercise.info.cardio_treadmill.technique.2" = "Begin at an easy speed and increase it gradually.";
+"exercise.info.cardio_treadmill.technique.3" = "Look ahead instead of down at the console.";
+"exercise.info.cardio_treadmill.technique.4" = "Keep a tall posture and avoid holding the rails while moving.";
+"exercise.info.cardio_treadmill.technique.5" = "Use the safety clip when the treadmill has one.";
+"exercise.info.cardio_treadmill.technique.6" = "Slow the belt before stepping off.";
+
+"exercise.info.cardio_cycling.description" = "Cycling is an outdoor cardio activity that can be logged by distance and time.";
+"exercise.info.cardio_cycling.technique.1" = "Wear a properly fitted helmet for outdoor rides.";
+"exercise.info.cardio_cycling.technique.2" = "Set the saddle so the knee stays slightly bent at the bottom of the pedal stroke.";
+"exercise.info.cardio_cycling.technique.3" = "Keep a relaxed grip on the handlebars.";
+"exercise.info.cardio_cycling.technique.4" = "Pedal smoothly with a steady cadence.";
+"exercise.info.cardio_cycling.technique.5" = "Follow traffic rules and stay aware of the route.";
+"exercise.info.cardio_cycling.technique.6" = "Increase ride distance and intensity gradually.";
+
+"exercise.info.cardio_stationary_bike.description" = "Stationary Bike is indoor cardio where session time is the primary training measure.";
+"exercise.info.cardio_stationary_bike.technique.1" = "Adjust the saddle before starting the session.";
+"exercise.info.cardio_stationary_bike.technique.2" = "Keep a slight bend in the knee at the bottom of each pedal stroke.";
+"exercise.info.cardio_stationary_bike.technique.3" = "Keep the torso stable and shoulders relaxed.";
+"exercise.info.cardio_stationary_bike.technique.4" = "Pedal through a smooth, controlled circle.";
+"exercise.info.cardio_stationary_bike.technique.5" = "Choose resistance that matches the planned effort.";
+"exercise.info.cardio_stationary_bike.technique.6" = "Lower the pace gradually to finish the session.";
+
+"exercise.info.cardio_elliptical.description" = "Elliptical is low-impact cardio that trains the whole body with a guided stepping motion.";
+"exercise.info.cardio_elliptical.technique.1" = "Step onto the pedals only after the machine is stable.";
+"exercise.info.cardio_elliptical.technique.2" = "Keep the torso upright and the core lightly braced.";
+"exercise.info.cardio_elliptical.technique.3" = "Place the whole foot on each pedal.";
+"exercise.info.cardio_elliptical.technique.4" = "Move the handles and pedals with a smooth rhythm.";
+"exercise.info.cardio_elliptical.technique.5" = "Avoid leaning heavily on the fixed handles.";
+"exercise.info.cardio_elliptical.technique.6" = "Adjust resistance or incline gradually.";
+
+"exercise.info.cardio_rowing_machine.description" = "Rowing Machine is full-body indoor cardio built around a coordinated leg, torso, and arm stroke.";
+"exercise.info.cardio_rowing_machine.technique.1" = "Secure the feet and set the damper to a manageable level.";
+"exercise.info.cardio_rowing_machine.technique.2" = "Drive first with the legs while keeping the arms straight.";
+"exercise.info.cardio_rowing_machine.technique.3" = "Open the torso slightly after the legs extend.";
+"exercise.info.cardio_rowing_machine.technique.4" = "Finish the stroke by drawing the handle toward the lower ribs.";
+"exercise.info.cardio_rowing_machine.technique.5" = "Return in reverse order: arms, torso, then knees.";
+"exercise.info.cardio_rowing_machine.technique.6" = "Keep the back neutral and the stroke smooth.";
+
+"exercise.info.cardio_jump_rope.description" = "Jump Rope is a simple cardio exercise that develops rhythm, coordination, and lower-leg endurance.";
+"exercise.info.cardio_jump_rope.technique.1" = "Use a rope length that clears the floor comfortably.";
+"exercise.info.cardio_jump_rope.technique.2" = "Jump only high enough for the rope to pass.";
+"exercise.info.cardio_jump_rope.technique.3" = "Turn the rope mainly with the wrists.";
+"exercise.info.cardio_jump_rope.technique.4" = "Land softly on the balls of the feet.";
+"exercise.info.cardio_jump_rope.technique.5" = "Keep the elbows close to the torso.";
+"exercise.info.cardio_jump_rope.technique.6" = "Build longer intervals gradually to protect the calves and shins.";
+
+"exercise.info.cardio_stair_climber.description" = "Stair Climber is indoor cardio that simulates climbing stairs and emphasizes the legs and glutes.";
+"exercise.info.cardio_stair_climber.technique.1" = "Step onto the machine only after it is stable.";
+"exercise.info.cardio_stair_climber.technique.2" = "Stand tall with the core lightly braced.";
+"exercise.info.cardio_stair_climber.technique.3" = "Place the whole foot on each step.";
+"exercise.info.cardio_stair_climber.technique.4" = "Use the rails for balance, not to support body weight.";
+"exercise.info.cardio_stair_climber.technique.5" = "Keep a steady pace you can control.";
+"exercise.info.cardio_stair_climber.technique.6" = "Increase speed or resistance gradually.";
+
+"exercise.info.cardio_swimming.description" = "Swimming is a full-body, low-impact cardio activity that can be tracked by distance and time.";
+"exercise.info.cardio_swimming.technique.1" = "Choose a stroke and pace that match your swimming ability.";
+"exercise.info.cardio_swimming.technique.2" = "Warm up with easy lengths before harder work.";
+"exercise.info.cardio_swimming.technique.3" = "Keep the body long and streamlined in the water.";
+"exercise.info.cardio_swimming.technique.4" = "Breathe in a regular, controlled rhythm.";
+"exercise.info.cardio_swimming.technique.5" = "Push off the wall carefully and stay aware of lane traffic.";
+"exercise.info.cardio_swimming.technique.6" = "Build total distance gradually.";
+
+"exercise.info.cardio_ski_erg.description" = "SkiErg is a standing indoor cardio exercise that uses a powerful downward pulling motion.";
+"exercise.info.cardio_ski_erg.technique.1" = "Stand with feet about shoulder-width apart.";
+"exercise.info.cardio_ski_erg.technique.2" = "Reach up for the handles with relaxed shoulders.";
+"exercise.info.cardio_ski_erg.technique.3" = "Pull the handles down by engaging the lats and core.";
+"exercise.info.cardio_ski_erg.technique.4" = "Hinge slightly at the hips instead of rounding the back.";
+"exercise.info.cardio_ski_erg.technique.5" = "Finish with the hands near the hips, then return smoothly.";
+"exercise.info.cardio_ski_erg.technique.6" = "Keep a steady rhythm before adding more power.";

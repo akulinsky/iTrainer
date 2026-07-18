@@ -1162,5 +1162,137 @@
       "exercise.info.abs_ab_wheel_rollout.technique.5",
       "exercise.info.abs_ab_wheel_rollout.technique.6"
     ]
+  },
+  {
+    "exerciseId": "cardio_running",
+    "descriptionKey": "exercise.info.cardio_running.description",
+    "techniqueKeys": [
+      "exercise.info.cardio_running.technique.1",
+      "exercise.info.cardio_running.technique.2",
+      "exercise.info.cardio_running.technique.3",
+      "exercise.info.cardio_running.technique.4",
+      "exercise.info.cardio_running.technique.5",
+      "exercise.info.cardio_running.technique.6"
+    ]
+  },
+  {
+    "exerciseId": "cardio_walking",
+    "descriptionKey": "exercise.info.cardio_walking.description",
+    "techniqueKeys": [
+      "exercise.info.cardio_walking.technique.1",
+      "exercise.info.cardio_walking.technique.2",
+      "exercise.info.cardio_walking.technique.3",
+      "exercise.info.cardio_walking.technique.4",
+      "exercise.info.cardio_walking.technique.5",
+      "exercise.info.cardio_walking.technique.6"
+    ]
+  },
+  {
+    "exerciseId": "cardio_treadmill",
+    "descriptionKey": "exercise.info.cardio_treadmill.description",
+    "techniqueKeys": [
+      "exercise.info.cardio_treadmill.technique.1",
+      "exercise.info.cardio_treadmill.technique.2",
+      "exercise.info.cardio_treadmill.technique.3",
+      "exercise.info.cardio_treadmill.technique.4",
+      "exercise.info.cardio_treadmill.technique.5",
+      "exercise.info.cardio_treadmill.technique.6"
+    ]
+  },
+  {
+    "exerciseId": "cardio_cycling",
+    "descriptionKey": "exercise.info.cardio_cycling.description",
+    "techniqueKeys": [
+      "exercise.info.cardio_cycling.technique.1",
+      "exercise.info.cardio_cycling.technique.2",
+      "exercise.info.cardio_cycling.technique.3",
+      "exercise.info.cardio_cycling.technique.4",
+      "exercise.info.cardio_cycling.technique.5",
+      "exercise.info.cardio_cycling.technique.6"
+    ]
+  },
+  {
+    "exerciseId": "cardio_stationary_bike",
+    "descriptionKey": "exercise.info.cardio_stationary_bike.description",
+    "techniqueKeys": [
+      "exercise.info.cardio_stationary_bike.technique.1",
+      "exercise.info.cardio_stationary_bike.technique.2",
+      "exercise.info.cardio_stationary_bike.technique.3",
+      "exercise.info.cardio_stationary_bike.technique.4",
+      "exercise.info.cardio_stationary_bike.technique.5",
+      "exercise.info.cardio_stationary_bike.technique.6"
+    ]
+  },
+  {
+    "exerciseId": "cardio_elliptical",
+    "descriptionKey": "exercise.info.cardio_elliptical.description",
+    "techniqueKeys": [
+      "exercise.info.cardio_elliptical.technique.1",
+      "exercise.info.cardio_elliptical.technique.2",
+      "exercise.info.cardio_elliptical.technique.3",
+      "exercise.info.cardio_elliptical.technique.4",
+      "exercise.info.cardio_elliptical.technique.5",
+      "exercise.info.cardio_elliptical.technique.6"
+    ]
+  },
+  {
+    "exerciseId": "cardio_rowing",
+    "descriptionKey": "exercise.info.cardio_rowing_machine.description",
+    "techniqueKeys": [
+      "exercise.info.cardio_rowing_machine.technique.1",
+      "exercise.info.cardio_rowing_machine.technique.2",
+      "exercise.info.cardio_rowing_machine.technique.3",
+      "exercise.info.cardio_rowing_machine.technique.4",
+      "exercise.info.cardio_rowing_machine.technique.5",
+      "exercise.info.cardio_rowing_machine.technique.6"
+    ]
+  },
+  {
+    "exerciseId": "cardio_jump_rope",
+    "descriptionKey": "exercise.info.cardio_jump_rope.description",
+    "techniqueKeys": [
+      "exercise.info.cardio_jump_rope.technique.1",
+      "exercise.info.cardio_jump_rope.technique.2",
+      "exercise.info.cardio_jump_rope.technique.3",
+      "exercise.info.cardio_jump_rope.technique.4",
+      "exercise.info.cardio_jump_rope.technique.5",
+      "exercise.info.cardio_jump_rope.technique.6"
+    ]
+  },
+  {
+    "exerciseId": "cardio_stair_climber",
+    "descriptionKey": "exercise.info.cardio_stair_climber.description",
+    "techniqueKeys": [
+      "exercise.info.cardio_stair_climber.technique.1",
+      "exercise.info.cardio_stair_climber.technique.2",
+      "exercise.info.cardio_stair_climber.technique.3",
+      "exercise.info.cardio_stair_climber.technique.4",
+      "exercise.info.cardio_stair_climber.technique.5",
+      "exercise.info.cardio_stair_climber.technique.6"
+    ]
+  },
+  {
+    "exerciseId": "cardio_swimming",
+    "descriptionKey": "exercise.info.cardio_swimming.description",
+    "techniqueKeys": [
+      "exercise.info.cardio_swimming.technique.1",
+      "exercise.info.cardio_swimming.technique.2",
+      "exercise.info.cardio_swimming.technique.3",
+      "exercise.info.cardio_swimming.technique.4",
+      "exercise.info.cardio_swimming.technique.5",
+      "exercise.info.cardio_swimming.technique.6"
+    ]
+  },
+  {
+    "exerciseId": "cardio_ski_erg",
+    "descriptionKey": "exercise.info.cardio_ski_erg.description",
+    "techniqueKeys": [
+      "exercise.info.cardio_ski_erg.technique.1",
+      "exercise.info.cardio_ski_erg.technique.2",
+      "exercise.info.cardio_ski_erg.technique.3",
+      "exercise.info.cardio_ski_erg.technique.4",
+      "exercise.info.cardio_ski_erg.technique.5",
+      "exercise.info.cardio_ski_erg.technique.6"
+    ]
   }
 ]

@@ -775,3 +775,91 @@
 "exercise.info.abs_ab_wheel_rollout.technique.4" = "Не проваливайтесь в пояснице.";
 "exercise.info.abs_ab_wheel_rollout.technique.5" = "Возвращайте ролик назад за счет напряжения пресса.";
 "exercise.info.abs_ab_wheel_rollout.technique.6" = "Используйте короткую амплитуду, пока полное движение не станет стабильным.";
+
+"exercise.info.cardio_running.description" = "Бег - циклическая кардионагрузка для развития выносливости, которую удобно отслеживать по дистанции и времени.";
+"exercise.info.cardio_running.technique.1" = "Начните с короткой разминки: ходьбы или легкого бега.";
+"exercise.info.cardio_running.technique.2" = "Держите корпус ровно с небольшим естественным наклоном вперед.";
+"exercise.info.cardio_running.technique.3" = "Мягко ставьте стопу близко под корпусом.";
+"exercise.info.cardio_running.technique.4" = "Используйте комфортную длину шага, не тянитесь стопой далеко вперед.";
+"exercise.info.cardio_running.technique.5" = "Позвольте рукам свободно двигаться вдоль корпуса.";
+"exercise.info.cardio_running.technique.6" = "Повышайте дистанцию или темп постепенно.";
+
+"exercise.info.cardio_walking.description" = "Ходьба - низкоударная кардионагрузка для ежедневной активности, восстановления и развития выносливости.";
+"exercise.info.cardio_walking.technique.1" = "Идите в темпе, который учащает дыхание, но остается контролируемым.";
+"exercise.info.cardio_walking.technique.2" = "Держите голову поднятой, а корпус ровным.";
+"exercise.info.cardio_walking.technique.3" = "Плавно перекатывайте стопу с пятки на носок.";
+"exercise.info.cardio_walking.technique.4" = "Свободно двигайте руками, не напрягая плечи.";
+"exercise.info.cardio_walking.technique.5" = "Выбирайте устойчивую обувь и безопасный маршрут.";
+"exercise.info.cardio_walking.technique.6" = "Постепенно увеличивайте время и дистанцию.";
+
+"exercise.info.cardio_treadmill.description" = "Беговая дорожка - кардио в зале, где основной мерой тренировки является время сессии, а не дистанция маршрута.";
+"exercise.info.cardio_treadmill.technique.1" = "Перед запуском ленты встаньте на боковые платформы.";
+"exercise.info.cardio_treadmill.technique.2" = "Начинайте с легкой скорости и повышайте ее постепенно.";
+"exercise.info.cardio_treadmill.technique.3" = "Смотрите вперед, а не вниз на консоль.";
+"exercise.info.cardio_treadmill.technique.4" = "Держите ровную осанку и не висите на поручнях во время движения.";
+"exercise.info.cardio_treadmill.technique.5" = "Используйте страховочный клип, если он есть на дорожке.";
+"exercise.info.cardio_treadmill.technique.6" = "Снизьте скорость ленты перед тем, как сойти.";
+
+"exercise.info.cardio_cycling.description" = "Велосипед - кардио на улице, которое удобно записывать по дистанции и времени.";
+"exercise.info.cardio_cycling.technique.1" = "Для поездок на улице используйте правильно подобранный шлем.";
+"exercise.info.cardio_cycling.technique.2" = "Настройте седло так, чтобы внизу педалирования колено оставалось немного согнутым.";
+"exercise.info.cardio_cycling.technique.3" = "Держите руль расслабленным хватом.";
+"exercise.info.cardio_cycling.technique.4" = "Педалируйте плавно, сохраняя ровный каденс.";
+"exercise.info.cardio_cycling.technique.5" = "Соблюдайте правила движения и следите за маршрутом.";
+"exercise.info.cardio_cycling.technique.6" = "Постепенно увеличивайте дистанцию и интенсивность поездок.";
+
+"exercise.info.cardio_stationary_bike.description" = "Велотренажер - кардио в помещении, где главным показателем тренировки является время сессии.";
+"exercise.info.cardio_stationary_bike.technique.1" = "Настройте высоту седла до начала тренировки.";
+"exercise.info.cardio_stationary_bike.technique.2" = "В нижней точке педалирования сохраняйте небольшой сгиб в колене.";
+"exercise.info.cardio_stationary_bike.technique.3" = "Удерживайте корпус стабильным, а плечи расслабленными.";
+"exercise.info.cardio_stationary_bike.technique.4" = "Вращайте педали плавно и контролируемо.";
+"exercise.info.cardio_stationary_bike.technique.5" = "Выбирайте сопротивление под запланированную нагрузку.";
+"exercise.info.cardio_stationary_bike.technique.6" = "В конце постепенно снижайте темп.";
+
+"exercise.info.cardio_elliptical.description" = "Эллипс - низкоударное кардио, в котором все тело работает в направляющем шаговом движении.";
+"exercise.info.cardio_elliptical.technique.1" = "Вставайте на педали только после того, как тренажер стабилен.";
+"exercise.info.cardio_elliptical.technique.2" = "Держите корпус ровно, слегка напрягая мышцы кора.";
+"exercise.info.cardio_elliptical.technique.3" = "Ставьте на педаль всю стопу.";
+"exercise.info.cardio_elliptical.technique.4" = "Двигайте рукояти и педали в плавном ритме.";
+"exercise.info.cardio_elliptical.technique.5" = "Не переносите большой вес тела на неподвижные поручни.";
+"exercise.info.cardio_elliptical.technique.6" = "Повышайте сопротивление или наклон постепенно.";
+
+"exercise.info.cardio_rowing_machine.description" = "Гребной тренажер - кардио для всего тела, построенное на согласованной работе ног, корпуса и рук.";
+"exercise.info.cardio_rowing_machine.technique.1" = "Зафиксируйте стопы и выберите комфортный уровень сопротивления.";
+"exercise.info.cardio_rowing_machine.technique.2" = "Начинайте тягу ногами, удерживая руки прямыми.";
+"exercise.info.cardio_rowing_machine.technique.3" = "После выпрямления ног слегка откройте корпус.";
+"exercise.info.cardio_rowing_machine.technique.4" = "Завершайте тягу, ведя рукоять к нижним ребрам.";
+"exercise.info.cardio_rowing_machine.technique.5" = "Возвращайтесь в обратном порядке: руки, корпус, затем колени.";
+"exercise.info.cardio_rowing_machine.technique.6" = "Держите спину нейтральной и выполняйте тягу плавно.";
+
+"exercise.info.cardio_jump_rope.description" = "Скакалка - простое кардио для развития ритма, координации и выносливости голени.";
+"exercise.info.cardio_jump_rope.technique.1" = "Подберите длину скакалки, при которой она свободно проходит над полом.";
+"exercise.info.cardio_jump_rope.technique.2" = "Прыгайте только на высоту, достаточную для прохода скакалки.";
+"exercise.info.cardio_jump_rope.technique.3" = "Вращайте скакалку преимущественно кистями.";
+"exercise.info.cardio_jump_rope.technique.4" = "Мягко приземляйтесь на переднюю часть стопы.";
+"exercise.info.cardio_jump_rope.technique.5" = "Держите локти близко к корпусу.";
+"exercise.info.cardio_jump_rope.technique.6" = "Увеличивайте длительность интервалов постепенно, чтобы не перегружать голени.";
+
+"exercise.info.cardio_stair_climber.description" = "Степпер - кардио в зале, имитирующее подъем по лестнице и нагружающее ноги и ягодицы.";
+"exercise.info.cardio_stair_climber.technique.1" = "Вставайте на тренажер только после того, как он стабилен.";
+"exercise.info.cardio_stair_climber.technique.2" = "Стойте ровно, слегка напрягая мышцы кора.";
+"exercise.info.cardio_stair_climber.technique.3" = "Ставьте на каждую ступень всю стопу.";
+"exercise.info.cardio_stair_climber.technique.4" = "Используйте поручни для равновесия, а не для переноса веса тела.";
+"exercise.info.cardio_stair_climber.technique.5" = "Поддерживайте ровный темп, который можете контролировать.";
+"exercise.info.cardio_stair_climber.technique.6" = "Повышайте скорость или сопротивление постепенно.";
+
+"exercise.info.cardio_swimming.description" = "Плавание - низкоударная кардионагрузка для всего тела, которую удобно отслеживать по дистанции и времени.";
+"exercise.info.cardio_swimming.technique.1" = "Выбирайте стиль и темп в соответствии со своим уровнем плавания.";
+"exercise.info.cardio_swimming.technique.2" = "Перед интенсивной работой проплывите несколько легких дорожек.";
+"exercise.info.cardio_swimming.technique.3" = "Сохраняйте длинное, обтекаемое положение тела в воде.";
+"exercise.info.cardio_swimming.technique.4" = "Дышите в ровном и контролируемом ритме.";
+"exercise.info.cardio_swimming.technique.5" = "Аккуратно отталкивайтесь от бортика и следите за движением на дорожке.";
+"exercise.info.cardio_swimming.technique.6" = "Увеличивайте общую дистанцию постепенно.";
+
+"exercise.info.cardio_ski_erg.description" = "SkiErg - кардио в зале стоя, построенное на мощном движении рукоятей вниз.";
+"exercise.info.cardio_ski_erg.technique.1" = "Поставьте стопы примерно на ширине плеч.";
+"exercise.info.cardio_ski_erg.technique.2" = "Возьмитесь за рукояти сверху, сохраняя плечи расслабленными.";
+"exercise.info.cardio_ski_erg.technique.3" = "Тяните рукояти вниз, подключая широчайшие и мышцы кора.";
+"exercise.info.cardio_ski_erg.technique.4" = "Слегка наклоняйтесь в тазобедренных суставах, не округляя спину.";
+"exercise.info.cardio_ski_erg.technique.5" = "Заканчивайте движение руками у таза, затем плавно возвращайтесь вверх.";
+"exercise.info.cardio_ski_erg.technique.6" = "Сначала поддерживайте ровный ритм, затем добавляйте мощность.";

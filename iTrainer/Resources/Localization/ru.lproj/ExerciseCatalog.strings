@@ -111,9 +111,14 @@
 "exercise.cardio.running" = "Бег";
 "exercise.cardio.walking" = "Ходьба";
 "exercise.cardio.cycling" = "Велосипед";
+"exercise.cardio.treadmill" = "Беговая дорожка";
+"exercise.cardio.stationary_bike" = "Велотренажер";
 "exercise.cardio.elliptical" = "Эллипс";
-"exercise.cardio.rowing" = "Гребля";
+"exercise.cardio.rowing_machine" = "Гребной тренажер";
 "exercise.cardio.jump_rope" = "Скакалка";
+"exercise.cardio.stair_climber" = "Степпер";
+"exercise.cardio.swimming" = "Плавание";
+"exercise.cardio.ski_erg" = "SkiErg";
 "exercise.functional_training.burpee" = "Берпи";
 "exercise.functional_training.thruster" = "Трастеры";
 "exercise.functional_training.kettlebell_swing" = "Махи гирей";

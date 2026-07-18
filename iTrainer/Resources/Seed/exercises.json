@@ -837,38 +837,83 @@
     "trackingType": "distanceTime"
   },
   {
+    "id": "cardio_treadmill",
+    "titleKey": "exercise.cardio.treadmill",
+    "defaultTitle": "Treadmill",
+    "category": "cardio",
+    "sortOrder": 2,
+    "iconName": "icMissingImage",
+    "trackingType": "timed"
+  },
+  {
     "id": "cardio_cycling",
     "titleKey": "exercise.cardio.cycling",
     "defaultTitle": "Cycling",
     "category": "cardio",
-    "sortOrder": 2,
+    "sortOrder": 3,
     "iconName": "icMissingImage",
     "trackingType": "distanceTime"
+  },
+  {
+    "id": "cardio_stationary_bike",
+    "titleKey": "exercise.cardio.stationary_bike",
+    "defaultTitle": "Stationary Bike",
+    "category": "cardio",
+    "sortOrder": 4,
+    "iconName": "icMissingImage",
+    "trackingType": "timed"
   },
   {
     "id": "cardio_elliptical",
     "titleKey": "exercise.cardio.elliptical",
     "defaultTitle": "Elliptical",
     "category": "cardio",
-    "sortOrder": 3,
+    "sortOrder": 5,
     "iconName": "icMissingImage",
     "trackingType": "timed"
   },
   {
     "id": "cardio_rowing",
-    "titleKey": "exercise.cardio.rowing",
-    "defaultTitle": "Rowing",
+    "titleKey": "exercise.cardio.rowing_machine",
+    "defaultTitle": "Rowing Machine",
     "category": "cardio",
-    "sortOrder": 4,
+    "sortOrder": 6,
     "iconName": "icMissingImage",
-    "trackingType": "distanceTime"
+    "trackingType": "timed"
   },
   {
     "id": "cardio_jump_rope",
     "titleKey": "exercise.cardio.jump_rope",
     "defaultTitle": "Jump Rope",
     "category": "cardio",
-    "sortOrder": 5,
+    "sortOrder": 7,
+    "iconName": "icMissingImage",
+    "trackingType": "timed"
+  },
+  {
+    "id": "cardio_stair_climber",
+    "titleKey": "exercise.cardio.stair_climber",
+    "defaultTitle": "Stair Climber",
+    "category": "cardio",
+    "sortOrder": 8,
+    "iconName": "icMissingImage",
+    "trackingType": "timed"
+  },
+  {
+    "id": "cardio_swimming",
+    "titleKey": "exercise.cardio.swimming",
+    "defaultTitle": "Swimming",
+    "category": "cardio",
+    "sortOrder": 9,
+    "iconName": "icMissingImage",
+    "trackingType": "distanceTime"
+  },
+  {
+    "id": "cardio_ski_erg",
+    "titleKey": "exercise.cardio.ski_erg",
+    "defaultTitle": "SkiErg",
+    "category": "cardio",
+    "sortOrder": 10,
     "iconName": "icMissingImage",
     "trackingType": "timed"
   },

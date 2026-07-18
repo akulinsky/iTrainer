@@ -111,9 +111,14 @@
 "exercise.cardio.running" = "Running";
 "exercise.cardio.walking" = "Walking";
 "exercise.cardio.cycling" = "Cycling";
+"exercise.cardio.treadmill" = "Treadmill";
+"exercise.cardio.stationary_bike" = "Stationary Bike";
 "exercise.cardio.elliptical" = "Elliptical";
-"exercise.cardio.rowing" = "Rowing";
+"exercise.cardio.rowing_machine" = "Rowing Machine";
 "exercise.cardio.jump_rope" = "Jump Rope";
+"exercise.cardio.stair_climber" = "Stair Climber";
+"exercise.cardio.swimming" = "Swimming";
+"exercise.cardio.ski_erg" = "SkiErg";
 "exercise.functional_training.burpee" = "Burpee";
 "exercise.functional_training.thruster" = "Thruster";
 "exercise.functional_training.kettlebell_swing" = "Kettlebell Swing";
