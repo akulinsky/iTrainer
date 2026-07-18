@@ -945,20 +945,56 @@
     "trackingType": "weightedReps"
   },
   {
-    "id": "functional_training_mountain_climber",
-    "titleKey": "exercise.functional_training.mountain_climber",
-    "defaultTitle": "Mountain Climber",
+    "id": "functional_training_box_jump",
+    "titleKey": "exercise.functional_training.box_jump",
+    "defaultTitle": "Box Jump",
     "category": "functional_training",
     "sortOrder": 3,
     "iconName": "icMissingImage",
     "trackingType": "repsOnly"
   },
   {
+    "id": "functional_training_medicine_ball_slam",
+    "titleKey": "exercise.functional_training.medicine_ball_slam",
+    "defaultTitle": "Medicine Ball Slam",
+    "category": "functional_training",
+    "sortOrder": 4,
+    "iconName": "icMissingImage",
+    "trackingType": "weightedReps"
+  },
+  {
+    "id": "functional_training_battle_rope",
+    "titleKey": "exercise.functional_training.battle_rope",
+    "defaultTitle": "Battle Rope",
+    "category": "functional_training",
+    "sortOrder": 5,
+    "iconName": "icMissingImage",
+    "trackingType": "timed"
+  },
+  {
     "id": "functional_training_wall_ball",
     "titleKey": "exercise.functional_training.wall_ball",
     "defaultTitle": "Wall Ball",
     "category": "functional_training",
-    "sortOrder": 4,
+    "sortOrder": 6,
+    "iconName": "icMissingImage",
+    "trackingType": "weightedReps"
+  },
+  {
+    "id": "functional_training_mountain_climber",
+    "titleKey": "exercise.functional_training.mountain_climber",
+    "defaultTitle": "Mountain Climber",
+    "category": "functional_training",
+    "sortOrder": 7,
+    "iconName": "icMissingImage",
+    "trackingType": "repsOnly"
+  },
+  {
+    "id": "functional_training_kettlebell_clean_and_press",
+    "titleKey": "exercise.functional_training.kettlebell_clean_and_press",
+    "defaultTitle": "Kettlebell Clean and Press",
+    "category": "functional_training",
+    "sortOrder": 8,
     "iconName": "icMissingImage",
     "trackingType": "weightedReps"
   },

@@ -1294,5 +1294,113 @@
       "exercise.info.cardio_ski_erg.technique.5",
       "exercise.info.cardio_ski_erg.technique.6"
     ]
+  },
+  {
+    "exerciseId": "functional_training_burpee",
+    "descriptionKey": "exercise.info.functional_training_burpee.description",
+    "techniqueKeys": [
+      "exercise.info.functional_training_burpee.technique.1",
+      "exercise.info.functional_training_burpee.technique.2",
+      "exercise.info.functional_training_burpee.technique.3",
+      "exercise.info.functional_training_burpee.technique.4",
+      "exercise.info.functional_training_burpee.technique.5",
+      "exercise.info.functional_training_burpee.technique.6"
+    ]
+  },
+  {
+    "exerciseId": "functional_training_thruster",
+    "descriptionKey": "exercise.info.functional_training_thruster.description",
+    "techniqueKeys": [
+      "exercise.info.functional_training_thruster.technique.1",
+      "exercise.info.functional_training_thruster.technique.2",
+      "exercise.info.functional_training_thruster.technique.3",
+      "exercise.info.functional_training_thruster.technique.4",
+      "exercise.info.functional_training_thruster.technique.5",
+      "exercise.info.functional_training_thruster.technique.6"
+    ]
+  },
+  {
+    "exerciseId": "functional_training_kettlebell_swing",
+    "descriptionKey": "exercise.info.functional_training_kettlebell_swing.description",
+    "techniqueKeys": [
+      "exercise.info.functional_training_kettlebell_swing.technique.1",
+      "exercise.info.functional_training_kettlebell_swing.technique.2",
+      "exercise.info.functional_training_kettlebell_swing.technique.3",
+      "exercise.info.functional_training_kettlebell_swing.technique.4",
+      "exercise.info.functional_training_kettlebell_swing.technique.5",
+      "exercise.info.functional_training_kettlebell_swing.technique.6"
+    ]
+  },
+  {
+    "exerciseId": "functional_training_box_jump",
+    "descriptionKey": "exercise.info.functional_training_box_jump.description",
+    "techniqueKeys": [
+      "exercise.info.functional_training_box_jump.technique.1",
+      "exercise.info.functional_training_box_jump.technique.2",
+      "exercise.info.functional_training_box_jump.technique.3",
+      "exercise.info.functional_training_box_jump.technique.4",
+      "exercise.info.functional_training_box_jump.technique.5",
+      "exercise.info.functional_training_box_jump.technique.6"
+    ]
+  },
+  {
+    "exerciseId": "functional_training_medicine_ball_slam",
+    "descriptionKey": "exercise.info.functional_training_medicine_ball_slam.description",
+    "techniqueKeys": [
+      "exercise.info.functional_training_medicine_ball_slam.technique.1",
+      "exercise.info.functional_training_medicine_ball_slam.technique.2",
+      "exercise.info.functional_training_medicine_ball_slam.technique.3",
+      "exercise.info.functional_training_medicine_ball_slam.technique.4",
+      "exercise.info.functional_training_medicine_ball_slam.technique.5",
+      "exercise.info.functional_training_medicine_ball_slam.technique.6"
+    ]
+  },
+  {
+    "exerciseId": "functional_training_battle_rope",
+    "descriptionKey": "exercise.info.functional_training_battle_rope.description",
+    "techniqueKeys": [
+      "exercise.info.functional_training_battle_rope.technique.1",
+      "exercise.info.functional_training_battle_rope.technique.2",
+      "exercise.info.functional_training_battle_rope.technique.3",
+      "exercise.info.functional_training_battle_rope.technique.4",
+      "exercise.info.functional_training_battle_rope.technique.5",
+      "exercise.info.functional_training_battle_rope.technique.6"
+    ]
+  },
+  {
+    "exerciseId": "functional_training_wall_ball",
+    "descriptionKey": "exercise.info.functional_training_wall_ball.description",
+    "techniqueKeys": [
+      "exercise.info.functional_training_wall_ball.technique.1",
+      "exercise.info.functional_training_wall_ball.technique.2",
+      "exercise.info.functional_training_wall_ball.technique.3",
+      "exercise.info.functional_training_wall_ball.technique.4",
+      "exercise.info.functional_training_wall_ball.technique.5",
+      "exercise.info.functional_training_wall_ball.technique.6"
+    ]
+  },
+  {
+    "exerciseId": "functional_training_mountain_climber",
+    "descriptionKey": "exercise.info.functional_training_mountain_climber.description",
+    "techniqueKeys": [
+      "exercise.info.functional_training_mountain_climber.technique.1",
+      "exercise.info.functional_training_mountain_climber.technique.2",
+      "exercise.info.functional_training_mountain_climber.technique.3",
+      "exercise.info.functional_training_mountain_climber.technique.4",
+      "exercise.info.functional_training_mountain_climber.technique.5",
+      "exercise.info.functional_training_mountain_climber.technique.6"
+    ]
+  },
+  {
+    "exerciseId": "functional_training_kettlebell_clean_and_press",
+    "descriptionKey": "exercise.info.functional_training_kettlebell_clean_and_press.description",
+    "techniqueKeys": [
+      "exercise.info.functional_training_kettlebell_clean_and_press.technique.1",
+      "exercise.info.functional_training_kettlebell_clean_and_press.technique.2",
+      "exercise.info.functional_training_kettlebell_clean_and_press.technique.3",
+      "exercise.info.functional_training_kettlebell_clean_and_press.technique.4",
+      "exercise.info.functional_training_kettlebell_clean_and_press.technique.5",
+      "exercise.info.functional_training_kettlebell_clean_and_press.technique.6"
+    ]
   }
 ]

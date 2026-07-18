@@ -122,8 +122,12 @@
 "exercise.functional_training.burpee" = "Берпи";
 "exercise.functional_training.thruster" = "Трастеры";
 "exercise.functional_training.kettlebell_swing" = "Махи гирей";
+"exercise.functional_training.box_jump" = "Прыжки на тумбу";
+"exercise.functional_training.medicine_ball_slam" = "Удары медболом в пол";
+"exercise.functional_training.battle_rope" = "Канаты";
 "exercise.functional_training.mountain_climber" = "Альпинист";
 "exercise.functional_training.wall_ball" = "Броски мяча в стену";
+"exercise.functional_training.kettlebell_clean_and_press" = "Взятие гири на грудь и жим";
 "exercise.stretching.hamstring_stretch" = "Растяжка задней поверхности бедра";
 "exercise.stretching.quadriceps_stretch" = "Растяжка квадрицепса";
 "exercise.stretching.chest_stretch" = "Растяжка грудных мышц";

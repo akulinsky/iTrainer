@@ -863,3 +863,75 @@
 "exercise.info.cardio_ski_erg.technique.4" = "Слегка наклоняйтесь в тазобедренных суставах, не округляя спину.";
 "exercise.info.cardio_ski_erg.technique.5" = "Заканчивайте движение руками у таза, затем плавно возвращайтесь вверх.";
 "exercise.info.cardio_ski_erg.technique.6" = "Сначала поддерживайте ровный ритм, затем добавляйте мощность.";
+
+"exercise.info.functional_training_burpee.description" = "Берпи объединяет присед, планку, вариант отжимания и прыжок в одно упражнение для всего тела.";
+"exercise.info.functional_training_burpee.technique.1" = "Встаньте, поставив стопы примерно на ширине таза.";
+"exercise.info.functional_training_burpee.technique.2" = "Присядьте и уверенно поставьте ладони на пол.";
+"exercise.info.functional_training_burpee.technique.3" = "Шагните или прыгните ногами назад в устойчивую планку.";
+"exercise.info.functional_training_burpee.technique.4" = "Напрягайте корпус и не позволяйте тазу провисать.";
+"exercise.info.functional_training_burpee.technique.5" = "Верните стопы под корпус с контролем.";
+"exercise.info.functional_training_burpee.technique.6" = "Встаньте или мягко выпрыгните перед следующим повторением.";
+
+"exercise.info.functional_training_thruster.description" = "Трастеры объединяют фронтальный присед и жим над головой в одно непрерывное движение с весом.";
+"exercise.info.functional_training_thruster.technique.1" = "Удерживайте вес у плеч надежным хватом.";
+"exercise.info.functional_training_thruster.technique.2" = "Напрягите корпус и присядьте, сохраняя грудь поднятой.";
+"exercise.info.functional_training_thruster.technique.3" = "Следите, чтобы колени двигались по линии стоп.";
+"exercise.info.functional_training_thruster.technique.4" = "Мощно выпрямляйтесь из приседа через стопы.";
+"exercise.info.functional_training_thruster.technique.5" = "Используйте импульс подъема, чтобы выжать вес над головой.";
+"exercise.info.functional_training_thruster.technique.6" = "Зафиксируйте руки вверху и контролируемо верните вес.";
+
+"exercise.info.functional_training_kettlebell_swing.description" = "Махи гирей - упражнение с тазовым сгибанием для развития мощности и выносливости.";
+"exercise.info.functional_training_kettlebell_swing.technique.1" = "Поставьте гирю немного впереди стоп.";
+"exercise.info.functional_training_kettlebell_swing.technique.2" = "Сгибайтесь в тазобедренных суставах, сохраняя спину нейтральной.";
+"exercise.info.functional_training_kettlebell_swing.technique.3" = "Возьмитесь за рукоять и проведите гирю назад между ног.";
+"exercise.info.functional_training_kettlebell_swing.technique.4" = "Мощно выпрямите таз, чтобы задать гире движение.";
+"exercise.info.functional_training_kettlebell_swing.technique.5" = "Направляйте гирю руками, не поднимая ее плечами.";
+"exercise.info.functional_training_kettlebell_swing.technique.6" = "Контролируйте возврат тазом и сохраняйте напряжение корпуса.";
+
+"exercise.info.functional_training_box_jump.description" = "Прыжки на тумбу - взрывное упражнение для ног с контролируемым приземлением на устойчивую платформу.";
+"exercise.info.functional_training_box_jump.technique.1" = "Выберите устойчивую высоту, на которую можете уверенно приземлиться.";
+"exercise.info.functional_training_box_jump.technique.2" = "Встаньте достаточно близко к тумбе, чтобы приземлиться в ее центр.";
+"exercise.info.functional_training_box_jump.technique.3" = "Слегка присядьте и используйте мах руками для подготовки.";
+"exercise.info.functional_training_box_jump.technique.4" = "Прыгните двумя ногами и мягко приземлитесь на согнутые колени.";
+"exercise.info.functional_training_box_jump.technique.5" = "Полностью выпрямитесь на тумбе, прежде чем спускаться.";
+"exercise.info.functional_training_box_jump.technique.6" = "Когда усталость мешает контролю, спускайтесь шагом, а не прыжком.";
+
+"exercise.info.functional_training_medicine_ball_slam.description" = "Удары медболом в пол - мощное упражнение для всего тела, где мяч резко направляется в пол.";
+"exercise.info.functional_training_medicine_ball_slam.technique.1" = "Используйте слэмбол или медбол, рассчитанный на удары об пол.";
+"exercise.info.functional_training_medicine_ball_slam.technique.2" = "Поднимите мяч над головой, напрягая мышцы кора.";
+"exercise.info.functional_training_medicine_ball_slam.technique.3" = "Направьте мяч вниз, используя руки, корпус и таз.";
+"exercise.info.functional_training_medicine_ball_slam.technique.4" = "Согните колени, когда мяч достигает пола.";
+"exercise.info.functional_training_medicine_ball_slam.technique.5" = "Поднимайте мяч с нейтральной спиной.";
+"exercise.info.functional_training_medicine_ball_slam.technique.6" = "Выбирайте вес, с которым повторения остаются мощными и контролируемыми.";
+
+"exercise.info.functional_training_battle_rope.description" = "Канаты - интервальное упражнение на выносливость с повторяющимися волнами или ударами тяжелыми канатами.";
+"exercise.info.functional_training_battle_rope.technique.1" = "Поставьте стопы примерно на ширине плеч, слегка согните колени.";
+"exercise.info.functional_training_battle_rope.technique.2" = "Держите корпус ровно, слегка напрягая мышцы кора.";
+"exercise.info.functional_training_battle_rope.technique.3" = "Возьмитесь за концы канатов уверенно, но без лишнего напряжения.";
+"exercise.info.functional_training_battle_rope.technique.4" = "Создавайте ровные волны контролируемым движением рук.";
+"exercise.info.functional_training_battle_rope.technique.5" = "Не округляйте плечи и не задерживайте дыхание.";
+"exercise.info.functional_training_battle_rope.technique.6" = "Выбирайте интервалы, в которых можете сохранить технику.";
+
+"exercise.info.functional_training_wall_ball.description" = "Броски мяча в стену объединяют присед и бросок медбола в цель на стене для нагрузки на всё тело.";
+"exercise.info.functional_training_wall_ball.technique.1" = "Выберите вес мяча и высоту цели, которые можете контролировать.";
+"exercise.info.functional_training_wall_ball.technique.2" = "Держите мяч у груди, поставив стопы примерно на ширине плеч.";
+"exercise.info.functional_training_wall_ball.technique.3" = "Присядьте, сохраняя грудь поднятой.";
+"exercise.info.functional_training_wall_ball.technique.4" = "Выпрямитесь через ноги и бросьте мяч в цель.";
+"exercise.info.functional_training_wall_ball.technique.5" = "Мягко поймайте мяч и примите его в следующий присед.";
+"exercise.info.functional_training_wall_ball.technique.6" = "На протяжении движения удерживайте колени по линии стоп.";
+
+"exercise.info.functional_training_mountain_climber.description" = "Альпинист - упражнение с собственным весом, где колени попеременно подтягиваются к груди из планки.";
+"exercise.info.functional_training_mountain_climber.technique.1" = "Начните в высокой планке, ладони находятся под плечами.";
+"exercise.info.functional_training_mountain_climber.technique.2" = "Напрягите корпус, чтобы удерживать тело стабильным.";
+"exercise.info.functional_training_mountain_climber.technique.3" = "Подтяните одно колено к груди.";
+"exercise.info.functional_training_mountain_climber.technique.4" = "Верните стопу и контролируемо смените сторону.";
+"exercise.info.functional_training_mountain_climber.technique.5" = "Не поднимайте таз высоко и не проваливайтесь в пояснице.";
+"exercise.info.functional_training_mountain_climber.technique.6" = "Сначала держите ровный ритм, затем увеличивайте скорость.";
+
+"exercise.info.functional_training_kettlebell_clean_and_press.description" = "Взятие гири на грудь и жим поднимает гирю в положение у плеча, после чего она выжимается над головой.";
+"exercise.info.functional_training_kettlebell_clean_and_press.technique.1" = "Начните с гири на полу или в контролируемом висе.";
+"exercise.info.functional_training_kettlebell_clean_and_press.technique.2" = "Согнитесь в тазобедренных суставах, удерживая спину нейтральной.";
+"exercise.info.functional_training_kettlebell_clean_and_press.technique.3" = "Выпрямите таз, направляя гирю к положению у плеча.";
+"exercise.info.functional_training_kettlebell_clean_and_press.technique.4" = "Позвольте гире обернуться вокруг запястья, не ударяя по предплечью.";
+"exercise.info.functional_training_kettlebell_clean_and_press.technique.5" = "Напрягите корпус и контролируемо выжмите гирю над головой.";
+"exercise.info.functional_training_kettlebell_clean_and_press.technique.6" = "Верните гирю к плечу и восстановите положение перед следующим повторением.";

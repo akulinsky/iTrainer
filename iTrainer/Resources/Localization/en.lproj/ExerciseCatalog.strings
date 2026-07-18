@@ -122,8 +122,12 @@
 "exercise.functional_training.burpee" = "Burpee";
 "exercise.functional_training.thruster" = "Thruster";
 "exercise.functional_training.kettlebell_swing" = "Kettlebell Swing";
+"exercise.functional_training.box_jump" = "Box Jump";
+"exercise.functional_training.medicine_ball_slam" = "Medicine Ball Slam";
+"exercise.functional_training.battle_rope" = "Battle Rope";
 "exercise.functional_training.mountain_climber" = "Mountain Climber";
 "exercise.functional_training.wall_ball" = "Wall Ball";
+"exercise.functional_training.kettlebell_clean_and_press" = "Kettlebell Clean and Press";
 "exercise.stretching.hamstring_stretch" = "Hamstring Stretch";
 "exercise.stretching.quadriceps_stretch" = "Quadriceps Stretch";
 "exercise.stretching.chest_stretch" = "Chest Stretch";

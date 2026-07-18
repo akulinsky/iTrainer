@@ -863,3 +863,75 @@
 "exercise.info.cardio_ski_erg.technique.4" = "Hinge slightly at the hips instead of rounding the back.";
 "exercise.info.cardio_ski_erg.technique.5" = "Finish with the hands near the hips, then return smoothly.";
 "exercise.info.cardio_ski_erg.technique.6" = "Keep a steady rhythm before adding more power.";
+
+"exercise.info.functional_training_burpee.description" = "Burpee combines a squat, plank, push-up variation, and jump into a full-body conditioning movement.";
+"exercise.info.functional_training_burpee.technique.1" = "Stand with feet about hip-width apart.";
+"exercise.info.functional_training_burpee.technique.2" = "Squat down and place the hands firmly on the floor.";
+"exercise.info.functional_training_burpee.technique.3" = "Step or jump the feet back into a stable plank.";
+"exercise.info.functional_training_burpee.technique.4" = "Keep the torso braced and avoid letting the hips sag.";
+"exercise.info.functional_training_burpee.technique.5" = "Bring the feet back under the body with control.";
+"exercise.info.functional_training_burpee.technique.6" = "Stand or jump up softly before starting the next rep.";
+
+"exercise.info.functional_training_thruster.description" = "Thruster combines a front squat with an overhead press in one continuous weighted movement.";
+"exercise.info.functional_training_thruster.technique.1" = "Hold the load at shoulder height with a stable grip.";
+"exercise.info.functional_training_thruster.technique.2" = "Brace the core and squat down with the chest lifted.";
+"exercise.info.functional_training_thruster.technique.3" = "Keep the knees tracking in line with the feet.";
+"exercise.info.functional_training_thruster.technique.4" = "Drive up through the feet out of the squat.";
+"exercise.info.functional_training_thruster.technique.5" = "Use the upward drive to press the load overhead.";
+"exercise.info.functional_training_thruster.technique.6" = "Finish with arms locked out, then return the load under control.";
+
+"exercise.info.functional_training_kettlebell_swing.description" = "Kettlebell Swing is a hip-hinge exercise that develops power and conditioning.";
+"exercise.info.functional_training_kettlebell_swing.technique.1" = "Stand with the kettlebell slightly in front of the feet.";
+"exercise.info.functional_training_kettlebell_swing.technique.2" = "Hinge at the hips while keeping the back neutral.";
+"exercise.info.functional_training_kettlebell_swing.technique.3" = "Grip the handle and pull the bell back between the legs.";
+"exercise.info.functional_training_kettlebell_swing.technique.4" = "Drive the hips forward powerfully to swing the bell.";
+"exercise.info.functional_training_kettlebell_swing.technique.5" = "Let the arms guide the bell without lifting it with the shoulders.";
+"exercise.info.functional_training_kettlebell_swing.technique.6" = "Control the return with the hips and keep the core braced.";
+
+"exercise.info.functional_training_box_jump.description" = "Box Jump is an explosive lower-body exercise that uses a controlled jump onto a stable platform.";
+"exercise.info.functional_training_box_jump.technique.1" = "Choose a stable box height you can land on confidently.";
+"exercise.info.functional_training_box_jump.technique.2" = "Stand close enough to the box to land near its center.";
+"exercise.info.functional_training_box_jump.technique.3" = "Dip into a shallow squat and swing the arms to prepare.";
+"exercise.info.functional_training_box_jump.technique.4" = "Jump with both feet and land softly with bent knees.";
+"exercise.info.functional_training_box_jump.technique.5" = "Stand tall on the box before stepping down.";
+"exercise.info.functional_training_box_jump.technique.6" = "Step down instead of jumping down when fatigue affects landing control.";
+
+"exercise.info.functional_training_medicine_ball_slam.description" = "Medicine Ball Slam is a powerful full-body movement that drives a medicine ball forcefully into the floor.";
+"exercise.info.functional_training_medicine_ball_slam.technique.1" = "Use a slam ball or a medicine ball rated for floor impact.";
+"exercise.info.functional_training_medicine_ball_slam.technique.2" = "Lift the ball overhead with the core braced.";
+"exercise.info.functional_training_medicine_ball_slam.technique.3" = "Drive the ball down using the arms, torso, and hips.";
+"exercise.info.functional_training_medicine_ball_slam.technique.4" = "Bend the knees as the ball reaches the floor.";
+"exercise.info.functional_training_medicine_ball_slam.technique.5" = "Pick up the ball with a neutral back.";
+"exercise.info.functional_training_medicine_ball_slam.technique.6" = "Choose a weight that allows powerful but controlled reps.";
+
+"exercise.info.functional_training_battle_rope.description" = "Battle Rope is timed conditioning using repeated waves or slams with heavy ropes.";
+"exercise.info.functional_training_battle_rope.technique.1" = "Stand with feet about shoulder-width apart and knees softly bent.";
+"exercise.info.functional_training_battle_rope.technique.2" = "Keep the torso tall and the core lightly braced.";
+"exercise.info.functional_training_battle_rope.technique.3" = "Hold each rope end with a firm but relaxed grip.";
+"exercise.info.functional_training_battle_rope.technique.4" = "Create even waves using controlled arm movement.";
+"exercise.info.functional_training_battle_rope.technique.5" = "Avoid rounding the shoulders or holding the breath.";
+"exercise.info.functional_training_battle_rope.technique.6" = "Use intervals you can maintain with consistent form.";
+
+"exercise.info.functional_training_wall_ball.description" = "Wall Ball combines a squat and medicine-ball throw to a wall target for full-body conditioning.";
+"exercise.info.functional_training_wall_ball.technique.1" = "Choose a medicine ball and target height you can control.";
+"exercise.info.functional_training_wall_ball.technique.2" = "Hold the ball at chest height with feet about shoulder-width apart.";
+"exercise.info.functional_training_wall_ball.technique.3" = "Squat down while keeping the chest lifted.";
+"exercise.info.functional_training_wall_ball.technique.4" = "Drive up through the legs and throw the ball to the target.";
+"exercise.info.functional_training_wall_ball.technique.5" = "Catch the ball softly and absorb it into the next squat.";
+"exercise.info.functional_training_wall_ball.technique.6" = "Keep the knees aligned with the feet throughout the movement.";
+
+"exercise.info.functional_training_mountain_climber.description" = "Mountain Climber is a bodyweight conditioning exercise that alternates knee drives from a plank position.";
+"exercise.info.functional_training_mountain_climber.technique.1" = "Start in a high plank with hands under the shoulders.";
+"exercise.info.functional_training_mountain_climber.technique.2" = "Brace the core to keep the torso steady.";
+"exercise.info.functional_training_mountain_climber.technique.3" = "Drive one knee toward the chest.";
+"exercise.info.functional_training_mountain_climber.technique.4" = "Return that foot and switch sides under control.";
+"exercise.info.functional_training_mountain_climber.technique.5" = "Avoid lifting the hips high or letting the lower back sag.";
+"exercise.info.functional_training_mountain_climber.technique.6" = "Use a steady rhythm before increasing speed.";
+
+"exercise.info.functional_training_kettlebell_clean_and_press.description" = "Kettlebell Clean and Press brings a kettlebell to the rack position before pressing it overhead.";
+"exercise.info.functional_training_kettlebell_clean_and_press.technique.1" = "Start with the kettlebell on the floor or in a controlled hang.";
+"exercise.info.functional_training_kettlebell_clean_and_press.technique.2" = "Hinge at the hips and keep the back neutral.";
+"exercise.info.functional_training_kettlebell_clean_and_press.technique.3" = "Drive with the hips to guide the bell toward the rack position.";
+"exercise.info.functional_training_kettlebell_clean_and_press.technique.4" = "Let the bell rotate around the wrist instead of crashing into the forearm.";
+"exercise.info.functional_training_kettlebell_clean_and_press.technique.5" = "Brace the core and press the bell overhead with control.";
+"exercise.info.functional_training_kettlebell_clean_and_press.technique.6" = "Lower to the rack position and reset before the next rep.";
