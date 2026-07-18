@@ -1112,7 +1112,7 @@
     "defaultTitle": "Reverse-Grip Pull-Up",
     "category": "back",
     "sortOrder": 1,
-    "iconName": "icMissingImage",
+    "iconName": "icExercise_back_reverse_grip_pull_up",
     "trackingType": "weightedReps"
   },
   {
@@ -1121,7 +1121,7 @@
     "defaultTitle": "T-Bar Row",
     "category": "back",
     "sortOrder": 6,
-    "iconName": "icMissingImage",
+    "iconName": "icExercise_back_t_bar_row",
     "trackingType": "weightedReps"
   },
   {
@@ -1130,7 +1130,7 @@
     "defaultTitle": "Chest-Supported Machine Row",
     "category": "back",
     "sortOrder": 7,
-    "iconName": "icMissingImage",
+    "iconName": "icExercise_back_chest_supported_machine_row",
     "trackingType": "weightedReps"
   },
   {
@@ -1139,7 +1139,7 @@
     "defaultTitle": "Straight-Arm Pulldown",
     "category": "back",
     "sortOrder": 8,
-    "iconName": "icMissingImage",
+    "iconName": "icExercise_back_straight_arm_pulldown",
     "trackingType": "weightedReps"
   },
   {
@@ -1148,7 +1148,7 @@
     "defaultTitle": "Dumbbell Shrug",
     "category": "back",
     "sortOrder": 11,
-    "iconName": "icMissingImage",
+    "iconName": "icExercise_back_dumbbell_shrug",
     "trackingType": "weightedReps"
   },
   {
@@ -1157,7 +1157,7 @@
     "defaultTitle": "Barbell Shrug",
     "category": "back",
     "sortOrder": 12,
-    "iconName": "icMissingImage",
+    "iconName": "icExercise_back_barbell_shrug",
     "trackingType": "weightedReps"
   }
 ]
