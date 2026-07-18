@@ -935,3 +935,99 @@
 "exercise.info.functional_training_kettlebell_clean_and_press.technique.4" = "Позвольте гире обернуться вокруг запястья, не ударяя по предплечью.";
 "exercise.info.functional_training_kettlebell_clean_and_press.technique.5" = "Напрягите корпус и контролируемо выжмите гирю над головой.";
 "exercise.info.functional_training_kettlebell_clean_and_press.technique.6" = "Верните гирю к плечу и восстановите положение перед следующим повторением.";
+
+"exercise.info.stretching_hamstring_stretch.description" = "Мягкое статическое упражнение на растяжку.";
+"exercise.info.stretching_hamstring_stretch.technique.1" = "Примите удобное исходное положение.";
+"exercise.info.stretching_hamstring_stretch.technique.2" = "Двигайтесь медленно до ощущения легкого натяжения.";
+"exercise.info.stretching_hamstring_stretch.technique.3" = "Дышите ровно и расслабляйте тело.";
+"exercise.info.stretching_hamstring_stretch.technique.4" = "Не пружиньте и не форсируйте амплитуду.";
+"exercise.info.stretching_hamstring_stretch.technique.5" = "Удерживайте устойчивое положение заданное время.";
+"exercise.info.stretching_hamstring_stretch.technique.6" = "При необходимости повторите на другую сторону.";
+
+"exercise.info.stretching_quadriceps_stretch.description" = "Мягкое статическое упражнение на растяжку.";
+"exercise.info.stretching_quadriceps_stretch.technique.1" = "Примите удобное исходное положение.";
+"exercise.info.stretching_quadriceps_stretch.technique.2" = "Двигайтесь медленно до ощущения легкого натяжения.";
+"exercise.info.stretching_quadriceps_stretch.technique.3" = "Дышите ровно и расслабляйте тело.";
+"exercise.info.stretching_quadriceps_stretch.technique.4" = "Не пружиньте и не форсируйте амплитуду.";
+"exercise.info.stretching_quadriceps_stretch.technique.5" = "Удерживайте устойчивое положение заданное время.";
+"exercise.info.stretching_quadriceps_stretch.technique.6" = "При необходимости повторите на другую сторону.";
+
+"exercise.info.stretching_chest_stretch.description" = "Мягкое статическое упражнение на растяжку.";
+"exercise.info.stretching_chest_stretch.technique.1" = "Примите удобное исходное положение.";
+"exercise.info.stretching_chest_stretch.technique.2" = "Двигайтесь медленно до ощущения легкого натяжения.";
+"exercise.info.stretching_chest_stretch.technique.3" = "Дышите ровно и расслабляйте тело.";
+"exercise.info.stretching_chest_stretch.technique.4" = "Не пружиньте и не форсируйте амплитуду.";
+"exercise.info.stretching_chest_stretch.technique.5" = "Удерживайте устойчивое положение заданное время.";
+"exercise.info.stretching_chest_stretch.technique.6" = "При необходимости повторите на другую сторону.";
+
+"exercise.info.stretching_shoulder_stretch.description" = "Мягкое статическое упражнение на растяжку.";
+"exercise.info.stretching_shoulder_stretch.technique.1" = "Примите удобное исходное положение.";
+"exercise.info.stretching_shoulder_stretch.technique.2" = "Двигайтесь медленно до ощущения легкого натяжения.";
+"exercise.info.stretching_shoulder_stretch.technique.3" = "Дышите ровно и расслабляйте тело.";
+"exercise.info.stretching_shoulder_stretch.technique.4" = "Не пружиньте и не форсируйте амплитуду.";
+"exercise.info.stretching_shoulder_stretch.technique.5" = "Удерживайте устойчивое положение заданное время.";
+"exercise.info.stretching_shoulder_stretch.technique.6" = "При необходимости повторите на другую сторону.";
+
+"exercise.info.stretching_glute_stretch.description" = "Мягкое статическое упражнение на растяжку.";
+"exercise.info.stretching_glute_stretch.technique.1" = "Примите удобное исходное положение.";
+"exercise.info.stretching_glute_stretch.technique.2" = "Двигайтесь медленно до ощущения легкого натяжения.";
+"exercise.info.stretching_glute_stretch.technique.3" = "Дышите ровно и расслабляйте тело.";
+"exercise.info.stretching_glute_stretch.technique.4" = "Не пружиньте и не форсируйте амплитуду.";
+"exercise.info.stretching_glute_stretch.technique.5" = "Удерживайте устойчивое положение заданное время.";
+"exercise.info.stretching_glute_stretch.technique.6" = "При необходимости повторите на другую сторону.";
+
+"exercise.info.stretching_calf_stretch.description" = "Мягкое статическое упражнение на растяжку.";
+"exercise.info.stretching_calf_stretch.technique.1" = "Примите удобное исходное положение.";
+"exercise.info.stretching_calf_stretch.technique.2" = "Двигайтесь медленно до ощущения легкого натяжения.";
+"exercise.info.stretching_calf_stretch.technique.3" = "Дышите ровно и расслабляйте тело.";
+"exercise.info.stretching_calf_stretch.technique.4" = "Не пружиньте и не форсируйте амплитуду.";
+"exercise.info.stretching_calf_stretch.technique.5" = "Удерживайте устойчивое положение заданное время.";
+"exercise.info.stretching_calf_stretch.technique.6" = "При необходимости повторите на другую сторону.";
+
+"exercise.info.stretching_hip_flexor_stretch.description" = "Мягкое статическое упражнение на растяжку.";
+"exercise.info.stretching_hip_flexor_stretch.technique.1" = "Примите удобное исходное положение.";
+"exercise.info.stretching_hip_flexor_stretch.technique.2" = "Двигайтесь медленно до ощущения легкого натяжения.";
+"exercise.info.stretching_hip_flexor_stretch.technique.3" = "Дышите ровно и расслабляйте тело.";
+"exercise.info.stretching_hip_flexor_stretch.technique.4" = "Не пружиньте и не форсируйте амплитуду.";
+"exercise.info.stretching_hip_flexor_stretch.technique.5" = "Удерживайте устойчивое положение заданное время.";
+"exercise.info.stretching_hip_flexor_stretch.technique.6" = "При необходимости повторите на другую сторону.";
+
+"exercise.info.stretching_butterfly_stretch.description" = "Мягкое статическое упражнение на растяжку.";
+"exercise.info.stretching_butterfly_stretch.technique.1" = "Примите удобное исходное положение.";
+"exercise.info.stretching_butterfly_stretch.technique.2" = "Двигайтесь медленно до ощущения легкого натяжения.";
+"exercise.info.stretching_butterfly_stretch.technique.3" = "Дышите ровно и расслабляйте тело.";
+"exercise.info.stretching_butterfly_stretch.technique.4" = "Не пружиньте и не форсируйте амплитуду.";
+"exercise.info.stretching_butterfly_stretch.technique.5" = "Удерживайте устойчивое положение заданное время.";
+"exercise.info.stretching_butterfly_stretch.technique.6" = "При необходимости повторите на другую сторону.";
+
+"exercise.info.stretching_lat_stretch.description" = "Мягкое статическое упражнение на растяжку.";
+"exercise.info.stretching_lat_stretch.technique.1" = "Примите удобное исходное положение.";
+"exercise.info.stretching_lat_stretch.technique.2" = "Двигайтесь медленно до ощущения легкого натяжения.";
+"exercise.info.stretching_lat_stretch.technique.3" = "Дышите ровно и расслабляйте тело.";
+"exercise.info.stretching_lat_stretch.technique.4" = "Не пружиньте и не форсируйте амплитуду.";
+"exercise.info.stretching_lat_stretch.technique.5" = "Удерживайте устойчивое положение заданное время.";
+"exercise.info.stretching_lat_stretch.technique.6" = "При необходимости повторите на другую сторону.";
+
+"exercise.info.stretching_childs_pose.description" = "Мягкое статическое упражнение на растяжку.";
+"exercise.info.stretching_childs_pose.technique.1" = "Примите удобное исходное положение.";
+"exercise.info.stretching_childs_pose.technique.2" = "Двигайтесь медленно до ощущения легкого натяжения.";
+"exercise.info.stretching_childs_pose.technique.3" = "Дышите ровно и расслабляйте тело.";
+"exercise.info.stretching_childs_pose.technique.4" = "Не пружиньте и не форсируйте амплитуду.";
+"exercise.info.stretching_childs_pose.technique.5" = "Удерживайте устойчивое положение заданное время.";
+"exercise.info.stretching_childs_pose.technique.6" = "При необходимости повторите на другую сторону.";
+
+"exercise.info.stretching_triceps_stretch.description" = "Мягкое статическое упражнение на растяжку.";
+"exercise.info.stretching_triceps_stretch.technique.1" = "Примите удобное исходное положение.";
+"exercise.info.stretching_triceps_stretch.technique.2" = "Двигайтесь медленно до ощущения легкого натяжения.";
+"exercise.info.stretching_triceps_stretch.technique.3" = "Дышите ровно и расслабляйте тело.";
+"exercise.info.stretching_triceps_stretch.technique.4" = "Не пружиньте и не форсируйте амплитуду.";
+"exercise.info.stretching_triceps_stretch.technique.5" = "Удерживайте устойчивое положение заданное время.";
+"exercise.info.stretching_triceps_stretch.technique.6" = "При необходимости повторите на другую сторону.";
+
+"exercise.info.stretching_neck_stretch.description" = "Мягкое статическое упражнение на растяжку.";
+"exercise.info.stretching_neck_stretch.technique.1" = "Примите удобное исходное положение.";
+"exercise.info.stretching_neck_stretch.technique.2" = "Двигайтесь медленно до ощущения легкого натяжения.";
+"exercise.info.stretching_neck_stretch.technique.3" = "Дышите ровно и расслабляйте тело.";
+"exercise.info.stretching_neck_stretch.technique.4" = "Не пружиньте и не форсируйте амплитуду.";
+"exercise.info.stretching_neck_stretch.technique.5" = "Удерживайте устойчивое положение заданное время.";
+"exercise.info.stretching_neck_stretch.technique.6" = "При необходимости повторите на другую сторону.";

@@ -935,3 +935,99 @@
 "exercise.info.functional_training_kettlebell_clean_and_press.technique.4" = "Let the bell rotate around the wrist instead of crashing into the forearm.";
 "exercise.info.functional_training_kettlebell_clean_and_press.technique.5" = "Brace the core and press the bell overhead with control.";
 "exercise.info.functional_training_kettlebell_clean_and_press.technique.6" = "Lower to the rack position and reset before the next rep.";
+
+"exercise.info.stretching_hamstring_stretch.description" = "A gentle static stretching exercise.";
+"exercise.info.stretching_hamstring_stretch.technique.1" = "Start from a comfortable position.";
+"exercise.info.stretching_hamstring_stretch.technique.2" = "Move slowly until you feel mild tension.";
+"exercise.info.stretching_hamstring_stretch.technique.3" = "Breathe steadily and keep the body relaxed.";
+"exercise.info.stretching_hamstring_stretch.technique.4" = "Do not bounce or force the range.";
+"exercise.info.stretching_hamstring_stretch.technique.5" = "Hold a stable position for the planned time.";
+"exercise.info.stretching_hamstring_stretch.technique.6" = "Repeat on the other side when applicable.";
+
+"exercise.info.stretching_quadriceps_stretch.description" = "A gentle static stretching exercise.";
+"exercise.info.stretching_quadriceps_stretch.technique.1" = "Start from a comfortable position.";
+"exercise.info.stretching_quadriceps_stretch.technique.2" = "Move slowly until you feel mild tension.";
+"exercise.info.stretching_quadriceps_stretch.technique.3" = "Breathe steadily and keep the body relaxed.";
+"exercise.info.stretching_quadriceps_stretch.technique.4" = "Do not bounce or force the range.";
+"exercise.info.stretching_quadriceps_stretch.technique.5" = "Hold a stable position for the planned time.";
+"exercise.info.stretching_quadriceps_stretch.technique.6" = "Repeat on the other side when applicable.";
+
+"exercise.info.stretching_chest_stretch.description" = "A gentle static stretching exercise.";
+"exercise.info.stretching_chest_stretch.technique.1" = "Start from a comfortable position.";
+"exercise.info.stretching_chest_stretch.technique.2" = "Move slowly until you feel mild tension.";
+"exercise.info.stretching_chest_stretch.technique.3" = "Breathe steadily and keep the body relaxed.";
+"exercise.info.stretching_chest_stretch.technique.4" = "Do not bounce or force the range.";
+"exercise.info.stretching_chest_stretch.technique.5" = "Hold a stable position for the planned time.";
+"exercise.info.stretching_chest_stretch.technique.6" = "Repeat on the other side when applicable.";
+
+"exercise.info.stretching_shoulder_stretch.description" = "A gentle static stretching exercise.";
+"exercise.info.stretching_shoulder_stretch.technique.1" = "Start from a comfortable position.";
+"exercise.info.stretching_shoulder_stretch.technique.2" = "Move slowly until you feel mild tension.";
+"exercise.info.stretching_shoulder_stretch.technique.3" = "Breathe steadily and keep the body relaxed.";
+"exercise.info.stretching_shoulder_stretch.technique.4" = "Do not bounce or force the range.";
+"exercise.info.stretching_shoulder_stretch.technique.5" = "Hold a stable position for the planned time.";
+"exercise.info.stretching_shoulder_stretch.technique.6" = "Repeat on the other side when applicable.";
+
+"exercise.info.stretching_glute_stretch.description" = "A gentle static stretching exercise.";
+"exercise.info.stretching_glute_stretch.technique.1" = "Start from a comfortable position.";
+"exercise.info.stretching_glute_stretch.technique.2" = "Move slowly until you feel mild tension.";
+"exercise.info.stretching_glute_stretch.technique.3" = "Breathe steadily and keep the body relaxed.";
+"exercise.info.stretching_glute_stretch.technique.4" = "Do not bounce or force the range.";
+"exercise.info.stretching_glute_stretch.technique.5" = "Hold a stable position for the planned time.";
+"exercise.info.stretching_glute_stretch.technique.6" = "Repeat on the other side when applicable.";
+
+"exercise.info.stretching_calf_stretch.description" = "A gentle static stretching exercise.";
+"exercise.info.stretching_calf_stretch.technique.1" = "Start from a comfortable position.";
+"exercise.info.stretching_calf_stretch.technique.2" = "Move slowly until you feel mild tension.";
+"exercise.info.stretching_calf_stretch.technique.3" = "Breathe steadily and keep the body relaxed.";
+"exercise.info.stretching_calf_stretch.technique.4" = "Do not bounce or force the range.";
+"exercise.info.stretching_calf_stretch.technique.5" = "Hold a stable position for the planned time.";
+"exercise.info.stretching_calf_stretch.technique.6" = "Repeat on the other side when applicable.";
+
+"exercise.info.stretching_hip_flexor_stretch.description" = "A gentle static stretching exercise.";
+"exercise.info.stretching_hip_flexor_stretch.technique.1" = "Start from a comfortable position.";
+"exercise.info.stretching_hip_flexor_stretch.technique.2" = "Move slowly until you feel mild tension.";
+"exercise.info.stretching_hip_flexor_stretch.technique.3" = "Breathe steadily and keep the body relaxed.";
+"exercise.info.stretching_hip_flexor_stretch.technique.4" = "Do not bounce or force the range.";
+"exercise.info.stretching_hip_flexor_stretch.technique.5" = "Hold a stable position for the planned time.";
+"exercise.info.stretching_hip_flexor_stretch.technique.6" = "Repeat on the other side when applicable.";
+
+"exercise.info.stretching_butterfly_stretch.description" = "A gentle static stretching exercise.";
+"exercise.info.stretching_butterfly_stretch.technique.1" = "Start from a comfortable position.";
+"exercise.info.stretching_butterfly_stretch.technique.2" = "Move slowly until you feel mild tension.";
+"exercise.info.stretching_butterfly_stretch.technique.3" = "Breathe steadily and keep the body relaxed.";
+"exercise.info.stretching_butterfly_stretch.technique.4" = "Do not bounce or force the range.";
+"exercise.info.stretching_butterfly_stretch.technique.5" = "Hold a stable position for the planned time.";
+"exercise.info.stretching_butterfly_stretch.technique.6" = "Repeat on the other side when applicable.";
+
+"exercise.info.stretching_lat_stretch.description" = "A gentle static stretching exercise.";
+"exercise.info.stretching_lat_stretch.technique.1" = "Start from a comfortable position.";
+"exercise.info.stretching_lat_stretch.technique.2" = "Move slowly until you feel mild tension.";
+"exercise.info.stretching_lat_stretch.technique.3" = "Breathe steadily and keep the body relaxed.";
+"exercise.info.stretching_lat_stretch.technique.4" = "Do not bounce or force the range.";
+"exercise.info.stretching_lat_stretch.technique.5" = "Hold a stable position for the planned time.";
+"exercise.info.stretching_lat_stretch.technique.6" = "Repeat on the other side when applicable.";
+
+"exercise.info.stretching_childs_pose.description" = "A gentle static stretching exercise.";
+"exercise.info.stretching_childs_pose.technique.1" = "Start from a comfortable position.";
+"exercise.info.stretching_childs_pose.technique.2" = "Move slowly until you feel mild tension.";
+"exercise.info.stretching_childs_pose.technique.3" = "Breathe steadily and keep the body relaxed.";
+"exercise.info.stretching_childs_pose.technique.4" = "Do not bounce or force the range.";
+"exercise.info.stretching_childs_pose.technique.5" = "Hold a stable position for the planned time.";
+"exercise.info.stretching_childs_pose.technique.6" = "Repeat on the other side when applicable.";
+
+"exercise.info.stretching_triceps_stretch.description" = "A gentle static stretching exercise.";
+"exercise.info.stretching_triceps_stretch.technique.1" = "Start from a comfortable position.";
+"exercise.info.stretching_triceps_stretch.technique.2" = "Move slowly until you feel mild tension.";
+"exercise.info.stretching_triceps_stretch.technique.3" = "Breathe steadily and keep the body relaxed.";
+"exercise.info.stretching_triceps_stretch.technique.4" = "Do not bounce or force the range.";
+"exercise.info.stretching_triceps_stretch.technique.5" = "Hold a stable position for the planned time.";
+"exercise.info.stretching_triceps_stretch.technique.6" = "Repeat on the other side when applicable.";
+
+"exercise.info.stretching_neck_stretch.description" = "A gentle static stretching exercise.";
+"exercise.info.stretching_neck_stretch.technique.1" = "Start from a comfortable position.";
+"exercise.info.stretching_neck_stretch.technique.2" = "Move slowly until you feel mild tension.";
+"exercise.info.stretching_neck_stretch.technique.3" = "Breathe steadily and keep the body relaxed.";
+"exercise.info.stretching_neck_stretch.technique.4" = "Do not bounce or force the range.";
+"exercise.info.stretching_neck_stretch.technique.5" = "Hold a stable position for the planned time.";
+"exercise.info.stretching_neck_stretch.technique.6" = "Repeat on the other side when applicable.";

@@ -1053,6 +1053,60 @@
     "trackingType": "timed"
   },
   {
+    "id": "stretching_hip_flexor_stretch",
+    "titleKey": "exercise.stretching.hip_flexor_stretch",
+    "defaultTitle": "Hip Flexor Stretch",
+    "category": "stretching",
+    "sortOrder": 6,
+    "iconName": "icMissingImage",
+    "trackingType": "timed"
+  },
+  {
+    "id": "stretching_butterfly_stretch",
+    "titleKey": "exercise.stretching.butterfly_stretch",
+    "defaultTitle": "Butterfly Stretch",
+    "category": "stretching",
+    "sortOrder": 7,
+    "iconName": "icMissingImage",
+    "trackingType": "timed"
+  },
+  {
+    "id": "stretching_lat_stretch",
+    "titleKey": "exercise.stretching.lat_stretch",
+    "defaultTitle": "Lat Stretch",
+    "category": "stretching",
+    "sortOrder": 8,
+    "iconName": "icMissingImage",
+    "trackingType": "timed"
+  },
+  {
+    "id": "stretching_childs_pose",
+    "titleKey": "exercise.stretching.childs_pose",
+    "defaultTitle": "Child's Pose",
+    "category": "stretching",
+    "sortOrder": 9,
+    "iconName": "icMissingImage",
+    "trackingType": "timed"
+  },
+  {
+    "id": "stretching_triceps_stretch",
+    "titleKey": "exercise.stretching.triceps_stretch",
+    "defaultTitle": "Triceps Stretch",
+    "category": "stretching",
+    "sortOrder": 10,
+    "iconName": "icMissingImage",
+    "trackingType": "timed"
+  },
+  {
+    "id": "stretching_neck_stretch",
+    "titleKey": "exercise.stretching.neck_stretch",
+    "defaultTitle": "Neck Stretch",
+    "category": "stretching",
+    "sortOrder": 11,
+    "iconName": "icMissingImage",
+    "trackingType": "timed"
+  },
+  {
     "id": "back_reverse_grip_pull_up",
     "titleKey": "exercise.back.reverse_grip_pull_up",
     "defaultTitle": "Reverse-Grip Pull-Up",

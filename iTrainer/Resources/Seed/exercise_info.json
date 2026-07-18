@@ -1402,5 +1402,65 @@
       "exercise.info.functional_training_kettlebell_clean_and_press.technique.5",
       "exercise.info.functional_training_kettlebell_clean_and_press.technique.6"
     ]
+  },
+  {
+    "exerciseId": "stretching_hamstring_stretch",
+    "descriptionKey": "exercise.info.stretching_hamstring_stretch.description",
+    "techniqueKeys": ["exercise.info.stretching_hamstring_stretch.technique.1", "exercise.info.stretching_hamstring_stretch.technique.2", "exercise.info.stretching_hamstring_stretch.technique.3", "exercise.info.stretching_hamstring_stretch.technique.4", "exercise.info.stretching_hamstring_stretch.technique.5", "exercise.info.stretching_hamstring_stretch.technique.6"]
+  },
+  {
+    "exerciseId": "stretching_quadriceps_stretch",
+    "descriptionKey": "exercise.info.stretching_quadriceps_stretch.description",
+    "techniqueKeys": ["exercise.info.stretching_quadriceps_stretch.technique.1", "exercise.info.stretching_quadriceps_stretch.technique.2", "exercise.info.stretching_quadriceps_stretch.technique.3", "exercise.info.stretching_quadriceps_stretch.technique.4", "exercise.info.stretching_quadriceps_stretch.technique.5", "exercise.info.stretching_quadriceps_stretch.technique.6"]
+  },
+  {
+    "exerciseId": "stretching_chest_stretch",
+    "descriptionKey": "exercise.info.stretching_chest_stretch.description",
+    "techniqueKeys": ["exercise.info.stretching_chest_stretch.technique.1", "exercise.info.stretching_chest_stretch.technique.2", "exercise.info.stretching_chest_stretch.technique.3", "exercise.info.stretching_chest_stretch.technique.4", "exercise.info.stretching_chest_stretch.technique.5", "exercise.info.stretching_chest_stretch.technique.6"]
+  },
+  {
+    "exerciseId": "stretching_shoulder_stretch",
+    "descriptionKey": "exercise.info.stretching_shoulder_stretch.description",
+    "techniqueKeys": ["exercise.info.stretching_shoulder_stretch.technique.1", "exercise.info.stretching_shoulder_stretch.technique.2", "exercise.info.stretching_shoulder_stretch.technique.3", "exercise.info.stretching_shoulder_stretch.technique.4", "exercise.info.stretching_shoulder_stretch.technique.5", "exercise.info.stretching_shoulder_stretch.technique.6"]
+  },
+  {
+    "exerciseId": "stretching_glute_stretch",
+    "descriptionKey": "exercise.info.stretching_glute_stretch.description",
+    "techniqueKeys": ["exercise.info.stretching_glute_stretch.technique.1", "exercise.info.stretching_glute_stretch.technique.2", "exercise.info.stretching_glute_stretch.technique.3", "exercise.info.stretching_glute_stretch.technique.4", "exercise.info.stretching_glute_stretch.technique.5", "exercise.info.stretching_glute_stretch.technique.6"]
+  },
+  {
+    "exerciseId": "stretching_calf_stretch",
+    "descriptionKey": "exercise.info.stretching_calf_stretch.description",
+    "techniqueKeys": ["exercise.info.stretching_calf_stretch.technique.1", "exercise.info.stretching_calf_stretch.technique.2", "exercise.info.stretching_calf_stretch.technique.3", "exercise.info.stretching_calf_stretch.technique.4", "exercise.info.stretching_calf_stretch.technique.5", "exercise.info.stretching_calf_stretch.technique.6"]
+  },
+  {
+    "exerciseId": "stretching_hip_flexor_stretch",
+    "descriptionKey": "exercise.info.stretching_hip_flexor_stretch.description",
+    "techniqueKeys": ["exercise.info.stretching_hip_flexor_stretch.technique.1", "exercise.info.stretching_hip_flexor_stretch.technique.2", "exercise.info.stretching_hip_flexor_stretch.technique.3", "exercise.info.stretching_hip_flexor_stretch.technique.4", "exercise.info.stretching_hip_flexor_stretch.technique.5", "exercise.info.stretching_hip_flexor_stretch.technique.6"]
+  },
+  {
+    "exerciseId": "stretching_butterfly_stretch",
+    "descriptionKey": "exercise.info.stretching_butterfly_stretch.description",
+    "techniqueKeys": ["exercise.info.stretching_butterfly_stretch.technique.1", "exercise.info.stretching_butterfly_stretch.technique.2", "exercise.info.stretching_butterfly_stretch.technique.3", "exercise.info.stretching_butterfly_stretch.technique.4", "exercise.info.stretching_butterfly_stretch.technique.5", "exercise.info.stretching_butterfly_stretch.technique.6"]
+  },
+  {
+    "exerciseId": "stretching_lat_stretch",
+    "descriptionKey": "exercise.info.stretching_lat_stretch.description",
+    "techniqueKeys": ["exercise.info.stretching_lat_stretch.technique.1", "exercise.info.stretching_lat_stretch.technique.2", "exercise.info.stretching_lat_stretch.technique.3", "exercise.info.stretching_lat_stretch.technique.4", "exercise.info.stretching_lat_stretch.technique.5", "exercise.info.stretching_lat_stretch.technique.6"]
+  },
+  {
+    "exerciseId": "stretching_childs_pose",
+    "descriptionKey": "exercise.info.stretching_childs_pose.description",
+    "techniqueKeys": ["exercise.info.stretching_childs_pose.technique.1", "exercise.info.stretching_childs_pose.technique.2", "exercise.info.stretching_childs_pose.technique.3", "exercise.info.stretching_childs_pose.technique.4", "exercise.info.stretching_childs_pose.technique.5", "exercise.info.stretching_childs_pose.technique.6"]
+  },
+  {
+    "exerciseId": "stretching_triceps_stretch",
+    "descriptionKey": "exercise.info.stretching_triceps_stretch.description",
+    "techniqueKeys": ["exercise.info.stretching_triceps_stretch.technique.1", "exercise.info.stretching_triceps_stretch.technique.2", "exercise.info.stretching_triceps_stretch.technique.3", "exercise.info.stretching_triceps_stretch.technique.4", "exercise.info.stretching_triceps_stretch.technique.5", "exercise.info.stretching_triceps_stretch.technique.6"]
+  },
+  {
+    "exerciseId": "stretching_neck_stretch",
+    "descriptionKey": "exercise.info.stretching_neck_stretch.description",
+    "techniqueKeys": ["exercise.info.stretching_neck_stretch.technique.1", "exercise.info.stretching_neck_stretch.technique.2", "exercise.info.stretching_neck_stretch.technique.3", "exercise.info.stretching_neck_stretch.technique.4", "exercise.info.stretching_neck_stretch.technique.5", "exercise.info.stretching_neck_stretch.technique.6"]
   }
 ]
