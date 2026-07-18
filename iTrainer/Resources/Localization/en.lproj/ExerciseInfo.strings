@@ -687,3 +687,91 @@
 "exercise.info.forearms_dead_hang.technique.4" = "Avoid twisting or swinging during the hold.";
 "exercise.info.forearms_dead_hang.technique.5" = "Breathe steadily while maintaining the grip.";
 "exercise.info.forearms_dead_hang.technique.6" = "Step down safely before the grip fully fails.";
+
+"exercise.info.abs_crunch.description" = "Crunch is a basic abdominal exercise that flexes the upper torso toward the pelvis.";
+"exercise.info.abs_crunch.technique.1" = "Lie on your back with knees bent and feet on the floor.";
+"exercise.info.abs_crunch.technique.2" = "Place hands lightly behind the head or across the chest.";
+"exercise.info.abs_crunch.technique.3" = "Curl the upper back off the floor using the abs.";
+"exercise.info.abs_crunch.technique.4" = "Keep the lower back close to the floor.";
+"exercise.info.abs_crunch.technique.5" = "Avoid pulling the neck with your hands.";
+"exercise.info.abs_crunch.technique.6" = "Lower slowly and keep the movement controlled.";
+
+"exercise.info.abs_lying_leg_raise.description" = "Lying Leg Raise trains the lower abs and hip flexors by raising the legs from a lying position.";
+"exercise.info.abs_lying_leg_raise.technique.1" = "Lie on your back with legs straight or slightly bent.";
+"exercise.info.abs_lying_leg_raise.technique.2" = "Keep the lower back controlled against the floor.";
+"exercise.info.abs_lying_leg_raise.technique.3" = "Raise the legs until they are near vertical.";
+"exercise.info.abs_lying_leg_raise.technique.4" = "Lower slowly without letting the lower back arch.";
+"exercise.info.abs_lying_leg_raise.technique.5" = "Use a smaller range if control is lost.";
+"exercise.info.abs_lying_leg_raise.technique.6" = "Keep the movement smooth and avoid swinging the legs.";
+
+"exercise.info.abs_plank.description" = "Plank is an isometric core exercise focused on holding a stable body position.";
+"exercise.info.abs_plank.technique.1" = "Set elbows under the shoulders and forearms on the floor.";
+"exercise.info.abs_plank.technique.2" = "Step the feet back and form a straight line from head to heels.";
+"exercise.info.abs_plank.technique.3" = "Brace the abs and glutes lightly.";
+"exercise.info.abs_plank.technique.4" = "Do not let the hips sag or rise too high.";
+"exercise.info.abs_plank.technique.5" = "Keep the neck neutral and breathe steadily.";
+"exercise.info.abs_plank.technique.6" = "Stop the set when the position starts to break.";
+
+"exercise.info.abs_reverse_crunch.description" = "Reverse Crunch emphasizes the lower portion of the abdominal movement by curling the pelvis upward.";
+"exercise.info.abs_reverse_crunch.technique.1" = "Lie on your back with knees bent and feet lifted.";
+"exercise.info.abs_reverse_crunch.technique.2" = "Keep the upper body relaxed and stable.";
+"exercise.info.abs_reverse_crunch.technique.3" = "Curl the pelvis upward toward the ribs.";
+"exercise.info.abs_reverse_crunch.technique.4" = "Avoid using momentum from the legs.";
+"exercise.info.abs_reverse_crunch.technique.5" = "Pause briefly at the top.";
+"exercise.info.abs_reverse_crunch.technique.6" = "Lower the hips slowly back to the start.";
+
+"exercise.info.abs_bicycle_crunch.description" = "Bicycle Crunch combines trunk flexion and rotation to train the abs and obliques.";
+"exercise.info.abs_bicycle_crunch.technique.1" = "Lie on your back with hands lightly behind the head.";
+"exercise.info.abs_bicycle_crunch.technique.2" = "Lift the shoulders and bring one knee toward the opposite elbow.";
+"exercise.info.abs_bicycle_crunch.technique.3" = "Rotate through the torso instead of pulling the neck.";
+"exercise.info.abs_bicycle_crunch.technique.4" = "Extend the other leg under control.";
+"exercise.info.abs_bicycle_crunch.technique.5" = "Alternate sides with a steady rhythm.";
+"exercise.info.abs_bicycle_crunch.technique.6" = "Slow down if the movement becomes loose or jerky.";
+
+"exercise.info.abs_cable_crunch.description" = "Cable Crunch loads spinal flexion with a cable, making it a common weighted abdominal exercise.";
+"exercise.info.abs_cable_crunch.technique.1" = "Kneel or stand facing away from the cable depending on setup.";
+"exercise.info.abs_cable_crunch.technique.2" = "Hold the rope or handle near the head.";
+"exercise.info.abs_cable_crunch.technique.3" = "Curl the ribs toward the pelvis using the abs.";
+"exercise.info.abs_cable_crunch.technique.4" = "Keep the hips mostly fixed.";
+"exercise.info.abs_cable_crunch.technique.5" = "Avoid pulling only with the arms.";
+"exercise.info.abs_cable_crunch.technique.6" = "Return slowly while keeping tension on the cable.";
+
+"exercise.info.abs_hanging_knee_raise.description" = "Hanging Knee Raise trains the abs by lifting the knees from a hanging position.";
+"exercise.info.abs_hanging_knee_raise.technique.1" = "Hang from a bar with a secure grip.";
+"exercise.info.abs_hanging_knee_raise.technique.2" = "Keep shoulders controlled and avoid passive swinging.";
+"exercise.info.abs_hanging_knee_raise.technique.3" = "Raise the knees toward the chest.";
+"exercise.info.abs_hanging_knee_raise.technique.4" = "Curl the pelvis slightly at the top.";
+"exercise.info.abs_hanging_knee_raise.technique.5" = "Lower the legs slowly.";
+"exercise.info.abs_hanging_knee_raise.technique.6" = "Reset control before starting the next rep.";
+
+"exercise.info.abs_hanging_leg_raise.description" = "Hanging Leg Raise is a harder hanging core exercise that raises straighter legs through a larger range.";
+"exercise.info.abs_hanging_leg_raise.technique.1" = "Hang from a bar with the body still.";
+"exercise.info.abs_hanging_leg_raise.technique.2" = "Keep the legs straight or slightly bent.";
+"exercise.info.abs_hanging_leg_raise.technique.3" = "Raise the legs under control toward hip height or higher.";
+"exercise.info.abs_hanging_leg_raise.technique.4" = "Avoid swinging to start the movement.";
+"exercise.info.abs_hanging_leg_raise.technique.5" = "Lower slowly through the same path.";
+"exercise.info.abs_hanging_leg_raise.technique.6" = "Use knee raises first if full leg raises are not controlled.";
+
+"exercise.info.abs_side_plank.description" = "Side Plank is an isometric exercise for the obliques and lateral core stability.";
+"exercise.info.abs_side_plank.technique.1" = "Place one elbow under the shoulder and stack or stagger the feet.";
+"exercise.info.abs_side_plank.technique.2" = "Lift the hips until the body forms a straight line.";
+"exercise.info.abs_side_plank.technique.3" = "Brace the side of the torso and glutes.";
+"exercise.info.abs_side_plank.technique.4" = "Do not let the hips rotate forward or backward.";
+"exercise.info.abs_side_plank.technique.5" = "Keep the neck aligned with the body.";
+"exercise.info.abs_side_plank.technique.6" = "Repeat the same hold time on both sides.";
+
+"exercise.info.abs_decline_crunch.description" = "Decline Crunch is a crunch variation performed on an incline bench for a larger range of motion.";
+"exercise.info.abs_decline_crunch.technique.1" = "Secure the feet on the decline bench.";
+"exercise.info.abs_decline_crunch.technique.2" = "Start with the torso lowered under control.";
+"exercise.info.abs_decline_crunch.technique.3" = "Curl the upper body up using the abs.";
+"exercise.info.abs_decline_crunch.technique.4" = "Avoid sitting all the way up with hip flexors only.";
+"exercise.info.abs_decline_crunch.technique.5" = "Keep the neck relaxed.";
+"exercise.info.abs_decline_crunch.technique.6" = "Lower slowly and keep tension through the set.";
+
+"exercise.info.abs_ab_wheel_rollout.description" = "Ab Wheel Rollout is a demanding core exercise that trains the abs to resist extension.";
+"exercise.info.abs_ab_wheel_rollout.technique.1" = "Start from the knees with the wheel under the shoulders.";
+"exercise.info.abs_ab_wheel_rollout.technique.2" = "Brace the abs and keep the ribs down.";
+"exercise.info.abs_ab_wheel_rollout.technique.3" = "Roll forward only as far as you can control.";
+"exercise.info.abs_ab_wheel_rollout.technique.4" = "Do not let the lower back sag.";
+"exercise.info.abs_ab_wheel_rollout.technique.5" = "Pull the wheel back by tightening the abs.";
+"exercise.info.abs_ab_wheel_rollout.technique.6" = "Use a shorter range until the full movement is stable.";

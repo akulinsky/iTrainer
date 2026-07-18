@@ -100,9 +100,14 @@
 "exercise.abs.crunch" = "Crunch";
 "exercise.abs.lying_leg_raise" = "Lying Leg Raise";
 "exercise.abs.plank" = "Plank";
-"exercise.abs.bicycle_crunch" = "Bicycle Crunch";
 "exercise.abs.reverse_crunch" = "Reverse Crunch";
+"exercise.abs.bicycle_crunch" = "Bicycle Crunch";
 "exercise.abs.cable_crunch" = "Cable Crunch";
+"exercise.abs.hanging_knee_raise" = "Hanging Knee Raise";
+"exercise.abs.hanging_leg_raise" = "Hanging Leg Raise";
+"exercise.abs.side_plank" = "Side Plank";
+"exercise.abs.decline_crunch" = "Decline Crunch";
+"exercise.abs.ab_wheel_rollout" = "Ab Wheel Rollout";
 "exercise.cardio.running" = "Running";
 "exercise.cardio.walking" = "Walking";
 "exercise.cardio.cycling" = "Cycling";

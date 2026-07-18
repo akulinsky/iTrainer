@@ -687,3 +687,91 @@
 "exercise.info.forearms_dead_hang.technique.4" = "Не скручивайтесь и не раскачивайтесь во время удержания.";
 "exercise.info.forearms_dead_hang.technique.5" = "Дышите ровно, сохраняя хват.";
 "exercise.info.forearms_dead_hang.technique.6" = "Безопасно спуститесь до того, как хват полностью откажет.";
+
+"exercise.info.abs_crunch.description" = "Скручивания - базовое упражнение на пресс, где верх корпуса сгибается по направлению к тазу.";
+"exercise.info.abs_crunch.technique.1" = "Лягте на спину, согните колени и поставьте стопы на пол.";
+"exercise.info.abs_crunch.technique.2" = "Положите руки легко за голову или скрестите их на груди.";
+"exercise.info.abs_crunch.technique.3" = "Скручивайте верх спины от пола за счет мышц пресса.";
+"exercise.info.abs_crunch.technique.4" = "Держите поясницу близко к полу.";
+"exercise.info.abs_crunch.technique.5" = "Не тяните шею руками.";
+"exercise.info.abs_crunch.technique.6" = "Опускайтесь медленно и контролируйте движение.";
+
+"exercise.info.abs_lying_leg_raise.description" = "Подъем ног лежа тренирует нижнюю часть пресса и сгибатели бедра за счет подъема ног из положения лежа.";
+"exercise.info.abs_lying_leg_raise.technique.1" = "Лягте на спину, ноги прямые или слегка согнутые.";
+"exercise.info.abs_lying_leg_raise.technique.2" = "Контролируйте поясницу и не позволяйте ей сильно отрываться от пола.";
+"exercise.info.abs_lying_leg_raise.technique.3" = "Поднимайте ноги почти до вертикального положения.";
+"exercise.info.abs_lying_leg_raise.technique.4" = "Опускайте медленно, не прогибаясь в пояснице.";
+"exercise.info.abs_lying_leg_raise.technique.5" = "Сократите амплитуду, если теряете контроль.";
+"exercise.info.abs_lying_leg_raise.technique.6" = "Двигайтесь плавно и не раскачивайте ноги.";
+
+"exercise.info.abs_plank.description" = "Планка - изометрическое упражнение для кора, где задача удерживать стабильное положение тела.";
+"exercise.info.abs_plank.technique.1" = "Поставьте локти под плечами, предплечья на полу.";
+"exercise.info.abs_plank.technique.2" = "Отведите стопы назад и выстройте прямую линию от головы до пяток.";
+"exercise.info.abs_plank.technique.3" = "Слегка напрягите пресс и ягодицы.";
+"exercise.info.abs_plank.technique.4" = "Не проваливайте таз вниз и не поднимайте его слишком высоко.";
+"exercise.info.abs_plank.technique.5" = "Держите шею нейтрально и дышите ровно.";
+"exercise.info.abs_plank.technique.6" = "Завершайте подход, когда положение начинает ломаться.";
+
+"exercise.info.abs_reverse_crunch.description" = "Обратные скручивания делают акцент на движении нижней части пресса за счет подкручивания таза вверх.";
+"exercise.info.abs_reverse_crunch.technique.1" = "Лягте на спину, согните колени и поднимите стопы от пола.";
+"exercise.info.abs_reverse_crunch.technique.2" = "Держите верх корпуса расслабленным и стабильным.";
+"exercise.info.abs_reverse_crunch.technique.3" = "Подкручивайте таз вверх по направлению к ребрам.";
+"exercise.info.abs_reverse_crunch.technique.4" = "Не используйте инерцию ног.";
+"exercise.info.abs_reverse_crunch.technique.5" = "Коротко задержитесь в верхней точке.";
+"exercise.info.abs_reverse_crunch.technique.6" = "Медленно опускайте таз в исходное положение.";
+
+"exercise.info.abs_bicycle_crunch.description" = "Велосипед сочетает сгибание и поворот корпуса, нагружая пресс и косые мышцы.";
+"exercise.info.abs_bicycle_crunch.technique.1" = "Лягте на спину, руки легко за головой.";
+"exercise.info.abs_bicycle_crunch.technique.2" = "Поднимите плечи и ведите одно колено к противоположному локтю.";
+"exercise.info.abs_bicycle_crunch.technique.3" = "Поворачивайтесь корпусом, не тяните шею руками.";
+"exercise.info.abs_bicycle_crunch.technique.4" = "Другую ногу выпрямляйте под контролем.";
+"exercise.info.abs_bicycle_crunch.technique.5" = "Чередуйте стороны в ровном ритме.";
+"exercise.info.abs_bicycle_crunch.technique.6" = "Замедлитесь, если движение становится резким или неаккуратным.";
+
+"exercise.info.abs_cable_crunch.description" = "Скручивания на блоке позволяют нагрузить сгибание корпуса весом и являются популярным упражнением на пресс.";
+"exercise.info.abs_cable_crunch.technique.1" = "Встаньте или опуститесь на колени у блока в зависимости от настройки.";
+"exercise.info.abs_cable_crunch.technique.2" = "Держите канат или рукоять рядом с головой.";
+"exercise.info.abs_cable_crunch.technique.3" = "Скручивайте ребра к тазу за счет пресса.";
+"exercise.info.abs_cable_crunch.technique.4" = "Держите таз в основном неподвижным.";
+"exercise.info.abs_cable_crunch.technique.5" = "Не тяните вес только руками.";
+"exercise.info.abs_cable_crunch.technique.6" = "Возвращайтесь медленно, сохраняя натяжение троса.";
+
+"exercise.info.abs_hanging_knee_raise.description" = "Подъем коленей в висе тренирует пресс за счет подъема коленей из положения на перекладине.";
+"exercise.info.abs_hanging_knee_raise.technique.1" = "Повисните на перекладине надежным хватом.";
+"exercise.info.abs_hanging_knee_raise.technique.2" = "Контролируйте плечи и не раскачивайтесь пассивно.";
+"exercise.info.abs_hanging_knee_raise.technique.3" = "Поднимайте колени к груди.";
+"exercise.info.abs_hanging_knee_raise.technique.4" = "Слегка подкручивайте таз в верхней точке.";
+"exercise.info.abs_hanging_knee_raise.technique.5" = "Опускайте ноги медленно.";
+"exercise.info.abs_hanging_knee_raise.technique.6" = "Восстановите контроль перед следующим повторением.";
+
+"exercise.info.abs_hanging_leg_raise.description" = "Подъем ног в висе - более сложное упражнение на пресс, где прямые ноги поднимаются через большую амплитуду.";
+"exercise.info.abs_hanging_leg_raise.technique.1" = "Повисните на перекладине и удерживайте тело спокойно.";
+"exercise.info.abs_hanging_leg_raise.technique.2" = "Держите ноги прямыми или слегка согнутыми.";
+"exercise.info.abs_hanging_leg_raise.technique.3" = "Поднимайте ноги под контролем до уровня таза или выше.";
+"exercise.info.abs_hanging_leg_raise.technique.4" = "Не начинайте движение за счет раскачки.";
+"exercise.info.abs_hanging_leg_raise.technique.5" = "Медленно опускайте ноги по той же траектории.";
+"exercise.info.abs_hanging_leg_raise.technique.6" = "Сначала используйте подъем коленей, если прямые ноги пока не контролируются.";
+
+"exercise.info.abs_side_plank.description" = "Боковая планка - изометрическое упражнение для косых мышц и боковой стабильности корпуса.";
+"exercise.info.abs_side_plank.technique.1" = "Поставьте локоть под плечо, стопы расположите друг на друге или одну перед другой.";
+"exercise.info.abs_side_plank.technique.2" = "Поднимите таз, чтобы тело образовало прямую линию.";
+"exercise.info.abs_side_plank.technique.3" = "Напрягите бок корпуса и ягодицы.";
+"exercise.info.abs_side_plank.technique.4" = "Не разворачивайте таз вперед или назад.";
+"exercise.info.abs_side_plank.technique.5" = "Держите шею на одной линии с телом.";
+"exercise.info.abs_side_plank.technique.6" = "Повторяйте одинаковое время удержания на обе стороны.";
+
+"exercise.info.abs_decline_crunch.description" = "Скручивания на наклонной скамье - вариант скручиваний с большей амплитудой за счет положения на скамье.";
+"exercise.info.abs_decline_crunch.technique.1" = "Зафиксируйте стопы на наклонной скамье.";
+"exercise.info.abs_decline_crunch.technique.2" = "Начните с опущенным корпусом под контролем.";
+"exercise.info.abs_decline_crunch.technique.3" = "Скручивайте верх корпуса вверх за счет пресса.";
+"exercise.info.abs_decline_crunch.technique.4" = "Не садитесь полностью вверх только за счет сгибателей бедра.";
+"exercise.info.abs_decline_crunch.technique.5" = "Держите шею расслабленной.";
+"exercise.info.abs_decline_crunch.technique.6" = "Опускайтесь медленно, сохраняя напряжение.";
+
+"exercise.info.abs_ab_wheel_rollout.description" = "Ролик для пресса - сложное упражнение для кора, где пресс сопротивляется разгибанию корпуса.";
+"exercise.info.abs_ab_wheel_rollout.technique.1" = "Начните с коленей, ролик расположен под плечами.";
+"exercise.info.abs_ab_wheel_rollout.technique.2" = "Напрягите пресс и держите ребра опущенными.";
+"exercise.info.abs_ab_wheel_rollout.technique.3" = "Катите ролик вперед только настолько, насколько можете контролировать.";
+"exercise.info.abs_ab_wheel_rollout.technique.4" = "Не проваливайтесь в пояснице.";
+"exercise.info.abs_ab_wheel_rollout.technique.5" = "Возвращайте ролик назад за счет напряжения пресса.";
+"exercise.info.abs_ab_wheel_rollout.technique.6" = "Используйте короткую амплитуду, пока полное движение не станет стабильным.";

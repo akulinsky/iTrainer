@@ -751,7 +751,7 @@
     "titleKey": "exercise.abs.bicycle_crunch",
     "defaultTitle": "Bicycle Crunch",
     "category": "abs",
-    "sortOrder": 3,
+    "sortOrder": 4,
     "iconName": "icMissingImage",
     "trackingType": "repsOnly"
   },
@@ -760,7 +760,7 @@
     "titleKey": "exercise.abs.reverse_crunch",
     "defaultTitle": "Reverse Crunch",
     "category": "abs",
-    "sortOrder": 4,
+    "sortOrder": 3,
     "iconName": "icMissingImage",
     "trackingType": "repsOnly"
   },
@@ -772,6 +772,51 @@
     "sortOrder": 5,
     "iconName": "icMissingImage",
     "trackingType": "weightedReps"
+  },
+  {
+    "id": "abs_hanging_knee_raise",
+    "titleKey": "exercise.abs.hanging_knee_raise",
+    "defaultTitle": "Hanging Knee Raise",
+    "category": "abs",
+    "sortOrder": 6,
+    "iconName": "icMissingImage",
+    "trackingType": "repsOnly"
+  },
+  {
+    "id": "abs_hanging_leg_raise",
+    "titleKey": "exercise.abs.hanging_leg_raise",
+    "defaultTitle": "Hanging Leg Raise",
+    "category": "abs",
+    "sortOrder": 7,
+    "iconName": "icMissingImage",
+    "trackingType": "repsOnly"
+  },
+  {
+    "id": "abs_side_plank",
+    "titleKey": "exercise.abs.side_plank",
+    "defaultTitle": "Side Plank",
+    "category": "abs",
+    "sortOrder": 8,
+    "iconName": "icMissingImage",
+    "trackingType": "timed"
+  },
+  {
+    "id": "abs_decline_crunch",
+    "titleKey": "exercise.abs.decline_crunch",
+    "defaultTitle": "Decline Crunch",
+    "category": "abs",
+    "sortOrder": 9,
+    "iconName": "icMissingImage",
+    "trackingType": "repsOnly"
+  },
+  {
+    "id": "abs_ab_wheel_rollout",
+    "titleKey": "exercise.abs.ab_wheel_rollout",
+    "defaultTitle": "Ab Wheel Rollout",
+    "category": "abs",
+    "sortOrder": 10,
+    "iconName": "icMissingImage",
+    "trackingType": "repsOnly"
   },
   {
     "id": "cardio_running",

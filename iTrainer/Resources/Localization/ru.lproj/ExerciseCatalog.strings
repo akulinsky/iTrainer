@@ -100,9 +100,14 @@
 "exercise.abs.crunch" = "Скручивания";
 "exercise.abs.lying_leg_raise" = "Подъем ног лежа";
 "exercise.abs.plank" = "Планка";
-"exercise.abs.bicycle_crunch" = "Велосипед";
 "exercise.abs.reverse_crunch" = "Обратные скручивания";
+"exercise.abs.bicycle_crunch" = "Велосипед";
 "exercise.abs.cable_crunch" = "Скручивания на блоке";
+"exercise.abs.hanging_knee_raise" = "Подъем коленей в висе";
+"exercise.abs.hanging_leg_raise" = "Подъем ног в висе";
+"exercise.abs.side_plank" = "Боковая планка";
+"exercise.abs.decline_crunch" = "Скручивания на наклонной скамье";
+"exercise.abs.ab_wheel_rollout" = "Ролик для пресса";
 "exercise.cardio.running" = "Бег";
 "exercise.cardio.walking" = "Ходьба";
 "exercise.cardio.cycling" = "Велосипед";

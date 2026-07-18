@@ -1030,5 +1030,137 @@
       "exercise.info.forearms_dead_hang.technique.5",
       "exercise.info.forearms_dead_hang.technique.6"
     ]
+  },
+  {
+    "exerciseId": "abs_crunch",
+    "descriptionKey": "exercise.info.abs_crunch.description",
+    "techniqueKeys": [
+      "exercise.info.abs_crunch.technique.1",
+      "exercise.info.abs_crunch.technique.2",
+      "exercise.info.abs_crunch.technique.3",
+      "exercise.info.abs_crunch.technique.4",
+      "exercise.info.abs_crunch.technique.5",
+      "exercise.info.abs_crunch.technique.6"
+    ]
+  },
+  {
+    "exerciseId": "abs_lying_leg_raise",
+    "descriptionKey": "exercise.info.abs_lying_leg_raise.description",
+    "techniqueKeys": [
+      "exercise.info.abs_lying_leg_raise.technique.1",
+      "exercise.info.abs_lying_leg_raise.technique.2",
+      "exercise.info.abs_lying_leg_raise.technique.3",
+      "exercise.info.abs_lying_leg_raise.technique.4",
+      "exercise.info.abs_lying_leg_raise.technique.5",
+      "exercise.info.abs_lying_leg_raise.technique.6"
+    ]
+  },
+  {
+    "exerciseId": "abs_plank",
+    "descriptionKey": "exercise.info.abs_plank.description",
+    "techniqueKeys": [
+      "exercise.info.abs_plank.technique.1",
+      "exercise.info.abs_plank.technique.2",
+      "exercise.info.abs_plank.technique.3",
+      "exercise.info.abs_plank.technique.4",
+      "exercise.info.abs_plank.technique.5",
+      "exercise.info.abs_plank.technique.6"
+    ]
+  },
+  {
+    "exerciseId": "abs_reverse_crunch",
+    "descriptionKey": "exercise.info.abs_reverse_crunch.description",
+    "techniqueKeys": [
+      "exercise.info.abs_reverse_crunch.technique.1",
+      "exercise.info.abs_reverse_crunch.technique.2",
+      "exercise.info.abs_reverse_crunch.technique.3",
+      "exercise.info.abs_reverse_crunch.technique.4",
+      "exercise.info.abs_reverse_crunch.technique.5",
+      "exercise.info.abs_reverse_crunch.technique.6"
+    ]
+  },
+  {
+    "exerciseId": "abs_bicycle_crunch",
+    "descriptionKey": "exercise.info.abs_bicycle_crunch.description",
+    "techniqueKeys": [
+      "exercise.info.abs_bicycle_crunch.technique.1",
+      "exercise.info.abs_bicycle_crunch.technique.2",
+      "exercise.info.abs_bicycle_crunch.technique.3",
+      "exercise.info.abs_bicycle_crunch.technique.4",
+      "exercise.info.abs_bicycle_crunch.technique.5",
+      "exercise.info.abs_bicycle_crunch.technique.6"
+    ]
+  },
+  {
+    "exerciseId": "abs_cable_crunch",
+    "descriptionKey": "exercise.info.abs_cable_crunch.description",
+    "techniqueKeys": [
+      "exercise.info.abs_cable_crunch.technique.1",
+      "exercise.info.abs_cable_crunch.technique.2",
+      "exercise.info.abs_cable_crunch.technique.3",
+      "exercise.info.abs_cable_crunch.technique.4",
+      "exercise.info.abs_cable_crunch.technique.5",
+      "exercise.info.abs_cable_crunch.technique.6"
+    ]
+  },
+  {
+    "exerciseId": "abs_hanging_knee_raise",
+    "descriptionKey": "exercise.info.abs_hanging_knee_raise.description",
+    "techniqueKeys": [
+      "exercise.info.abs_hanging_knee_raise.technique.1",
+      "exercise.info.abs_hanging_knee_raise.technique.2",
+      "exercise.info.abs_hanging_knee_raise.technique.3",
+      "exercise.info.abs_hanging_knee_raise.technique.4",
+      "exercise.info.abs_hanging_knee_raise.technique.5",
+      "exercise.info.abs_hanging_knee_raise.technique.6"
+    ]
+  },
+  {
+    "exerciseId": "abs_hanging_leg_raise",
+    "descriptionKey": "exercise.info.abs_hanging_leg_raise.description",
+    "techniqueKeys": [
+      "exercise.info.abs_hanging_leg_raise.technique.1",
+      "exercise.info.abs_hanging_leg_raise.technique.2",
+      "exercise.info.abs_hanging_leg_raise.technique.3",
+      "exercise.info.abs_hanging_leg_raise.technique.4",
+      "exercise.info.abs_hanging_leg_raise.technique.5",
+      "exercise.info.abs_hanging_leg_raise.technique.6"
+    ]
+  },
+  {
+    "exerciseId": "abs_side_plank",
+    "descriptionKey": "exercise.info.abs_side_plank.description",
+    "techniqueKeys": [
+      "exercise.info.abs_side_plank.technique.1",
+      "exercise.info.abs_side_plank.technique.2",
+      "exercise.info.abs_side_plank.technique.3",
+      "exercise.info.abs_side_plank.technique.4",
+      "exercise.info.abs_side_plank.technique.5",
+      "exercise.info.abs_side_plank.technique.6"
+    ]
+  },
+  {
+    "exerciseId": "abs_decline_crunch",
+    "descriptionKey": "exercise.info.abs_decline_crunch.description",
+    "techniqueKeys": [
+      "exercise.info.abs_decline_crunch.technique.1",
+      "exercise.info.abs_decline_crunch.technique.2",
+      "exercise.info.abs_decline_crunch.technique.3",
+      "exercise.info.abs_decline_crunch.technique.4",
+      "exercise.info.abs_decline_crunch.technique.5",
+      "exercise.info.abs_decline_crunch.technique.6"
+    ]
+  },
+  {
+    "exerciseId": "abs_ab_wheel_rollout",
+    "descriptionKey": "exercise.info.abs_ab_wheel_rollout.description",
+    "techniqueKeys": [
+      "exercise.info.abs_ab_wheel_rollout.technique.1",
+      "exercise.info.abs_ab_wheel_rollout.technique.2",
+      "exercise.info.abs_ab_wheel_rollout.technique.3",
+      "exercise.info.abs_ab_wheel_rollout.technique.4",
+      "exercise.info.abs_ab_wheel_rollout.technique.5",
+      "exercise.info.abs_ab_wheel_rollout.technique.6"
+    ]
   }
 ]
