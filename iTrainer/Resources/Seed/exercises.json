@@ -86,7 +86,7 @@
     "defaultTitle": "Smith Machine Press",
     "category": "chest",
     "sortOrder": 7,
-    "iconName": "icMissingImage",
+    "iconName": "icExercise_chest_smith_machine_press",
     "trackingType": "weightedReps"
   },
   {
@@ -95,7 +95,7 @@
     "defaultTitle": "Pec Deck",
     "category": "chest",
     "sortOrder": 9,
-    "iconName": "icMissingImage",
+    "iconName": "icExercise_chest_pec_deck",
     "trackingType": "weightedReps"
   },
   {
@@ -104,7 +104,7 @@
     "defaultTitle": "Dumbbell Pullover",
     "category": "chest",
     "sortOrder": 11,
-    "iconName": "icMissingImage",
+    "iconName": "icExercise_chest_dumbbell_pullover",
     "trackingType": "weightedReps"
   },
   {
