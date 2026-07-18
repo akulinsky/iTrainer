@@ -176,7 +176,7 @@
     "defaultTitle": "Barbell Squat",
     "category": "legs",
     "sortOrder": 0,
-    "iconName": "icMissingImage",
+    "iconName": "icExercise_legs_barbell_squat",
     "trackingType": "weightedReps"
   },
   {
@@ -185,7 +185,7 @@
     "defaultTitle": "Leg Press",
     "category": "legs",
     "sortOrder": 1,
-    "iconName": "icMissingImage",
+    "iconName": "icExercise_legs_leg_press",
     "trackingType": "weightedReps"
   },
   {
@@ -203,7 +203,7 @@
     "defaultTitle": "Dumbbell Lunge",
     "category": "legs",
     "sortOrder": 3,
-    "iconName": "icMissingImage",
+    "iconName": "icExercise_legs_dumbbell_lunge",
     "trackingType": "weightedReps"
   },
   {
@@ -212,7 +212,7 @@
     "defaultTitle": "Barbell Lunge",
     "category": "legs",
     "sortOrder": 4,
-    "iconName": "icMissingImage",
+    "iconName": "icExercise_legs_barbell_lunge",
     "trackingType": "weightedReps"
   },
   {
@@ -221,7 +221,7 @@
     "defaultTitle": "Hack Squat",
     "category": "legs",
     "sortOrder": 5,
-    "iconName": "icMissingImage",
+    "iconName": "icExercise_legs_hack_squat",
     "trackingType": "weightedReps"
   },
   {
@@ -230,7 +230,7 @@
     "defaultTitle": "Front Squat",
     "category": "legs",
     "sortOrder": 6,
-    "iconName": "icMissingImage",
+    "iconName": "icExercise_legs_front_squat",
     "trackingType": "weightedReps"
   },
   {
@@ -239,7 +239,7 @@
     "defaultTitle": "Leg Extension",
     "category": "legs",
     "sortOrder": 7,
-    "iconName": "icMissingImage",
+    "iconName": "icExercise_legs_leg_extension",
     "trackingType": "weightedReps"
   },
   {
@@ -248,7 +248,7 @@
     "defaultTitle": "Lying Leg Curl",
     "category": "legs",
     "sortOrder": 8,
-    "iconName": "icMissingImage",
+    "iconName": "icExercise_legs_lying_leg_curl",
     "trackingType": "weightedReps"
   },
   {
@@ -257,7 +257,7 @@
     "defaultTitle": "Seated Leg Curl",
     "category": "legs",
     "sortOrder": 9,
-    "iconName": "icMissingImage",
+    "iconName": "icExercise_legs_seated_leg_curl",
     "trackingType": "weightedReps"
   },
   {
@@ -266,7 +266,7 @@
     "defaultTitle": "Standing Calf Raise",
     "category": "legs",
     "sortOrder": 10,
-    "iconName": "icMissingImage",
+    "iconName": "icExercise_legs_standing_calf_raise",
     "trackingType": "weightedReps"
   },
   {
@@ -275,7 +275,7 @@
     "defaultTitle": "Seated Calf Raise",
     "category": "legs",
     "sortOrder": 11,
-    "iconName": "icMissingImage",
+    "iconName": "icExercise_legs_seated_calf_raise",
     "trackingType": "weightedReps"
   },
   {
@@ -284,7 +284,7 @@
     "defaultTitle": "Hip Adduction Machine",
     "category": "legs",
     "sortOrder": 12,
-    "iconName": "icMissingImage",
+    "iconName": "icExercise_legs_hip_adduction_machine",
     "trackingType": "weightedReps"
   },
   {
