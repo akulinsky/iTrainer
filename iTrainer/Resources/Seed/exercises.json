@@ -473,7 +473,7 @@
     "defaultTitle": "Barbell Curl",
     "category": "biceps",
     "sortOrder": 0,
-    "iconName": "icMissingImage",
+    "iconName": "icExercise_biceps_barbell_curl",
     "trackingType": "weightedReps"
   },
   {
@@ -482,7 +482,7 @@
     "defaultTitle": "EZ-Bar Curl",
     "category": "biceps",
     "sortOrder": 1,
-    "iconName": "icMissingImage",
+    "iconName": "icExercise_biceps_ez_bar_curl",
     "trackingType": "weightedReps"
   },
   {
@@ -491,7 +491,7 @@
     "defaultTitle": "Dumbbell Curl",
     "category": "biceps",
     "sortOrder": 2,
-    "iconName": "icMissingImage",
+    "iconName": "icExercise_biceps_dumbbell_curl",
     "trackingType": "weightedReps"
   },
   {
@@ -500,7 +500,7 @@
     "defaultTitle": "Alternating Dumbbell Curl",
     "category": "biceps",
     "sortOrder": 3,
-    "iconName": "icMissingImage",
+    "iconName": "icExercise_biceps_alternating_dumbbell_curl",
     "trackingType": "weightedReps"
   },
   {
@@ -518,7 +518,7 @@
     "defaultTitle": "Preacher Curl",
     "category": "biceps",
     "sortOrder": 5,
-    "iconName": "icMissingImage",
+    "iconName": "icExercise_biceps_preacher_curl",
     "trackingType": "weightedReps"
   },
   {
@@ -527,7 +527,7 @@
     "defaultTitle": "Dumbbell Preacher Curl",
     "category": "biceps",
     "sortOrder": 6,
-    "iconName": "icMissingImage",
+    "iconName": "icExercise_biceps_dumbbell_preacher_curl",
     "trackingType": "weightedReps"
   },
   {
@@ -536,7 +536,7 @@
     "defaultTitle": "Incline Dumbbell Curl",
     "category": "biceps",
     "sortOrder": 7,
-    "iconName": "icMissingImage",
+    "iconName": "icExercise_biceps_incline_dumbbell_curl",
     "trackingType": "weightedReps"
   },
   {
@@ -545,7 +545,7 @@
     "defaultTitle": "Concentration Curl",
     "category": "biceps",
     "sortOrder": 8,
-    "iconName": "icMissingImage",
+    "iconName": "icExercise_biceps_concentration_curl",
     "trackingType": "weightedReps"
   },
   {
@@ -554,7 +554,7 @@
     "defaultTitle": "Cable Curl",
     "category": "biceps",
     "sortOrder": 9,
-    "iconName": "icMissingImage",
+    "iconName": "icExercise_biceps_cable_curl",
     "trackingType": "weightedReps"
   },
   {
@@ -563,7 +563,7 @@
     "defaultTitle": "Spider Curl",
     "category": "biceps",
     "sortOrder": 10,
-    "iconName": "icMissingImage",
+    "iconName": "icExercise_biceps_spider_curl",
     "trackingType": "weightedReps"
   },
   {
