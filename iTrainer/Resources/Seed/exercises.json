@@ -671,7 +671,7 @@
     "defaultTitle": "Wrist Curl",
     "category": "forearms",
     "sortOrder": 0,
-    "iconName": "icMissingImage",
+    "iconName": "icExercise_forearms_wrist_curl",
     "trackingType": "weightedReps"
   },
   {
@@ -680,7 +680,7 @@
     "defaultTitle": "Reverse Wrist Curl",
     "category": "forearms",
     "sortOrder": 1,
-    "iconName": "icMissingImage",
+    "iconName": "icExercise_forearms_reverse_wrist_curl",
     "trackingType": "weightedReps"
   },
   {
@@ -689,7 +689,7 @@
     "defaultTitle": "Reverse Barbell Curl",
     "category": "forearms",
     "sortOrder": 2,
-    "iconName": "icMissingImage",
+    "iconName": "icExercise_forearms_reverse_barbell_curl",
     "trackingType": "weightedReps"
   },
   {
@@ -698,7 +698,7 @@
     "defaultTitle": "Behind-the-Back Wrist Curl",
     "category": "forearms",
     "sortOrder": 3,
-    "iconName": "icMissingImage",
+    "iconName": "icExercise_forearms_behind_back_wrist_curl",
     "trackingType": "weightedReps"
   },
   {
@@ -707,7 +707,7 @@
     "defaultTitle": "Wrist Roller",
     "category": "forearms",
     "sortOrder": 4,
-    "iconName": "icMissingImage",
+    "iconName": "icExercise_forearms_wrist_roller",
     "trackingType": "weightedReps"
   },
   {
@@ -716,7 +716,7 @@
     "defaultTitle": "Dead Hang",
     "category": "forearms",
     "sortOrder": 5,
-    "iconName": "icMissingImage",
+    "iconName": "icExercise_forearms_dead_hang",
     "trackingType": "timed"
   },
   {
