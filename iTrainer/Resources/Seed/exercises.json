@@ -392,7 +392,7 @@
     "defaultTitle": "Machine Shoulder Press",
     "category": "shoulders",
     "sortOrder": 2,
-    "iconName": "icMissingImage",
+    "iconName": "icExercise_shoulders_machine_press",
     "trackingType": "weightedReps"
   },
   {
@@ -401,7 +401,7 @@
     "defaultTitle": "Arnold Press",
     "category": "shoulders",
     "sortOrder": 3,
-    "iconName": "icMissingImage",
+    "iconName": "icExercise_shoulders_arnold_press",
     "trackingType": "weightedReps"
   },
   {
@@ -419,7 +419,7 @@
     "defaultTitle": "Cable Lateral Raise",
     "category": "shoulders",
     "sortOrder": 5,
-    "iconName": "icMissingImage",
+    "iconName": "icExercise_shoulders_cable_lateral_raise",
     "trackingType": "weightedReps"
   },
   {
@@ -446,7 +446,7 @@
     "defaultTitle": "Reverse Pec Deck",
     "category": "shoulders",
     "sortOrder": 8,
-    "iconName": "icMissingImage",
+    "iconName": "icExercise_shoulders_reverse_pec_deck",
     "trackingType": "weightedReps"
   },
   {
@@ -464,7 +464,7 @@
     "defaultTitle": "Face Pull",
     "category": "shoulders",
     "sortOrder": 10,
-    "iconName": "icMissingImage",
+    "iconName": "icExercise_shoulders_face_pull",
     "trackingType": "weightedReps"
   },
   {
