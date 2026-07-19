@@ -568,13 +568,13 @@
 "exercise.info.triceps_dips.technique.5" = "Выжимайте себя вверх почти до полного выпрямления рук.";
 "exercise.info.triceps_dips.technique.6" = "Двигайтесь под контролем и не пружиньте в нижней точке.";
 
-"exercise.info.triceps_french_press.description" = "Французский жим изолирует трицепс через разгибание локтей, обычно со штангой или EZ-грифом.";
-"exercise.info.triceps_french_press.technique.1" = "Лягте или сядьте устойчиво, удерживая вес над собой.";
-"exercise.info.triceps_french_press.technique.2" = "Держите плечи почти неподвижными во время движения.";
-"exercise.info.triceps_french_press.technique.3" = "Сгибайте локти и опускайте вес ко лбу или за голову.";
-"exercise.info.triceps_french_press.technique.4" = "Работайте в амплитуде, которая комфортна для локтей.";
-"exercise.info.triceps_french_press.technique.5" = "Разгибайте локти, не превращая движение в жим плечами.";
-"exercise.info.triceps_french_press.technique.6" = "Контролируйте вес и не бросайте его вниз.";
+"exercise.info.triceps_french_press.description" = "Французский жим лежа - изолирующее упражнение на трицепс на скамье с EZ-грифом или штангой.";
+"exercise.info.triceps_french_press.technique.1" = "Лягте на горизонтальную скамью, уверенно поставив стопы на пол.";
+"exercise.info.triceps_french_press.technique.2" = "Удерживайте гриф над плечами надежным и комфортным хватом.";
+"exercise.info.triceps_french_press.technique.3" = "Держите плечевые части рук почти вертикально и неподвижно.";
+"exercise.info.triceps_french_press.technique.4" = "Согните локти, опуская гриф ко лбу или немного за него.";
+"exercise.info.triceps_french_press.technique.5" = "Разогните локти, не превращая движение в жим от груди.";
+"exercise.info.triceps_french_press.technique.6" = "Опускайте вес под контролем и работайте в комфортной для локтей амплитуде.";
 
 "exercise.info.triceps_cable_pushdown.description" = "Разгибание рук на блоке тренирует трицепс с постоянным натяжением троса и считается одним из самых популярных изолирующих упражнений.";
 "exercise.info.triceps_cable_pushdown.technique.1" = "Встаньте лицом к блоку, локти держите рядом с корпусом.";

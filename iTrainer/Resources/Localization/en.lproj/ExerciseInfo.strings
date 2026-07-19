@@ -568,13 +568,13 @@
 "exercise.info.triceps_dips.technique.5" = "Press through the handles until the arms are nearly straight.";
 "exercise.info.triceps_dips.technique.6" = "Use a controlled tempo and avoid bouncing at the bottom.";
 
-"exercise.info.triceps_french_press.description" = "French Press isolates the triceps with an elbow-extension movement, usually using a barbell or EZ-bar.";
-"exercise.info.triceps_french_press.technique.1" = "Lie or sit stable with the weight held above you.";
-"exercise.info.triceps_french_press.technique.2" = "Keep upper arms mostly fixed during the movement.";
-"exercise.info.triceps_french_press.technique.3" = "Bend the elbows and lower the weight toward the forehead or behind the head.";
-"exercise.info.triceps_french_press.technique.4" = "Use a range that feels comfortable for the elbows.";
-"exercise.info.triceps_french_press.technique.5" = "Extend the elbows without letting the shoulders take over.";
-"exercise.info.triceps_french_press.technique.6" = "Control the weight and avoid dropping it quickly.";
+"exercise.info.triceps_french_press.description" = "Lying French Press is a triceps isolation exercise performed on a bench with an EZ-bar or barbell.";
+"exercise.info.triceps_french_press.technique.1" = "Lie on a flat bench with the feet planted firmly on the floor.";
+"exercise.info.triceps_french_press.technique.2" = "Hold the bar above the shoulders with a secure, comfortable grip.";
+"exercise.info.triceps_french_press.technique.3" = "Keep the upper arms nearly vertical and stable.";
+"exercise.info.triceps_french_press.technique.4" = "Bend the elbows to lower the bar toward the forehead or slightly behind it.";
+"exercise.info.triceps_french_press.technique.5" = "Extend the elbows to return the bar without turning it into a chest press.";
+"exercise.info.triceps_french_press.technique.6" = "Lower the weight under control and use a pain-free range for the elbows.";
 
 "exercise.info.triceps_cable_pushdown.description" = "Cable Pushdown trains the triceps with steady cable tension and is one of the most common triceps isolation exercises.";
 "exercise.info.triceps_cable_pushdown.technique.1" = "Stand facing the cable with elbows close to your sides.";
