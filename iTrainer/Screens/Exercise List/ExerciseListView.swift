@@ -18,6 +18,7 @@ enum ExerciseListRoute: Hashable {
 private enum ExerciseListAction: Identifiable {
     case hide(ExerciseModel)
     case delete(ExerciseModel)
+    case deleteSuperset(ExerciseModel)
     
     var id: UUID {
         exercise.id
@@ -25,7 +26,7 @@ private enum ExerciseListAction: Identifiable {
     
     var exercise: ExerciseModel {
         switch self {
-        case .hide(let exercise), .delete(let exercise):
+        case .hide(let exercise), .delete(let exercise), .deleteSuperset(let exercise):
             exercise
         }
     }
@@ -205,6 +206,8 @@ struct ExerciseListView: View {
             return String(localized: "exercise_list.action.hide_active.title")
         case .delete:
             return shouldWarnBeforeChangingExercises ? String(localized: "exercise_list.action.delete_active.title") : String(localized: "exercise_list.action.delete.title")
+        case .deleteSuperset:
+            return String(localized: "superset.delete_alert.title")
         }
     }
     
@@ -219,6 +222,8 @@ struct ExerciseListView: View {
                 return String(localized: "exercise_list.action.delete_active.message")
             }
             return String(localized: "exercise_list.action.delete.message")
+        case .deleteSuperset:
+            return String(localized: "superset.delete_alert.message")
         }
     }
     
@@ -248,7 +253,7 @@ struct ExerciseListView: View {
                 Button("common.hide") {
                     performExerciseListAction(action)
                 }
-            case .delete:
+            case .delete, .deleteSuperset:
                 Button("common.delete", role: .destructive) {
                     performExerciseListAction(action)
                 }
@@ -261,7 +266,7 @@ struct ExerciseListView: View {
         switch action {
         case .hide(let exercise):
             viewModel.hide(exercise: exercise)
-        case .delete(let exercise):
+        case .delete(let exercise), .deleteSuperset(let exercise):
             viewModel.delete(exercise: exercise)
         }
     }
@@ -473,7 +478,7 @@ struct ExerciseListView: View {
     private func rowSwipeActions(for item: ExerciseModel) -> some View {
         if item.isSupersetItem {
             Button {
-                requestExerciseListAction(.delete(item))
+                requestExerciseListAction(.deleteSuperset(item))
             } label: {
                 Label("common.delete", systemImage: "trash")
             }
@@ -497,7 +502,7 @@ struct ExerciseListView: View {
     
     private func requestExerciseListAction(_ action: ExerciseListAction) {
         switch action {
-        case .delete:
+        case .delete, .deleteSuperset:
             pendingExerciseListAction = action
         case .hide:
             if shouldWarnBeforeChangingExercises {
