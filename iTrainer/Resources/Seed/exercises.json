@@ -293,7 +293,7 @@
     "defaultTitle": "Hip Thrust",
     "category": "glutes",
     "sortOrder": 0,
-    "iconName": "icMissingImage",
+    "iconName": "icExercise_glutes_hip_thrust",
     "trackingType": "weightedReps"
   },
   {
@@ -302,7 +302,7 @@
     "defaultTitle": "Glute Bridge",
     "category": "glutes",
     "sortOrder": 1,
-    "iconName": "icMissingImage",
+    "iconName": "icExercise_glutes_glute_bridge",
     "trackingType": "weightedReps"
   },
   {
@@ -311,7 +311,7 @@
     "defaultTitle": "Romanian Deadlift",
     "category": "glutes",
     "sortOrder": 2,
-    "iconName": "icMissingImage",
+    "iconName": "icExercise_glutes_romanian_deadlift",
     "trackingType": "weightedReps"
   },
   {
@@ -320,7 +320,7 @@
     "defaultTitle": "Bulgarian Split Squat",
     "category": "glutes",
     "sortOrder": 3,
-    "iconName": "icMissingImage",
+    "iconName": "icExercise_glutes_bulgarian_split_squat",
     "trackingType": "weightedReps"
   },
   {
@@ -329,7 +329,7 @@
     "defaultTitle": "Cable Kickback",
     "category": "glutes",
     "sortOrder": 4,
-    "iconName": "icMissingImage",
+    "iconName": "icExercise_glutes_cable_kickback",
     "trackingType": "weightedReps"
   },
   {
@@ -338,7 +338,7 @@
     "defaultTitle": "Leg Kickback",
     "category": "glutes",
     "sortOrder": 5,
-    "iconName": "icMissingImage",
+    "iconName": "icExercise_glutes_leg_kickback",
     "trackingType": "repsOnly"
   },
   {
@@ -347,7 +347,7 @@
     "defaultTitle": "Hip Abduction Machine",
     "category": "glutes",
     "sortOrder": 6,
-    "iconName": "icMissingImage",
+    "iconName": "icExercise_glutes_abduction_machine",
     "trackingType": "weightedReps"
   },
   {
@@ -356,7 +356,7 @@
     "defaultTitle": "Step-Up",
     "category": "glutes",
     "sortOrder": 7,
-    "iconName": "icMissingImage",
+    "iconName": "icExercise_glutes_step_up",
     "trackingType": "weightedReps"
   },
   {
@@ -365,7 +365,7 @@
     "defaultTitle": "Cable Side Kick",
     "category": "glutes",
     "sortOrder": 8,
-    "iconName": "icMissingImage",
+    "iconName": "icExercise_glutes_cable_side_kick",
     "trackingType": "weightedReps"
   },
   {
