@@ -725,7 +725,7 @@
     "defaultTitle": "Crunch",
     "category": "abs",
     "sortOrder": 0,
-    "iconName": "icMissingImage",
+    "iconName": "icExercise_abs_crunch",
     "trackingType": "repsOnly"
   },
   {
@@ -734,7 +734,7 @@
     "defaultTitle": "Lying Leg Raise",
     "category": "abs",
     "sortOrder": 1,
-    "iconName": "icMissingImage",
+    "iconName": "icExercise_abs_lying_leg_raise",
     "trackingType": "repsOnly"
   },
   {
@@ -743,7 +743,7 @@
     "defaultTitle": "Plank",
     "category": "abs",
     "sortOrder": 2,
-    "iconName": "icMissingImage",
+    "iconName": "icExercise_abs_plank",
     "trackingType": "timed"
   },
   {
@@ -752,7 +752,7 @@
     "defaultTitle": "Bicycle Crunch",
     "category": "abs",
     "sortOrder": 4,
-    "iconName": "icMissingImage",
+    "iconName": "icExercise_abs_bicycle_crunch",
     "trackingType": "repsOnly"
   },
   {
@@ -761,7 +761,7 @@
     "defaultTitle": "Reverse Crunch",
     "category": "abs",
     "sortOrder": 3,
-    "iconName": "icMissingImage",
+    "iconName": "icExercise_abs_reverse_crunch",
     "trackingType": "repsOnly"
   },
   {
@@ -770,7 +770,7 @@
     "defaultTitle": "Cable Crunch",
     "category": "abs",
     "sortOrder": 5,
-    "iconName": "icMissingImage",
+    "iconName": "icExercise_abs_cable_crunch",
     "trackingType": "weightedReps"
   },
   {
@@ -779,7 +779,7 @@
     "defaultTitle": "Hanging Knee Raise",
     "category": "abs",
     "sortOrder": 6,
-    "iconName": "icMissingImage",
+    "iconName": "icExercise_abs_hanging_knee_raise",
     "trackingType": "repsOnly"
   },
   {
@@ -788,7 +788,7 @@
     "defaultTitle": "Hanging Leg Raise",
     "category": "abs",
     "sortOrder": 7,
-    "iconName": "icMissingImage",
+    "iconName": "icExercise_abs_hanging_leg_raise",
     "trackingType": "repsOnly"
   },
   {
@@ -797,7 +797,7 @@
     "defaultTitle": "Side Plank",
     "category": "abs",
     "sortOrder": 8,
-    "iconName": "icMissingImage",
+    "iconName": "icExercise_abs_side_plank",
     "trackingType": "timed"
   },
   {
@@ -806,7 +806,7 @@
     "defaultTitle": "Decline Crunch",
     "category": "abs",
     "sortOrder": 9,
-    "iconName": "icMissingImage",
+    "iconName": "icExercise_abs_decline_crunch",
     "trackingType": "repsOnly"
   },
   {
@@ -815,7 +815,7 @@
     "defaultTitle": "Ab Wheel Rollout",
     "category": "abs",
     "sortOrder": 10,
-    "iconName": "icMissingImage",
+    "iconName": "icExercise_abs_ab_wheel_rollout",
     "trackingType": "repsOnly"
   },
   {
