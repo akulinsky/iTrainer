@@ -1004,7 +1004,7 @@
     "defaultTitle": "Hamstring Stretch",
     "category": "stretching",
     "sortOrder": 0,
-    "iconName": "icMissingImage",
+    "iconName": "icExercise_stretching_hamstring_stretch",
     "trackingType": "timed"
   },
   {
@@ -1013,7 +1013,7 @@
     "defaultTitle": "Quadriceps Stretch",
     "category": "stretching",
     "sortOrder": 1,
-    "iconName": "icMissingImage",
+    "iconName": "icExercise_stretching_quadriceps_stretch",
     "trackingType": "timed"
   },
   {
@@ -1022,7 +1022,7 @@
     "defaultTitle": "Chest Stretch",
     "category": "stretching",
     "sortOrder": 2,
-    "iconName": "icMissingImage",
+    "iconName": "icExercise_stretching_chest_stretch",
     "trackingType": "timed"
   },
   {
@@ -1031,7 +1031,7 @@
     "defaultTitle": "Shoulder Stretch",
     "category": "stretching",
     "sortOrder": 3,
-    "iconName": "icMissingImage",
+    "iconName": "icExercise_stretching_shoulder_stretch",
     "trackingType": "timed"
   },
   {
@@ -1040,7 +1040,7 @@
     "defaultTitle": "Glute Stretch",
     "category": "stretching",
     "sortOrder": 4,
-    "iconName": "icMissingImage",
+    "iconName": "icExercise_stretching_glute_stretch",
     "trackingType": "timed"
   },
   {
@@ -1049,7 +1049,7 @@
     "defaultTitle": "Calf Stretch",
     "category": "stretching",
     "sortOrder": 5,
-    "iconName": "icMissingImage",
+    "iconName": "icExercise_stretching_calf_stretch",
     "trackingType": "timed"
   },
   {
@@ -1058,7 +1058,7 @@
     "defaultTitle": "Hip Flexor Stretch",
     "category": "stretching",
     "sortOrder": 6,
-    "iconName": "icMissingImage",
+    "iconName": "icExercise_stretching_hip_flexor_stretch",
     "trackingType": "timed"
   },
   {
@@ -1067,7 +1067,7 @@
     "defaultTitle": "Butterfly Stretch",
     "category": "stretching",
     "sortOrder": 7,
-    "iconName": "icMissingImage",
+    "iconName": "icExercise_stretching_butterfly_stretch",
     "trackingType": "timed"
   },
   {
@@ -1076,7 +1076,7 @@
     "defaultTitle": "Lat Stretch",
     "category": "stretching",
     "sortOrder": 8,
-    "iconName": "icMissingImage",
+    "iconName": "icExercise_stretching_lat_stretch",
     "trackingType": "timed"
   },
   {
@@ -1085,7 +1085,7 @@
     "defaultTitle": "Child's Pose",
     "category": "stretching",
     "sortOrder": 9,
-    "iconName": "icMissingImage",
+    "iconName": "icExercise_stretching_childs_pose",
     "trackingType": "timed"
   },
   {
@@ -1094,7 +1094,7 @@
     "defaultTitle": "Triceps Stretch",
     "category": "stretching",
     "sortOrder": 10,
-    "iconName": "icMissingImage",
+    "iconName": "icExercise_stretching_triceps_stretch",
     "trackingType": "timed"
   },
   {
@@ -1103,7 +1103,7 @@
     "defaultTitle": "Neck Stretch",
     "category": "stretching",
     "sortOrder": 11,
-    "iconName": "icMissingImage",
+    "iconName": "icExercise_stretching_neck_stretch",
     "trackingType": "timed"
   },
   {
