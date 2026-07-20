@@ -311,6 +311,141 @@ final class iTrainerTests: XCTestCase {
         XCTAssertEqual(result.comparison?.current, 8)
         XCTAssertEqual(result.comparison?.previous, 6)
     }
+    
+    func testWeightedTimeProgressUsesTimeAtUnchangedMaximumWeight() {
+        let ids = ContextIds()
+        let typeId = "weighted_time_hold"
+        let previousGlobalBest = exercise(exerciseId: UUID(),
+                                          typeId: typeId,
+                                          trackingTypeId: ExerciseTrackingType.weightedTime.rawValue,
+                                          date: .now.addingTimeInterval(-172_800),
+                                          sets: [reportSet(weight: 25, time: 10)])
+        let previousLocal = exercise(exerciseId: ids.exercise,
+                                     typeId: typeId,
+                                     trackingTypeId: ExerciseTrackingType.weightedTime.rawValue,
+                                     workoutId: ids.workout,
+                                     workoutGroupId: ids.group,
+                                     date: .now.addingTimeInterval(-86_400),
+                                     sets: [reportSet(weight: 20, time: 20)])
+        let current = exercise(exerciseId: ids.exercise,
+                               typeId: typeId,
+                               trackingTypeId: ExerciseTrackingType.weightedTime.rawValue,
+                               workoutId: ids.workout,
+                               workoutGroupId: ids.group,
+                               date: .now,
+                               sets: [reportSet(weight: 20, time: 40)])
+        
+        let result = ReportStatusService.calculateExerciseStatusResult(report: current,
+                                                                       history: [previousGlobalBest, previousLocal, current])
+        
+        XCTAssertEqual(result.status, .progress)
+        XCTAssertEqual(result.comparison?.type, .time)
+        XCTAssertEqual(result.comparison?.current, 40)
+        XCTAssertEqual(result.comparison?.previous, 20)
+        XCTAssertEqual(result.comparison?.improvement, 20)
+    }
+    
+    func testWeightedTimeProgressUsesWeightBeforeTime() {
+        let ids = ContextIds()
+        let typeId = "weighted_time_hold"
+        let previousGlobalBest = exercise(exerciseId: UUID(),
+                                          typeId: typeId,
+                                          trackingTypeId: ExerciseTrackingType.weightedTime.rawValue,
+                                          date: .now.addingTimeInterval(-172_800),
+                                          sets: [reportSet(weight: 30, time: 10)])
+        let previousLocal = exercise(exerciseId: ids.exercise,
+                                     typeId: typeId,
+                                     trackingTypeId: ExerciseTrackingType.weightedTime.rawValue,
+                                     workoutId: ids.workout,
+                                     workoutGroupId: ids.group,
+                                     date: .now.addingTimeInterval(-86_400),
+                                     sets: [reportSet(weight: 20, time: 20)])
+        let current = exercise(exerciseId: ids.exercise,
+                               typeId: typeId,
+                               trackingTypeId: ExerciseTrackingType.weightedTime.rawValue,
+                               workoutId: ids.workout,
+                               workoutGroupId: ids.group,
+                               date: .now,
+                               sets: [reportSet(weight: 25, time: 10)])
+        
+        let result = ReportStatusService.calculateExerciseStatusResult(report: current,
+                                                                       history: [previousGlobalBest, previousLocal, current])
+        
+        XCTAssertEqual(result.status, .progress)
+        XCTAssertEqual(result.comparison?.type, .weight)
+        XCTAssertEqual(result.comparison?.current, 25)
+        XCTAssertEqual(result.comparison?.previous, 20)
+        XCTAssertEqual(result.comparison?.improvement, 5)
+    }
+    
+    func testWeightedTimeLowerWeightIsNotProgressWhenDurationIncreases() {
+        let ids = ContextIds()
+        let typeId = "weighted_time_hold"
+        let previousLocal = exercise(exerciseId: ids.exercise,
+                                     typeId: typeId,
+                                     trackingTypeId: ExerciseTrackingType.weightedTime.rawValue,
+                                     workoutId: ids.workout,
+                                     workoutGroupId: ids.group,
+                                     date: .now.addingTimeInterval(-86_400),
+                                     sets: [reportSet(weight: 20, time: 20)])
+        let current = exercise(exerciseId: ids.exercise,
+                               typeId: typeId,
+                               trackingTypeId: ExerciseTrackingType.weightedTime.rawValue,
+                               workoutId: ids.workout,
+                               workoutGroupId: ids.group,
+                               date: .now,
+                               sets: [reportSet(weight: 15, time: 60)])
+        
+        let result = ReportStatusService.calculateExerciseStatusResult(report: current,
+                                                                       history: [previousLocal, current])
+        
+        XCTAssertEqual(result.status, .complete)
+        XCTAssertNil(result.comparison)
+    }
+    
+    func testWeightedTimePersonalRecordIsGlobalByTypeIdForWeight() {
+        let typeId = "weighted_time_hold"
+        let previous = exercise(exerciseId: UUID(),
+                                typeId: typeId,
+                                trackingTypeId: ExerciseTrackingType.weightedTime.rawValue,
+                                date: .now.addingTimeInterval(-86_400),
+                                sets: [reportSet(weight: 20, time: 20)])
+        let current = exercise(exerciseId: UUID(),
+                               typeId: typeId,
+                               trackingTypeId: ExerciseTrackingType.weightedTime.rawValue,
+                               date: .now,
+                               sets: [reportSet(weight: 25, time: 10)])
+        
+        let result = ReportStatusService.calculateExerciseStatusResult(report: current,
+                                                                       history: [previous, current])
+        
+        XCTAssertEqual(result.status, .personalRecord(type: .weight))
+        XCTAssertEqual(result.comparison?.type, .weight)
+        XCTAssertEqual(result.comparison?.current, 25)
+        XCTAssertEqual(result.comparison?.previous, 20)
+    }
+    
+    func testWeightedTimePersonalRecordIsGlobalByTypeIdForTimeAtUnchangedMaximumWeight() {
+        let typeId = "weighted_time_hold"
+        let previous = exercise(exerciseId: UUID(),
+                                typeId: typeId,
+                                trackingTypeId: ExerciseTrackingType.weightedTime.rawValue,
+                                date: .now.addingTimeInterval(-86_400),
+                                sets: [reportSet(weight: 20, time: 20)])
+        let current = exercise(exerciseId: UUID(),
+                               typeId: typeId,
+                               trackingTypeId: ExerciseTrackingType.weightedTime.rawValue,
+                               date: .now,
+                               sets: [reportSet(weight: 20, time: 40)])
+        
+        let result = ReportStatusService.calculateExerciseStatusResult(report: current,
+                                                                       history: [previous, current])
+        
+        XCTAssertEqual(result.status, .personalRecord(type: .time))
+        XCTAssertEqual(result.comparison?.type, .time)
+        XCTAssertEqual(result.comparison?.current, 40)
+        XCTAssertEqual(result.comparison?.previous, 20)
+    }
 }
 
 private struct ContextIds {
@@ -333,6 +468,7 @@ private func workoutReport(targetExercisesCount: Int) -> ReportWorkoutModel {
 private func exercise(id: UUID = UUID(),
                       exerciseId: UUID = UUID(),
                       typeId: String = "",
+                      trackingTypeId: String? = nil,
                       workoutId: UUID? = UUID(),
                       workoutGroupId: UUID? = UUID(),
                       date: Date? = .now,
@@ -343,6 +479,7 @@ private func exercise(id: UUID = UUID(),
                         exerciseId: exerciseId,
                         index: 0,
                         typeId: typeId,
+                        trackingTypeId: trackingTypeId,
                         workoutId: workoutId,
                         workoutGroupId: workoutGroupId,
                         date: date,

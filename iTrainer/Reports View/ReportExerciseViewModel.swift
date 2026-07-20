@@ -259,6 +259,12 @@ final class ReportExerciseViewModel: ObservableObject {
                 SummaryCard(title: String(localized: "reports.summary.repetitions"), value: "\(totalReps(reportExercise))", systemImage: "chart.bar.fill"),
                 SummaryCard(title: String(localized: "reports.summary.rest_time"), value: formattedRestTime(reportExercise.restTime), systemImage: "clock")
             ]
+        case .weightedTime:
+            return [
+                SummaryCard(title: String(localized: "reports.summary.weight"), value: maxWeight(reportExercise).map(formattedKilograms) ?? "-", systemImage: "dumbbell.fill"),
+                SummaryCard(title: String(localized: "reports.summary.time"), value: totalTime(reportExercise).timeForDisplay, systemImage: "timer"),
+                SummaryCard(title: String(localized: "reports.summary.rest_time"), value: formattedRestTime(reportExercise.restTime), systemImage: "clock")
+            ]
         case .repsOnly:
             return [
                 SummaryCard(title: String(localized: "reports.summary.total_repetitions"), value: "\(totalReps(reportExercise))", systemImage: "chart.bar.fill"),

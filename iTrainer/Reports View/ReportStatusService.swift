@@ -147,14 +147,14 @@ struct ReportStatusService {
     
     static func totalTimedDuration(for exercises: [ReportExerciseModel]) -> TimeInterval {
         exercises.reduce(TimeInterval.zero) { partialResult, exercise in
-            guard trackingType(for: exercise) == .timed else { return partialResult }
+            guard trackingType(for: exercise)?.usesTimedDuration == true else { return partialResult }
             return partialResult + totalTime(for: exercise)
         }
     }
     
     static func targetTimedDuration(for exercises: [ReportExerciseModel]) -> TimeInterval {
         exercises.reduce(TimeInterval.zero) { partialResult, exercise in
-            guard trackingType(for: exercise) == .timed else { return partialResult }
+            guard trackingType(for: exercise)?.usesTimedDuration == true else { return partialResult }
             return partialResult + exercise.targetSets.reduce(TimeInterval.zero) { $0 + (time(for: $1.parameters) ?? 0) }
         }
     }
@@ -229,6 +229,8 @@ private extension ReportStatusService {
         switch trackingType(for: report) {
         case .weightedReps:
             return weightedRepsPersonalRecordComparison(for: report, comparedTo: previousReports)
+        case .weightedTime:
+            return weightedTimePersonalRecordComparison(for: report, comparedTo: previousReports)
         case .repsOnly:
             return repsOnlyPersonalRecordComparison(for: report, comparedTo: previousReports)
         case .timed:
@@ -301,6 +303,46 @@ private extension ReportStatusService {
                                             current: currentVolume,
                                             previous: previousBestVolume,
                                             baselineReportId: previousBestVolumeReport?.id)
+        }
+        
+        return nil
+    }
+    
+    static func weightedTimePersonalRecordComparison(for report: ReportExerciseModel,
+                                                     comparedTo previousReports: [ReportExerciseModel]) -> ExerciseStatusComparison? {
+        if let currentMaxWeight = maxWeight(for: report),
+           let previousMaxWeightReport = bestReport(in: previousReports,
+                                                    currentExerciseId: report.exerciseId,
+                                                    value: maxWeight(for:),
+                                                    prefersHigherValue: true),
+           let previousMaxWeight = maxWeight(for: previousMaxWeightReport),
+           currentMaxWeight > previousMaxWeight {
+            return ExerciseStatusComparison(type: .weight,
+                                            current: currentMaxWeight,
+                                            previous: previousMaxWeight,
+                                            baselineReportId: previousMaxWeightReport.id)
+        }
+        
+        if let historicalMaxWeightReport = bestReport(in: previousReports,
+                                                      currentExerciseId: report.exerciseId,
+                                                      value: maxWeight(for:),
+                                                      prefersHigherValue: true),
+           let historicalMaxWeight = maxWeight(for: historicalMaxWeightReport),
+           let currentMaxWeight = maxWeight(for: report),
+           currentMaxWeight == historicalMaxWeight {
+            let currentTime = bestTime(at: historicalMaxWeight, in: report)
+            let previousTimeReport = bestReport(in: previousReports,
+                                                currentExerciseId: report.exerciseId,
+                                                value: { Float(bestTime(at: historicalMaxWeight, in: $0)) },
+                                                prefersHigherValue: true)
+            let previousTime = previousTimeReport.map { bestTime(at: historicalMaxWeight, in: $0) } ?? 0
+            if currentTime > previousTime {
+                return ExerciseStatusComparison(type: .time,
+                                                current: Float(currentTime),
+                                                previous: Float(previousTime),
+                                                contextWeight: historicalMaxWeight,
+                                                baselineReportId: previousTimeReport?.id)
+            }
         }
         
         return nil
@@ -386,6 +428,8 @@ private extension ReportStatusService {
         switch trackingType(for: report) {
         case .weightedReps:
             return weightedRepsProgressComparison(for: report, comparedTo: previousReport)
+        case .weightedTime:
+            return weightedTimeProgressComparison(for: report, comparedTo: previousReport)
         case .repsOnly:
             return repsOnlyProgressComparison(for: report, comparedTo: previousReport)
         case .timed:
@@ -437,6 +481,37 @@ private extension ReportStatusService {
             return ExerciseStatusComparison(type: .volume,
                                             current: currentVolume,
                                             previous: previousVolume,
+                                            baselineReportId: previousReport.id)
+        }
+        
+        return nil
+    }
+    
+    static func weightedTimeProgressComparison(for report: ReportExerciseModel,
+                                               comparedTo previousReport: ReportExerciseModel) -> ExerciseStatusComparison? {
+        guard let currentMaxWeight = maxWeight(for: report),
+              let previousMaxWeight = maxWeight(for: previousReport) else {
+            return nil
+        }
+        
+        if currentMaxWeight > previousMaxWeight {
+            return ExerciseStatusComparison(type: .weight,
+                                            current: currentMaxWeight,
+                                            previous: previousMaxWeight,
+                                            baselineReportId: previousReport.id)
+        }
+        
+        guard currentMaxWeight == previousMaxWeight else {
+            return nil
+        }
+        
+        let currentTime = bestTime(at: currentMaxWeight, in: report)
+        let previousTime = bestTime(at: previousMaxWeight, in: previousReport)
+        if currentTime > previousTime {
+            return ExerciseStatusComparison(type: .time,
+                                            current: Float(currentTime),
+                                            previous: Float(previousTime),
+                                            contextWeight: currentMaxWeight,
                                             baselineReportId: previousReport.id)
         }
         
@@ -605,6 +680,15 @@ private extension ReportStatusService {
         }
     }
     
+    static func bestTime(at weight: Float, in exercise: ReportExerciseModel) -> TimeInterval {
+        exercise.sets.reduce(TimeInterval.zero) { currentBest, set in
+            guard let setWeight = Self.weight(for: set.parameters), setWeight == weight else {
+                return currentBest
+            }
+            return max(currentBest, time(for: set.parameters) ?? 0)
+        }
+    }
+    
     static func maxRepsWithoutWeight(for exercise: ReportExerciseModel) -> Int {
         exercise.sets.reduce(0) { currentBest, set in
             guard weight(for: set.parameters) == nil else {
@@ -660,12 +744,13 @@ private extension ReportStatusService {
             return trackingType
         }
         
-        if let trackingType = ExerciseTrackingType(typeId: exercise.typeId) {
+        if let parameters = exercise.targetSets.first?.parameters ?? exercise.sets.first?.parameters,
+           let trackingType = ExerciseTrackingType(parameters: parameters) {
             return trackingType
         }
         
-        if let parameters = exercise.targetSets.first?.parameters ?? exercise.sets.first?.parameters {
-            return ExerciseTrackingType(parameters: parameters)
+        if let trackingType = ExerciseTrackingType(typeId: exercise.typeId) {
+            return trackingType
         }
         
         return nil

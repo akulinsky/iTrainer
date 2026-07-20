@@ -194,11 +194,13 @@
 /* Tracking Type */
 
 "tracking_type.weighted_reps.title" = "Вес и повт.";
+"tracking_type.weighted_time.title" = "Вес и время";
 "tracking_type.reps_only.title" = "Только повт.";
 "tracking_type.timed.title" = "По времени";
 "tracking_type.distance.title" = "Дистанция";
 "tracking_type.distance_time.title" = "Дистанция и время";
 "tracking_type.weighted_reps.description" = "Отслеживает вес и повторения в каждом сете.";
+"tracking_type.weighted_time.description" = "Отслеживает вес и длительность каждого сета.";
 "tracking_type.reps_only.description" = "Отслеживает повторения в каждом сете.";
 "tracking_type.timed.description" = "Отслеживает длительность каждого сета.";
 "tracking_type.distance.description" = "Отслеживает дистанцию в каждом сете.";

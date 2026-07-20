@@ -9,6 +9,7 @@ import Foundation
 
 enum ExerciseTrackingType: String, CaseIterable, Hashable, Sendable, Codable {
     case weightedReps
+    case weightedTime
     case repsOnly
     case timed
     case distance
@@ -20,6 +21,8 @@ enum ExerciseTrackingType: String, CaseIterable, Hashable, Sendable, Codable {
         switch parameterIds {
         case Set([SetsParameter.weight().id, SetsParameter.repeats().id]):
             self = .weightedReps
+        case Set([SetsParameter.weight().id, SetsParameter.time().id]):
+            self = .weightedTime
         case Set([SetsParameter.repeats().id]):
             self = .repsOnly
         case Set([SetsParameter.time().id]):
@@ -50,20 +53,25 @@ enum ExerciseTrackingType: String, CaseIterable, Hashable, Sendable, Codable {
         switch self {
         case .weightedReps, .repsOnly:
             true
-        case .timed, .distance, .distanceTime:
+        case .weightedTime, .timed, .distance, .distanceTime:
             false
         }
     }
     
     var usesTimedDuration: Bool {
-        self == .timed
+        switch self {
+        case .weightedTime, .timed:
+            true
+        case .weightedReps, .repsOnly, .distance, .distanceTime:
+            false
+        }
     }
     
     var usesDistance: Bool {
         switch self {
         case .distance, .distanceTime:
             true
-        case .weightedReps, .repsOnly, .timed:
+        case .weightedReps, .weightedTime, .repsOnly, .timed:
             false
         }
     }
@@ -76,6 +84,8 @@ enum ExerciseTrackingType: String, CaseIterable, Hashable, Sendable, Codable {
         switch self {
         case .weightedReps:
             String(localized: "tracking_type.weighted_reps.title")
+        case .weightedTime:
+            String(localized: "tracking_type.weighted_time.title")
         case .repsOnly:
             String(localized: "tracking_type.reps_only.title")
         case .timed:
@@ -91,6 +101,8 @@ enum ExerciseTrackingType: String, CaseIterable, Hashable, Sendable, Codable {
         switch self {
         case .weightedReps:
             String(localized: "tracking_type.weighted_reps.description")
+        case .weightedTime:
+            String(localized: "tracking_type.weighted_time.description")
         case .repsOnly:
             String(localized: "tracking_type.reps_only.description")
         case .timed:
@@ -106,6 +118,8 @@ enum ExerciseTrackingType: String, CaseIterable, Hashable, Sendable, Codable {
         switch self {
         case .weightedReps:
             "dumbbell.fill"
+        case .weightedTime:
+            "timer.circle.fill"
         case .repsOnly:
             "figure.strengthtraining.traditional"
         case .timed:
@@ -121,6 +135,8 @@ enum ExerciseTrackingType: String, CaseIterable, Hashable, Sendable, Codable {
         switch self {
         case .weightedReps:
             [.weight(), .repeats()]
+        case .weightedTime:
+            [.weight(), .time()]
         case .repsOnly:
             [.repeats()]
         case .timed:

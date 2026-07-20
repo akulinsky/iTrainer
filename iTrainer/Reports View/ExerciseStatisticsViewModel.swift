@@ -264,10 +264,10 @@ final class ExerciseStatisticsViewModel: ObservableObject {
                                           period: ExerciseStatisticsPeriod) -> PreparedStatistics {
         let unitFormatter = UnitFormatter(settings: AppSettings.shared)
         let allGraphPoints = activeReports
-            .compactMap { point(for: $0, metric: metric, history: globalReports, unitFormatter: unitFormatter) }
+            .compactMap { point(for: $0, trackingType: trackingType(for: $0), metric: metric, history: globalReports, unitFormatter: unitFormatter) }
             .sorted { $0.date < $1.date }
         let globalAllGraphPoints = globalReports
-            .compactMap { point(for: $0, metric: metric, history: globalReports, unitFormatter: unitFormatter) }
+            .compactMap { point(for: $0, trackingType: trackingType(for: $0), metric: metric, history: globalReports, unitFormatter: unitFormatter) }
             .sorted { $0.date < $1.date }
         let cutoffDate = period.cutoffDate(relativeTo: allGraphPoints.last?.date ?? Date())
         let periodGraphPoints = cutoffDate.map { cutoff in
@@ -297,6 +297,8 @@ final class ExerciseStatisticsViewModel: ObservableObject {
         switch trackingType {
         case .weightedReps:
             return [.weight, .volume, .repetitions]
+        case .weightedTime:
+            return [.weight, .time]
         case .repsOnly:
             return [.repetitions]
         case .timed:
@@ -386,6 +388,7 @@ final class ExerciseStatisticsViewModel: ObservableObject {
     }
     
     private static func point(for report: ReportExerciseModel,
+                              trackingType: ExerciseTrackingType?,
                               metric: ExerciseMetricSegment,
                               history: [ReportExerciseModel],
                               unitFormatter: UnitFormatter) -> ExerciseStatisticsPoint? {
@@ -393,9 +396,14 @@ final class ExerciseStatisticsViewModel: ObservableObject {
         
         switch metric {
         case .weight:
-            let sets = performedStrengthSets(in: report)
-            guard !sets.isEmpty else { return nil }
-            guard let weight = sets.map(\.weight).max() else { return nil }
+            let weight: Float?
+            switch trackingType {
+            case .weightedTime:
+                weight = performedWeightedTimeSets(in: report).map(\.weight).max()
+            default:
+                weight = performedStrengthSets(in: report).map(\.weight).max()
+            }
+            guard let weight else { return nil }
             return ExerciseStatisticsPoint(reportId: report.id,
                                            date: date,
                                            value: weight,
@@ -417,6 +425,9 @@ final class ExerciseStatisticsViewModel: ObservableObject {
             }
             return bodyweightRepetitionPoint(for: report, date: date, history: history, unitFormatter: unitFormatter)
         case .time:
+            if trackingType == .weightedTime {
+                return weightedTimePoint(for: report, date: date, history: history, unitFormatter: unitFormatter)
+            }
             let value = performedTime(in: report)
             guard value > 0 else { return nil }
             return ExerciseStatisticsPoint(reportId: report.id,
@@ -440,6 +451,25 @@ final class ExerciseStatisticsViewModel: ObservableObject {
                                            formattedValue: formattedPace(value, unitFormatter: unitFormatter),
                                            isPersonalRecord: isPersonalRecord(report, history: history))
         }
+    }
+    
+    private static func weightedTimePoint(for report: ReportExerciseModel,
+                                          date: Date,
+                                          history: [ReportExerciseModel],
+                                          unitFormatter: UnitFormatter) -> ExerciseStatisticsPoint? {
+        let sets = performedWeightedTimeSets(in: report)
+        guard let maxWeight = sets.map(\.weight).max() else { return nil }
+        let bestTime = sets
+            .filter { $0.weight == maxWeight }
+            .map(\.time)
+            .max() ?? 0
+        guard bestTime > 0 else { return nil }
+        
+        return ExerciseStatisticsPoint(reportId: report.id,
+                                       date: date,
+                                       value: Float(bestTime),
+                                       formattedValue: bestTime.timeForDisplay,
+                                       isPersonalRecord: isPersonalRecord(report, history: history))
     }
     
     private static func weightedRepetitionPoint(for report: ReportExerciseModel,
@@ -525,6 +555,22 @@ final class ExerciseStatisticsViewModel: ObservableObject {
             }
             return PerformedStrengthSet(weight: weight, reps: reps)
         }
+    }
+    
+    private static func performedWeightedTimeSets(in report: ReportExerciseModel) -> [PerformedWeightedTimeSet] {
+        report.sets.compactMap { set in
+            guard let weight = ReportStatusService.weightValue(for: set.parameters),
+                  let time = ReportStatusService.timeValue(for: set.parameters),
+                  weight >= 0,
+                  time > 0 else {
+                return nil
+            }
+            return PerformedWeightedTimeSet(weight: weight, time: time)
+        }
+    }
+    
+    private static func trackingType(for report: ReportExerciseModel) -> ExerciseTrackingType? {
+        ReportStatusService.trackingTypeValue(for: report)
     }
     
     private static func performedRepsOnlySets(in report: ReportExerciseModel) -> [Int] {
@@ -908,6 +954,11 @@ struct ExerciseStatisticsPoint: Identifiable {
 struct PerformedStrengthSet {
     let weight: Float
     let reps: Int
+}
+
+struct PerformedWeightedTimeSet {
+    let weight: Float
+    let time: TimeInterval
 }
 
 struct PeriodSummary {

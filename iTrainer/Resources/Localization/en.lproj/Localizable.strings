@@ -194,11 +194,13 @@
 /* Tracking Type */
 
 "tracking_type.weighted_reps.title" = "Weighted reps";
+"tracking_type.weighted_time.title" = "Weighted time";
 "tracking_type.reps_only.title" = "Reps only";
 "tracking_type.timed.title" = "Timed";
 "tracking_type.distance.title" = "Distance";
 "tracking_type.distance_time.title" = "Distance & time";
 "tracking_type.weighted_reps.description" = "Track weight and repetitions for each set.";
+"tracking_type.weighted_time.description" = "Track weight and duration for each set.";
 "tracking_type.reps_only.description" = "Track repetitions for each set.";
 "tracking_type.timed.description" = "Track duration for each set.";
 "tracking_type.distance.description" = "Track distance for each set.";

@@ -273,7 +273,7 @@ class ReportViewModel: ObservableObject {
                                            systemImage: nil))
         }
         
-        if trackingTypes.contains(.timed) {
+        if trackingTypes.contains(where: { $0.usesTimedDuration }) {
             summaryCards.append(SummaryCard(title: String(localized: "reports.summary.time_goal"),
                                            value: rawTimeProgress.map { percentText(for: $0, isCapped: false) } ?? "-",
                                            detail: targetTimedDuration > 0 ? "\(actualTimedDuration.timeForDisplay) / \(targetTimedDuration.timeForDisplay)" : actualTimedDuration.timeForDisplay,
