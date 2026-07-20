@@ -17,8 +17,6 @@ struct ExerciseTypeView: View {
     
     @StateObject var viewModel: ExerciseTypeViewModel
     
-//    @Environment(\.isSearching) private var isSearching
-    
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
     
     @StateObject private var navigationManager = NavigationManager()
@@ -27,35 +25,13 @@ struct ExerciseTypeView: View {
     
     let mode: ExerciseTypeViewMode
     
-    var bbb = false
-    
     init(mode: ExerciseTypeViewMode = .showing, completeBlock: (SelectedExerciseTypesBlock)? = nil) {
-        
-        //_viewModel = StateObject(wrappedValue: viewModel)/
         
         self.mode = mode
         _viewModel = StateObject(wrappedValue: ExerciseTypeViewModel(mode: mode, completeBlock: completeBlock))
-//        _viewModel =  StateObject(wrappedValue: ExerciseTypeViewModel(mode: .selecting))
     }
     
-//    @State private var rotationDegrees = 0.0
-//    private var animation: Animation {
-//        .linear
-//        .speed(0.1)
-//        .repeatForever(autoreverses: false)
-//    }
-    
     var body: some View {
-        
-        // Animation
-//        Image(systemName: "gear")
-//            .font(.system(size: 186))
-//            .rotationEffect(.degrees(rotationDegrees))
-//            .onAppear {
-//                withAnimation(animation) {
-//                    rotationDegrees = 360.0
-//                }
-//            }
         
         NavigationStack(path: $navigationManager.path) {
             VStack {
