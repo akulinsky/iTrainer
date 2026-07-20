@@ -923,7 +923,7 @@
     "defaultTitle": "Burpee",
     "category": "functional_training",
     "sortOrder": 0,
-    "iconName": "icMissingImage",
+    "iconName": "icExercise_functional_training_burpee",
     "trackingType": "repsOnly"
   },
   {
@@ -932,7 +932,7 @@
     "defaultTitle": "Thruster",
     "category": "functional_training",
     "sortOrder": 1,
-    "iconName": "icMissingImage",
+    "iconName": "icExercise_functional_training_thruster",
     "trackingType": "weightedReps"
   },
   {
@@ -941,7 +941,7 @@
     "defaultTitle": "Kettlebell Swing",
     "category": "functional_training",
     "sortOrder": 2,
-    "iconName": "icMissingImage",
+    "iconName": "icExercise_functional_training_kettlebell_swing",
     "trackingType": "weightedReps"
   },
   {
@@ -950,7 +950,7 @@
     "defaultTitle": "Box Jump",
     "category": "functional_training",
     "sortOrder": 3,
-    "iconName": "icMissingImage",
+    "iconName": "icExercise_functional_training_box_jump",
     "trackingType": "repsOnly"
   },
   {
@@ -959,7 +959,7 @@
     "defaultTitle": "Medicine Ball Slam",
     "category": "functional_training",
     "sortOrder": 4,
-    "iconName": "icMissingImage",
+    "iconName": "icExercise_functional_training_medicine_ball_slam",
     "trackingType": "weightedReps"
   },
   {
@@ -968,7 +968,7 @@
     "defaultTitle": "Battle Rope",
     "category": "functional_training",
     "sortOrder": 5,
-    "iconName": "icMissingImage",
+    "iconName": "icExercise_functional_training_battle_rope",
     "trackingType": "timed"
   },
   {
@@ -977,7 +977,7 @@
     "defaultTitle": "Wall Ball",
     "category": "functional_training",
     "sortOrder": 6,
-    "iconName": "icMissingImage",
+    "iconName": "icExercise_functional_training_wall_ball",
     "trackingType": "weightedReps"
   },
   {
@@ -986,7 +986,7 @@
     "defaultTitle": "Mountain Climber",
     "category": "functional_training",
     "sortOrder": 7,
-    "iconName": "icMissingImage",
+    "iconName": "icExercise_functional_training_mountain_climber",
     "trackingType": "repsOnly"
   },
   {
@@ -995,7 +995,7 @@
     "defaultTitle": "Kettlebell Clean and Press",
     "category": "functional_training",
     "sortOrder": 8,
-    "iconName": "icMissingImage",
+    "iconName": "icExercise_functional_training_kettlebell_clean_and_press",
     "trackingType": "weightedReps"
   },
   {
