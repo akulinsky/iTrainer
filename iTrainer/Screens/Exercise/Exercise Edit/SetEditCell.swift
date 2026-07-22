@@ -129,6 +129,10 @@ private struct SetEditParameterInput: View {
                 }
             }
             .frame(width: 66, height: 48)
+            .contentShape(Rectangle())
+            .onTapGesture {
+                focusedInputId.wrappedValue = item.focusId
+            }
             .background(AppColor.surfacePrimary)
             .clipShape(RoundedRectangle(cornerRadius: 8))
             .overlay {

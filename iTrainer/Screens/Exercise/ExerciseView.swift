@@ -467,6 +467,10 @@ private struct ExerciseContentView: View {
                 .minimumScaleFactor(0.8)
                 .frame(height: 16)
         }
+        .contentShape(Rectangle())
+        .onTapGesture {
+            focusedParamId = item.id
+        }
     }
     
     @ViewBuilder
