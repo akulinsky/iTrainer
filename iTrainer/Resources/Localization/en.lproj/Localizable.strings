@@ -404,6 +404,16 @@
 "settings.units.distance.imperial" = "Imperial";
 "unit.repetitions.short" = "reps";
 
+"settings.notifications.title" = "Notifications";
+"settings.notifications.enabled.title" = "Workout Notifications";
+"settings.notifications.enabled.subtitle" = "Rest timer and active workout reminders are enabled.";
+"settings.notifications.paused.subtitle" = "iTrainer will not schedule workout reminders.";
+"settings.notifications.enable.title" = "Enable Notifications";
+"settings.notifications.enable.subtitle" = "Allow rest timer and active workout reminders.";
+"settings.notifications.blocked.title" = "Notifications are disabled";
+"settings.notifications.blocked.subtitle" = "Enable notifications in iPhone Settings to receive rest timer and workout reminders.";
+"settings.notifications.open_settings" = "Open Settings";
+
 "settings.language.title" = "Language";
 "settings.language.system.title" = "Uses iTrainer iPhone settings";
 "settings.language.system.subtitle" = "Open iTrainer settings in iOS to choose the app language.";

@@ -8,6 +8,12 @@
 import Foundation
 import UserNotifications
 
+enum LocalNotificationPermissionStatus: Equatable {
+    case notDetermined
+    case authorized
+    case denied
+}
+
 final class LocalNotificationManager: NSObject, UNUserNotificationCenterDelegate {
     static let shared = LocalNotificationManager()
     
@@ -26,6 +32,7 @@ final class LocalNotificationManager: NSObject, UNUserNotificationCenterDelegate
     }
     
     func requestAuthorizationIfNeeded() {
+        guard AppSettings.shared.notificationsEnabled else { return }
         guard !hasRequestedAuthorization else { return }
         hasRequestedAuthorization = true
         
@@ -39,7 +46,37 @@ final class LocalNotificationManager: NSObject, UNUserNotificationCenterDelegate
         }
     }
     
+    func permissionStatus() async -> LocalNotificationPermissionStatus {
+        await withCheckedContinuation { continuation in
+            notificationCenter.getNotificationSettings { settings in
+                continuation.resume(returning: Self.permissionStatus(for: settings.authorizationStatus))
+            }
+        }
+    }
+    
+    func requestAuthorization() async -> LocalNotificationPermissionStatus {
+        hasRequestedAuthorization = true
+        let currentStatus = await permissionStatus()
+        guard currentStatus == .notDetermined else {
+            return currentStatus
+        }
+        
+        return await withCheckedContinuation { continuation in
+            notificationCenter.requestAuthorization(options: [.alert, .badge, .sound]) { _, error in
+                if let error {
+                    print("Local notification authorization error: \(error)")
+                }
+                
+                UNUserNotificationCenter.current().getNotificationSettings { settings in
+                    continuation.resume(returning: Self.permissionStatus(for: settings.authorizationStatus))
+                }
+            }
+        }
+    }
+    
     func scheduleRestFinishedNotification(after interval: TimeInterval) {
+        guard AppSettings.shared.notificationsEnabled else { return }
+        
         let interval = max(interval, 1)
         requestAuthorizationIfNeeded()
         notificationCenter.removePendingNotificationRequests(withIdentifiers: [NotificationID.restFinished])
@@ -66,6 +103,8 @@ final class LocalNotificationManager: NSObject, UNUserNotificationCenterDelegate
     }
     
     func scheduleActiveWorkoutReminder(workoutTitle: String?) {
+        guard AppSettings.shared.notificationsEnabled else { return }
+        
         requestAuthorizationIfNeeded()
         notificationCenter.removePendingNotificationRequests(withIdentifiers: [NotificationID.activeWorkoutReminder])
         
@@ -107,5 +146,18 @@ final class LocalNotificationManager: NSObject, UNUserNotificationCenterDelegate
     func userNotificationCenter(_ center: UNUserNotificationCenter,
                                 willPresent notification: UNNotification) async -> UNNotificationPresentationOptions {
         [.banner, .list, .sound]
+    }
+    
+    private static func permissionStatus(for authorizationStatus: UNAuthorizationStatus) -> LocalNotificationPermissionStatus {
+        switch authorizationStatus {
+        case .notDetermined:
+            .notDetermined
+        case .authorized, .provisional, .ephemeral:
+            .authorized
+        case .denied:
+            .denied
+        @unknown default:
+            .denied
+        }
     }
 }

@@ -11,10 +11,12 @@ import SwiftUI
 struct SettingsView: View {
     @EnvironmentObject private var settings: AppSettings
     @Environment(\.openURL) private var openURL
+    @Environment(\.scenePhase) private var scenePhase
     
     @State private var mailResult: Result<MFMailComposeResult, Error>?
     @State private var isMailPresented = false
     @State private var isMailUnavailableAlertPresented = false
+    @State private var notificationPermissionStatus: LocalNotificationPermissionStatus = .notDetermined
     
     private let supportEmail = "support@itrainer.app"
     private let privacyPolicyURL: URL? = nil
@@ -23,6 +25,7 @@ struct SettingsView: View {
         ScrollView {
             VStack(alignment: .leading, spacing: 16) {
                 unitsSection
+                notificationsSection
                 languageSection
                 supportSection
                 privacySection
@@ -45,6 +48,15 @@ struct SettingsView: View {
             Button("settings.common.ok", role: .cancel) {}
         } message: {
             Text("settings.support.mail_unavailable.message")
+        }
+        .task {
+            await refreshNotificationPermissionStatus()
+        }
+        .onChange(of: scenePhase) { _, phase in
+            guard phase == .active else { return }
+            Task {
+                await refreshNotificationPermissionStatus()
+            }
         }
     }
     
@@ -70,6 +82,25 @@ struct SettingsView: View {
                               systemImage: "globe",
                               trailingSystemImage: "arrow.up.forward.app") {
                 openAppSettings()
+            }
+        }
+    }
+    
+    private var notificationsSection: some View {
+        settingsCard(title: "settings.notifications.title") {
+            VStack(alignment: .leading, spacing: 14) {
+                switch notificationPermissionStatus {
+                case .authorized:
+                    notificationToggleRow(title: "settings.notifications.enabled.title",
+                                          subtitle: settings.notificationsEnabled ? "settings.notifications.enabled.subtitle" : "settings.notifications.paused.subtitle",
+                                          isEnabled: true)
+                case .notDetermined:
+                    notificationToggleRow(title: "settings.notifications.enable.title",
+                                          subtitle: "settings.notifications.enable.subtitle",
+                                          isEnabled: true)
+                case .denied:
+                    notificationPermissionBlockedRow
+                }
             }
         }
     }
@@ -210,11 +241,99 @@ struct SettingsView: View {
         }
     }
     
+    private func notificationToggleRow(title: LocalizedStringKey,
+                                       subtitle: LocalizedStringKey,
+                                       isEnabled: Bool) -> some View {
+        HStack(spacing: 12) {
+            Image(systemName: "bell.badge")
+                .font(.system(size: 18, weight: .semibold))
+                .foregroundStyle(AppColor.brandPrimary)
+                .frame(width: 28)
+            
+            VStack(alignment: .leading, spacing: 4) {
+                Text(title)
+                    .font(AppFont.rowTitle)
+                    .foregroundStyle(AppColor.textPrimary)
+                Text(subtitle)
+                    .font(AppFont.rowSubtitle)
+                    .foregroundStyle(AppColor.textSecondary)
+            }
+            
+            Spacer(minLength: 12)
+            
+            Toggle("", isOn: notificationsToggleBinding)
+                .labelsHidden()
+                .disabled(!isEnabled)
+                .tint(AppColor.brandPrimary)
+        }
+    }
+    
+    private var notificationPermissionBlockedRow: some View {
+        VStack(alignment: .leading, spacing: 14) {
+            Label {
+                VStack(alignment: .leading, spacing: 4) {
+                    Text("settings.notifications.blocked.title")
+                        .font(AppFont.rowTitle)
+                        .foregroundStyle(AppColor.textPrimary)
+                    Text("settings.notifications.blocked.subtitle")
+                        .font(AppFont.rowSubtitle)
+                        .foregroundStyle(AppColor.textSecondary)
+                }
+            } icon: {
+                Image(systemName: "bell.slash")
+                    .font(.system(size: 18, weight: .semibold))
+                    .foregroundStyle(AppColor.progressAmber)
+                    .frame(width: 28)
+            }
+            
+            Button {
+                openAppSettings()
+            } label: {
+                Label("settings.notifications.open_settings", systemImage: "arrow.up.forward.app")
+                    .font(AppFont.rowTitle)
+                    .padding(.vertical, 6)
+                    .frame(maxWidth: .infinity)
+                    .frame(minHeight: 44)
+            }
+            .buttonStyle(.borderedProminent)
+            .tint(AppColor.brandPrimary)
+        }
+    }
+    
+    private var notificationsToggleBinding: Binding<Bool> {
+        Binding {
+            notificationPermissionStatus == .authorized && settings.notificationsEnabled
+        } set: { isEnabled in
+            updateNotificationsEnabled(isEnabled)
+        }
+    }
+    
     private func openAppSettings() {
         guard let url = URL(string: UIApplication.openSettingsURLString) else {
             return
         }
         openURL(url)
+    }
+    
+    @MainActor
+    private func refreshNotificationPermissionStatus() async {
+        notificationPermissionStatus = await LocalNotificationManager.shared.permissionStatus()
+    }
+    
+    private func updateNotificationsEnabled(_ isEnabled: Bool) {
+        if !isEnabled {
+            settings.notificationsEnabled = false
+            LocalNotificationManager.shared.cancelAllWorkoutNotifications()
+            return
+        }
+        
+        Task {
+            let status = await LocalNotificationManager.shared.requestAuthorization()
+            await MainActor.run {
+                notificationPermissionStatus = status
+                settings.notificationsEnabled = status == .authorized
+            }
+        }
     }
     
     private func sendFeedback() {

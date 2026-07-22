@@ -22,8 +22,15 @@ final class AppSettings: ObservableObject {
         }
     }
     
+    @Published var notificationsEnabled: Bool {
+        didSet {
+            defaults.set(notificationsEnabled, forKey: Self.notificationsEnabledKey)
+        }
+    }
+    
     private static let weightUnitPreferenceKey = "settings.weightUnitPreference"
     private static let distanceUnitPreferenceKey = "settings.distanceUnitPreference"
+    private static let notificationsEnabledKey = "settings.notificationsEnabled"
     
     var resolvedWeightUnit: ResolvedWeightUnit {
         weightUnitPreference.resolvedUnit
@@ -39,6 +46,7 @@ final class AppSettings: ObservableObject {
         self.defaults = defaults
         self.weightUnitPreference = WeightUnitPreference(rawValue: defaults.string(forKey: Self.weightUnitPreferenceKey) ?? "") ?? .system
         self.distanceUnitPreference = DistanceUnitPreference(rawValue: defaults.string(forKey: Self.distanceUnitPreferenceKey) ?? "") ?? .system
+        self.notificationsEnabled = defaults.object(forKey: Self.notificationsEnabledKey) as? Bool ?? true
     }
 }
 

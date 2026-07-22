@@ -404,6 +404,16 @@
 "settings.units.distance.imperial" = "Имперская";
 "unit.repetitions.short" = "повт.";
 
+"settings.notifications.title" = "Уведомления";
+"settings.notifications.enabled.title" = "Уведомления тренировок";
+"settings.notifications.enabled.subtitle" = "Таймер отдыха и напоминания об активной тренировке включены.";
+"settings.notifications.paused.subtitle" = "iTrainer не будет планировать напоминания о тренировках.";
+"settings.notifications.enable.title" = "Включить уведомления";
+"settings.notifications.enable.subtitle" = "Разрешите таймер отдыха и напоминания об активной тренировке.";
+"settings.notifications.blocked.title" = "Уведомления отключены";
+"settings.notifications.blocked.subtitle" = "Включите уведомления в настройках iPhone, чтобы получать таймер отдыха и напоминания о тренировке.";
+"settings.notifications.open_settings" = "Открыть настройки";
+
 "settings.language.title" = "Язык";
 "settings.language.system.title" = "Используются настройки iTrainer";
 "settings.language.system.subtitle" = "Откройте настройки iTrainer в iOS, чтобы выбрать язык приложения.";
