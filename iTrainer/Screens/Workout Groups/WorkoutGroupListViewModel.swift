@@ -30,7 +30,7 @@ class WorkoutGroupListViewModel: ObservableObject {
     
     var errorMessage: String? = nil
     
-    var workout: WorkoutModel?
+    @Published var workout: WorkoutModel?
     
     init(workout: WorkoutModel? = nil) {
         self.workout = workout
@@ -65,6 +65,10 @@ class WorkoutGroupListViewModel: ObservableObject {
         } else {
             fetchItems(complete: complete)
         }
+    }
+    
+    func reloadSelectedWorkoutData(complete: (()->())? = nil) {
+        fetchSelectedWorkout(complete: complete)
     }
     
     func refreshData() {

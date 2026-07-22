@@ -85,7 +85,9 @@ struct WorkoutGroupListView: View {
                 editNameView()
                     .presentationDetents([.height(250)])
             })
-            .sheet(isPresented: $viewModel.isSelectWorkoutPresented, content: {
+            .sheet(isPresented: $viewModel.isSelectWorkoutPresented, onDismiss: {
+                viewModel.reloadSelectedWorkoutData()
+            }, content: {
                 WorkoutListView { workout in
                     viewModel.select(workout: workout)
                 }
