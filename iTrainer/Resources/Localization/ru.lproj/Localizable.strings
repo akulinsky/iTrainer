@@ -419,6 +419,8 @@
 "settings.language.system.subtitle" = "Откройте настройки iTrainer в iOS, чтобы выбрать язык приложения.";
 
 "settings.support.title" = "Поддержка";
+"settings.share_app.title" = "Поделиться iTrainer";
+"settings.rate_app.title" = "Оценить iTrainer";
 "settings.support.feedback.title" = "Отправить отзыв";
 "settings.support.feedback.subtitle" = "Отправить отзыв или описание проблемы по email.";
 "settings.support.feedback.subject" = "Отзыв о iTrainer";

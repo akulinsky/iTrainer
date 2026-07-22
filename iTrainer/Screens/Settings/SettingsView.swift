@@ -6,11 +6,13 @@
 //
 
 import MessageUI
+import StoreKit
 import SwiftUI
 
 struct SettingsView: View {
     @EnvironmentObject private var settings: AppSettings
     @Environment(\.openURL) private var openURL
+    @Environment(\.requestReview) private var requestReview
     @Environment(\.scenePhase) private var scenePhase
     
     @State private var mailResult: Result<MFMailComposeResult, Error>?
@@ -19,6 +21,7 @@ struct SettingsView: View {
     @State private var notificationPermissionStatus: LocalNotificationPermissionStatus = .notDetermined
     
     private let supportEmail = "support@itrainer.app"
+    private let appStoreURL = URL(string: "https://apps.apple.com/app/id0000000000")!
     private let privacyPolicyURL: URL? = nil
     
     var body: some View {
@@ -107,11 +110,32 @@ struct SettingsView: View {
     
     private var supportSection: some View {
         settingsCard(title: "settings.support.title") {
-            settingsActionRow(title: "settings.support.feedback.title",
-                              subtitle: "settings.support.feedback.subtitle",
-                              systemImage: "envelope",
-                              trailingSystemImage: "chevron.right") {
-                sendFeedback()
+            VStack(alignment: .leading, spacing: 14) {
+                ShareLink(item: appStoreURL) {
+                    settingsRowLabel(title: "settings.share_app.title",
+                                     systemImage: "square.and.arrow.up",
+                                     trailingSystemImage: "chevron.right")
+                }
+                .buttonStyle(.plain)
+                
+                Divider()
+                    .overlay(AppColor.separatorSoft)
+                
+                settingsActionRow(title: "settings.rate_app.title",
+                                  systemImage: "star",
+                                  trailingSystemImage: "chevron.right") {
+                    requestReview()
+                }
+                
+                Divider()
+                    .overlay(AppColor.separatorSoft)
+                
+                settingsActionRow(title: "settings.support.feedback.title",
+                                  subtitle: "settings.support.feedback.subtitle",
+                                  systemImage: "envelope",
+                                  trailingSystemImage: "chevron.right") {
+                    sendFeedback()
+                }
             }
         }
     }
@@ -199,34 +223,44 @@ struct SettingsView: View {
                                    trailingSystemImage: String?,
                                    action: @escaping () -> Void) -> some View {
         Button(action: action) {
-            HStack(spacing: 12) {
-                Image(systemName: systemImage)
-                    .font(.system(size: 18, weight: .semibold))
-                    .foregroundStyle(AppColor.brandPrimary)
-                    .frame(width: 28)
-                
-                VStack(alignment: .leading, spacing: 4) {
-                    Text(title)
-                        .font(AppFont.rowTitle)
-                        .foregroundStyle(AppColor.textPrimary)
-                    if let subtitle {
-                        Text(subtitle)
-                            .font(AppFont.rowSubtitle)
-                            .foregroundStyle(AppColor.textSecondary)
-                    }
-                }
-                
-                Spacer(minLength: 12)
-                
-                if let trailingSystemImage {
-                    Image(systemName: trailingSystemImage)
-                        .font(.system(size: 14, weight: .semibold))
+            settingsRowLabel(title: title,
+                             subtitle: subtitle,
+                             systemImage: systemImage,
+                             trailingSystemImage: trailingSystemImage)
+        }
+        .buttonStyle(.plain)
+    }
+    
+    private func settingsRowLabel(title: LocalizedStringKey,
+                                  subtitle: LocalizedStringKey? = nil,
+                                  systemImage: String,
+                                  trailingSystemImage: String?) -> some View {
+        HStack(spacing: 12) {
+            Image(systemName: systemImage)
+                .font(.system(size: 18, weight: .semibold))
+                .foregroundStyle(AppColor.brandPrimary)
+                .frame(width: 28)
+            
+            VStack(alignment: .leading, spacing: 4) {
+                Text(title)
+                    .font(AppFont.rowTitle)
+                    .foregroundStyle(AppColor.textPrimary)
+                if let subtitle {
+                    Text(subtitle)
+                        .font(AppFont.rowSubtitle)
                         .foregroundStyle(AppColor.textSecondary)
                 }
             }
-            .contentShape(Rectangle())
+            
+            Spacer(minLength: 12)
+            
+            if let trailingSystemImage {
+                Image(systemName: trailingSystemImage)
+                    .font(.system(size: 14, weight: .semibold))
+                    .foregroundStyle(AppColor.textSecondary)
+            }
         }
-        .buttonStyle(.plain)
+        .contentShape(Rectangle())
     }
     
     private func settingsInfoRow(title: LocalizedStringKey, value: String) -> some View {

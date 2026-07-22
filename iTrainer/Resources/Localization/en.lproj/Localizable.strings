@@ -419,6 +419,8 @@
 "settings.language.system.subtitle" = "Open iTrainer settings in iOS to choose the app language.";
 
 "settings.support.title" = "Support";
+"settings.share_app.title" = "Share iTrainer";
+"settings.rate_app.title" = "Rate iTrainer";
 "settings.support.feedback.title" = "Send Feedback";
 "settings.support.feedback.subtitle" = "Email app feedback and issue details.";
 "settings.support.feedback.subject" = "iTrainer Feedback";
