@@ -113,6 +113,7 @@
 		F6DD68AD2C6503C9004EFB03 /* ExerciseTypeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6DD68AC2C6503C9004EFB03 /* ExerciseTypeCell.swift */; };
 		F6DD68AF2C65050A004EFB03 /* ExerciseTypeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6DD68AE2C65050A004EFB03 /* ExerciseTypeViewModel.swift */; };
 		F6DD68B12C650CAE004EFB03 /* ExerciseCategoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6DD68B02C650CAE004EFB03 /* ExerciseCategoryView.swift */; };
+		F6E13B57301145EA0003970A /* SettingsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6E13B56301145EA0003970A /* SettingsViewModel.swift */; };
 		F6E4161F2C7F982500E77EB4 /* Distance+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6E4161E2C7F982500E77EB4 /* Distance+Utils.swift */; };
 		F6EA7BCA2C578BAF005225A0 /* WorkoutListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6EA7BC92C578BAF005225A0 /* WorkoutListViewModel.swift */; };
 		F6EA7BCC2C579333005225A0 /* WorkoutModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6EA7BCB2C579332005225A0 /* WorkoutModel.swift */; };
@@ -266,6 +267,7 @@
 		F6DD68AC2C6503C9004EFB03 /* ExerciseTypeCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseTypeCell.swift; sourceTree = "<group>"; };
 		F6DD68AE2C65050A004EFB03 /* ExerciseTypeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseTypeViewModel.swift; sourceTree = "<group>"; };
 		F6DD68B02C650CAE004EFB03 /* ExerciseCategoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseCategoryView.swift; sourceTree = "<group>"; };
+		F6E13B56301145EA0003970A /* SettingsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewModel.swift; sourceTree = "<group>"; };
 		F6E4161E2C7F982500E77EB4 /* Distance+Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Distance+Utils.swift"; sourceTree = "<group>"; };
 		F6EA7BC92C578BAF005225A0 /* WorkoutListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutListViewModel.swift; sourceTree = "<group>"; };
 		F6EA7BCB2C579332005225A0 /* WorkoutModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutModel.swift; sourceTree = "<group>"; };
@@ -317,6 +319,7 @@
 			isa = PBXGroup;
 			children = (
 				F62187DE300915DE00F73704 /* SettingsView.swift */,
+				F6E13B56301145EA0003970A /* SettingsViewModel.swift */,
 			);
 			path = Settings;
 			sourceTree = "<group>";
@@ -933,6 +936,7 @@
 				F68D60652C760C4B00783E54 /* CircularProgressView.swift in Sources */,
 				F6EA7BCC2C579333005225A0 /* WorkoutModel.swift in Sources */,
 				F6DD68AF2C65050A004EFB03 /* ExerciseTypeViewModel.swift in Sources */,
+				F6E13B57301145EA0003970A /* SettingsViewModel.swift in Sources */,
 				F62187DF300915DE00F73704 /* SettingsView.swift in Sources */,
 				F656783D2FF42AE100250F44 /* ReportStatusService.swift in Sources */,
 				F6186DF82FFEDBF10018B216 /* ReportExerciseHistoryView.swift in Sources */,
@@ -981,15 +985,6 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		F6336E25300172A0006ECA08 /* ExerciseCatalog.strings */ = {
-			isa = PBXVariantGroup;
-			children = (
-				F6336E26300172A0006ECA08 /* en */,
-				F6336E27300172A0006ECA08 /* ru */,
-			);
-			name = ExerciseCatalog.strings;
-			sourceTree = "<group>";
-		};
 		F6336E1D30016236006ECA08 /* ExerciseInfo.strings */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -997,6 +992,15 @@
 				F6336E2030016246006ECA08 /* ru */,
 			);
 			name = ExerciseInfo.strings;
+			sourceTree = "<group>";
+		};
+		F6336E25300172A0006ECA08 /* ExerciseCatalog.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				F6336E26300172A0006ECA08 /* en */,
+				F6336E27300172A0006ECA08 /* ru */,
+			);
+			name = ExerciseCatalog.strings;
 			sourceTree = "<group>";
 		};
 		F6A1000C2D1500010000000C /* Localizable.strings */ = {

@@ -15,14 +15,11 @@ struct SettingsView: View {
     @Environment(\.requestReview) private var requestReview
     @Environment(\.scenePhase) private var scenePhase
     
+    @StateObject private var viewModel = SettingsViewModel()
+    
     @State private var mailResult: Result<MFMailComposeResult, Error>?
     @State private var isMailPresented = false
     @State private var isMailUnavailableAlertPresented = false
-    @State private var notificationPermissionStatus: LocalNotificationPermissionStatus = .notDetermined
-    
-    private let supportEmail = "support@itrainer.app"
-    private let appStoreURL = URL(string: "https://apps.apple.com/app/id0000000000")!
-    private let privacyPolicyURL: URL? = nil
     
     var body: some View {
         ScrollView {
@@ -43,9 +40,9 @@ struct SettingsView: View {
         .navigationBarTitleDisplayMode(.inline)
         .sheet(isPresented: $isMailPresented) {
             MailView(result: $mailResult,
-                     recipients: [supportEmail],
+                     recipients: [viewModel.supportEmail],
                      subject: String(localized: "settings.support.feedback.subject"),
-                     body: feedbackBody)
+                     body: viewModel.feedbackBody)
         }
         .alert(Text("settings.support.mail_unavailable.title"), isPresented: $isMailUnavailableAlertPresented) {
             Button("settings.common.ok", role: .cancel) {}
@@ -53,12 +50,12 @@ struct SettingsView: View {
             Text("settings.support.mail_unavailable.message")
         }
         .task {
-            await refreshNotificationPermissionStatus()
+            await viewModel.refreshNotificationPermissionStatus()
         }
         .onChange(of: scenePhase) { _, phase in
             guard phase == .active else { return }
             Task {
-                await refreshNotificationPermissionStatus()
+                await viewModel.refreshNotificationPermissionStatus()
             }
         }
     }
@@ -92,7 +89,7 @@ struct SettingsView: View {
     private var notificationsSection: some View {
         settingsCard(title: "settings.notifications.title") {
             VStack(alignment: .leading, spacing: 14) {
-                switch notificationPermissionStatus {
+                switch viewModel.notificationPermissionStatus {
                 case .authorized:
                     notificationToggleRow(title: "settings.notifications.enabled.title",
                                           subtitle: settings.notificationsEnabled ? "settings.notifications.enabled.subtitle" : "settings.notifications.paused.subtitle",
@@ -111,7 +108,7 @@ struct SettingsView: View {
     private var supportSection: some View {
         settingsCard(title: "settings.support.title") {
             VStack(alignment: .leading, spacing: 14) {
-                ShareLink(item: appStoreURL) {
+                ShareLink(item: viewModel.appStoreURL) {
                     settingsRowLabel(title: "settings.share_app.title",
                                      systemImage: "square.and.arrow.up",
                                      trailingSystemImage: "chevron.right")
@@ -163,20 +160,20 @@ struct SettingsView: View {
                     .overlay(AppColor.separatorSoft)
                 
                 settingsActionRow(title: "settings.privacy.policy.title",
-                                  subtitle: privacyPolicyURL == nil ? "settings.privacy.policy.pending" : nil,
+                                  subtitle: viewModel.privacyPolicyURL == nil ? "settings.privacy.policy.pending" : nil,
                                   systemImage: "doc.text",
-                                  trailingSystemImage: privacyPolicyURL == nil ? nil : "chevron.right") {
+                                  trailingSystemImage: viewModel.privacyPolicyURL == nil ? nil : "chevron.right") {
                     openPrivacyPolicy()
                 }
-                .disabled(privacyPolicyURL == nil)
-                .opacity(privacyPolicyURL == nil ? 0.55 : 1)
+                .disabled(viewModel.privacyPolicyURL == nil)
+                .opacity(viewModel.privacyPolicyURL == nil ? 0.55 : 1)
             }
         }
     }
     
     private var aboutSection: some View {
         settingsCard(title: "settings.about.title") {
-            settingsInfoRow(title: "settings.about.version", value: appVersionText)
+            settingsInfoRow(title: "settings.about.version", value: viewModel.appVersionText)
         }
     }
     
@@ -336,7 +333,7 @@ struct SettingsView: View {
     
     private var notificationsToggleBinding: Binding<Bool> {
         Binding {
-            notificationPermissionStatus == .authorized && settings.notificationsEnabled
+            viewModel.notificationPermissionStatus == .authorized && settings.notificationsEnabled
         } set: { isEnabled in
             updateNotificationsEnabled(isEnabled)
         }
@@ -349,25 +346,8 @@ struct SettingsView: View {
         openURL(url)
     }
     
-    @MainActor
-    private func refreshNotificationPermissionStatus() async {
-        notificationPermissionStatus = await LocalNotificationManager.shared.permissionStatus()
-    }
-    
     private func updateNotificationsEnabled(_ isEnabled: Bool) {
-        if !isEnabled {
-            settings.notificationsEnabled = false
-            LocalNotificationManager.shared.cancelAllWorkoutNotifications()
-            return
-        }
-        
-        Task {
-            let status = await LocalNotificationManager.shared.requestAuthorization()
-            await MainActor.run {
-                notificationPermissionStatus = status
-                settings.notificationsEnabled = status == .authorized
-            }
-        }
+        viewModel.updateNotificationsEnabled(isEnabled, settings: settings)
     }
     
     private func sendFeedback() {
@@ -376,7 +356,7 @@ struct SettingsView: View {
             return
         }
         
-        guard let url = feedbackMailURL else {
+        guard let url = viewModel.feedbackMailURL else {
             isMailUnavailableAlertPresented = true
             return
         }
@@ -388,35 +368,10 @@ struct SettingsView: View {
     }
     
     private func openPrivacyPolicy() {
-        guard let privacyPolicyURL else {
+        guard let privacyPolicyURL = viewModel.privacyPolicyURL else {
             return
         }
         openURL(privacyPolicyURL)
-    }
-    
-    private var feedbackMailURL: URL? {
-        var components = URLComponents()
-        components.scheme = "mailto"
-        components.path = supportEmail
-        components.queryItems = [
-            URLQueryItem(name: "subject", value: String(localized: "settings.support.feedback.subject")),
-            URLQueryItem(name: "body", value: feedbackBody)
-        ]
-        return components.url
-    }
-    
-    private var feedbackBody: String {
-        "\n\n---\n\(String(localized: "settings.support.feedback.app_info"))\n\(appVersionText)\niOS \(UIDevice.current.systemVersion)"
-    }
-    
-    private var appVersionText: String {
-        let version = Bundle.main.object(forInfoDictionaryKey: "CFBundleShortVersionString") as? String ?? "1.0"
-#if DEBUG
-        let build = Bundle.main.object(forInfoDictionaryKey: "CFBundleVersion") as? String ?? "1"
-        return "\(version) (\(build))"
-#else
-        return version
-#endif
     }
 }
 
