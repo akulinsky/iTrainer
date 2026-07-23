@@ -1,0 +1,1033 @@
+/* Exercise Info */
+
+"exercise.info.chest_bench_press.description" = "Жим штанги лежачи - базова вправа для розвитку сили грудних м'язів, плечей і трицепсів.";
+"exercise.info.chest_bench_press.technique.1" = "Міцно поставте ноги на підлогу, перш ніж знімати штангу.";
+"exercise.info.chest_bench_press.technique.2" = "Втягніть і опустіть лопатки, щоб створити стабільну верхню частину спини.";
+"exercise.info.chest_bench_press.technique.3" = "Використовуйте хват трохи ширше ширини плечей, розташувавши зап’ястя над ліктями.";
+"exercise.info.chest_bench_press.technique.4" = "Контрольовано опустіть штангу до нижньої або середньої частини грудей.";
+"exercise.info.chest_bench_press.technique.5" = "Не відбивайте штангу від грудей і не піднімайте стегна з лави.";
+"exercise.info.chest_bench_press.technique.6" = "Вичавлюйте штангу вгору рівномірно, зберігаючи напруження верхньої частини спини.";
+
+"exercise.info.chest_incline_bench_press.description" = "Жим лежачи на нахилі – це жим штанги, який робить акцент на верхню частину грудей і передню частину плечей.";
+"exercise.info.chest_incline_bench_press.technique.1" = "Встановіть лаву під помірним нахилом, зазвичай приблизно від 30 до 45 градусів.";
+"exercise.info.chest_incline_bench_press.technique.2" = "Тримайте ноги стабільно, а лопатки притуліть до лави.";
+"exercise.info.chest_incline_bench_press.technique.3" = "Візьміть штангу трохи ширше ширини плечей.";
+"exercise.info.chest_incline_bench_press.technique.4" = "Контрольно опустіть штангу до верхньої частини грудей.";
+"exercise.info.chest_incline_bench_press.technique.5" = "Тримайте лікті під контролем, а не розгортайте їх прямо.";
+"exercise.info.chest_incline_bench_press.technique.6" = "Плавно вичавіть штангу вгору, не змінюючи положення на лаві.";
+
+"exercise.info.chest_dumbbell_press.description" = "Жим гантелей — це варіант жиму грудьми, який дозволяє кожній руці працювати незалежно через природний діапазон рухів.";
+"exercise.info.chest_dumbbell_press.technique.1" = "Сядьте, тримаючи гантелі в руках, а потім ляжте, приклавши їх до грудей.";
+"exercise.info.chest_dumbbell_press.technique.2" = "Розставте лопатки та тримайте ноги на ногах.";
+"exercise.info.chest_dumbbell_press.technique.3" = "Почніть із зап’ясть, складених над ліктями, а не зігнутих назад.";
+"exercise.info.chest_dumbbell_press.technique.4" = "Опускайте обидві гантелі рівномірно, поки не відчуєте комфортне розтягування грудей.";
+"exercise.info.chest_dumbbell_press.technique.5" = "Вичавіть гантелі вгору, не зіштовхуючи їх у верхній точці.";
+"exercise.info.chest_dumbbell_press.technique.6" = "Слідкуйте, щоб обидві сторони рухалися рівномірно та уникайте поворотів тулуба.";
+
+"exercise.info.chest_incline_dumbbell_press.description" = "Жим гантелей у нахилі розвиває силу верхньої частини грудей завдяки незалежним рухам рук і трохи більшому діапазону рухів.";
+"exercise.info.chest_incline_dumbbell_press.technique.1" = "Використовуйте помірний нахил, щоб рух усе ще був зосереджений на грудях.";
+"exercise.info.chest_incline_dumbbell_press.technique.2" = "Тримайте лопатки стабільними, а нижню частину спини контролюйте.";
+"exercise.info.chest_incline_dumbbell_press.technique.3" = "Почніть з гантелей над верхньою частиною грудей.";
+"exercise.info.chest_incline_dumbbell_press.technique.4" = "Опустіть гантелі біля верхньої частини грудей з контролем.";
+"exercise.info.chest_incline_dumbbell_press.technique.5" = "Не дозволяйте ліктям занадто далеко відходити за плечі.";
+"exercise.info.chest_incline_dumbbell_press.technique.6" = "Віджимайтеся плавно, не дозволяючи гантелям висуватися занадто далеко вперед.";
+
+"exercise.info.chest_dips.description" = "Віджимання на брусах - вправа з власною вагою, яка зі злегка нахиленим уперед корпусом більше навантажує груди.";
+"exercise.info.chest_dips.technique.1" = "Почніть з прямих рук і плечей, відведіть їх від вух.";
+"exercise.info.chest_dips.technique.2" = "Злегка нахиліться вперед, щоб перенести більше роботи на груди.";
+"exercise.info.chest_dips.technique.3" = "Опускайтеся під контролем, доки ваші плечі не будуть майже паралельні підлозі.";
+"exercise.info.chest_dips.technique.4" = "Лікті тримайте в прямому положенні, а не розгортайте їх широко.";
+"exercise.info.chest_dips.technique.5" = "Плавно віджимайтеся вгору без ривка з нижньої точки.";
+"exercise.info.chest_dips.technique.6" = "Припиніть підхід, якщо відчуєте різкий дискомфорт у плечі.";
+
+"exercise.info.chest_push_up.description" = "Віджимання — це вправа для віджимання власної ваги для контролю грудей, плечей, трицепсів і тулуба.";
+"exercise.info.chest_push_up.technique.1" = "Розташуйте руки трохи ширше ширини плечей.";
+"exercise.info.chest_push_up.technique.2" = "Тримайте тіло на прямій лінії від голови до п’ят.";
+"exercise.info.chest_push_up.technique.3" = "Підтримуйте тулуб, щоб стегна не провисали і не піднімалися.";
+"exercise.info.chest_push_up.technique.4" = "Контрольно опустіть груди до підлоги.";
+"exercise.info.chest_push_up.technique.5" = "Тримайте лікті під зручним кутом, а не прямо в сторони.";
+"exercise.info.chest_push_up.technique.6" = "Притисніться повністю, зберігаючи ту саму лінію тіла.";
+
+"exercise.info.chest_machine_press.description" = "Тренажерний жим від грудей – це керована вправа віджиму, яка тренує силу грудей зі стабільною підтримкою тіла.";
+"exercise.info.chest_machine_press.technique.1" = "Відрегулюйте сидіння так, щоб ручки знаходились посередині грудей.";
+"exercise.info.chest_machine_press.technique.2" = "Тримайте спину та стегна на підкладці.";
+"exercise.info.chest_machine_press.technique.3" = "Візьміться за ручки так, щоб зап’ястя були нейтральними, а плечі розслаблені.";
+"exercise.info.chest_machine_press.technique.4" = "Плавно вичавлюйте руків'я вперед, не піднімаючи плечі.";
+"exercise.info.chest_machine_press.technique.5" = "Уникайте агресивного змикання ліктів у кінці жиму.";
+"exercise.info.chest_machine_press.technique.6" = "Поверніть ручки під контроль перед початком наступного повторення.";
+
+"exercise.info.chest_smith_machine_press.description" = "Машинний жим Сміта – це керований жим штанги, який може допомогти тренувати груди з фіксованою траєкторією штанги.";
+"exercise.info.chest_smith_machine_press.technique.1" = "Розташуйте лаву так, щоб штанга опускалася до середини або нижньої частини грудей.";
+"exercise.info.chest_smith_machine_press.technique.2" = "Розставте лопатки та тримайте ноги стабільно.";
+"exercise.info.chest_smith_machine_press.technique.3" = "Використовуйте хват, який тримає зап’ястя над ліктями.";
+"exercise.info.chest_smith_machine_press.technique.4" = "Обережно розблокуйте планку та опустіть її з контролем.";
+"exercise.info.chest_smith_machine_press.technique.5" = "Не змушуйте плечі рухатися незручною фіксованою траєкторією.";
+"exercise.info.chest_smith_machine_press.technique.6" = "Плавно вичавіть штангу вгору та зафіксуйте її лише після повної зупинки.";
+
+"exercise.info.chest_dumbbell_fly.description" = "Політ з гантелями – це ізолююча вправа, яка тренує груди за допомогою широкої дуги та розтяжки з навантаженням.";
+"exercise.info.chest_dumbbell_fly.technique.1" = "Ляжте на спину, поклавши гантелі над грудьми, долонями один до одного.";
+"exercise.info.chest_dumbbell_fly.technique.2" = "Тримайте злегка зігнуті лікті протягом усього руху.";
+"exercise.info.chest_dumbbell_fly.technique.3" = "Повільно розкрийте руки, поки не відчуєте контрольоване розтягування грудей.";
+"exercise.info.chest_dumbbell_fly.technique.4" = "Не опускайтеся настільки, щоб плечі відчували напругу.";
+"exercise.info.chest_dumbbell_fly.technique.5" = "Знову зведіть гантелі разом через ту ж дугу.";
+"exercise.info.chest_dumbbell_fly.technique.6" = "Зберігайте рух як мах, а не прихований жим гантелей.";
+
+"exercise.info.chest_pec_deck.description" = "Pec Deck — це вправа на ізоляцію грудної клітки, у якій використовується керована траєкторія рук для тренування приведення грудної клітки.";
+"exercise.info.chest_pec_deck.technique.1" = "Відрегулюйте сидіння так, щоб ручки або подушечки були на одній лінії з вашими грудьми.";
+"exercise.info.chest_pec_deck.technique.2" = "Тримайте спину з підтримкою, а грудну клітку піднятою.";
+"exercise.info.chest_pec_deck.technique.3" = "Тримайте ручки або подушечки, розслабивши плечі.";
+"exercise.info.chest_pec_deck.technique.4" = "Плавно з’єднайте руки перед грудьми.";
+"exercise.info.chest_pec_deck.technique.5" = "Зробіть коротку паузу, не дозволяючи плечам перекочуватися вперед.";
+"exercise.info.chest_pec_deck.technique.6" = "Повільно повертайтеся, поки не відчуєте комфортне розтягування.";
+
+"exercise.info.chest_cable_crossover.description" = "Cable Crossover — це вправа для ізоляції грудей, яка підтримує напругу в грудях у всьому діапазоні.";
+"exercise.info.chest_cable_crossover.technique.1" = "Встановіть шківи на висоту, яка відповідає куту грудей, який ви хочете тренувати.";
+"exercise.info.chest_cable_crossover.technique.2" = "Стійте стійко, злегка нахилившись вперед і однією ногою вперед, якщо потрібно.";
+"exercise.info.chest_cable_crossover.technique.3" = "Тримайте лікті м’яко зігнутими, а плечі опущені.";
+"exercise.info.chest_cable_crossover.technique.4" = "Рухайте руками по плавній дузі перед корпусом.";
+"exercise.info.chest_cable_crossover.technique.5" = "Коротко стисніть груди, не округляючи плечі.";
+"exercise.info.chest_cable_crossover.technique.6" = "Контролюйте повернення і не дозволяйте вазі тягнути вас назад.";
+
+"exercise.info.chest_dumbbell_pullover.description" = "Пуловер з гантелями – це контрольована вправа для верхньої частини тіла, яка може тренувати груди та широкі м’язи за допомогою розгинання плечей.";
+"exercise.info.chest_dumbbell_pullover.technique.1" = "Ляжте на лаву і міцно тримайте одну гантель двома руками.";
+"exercise.info.chest_dumbbell_pullover.technique.2" = "Почніть з гантелі над грудьми і злегка зігнутими ліктями.";
+"exercise.info.chest_dumbbell_pullover.technique.3" = "Опустіть гантель за голову настільки, наскільки дозволяють плечі.";
+"exercise.info.chest_dumbbell_pullover.technique.4" = "Тримайте ребра та нижню частину спини під контролем замість надмірного вигину.";
+"exercise.info.chest_dumbbell_pullover.technique.5" = "Потягніть гантель назад над грудьми плавною дугою.";
+"exercise.info.chest_dumbbell_pullover.technique.6" = "Використовуйте помірне навантаження і уникайте перетворення руху в розгинання трицепса.";
+
+"exercise.info.back_pull_up.description" = "Підтягування — це вправа з вертикальним підтягуванням ваги тіла для формування широких м’язів, сили верхньої частини спини та контролю рук.";
+"exercise.info.back_pull_up.technique.1" = "Почніть з контрольованого вису з активними плечима, а не розпущеними.";
+"exercise.info.back_pull_up.technique.2" = "Перед тим, як тягнути, міцно візьміться за штангу та скріпіть тулуб.";
+"exercise.info.back_pull_up.technique.3" = "Потягніть, рухаючи ліктями вниз у бік.";
+"exercise.info.back_pull_up.technique.4" = "Направте груди на штангу без надмірних розгойдувань.";
+"exercise.info.back_pull_up.technique.5" = "Опускайтеся під контролем, доки руки знову не витягнуться.";
+"exercise.info.back_pull_up.technique.6" = "Тримайте повторення чистими та уникайте ударів ногами для імпульсу.";
+
+"exercise.info.back_reverse_grip_pull_up.description" = "Підтягування зворотним хватом — це підтягування в стилі підборіддя, яке наголошує на широких і біцепсах супінованим хватом.";
+"exercise.info.back_reverse_grip_pull_up.technique.1" = "Використовуйте хват знизу приблизно на ширині плечей.";
+"exercise.info.back_reverse_grip_pull_up.technique.2" = "Почніть з контрольованого вису з ребрами вниз.";
+"exercise.info.back_reverse_grip_pull_up.technique.3" = "Підтягніть груди до штанги, тримаючи лікті близько.";
+"exercise.info.back_reverse_grip_pull_up.technique.4" = "Уникайте витягування шиї, щоб дістатися до штанги.";
+"exercise.info.back_reverse_grip_pull_up.technique.5" = "Повільно опускайтеся, поки лікті не будуть витягнуті.";
+"exercise.info.back_reverse_grip_pull_up.technique.6" = "Не дозволяйте плечам опускатися внизу.";
+
+"exercise.info.back_barbell_row.description" = "Тяга штанги в нахилі - базова горизонтальна тяга для середини спини, найширших м'язів і стабільності задньої поверхні тіла.";
+"exercise.info.back_barbell_row.technique.1" = "Відведіть таз назад, нахиліться в кульшових суглобах і зберігайте нейтральне положення хребта.";
+"exercise.info.back_barbell_row.technique.2" = "Підтягніть тулуб, перш ніж піднімати штангу з підлоги або стійки.";
+"exercise.info.back_barbell_row.technique.3" = "Утримуйте кут тулуба стабільним протягом усього сету.";
+"exercise.info.back_barbell_row.technique.4" = "Потягніть штангу до нижніх ребер або верхньої частини живота.";
+"exercise.info.back_barbell_row.technique.5" = "Коротко стисніть спину, не риваючи вагу.";
+"exercise.info.back_barbell_row.technique.6" = "Опустіть штангу під контролем, не округляючи спину.";
+
+"exercise.info.back_one_arm_dumbbell_row.description" = "Тренування з гантелями однією рукою тренує кожну сторону спини незалежно з опорою на лаву або стійку поверхню.";
+"exercise.info.back_one_arm_dumbbell_row.technique.1" = "Зіпріться однією рукою та коліном або однією рукою на стійку опору.";
+"exercise.info.back_one_arm_dumbbell_row.technique.2" = "Тримайте хребет нейтральним, а тулуб – нерухомим.";
+"exercise.info.back_one_arm_dumbbell_row.technique.3" = "Нехай робоче плече трохи досягає низу.";
+"exercise.info.back_one_arm_dumbbell_row.technique.4" = "Тягніть гантель до стегна, а не прямо до плеча.";
+"exercise.info.back_one_arm_dumbbell_row.technique.5" = "Зробіть коротку паузу, тримаючи лікоть близько до тіла.";
+"exercise.info.back_one_arm_dumbbell_row.technique.6" = "Уникайте поворотів тулуба, щоб підняти більшу вагу.";
+
+"exercise.info.back_lat_pulldown.description" = "Lat Pulldown – це вертикальна тяга на тросі, яка тренує широкі лати та верхню частину спини з регульованим навантаженням.";
+"exercise.info.back_lat_pulldown.technique.1" = "Сядьте прямо і зафіксуйте стегна під накладкою.";
+"exercise.info.back_lat_pulldown.technique.2" = "Візьміть штангу трохи ширше, ніж ширина плечей, якщо не використовується інше кріплення.";
+"exercise.info.back_lat_pulldown.technique.3" = "Почніть з того, що опустіть плечі від вух.";
+"exercise.info.back_lat_pulldown.technique.4" = "Потягніть штангу до верхньої частини грудей.";
+"exercise.info.back_lat_pulldown.technique.5" = "Тримайте тулуб переважно стабільним і не нахиляйтеся далеко назад.";
+"exercise.info.back_lat_pulldown.technique.6" = "Повільно повертайте штангу вгору, не втрачаючи контролю.";
+
+"exercise.info.back_seated_cable_row.description" = "Сидячи на тросі – це горизонтальна вправа на тягу для середнього відділу спини, широких м’язів і контролю лопатки.";
+"exercise.info.back_seated_cable_row.technique.1" = "Сидіть високо, хребет нейтральний, ноги підтримуються.";
+"exercise.info.back_seated_cable_row.technique.2" = "Почніть з витягнутих рук, тримаючи груди піднятими.";
+"exercise.info.back_seated_cable_row.technique.3" = "Потягніть ручку до нижніх ребер або верхньої частини живота.";
+"exercise.info.back_seated_cable_row.technique.4" = "Відведіть лікті назад, не знизуючи плечима.";
+"exercise.info.back_seated_cable_row.technique.5" = "Зробіть коротку паузу, контролюючи лопатки.";
+"exercise.info.back_seated_cable_row.technique.6" = "Повільно поверніть рукоятку, не закругляючи вперед.";
+
+"exercise.info.back_t_bar_row.description" = "T-Bar Row — важкий варіант веслування, який націлений на середню частину спини та широкі м’язи зі стабільною траєкторією тяги.";
+"exercise.info.back_t_bar_row.technique.1" = "Прийміть стійке положення та нахиліться в кульшових суглобах, щоб корпус залишався нерухомим.";
+"exercise.info.back_t_bar_row.technique.2" = "Перш ніж піднімати ручку, закріпіть тулуб.";
+"exercise.info.back_t_bar_row.technique.3" = "Потягніть ручку до нижньої частини грудей або верхньої частини живота.";
+"exercise.info.back_t_bar_row.technique.4" = "Тримайте лікті відведеними назад замість того, щоб знизувати плечима.";
+"exercise.info.back_t_bar_row.technique.5" = "Уникайте використання великих розмахів тулубом для початку кожного повторення.";
+"exercise.info.back_t_bar_row.technique.6" = "Опускайте вагу під контролем, поки руки не витягнуться.";
+
+"exercise.info.back_chest_supported_machine_row.description" = "Chest-Supported Machine Row тренує спину з підтримкою тулуба, зменшуючи необхідність стабілізації нижньої частини спини.";
+"exercise.info.back_chest_supported_machine_row.technique.1" = "Відрегулюйте сидіння або накладку для грудей так, щоб ручки зручно вирівнювалися.";
+"exercise.info.back_chest_supported_machine_row.technique.2" = "Тримайте груди на підкладці протягом усього сету.";
+"exercise.info.back_chest_supported_machine_row.technique.3" = "Почніть з витягнутих рук і тримайте плечі.";
+"exercise.info.back_chest_supported_machine_row.technique.4" = "Потягніть ручки назад, проводячи лікті за собою.";
+"exercise.info.back_chest_supported_machine_row.technique.5" = "Зробіть коротку паузу, не відриваючи грудей від майданчика.";
+"exercise.info.back_chest_supported_machine_row.technique.6" = "Поверніться плавно і зберігайте напругу спини.";
+
+"exercise.info.back_straight_arm_pulldown.description" = "Straight-Arm Pulldown — це вправа з тросом для широких м’язів, у якій використовуються рухи в стилі пуловера з переважно прямими руками.";
+"exercise.info.back_straight_arm_pulldown.technique.1" = "Встановіть трос високо та відстаньте достатньо далеко, щоб зберегти напругу.";
+"exercise.info.back_straight_arm_pulldown.technique.2" = "Тримайте штангу або мотузку м’яко зігнутими ліктями.";
+"exercise.info.back_straight_arm_pulldown.technique.3" = "Підтягніть тулуб і тримайте плечі подалі від вух.";
+"exercise.info.back_straight_arm_pulldown.technique.4" = "Потягніть ручку вниз по дузі до верхньої частини стегон.";
+"exercise.info.back_straight_arm_pulldown.technique.5" = "Рухайте руками від плечей, не згинаючи лікті як під час розгинання рук на трицепс.";
+"exercise.info.back_straight_arm_pulldown.technique.6" = "Поверніться повільно, доки не відчуєте контрольоване розтягування широких м’язів.";
+
+"exercise.info.back_deadlift.description" = "Станова тяга - важка вправа з нахилом у кульшових суглобах, яка розвиває силу всього тіла та м'язів задньої поверхні.";
+"exercise.info.back_deadlift.technique.1" = "Поставте стопи під гриф так, щоб він був над серединою стопи.";
+"exercise.info.back_deadlift.technique.2" = "Відведіть таз назад, візьміться за гриф і міцно напружте корпус.";
+"exercise.info.back_deadlift.technique.3" = "Починаючи тягу, тримайте штангу близько до ніг.";
+"exercise.info.back_deadlift.technique.4" = "Відштовхуйтеся ногами від підлоги, зберігаючи нейтральне положення спини.";
+"exercise.info.back_deadlift.technique.5" = "Зафіксуйте, розтягнувши стегна й коліна разом.";
+"exercise.info.back_deadlift.technique.6" = "Уникайте надмірного нахилу назад у верхній частині.";
+
+"exercise.info.back_hyperextension.description" = "Гіперекстензія тренує контрольоване розгинання стегна, сідничні м'язи, задню поверхню стегна та витривалість попереку.";
+"exercise.info.back_hyperextension.technique.1" = "Встановіть накладку так, щоб стегна могли вільно рухатися.";
+"exercise.info.back_hyperextension.technique.2" = "Схрестіть руки або тримайте вантаж близько до тіла.";
+"exercise.info.back_hyperextension.technique.3" = "Опустіть тулуб з нейтральним положенням хребта.";
+"exercise.info.back_hyperextension.technique.4" = "Підніміть корпус, напружуючи сідничні м'язи та задню поверхню стегна.";
+"exercise.info.back_hyperextension.technique.5" = "Зупиніться, коли ваше тіло вирівняно, а не перевитягнуто назад.";
+"exercise.info.back_hyperextension.technique.6" = "Рухайтеся повільно і уникайте розгойдування повторень.";
+
+"exercise.info.back_dumbbell_shrug.description" = "Тренування з гантелями плечима тренує верхню частину трапецієподібного м’яза з навантаженням кожної руки окремо.";
+"exercise.info.back_dumbbell_shrug.technique.1" = "Встаньте прямо з гантелями в кожній руці.";
+"exercise.info.back_dumbbell_shrug.technique.2" = "Тримайте руки прямо, а гирі звисайте з боків.";
+"exercise.info.back_dumbbell_shrug.technique.3" = "Підніміть плечі прямо до вух.";
+"exercise.info.back_dumbbell_shrug.technique.4" = "Зробіть коротку паузу вгорі, не розгортаючи плечі.";
+"exercise.info.back_dumbbell_shrug.technique.5" = "Опустіться під контролем до повного розтягування.";
+"exercise.info.back_dumbbell_shrug.technique.6" = "Тримайте шию нейтрально та уникайте підстрибування ваги.";
+
+"exercise.info.back_barbell_shrug.description" = "Знизування плечами зі штангою – це вправа з верхнім трапом, яка дозволяє посилити навантаження зі штангою.";
+"exercise.info.back_barbell_shrug.technique.1" = "Тримайте штангу перед стегнами міцним хватом.";
+"exercise.info.back_barbell_shrug.technique.2" = "Встаньте прямо, підібгавши тулуб.";
+"exercise.info.back_barbell_shrug.technique.3" = "Підніміть плечі прямо вгору, не згинаючи ліктів.";
+"exercise.info.back_barbell_shrug.technique.4" = "Зробіть коротку паузу вгорі та тримайте смужку близько.";
+"exercise.info.back_barbell_shrug.technique.5" = "Опустіть планку під контролем, а не опускайтеся вниз.";
+"exercise.info.back_barbell_shrug.technique.6" = "Не згортайте плечі; рухатися вгору і вниз.";
+
+"exercise.info.legs_barbell_squat.description" = "Присідання зі штангою — це базова силова вправа для нижньої частини тіла для квадрицепсів, сідниць і стабільності всього тіла.";
+"exercise.info.legs_barbell_squat.technique.1" = "Надійно встановіть гриф на верхню частину спини і рівномірно тримайте його.";
+"exercise.info.legs_barbell_squat.technique.2" = "Розташуйте ноги на ширині плечей і зафіксуйте тулуб.";
+"exercise.info.legs_barbell_squat.technique.3" = "Опустіться, зігнувши разом стегна і коліна.";
+"exercise.info.legs_barbell_squat.technique.4" = "Тримайте коліна на одній лінії зі своїми стопами.";
+"exercise.info.legs_barbell_squat.technique.5" = "Зберігайте нейтральне положення хребта та уникайте падіння вперед.";
+"exercise.info.legs_barbell_squat.technique.6" = "Підніміться, тиснучи в підлогу серединою стопи, доки стегна й коліна не випрямляться.";
+
+"exercise.info.legs_leg_press.description" = "Жим ногами — це тренажерна вправа для тренування ніг із підтримкою спини та направленням навантаження за допомогою саней.";
+"exercise.info.legs_leg_press.technique.1" = "Міцно поставте ноги на платформу на зручній ширині.";
+"exercise.info.legs_leg_press.technique.2" = "Тримайте стегна і поперек на підкладці.";
+"exercise.info.legs_leg_press.technique.3" = "Відмикайте санки лише тоді, коли ви будете стійкі.";
+"exercise.info.legs_leg_press.technique.4" = "Опустіть платформу, поки ваші коліна зручно не зігнуті.";
+"exercise.info.legs_leg_press.technique.5" = "Тисніть на всю стопу, не даючи колінам прогинатися всередину.";
+"exercise.info.legs_leg_press.technique.6" = "Уникайте агресивного фіксування колін у верхній частині.";
+
+"exercise.info.legs_squat.description" = "Присідання — це рух нижньою частиною тіла з вагою тіла для зміцнення ніг, рухливості та контролю руху.";
+"exercise.info.legs_squat.technique.1" = "Встаньте, поставивши ноги на ширину плечей.";
+"exercise.info.legs_squat.technique.2" = "Скріпіть тулуб і тримайте груди піднятими.";
+"exercise.info.legs_squat.technique.3" = "Опустіться, сидячи між стегон.";
+"exercise.info.legs_squat.technique.4" = "Тримайте коліна на одній лінії з пальцями ніг.";
+"exercise.info.legs_squat.technique.5" = "Опустіться якомога нижче, зберігаючи контроль.";
+"exercise.info.legs_squat.technique.6" = "Плавно встаньте на середину стопи.";
+
+"exercise.info.legs_dumbbell_lunge.description" = "Випади з гантелями – це вправа на одну ногу для квадрицепсів, сідниць, рівноваги та контролю ніг.";
+"exercise.info.legs_dumbbell_lunge.technique.1" = "Візьміть гантелі з боків і встаньте прямо.";
+"exercise.info.legs_dumbbell_lunge.technique.2" = "Крок вперед або назад з контролем.";
+"exercise.info.legs_dumbbell_lunge.technique.3" = "Опускайтеся, поки обидва коліна не зігнутіся природним чином.";
+"exercise.info.legs_dumbbell_lunge.technique.4" = "Тримайте переднє коліно на стопі.";
+"exercise.info.legs_dumbbell_lunge.technique.5" = "Відштовхніться передньою ногою, щоб повернутися.";
+"exercise.info.legs_dumbbell_lunge.technique.6" = "Тримайте тулуб нерухомо та уникайте хитання з боку в бік.";
+
+"exercise.info.legs_barbell_lunge.description" = "Випади зі штангою – це навантажена вправа на одну ногу, яка випробувала силу ніг, рівновагу та стабільність тулуба.";
+"exercise.info.legs_barbell_lunge.technique.1" = "Надійно встановіть штангу на верхню частину спини.";
+"exercise.info.legs_barbell_lunge.technique.2" = "Підтягніть тулуб перед кроком.";
+"exercise.info.legs_barbell_lunge.technique.3" = "Крокуйте з контролем і тримайте планку рівно.";
+"exercise.info.legs_barbell_lunge.technique.4" = "Опускайтеся, поки обидва коліна зручно не зігнуті.";
+"exercise.info.legs_barbell_lunge.technique.5" = "Проштовхніть передню стопу, не дозволяючи коліну провалитися всередину.";
+"exercise.info.legs_barbell_lunge.technique.6" = "Використовуйте менший вантаж, якщо баланс порушується.";
+
+"exercise.info.legs_hack_squat.description" = "Hack Squat — це варіант присідань на тренажері, який робить акцент на квадрицепсах із спрямованою траєкторією та опорним торсом.";
+"exercise.info.legs_hack_squat.technique.1" = "Щільно притисніть плечі та спину до подушечок.";
+"exercise.info.legs_hack_squat.technique.2" = "Поставте ноги на платформу в зручній позі.";
+"exercise.info.legs_hack_squat.technique.3" = "Розблокуйте машину тільки після закріплення.";
+"exercise.info.legs_hack_squat.technique.4" = "Опустіться під контролем, коли коліна слідують за пальцями ніг.";
+"exercise.info.legs_hack_squat.technique.5" = "Протискайтеся через платформу, не піднімаючи п’яти.";
+"exercise.info.legs_hack_squat.technique.6" = "Уникайте жорсткого блокування колін у верхній частині.";
+
+"exercise.info.legs_front_squat.description" = "Присідання спереду — це різновид присідань із грифом, який тримається спереду, що наголошує на контролі на квадрицепсах і вертикальному положенні тулуба.";
+"exercise.info.legs_front_squat.technique.1" = "Упріться в передню частину плечей, піднявши лікті.";
+"exercise.info.legs_front_squat.technique.2" = "Підтягніть тулуб і тримайте груди високо.";
+"exercise.info.legs_front_squat.technique.3" = "Опустіться, зігнувши разом стегна і коліна.";
+"exercise.info.legs_front_squat.technique.4" = "Тримайте лікті високо, щоб штанга не котилася вперед.";
+"exercise.info.legs_front_squat.technique.5" = "Підніміться через середину стопи.";
+"exercise.info.legs_front_squat.technique.6" = "Використовуйте вантаж, яким можете керувати, не падаючи вперед.";
+
+"exercise.info.legs_leg_extension.description" = "Розгинання ніг - це ізолююча вправа для квадрицепсів.";
+"exercise.info.legs_leg_extension.technique.1" = "Відрегулюйте сидіння так, щоб поворот машини вирівнявся з вашим коліном.";
+"exercise.info.legs_leg_extension.technique.2" = "Встановіть подушечку трохи вище щиколоток.";
+"exercise.info.legs_leg_extension.technique.3" = "Візьміться за ручки та опустіть стегна.";
+"exercise.info.legs_leg_extension.technique.4" = "Плавно розгинайте ноги без розгойдування.";
+"exercise.info.legs_leg_extension.technique.5" = "Зробіть коротку паузу біля верху, якщо зручно.";
+"exercise.info.legs_leg_extension.technique.6" = "Повільно опускайте вагу, напружуючи квадрицепси.";
+
+"exercise.info.legs_lying_leg_curl.description" = "Згинання ніг лежачи - ізолювальна вправа для м'язів задньої поверхні стегна, яку виконують лежачи обличчям донизу.";
+"exercise.info.legs_lying_leg_curl.technique.1" = "Ляжте обличчям вниз і вирівняйте коліна з опорою тренажера.";
+"exercise.info.legs_lying_leg_curl.technique.2" = "Встановіть накладку трохи вище п'ят.";
+"exercise.info.legs_lying_leg_curl.technique.3" = "Тримайте стегна притиснутими до подушечки.";
+"exercise.info.legs_lying_leg_curl.technique.4" = "Контрольно нахиліть вагу до сідниць.";
+"exercise.info.legs_lying_leg_curl.technique.5" = "Уникайте піднімання стегон, щоб закінчити повторення.";
+"exercise.info.legs_lying_leg_curl.technique.6" = "Повільно опускайтеся, поки ноги не будуть витягнуті.";
+
+"exercise.info.legs_seated_leg_curl.description" = "Згинання ніг сидячи - ізолювальна вправа для м'язів задньої поверхні стегна з опорою для корпуса.";
+"exercise.info.legs_seated_leg_curl.technique.1" = "Відрегулюйте сидіння так, щоб коліна були на одній осі з шарніром тренажера.";
+"exercise.info.legs_seated_leg_curl.technique.2" = "Зручно закріпіть накладку на стегнах над колінами.";
+"exercise.info.legs_seated_leg_curl.technique.3" = "Тримайте стегна і спину на сидінні.";
+"exercise.info.legs_seated_leg_curl.technique.4" = "Згорніть подушечку вниз з контролем.";
+"exercise.info.legs_seated_leg_curl.technique.5" = "Зробіть коротку паузу в скороченому положенні.";
+"exercise.info.legs_seated_leg_curl.technique.6" = "Поверніться повільно, не даючи вазі вдаритися.";
+
+"exercise.info.legs_standing_calf_raise.description" = "Підйом литок стоячи тренує литки шляхом розгинання гомілковостопного суглоба з переважно прямими ногами.";
+"exercise.info.legs_standing_calf_raise.technique.1" = "Встаньте прямо, поклавши стопи на платформу або підлогу.";
+"exercise.info.legs_standing_calf_raise.technique.2" = "Тримайте коліна переважно прямими, але не сильно зафіксованими.";
+"exercise.info.legs_standing_calf_raise.technique.3" = "Нижні каблуки під контролем для зручного розтягування.";
+"exercise.info.legs_standing_calf_raise.technique.4" = "Підніміться на носочки на весь діапазон.";
+"exercise.info.legs_standing_calf_raise.technique.5" = "Зробіть коротку паузу вгорі.";
+"exercise.info.legs_standing_calf_raise.technique.6" = "Уникайте підстрибування через повторення.";
+
+"exercise.info.legs_seated_calf_raise.description" = "Сидячи Calf Raise тренує ікри із зігнутими колінами, часто акцентуючи увагу на підошві.";
+"exercise.info.legs_seated_calf_raise.technique.1" = "Сядьте м’ячиками ніг на платформу.";
+"exercise.info.legs_seated_calf_raise.technique.2" = "Зручно розмістіть накладку на стегнах.";
+"exercise.info.legs_seated_calf_raise.technique.3" = "Повільно опустіть п’яти до зручного розтягування.";
+"exercise.info.legs_seated_calf_raise.technique.4" = "Тисніть подушечками стоп, щоб підняти п'яти.";
+"exercise.info.legs_seated_calf_raise.technique.5" = "Зробіть коротку паузу вгорі.";
+"exercise.info.legs_seated_calf_raise.technique.6" = "Тримайте рух під контролем і уникайте підстрибування.";
+
+"exercise.info.legs_hip_adduction_machine.description" = "Тренажер для приведення стегон тренує внутрішню частину стегон, зводячи ноги до середньої лінії.";
+"exercise.info.legs_hip_adduction_machine.technique.1" = "Сядьте високо та відрегулюйте підкладки до зручної початкової ширини.";
+"exercise.info.legs_hip_adduction_machine.technique.2" = "Тримайте спину, спираючись на сидіння.";
+"exercise.info.legs_hip_adduction_machine.technique.3" = "Візьміться за ручки та злегка зафіксуйте їх.";
+"exercise.info.legs_hip_adduction_machine.technique.4" = "Плавно зведіть ноги разом.";
+"exercise.info.legs_hip_adduction_machine.technique.5" = "Зробіть коротку паузу, не форсуючи діапазон.";
+"exercise.info.legs_hip_adduction_machine.technique.6" = "Поверніться повільно та тримайте контроль над накладками.";
+
+"exercise.info.glutes_hip_thrust.description" = "Поштовх стегнами – це вправа для сідниць із навантаженням, яка виконується з опорою верхньої частини спини на лаву.";
+"exercise.info.glutes_hip_thrust.technique.1" = "Поставте верхню частину спини на лаву і покладіть штангу на стегна.";
+"exercise.info.glutes_hip_thrust.technique.2" = "Тримайте ноги на ширині стегон і достатньо близько, щоб гомілки були майже вертикальними у верхній частині.";
+"exercise.info.glutes_hip_thrust.technique.3" = "Підтягніть тулуб, перш ніж піднімати стегна.";
+"exercise.info.glutes_hip_thrust.technique.4" = "Проведіть через п’яти і піднімайте, поки стегна не будуть повністю витягнуті.";
+"exercise.info.glutes_hip_thrust.technique.5" = "Зробіть коротку паузу у верхній частині та стисніть сідниці.";
+"exercise.info.glutes_hip_thrust.technique.6" = "Опустіться під контролем, не вигинаючи нижню частину спини.";
+
+"exercise.info.glutes_glute_bridge.description" = "Glute Bridge – це вправа для сідниць, яка виконується на підлозі з коротшим діапазоном рухів, ніж поштовх стегнами.";
+"exercise.info.glutes_glute_bridge.technique.1" = "Ляжте на спину, зігніть коліна, ступні поставте на підлогу.";
+"exercise.info.glutes_glute_bridge.technique.2" = "Розташуйте ноги на ширині стегон і тримайте ребра під контролем.";
+"exercise.info.glutes_glute_bridge.technique.3" = "Проведіть через п’яти, щоб підняти стегна.";
+"exercise.info.glutes_glute_bridge.technique.4" = "Зупиніться, коли стегна витягнуті, а тіло утворить пряму лінію.";
+"exercise.info.glutes_glute_bridge.technique.5" = "Стисніть сідниці вгорі, не прогинаючи спину.";
+"exercise.info.glutes_glute_bridge.technique.6" = "Повільно опускайтеся, поки стегна не повернуться до підлоги.";
+
+"exercise.info.glutes_romanian_deadlift.description" = "Румунська тяга - вправа з нахилом у кульшових суглобах для сідничних м'язів, задньої поверхні стегна та контролю корпуса.";
+"exercise.info.glutes_romanian_deadlift.technique.1" = "Встаньте прямо, з вагою перед стегнами.";
+"exercise.info.glutes_romanian_deadlift.technique.2" = "Скріпіть тулуб і тримайте коліна м’яко зігнутими.";
+"exercise.info.glutes_romanian_deadlift.technique.3" = "Зігніть стегна і відсуньте їх назад.";
+"exercise.info.glutes_romanian_deadlift.technique.4" = "Тримайте вагу близько до ніг, коли вона опускається.";
+"exercise.info.glutes_romanian_deadlift.technique.5" = "Опускайте вагу, доки не відчуєте контрольоване розтягнення задньої поверхні стегна.";
+"exercise.info.glutes_romanian_deadlift.technique.6" = "Встаньте, потягнувши стегна вперед.";
+
+"exercise.info.glutes_bulgarian_split_squat.description" = "Болгарський спліт-присідання — це вправа на одну ногу, яка може добре тренувати сідничні м’язи та квадрицепси.";
+"exercise.info.glutes_bulgarian_split_squat.technique.1" = "Поставте задню ногу на лаву або стійку опору.";
+"exercise.info.glutes_bulgarian_split_squat.technique.2" = "Поставте передню ногу достатньо далеко вперед, щоб контролювати положення коліна.";
+"exercise.info.glutes_bulgarian_split_squat.technique.3" = "Тримайте тулуб злегка нахиленим вперед, якщо націлені на сідниці.";
+"exercise.info.glutes_bulgarian_split_squat.technique.4" = "Опускайтеся під контролем, поки передня нога не зігнеться зручно.";
+"exercise.info.glutes_bulgarian_split_squat.technique.5" = "Натисніть на передню ногу, щоб підвестися.";
+"exercise.info.glutes_bulgarian_split_squat.technique.6" = "Тримайте рівновагу і не відстрибуйте від дна.";
+
+"exercise.info.glutes_cable_kickback.description" = "Cable Kickback тренує сідниці, розгинаючи стегно назад проти опору кабелю.";
+"exercise.info.glutes_cable_kickback.technique.1" = "Прикріпіть кабельну манжету біля щиколотки та тримайте машину для підтримки.";
+"exercise.info.glutes_cable_kickback.technique.2" = "Встаньте прямо, злегка нахилившись вперед і підпріть тулуб.";
+"exercise.info.glutes_cable_kickback.technique.3" = "Відведіть робочу ногу від стегна назад.";
+"exercise.info.glutes_cable_kickback.technique.4" = "Тримайте таз стабільним і уникайте обертання тулуба.";
+"exercise.info.glutes_cable_kickback.technique.5" = "Зробіть коротку паузу, коли сідничний м’яз скорочується.";
+"exercise.info.glutes_cable_kickback.technique.6" = "Поверніться повільно, не дозволяючи вазі тягнути ногу вперед.";
+
+"exercise.info.glutes_leg_kickback.description" = "Махи ногою назад - вправа з власною вагою або еластичною стрічкою з акцентом на розгинанні стегна.";
+"exercise.info.glutes_leg_kickback.technique.1" = "Почніть зі стійкого положення стоячи або на руках і колінах.";
+"exercise.info.glutes_leg_kickback.technique.2" = "Підтримуйте тулуб, щоб нижня частина спини не вигиналася.";
+"exercise.info.glutes_leg_kickback.technique.3" = "Ведіть одну ногу назад від стегна.";
+"exercise.info.glutes_leg_kickback.technique.4" = "Тримайте таз квадратним і уникайте поворотів.";
+"exercise.info.glutes_leg_kickback.technique.5" = "Наприкінці руху коротко стисніть сідницю.";
+"exercise.info.glutes_leg_kickback.technique.6" = "Поверніться з контролем перед початком наступного повторення.";
+
+"exercise.info.glutes_abduction_machine.description" = "Тренажер для відтягування стегна тренує середню та зовнішню сідничні м’язи, відводячи ноги від середньої лінії.";
+"exercise.info.glutes_abduction_machine.technique.1" = "Сядьте, спираючись на спину, а подушечки розмістіть поза стегнами.";
+"exercise.info.glutes_abduction_machine.technique.2" = "Виберіть початкову ширину, яка буде зручною.";
+"exercise.info.glutes_abduction_machine.technique.3" = "Візьміться за ручки і тримайте тулуб нерухомо.";
+"exercise.info.glutes_abduction_machine.technique.4" = "Розкрийте ноги назовні під контролем.";
+"exercise.info.glutes_abduction_machine.technique.5" = "Зробіть коротку паузу, не нахиляючись і не використовуючи імпульс.";
+"exercise.info.glutes_abduction_machine.technique.6" = "Повільно поверніться і зберігайте напругу в сідничних м’язах.";
+
+"exercise.info.glutes_step_up.description" = "Підйом — це вправа однією ногою, яка тренує сідничні м’язи, чотирикутники та рівновагу, виходячи на підвищену платформу.";
+"exercise.info.glutes_step_up.technique.1" = "Виберіть висоту платформи, яку ви можете контролювати.";
+"exercise.info.glutes_step_up.technique.2" = "Поставте повну робочу стопу на платформу.";
+"exercise.info.glutes_step_up.technique.3" = "Злегка нахиліться вперед і зафіксуйте тулуб.";
+"exercise.info.glutes_step_up.technique.4" = "Проштовхніть робочу ногу, щоб піднятися.";
+"exercise.info.glutes_step_up.technique.5" = "Уникайте сильного відштовхування від задньої ноги.";
+"exercise.info.glutes_step_up.technique.6" = "Повільно опустіться вниз і повторіть з контролем.";
+
+"exercise.info.glutes_cable_side_kick.description" = "Cable Side Kick тренує зовнішні сідничні м’язи, переміщаючи ногу вбік проти опору кабелю.";
+"exercise.info.glutes_cable_side_kick.technique.1" = "Прикріпіть тросову манжету біля щиколотки та встаньте боком до машини.";
+"exercise.info.glutes_cable_side_kick.technique.2" = "Тримайте машину для рівноваги та тримайте тулуб високо.";
+"exercise.info.glutes_cable_side_kick.technique.3" = "Відведіть робочу ногу вбік від стегна.";
+"exercise.info.glutes_cable_side_kick.technique.4" = "Тримайте таз стабільним і не нахиляйтеся далеко.";
+"exercise.info.glutes_cable_side_kick.technique.5" = "Зробіть коротку паузу в кінці діапазону.";
+"exercise.info.glutes_cable_side_kick.technique.6" = "Поверніться повільно, не дозволяючи кабелю витягнути вас із положення.";
+
+"exercise.info.shoulders_overhead_press.description" = "Жим над головою — складна вправа для плечей, яка розвиває силу вертикального жиму та стабільність тулуба.";
+"exercise.info.shoulders_overhead_press.technique.1" = "Стійте, тримаючи ноги стабільно, а штанга розташована біля верхньої частини грудей.";
+"exercise.info.shoulders_overhead_press.technique.2" = "Скріпіть тулуб і тримайте ребра під контролем.";
+"exercise.info.shoulders_overhead_press.technique.3" = "Вичавлюйте штангу вгору майже прямою траєкторією.";
+"exercise.info.shoulders_overhead_press.technique.4" = "Посуньте голову трохи назад, а потім наскрізь, коли штанга пройде.";
+"exercise.info.shoulders_overhead_press.technique.5" = "Завершіть гриф над плечима, стегнами та серединою стопи.";
+"exercise.info.shoulders_overhead_press.technique.6" = "Опускайтеся під контролем, не нахиляючись надмірно назад.";
+
+"exercise.info.shoulders_seated_dumbbell_press.description" = "Жим гантелей сидячи розвиває силу плечей завдяки незалежній роботі рук і стабільній опорі корпуса.";
+"exercise.info.shoulders_seated_dumbbell_press.technique.1" = "Сядьте рівно, спираючись на спину, і поставте ноги.";
+"exercise.info.shoulders_seated_dumbbell_press.technique.2" = "Почніть з гантелей на рівні плечей.";
+"exercise.info.shoulders_seated_dumbbell_press.technique.3" = "Тримайте зап’ястя на ліктях.";
+"exercise.info.shoulders_seated_dumbbell_press.technique.4" = "Вичавлюйте гантелі вгору, не прогинаючи поперек.";
+"exercise.info.shoulders_seated_dumbbell_press.technique.5" = "Не збивайте гантелі одна з одною у верхній частині.";
+"exercise.info.shoulders_seated_dumbbell_press.technique.6" = "Опустіть обидві гантелі рівномірно з контролем.";
+
+"exercise.info.shoulders_machine_press.description" = "Жим на плечі в тренажері розвиває силу вертикального жиму завдяки заданій траєкторії та стабільній опорі.";
+"exercise.info.shoulders_machine_press.technique.1" = "Відрегулюйте сидіння так, щоб ручки починалися на рівні плечей.";
+"exercise.info.shoulders_machine_press.technique.2" = "Тримайте спину та стегна на підкладці.";
+"exercise.info.shoulders_machine_press.technique.3" = "Візьміться за ручки в нейтральне положення зап’ястя.";
+"exercise.info.shoulders_machine_press.technique.4" = "Плавно вичавлюйте руків'я вгору, не піднімаючи плечі.";
+"exercise.info.shoulders_machine_press.technique.5" = "Уникайте агресивного змикання ліктів.";
+"exercise.info.shoulders_machine_press.technique.6" = "Поверніть ручки під контроль перед наступним повторенням.";
+
+"exercise.info.shoulders_arnold_press.description" = "Жим Арнольда — це різновид жиму гантелей плечем, яка поєднує обертання з жимом над головою.";
+"exercise.info.shoulders_arnold_press.technique.1" = "Почніть сидячи або стоячи з гантелями перед плечима.";
+"exercise.info.shoulders_arnold_press.technique.2" = "Почніть з долонь до себе та ліктів попереду.";
+"exercise.info.shoulders_arnold_press.technique.3" = "Обертайте гантелі назовні, тиснучи над головою.";
+"exercise.info.shoulders_arnold_press.technique.4" = "Зберігайте рух плавним і контрольованим.";
+"exercise.info.shoulders_arnold_press.technique.5" = "Уникайте надмірного вигину спини під час жиму.";
+"exercise.info.shoulders_arnold_press.technique.6" = "Змініть обертання, опускаючись до початку.";
+
+"exercise.info.shoulders_lateral_raise.description" = "Lateral Raise — це ізолююча вправа для бічних дельт і ширини плечей.";
+"exercise.info.shoulders_lateral_raise.technique.1" = "Встаньте прямо, злегка зігнувши лікті.";
+"exercise.info.shoulders_lateral_raise.technique.2" = "Контрольно розводьте гантелі в сторони.";
+"exercise.info.shoulders_lateral_raise.technique.3" = "Ведіть ліктями, а не руками.";
+"exercise.info.shoulders_lateral_raise.technique.4" = "Зупиніться на висоті плечей.";
+"exercise.info.shoulders_lateral_raise.technique.5" = "Опускайтеся повільно, не скидаючи гирі.";
+"exercise.info.shoulders_lateral_raise.technique.6" = "Уникайте розгойдування тулуба, щоб почати повторення.";
+
+"exercise.info.shoulders_cable_lateral_raise.description" = "Cable Lateral Raise тренує бічні дельти з постійним натягом кабелю в діапазоні рухів.";
+"exercise.info.shoulders_cable_lateral_raise.technique.1" = "Встановіть кабель низько і встаньте боком до машини.";
+"exercise.info.shoulders_cable_lateral_raise.technique.2" = "Візьміться за ручку зовнішньою рукою і скріпіть тулуб.";
+"exercise.info.shoulders_cable_lateral_raise.technique.3" = "Зберігайте м’який згин ліктя.";
+"exercise.info.shoulders_cable_lateral_raise.technique.4" = "Підніміть руку вбік приблизно на висоту плеча.";
+"exercise.info.shoulders_cable_lateral_raise.technique.5" = "Контролюйте повернення і зберігайте натяг троса.";
+"exercise.info.shoulders_cable_lateral_raise.technique.6" = "Не нахиляйтеся і не повертайтеся, щоб підняти більшу вагу.";
+
+"exercise.info.shoulders_front_raise.description" = "Front Raise тренує передні дельти шляхом контрольованого згинання плеча.";
+"exercise.info.shoulders_front_raise.technique.1" = "Встаньте прямо і закріпіть тулуб.";
+"exercise.info.shoulders_front_raise.technique.2" = "Тримайте гирі перед стегнами.";
+"exercise.info.shoulders_front_raise.technique.3" = "Підніміть вагу вперед приблизно на висоту плечей.";
+"exercise.info.shoulders_front_raise.technique.4" = "Тримайте лікті м’яко зігнутими, а зап’ястя – нейтральними.";
+"exercise.info.shoulders_front_raise.technique.5" = "Опускайтеся повільно, не нахиляючись назад.";
+"exercise.info.shoulders_front_raise.technique.6" = "Уникайте перекидання ваги з стегон.";
+
+"exercise.info.shoulders_reverse_fly.description" = "Reverse Fly тренує задні дельти та верхню частину спини завдяки горизонтальним рухам рук.";
+"exercise.info.shoulders_reverse_fly.technique.1" = "Закріпіться на стегнах або ляжте грудьми на похилу лаву.";
+"exercise.info.shoulders_reverse_fly.technique.2" = "Тримайте м'які зігнуті лікті.";
+"exercise.info.shoulders_reverse_fly.technique.3" = "Розведіть руки в сторони.";
+"exercise.info.shoulders_reverse_fly.technique.4" = "Зосередьтеся на задніх дельтах, а не знизуйте плечима.";
+"exercise.info.shoulders_reverse_fly.technique.5" = "Зробіть коротку паузу вгорі, якщо контролюєте.";
+"exercise.info.shoulders_reverse_fly.technique.6" = "Опускайтеся повільно, не дозволяючи вагам хитатися.";
+
+"exercise.info.shoulders_reverse_pec_deck.description" = "Reverse Pec Deck – це тренажерна вправа для задніх дельт і стабільності верхньої частини спини.";
+"exercise.info.shoulders_reverse_pec_deck.technique.1" = "Відрегулюйте сидіння так, щоб ручки були на рівні плечей.";
+"exercise.info.shoulders_reverse_pec_deck.technique.2" = "Сядьте обличчям до майданчика, спираючись на груди.";
+"exercise.info.shoulders_reverse_pec_deck.technique.3" = "Візьміться за ручки і опустіть плечі.";
+"exercise.info.shoulders_reverse_pec_deck.technique.4" = "Розкрийте руки назад широкою дугою.";
+"exercise.info.shoulders_reverse_pec_deck.technique.5" = "Зробіть коротку паузу, не відхиляючись від панелі.";
+"exercise.info.shoulders_reverse_pec_deck.technique.6" = "Поверніться повільно та тримайте контроль над стеком.";
+
+"exercise.info.shoulders_upright_row.description" = "Вертикальне гребування тренує плечі та верхню частину за допомогою вертикального тягового руху.";
+"exercise.info.shoulders_upright_row.technique.1" = "Тримайте штангу або гантелі перед стегнами.";
+"exercise.info.shoulders_upright_row.technique.2" = "Тримайте вагу близько до тіла.";
+"exercise.info.shoulders_upright_row.technique.3" = "Підтягніться вгору, відводячи лікті.";
+"exercise.info.shoulders_upright_row.technique.4" = "Зупиніться на висоті нижньої або верхньої частини грудей.";
+"exercise.info.shoulders_upright_row.technique.5" = "Опускайтеся під контролем без розгойдування.";
+"exercise.info.shoulders_upright_row.technique.6" = "Зупиніться, якщо рух відчуває дискомфорт у плечах.";
+
+"exercise.info.shoulders_face_pull.description" = "Тяга обличчям — це вправа на тросі для задніх дельт, зовнішніх ротаторів і верхньої частини спини.";
+"exercise.info.shoulders_face_pull.technique.1" = "Встановіть кабель на рівні грудей або обличчя.";
+"exercise.info.shoulders_face_pull.technique.2" = "Використовуйте кріплення для мотузки та відступіть, щоб створити напругу.";
+"exercise.info.shoulders_face_pull.technique.3" = "Потягніть мотузку до обличчя, високо піднявши лікті.";
+"exercise.info.shoulders_face_pull.technique.4" = "Роз’єднайте кінці мотузки під час натягування.";
+"exercise.info.shoulders_face_pull.technique.5" = "Тримайте ребра вниз і не нахиляйтеся назад.";
+"exercise.info.shoulders_face_pull.technique.6" = "Поверніться повільно, тримаючи плечі.";
+
+"exercise.info.biceps_barbell_curl.description" = "Згинання штанги — це класична вправа на біцепс, яка тренує згинання ліктьових суглобів обома руками разом.";
+"exercise.info.biceps_barbell_curl.technique.1" = "Встаньте прямо, ноги стоять стійко, а штанга розташована перед стегнами.";
+"exercise.info.biceps_barbell_curl.technique.2" = "Тримайте лікті близько до боків.";
+"exercise.info.biceps_barbell_curl.technique.3" = "Підніміть штангу вгору, не розгойдуючи тулуб.";
+"exercise.info.biceps_barbell_curl.technique.4" = "Тримайте зап’ястя нейтрально та не згинайте їх назад.";
+"exercise.info.biceps_barbell_curl.technique.5" = "Коротко стисніть біля верху.";
+"exercise.info.biceps_barbell_curl.technique.6" = "Повільно опускайтеся, поки руки не будуть витягнуті з контролем.";
+
+"exercise.info.biceps_ez_bar_curl.description" = "EZ-Bar Curl — це варіант згинання на біцепс, у якому використовується скошена штанга для зменшення навантаження на зап’ястя багатьох спортсменів.";
+"exercise.info.biceps_ez_bar_curl.technique.1" = "Тримайте EZ-bar зручною ручкою під кутом.";
+"exercise.info.biceps_ez_bar_curl.technique.2" = "Встаньте прямо і закріпіть тулуб.";
+"exercise.info.biceps_ez_bar_curl.technique.3" = "Під час повторення тримайте лікті біля боків.";
+"exercise.info.biceps_ez_bar_curl.technique.4" = "Плавно скручуйте штангу, не відкидаючись назад.";
+"exercise.info.biceps_ez_bar_curl.technique.5" = "Зробіть коротку паузу вгорі, якщо контролюєте.";
+"exercise.info.biceps_ez_bar_curl.technique.6" = "Опускайтеся під контролем і не розслабляйтеся внизу.";
+
+"exercise.info.biceps_dumbbell_curl.description" = "Dumbbell Curl тренує біцепс за допомогою незалежного руху рук і природної траєкторії зап’ястя.";
+"exercise.info.biceps_dumbbell_curl.technique.1" = "Встаньте або сядьте прямо з гантелями з боків.";
+"exercise.info.biceps_dumbbell_curl.technique.2" = "Тримайте лікті близько до тулуба.";
+"exercise.info.biceps_dumbbell_curl.technique.3" = "Плавно скручуйте обидві гантелі на весь діапазон.";
+"exercise.info.biceps_dumbbell_curl.technique.4" = "Поверніть долоні вгору, якщо використовуєте супінаційний завиток.";
+"exercise.info.biceps_dumbbell_curl.technique.5" = "Уникайте нахилятися назад або розмахувати вагою.";
+"exercise.info.biceps_dumbbell_curl.technique.6" = "Опускайтеся з контролем, поки руки не будуть витягнуті.";
+
+"exercise.info.biceps_alternating_dumbbell_curl.description" = "Почергове згинання гантелей тренує кожну руку за раз, зберігаючи рух під контролем.";
+"exercise.info.biceps_alternating_dumbbell_curl.technique.1" = "Візьміть гантелі з боків і встаньте прямо.";
+"exercise.info.biceps_alternating_dumbbell_curl.technique.2" = "Зігніть одну гантель, а інша рука залишається нерухомою.";
+"exercise.info.biceps_alternating_dumbbell_curl.technique.3" = "Тримайте робочий лікоть близько до себе.";
+"exercise.info.biceps_alternating_dumbbell_curl.technique.4" = "Контролюйте зап'ястя і уникайте викривлення плеча вперед.";
+"exercise.info.biceps_alternating_dumbbell_curl.technique.5" = "Повністю опустіться, перш ніж поміняти руку.";
+"exercise.info.biceps_alternating_dumbbell_curl.technique.6" = "Зберігайте повторення рівномірно між обома сторонами.";
+
+"exercise.info.biceps_hammer_curl.description" = "Hammer Curl використовує нейтральний хват для тренування біцепсів, плечових м’язів і м’язів передпліччя.";
+"exercise.info.biceps_hammer_curl.technique.1" = "Тримайте гантелі долонями один до одного.";
+"exercise.info.biceps_hammer_curl.technique.2" = "Тримайте лікті біля боків.";
+"exercise.info.biceps_hammer_curl.technique.3" = "Скручування без обертання зап’ястя.";
+"exercise.info.biceps_hammer_curl.technique.4" = "Піднімайте, поки передпліччя не стануть майже вертикальними.";
+"exercise.info.biceps_hammer_curl.technique.5" = "Уникайте махів гантелями вперед.";
+"exercise.info.biceps_hammer_curl.technique.6" = "Опускайтеся повільно, тримаючи ручку нейтральною.";
+
+"exercise.info.biceps_preacher_curl.description" = "Preacher Curl підтримує плечі на підкладці, щоб ізолювати біцепси та обмежити рух тіла.";
+"exercise.info.biceps_preacher_curl.technique.1" = "Встановіть сидіння так, щоб ваші плечі повністю лежали на підкладці.";
+"exercise.info.biceps_preacher_curl.technique.2" = "Тримайте груди близько до лави.";
+"exercise.info.biceps_preacher_curl.technique.3" = "Почніть із злегка зігнутих ліктів, не сильно зафіксованих.";
+"exercise.info.biceps_preacher_curl.technique.4" = "Згорніть вагу, не відриваючи плечі від подушечки.";
+"exercise.info.biceps_preacher_curl.technique.5" = "Зробіть коротку паузу біля верху.";
+"exercise.info.biceps_preacher_curl.technique.6" = "Опускайтеся повільно і не впадайте на дно.";
+
+"exercise.info.biceps_dumbbell_preacher_curl.description" = "Dumbbell Preacher Curl — це варіант тренування з гантелями на одній руці для більш жорсткої роботи на біцепси з боку в бік.";
+"exercise.info.biceps_dumbbell_preacher_curl.technique.1" = "Міцно покладіть одне плече на підкладку для проповідника.";
+"exercise.info.biceps_dumbbell_preacher_curl.technique.2" = "Тримайте гантелі зап’ястям нейтрально.";
+"exercise.info.biceps_dumbbell_preacher_curl.technique.3" = "Згортайтеся, не відриваючи ліктя від подушечки.";
+"exercise.info.biceps_dumbbell_preacher_curl.technique.4" = "Зберігайте рух повільним і чітким.";
+"exercise.info.biceps_dumbbell_preacher_curl.technique.5" = "Опускайтеся, поки рука не буде витягнута, але не розслаблена.";
+"exercise.info.biceps_dumbbell_preacher_curl.technique.6" = "Повторіть той самий діапазон і контроль на обох руках.";
+
+"exercise.info.biceps_incline_dumbbell_curl.description" = "Згинання з гантелями в нахилі розтягує біцепси, згинаючи руки за тулубом на похилій лаві.";
+"exercise.info.biceps_incline_dumbbell_curl.technique.1" = "Встановіть лаву на помірний нахил.";
+"exercise.info.biceps_incline_dumbbell_curl.technique.2" = "Нехай руки звисають, плечі розслаблені.";
+"exercise.info.biceps_incline_dumbbell_curl.technique.3" = "Під час згинання тримайте лікті здебільшого фіксованими.";
+"exercise.info.biceps_incline_dumbbell_curl.technique.4" = "Завивайте локони в зручному діапазоні без розгойдування.";
+"exercise.info.biceps_incline_dumbbell_curl.technique.5" = "Не дозволяйте плечам перекочуватися вперед.";
+"exercise.info.biceps_incline_dumbbell_curl.technique.6" = "Опускайтеся повільно, щоб відчути контрольоване розтягування.";
+
+"exercise.info.biceps_concentration_curl.description" = "Концентраційне згинання — це суворе згинання однією рукою, спрямоване на контрольоване скорочення біцепса.";
+"exercise.info.biceps_concentration_curl.technique.1" = "Сядьте і притисніться плечем до внутрішньої частини стегна.";
+"exercise.info.biceps_concentration_curl.technique.2" = "Почніть з витягнутої руки під контролем.";
+"exercise.info.biceps_concentration_curl.technique.3" = "Згинайте гантель, не рухаючи плечем.";
+"exercise.info.biceps_concentration_curl.technique.4" = "Зробіть коротку паузу біля верху.";
+"exercise.info.biceps_concentration_curl.technique.5" = "Опускайтеся повільно і тримайте повторення чітко.";
+"exercise.info.biceps_concentration_curl.technique.6" = "Уникайте поворотів тулуба, щоб закінчити повторення.";
+
+"exercise.info.biceps_cable_curl.description" = "Cable Curl тренує біцепси з постійним натягом кабелю під час руху.";
+"exercise.info.biceps_cable_curl.technique.1" = "Станьте стійко обличчям до стосу кабелю.";
+"exercise.info.biceps_cable_curl.technique.2" = "Тримайте лікті близько до боків.";
+"exercise.info.biceps_cable_curl.technique.3" = "Плавно загніть ручку до грудей.";
+"exercise.info.biceps_cable_curl.technique.4" = "Плечі опустіть, а тулуб нерухомо.";
+"exercise.info.biceps_cable_curl.technique.5" = "Коротко стисніть біля верху.";
+"exercise.info.biceps_cable_curl.technique.6" = "Контролюйте повернення, не даючи стеку впасти.";
+
+"exercise.info.biceps_spider_curl.description" = "Spider Curl — це строгий варіант скручування, який виконується грудьми вниз на похилій лаві для обмеження імпульсу.";
+"exercise.info.biceps_spider_curl.technique.1" = "Ляжте грудьми на похилу лаву, звісивши руки.";
+"exercise.info.biceps_spider_curl.technique.2" = "Підтримуйте груди, а плечі розслабте.";
+"exercise.info.biceps_spider_curl.technique.3" = "Згорніть вагу, не рухаючи плечима.";
+"exercise.info.biceps_spider_curl.technique.4" = "Зробіть коротку паузу вгорі.";
+"exercise.info.biceps_spider_curl.technique.5" = "Повільно опустіться до повного контролю.";
+"exercise.info.biceps_spider_curl.technique.6" = "Використовуйте помірне навантаження, щоб рух залишався чітким.";
+
+"exercise.info.triceps_close_grip_bench_press.description" = "Жим лежачи вузьким хватом - базовий жим з акцентом на трицепсах, у якому також працюють груди та плечі.";
+"exercise.info.triceps_close_grip_bench_press.technique.1" = "Ляжте так, щоб очі були під грифом, і міцно поставте стопи на підлогу.";
+"exercise.info.triceps_close_grip_bench_press.technique.2" = "Візьміть гриф трохи вужче ширини плечей.";
+"exercise.info.triceps_close_grip_bench_press.technique.3" = "Тримайте лопатки відведеними назад і вниз на лаві.";
+"exercise.info.triceps_close_grip_bench_press.technique.4" = "Контрольно опустіть штангу до нижньої частини грудей.";
+"exercise.info.triceps_close_grip_bench_press.technique.5" = "Тримайте лікті ближче до тіла, не розгортайте їх широко.";
+"exercise.info.triceps_close_grip_bench_press.technique.6" = "Плавно віджимайтеся, не втрачаючи напруженості верхньої частини спини.";
+
+"exercise.info.triceps_dips.description" = "Віджимання на брусах інтенсивно тренують трицепси з власною або додатковою вагою, особливо за вертикального положення корпуса.";
+"exercise.info.triceps_dips.technique.1" = "Почніть на брусах з випрямленими руками та контролем плечей.";
+"exercise.info.triceps_dips.technique.2" = "Тримайте тулуб відносно вертикально, щоб підкреслити трицепс.";
+"exercise.info.triceps_dips.technique.3" = "Опускайтеся, поки плечі та лікті не відчують комфорт.";
+"exercise.info.triceps_dips.technique.4" = "Тримайте лікті відведеними назад, а не розгортайтеся далеко.";
+"exercise.info.triceps_dips.technique.5" = "Віджимайтеся від брусів, доки руки майже повністю не випрямляться.";
+"exercise.info.triceps_dips.technique.6" = "Використовуйте контрольований темп і уникайте підстрибування внизу.";
+
+"exercise.info.triceps_french_press.description" = "Французький жим лежачи - це ізолююча вправа на трицепс, яка виконується на лаві з EZ-гривом або штангою.";
+"exercise.info.triceps_french_press.technique.1" = "Ляжте на рівну лаву, ступні міцно поставте на підлогу.";
+"exercise.info.triceps_french_press.technique.2" = "Тримайте гриф над плечима надійним зручним захватом.";
+"exercise.info.triceps_french_press.technique.3" = "Тримайте плечі майже вертикально і стабільно.";
+"exercise.info.triceps_french_press.technique.4" = "Зігніть лікті, щоб опустити штангу до чола або трохи за нього.";
+"exercise.info.triceps_french_press.technique.5" = "Розігніть лікті, щоб повернути штангу, не перетворюючи її на жим грудьми.";
+"exercise.info.triceps_french_press.technique.6" = "Знизьте вагу під контролем і використовуйте безболісний діапазон для ліктів.";
+
+"exercise.info.triceps_cable_pushdown.description" = "Cable Pushdown тренує трицепс із рівномірною напругою кабелю та є однією з найпоширеніших ізоляційних вправ на трицепс.";
+"exercise.info.triceps_cable_pushdown.technique.1" = "Встаньте лицем до кабелю, розташувавши лікті з боків.";
+"exercise.info.triceps_cable_pushdown.technique.2" = "Тримайте груди піднятими, а плечі розслабленими.";
+"exercise.info.triceps_cable_pushdown.technique.3" = "Розігніть лікті та опустіть руків'я вниз.";
+"exercise.info.triceps_cable_pushdown.technique.4" = "Уникайте нахилу тіла над ручкою, щоб закінчити повторення.";
+"exercise.info.triceps_cable_pushdown.technique.5" = "Коротко стисніть біля дна.";
+"exercise.info.triceps_cable_pushdown.technique.6" = "Поверніться під контролем, не дозволяючи ліктям дрейфувати вперед.";
+
+"exercise.info.triceps_rope_pushdown.description" = "Розгинання рук із канатом дає змогу сильно скоротити трицепс у нижній точці та зберігати природне положення зап'ясть.";
+"exercise.info.triceps_rope_pushdown.technique.1" = "Тримайте обидва кінці мотузки і станьте достатньо близько, щоб зберегти напругу.";
+"exercise.info.triceps_rope_pushdown.technique.2" = "Тримайте лікті біля ребер.";
+"exercise.info.triceps_rope_pushdown.technique.3" = "Розігніть лікті та розведіть кінці каната в нижній точці.";
+"exercise.info.triceps_rope_pushdown.technique.4" = "Тримайте зап’ястя зручними та нейтральними.";
+"exercise.info.triceps_rope_pushdown.technique.5" = "Не розгойдуйте тулуб, щоб перемістити вагу.";
+"exercise.info.triceps_rope_pushdown.technique.6" = "Повільно поверніть канат, утримуючи верхню частину рук нерухомою.";
+
+"exercise.info.triceps_two_arm_overhead_dumbbell_extension.description" = "Розгинання гантелі над головою двома руками тренує довгу головку трицепса.";
+"exercise.info.triceps_two_arm_overhead_dumbbell_extension.technique.1" = "Тримайте одну гантель над головою двома руками за руків'я або диск.";
+"exercise.info.triceps_two_arm_overhead_dumbbell_extension.technique.2" = "Тримайте ребра внизу, а тулуб стабільним.";
+"exercise.info.triceps_two_arm_overhead_dumbbell_extension.technique.3" = "Спрямуйте лікті вперед і не розводьте їх надто широко.";
+"exercise.info.triceps_two_arm_overhead_dumbbell_extension.technique.4" = "Контрольовано опустіть гантель за голову.";
+"exercise.info.triceps_two_arm_overhead_dumbbell_extension.technique.5" = "Розігніть лікті та поверніть гантель над голову.";
+"exercise.info.triceps_two_arm_overhead_dumbbell_extension.technique.6" = "Використовуйте вагу, яку можете контролювати без прогинання спини.";
+
+"exercise.info.triceps_one_arm_overhead_dumbbell_extension.description" = "Розгинання гантелі над головою однією рукою дає змогу окремо тренувати кожен трицепс у повній амплітуді.";
+"exercise.info.triceps_one_arm_overhead_dumbbell_extension.technique.1" = "Однією рукою тримайте одну гантель над головою.";
+"exercise.info.triceps_one_arm_overhead_dumbbell_extension.technique.2" = "Підтримуйте тулуб і тримайте плече стабільним.";
+"exercise.info.triceps_one_arm_overhead_dumbbell_extension.technique.3" = "Зігніть лікоть і опустіть гантель за голову.";
+"exercise.info.triceps_one_arm_overhead_dumbbell_extension.technique.4" = "Тримайте лікоть спрямованим переважно вгору.";
+"exercise.info.triceps_one_arm_overhead_dumbbell_extension.technique.5" = "Розігніть руку вгору, не згинаючи зап'ястя.";
+"exercise.info.triceps_one_arm_overhead_dumbbell_extension.technique.6" = "Зіставте однаковий діапазон і контроль на обох руках.";
+
+"exercise.info.triceps_overhead_cable_extension.description" = "Розгинання рук над головою на блоці зберігає напруження трицепсів і добре навантажує їхню довгу головку.";
+"exercise.info.triceps_overhead_cable_extension.technique.1" = "Встановіть трос низько або позаду себе та займіть стійку позицію.";
+"exercise.info.triceps_overhead_cable_extension.technique.2" = "Підніміть ручку або мотузку над головою, зігнувши лікті.";
+"exercise.info.triceps_overhead_cable_extension.technique.3" = "Тримайте плечі під кутом вперед і переважно фіксованими.";
+"exercise.info.triceps_overhead_cable_extension.technique.4" = "Витягніть лікті, поки руки не стануть майже прямими.";
+"exercise.info.triceps_overhead_cable_extension.technique.5" = "Тримайте ребра під контролем і уникайте надмірного вигину.";
+"exercise.info.triceps_overhead_cable_extension.technique.6" = "Поверніться повільно та зберігайте натяг троса.";
+
+"exercise.info.triceps_lying_dumbbell_extension.description" = "Розгинання гантелей лежачи — це вправа на трицепси в стилі «розминання черепа» з використанням гантелей для самостійного руху руками.";
+"exercise.info.triceps_lying_dumbbell_extension.technique.1" = "Ляжте на лаву, тримаючи гантелі над плечима.";
+"exercise.info.triceps_lying_dumbbell_extension.technique.2" = "Тримайте плечі нерухомо, а лікті спрямовані вгору.";
+"exercise.info.triceps_lying_dumbbell_extension.technique.3" = "Опустіть гантелі в бік голови.";
+"exercise.info.triceps_lying_dumbbell_extension.technique.4" = "Використовуйте нейтральний або зручний хват.";
+"exercise.info.triceps_lying_dumbbell_extension.technique.5" = "Розігніть лікті, не перетворюючи це в прес.";
+"exercise.info.triceps_lying_dumbbell_extension.technique.6" = "Рухи рухайте рівномірно та під контролем.";
+
+"exercise.info.triceps_kickback.description" = "Кікбек - ізолювальна вправа на трицепс, яку виконують із гантеллю або на блоці в нахиленому положенні.";
+"exercise.info.triceps_kickback.technique.1" = "Нахиліться вперед із плоскою спиною та підтримкою тулуба, якщо потрібно.";
+"exercise.info.triceps_kickback.technique.2" = "Тримайте плече близько до тіла і приблизно паралельно підлозі.";
+"exercise.info.triceps_kickback.technique.3" = "Витягніть лікоть, поки рука не опиниться прямо позаду вас.";
+"exercise.info.triceps_kickback.technique.4" = "Зробіть коротку паузу вгорі, не хитаючи.";
+"exercise.info.triceps_kickback.technique.5" = "Повільно опускайтеся, тримаючи плече нерухомим.";
+"exercise.info.triceps_kickback.technique.6" = "Використовуйте досить легкий вантаж, щоб рух був чітким.";
+
+"exercise.info.triceps_close_grip_push_up.description" = "Віджимання вузьким хватом - варіант віджимань з акцентом на трицепсах і вужчим положенням рук.";
+"exercise.info.triceps_close_grip_push_up.technique.1" = "Розташуйте руки нижче або трохи на ширині плечей.";
+"exercise.info.triceps_close_grip_push_up.technique.2" = "Тримайте корпус на одній прямій лінії.";
+"exercise.info.triceps_close_grip_push_up.technique.3" = "Опустіться, притиснувши лікті до ребер.";
+"exercise.info.triceps_close_grip_push_up.technique.4" = "Тримайте шию нейтрально, а корпус напруженим.";
+"exercise.info.triceps_close_grip_push_up.technique.5" = "Віджимайтеся вгору, розгинаючи лікті.";
+"exercise.info.triceps_close_grip_push_up.technique.6" = "Відрегулюйте відстань між руками, якщо зап’ястя відчувають дискомфорт.";
+
+"exercise.info.forearms_wrist_curl.description" = "Wrist Curl тренує згиначі зап’ястя на внутрішній стороні передпліччя за допомогою простого скручування зап’ястя.";
+"exercise.info.forearms_wrist_curl.technique.1" = "Сядьте або встаньте, спираючись на передпліччя, долоні дивляться вгору.";
+"exercise.info.forearms_wrist_curl.technique.2" = "Нехай зап’ястя злегка витягуються внизу під контролем.";
+"exercise.info.forearms_wrist_curl.technique.3" = "Згорніть вагу, рухаючи лише зап’ястя.";
+"exercise.info.forearms_wrist_curl.technique.4" = "Тримайте передпліччя нерухомо протягом усього сету.";
+"exercise.info.forearms_wrist_curl.technique.5" = "Зробіть коротку паузу вгорі, не піднімаючи ліктів.";
+"exercise.info.forearms_wrist_curl.technique.6" = "Опускайтеся повільно і уникайте підстрибування ваги.";
+
+"exercise.info.forearms_reverse_wrist_curl.description" = "Зворотне згинання зап’ястя спрямоване на розгиначі зап’ястя у верхній частині передпліччя.";
+"exercise.info.forearms_reverse_wrist_curl.technique.1" = "Підтримуйте передпліччя долонями вниз.";
+"exercise.info.forearms_reverse_wrist_curl.technique.2" = "Утримуйте вагу контрольованим хватом.";
+"exercise.info.forearms_reverse_wrist_curl.technique.3" = "Підніміть суглоби пальців вгору, розгинаючи зап’ястя.";
+"exercise.info.forearms_reverse_wrist_curl.technique.4" = "Зберігайте рух невеликим, строгим і плавним.";
+"exercise.info.forearms_reverse_wrist_curl.technique.5" = "Не відривайте передпліччя від опори.";
+"exercise.info.forearms_reverse_wrist_curl.technique.6" = "Повільно опустіться у вихідне положення.";
+
+"exercise.info.forearms_reverse_barbell_curl.description" = "Зворотне згинання штанги тренує передпліччя, плечові м’язи та біцепси, використовуючи хват долонями вниз.";
+"exercise.info.forearms_reverse_barbell_curl.technique.1" = "Встаньте прямо і тримайте штангу пронованим хватом.";
+"exercise.info.forearms_reverse_barbell_curl.technique.2" = "Тримайте лікті близько до боків.";
+"exercise.info.forearms_reverse_barbell_curl.technique.3" = "Зігніть штангу вгору, не розгойдуючи тулуб.";
+"exercise.info.forearms_reverse_barbell_curl.technique.4" = "Тримайте зап’ястя міцно і не дозволяйте їм згинати назад.";
+"exercise.info.forearms_reverse_barbell_curl.technique.5" = "Зробіть коротку паузу біля верху.";
+"exercise.info.forearms_reverse_barbell_curl.technique.6" = "Опускайтеся під контролем у всьому діапазоні.";
+
+"exercise.info.forearms_behind_back_wrist_curl.description" = "Згинання зап’ястя за спиною – це варіант згинання зап’ястя стоячи, який навантажує згиначі передпліччя позаду тіла.";
+"exercise.info.forearms_behind_back_wrist_curl.technique.1" = "Встаньте, тримаючи штангу позаду тіла долонями назад.";
+"exercise.info.forearms_behind_back_wrist_curl.technique.2" = "Тримайте руки прямими, а плечі розслабленими.";
+"exercise.info.forearms_behind_back_wrist_curl.technique.3" = "Нехай штанга злегка котиться до пальців, якщо зручно.";
+"exercise.info.forearms_behind_back_wrist_curl.technique.4" = "Зігніть зап’ястя вгору та стисніть передпліччя.";
+"exercise.info.forearms_behind_back_wrist_curl.technique.5" = "Тримайте тулуб нерухомо і не знизуйте плечима.";
+"exercise.info.forearms_behind_back_wrist_curl.technique.6" = "Контролюйте фазу опускання та надійно тримайте ручку.";
+
+"exercise.info.forearms_wrist_roller.description" = "Wrist Roller підвищує витривалість передпліччя та силу зчеплення, катаючи навантажений шнур вгору та вниз.";
+"exercise.info.forearms_wrist_roller.technique.1" = "Тримайте ролик обома руками приблизно на висоті плечей або трохи нижче.";
+"exercise.info.forearms_wrist_roller.technique.2" = "Тримайте плечі опущеними, а тулуб стабільним.";
+"exercise.info.forearms_wrist_roller.technique.3" = "Покрутіть рукоятку поперемінними рухами зап’ястя.";
+"exercise.info.forearms_wrist_roller.technique.4" = "Зберігайте рух рівномірним, а не різким.";
+"exercise.info.forearms_wrist_roller.technique.5" = "Опустіть вагу під контролем після згортання.";
+"exercise.info.forearms_wrist_roller.technique.6" = "Використовуйте вантаж, який дозволить завершити повний перекат без втрати зчеплення.";
+
+"exercise.info.forearms_dead_hang.description" = "Вис на перекладині розвиває витривалість хвата та контроль плечей.";
+"exercise.info.forearms_dead_hang.technique.1" = "Візьміться за штангу обома руками на зручній ширині.";
+"exercise.info.forearms_dead_hang.technique.2" = "Нехай тіло висить, тримаючи плечі під контролем.";
+"exercise.info.forearms_dead_hang.technique.3" = "Злегка напружте корпус і тримайте ноги нерухомо.";
+"exercise.info.forearms_dead_hang.technique.4" = "Уникайте поворотів або розгойдування під час утримання.";
+"exercise.info.forearms_dead_hang.technique.5" = "Дихайте рівно, зберігаючи хватку.";
+"exercise.info.forearms_dead_hang.technique.6" = "Безпечно зійдіть, перш ніж хватка повністю відмовить.";
+
+"exercise.info.abs_crunch.description" = "Кранч — це базова вправа для живота, яка згинає верхню частину тулуба до тазу.";
+"exercise.info.abs_crunch.technique.1" = "Ляжте на спину, зігніть коліна і ступні на підлозі.";
+"exercise.info.abs_crunch.technique.2" = "Злегка покладіть руки за голову або на груди.";
+"exercise.info.abs_crunch.technique.3" = "Відірвіть верхню частину спини від підлоги, використовуючи прес.";
+"exercise.info.abs_crunch.technique.4" = "Тримайте поперек близько до підлоги.";
+"exercise.info.abs_crunch.technique.5" = "Уникайте тягнути шию руками.";
+"exercise.info.abs_crunch.technique.6" = "Опускайтеся повільно і тримайте рух під контролем.";
+
+"exercise.info.abs_lying_leg_raise.description" = "Підйом ніг лежачи тренує нижні м’язи преса і згиначі стегна шляхом підйому ніг з положення лежачи.";
+"exercise.info.abs_lying_leg_raise.technique.1" = "Ляжте на спину з прямими або злегка зігнутими ногами.";
+"exercise.info.abs_lying_leg_raise.technique.2" = "Тримайте нижню частину спини на підлозі.";
+"exercise.info.abs_lying_leg_raise.technique.3" = "Підніміть ноги, поки вони не стануть майже вертикальними.";
+"exercise.info.abs_lying_leg_raise.technique.4" = "Опускайтеся повільно, не дозволяючи нижній частині спини вигинатися.";
+"exercise.info.abs_lying_leg_raise.technique.5" = "Використовуйте менший діапазон, якщо втрачено контроль.";
+"exercise.info.abs_lying_leg_raise.technique.6" = "Зберігайте рух плавним і уникайте розгойдування ніг.";
+
+"exercise.info.abs_plank.description" = "Планка — це ізометрична базова вправа, спрямована на утримання стабільного положення тіла.";
+"exercise.info.abs_plank.technique.1" = "Поставте лікті під плечі, а передпліччя на підлогу.";
+"exercise.info.abs_plank.technique.2" = "Відступіть ноги назад і утворіть пряму лінію від голови до п’ят.";
+"exercise.info.abs_plank.technique.3" = "Злегка підтягніть прес і сідниці.";
+"exercise.info.abs_plank.technique.4" = "Не дозволяйте стегнам провисати або підніматися занадто високо.";
+"exercise.info.abs_plank.technique.5" = "Тримайте шию нейтрально і дихайте рівно.";
+"exercise.info.abs_plank.technique.6" = "Зупиніть сет, коли позиція почне ламатися.";
+
+"exercise.info.abs_reverse_crunch.description" = "Зворотний кранч підкреслює нижню частину руху живота, вигинаючи таз догори.";
+"exercise.info.abs_reverse_crunch.technique.1" = "Ляжте на спину, зігніть коліна та підніміть стопи.";
+"exercise.info.abs_reverse_crunch.technique.2" = "Тримайте верхню частину тіла розслабленою та стабільною.";
+"exercise.info.abs_reverse_crunch.technique.3" = "Вигніть таз вгору до ребер.";
+"exercise.info.abs_reverse_crunch.technique.4" = "Уникайте використання імпульсу від ніг.";
+"exercise.info.abs_reverse_crunch.technique.5" = "Зробіть коротку паузу вгорі.";
+"exercise.info.abs_reverse_crunch.technique.6" = "Повільно опустіть стегна назад до початку.";
+
+"exercise.info.abs_bicycle_crunch.description" = "Bicycle Crunch поєднує в собі згинання та обертання тулуба для тренування преса та косих м’язів живота.";
+"exercise.info.abs_bicycle_crunch.technique.1" = "Ляжте на спину, злегка заклавши руки за голову.";
+"exercise.info.abs_bicycle_crunch.technique.2" = "Підніміть плечі та підведіть одне коліно до протилежного ліктя.";
+"exercise.info.abs_bicycle_crunch.technique.3" = "Обертання через тулуб замість того, щоб тягнути шию.";
+"exercise.info.abs_bicycle_crunch.technique.4" = "Витягніть іншу ногу під контролем.";
+"exercise.info.abs_bicycle_crunch.technique.5" = "Чергуйте сторони в рівному ритмі.";
+"exercise.info.abs_bicycle_crunch.technique.6" = "Знизьте швидкість, якщо рух стає вільним або різким.";
+
+"exercise.info.abs_cable_crunch.description" = "Cable Crunch навантажує згинання хребта за допомогою кабелю, що робить його загальною вправою для живота з обтяженнями.";
+"exercise.info.abs_cable_crunch.technique.1" = "Встаньте на коліна або встаньте обличчям від кабелю залежно від налаштування.";
+"exercise.info.abs_cable_crunch.technique.2" = "Тримайте мотузку або ручку біля голови.";
+"exercise.info.abs_cable_crunch.technique.3" = "Згинайте ребра до тазу, використовуючи прес.";
+"exercise.info.abs_cable_crunch.technique.4" = "Тримайте стегна переважно фіксованими.";
+"exercise.info.abs_cable_crunch.technique.5" = "Уникайте тягнути тільки руками.";
+"exercise.info.abs_cable_crunch.technique.6" = "Поверніться повільно, зберігаючи напругу троса.";
+
+"exercise.info.abs_hanging_knee_raise.description" = "Hanging Knee Raise тренує прес, піднімаючи коліна з висячого положення.";
+"exercise.info.abs_hanging_knee_raise.technique.1" = "Повісьтеся на штанзі надійним захватом.";
+"exercise.info.abs_hanging_knee_raise.technique.2" = "Тримайте плечі під контролем і уникайте пасивного розгойдування.";
+"exercise.info.abs_hanging_knee_raise.technique.3" = "Підніміть коліна до грудей.";
+"exercise.info.abs_hanging_knee_raise.technique.4" = "Трохи зігніть таз у верхній частині.";
+"exercise.info.abs_hanging_knee_raise.technique.5" = "Повільно опустіть ноги.";
+"exercise.info.abs_hanging_knee_raise.technique.6" = "Скиньте контроль перед початком наступного повторення.";
+
+"exercise.info.abs_hanging_leg_raise.description" = "Підйом ніг у висі – це складніша вправа у висі, яка піднімає прямі ноги на більший діапазон.";
+"exercise.info.abs_hanging_leg_raise.technique.1" = "Повісьтеся на штанзі з нерухомим тілом.";
+"exercise.info.abs_hanging_leg_raise.technique.2" = "Тримайте ноги прямими або злегка зігнутими.";
+"exercise.info.abs_hanging_leg_raise.technique.3" = "Підніміть ноги під контролем на висоту стегон або вище.";
+"exercise.info.abs_hanging_leg_raise.technique.4" = "Уникайте розгойдування, щоб почати рух.";
+"exercise.info.abs_hanging_leg_raise.technique.5" = "Повільно опустіться тим же шляхом.";
+"exercise.info.abs_hanging_leg_raise.technique.6" = "Спершу використовуйте підняття колін, якщо повне підняття ніг не контролюється.";
+
+"exercise.info.abs_side_plank.description" = "Бічна планка – це ізометрична вправа для стабільності косих м’язів м’язів м’язів м’язів м’язів м’язів м’яза та латерального кора.";
+"exercise.info.abs_side_plank.technique.1" = "Підставте один лікоть під плече, а стопи складіть або похитайтеся.";
+"exercise.info.abs_side_plank.technique.2" = "Піднімайте стегна, поки тіло не утворить пряму лінію.";
+"exercise.info.abs_side_plank.technique.3" = "Підтягніть бічну частину тулуба та сідничні м’язи.";
+"exercise.info.abs_side_plank.technique.4" = "Не дозволяйте стегнам обертатися вперед або назад.";
+"exercise.info.abs_side_plank.technique.5" = "Тримайте шию на одній лінії з тілом.";
+"exercise.info.abs_side_plank.technique.6" = "Повторіть однаковий час витримки з обох сторін.";
+
+"exercise.info.abs_decline_crunch.description" = "Decline Crunch — це варіант кранча, який виконується на похилій лаві для більшого діапазону рухів.";
+"exercise.info.abs_decline_crunch.technique.1" = "Закріпіть ноги на лаві для нахилу.";
+"exercise.info.abs_decline_crunch.technique.2" = "Почніть з контрольованого опускання тулуба.";
+"exercise.info.abs_decline_crunch.technique.3" = "Підніміть верхню частину тіла, використовуючи прес.";
+"exercise.info.abs_decline_crunch.technique.4" = "Уникайте сидіти до кінця, тримаючи лише згиначі стегна.";
+"exercise.info.abs_decline_crunch.technique.5" = "Тримайте шию розслабленою.";
+"exercise.info.abs_decline_crunch.technique.6" = "Повільно опустіться і зберігайте напругу протягом сету.";
+
+"exercise.info.abs_ab_wheel_rollout.description" = "Розгортання преса – це складна основна вправа, яка тренує м’язи преса чинити опір розгинанню.";
+"exercise.info.abs_ab_wheel_rollout.technique.1" = "Почніть з колін, колесо під плечима.";
+"exercise.info.abs_ab_wheel_rollout.technique.2" = "Підтягніть прес і тримайте ребра внизу.";
+"exercise.info.abs_ab_wheel_rollout.technique.3" = "Перекотіться вперед лише настільки, наскільки ви можете контролювати.";
+"exercise.info.abs_ab_wheel_rollout.technique.4" = "Не дозволяйте попереку провисати.";
+"exercise.info.abs_ab_wheel_rollout.technique.5" = "Потягніть колесо назад, напруживши прес.";
+"exercise.info.abs_ab_wheel_rollout.technique.6" = "Використовуйте менший діапазон, доки повний рух не стане стабільним.";
+
+"exercise.info.cardio_running.description" = "Біг — це ритмічна кардіовправа, яка розвиває аеробну витривалість і яку можна відстежувати за дистанцією та часом.";
+"exercise.info.cardio_running.technique.1" = "Почніть з короткої прогулянки для розминки або легкої пробіжки.";
+"exercise.info.cardio_running.technique.2" = "Тримайте тулуб високим, з легким природним нахилом вперед.";
+"exercise.info.cardio_running.technique.3" = "М’яко приземліться ногою під тілом.";
+"exercise.info.cardio_running.technique.4" = "Робіть зручний крок замість того, щоб простягатися занадто далеко вперед.";
+"exercise.info.cardio_running.technique.5" = "Нехай руки природно розмахуються біля тулуба.";
+"exercise.info.cardio_running.technique.6" = "З часом поступово збільшуйте відстань або темп.";
+
+"exercise.info.cardio_walking.description" = "Ходьба – це кардіотренування з низьким навантаженням для загальної активності, відновлення та аеробної витривалості.";
+"exercise.info.cardio_walking.technique.1" = "Ходіть у темпі, який прискорює дихання, зберігаючи контроль.";
+"exercise.info.cardio_walking.technique.2" = "Тримайте голову піднятою, а тулуб високим.";
+"exercise.info.cardio_walking.technique.3" = "Плавно перекочуйтеся по стопі з п’яти на носок.";
+"exercise.info.cardio_walking.technique.4" = "Нехай руки махають природним шляхом, не напружуючи плечі.";
+"exercise.info.cardio_walking.technique.5" = "Виберіть стійке взуття та безпечний маршрут.";
+"exercise.info.cardio_walking.technique.6" = "Нарощуйте тривалість і дистанцію поступово.";
+
+"exercise.info.cardio_treadmill.description" = "Ходьба або біг на біговій доріжці — це кардіотренування в тренажерному залі, яке відстежується за часом тренування, а не за відстанню.";
+"exercise.info.cardio_treadmill.technique.1" = "Перед початком руху стрічки встаньте на бічні поручні.";
+"exercise.info.cardio_treadmill.technique.2" = "Почніть з легкої швидкості і поступово збільшуйте її.";
+"exercise.info.cardio_treadmill.technique.3" = "Дивіться вперед, а не вниз на консоль.";
+"exercise.info.cardio_treadmill.technique.4" = "Тримайте високу поставу та не тримайтеся за поручні під час руху.";
+"exercise.info.cardio_treadmill.technique.5" = "Використовуйте затиск безпеки, якщо він є на біговій доріжці.";
+"exercise.info.cardio_treadmill.technique.6" = "Уповільніть ремінь, перш ніж зійти.";
+
+"exercise.info.cardio_cycling.description" = "Їзда на велосипеді – це кардіотренування на свіжому повітрі, яке можна реєструвати за відстанню та часом.";
+"exercise.info.cardio_cycling.technique.1" = "Одягайте правильно підігнаний шолом для прогулянок на вулиці.";
+"exercise.info.cardio_cycling.technique.2" = "Встановіть сідло так, щоб коліно залишалося злегка зігнутим у нижній частині ходу педалі.";
+"exercise.info.cardio_cycling.technique.3" = "Розслабтеся за кермо.";
+"exercise.info.cardio_cycling.technique.4" = "Плавно обертайте педалі зі стабільним каденсом.";
+"exercise.info.cardio_cycling.technique.5" = "Дотримуйтесь правил дорожнього руху та зважайте на маршрут.";
+"exercise.info.cardio_cycling.technique.6" = "Поступово збільшуйте відстань та інтенсивність їзди.";
+
+"exercise.info.cardio_stationary_bike.description" = "Стаціонарний велотренажер — це кардіотренування в приміщенні, де основним показником тренування є час тренування.";
+"exercise.info.cardio_stationary_bike.technique.1" = "Відрегулюйте сідло перед початком сеансу.";
+"exercise.info.cardio_stationary_bike.technique.2" = "Зберігайте легке згинання коліна в нижній точці кожного оберту педалі.";
+"exercise.info.cardio_stationary_bike.technique.3" = "Тримайте тулуб стабільним, а плечі розслабленими.";
+"exercise.info.cardio_stationary_bike.technique.4" = "Педалі по плавному, контрольованому колу.";
+"exercise.info.cardio_stationary_bike.technique.5" = "Виберіть опір, який відповідає запланованим зусиллям.";
+"exercise.info.cardio_stationary_bike.technique.6" = "Поступово знижуйте темп, щоб закінчити заняття.";
+
+"exercise.info.cardio_elliptical.description" = "Elliptical — це кардіотренування з низьким навантаженням, яке тренує все тіло за допомогою керованих крокових рухів.";
+"exercise.info.cardio_elliptical.technique.1" = "Ставайте на педалі лише після того, як машина стане стабільною.";
+"exercise.info.cardio_elliptical.technique.2" = "Тримайте корпус вертикально та злегка напруженим.";
+"exercise.info.cardio_elliptical.technique.3" = "Поставте всю стопу на кожну педаль.";
+"exercise.info.cardio_elliptical.technique.4" = "Рухайте ручками та педалями в плавному ритмі.";
+"exercise.info.cardio_elliptical.technique.5" = "Уникайте сильної опори на фіксовані ручки.";
+"exercise.info.cardio_elliptical.technique.6" = "Відрегулюйте опір або нахил поступово.";
+
+"exercise.info.cardio_rowing_machine.description" = "Гребний тренажер — це кардіотренування всього тіла в приміщенні, побудоване на скоординованому гребку ногами, тулубом і руками.";
+"exercise.info.cardio_rowing_machine.technique.1" = "Закріпіть ніжки та встановіть амортизатор на керований рівень.";
+"exercise.info.cardio_rowing_machine.technique.2" = "Ведіть спочатку ноги, тримаючи руки прямими.";
+"exercise.info.cardio_rowing_machine.technique.3" = "Трохи розкрийте тулуб після витягування ніг.";
+"exercise.info.cardio_rowing_machine.technique.4" = "Завершіть рух, потягнувши ручку до нижніх ребер.";
+"exercise.info.cardio_rowing_machine.technique.5" = "Поверніться в зворотному порядку: руки, тулуб, потім коліна.";
+"exercise.info.cardio_rowing_machine.technique.6" = "Зберігайте спинку нейтральною, а хід плавним.";
+
+"exercise.info.cardio_jump_rope.description" = "Стрибки зі скакалкою - це проста кардіо вправа, яка розвиває ритм, координацію та витривалість гомілки.";
+"exercise.info.cardio_jump_rope.technique.1" = "Використовуйте мотузку такої довжини, яка зручно очищає підлогу.";
+"exercise.info.cardio_jump_rope.technique.2" = "Стрибайте лише так високо, щоб пройшла мотузка.";
+"exercise.info.cardio_jump_rope.technique.3" = "Повертайте мотузку в основному зап'ястями.";
+"exercise.info.cardio_jump_rope.technique.4" = "М’яко приземліться на підошви ніг.";
+"exercise.info.cardio_jump_rope.technique.5" = "Тримайте лікті близько до тулуба.";
+"exercise.info.cardio_jump_rope.technique.6" = "Поступово збільшуйте інтервали, щоб захистити литки та гомілки.";
+
+"exercise.info.cardio_stair_climber.description" = "Stair Climber - це кардіотренування в приміщенні, яке імітує підйом по сходах і акцентує увагу на ногах і сідницях.";
+"exercise.info.cardio_stair_climber.technique.1" = "Ставайте на машину лише після того, як вона стане стабільною.";
+"exercise.info.cardio_stair_climber.technique.2" = "Стійте рівно та злегка напружте корпус.";
+"exercise.info.cardio_stair_climber.technique.3" = "Ставте всю стопу на кожну сходинку.";
+"exercise.info.cardio_stair_climber.technique.4" = "Використовуйте поручні для рівноваги, а не для підтримки ваги тіла.";
+"exercise.info.cardio_stair_climber.technique.5" = "Зберігайте стабільний темп, який ви можете контролювати.";
+"exercise.info.cardio_stair_climber.technique.6" = "Поступово збільшуйте швидкість або опір.";
+
+"exercise.info.cardio_swimming.description" = "Плавання – це кардіоактивність, яка захоплює все тіло та має низький рівень навантаження, яку можна відстежувати за відстанню та часом.";
+"exercise.info.cardio_swimming.technique.1" = "Виберіть гребок і темп, які відповідають вашим навичкам плавання.";
+"exercise.info.cardio_swimming.technique.2" = "Розігрійтеся легкими відрізками перед більш важкою роботою.";
+"exercise.info.cardio_swimming.technique.3" = "Тримайте тіло довгим і обтічним у воді.";
+"exercise.info.cardio_swimming.technique.4" = "Дихайте в нормальному, контрольованому ритмі.";
+"exercise.info.cardio_swimming.technique.5" = "Обережно відштовхніться від стіни та зважайте на смугу руху.";
+"exercise.info.cardio_swimming.technique.6" = "Поступово нарощуйте загальну дистанцію.";
+
+"exercise.info.cardio_ski_erg.description" = "SkiErg — це кардіо вправа стоячи в приміщенні, у якій використовуються потужні тягові рухи вниз.";
+"exercise.info.cardio_ski_erg.technique.1" = "Встаньте, розставивши ноги приблизно на ширині плечей.";
+"exercise.info.cardio_ski_erg.technique.2" = "Потягніться до ручок з розслабленими плечима.";
+"exercise.info.cardio_ski_erg.technique.3" = "Потягніть ручки вниз, зачепивши широчайші та ядро.";
+"exercise.info.cardio_ski_erg.technique.4" = "Злегка нахиляйтеся в кульшових суглобах, не округлюючи спину.";
+"exercise.info.cardio_ski_erg.technique.5" = "Закінчіть руками біля стегон, потім плавно поверніться.";
+"exercise.info.cardio_ski_erg.technique.6" = "Дотримуйтеся стабільного ритму, перш ніж додати більше потужності.";
+
+"exercise.info.functional_training_burpee.description" = "Берпі поєднує в собі присідання, планку, варіанти віджимань і стрибок у кондиційний рух для всього тіла.";
+"exercise.info.functional_training_burpee.technique.1" = "Встаньте, розставивши ноги приблизно на ширині стегон.";
+"exercise.info.functional_training_burpee.technique.2" = "Присідайте і міцно поставте руки на підлогу.";
+"exercise.info.functional_training_burpee.technique.3" = "Зробіть крок або стрибніть ногами назад на стійку дошку.";
+"exercise.info.functional_training_burpee.technique.4" = "Тримайте тулуб підтягнутим і не допускайте провисання стегон.";
+"exercise.info.functional_training_burpee.technique.5" = "Контрольно поверніть ступні під тіло.";
+"exercise.info.functional_training_burpee.technique.6" = "Встаньте або м’яко підстрибніть перед початком наступного повторення.";
+
+"exercise.info.functional_training_thruster.description" = "Thruster поєднує переднє присідання з жимом над головою в одному безперервному обтяженому русі.";
+"exercise.info.functional_training_thruster.technique.1" = "Тримайте вантаж на висоті плечей стійким хватом.";
+"exercise.info.functional_training_thruster.technique.2" = "Напружте корпус і присядьте, тримаючи груди піднятими.";
+"exercise.info.functional_training_thruster.technique.3" = "Тримайте коліна на одній лінії зі стопами.";
+"exercise.info.functional_training_thruster.technique.4" = "Підніміться через стопи з присідання.";
+"exercise.info.functional_training_thruster.technique.5" = "Використовуйте рух вгору, щоб притиснути вантаж над головою.";
+"exercise.info.functional_training_thruster.technique.6" = "Завершіть рух із випрямленими руками, потім контрольовано опустіть вагу.";
+
+"exercise.info.functional_training_kettlebell_swing.description" = "Махи гирею - вправа з нахилом у кульшових суглобах, яка розвиває вибухову силу та витривалість.";
+"exercise.info.functional_training_kettlebell_swing.technique.1" = "Встаньте, поставивши гирю трохи попереду ніг.";
+"exercise.info.functional_training_kettlebell_swing.technique.2" = "Відведіть таз назад і нахиліться в кульшових суглобах, зберігаючи нейтральну спину.";
+"exercise.info.functional_training_kettlebell_swing.technique.3" = "Візьміться за руків'я та заведіть гирю назад між ногами.";
+"exercise.info.functional_training_kettlebell_swing.technique.4" = "Потужно розігніть стегна, щоб надати гирі руху.";
+"exercise.info.functional_training_kettlebell_swing.technique.5" = "Дозвольте рукам спрямовувати гирю, не піднімаючи її плечима.";
+"exercise.info.functional_training_kettlebell_swing.technique.6" = "Контролюйте повернення гирі рухом стегон і тримайте корпус напруженим.";
+
+"exercise.info.functional_training_box_jump.description" = "Box Jump — це вибухова вправа для нижньої частини тіла, у якій використовується контрольований стрибок на стійку платформу.";
+"exercise.info.functional_training_box_jump.technique.1" = "Виберіть ящик стабільної висоти, на який ви зможете впевнено приземлитися.";
+"exercise.info.functional_training_box_jump.technique.2" = "Встаньте достатньо близько до тумби, щоб приземлитися біля її центру.";
+"exercise.info.functional_training_box_jump.technique.3" = "Опустіться в неглибоке присідання та помахайте руками, щоб підготуватися.";
+"exercise.info.functional_training_box_jump.technique.4" = "Стрибніть обома ногами і м’яко приземліться, зігнувши коліна.";
+"exercise.info.functional_training_box_jump.technique.5" = "Встаньте прямо на ящик, перш ніж зійти.";
+"exercise.info.functional_training_box_jump.technique.6" = "Зійдіть замість того, щоб стрибати вниз, коли втома впливає на контроль приземлення.";
+
+"exercise.info.functional_training_medicine_ball_slam.description" = "Удар медичним м’ячем — це потужний рух усім тілом, який із силою вбиває медичний м’яч у підлогу.";
+"exercise.info.functional_training_medicine_ball_slam.technique.1" = "Використовуйте м'яч для удару або медичний м'яч, розрахований на удар по підлозі.";
+"exercise.info.functional_training_medicine_ball_slam.technique.2" = "Підніміть м'яч над головою, напруживши корпус.";
+"exercise.info.functional_training_medicine_ball_slam.technique.3" = "Ведіть м'яч руками, тулубом і стегнами.";
+"exercise.info.functional_training_medicine_ball_slam.technique.4" = "Зігніть коліна, коли м’яч досягне підлоги.";
+"exercise.info.functional_training_medicine_ball_slam.technique.5" = "Візьміть м'яч нейтральною спиною.";
+"exercise.info.functional_training_medicine_ball_slam.technique.6" = "Виберіть вагу, яка дозволяє потужні, але контрольовані повторення.";
+
+"exercise.info.functional_training_battle_rope.description" = "Бойова мотузка – це кондиціонування на час з використанням повторюваних хвиль або ударів важкими мотузками.";
+"exercise.info.functional_training_battle_rope.technique.1" = "Встаньте, розставивши ноги приблизно на ширині плечей, м’яко зігніть коліна.";
+"exercise.info.functional_training_battle_rope.technique.2" = "Тримайте корпус вертикально та злегка напруженим.";
+"exercise.info.functional_training_battle_rope.technique.3" = "Тримайте кожен кінець мотузки міцною, але розслабленою рукою.";
+"exercise.info.functional_training_battle_rope.technique.4" = "Створюйте рівні хвилі за допомогою контрольованого руху руки.";
+"exercise.info.functional_training_battle_rope.technique.5" = "Уникайте округлення плечей або затримки дихання.";
+"exercise.info.functional_training_battle_rope.technique.6" = "Використовуйте інтервали, які ви можете підтримувати в узгодженій формі.";
+
+"exercise.info.functional_training_wall_ball.description" = "Wall Ball поєднує в собі присідання та кидок медболу в стінну мішень для тренування всього тіла.";
+"exercise.info.functional_training_wall_ball.technique.1" = "Виберіть медичний м'яч і висоту мішені, яку ви можете контролювати.";
+"exercise.info.functional_training_wall_ball.technique.2" = "Тримайте м'яч на висоті грудей, ноги на ширині плечей.";
+"exercise.info.functional_training_wall_ball.technique.3" = "Присідайте, тримаючи грудну клітку піднятою.";
+"exercise.info.functional_training_wall_ball.technique.4" = "Потужно випряміть ноги та киньте м'яч у ціль.";
+"exercise.info.functional_training_wall_ball.technique.5" = "М’яко ловіть м’яч і поглинайте його під час наступного присідання.";
+"exercise.info.functional_training_wall_ball.technique.6" = "Тримайте коліна на одній лінії зі стопами протягом усього руху.";
+
+"exercise.info.functional_training_mountain_climber.description" = "Mountain Climber — це вправа для формування ваги тіла, у якій чергуються рухи колінами з положення планки.";
+"exercise.info.functional_training_mountain_climber.technique.1" = "Почніть з високої планки, руки під плечима.";
+"exercise.info.functional_training_mountain_climber.technique.2" = "Напружте корпус, щоб утримувати тулуб стійким.";
+"exercise.info.functional_training_mountain_climber.technique.3" = "Проведіть одним коліном до грудей.";
+"exercise.info.functional_training_mountain_climber.technique.4" = "Поверніть цю ногу та поміняйте сторони під контролем.";
+"exercise.info.functional_training_mountain_climber.technique.5" = "Уникайте високого підйому стегон або провисання попереку.";
+"exercise.info.functional_training_mountain_climber.technique.6" = "Використовуйте рівномірний ритм, перш ніж збільшувати швидкість.";
+
+"exercise.info.functional_training_kettlebell_clean_and_press.description" = "Взяття гирі на груди та жим переводить гирю в положення біля плеча, після чого її вичавлюють над головою.";
+"exercise.info.functional_training_kettlebell_clean_and_press.technique.1" = "Почніть з гирі на підлозі або в контрольованому висі.";
+"exercise.info.functional_training_kettlebell_clean_and_press.technique.2" = "Відведіть таз назад і нахиліться в кульшових суглобах, зберігаючи нейтральну спину.";
+"exercise.info.functional_training_kettlebell_clean_and_press.technique.3" = "Потужно розігніть стегна та спрямуйте гирю до положення біля плеча.";
+"exercise.info.functional_training_kettlebell_clean_and_press.technique.4" = "Дозвольте гирі обертатися навколо зап'ястя, а не вдарятися об передпліччя.";
+"exercise.info.functional_training_kettlebell_clean_and_press.technique.5" = "Напружте корпус і контрольовано вичавіть гирю над головою.";
+"exercise.info.functional_training_kettlebell_clean_and_press.technique.6" = "Опустіть гирю до плеча та стабілізуйте положення перед наступним повторенням.";
+
+"exercise.info.stretching_hamstring_stretch.description" = "Легка статична вправа на розтяжку.";
+"exercise.info.stretching_hamstring_stretch.technique.1" = "Почніть із зручного положення.";
+"exercise.info.stretching_hamstring_stretch.technique.2" = "Рухайтеся повільно, поки не відчуєте легку напругу.";
+"exercise.info.stretching_hamstring_stretch.technique.3" = "Дихайте рівно і тримайте тіло розслабленим.";
+"exercise.info.stretching_hamstring_stretch.technique.4" = "Не підстрибуйте та не форсуйте діапазон.";
+"exercise.info.stretching_hamstring_stretch.technique.5" = "Тримайте стабільне положення протягом запланованого часу.";
+"exercise.info.stretching_hamstring_stretch.technique.6" = "Повторіть з іншого боку, якщо це можливо.";
+
+"exercise.info.stretching_quadriceps_stretch.description" = "Легка статична вправа на розтяжку.";
+"exercise.info.stretching_quadriceps_stretch.technique.1" = "Почніть із зручного положення.";
+"exercise.info.stretching_quadriceps_stretch.technique.2" = "Рухайтеся повільно, поки не відчуєте легку напругу.";
+"exercise.info.stretching_quadriceps_stretch.technique.3" = "Дихайте рівно і тримайте тіло розслабленим.";
+"exercise.info.stretching_quadriceps_stretch.technique.4" = "Не підстрибуйте та не форсуйте діапазон.";
+"exercise.info.stretching_quadriceps_stretch.technique.5" = "Тримайте стабільне положення протягом запланованого часу.";
+"exercise.info.stretching_quadriceps_stretch.technique.6" = "Повторіть з іншого боку, якщо це можливо.";
+
+"exercise.info.stretching_chest_stretch.description" = "Легка статична вправа на розтяжку.";
+"exercise.info.stretching_chest_stretch.technique.1" = "Почніть із зручного положення.";
+"exercise.info.stretching_chest_stretch.technique.2" = "Рухайтеся повільно, поки не відчуєте легку напругу.";
+"exercise.info.stretching_chest_stretch.technique.3" = "Дихайте рівно і тримайте тіло розслабленим.";
+"exercise.info.stretching_chest_stretch.technique.4" = "Не підстрибуйте та не форсуйте діапазон.";
+"exercise.info.stretching_chest_stretch.technique.5" = "Тримайте стабільне положення протягом запланованого часу.";
+"exercise.info.stretching_chest_stretch.technique.6" = "Повторіть з іншого боку, якщо це можливо.";
+
+"exercise.info.stretching_shoulder_stretch.description" = "Легка статична вправа на розтяжку.";
+"exercise.info.stretching_shoulder_stretch.technique.1" = "Почніть із зручного положення.";
+"exercise.info.stretching_shoulder_stretch.technique.2" = "Рухайтеся повільно, поки не відчуєте легку напругу.";
+"exercise.info.stretching_shoulder_stretch.technique.3" = "Дихайте рівно і тримайте тіло розслабленим.";
+"exercise.info.stretching_shoulder_stretch.technique.4" = "Не підстрибуйте та не форсуйте діапазон.";
+"exercise.info.stretching_shoulder_stretch.technique.5" = "Тримайте стабільне положення протягом запланованого часу.";
+"exercise.info.stretching_shoulder_stretch.technique.6" = "Повторіть з іншого боку, якщо це можливо.";
+
+"exercise.info.stretching_glute_stretch.description" = "Легка статична вправа на розтяжку.";
+"exercise.info.stretching_glute_stretch.technique.1" = "Почніть із зручного положення.";
+"exercise.info.stretching_glute_stretch.technique.2" = "Рухайтеся повільно, поки не відчуєте легку напругу.";
+"exercise.info.stretching_glute_stretch.technique.3" = "Дихайте рівно і тримайте тіло розслабленим.";
+"exercise.info.stretching_glute_stretch.technique.4" = "Не підстрибуйте та не форсуйте діапазон.";
+"exercise.info.stretching_glute_stretch.technique.5" = "Тримайте стабільне положення протягом запланованого часу.";
+"exercise.info.stretching_glute_stretch.technique.6" = "Повторіть з іншого боку, якщо це можливо.";
+
+"exercise.info.stretching_calf_stretch.description" = "Легка статична вправа на розтяжку.";
+"exercise.info.stretching_calf_stretch.technique.1" = "Почніть із зручного положення.";
+"exercise.info.stretching_calf_stretch.technique.2" = "Рухайтеся повільно, поки не відчуєте легку напругу.";
+"exercise.info.stretching_calf_stretch.technique.3" = "Дихайте рівно і тримайте тіло розслабленим.";
+"exercise.info.stretching_calf_stretch.technique.4" = "Не підстрибуйте та не форсуйте діапазон.";
+"exercise.info.stretching_calf_stretch.technique.5" = "Тримайте стабільне положення протягом запланованого часу.";
+"exercise.info.stretching_calf_stretch.technique.6" = "Повторіть з іншого боку, якщо це можливо.";
+
+"exercise.info.stretching_hip_flexor_stretch.description" = "Легка статична вправа на розтяжку.";
+"exercise.info.stretching_hip_flexor_stretch.technique.1" = "Почніть із зручного положення.";
+"exercise.info.stretching_hip_flexor_stretch.technique.2" = "Рухайтеся повільно, поки не відчуєте легку напругу.";
+"exercise.info.stretching_hip_flexor_stretch.technique.3" = "Дихайте рівно і тримайте тіло розслабленим.";
+"exercise.info.stretching_hip_flexor_stretch.technique.4" = "Не підстрибуйте та не форсуйте діапазон.";
+"exercise.info.stretching_hip_flexor_stretch.technique.5" = "Тримайте стабільне положення протягом запланованого часу.";
+"exercise.info.stretching_hip_flexor_stretch.technique.6" = "Повторіть з іншого боку, якщо це можливо.";
+
+"exercise.info.stretching_butterfly_stretch.description" = "Легка статична вправа на розтяжку.";
+"exercise.info.stretching_butterfly_stretch.technique.1" = "Почніть із зручного положення.";
+"exercise.info.stretching_butterfly_stretch.technique.2" = "Рухайтеся повільно, поки не відчуєте легку напругу.";
+"exercise.info.stretching_butterfly_stretch.technique.3" = "Дихайте рівно і тримайте тіло розслабленим.";
+"exercise.info.stretching_butterfly_stretch.technique.4" = "Не підстрибуйте та не форсуйте діапазон.";
+"exercise.info.stretching_butterfly_stretch.technique.5" = "Тримайте стабільне положення протягом запланованого часу.";
+"exercise.info.stretching_butterfly_stretch.technique.6" = "Повторіть з іншого боку, якщо це можливо.";
+
+"exercise.info.stretching_lat_stretch.description" = "Легка статична вправа на розтяжку.";
+"exercise.info.stretching_lat_stretch.technique.1" = "Почніть із зручного положення.";
+"exercise.info.stretching_lat_stretch.technique.2" = "Рухайтеся повільно, поки не відчуєте легку напругу.";
+"exercise.info.stretching_lat_stretch.technique.3" = "Дихайте рівно і тримайте тіло розслабленим.";
+"exercise.info.stretching_lat_stretch.technique.4" = "Не підстрибуйте та не форсуйте діапазон.";
+"exercise.info.stretching_lat_stretch.technique.5" = "Тримайте стабільне положення протягом запланованого часу.";
+"exercise.info.stretching_lat_stretch.technique.6" = "Повторіть з іншого боку, якщо це можливо.";
+
+"exercise.info.stretching_childs_pose.description" = "Легка статична вправа на розтяжку.";
+"exercise.info.stretching_childs_pose.technique.1" = "Почніть із зручного положення.";
+"exercise.info.stretching_childs_pose.technique.2" = "Рухайтеся повільно, поки не відчуєте легку напругу.";
+"exercise.info.stretching_childs_pose.technique.3" = "Дихайте рівно і тримайте тіло розслабленим.";
+"exercise.info.stretching_childs_pose.technique.4" = "Не підстрибуйте та не форсуйте діапазон.";
+"exercise.info.stretching_childs_pose.technique.5" = "Тримайте стабільне положення протягом запланованого часу.";
+"exercise.info.stretching_childs_pose.technique.6" = "Повторіть з іншого боку, якщо це можливо.";
+
+"exercise.info.stretching_triceps_stretch.description" = "Легка статична вправа на розтяжку.";
+"exercise.info.stretching_triceps_stretch.technique.1" = "Почніть із зручного положення.";
+"exercise.info.stretching_triceps_stretch.technique.2" = "Рухайтеся повільно, поки не відчуєте легку напругу.";
+"exercise.info.stretching_triceps_stretch.technique.3" = "Дихайте рівно і тримайте тіло розслабленим.";
+"exercise.info.stretching_triceps_stretch.technique.4" = "Не підстрибуйте та не форсуйте діапазон.";
+"exercise.info.stretching_triceps_stretch.technique.5" = "Тримайте стабільне положення протягом запланованого часу.";
+"exercise.info.stretching_triceps_stretch.technique.6" = "Повторіть з іншого боку, якщо це можливо.";
+
+"exercise.info.stretching_neck_stretch.description" = "Легка статична вправа на розтяжку.";
+"exercise.info.stretching_neck_stretch.technique.1" = "Почніть із зручного положення.";
+"exercise.info.stretching_neck_stretch.technique.2" = "Рухайтеся повільно, поки не відчуєте легку напругу.";
+"exercise.info.stretching_neck_stretch.technique.3" = "Дихайте рівно і тримайте тіло розслабленим.";
+"exercise.info.stretching_neck_stretch.technique.4" = "Не підстрибуйте та не форсуйте діапазон.";
+"exercise.info.stretching_neck_stretch.technique.5" = "Тримайте стабільне положення протягом запланованого часу.";
+"exercise.info.stretching_neck_stretch.technique.6" = "Повторіть з іншого боку, якщо це можливо.";

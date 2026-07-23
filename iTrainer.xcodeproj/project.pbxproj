@@ -182,10 +182,18 @@
 		F6336E1B300148D9006ECA08 /* ReportMetricInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportMetricInfoView.swift; sourceTree = "<group>"; };
 		F6336E1E30016236006ECA08 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/ExerciseInfo.strings; sourceTree = "<group>"; };
 		F6336E2030016246006ECA08 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/ExerciseInfo.strings; sourceTree = "<group>"; };
+		F6B100092D16000100000009 /* uk */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = uk; path = uk.lproj/ExerciseInfo.strings; sourceTree = "<group>"; };
+		F6B1000A2D1600010000000A /* pl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = pl; path = pl.lproj/ExerciseInfo.strings; sourceTree = "<group>"; };
+		F6B1000B2D1600010000000B /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/ExerciseInfo.strings; sourceTree = "<group>"; };
+		F6B1000C2D1600010000000C /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/ExerciseInfo.strings; sourceTree = "<group>"; };
 		F6336E2130016C13006ECA08 /* BookmarkedExerciseTypeModelDB.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookmarkedExerciseTypeModelDB.swift; sourceTree = "<group>"; };
 		F6336E2330016D94006ECA08 /* ExerciseBookmarkFilterButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseBookmarkFilterButton.swift; sourceTree = "<group>"; };
 		F6336E26300172A0006ECA08 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/ExerciseCatalog.strings; sourceTree = "<group>"; };
 		F6336E27300172A0006ECA08 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/ExerciseCatalog.strings; sourceTree = "<group>"; };
+		F6B100052D16000100000005 /* uk */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = uk; path = uk.lproj/ExerciseCatalog.strings; sourceTree = "<group>"; };
+		F6B100062D16000100000006 /* pl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = pl; path = pl.lproj/ExerciseCatalog.strings; sourceTree = "<group>"; };
+		F6B100072D16000100000007 /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/ExerciseCatalog.strings; sourceTree = "<group>"; };
+		F6B100082D16000100000008 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/ExerciseCatalog.strings; sourceTree = "<group>"; };
 		F64895BA2FE6C67F005B0619 /* NavigationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationManager.swift; sourceTree = "<group>"; };
 		F64896992FE705F1005B0619 /* AppEnvironment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppEnvironment.swift; sourceTree = "<group>"; };
 		F648969B2FE70B13005B0619 /* AppState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppState.swift; sourceTree = "<group>"; };
@@ -241,6 +249,10 @@
 		F6A100072D15000100000007 /* exercise_info.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = exercise_info.json; sourceTree = "<group>"; };
 		F6A1000A2D1500010000000A /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		F6A1000B2D1500010000000B /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Localizable.strings; sourceTree = "<group>"; };
+		F6B100012D16000100000001 /* uk */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = uk; path = uk.lproj/Localizable.strings; sourceTree = "<group>"; };
+		F6B100022D16000100000002 /* pl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = pl; path = pl.lproj/Localizable.strings; sourceTree = "<group>"; };
+		F6B100032D16000100000003 /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/Localizable.strings; sourceTree = "<group>"; };
+		F6B100042D16000100000004 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/Localizable.strings; sourceTree = "<group>"; };
 		F6AA00012D13E7A000000001 /* iTrainer-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "iTrainer-Info.plist"; sourceTree = "<group>"; };
 		F6AB65A82FEAAB0500DE8066 /* DesignSystem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DesignSystem.swift; sourceTree = "<group>"; };
 		F6AB65AA2FEAB07500DE8066 /* ExerciseCatalogDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseCatalogDetailView.swift; sourceTree = "<group>"; };
@@ -780,6 +792,10 @@
 			knownRegions = (
 				en,
 				ru,
+				uk,
+				pl,
+				es,
+				de,
 				Base,
 			);
 			mainGroup = F69BD0BB2C54F8DA0057080E;
@@ -990,6 +1006,10 @@
 			children = (
 				F6336E1E30016236006ECA08 /* en */,
 				F6336E2030016246006ECA08 /* ru */,
+				F6B100092D16000100000009 /* uk */,
+				F6B1000A2D1600010000000A /* pl */,
+				F6B1000B2D1600010000000B /* es */,
+				F6B1000C2D1600010000000C /* de */,
 			);
 			name = ExerciseInfo.strings;
 			sourceTree = "<group>";
@@ -999,6 +1019,10 @@
 			children = (
 				F6336E26300172A0006ECA08 /* en */,
 				F6336E27300172A0006ECA08 /* ru */,
+				F6B100052D16000100000005 /* uk */,
+				F6B100062D16000100000006 /* pl */,
+				F6B100072D16000100000007 /* es */,
+				F6B100082D16000100000008 /* de */,
 			);
 			name = ExerciseCatalog.strings;
 			sourceTree = "<group>";
@@ -1008,6 +1032,10 @@
 			children = (
 				F6A1000A2D1500010000000A /* en */,
 				F6A1000B2D1500010000000B /* ru */,
+				F6B100012D16000100000001 /* uk */,
+				F6B100022D16000100000002 /* pl */,
+				F6B100032D16000100000003 /* es */,
+				F6B100042D16000100000004 /* de */,
 			);
 			name = Localizable.strings;
 			sourceTree = "<group>";

@@ -1,0 +1,1033 @@
+/* Exercise Info */
+
+"exercise.info.chest_bench_press.description" = "Bankdrücken ist ein grundlegendes Langhanteldrücken zum Aufbau von Brust-, Schulter- und Trizepskraft.";
+"exercise.info.chest_bench_press.technique.1" = "Stellen Sie Ihre Füße fest auf den Boden, bevor Sie die Stange aus dem Regal nehmen.";
+"exercise.info.chest_bench_press.technique.2" = "Ziehen Sie Ihre Schulterblätter zurück und drücken Sie sie nach unten, um einen stabilen oberen Rücken zu schaffen.";
+"exercise.info.chest_bench_press.technique.3" = "Verwenden Sie einen Griff, der etwas breiter als schulterbreit ist, und legen Sie die Handgelenke über die Ellbogen.";
+"exercise.info.chest_bench_press.technique.4" = "Senken Sie die Stange kontrolliert in Richtung der unteren oder mittleren Brust.";
+"exercise.info.chest_bench_press.technique.5" = "Lassen Sie die Hantel nicht von Ihrer Brust abprallen und heben Sie Ihre Hüften nicht von der Bank ab.";
+"exercise.info.chest_bench_press.technique.6" = "Drücken Sie die Stange gleichmäßig nach oben und halten Sie dabei Ihren oberen Rücken angespannt.";
+
+"exercise.info.chest_incline_bench_press.description" = "Schrägbankdrücken ist ein Langhanteldrücken, das den oberen Brustbereich und die vorderen Schultern betont.";
+"exercise.info.chest_incline_bench_press.technique.1" = "Stellen Sie die Bank auf eine mäßige Neigung ein, normalerweise etwa 30 bis 45 Grad.";
+"exercise.info.chest_incline_bench_press.technique.2" = "Halten Sie Ihre Füße stabil und Ihre Schulterblätter an der Bank ausgerichtet.";
+"exercise.info.chest_incline_bench_press.technique.3" = "Greifen Sie die Stange etwas weiter als schulterbreit.";
+"exercise.info.chest_incline_bench_press.technique.4" = "Senken Sie die Stange kontrolliert in Richtung Oberbrust.";
+"exercise.info.chest_incline_bench_press.technique.5" = "Behalten Sie die Kontrolle über die Ellbogen, anstatt sie gerade auszustrecken.";
+"exercise.info.chest_incline_bench_press.technique.6" = "Drücken Sie sanft nach oben, ohne die Bankposition zu verlieren.";
+
+"exercise.info.chest_dumbbell_press.description" = "Kurzhanteldrücken ist eine Variante des Brustdrückens, bei der jeder Arm unabhängig und in einem natürlichen Bewegungsbereich arbeiten kann.";
+"exercise.info.chest_dumbbell_press.technique.1" = "Lehnen Sie sich mit kontrollierten Hanteln zurück und legen Sie sich dann mit den Hanteln nahe an Ihre Brust hin.";
+"exercise.info.chest_dumbbell_press.technique.2" = "Stellen Sie Ihre Schulterblätter auf und halten Sie Ihre Füße auf dem Boden.";
+"exercise.info.chest_dumbbell_press.technique.3" = "Beginnen Sie mit über den Ellenbogen gestapelten Handgelenken, nicht nach hinten gebeugt.";
+"exercise.info.chest_dumbbell_press.technique.4" = "Senken Sie beide Hanteln gleichmäßig ab, bis Sie eine angenehme Brustdehnung spüren.";
+"exercise.info.chest_dumbbell_press.technique.5" = "Drücken Sie nach oben, ohne dass die Hanteln oben kollidieren.";
+"exercise.info.chest_dumbbell_press.technique.6" = "Bewegen Sie beide Seiten gleichmäßig und vermeiden Sie eine Verdrehung des Oberkörpers.";
+
+"exercise.info.chest_incline_dumbbell_press.description" = "Schräghanteldrücken entwickelt die Kraft im oberen Brustbereich mit unabhängiger Armbewegung und einem etwas größeren Bewegungsbereich.";
+"exercise.info.chest_incline_dumbbell_press.technique.1" = "Verwenden Sie eine moderate Steigung, damit sich die Bewegung immer noch auf die Brust konzentriert.";
+"exercise.info.chest_incline_dumbbell_press.technique.2" = "Halten Sie Ihre Schulterblätter stabil und Ihren unteren Rücken kontrolliert.";
+"exercise.info.chest_incline_dumbbell_press.technique.3" = "Beginnen Sie mit den Hanteln über der oberen Brust.";
+"exercise.info.chest_incline_dumbbell_press.technique.4" = "Senken Sie die Hanteln kontrolliert neben der oberen Brust ab.";
+"exercise.info.chest_incline_dumbbell_press.technique.5" = "Lassen Sie die Ellenbogen nicht zu weit hinter die Schultern gleiten.";
+"exercise.info.chest_incline_dumbbell_press.technique.6" = "Drücken Sie sanft nach oben, ohne die Hanteln zu weit nach vorne zu bewegen.";
+
+"exercise.info.chest_dips.description" = "Dips sind eine Druckübung mit dem Körpergewicht, die die Brust betonen kann, wenn sie mit einer leichten Vorwärtsneigung ausgeführt wird.";
+"exercise.info.chest_dips.technique.1" = "Beginnen Sie mit gestreckten Armen und Schultern, die von Ihren Ohren entfernt sind.";
+"exercise.info.chest_dips.technique.2" = "Lehnen Sie sich leicht nach vorne, um mehr Arbeit auf die Brust zu verlagern.";
+"exercise.info.chest_dips.technique.3" = "Senken Sie sich kontrolliert ab, bis Ihre Oberarme nahezu parallel zum Boden sind.";
+"exercise.info.chest_dips.technique.4" = "Achten Sie darauf, dass die Ellbogen auf natürliche Weise gestreckt werden, anstatt sie weit auszustrecken.";
+"exercise.info.chest_dips.technique.5" = "Drücken Sie sanft nach oben, ohne von unten zu springen.";
+"exercise.info.chest_dips.technique.6" = "Unterbrechen Sie das Set, wenn Sie starke Schulterbeschwerden verspüren.";
+
+"exercise.info.chest_push_up.description" = "Push-Up ist eine Druckübung mit dem eigenen Körpergewicht für Brust, Schultern, Trizeps und Rumpfkontrolle.";
+"exercise.info.chest_push_up.technique.1" = "Platzieren Sie Ihre Hände etwas weiter als schulterbreit.";
+"exercise.info.chest_push_up.technique.2" = "Halten Sie Ihren Körper vom Kopf bis zu den Fersen in einer geraden Linie.";
+"exercise.info.chest_push_up.technique.3" = "Stützen Sie Ihren Rumpf ab, damit die Hüften nicht durchhängen oder sich heben.";
+"exercise.info.chest_push_up.technique.4" = "Senken Sie Ihre Brust kontrolliert zum Boden.";
+"exercise.info.chest_push_up.technique.5" = "Halten Sie die Ellbogen in einem bequemen Winkel und nicht gerade zur Seite.";
+"exercise.info.chest_push_up.technique.6" = "Drücken Sie vollständig nach oben und behalten Sie dabei die gleiche Körperlinie bei.";
+
+"exercise.info.chest_machine_press.description" = "Machine Chest Press ist eine geführte Drückübung, die die Brustkraft mit stabiler Körperunterstützung trainiert.";
+"exercise.info.chest_machine_press.technique.1" = "Stellen Sie den Sitz so ein, dass die Griffe etwa in der Mitte der Brust ausgerichtet sind.";
+"exercise.info.chest_machine_press.technique.2" = "Halten Sie Ihren Rücken und Ihre Hüften gegen das Polster gestützt.";
+"exercise.info.chest_machine_press.technique.3" = "Fassen Sie die Griffe mit neutralen Handgelenken und entspannten Schultern.";
+"exercise.info.chest_machine_press.technique.4" = "Drücken Sie sanft nach vorne, ohne mit den Schultern zu zucken.";
+"exercise.info.chest_machine_press.technique.5" = "Vermeiden Sie es, die Ellbogen am Ende der Presse aggressiv zu beugen.";
+"exercise.info.chest_machine_press.technique.6" = "Bringen Sie die Griffe wieder unter Kontrolle, bevor Sie mit der nächsten Wiederholung beginnen.";
+
+"exercise.info.chest_smith_machine_press.description" = "Smith Machine Press ist ein geführtes Langhanteldrücken, das dabei helfen kann, die Brust mit einem festen Stangenweg zu trainieren.";
+"exercise.info.chest_smith_machine_press.technique.1" = "Positionieren Sie die Bank so, dass die Stange bis zur Mitte oder zum unteren Brustkorb reicht.";
+"exercise.info.chest_smith_machine_press.technique.2" = "Richten Sie Ihre Schulterblätter aus und halten Sie Ihre Füße stabil.";
+"exercise.info.chest_smith_machine_press.technique.3" = "Verwenden Sie einen Griff, der die Handgelenke über den Ellbogen hält.";
+"exercise.info.chest_smith_machine_press.technique.4" = "Entriegeln Sie die Stange vorsichtig und senken Sie sie kontrolliert ab.";
+"exercise.info.chest_smith_machine_press.technique.5" = "Zwingen Sie Ihre Schultern nicht in eine unbequeme, feste Richtung.";
+"exercise.info.chest_smith_machine_press.technique.6" = "Drücken Sie sanft nach oben und stellen Sie die Stange erst dann wieder auf, wenn die Stange vollständig unter Kontrolle ist.";
+
+"exercise.info.chest_dumbbell_fly.description" = "Dumbbell Fly ist eine Isolationsübung, die die Brust durch einen weiten Bogen und belastete Dehnung trainiert.";
+"exercise.info.chest_dumbbell_fly.technique.1" = "Legen Sie sich mit den Hanteln über die Brust und die Handflächen einander zugewandt zurück.";
+"exercise.info.chest_dumbbell_fly.technique.2" = "Behalten Sie während der gesamten Bewegung eine leichte Beugung der Ellenbogen bei.";
+"exercise.info.chest_dumbbell_fly.technique.3" = "Öffnen Sie langsam Ihre Arme, bis Sie eine kontrollierte Dehnung der Brust spüren.";
+"exercise.info.chest_dumbbell_fly.technique.4" = "Senken Sie den Sitz nicht so weit ab, dass sich die Schultern überanstrengt fühlen.";
+"exercise.info.chest_dumbbell_fly.technique.5" = "Führen Sie die Hanteln im gleichen Bogen wieder zusammen.";
+"exercise.info.chest_dumbbell_fly.technique.6" = "Behalten Sie die Bewegung als Fliege bei, nicht als verstecktes Hanteldrücken.";
+
+"exercise.info.chest_pec_deck.description" = "Pec Deck ist eine maschinelle Brustisolationsübung, bei der die Brustadduktion mithilfe eines geführten Armpfads trainiert wird.";
+"exercise.info.chest_pec_deck.technique.1" = "Stellen Sie den Sitz so ein, dass die Griffe oder Polster auf Ihrer Brust ausgerichtet sind.";
+"exercise.info.chest_pec_deck.technique.2" = "Halten Sie Ihren Rücken gestützt und die Brust angehoben.";
+"exercise.info.chest_pec_deck.technique.3" = "Halten Sie die Griffe oder Polster mit entspannten Schultern.";
+"exercise.info.chest_pec_deck.technique.4" = "Führen Sie die Arme sanft vor der Brust zusammen.";
+"exercise.info.chest_pec_deck.technique.5" = "Machen Sie eine kurze Pause, ohne die Schultern nach vorne rollen zu lassen.";
+"exercise.info.chest_pec_deck.technique.6" = "Kehren Sie langsam zurück, bis Sie eine angenehme Dehnung spüren.";
+
+"exercise.info.chest_cable_crossover.description" = "Cable Crossover ist eine Brustisolationsübung, die die Spannung auf der Brust über den gesamten Bereich aufrechterhält.";
+"exercise.info.chest_cable_crossover.technique.1" = "Stellen Sie die Riemenscheiben auf die Höhe ein, die dem Brustwinkel entspricht, den Sie trainieren möchten.";
+"exercise.info.chest_cable_crossover.technique.2" = "Stehen Sie stabil, neigen Sie sich leicht nach vorne und stellen Sie bei Bedarf einen Fuß nach vorne.";
+"exercise.info.chest_cable_crossover.technique.3" = "Halten Sie die Ellbogen leicht gebeugt und die Schultern gesenkt.";
+"exercise.info.chest_cable_crossover.technique.4" = "Bewegen Sie Ihre Hände in einem sanften Bogen vor dem Körper.";
+"exercise.info.chest_cable_crossover.technique.5" = "Drücken Sie die Brust kurz zusammen, ohne die Schultern zu runden.";
+"exercise.info.chest_cable_crossover.technique.6" = "Kontrollieren Sie die Rückkehr und vermeiden Sie, dass der Gewichtsstapel Sie zurückzieht.";
+
+"exercise.info.chest_dumbbell_pullover.description" = "Dumbbell Pullover ist eine kontrollierte Oberkörperübung, die Brust und Latissimus durch Schulterstreckung trainieren kann.";
+"exercise.info.chest_dumbbell_pullover.technique.1" = "Legen Sie sich auf eine Bank und halten Sie eine Hantel mit beiden Händen fest.";
+"exercise.info.chest_dumbbell_pullover.technique.2" = "Beginnen Sie mit der Hantel über der Brust und leicht gebeugten Ellbogen.";
+"exercise.info.chest_dumbbell_pullover.technique.3" = "Senken Sie die Hantel nur so weit hinter Ihren Kopf, wie es Ihre Schultern zulassen.";
+"exercise.info.chest_dumbbell_pullover.technique.4" = "Halten Sie die Rippen und den unteren Rücken unter Kontrolle, anstatt sie zu überwölben.";
+"exercise.info.chest_dumbbell_pullover.technique.5" = "Ziehen Sie die Hantel mit einem sanften Bogen nach hinten über die Brust.";
+"exercise.info.chest_dumbbell_pullover.technique.6" = "Verwenden Sie eine mäßige Belastung und vermeiden Sie es, die Bewegung in eine Trizepsstreckung umzuwandeln.";
+
+"exercise.info.back_pull_up.description" = "Pull-Up ist eine vertikale Zugübung mit dem Körpergewicht zum Aufbau des Latissimus, der Kraft des oberen Rückens und der Armkontrolle.";
+"exercise.info.back_pull_up.technique.1" = "Beginnen Sie in einem kontrollierten Hang mit aktiven, nicht lockeren Schultern.";
+"exercise.info.back_pull_up.technique.2" = "Halten Sie die Stange fest und stützen Sie Ihren Rumpf ab, bevor Sie ziehen.";
+"exercise.info.back_pull_up.technique.3" = "Ziehen Sie, indem Sie die Ellbogen nach unten zu Ihren Seiten bewegen.";
+"exercise.info.back_pull_up.technique.4" = "Richten Sie Ihre Brust auf die Stange, ohne übermäßig zu schwingen.";
+"exercise.info.back_pull_up.technique.5" = "Kontrolliert absenken, bis die Arme wieder ausgestreckt sind.";
+"exercise.info.back_pull_up.technique.6" = "Halten Sie die Wiederholungen sauber und vermeiden Sie es, mit den Beinen zu treten, um Schwung zu erzeugen.";
+
+"exercise.info.back_reverse_grip_pull_up.description" = "Reverse-Grip Pull-Up ist ein Klimmzug im Klimmzugstil, der den Latissimus und den Bizeps mit einem supinierten Griff betont.";
+"exercise.info.back_reverse_grip_pull_up.technique.1" = "Verwenden Sie einen etwa schulterbreiten Untergriff.";
+"exercise.info.back_reverse_grip_pull_up.technique.2" = "Beginnen Sie mit einem kontrollierten Hang mit nach unten gerichteten Rippen.";
+"exercise.info.back_reverse_grip_pull_up.technique.3" = "Ziehen Sie Ihre Brust zur Stange, während Sie die Ellbogen nah beieinander halten.";
+"exercise.info.back_reverse_grip_pull_up.technique.4" = "Vermeiden Sie es, den Hals zu recken, um die Stange zu erreichen.";
+"exercise.info.back_reverse_grip_pull_up.technique.5" = "Senken Sie sich langsam ab, bis die Ellenbogen gestreckt sind.";
+"exercise.info.back_reverse_grip_pull_up.technique.6" = "Lassen Sie die Schultern nicht nach unten einsacken.";
+
+"exercise.info.back_barbell_row.description" = "Das vorgebeugte Langhantelrudern ist ein zusammengesetzter horizontaler Zug für die Stabilität des mittleren Rückens, des Latissimus und der hinteren Kette.";
+"exercise.info.back_barbell_row.technique.1" = "Beugen Sie die Hüften und achten Sie auf eine neutrale Wirbelsäule.";
+"exercise.info.back_barbell_row.technique.2" = "Stützen Sie Ihren Oberkörper ab, bevor Sie die Stange vom Boden oder Gestell anheben.";
+"exercise.info.back_barbell_row.technique.3" = "Halten Sie den Rumpfwinkel während des gesamten Satzes stabil.";
+"exercise.info.back_barbell_row.technique.4" = "Ziehen Sie die Stange in Richtung der unteren Rippen oder des Oberbauchs.";
+"exercise.info.back_barbell_row.technique.5" = "Drücken Sie den Rücken kurz zusammen, ohne das Gewicht zu rucken.";
+"exercise.info.back_barbell_row.technique.6" = "Senken Sie die Stange kontrolliert ab, ohne Ihren Rücken abzurunden.";
+
+"exercise.info.back_one_arm_dumbbell_row.description" = "Beim einarmigen Kurzhantelrudern wird jede Seite des Rückens unabhängig voneinander trainiert, wobei die Unterstützung von einer Bank oder einer stabilen Oberfläche ausgeht.";
+"exercise.info.back_one_arm_dumbbell_row.technique.1" = "Stützen Sie eine Hand und ein Knie ab oder stützen Sie eine Hand auf einer stabilen Unterlage ab.";
+"exercise.info.back_one_arm_dumbbell_row.technique.2" = "Halten Sie Ihre Wirbelsäule neutral und Ihren Oberkörper stabil.";
+"exercise.info.back_one_arm_dumbbell_row.technique.3" = "Lassen Sie die Arbeitsschulter leicht nach unten reichen.";
+"exercise.info.back_one_arm_dumbbell_row.technique.4" = "Ziehen Sie die Hantel in Richtung Hüfte und nicht gerade nach oben zur Schulter.";
+"exercise.info.back_one_arm_dumbbell_row.technique.5" = "Machen Sie eine kurze Pause, während Sie den Ellenbogen nah am Körper halten.";
+"exercise.info.back_one_arm_dumbbell_row.technique.6" = "Vermeiden Sie es, Ihren Oberkörper zu verdrehen, um schwerere Gewichte zu heben.";
+
+"exercise.info.back_lat_pulldown.description" = "Lat Pulldown ist ein vertikaler Kabelzug, der den Latissimus und den oberen Rücken mit einstellbarer Belastung trainiert.";
+"exercise.info.back_lat_pulldown.technique.1" = "Setzen Sie sich aufrecht hin und sichern Sie Ihre Oberschenkel unter der Unterlage.";
+"exercise.info.back_lat_pulldown.technique.2" = "Greifen Sie die Stange etwas weiter als schulterbreit, es sei denn, Sie verwenden einen anderen Aufsatz.";
+"exercise.info.back_lat_pulldown.technique.3" = "Beginnen Sie damit, die Schultern von den Ohren weg nach unten zu legen.";
+"exercise.info.back_lat_pulldown.technique.4" = "Ziehen Sie die Stange in Richtung Oberbrust.";
+"exercise.info.back_lat_pulldown.technique.5" = "Halten Sie den Oberkörper weitgehend stabil und vermeiden Sie es, sich weit nach hinten zu lehnen.";
+"exercise.info.back_lat_pulldown.technique.6" = "Führen Sie die Stange langsam nach oben, ohne die Kontrolle zu verlieren.";
+
+"exercise.info.back_seated_cable_row.description" = "Sitzendes Cable Row ist eine horizontale Zugübung für die Kontrolle des mittleren Rückens, des Latissimus und des Schulterblatts.";
+"exercise.info.back_seated_cable_row.technique.1" = "Sitzen Sie aufrecht mit neutraler Wirbelsäule und unterstützten Füßen.";
+"exercise.info.back_seated_cable_row.technique.2" = "Beginnen Sie mit ausgestreckten Armen und halten Sie dabei die Brust angehoben.";
+"exercise.info.back_seated_cable_row.technique.3" = "Ziehen Sie den Griff in Richtung der unteren Rippen oder des Oberbauchs.";
+"exercise.info.back_seated_cable_row.technique.4" = "Bewegen Sie die Ellbogen nach hinten, ohne mit den Schultern zu zucken.";
+"exercise.info.back_seated_cable_row.technique.5" = "Machen Sie eine kurze Pause mit kontrollierten Schulterblättern.";
+"exercise.info.back_seated_cable_row.technique.6" = "Führen Sie den Griff langsam zurück, ohne ihn nach vorne zu runden.";
+
+"exercise.info.back_t_bar_row.description" = "T-Bar Row ist eine schwere Rudervariante, die mit einem stabilen Zugweg den mittleren Rücken und den Latissimus trainiert.";
+"exercise.info.back_t_bar_row.technique.1" = "Stellen Sie Ihren Stand und Ihr Gelenk so ein, dass Ihr Oberkörper stabil bleibt.";
+"exercise.info.back_t_bar_row.technique.2" = "Stützen Sie Ihren Rumpf ab, bevor Sie den Griff anheben.";
+"exercise.info.back_t_bar_row.technique.3" = "Ziehen Sie den Griff in Richtung Unterbrust oder Oberbauch.";
+"exercise.info.back_t_bar_row.technique.4" = "Bewegen Sie die Ellbogen nach hinten, anstatt die Schultern zucken zu lassen.";
+"exercise.info.back_t_bar_row.technique.5" = "Vermeiden Sie zu Beginn jeder Wiederholung einen großen Oberkörperschwung.";
+"exercise.info.back_t_bar_row.technique.6" = "Senken Sie das Gewicht kontrolliert ab, bis die Arme gestreckt sind.";
+
+"exercise.info.back_chest_supported_machine_row.description" = "Brustgestütztes Maschinenrudern trainiert den Rücken mit Unterstützung des Oberkörpers und reduziert so die Notwendigkeit, den unteren Rücken zu stabilisieren.";
+"exercise.info.back_chest_supported_machine_row.technique.1" = "Stellen Sie das Sitz- oder Brustpolster so ein, dass die Griffe bequem ausgerichtet sind.";
+"exercise.info.back_chest_supported_machine_row.technique.2" = "Halten Sie Ihre Brust während des gesamten Sets gegen das Polster.";
+"exercise.info.back_chest_supported_machine_row.technique.3" = "Beginnen Sie mit ausgestreckten Armen und kontrollierten Schultern.";
+"exercise.info.back_chest_supported_machine_row.technique.4" = "Ziehen Sie die Griffe nach hinten, indem Sie die Ellbogen hinter sich bewegen.";
+"exercise.info.back_chest_supported_machine_row.technique.5" = "Machen Sie eine kurze Pause, ohne die Brust von der Unterlage abzuheben.";
+"exercise.info.back_chest_supported_machine_row.technique.6" = "Kehren Sie sanft zurück und halten Sie die Spannung auf dem Rücken aufrecht.";
+
+"exercise.info.back_straight_arm_pulldown.description" = "Straight-Arm Pulldown ist eine Kabelübung für den Latissimus, bei der eine Bewegung im Pullover-Stil mit überwiegend gestreckten Armen erfolgt.";
+"exercise.info.back_straight_arm_pulldown.technique.1" = "Legen Sie ein Kabel hoch und stehen Sie weit genug zurück, um die Spannung aufrechtzuerhalten.";
+"exercise.info.back_straight_arm_pulldown.technique.2" = "Halten Sie die Stange oder das Seil mit leicht gebeugten Ellbogen.";
+"exercise.info.back_straight_arm_pulldown.technique.3" = "Stützen Sie Ihren Oberkörper ab und halten Sie die Schultern von den Ohren fern.";
+"exercise.info.back_straight_arm_pulldown.technique.4" = "Ziehen Sie den Griff in einem Bogen nach unten in Richtung Oberschenkel.";
+"exercise.info.back_straight_arm_pulldown.technique.5" = "Konzentrieren Sie sich auf die Bewegung von den Schultern aus und nicht auf das Beugen der Ellbogen wie beim Trizepsdrücken.";
+"exercise.info.back_straight_arm_pulldown.technique.6" = "Kehren Sie langsam zurück, bis Sie eine kontrollierte Dehnung im Latissimus spüren.";
+
+"exercise.info.back_deadlift.description" = "Kreuzheben ist eine schwere Übung mit Hüftbeugung, die die Zugkraft des gesamten Körpers und die hintere Muskelkette stärkt.";
+"exercise.info.back_deadlift.technique.1" = "Stellen Sie Ihre Füße unter die Stange, sodass sich die Stange in der Nähe der Fußmitte befindet.";
+"exercise.info.back_deadlift.technique.2" = "Beugen Sie sich nach unten, greifen Sie die Stange und stützen Sie Ihren Oberkörper fest ab.";
+"exercise.info.back_deadlift.technique.3" = "Halten Sie die Stange nah an Ihren Beinen, wenn Sie mit dem Ziehen beginnen.";
+"exercise.info.back_deadlift.technique.4" = "Drücken Sie sich durch den Boden, während Sie Ihren Rücken neutral halten.";
+"exercise.info.back_deadlift.technique.5" = "Lockern Sie, indem Sie Hüfte und Knie gleichzeitig strecken.";
+"exercise.info.back_deadlift.technique.6" = "Vermeiden Sie es, sich oben übermäßig nach hinten zu lehnen.";
+
+"exercise.info.back_hyperextension.description" = "Hyperextension trainiert die kontrollierte Hüftstreckung, die Gesäßmuskulatur, die hintere Oberschenkelmuskulatur und die Ausdauer im unteren Rückenbereich.";
+"exercise.info.back_hyperextension.technique.1" = "Stellen Sie das Polster so ein, dass sich Ihre Hüften frei bewegen können.";
+"exercise.info.back_hyperextension.technique.2" = "Verschränken Sie die Arme oder halten Sie eine Last nah am Körper.";
+"exercise.info.back_hyperextension.technique.3" = "Senken Sie Ihren Oberkörper mit einer neutralen Wirbelsäule.";
+"exercise.info.back_hyperextension.technique.4" = "Heben Sie sich wieder an, indem Sie die Gesäßmuskulatur und die hintere Oberschenkelmuskulatur anspannen.";
+"exercise.info.back_hyperextension.technique.5" = "Halten Sie an, wenn Ihr Körper in einer Linie ist und nicht nach hinten überstreckt ist.";
+"exercise.info.back_hyperextension.technique.6" = "Bewegen Sie sich langsam und vermeiden Sie es, bei den Wiederholungen zu schwingen.";
+
+"exercise.info.back_dumbbell_shrug.description" = "Dumbbell Shrug trainiert den oberen Trapezius, wobei jeder Arm unabhängig voneinander belastet wird.";
+"exercise.info.back_dumbbell_shrug.technique.1" = "Stehen Sie aufrecht mit einer Hantel in jeder Hand.";
+"exercise.info.back_dumbbell_shrug.technique.2" = "Halten Sie die Arme gerade und lassen Sie die Gewichte an Ihren Seiten hängen.";
+"exercise.info.back_dumbbell_shrug.technique.3" = "Heben Sie Ihre Schultern gerade nach oben zu Ihren Ohren.";
+"exercise.info.back_dumbbell_shrug.technique.4" = "Halten Sie oben kurz inne, ohne die Schultern zu rollen.";
+"exercise.info.back_dumbbell_shrug.technique.5" = "Kontrolliert bis zur vollen Streckung absenken.";
+"exercise.info.back_dumbbell_shrug.technique.6" = "Halten Sie Ihren Nacken neutral und vermeiden Sie es, mit dem Gewicht zu hüpfen.";
+
+"exercise.info.back_barbell_shrug.description" = "Langhantel-Shrugs trainieren den oberen Trapezmuskel und ermöglichen den Einsatz höherer Gewichte.";
+"exercise.info.back_barbell_shrug.technique.1" = "Halten Sie die Stange mit festem Griff vor Ihren Oberschenkeln.";
+"exercise.info.back_barbell_shrug.technique.2" = "Stehen Sie aufrecht und stützen Sie Ihren Rumpf ab.";
+"exercise.info.back_barbell_shrug.technique.3" = "Heben Sie Ihre Schultern gerade nach oben, ohne die Ellbogen zu beugen.";
+"exercise.info.back_barbell_shrug.technique.4" = "Halten Sie oben kurz inne und halten Sie die Leiste geschlossen.";
+"exercise.info.back_barbell_shrug.technique.5" = "Senken Sie die Stange kontrolliert ab, anstatt nach unten zu fallen.";
+"exercise.info.back_barbell_shrug.technique.6" = "Rollen Sie nicht mit den Schultern; auf und ab bewegen.";
+
+"exercise.info.legs_barbell_squat.description" = "Langhantel-Kniebeugen sind eine grundlegende Kraftübung für den Unterkörper, die den Quadrizeps, die Gesäßmuskulatur und die Ganzkörperstabilität stärkt.";
+"exercise.info.legs_barbell_squat.technique.1" = "Setzen Sie die Stange sicher auf Ihren oberen Rücken und greifen Sie sie gleichmäßig.";
+"exercise.info.legs_barbell_squat.technique.2" = "Stellen Sie Ihre Füße etwa schulterbreit auf und stützen Sie Ihren Oberkörper ab.";
+"exercise.info.legs_barbell_squat.technique.3" = "Senken Sie die Position, indem Sie Hüfte und Knie zusammenbeugen.";
+"exercise.info.legs_barbell_squat.technique.4" = "Halten Sie die Knie in einer Linie mit Ihren Füßen.";
+"exercise.info.legs_barbell_squat.technique.5" = "Behalten Sie eine neutrale Wirbelsäule bei und vermeiden Sie, nach vorne zu kollabieren.";
+"exercise.info.legs_barbell_squat.technique.6" = "Fahren Sie durch den Mittelfuß nach oben, bis Hüfte und Knie gestreckt sind.";
+
+"exercise.info.legs_leg_press.description" = "Beinpresse ist eine Maschinenübung zum Training der Beine, wobei der Rücken gestützt und die Last vom Schlitten geführt wird.";
+"exercise.info.legs_leg_press.technique.1" = "Stellen Sie Ihre Füße in angenehmer Breite fest auf die Plattform.";
+"exercise.info.legs_leg_press.technique.2" = "Halten Sie Ihre Hüften und den unteren Rücken gegen das Polster.";
+"exercise.info.legs_leg_press.technique.3" = "Entriegeln Sie den Schlitten erst, wenn Sie stabil stehen.";
+"exercise.info.legs_leg_press.technique.4" = "Senken Sie die Plattform ab, bis Ihre Knie bequem gebeugt sind.";
+"exercise.info.legs_leg_press.technique.5" = "Drücken Sie durch den gesamten Fuß, ohne dass die Knie nach innen kollabieren.";
+"exercise.info.legs_leg_press.technique.6" = "Vermeiden Sie es, die Knie oben aggressiv durchzudrücken.";
+
+"exercise.info.legs_squat.description" = "Kniebeugen sind eine körpergewichtige Unterkörperbewegung zur Stärkung der Beine, Beweglichkeit und Bewegungskontrolle.";
+"exercise.info.legs_squat.technique.1" = "Stehen Sie mit etwa schulterbreiten Füßen.";
+"exercise.info.legs_squat.technique.2" = "Stützen Sie Ihren Oberkörper ab und halten Sie Ihre Brust hoch.";
+"exercise.info.legs_squat.technique.3" = "Senken Sie die Position, indem Sie zwischen Ihren Hüften sitzen.";
+"exercise.info.legs_squat.technique.4" = "Halten Sie die Knie in einer Linie mit Ihren Zehen.";
+"exercise.info.legs_squat.technique.5" = "Gehen Sie so tief wie möglich und behalten Sie dabei die Kontrolle.";
+"exercise.info.legs_squat.technique.6" = "Stehen Sie sanft mit dem Mittelfuß auf.";
+
+"exercise.info.legs_dumbbell_lunge.description" = "Hantel-Ausfallschritt ist eine einbeinige Übung für Quadrizeps, Gesäßmuskulatur, Gleichgewicht und Beinkontrolle.";
+"exercise.info.legs_dumbbell_lunge.technique.1" = "Halten Sie die Hanteln seitlich und stehen Sie aufrecht.";
+"exercise.info.legs_dumbbell_lunge.technique.2" = "Gehen Sie kontrolliert vorwärts oder rückwärts.";
+"exercise.info.legs_dumbbell_lunge.technique.3" = "Senken Sie die Position, bis sich beide Knie auf natürliche Weise beugen.";
+"exercise.info.legs_dumbbell_lunge.technique.4" = "Halten Sie das vordere Knie über dem Fuß.";
+"exercise.info.legs_dumbbell_lunge.technique.5" = "Drücken Sie den vorderen Fuß durch, um zurückzukehren.";
+"exercise.info.legs_dumbbell_lunge.technique.6" = "Halten Sie den Oberkörper ruhig und vermeiden Sie, hin und her zu wackeln.";
+
+"exercise.info.legs_barbell_lunge.description" = "Langhantel-Ausfallschritt ist eine belastete einbeinige Übung, die Beinkraft, Gleichgewicht und Rumpfstabilität herausfordert.";
+"exercise.info.legs_barbell_lunge.technique.1" = "Legen Sie die Stange sicher auf Ihren oberen Rücken.";
+"exercise.info.legs_barbell_lunge.technique.2" = "Stützen Sie Ihren Oberkörper ab, bevor Sie treten.";
+"exercise.info.legs_barbell_lunge.technique.3" = "Gehen Sie kontrolliert vor und halten Sie die Hantel gerade.";
+"exercise.info.legs_barbell_lunge.technique.4" = "Senken Sie die Position, bis beide Knie bequem gebeugt sind.";
+"exercise.info.legs_barbell_lunge.technique.5" = "Drücken Sie den Vorderfuß durch, ohne dass das Knie nach innen kollabiert.";
+"exercise.info.legs_barbell_lunge.technique.6" = "Verwenden Sie eine leichtere Ladung, wenn das Gleichgewicht nicht mehr gewährleistet ist.";
+
+"exercise.info.legs_hack_squat.description" = "Hack Squat ist eine maschinelle Kniebeugenvariante, die den Quadrizeps mit einem geführten Weg und einem unterstützten Oberkörper betont.";
+"exercise.info.legs_hack_squat.technique.1" = "Legen Sie Ihre Schultern und Ihren Rücken fest gegen die Polster.";
+"exercise.info.legs_hack_squat.technique.2" = "Stellen Sie Ihre Füße in einer bequemen Haltung auf die Plattform.";
+"exercise.info.legs_hack_squat.technique.3" = "Entriegeln Sie die Maschine erst nach dem Abspannen.";
+"exercise.info.legs_hack_squat.technique.4" = "Senken Sie sich kontrolliert ab, während die Knie den Zehen folgen.";
+"exercise.info.legs_hack_squat.technique.5" = "Drücken Sie sich durch die Plattform, ohne die Fersen anzuheben.";
+"exercise.info.legs_hack_squat.technique.6" = "Vermeiden Sie eine harte Kniesperre oben.";
+
+"exercise.info.legs_front_squat.description" = "Front Squat ist eine Variante der Kniebeuge, bei der die Stange nach vorne gehalten wird und die den Quadrizeps und die Kontrolle des aufrechten Oberkörpers betont.";
+"exercise.info.legs_front_squat.technique.1" = "Legen Sie die Hantel mit angehobenen Ellbogen auf die Vorderseite Ihrer Schultern.";
+"exercise.info.legs_front_squat.technique.2" = "Spannen Sie Ihren Oberkörper an und halten Sie Ihre Brust hoch.";
+"exercise.info.legs_front_squat.technique.3" = "Senken Sie die Position, indem Sie Hüfte und Knie zusammenbeugen.";
+"exercise.info.legs_front_squat.technique.4" = "Halten Sie die Ellbogen hoch, damit die Stange nicht nach vorne rollt.";
+"exercise.info.legs_front_squat.technique.5" = "Fahren Sie durch den Mittelfuß nach oben.";
+"exercise.info.legs_front_squat.technique.6" = "Verwenden Sie eine Last, die Sie kontrollieren können, ohne nach vorne zu kollabieren.";
+
+"exercise.info.legs_leg_extension.description" = "Beinstreckung ist eine maschinelle Isolationsübung für den Quadrizeps.";
+"exercise.info.legs_leg_extension.technique.1" = "Stellen Sie den Sitz so ein, dass der Drehpunkt der Maschine mit Ihrem Knie übereinstimmt.";
+"exercise.info.legs_leg_extension.technique.2" = "Platzieren Sie das Polster direkt über den Knöcheln.";
+"exercise.info.legs_leg_extension.technique.3" = "Halten Sie die Griffe fest und halten Sie die Hüften unten.";
+"exercise.info.legs_leg_extension.technique.4" = "Strecken Sie die Beine sanft aus, ohne zu schwingen.";
+"exercise.info.legs_leg_extension.technique.5" = "Halten Sie oben kurz inne, wenn Sie möchten.";
+"exercise.info.legs_leg_extension.technique.6" = "Senken Sie das Gewicht langsam ab und halten Sie die Spannung auf den Quadrizeps aufrecht.";
+
+"exercise.info.legs_lying_leg_curl.description" = "Liegender Beinbeuger ist eine maschinelle Isolationsübung für die Oberschenkelmuskulatur, die mit dem Gesicht nach unten ausgeführt wird.";
+"exercise.info.legs_lying_leg_curl.technique.1" = "Legen Sie sich mit dem Gesicht nach unten hin und richten Sie Ihre Knie auf den Drehpunkt der Maschine aus.";
+"exercise.info.legs_lying_leg_curl.technique.2" = "Platzieren Sie das Polster direkt über Ihren Fersen.";
+"exercise.info.legs_lying_leg_curl.technique.3" = "Halten Sie die Hüften in das Polster gedrückt.";
+"exercise.info.legs_lying_leg_curl.technique.4" = "Rollen Sie das Gewicht kontrolliert in Richtung Ihrer Gesäßmuskulatur.";
+"exercise.info.legs_lying_leg_curl.technique.5" = "Vermeiden Sie es, die Hüften anzuheben, um die Wiederholung zu beenden.";
+"exercise.info.legs_lying_leg_curl.technique.6" = "Senken Sie sich langsam ab, bis die Beine gestreckt sind.";
+
+"exercise.info.legs_seated_leg_curl.description" = "Sitzender Beinbeuger ist eine Isolationsübung für die hintere Oberschenkelmuskulatur, die mit gebeugten Hüften und gestütztem Oberkörper durchgeführt wird.";
+"exercise.info.legs_seated_leg_curl.technique.1" = "Stellen Sie den Sitz so ein, dass Ihre Knie mit dem Maschinendrehpunkt ausgerichtet sind.";
+"exercise.info.legs_seated_leg_curl.technique.2" = "Befestigen Sie das Oberschenkelpolster bequem über den Knien.";
+"exercise.info.legs_seated_leg_curl.technique.3" = "Halten Sie Ihre Hüften und Ihren Rücken gegen den Sitz.";
+"exercise.info.legs_seated_leg_curl.technique.4" = "Rollen Sie das Pad kontrolliert nach unten.";
+"exercise.info.legs_seated_leg_curl.technique.5" = "Machen Sie eine kurze Pause in der kontrahierten Position.";
+"exercise.info.legs_seated_leg_curl.technique.6" = "Kehren Sie langsam zurück, ohne dass der Gewichtsstapel knallt.";
+
+"exercise.info.legs_standing_calf_raise.description" = "Standing Calf Raise trainiert die Waden durch Knöchelstreckung mit größtenteils gestreckten Beinen.";
+"exercise.info.legs_standing_calf_raise.technique.1" = "Stellen Sie sich mit den Fußballen aufrecht auf die Plattform oder den Boden.";
+"exercise.info.legs_standing_calf_raise.technique.2" = "Halten Sie die Knie größtenteils gerade, aber nicht fest durchgestreckt.";
+"exercise.info.legs_standing_calf_raise.technique.3" = "Senken Sie die Fersen kontrolliert auf eine angenehme Dehnung.";
+"exercise.info.legs_standing_calf_raise.technique.4" = "Steigen Sie durch das gesamte Spektrum auf die Zehenspitzen.";
+"exercise.info.legs_standing_calf_raise.technique.5" = "Halten Sie oben kurz inne.";
+"exercise.info.legs_standing_calf_raise.technique.6" = "Vermeiden Sie es, durch die Wiederholungen zu hüpfen.";
+
+"exercise.info.legs_seated_calf_raise.description" = "Beim Wadenheben im Sitzen werden die Waden mit gebeugten Knien trainiert, wobei häufig der Soleus betont wird.";
+"exercise.info.legs_seated_calf_raise.technique.1" = "Setzen Sie sich mit den Fußballen auf die Plattform.";
+"exercise.info.legs_seated_calf_raise.technique.2" = "Positionieren Sie das Polster bequem über den Oberschenkeln.";
+"exercise.info.legs_seated_calf_raise.technique.3" = "Senken Sie die Fersen langsam auf eine angenehme Dehnung ab.";
+"exercise.info.legs_seated_calf_raise.technique.4" = "Drücken Sie durch die Fußballen, um die Fersen anzuheben.";
+"exercise.info.legs_seated_calf_raise.technique.5" = "Halten Sie oben kurz inne.";
+"exercise.info.legs_seated_calf_raise.technique.6" = "Halten Sie die Bewegung kontrolliert und vermeiden Sie Hüpfen.";
+
+"exercise.info.legs_hip_adduction_machine.description" = "Die Hip Adduction Machine trainiert die Innenseiten der Oberschenkel, indem sie die Beine in Richtung Mittellinie bringt.";
+"exercise.info.legs_hip_adduction_machine.technique.1" = "Sitzen Sie hoch und stellen Sie die Polster auf eine angenehme Ausgangsbreite ein.";
+"exercise.info.legs_hip_adduction_machine.technique.2" = "Halten Sie Ihren Rücken gegen den Sitz gestützt.";
+"exercise.info.legs_hip_adduction_machine.technique.3" = "Halten Sie die Griffe fest und stützen Sie sie leicht ab.";
+"exercise.info.legs_hip_adduction_machine.technique.4" = "Bringen Sie die Beine sanft zusammen.";
+"exercise.info.legs_hip_adduction_machine.technique.5" = "Halten Sie kurz inne, ohne die Reichweite zu erzwingen.";
+"exercise.info.legs_hip_adduction_machine.technique.6" = "Kehren Sie langsam zurück und behalten Sie die Kontrolle über die Pads.";
+
+"exercise.info.glutes_hip_thrust.description" = "Hip Thrust ist eine belastete Gesäßübung, bei der der obere Rücken auf einer Bank abgestützt wird.";
+"exercise.info.glutes_hip_thrust.technique.1" = "Legen Sie Ihren oberen Rücken gegen eine Bank und legen Sie die Stange über Ihre Hüften.";
+"exercise.info.glutes_hip_thrust.technique.2" = "Halten Sie die Füße etwa hüftbreit und so nah beieinander, dass die Schienbeine oben fast senkrecht stehen.";
+"exercise.info.glutes_hip_thrust.technique.3" = "Stützen Sie Ihren Rumpf ab, bevor Sie die Hüften anheben.";
+"exercise.info.glutes_hip_thrust.technique.4" = "Fahren Sie durch die Fersen und heben Sie sie an, bis die Hüften vollständig gestreckt sind.";
+"exercise.info.glutes_hip_thrust.technique.5" = "Halten Sie oben kurz inne und spannen Sie die Gesäßmuskulatur an.";
+"exercise.info.glutes_hip_thrust.technique.6" = "Senken Sie sich kontrolliert ab, ohne den unteren Rücken zu überwölben.";
+
+"exercise.info.glutes_glute_bridge.description" = "Glute Bridge ist eine bodenbasierte Gesäßmuskelübung mit einem kürzeren Bewegungsbereich als ein Hüftstoß.";
+"exercise.info.glutes_glute_bridge.technique.1" = "Legen Sie sich auf den Rücken, die Knie sind gebeugt und die Füße stehen flach auf dem Boden.";
+"exercise.info.glutes_glute_bridge.technique.2" = "Platzieren Sie die Füße etwa hüftbreit und halten Sie die Rippen unter Kontrolle.";
+"exercise.info.glutes_glute_bridge.technique.3" = "Fahren Sie durch die Fersen, um Ihre Hüften anzuheben.";
+"exercise.info.glutes_glute_bridge.technique.4" = "Stoppen Sie, wenn die Hüften gestreckt sind und der Körper eine gerade Linie bildet.";
+"exercise.info.glutes_glute_bridge.technique.5" = "Spannen Sie die Gesäßmuskulatur oben an, ohne den Rücken zu krümmen.";
+"exercise.info.glutes_glute_bridge.technique.6" = "Senken Sie sich langsam ab, bis die Hüften wieder den Boden berühren.";
+
+"exercise.info.glutes_romanian_deadlift.description" = "Rumänisches Kreuzheben trainiert mit einer kontrollierten Hüftbeugung die Gesäß- und hintere Oberschenkelmuskulatur.";
+"exercise.info.glutes_romanian_deadlift.technique.1" = "Stehen Sie aufrecht, das Gewicht liegt vor Ihren Oberschenkeln.";
+"exercise.info.glutes_romanian_deadlift.technique.2" = "Stützen Sie Ihren Oberkörper ab und halten Sie die Knie leicht gebeugt.";
+"exercise.info.glutes_romanian_deadlift.technique.3" = "Befestigen Sie die Hüften und schieben Sie sie nach hinten.";
+"exercise.info.glutes_romanian_deadlift.technique.4" = "Halten Sie das Gewicht beim Absenken nahe an Ihren Beinen.";
+"exercise.info.glutes_romanian_deadlift.technique.5" = "Senken Sie die Position, bis Sie eine kontrollierte Dehnung der Oberschenkelmuskulatur spüren.";
+"exercise.info.glutes_romanian_deadlift.technique.6" = "Stehen Sie wieder auf, indem Sie die Hüften nach vorne bewegen.";
+
+"exercise.info.glutes_bulgarian_split_squat.description" = "Bulgarian Split Squat ist eine einbeinige Übung, die die Gesäßmuskulatur und den Quadrizeps kräftig trainieren kann.";
+"exercise.info.glutes_bulgarian_split_squat.technique.1" = "Stellen Sie den hinteren Fuß auf eine Bank oder eine stabile Unterlage.";
+"exercise.info.glutes_bulgarian_split_squat.technique.2" = "Stellen Sie den Vorderfuß weit genug nach vorne, um die Knieposition zu kontrollieren.";
+"exercise.info.glutes_bulgarian_split_squat.technique.3" = "Halten Sie den Oberkörper leicht nach vorne geneigt, wenn Sie auf die Gesäßmuskulatur zielen.";
+"exercise.info.glutes_bulgarian_split_squat.technique.4" = "Senken Sie sich kontrolliert ab, bis sich das Vorderbein bequem beugen lässt.";
+"exercise.info.glutes_bulgarian_split_squat.technique.5" = "Drücken Sie den Vorderfuß durch, um aufzustehen.";
+"exercise.info.glutes_bulgarian_split_squat.technique.6" = "Halten Sie das Gleichgewicht stabil und vermeiden Sie es, von unten zu springen.";
+
+"exercise.info.glutes_cable_kickback.description" = "Cable Kickback trainiert die Gesäßmuskulatur, indem die Hüfte gegen den Kabelwiderstand nach hinten gestreckt wird.";
+"exercise.info.glutes_cable_kickback.technique.1" = "Befestigen Sie die Kabelmanschette in der Nähe des Knöchels und halten Sie das Gerät zur Unterstützung fest.";
+"exercise.info.glutes_cable_kickback.technique.2" = "Stehen Sie aufrecht, neigen Sie sich leicht nach vorne und stützen Sie Ihren Rumpf ab.";
+"exercise.info.glutes_cable_kickback.technique.3" = "Bewegen Sie das Arbeitsbein von der Hüfte nach hinten.";
+"exercise.info.glutes_cable_kickback.technique.4" = "Halten Sie das Becken stabil und vermeiden Sie eine Drehung des Oberkörpers.";
+"exercise.info.glutes_cable_kickback.technique.5" = "Machen Sie eine kurze Pause, wenn sich der Gesäßmuskel zusammenzieht.";
+"exercise.info.glutes_cable_kickback.technique.6" = "Gehen Sie langsam zurück, ohne dass das Gewicht das Bein nach vorne zieht.";
+
+"exercise.info.glutes_leg_kickback.description" = "Leg Kickback ist eine Körpergewichts- oder Band-Gesäßbewegung, die sich auf die Hüftstreckung konzentriert.";
+"exercise.info.glutes_leg_kickback.technique.1" = "Beginnen Sie in einer stabilen Stand- oder Hände-Knie-Position.";
+"exercise.info.glutes_leg_kickback.technique.2" = "Stützen Sie Ihren Rumpf ab, damit der untere Rücken nicht zu weit nach vorn wölbt.";
+"exercise.info.glutes_leg_kickback.technique.3" = "Führen Sie ein Bein von der Hüfte nach hinten.";
+"exercise.info.glutes_leg_kickback.technique.4" = "Halten Sie das Becken gerade und vermeiden Sie Verdrehungen.";
+"exercise.info.glutes_leg_kickback.technique.5" = "Drücken Sie am Ende der Bewegung kurz den Gesäßmuskel an.";
+"exercise.info.glutes_leg_kickback.technique.6" = "Kehren Sie mit Kontrolle zurück, bevor Sie mit der nächsten Wiederholung beginnen.";
+
+"exercise.info.glutes_abduction_machine.description" = "Die Hip Abduction Machine trainiert den mittleren Gesäßmuskel und die äußeren Gesäßmuskeln, indem sie die Beine von der Mittellinie wegbewegt.";
+"exercise.info.glutes_abduction_machine.technique.1" = "Setzen Sie sich mit gestütztem Rücken hin und platzieren Sie die Polster außerhalb der Oberschenkel.";
+"exercise.info.glutes_abduction_machine.technique.2" = "Wählen Sie eine Ausgangsweite, die sich angenehm anfühlt.";
+"exercise.info.glutes_abduction_machine.technique.3" = "Halten Sie die Griffe fest und halten Sie den Oberkörper ruhig.";
+"exercise.info.glutes_abduction_machine.technique.4" = "Öffnen Sie die Beine kontrolliert nach außen.";
+"exercise.info.glutes_abduction_machine.technique.5" = "Machen Sie eine kurze Pause, ohne sich zu beugen oder Schwung zu verwenden.";
+"exercise.info.glutes_abduction_machine.technique.6" = "Kehren Sie langsam zurück und halten Sie die Gesäßmuskulatur unter Spannung.";
+
+"exercise.info.glutes_step_up.description" = "Step-Up ist eine einbeinige Übung, die durch das Betreten einer erhöhten Plattform die Gesäßmuskulatur, den Quadrizeps und das Gleichgewicht trainiert.";
+"exercise.info.glutes_step_up.technique.1" = "Wählen Sie eine Plattformhöhe, die Sie steuern können.";
+"exercise.info.glutes_step_up.technique.2" = "Stellen Sie den gesamten Arbeitsfuß auf die Plattform.";
+"exercise.info.glutes_step_up.technique.3" = "Lehnen Sie sich leicht nach vorne und stützen Sie Ihren Oberkörper ab.";
+"exercise.info.glutes_step_up.technique.4" = "Drücken Sie den Arbeitsfuß durch, um aufzusteigen.";
+"exercise.info.glutes_step_up.technique.5" = "Vermeiden Sie starken Druck auf das hintere Bein.";
+"exercise.info.glutes_step_up.technique.6" = "Treten Sie langsam zurück und wiederholen Sie den Vorgang kontrolliert.";
+
+"exercise.info.glutes_cable_side_kick.description" = "Cable Side Kick trainiert die äußeren Gesäßmuskeln, indem das Bein gegen den Kabelwiderstand seitwärts bewegt wird.";
+"exercise.info.glutes_cable_side_kick.technique.1" = "Befestigen Sie die Kabelmanschette in der Nähe des Knöchels und stellen Sie sich seitlich zur Maschine.";
+"exercise.info.glutes_cable_side_kick.technique.2" = "Halten Sie die Maschine, um das Gleichgewicht zu halten, und halten Sie den Oberkörper aufrecht.";
+"exercise.info.glutes_cable_side_kick.technique.3" = "Bewegen Sie das Arbeitsbein seitlich von der Hüfte nach außen.";
+"exercise.info.glutes_cable_side_kick.technique.4" = "Halten Sie das Becken stabil und vermeiden Sie es, sich zu weit wegzulehnen.";
+"exercise.info.glutes_cable_side_kick.technique.5" = "Halten Sie am Ende des Bereichs kurz inne.";
+"exercise.info.glutes_cable_side_kick.technique.6" = "Kehren Sie langsam zurück, ohne sich vom Kabel aus der Position ziehen zu lassen.";
+
+"exercise.info.shoulders_overhead_press.description" = "Overhead Press ist eine zusammengesetzte Schulterübung, die vertikale Druckkraft und Rumpfstabilität entwickelt.";
+"exercise.info.shoulders_overhead_press.technique.1" = "Stehen Sie mit stabilen Füßen und der Stange in der Nähe der oberen Brust.";
+"exercise.info.shoulders_overhead_press.technique.2" = "Stützen Sie Ihren Oberkörper ab und halten Sie die Rippen unter Kontrolle.";
+"exercise.info.shoulders_overhead_press.technique.3" = "Drücken Sie die Stange in einer weitgehend geraden Richtung nach oben.";
+"exercise.info.shoulders_overhead_press.technique.4" = "Bewegen Sie Ihren Kopf leicht nach hinten und dann nach vorne, während Sie die Stange passieren.";
+"exercise.info.shoulders_overhead_press.technique.5" = "Beenden Sie die Übung mit der Stange über Schultern, Hüfte und Mittelfuß.";
+"exercise.info.shoulders_overhead_press.technique.6" = "Senken Sie sich kontrolliert ab, ohne sich übermäßig zurückzulehnen.";
+
+"exercise.info.shoulders_seated_dumbbell_press.description" = "Das Hanteldrücken im Sitzen baut die Schulterdruckkraft durch unabhängige Armbewegung und stabile Rumpfunterstützung auf.";
+"exercise.info.shoulders_seated_dumbbell_press.technique.1" = "Sitzen Sie aufrecht, mit gestütztem Rücken und aufgesetzten Füßen.";
+"exercise.info.shoulders_seated_dumbbell_press.technique.2" = "Beginnen Sie mit Hanteln auf Schulterhöhe.";
+"exercise.info.shoulders_seated_dumbbell_press.technique.3" = "Halten Sie die Handgelenke über den Ellbogen.";
+"exercise.info.shoulders_seated_dumbbell_press.technique.4" = "Drücken Sie nach oben, ohne den unteren Rücken zu überwölben.";
+"exercise.info.shoulders_seated_dumbbell_press.technique.5" = "Schlagen Sie die Hanteln nicht oben zusammen.";
+"exercise.info.shoulders_seated_dumbbell_press.technique.6" = "Senken Sie beide Hanteln gleichmäßig und kontrolliert ab.";
+
+"exercise.info.shoulders_machine_press.description" = "Machine Shoulder Press trainiert die vertikale Druckkraft mit einem geführten Weg und stabiler Körperunterstützung.";
+"exercise.info.shoulders_machine_press.technique.1" = "Stellen Sie den Sitz so ein, dass die Griffe etwa auf Schulterhöhe beginnen.";
+"exercise.info.shoulders_machine_press.technique.2" = "Halten Sie Ihren Rücken und Ihre Hüften gegen das Polster gestützt.";
+"exercise.info.shoulders_machine_press.technique.3" = "Fassen Sie die Griffe mit neutralen Handgelenken.";
+"exercise.info.shoulders_machine_press.technique.4" = "Drücken Sie sanft nach oben, ohne mit den Schultern zu zucken.";
+"exercise.info.shoulders_machine_press.technique.5" = "Vermeiden Sie es, die Ellbogen aggressiv zu beugen.";
+"exercise.info.shoulders_machine_press.technique.6" = "Bringen Sie die Griffe vor der nächsten Wiederholung wieder unter Kontrolle.";
+
+"exercise.info.shoulders_arnold_press.description" = "Arnold Press ist eine Variante des Schulterdrückens mit Kurzhanteln, die Rotation mit Überkopfdrücken kombiniert.";
+"exercise.info.shoulders_arnold_press.technique.1" = "Beginnen Sie im Sitzen oder Stehen mit Hanteln vor den Schultern.";
+"exercise.info.shoulders_arnold_press.technique.2" = "Beginnen Sie mit den Handflächen zu Ihnen und den Ellbogen nach vorne.";
+"exercise.info.shoulders_arnold_press.technique.3" = "Drehen Sie die Hanteln nach außen, während Sie über den Kopf drücken.";
+"exercise.info.shoulders_arnold_press.technique.4" = "Halten Sie die Bewegung gleichmäßig und kontrolliert.";
+"exercise.info.shoulders_arnold_press.technique.5" = "Vermeiden Sie eine übermäßige Krümmung des Rückens während des Drückens.";
+"exercise.info.shoulders_arnold_press.technique.6" = "Kehren Sie die Drehung um, während Sie zum Start absenken.";
+
+"exercise.info.shoulders_lateral_raise.description" = "Lateral Raise ist eine Isolationsübung für die seitlichen Deltamuskeln und die Schulterbreite.";
+"exercise.info.shoulders_lateral_raise.technique.1" = "Stehen Sie aufrecht und beugen Sie die Ellenbogen leicht.";
+"exercise.info.shoulders_lateral_raise.technique.2" = "Heben Sie die Hanteln kontrolliert zur Seite.";
+"exercise.info.shoulders_lateral_raise.technique.3" = "Führen Sie mit den Ellbogen statt mit den Händen.";
+"exercise.info.shoulders_lateral_raise.technique.4" = "Halten Sie etwa auf Schulterhöhe an.";
+"exercise.info.shoulders_lateral_raise.technique.5" = "Senken Sie sich langsam ab, ohne die Gewichte fallen zu lassen.";
+"exercise.info.shoulders_lateral_raise.technique.6" = "Vermeiden Sie es, Ihren Oberkörper zu schwingen, um die Wiederholung zu beginnen.";
+
+"exercise.info.shoulders_cable_lateral_raise.description" = "Cable Lateral Raise trainiert die seitlichen Schultermuskeln mit konstanter Kabelspannung über den gesamten Bewegungsbereich.";
+"exercise.info.shoulders_cable_lateral_raise.technique.1" = "Legen Sie das Kabel tief und stellen Sie sich seitlich zur Maschine.";
+"exercise.info.shoulders_cable_lateral_raise.technique.2" = "Halten Sie den Griff mit der Außenhand fest und stützen Sie Ihren Oberkörper ab.";
+"exercise.info.shoulders_cable_lateral_raise.technique.3" = "Behalten Sie eine sanfte Beugung des Ellenbogens bei.";
+"exercise.info.shoulders_cable_lateral_raise.technique.4" = "Heben Sie den Arm seitlich auf etwa Schulterhöhe an.";
+"exercise.info.shoulders_cable_lateral_raise.technique.5" = "Kontrollieren Sie den Rücklauf und halten Sie die Spannung am Kabel aufrecht.";
+"exercise.info.shoulders_cable_lateral_raise.technique.6" = "Lehnen oder drehen Sie sich nicht, um mehr Gewicht zu heben.";
+
+"exercise.info.shoulders_front_raise.description" = "Front Raise trainiert die vorderen Deltamuskeln durch kontrollierte Schulterbeugung.";
+"exercise.info.shoulders_front_raise.technique.1" = "Stehen Sie aufrecht und stützen Sie Ihren Oberkörper ab.";
+"exercise.info.shoulders_front_raise.technique.2" = "Halten Sie die Gewichte vor Ihre Oberschenkel.";
+"exercise.info.shoulders_front_raise.technique.3" = "Heben Sie das Gewicht nach vorne auf etwa Schulterhöhe an.";
+"exercise.info.shoulders_front_raise.technique.4" = "Halten Sie die Ellbogen leicht gebeugt und die Handgelenke neutral.";
+"exercise.info.shoulders_front_raise.technique.5" = "Senken Sie sich langsam ab, ohne sich nach hinten zu lehnen.";
+"exercise.info.shoulders_front_raise.technique.6" = "Vermeiden Sie es, das Gewicht aus der Hüfte zu schwingen.";
+
+"exercise.info.shoulders_reverse_fly.description" = "Reverse Fly trainiert die hinteren Deltamuskeln und die Kontrolle des oberen Rückens durch horizontale Armbewegungen.";
+"exercise.info.shoulders_reverse_fly.technique.1" = "Hängen Sie die Hüfte ein oder legen Sie sich mit der Brust nach unten auf eine Schrägbank.";
+"exercise.info.shoulders_reverse_fly.technique.2" = "Halten Sie die Ellenbogen sanft gebeugt.";
+"exercise.info.shoulders_reverse_fly.technique.3" = "Öffnen Sie die Arme seitlich.";
+"exercise.info.shoulders_reverse_fly.technique.4" = "Konzentrieren Sie sich auf die hinteren Deltamuskeln, anstatt mit den Schultern zu zucken.";
+"exercise.info.shoulders_reverse_fly.technique.5" = "Bei Kontrolle oben kurz pausieren.";
+"exercise.info.shoulders_reverse_fly.technique.6" = "Senken Sie sich langsam ab, ohne die Gewichte schwingen zu lassen.";
+
+"exercise.info.shoulders_reverse_pec_deck.description" = "Reverse Pec Deck ist eine Maschinenübung für die hinteren Deltamuskeln und die Stabilität des oberen Rückens.";
+"exercise.info.shoulders_reverse_pec_deck.technique.1" = "Stellen Sie den Sitz so ein, dass sich die Griffe etwa auf Schulterhöhe befinden.";
+"exercise.info.shoulders_reverse_pec_deck.technique.2" = "Setzen Sie sich mit gestützter Brust und dem Gesicht zur Unterlage hin.";
+"exercise.info.shoulders_reverse_pec_deck.technique.3" = "Fassen Sie die Griffe und halten Sie die Schultern unten.";
+"exercise.info.shoulders_reverse_pec_deck.technique.4" = "Öffne die Arme in einem weiten Bogen nach hinten.";
+"exercise.info.shoulders_reverse_pec_deck.technique.5" = "Machen Sie eine kurze Pause, ohne sich vom Pad wegzulehnen.";
+"exercise.info.shoulders_reverse_pec_deck.technique.6" = "Kehren Sie langsam zurück und behalten Sie die Kontrolle über den Stapel.";
+
+"exercise.info.shoulders_upright_row.description" = "Upright Row trainiert die Schultern und den oberen Bauchmuskeln mit einer vertikalen Zugbewegung.";
+"exercise.info.shoulders_upright_row.technique.1" = "Halten Sie die Hantel oder Hantel vor Ihre Oberschenkel.";
+"exercise.info.shoulders_upright_row.technique.2" = "Halten Sie das Gewicht nah an Ihrem Körper.";
+"exercise.info.shoulders_upright_row.technique.3" = "Mit den Ellbogen nach oben ziehen.";
+"exercise.info.shoulders_upright_row.technique.4" = "Halten Sie auf Höhe der unteren oder oberen Brusthöhe an.";
+"exercise.info.shoulders_upright_row.technique.5" = "Kontrolliert absenken, ohne zu schwingen.";
+"exercise.info.shoulders_upright_row.technique.6" = "Hören Sie auf, wenn sich die Bewegung in den Schultern unangenehm anfühlt.";
+
+"exercise.info.shoulders_face_pull.description" = "Face Pull ist eine Kabelzugübung für die hinteren Deltamuskeln, Außenrotatoren und die Kontrolle des oberen Rückens.";
+"exercise.info.shoulders_face_pull.technique.1" = "Legen Sie das Kabel etwa auf Brust- oder Gesichtshöhe an.";
+"exercise.info.shoulders_face_pull.technique.2" = "Verwenden Sie eine Seilbefestigung und treten Sie zurück, um Spannung zu erzeugen.";
+"exercise.info.shoulders_face_pull.technique.3" = "Ziehen Sie das Seil mit ausgestreckten Ellbogen zu Ihrem Gesicht.";
+"exercise.info.shoulders_face_pull.technique.4" = "Trennen Sie die Seilenden beim Ziehen.";
+"exercise.info.shoulders_face_pull.technique.5" = "Halten Sie die Rippen unten und vermeiden Sie es, sich zurückzulehnen.";
+"exercise.info.shoulders_face_pull.technique.6" = "Kehren Sie langsam und mit kontrollierten Schultern zurück.";
+
+"exercise.info.biceps_barbell_curl.description" = "Langhantelcurl ist eine klassische Bizepsübung, die die Ellenbogenbeugung trainiert, indem beide Arme zusammenarbeiten.";
+"exercise.info.biceps_barbell_curl.technique.1" = "Stehen Sie aufrecht, mit stabilen Füßen und der Hantel vor Ihren Oberschenkeln.";
+"exercise.info.biceps_barbell_curl.technique.2" = "Halten Sie die Ellbogen nah an Ihren Seiten.";
+"exercise.info.biceps_barbell_curl.technique.3" = "Bewegen Sie die Stange nach oben, ohne Ihren Oberkörper zu schwingen.";
+"exercise.info.biceps_barbell_curl.technique.4" = "Halten Sie die Handgelenke neutral und vermeiden Sie es, sie nach hinten zu beugen.";
+"exercise.info.biceps_barbell_curl.technique.5" = "Oben kurz zusammendrücken.";
+"exercise.info.biceps_barbell_curl.technique.6" = "Senken Sie sich langsam ab, bis die Arme kontrolliert gestreckt sind.";
+
+"exercise.info.biceps_ez_bar_curl.description" = "EZ-Bar Curl ist eine Bizeps-Curl-Variante, bei der eine abgewinkelte Stange verwendet wird, um die Belastung des Handgelenks für viele Lifter zu reduzieren.";
+"exercise.info.biceps_ez_bar_curl.technique.1" = "Halten Sie die EZ-Bar mit einem bequemen, abgewinkelten Griff.";
+"exercise.info.biceps_ez_bar_curl.technique.2" = "Stehen Sie aufrecht und stützen Sie Ihren Oberkörper ab.";
+"exercise.info.biceps_ez_bar_curl.technique.3" = "Halten Sie die Ellbogen während der gesamten Wiederholung nahe an Ihren Seiten.";
+"exercise.info.biceps_ez_bar_curl.technique.4" = "Locken Sie die Stange sanft, ohne sich zurückzulehnen.";
+"exercise.info.biceps_ez_bar_curl.technique.5" = "Halten Sie bei Kontrolle kurz in der Nähe der Spitze an.";
+"exercise.info.biceps_ez_bar_curl.technique.6" = "Senken Sie sich kontrolliert ab und vermeiden Sie es, sich am Boden zu entspannen.";
+
+"exercise.info.biceps_dumbbell_curl.description" = "Hantelcurl trainiert den Bizeps durch unabhängige Armbewegung und eine natürliche Handgelenksbewegung.";
+"exercise.info.biceps_dumbbell_curl.technique.1" = "Stehen oder sitzen Sie aufrecht mit Hanteln an Ihrer Seite.";
+"exercise.info.biceps_dumbbell_curl.technique.2" = "Halten Sie die Ellenbogen nah am Oberkörper.";
+"exercise.info.biceps_dumbbell_curl.technique.3" = "Locken Sie beide Hanteln sanft über den gesamten Bereich.";
+"exercise.info.biceps_dumbbell_curl.technique.4" = "Drehen Sie die Handflächen nach oben, wenn Sie eine supinierende Locke verwenden.";
+"exercise.info.biceps_dumbbell_curl.technique.5" = "Vermeiden Sie es, sich zurückzulehnen oder die Gewichte zu schwingen.";
+"exercise.info.biceps_dumbbell_curl.technique.6" = "Kontrolliert absenken, bis die Arme ausgestreckt sind.";
+
+"exercise.info.biceps_alternating_dumbbell_curl.description" = "Beim abwechselnden Kurzhantelcurl wird jeder Arm einzeln trainiert, wobei die Bewegung kontrolliert bleibt.";
+"exercise.info.biceps_alternating_dumbbell_curl.technique.1" = "Halten Sie die Hanteln seitlich und stehen Sie aufrecht.";
+"exercise.info.biceps_alternating_dumbbell_curl.technique.2" = "Locken Sie eine Hantel, während der andere Arm ruhig bleibt.";
+"exercise.info.biceps_alternating_dumbbell_curl.technique.3" = "Halten Sie den Arbeitsarm nahe an Ihrer Seite.";
+"exercise.info.biceps_alternating_dumbbell_curl.technique.4" = "Kontrollieren Sie das Handgelenk und vermeiden Sie eine Vorwärtsdrehung der Schulter.";
+"exercise.info.biceps_alternating_dumbbell_curl.technique.5" = "Vor dem Wechseln der Arme vollständig absenken.";
+"exercise.info.biceps_alternating_dumbbell_curl.technique.6" = "Halten Sie die Wiederholungen auf beiden Seiten gleichmäßig.";
+
+"exercise.info.biceps_hammer_curl.description" = "Hammer Curl verwendet einen neutralen Griff, um die Bizeps-, Brachialis- und Unterarmmuskulatur zu trainieren.";
+"exercise.info.biceps_hammer_curl.technique.1" = "Halten Sie die Hanteln so, dass die Handflächen einander zugewandt sind.";
+"exercise.info.biceps_hammer_curl.technique.2" = "Halten Sie die Ellbogen nahe an Ihren Seiten.";
+"exercise.info.biceps_hammer_curl.technique.3" = "Locken Sie, ohne die Handgelenke zu drehen.";
+"exercise.info.biceps_hammer_curl.technique.4" = "Heben Sie, bis die Unterarme nahezu senkrecht sind.";
+"exercise.info.biceps_hammer_curl.technique.5" = "Vermeiden Sie es, die Hanteln nach vorne zu schwingen.";
+"exercise.info.biceps_hammer_curl.technique.6" = "Senken Sie sich langsam ab und halten Sie den Griff neutral.";
+
+"exercise.info.biceps_preacher_curl.description" = "Preacher Curl stützt die Oberarme auf einem Polster, um den Bizeps zu isolieren und den Körperimpuls zu begrenzen.";
+"exercise.info.biceps_preacher_curl.technique.1" = "Stellen Sie den Sitz so ein, dass Ihre Oberarme vollständig auf dem Polster aufliegen.";
+"exercise.info.biceps_preacher_curl.technique.2" = "Halten Sie die Brust nahe an der Bank.";
+"exercise.info.biceps_preacher_curl.technique.3" = "Beginnen Sie mit leicht gebeugten Ellbogen, nicht mit Gewalt.";
+"exercise.info.biceps_preacher_curl.technique.4" = "Rollen Sie das Gewicht, ohne die Oberarme vom Polster abzuheben.";
+"exercise.info.biceps_preacher_curl.technique.5" = "Halten Sie oben kurz inne.";
+"exercise.info.biceps_preacher_curl.technique.6" = "Senken Sie das Gerät langsam ab und vermeiden Sie, dass es auf den Boden fällt.";
+
+"exercise.info.biceps_dumbbell_preacher_curl.description" = "Dumbbell Preacher Curl ist eine einarmige Preacher-Variante für strengeres seitliches Bizepstraining.";
+"exercise.info.biceps_dumbbell_preacher_curl.technique.1" = "Legen Sie einen Oberarm fest auf das Preacher-Pad.";
+"exercise.info.biceps_dumbbell_preacher_curl.technique.2" = "Halten Sie die Hantel mit neutralem Handgelenk.";
+"exercise.info.biceps_dumbbell_preacher_curl.technique.3" = "Locken Sie, ohne den Ellenbogen vom Polster abzuheben.";
+"exercise.info.biceps_dumbbell_preacher_curl.technique.4" = "Halten Sie die Bewegung langsam und streng.";
+"exercise.info.biceps_dumbbell_preacher_curl.technique.5" = "Senken Sie den Arm, bis er gestreckt, aber nicht entspannt ist.";
+"exercise.info.biceps_dumbbell_preacher_curl.technique.6" = "Wiederholen Sie die gleiche Reichweite und Kontrolle auf beiden Armen.";
+
+"exercise.info.biceps_incline_dumbbell_curl.description" = "Incline Dumbbell Curl dehnt den Bizeps, indem die Arme hinter dem Oberkörper auf einer Schrägbank gebeugt werden.";
+"exercise.info.biceps_incline_dumbbell_curl.technique.1" = "Stellen Sie die Bank auf eine mäßige Neigung ein.";
+"exercise.info.biceps_incline_dumbbell_curl.technique.2" = "Lassen Sie die Arme mit entspannten Schultern nach unten hängen.";
+"exercise.info.biceps_incline_dumbbell_curl.technique.3" = "Halten Sie die Ellbogen beim Locken weitgehend fixiert.";
+"exercise.info.biceps_incline_dumbbell_curl.technique.4" = "Locken Sie sich durch einen bequemen Bereich, ohne zu schwingen.";
+"exercise.info.biceps_incline_dumbbell_curl.technique.5" = "Vermeiden Sie es, die Schultern nach vorne rollen zu lassen.";
+"exercise.info.biceps_incline_dumbbell_curl.technique.6" = "Senken Sie sich langsam ab, um eine kontrollierte Dehnung zu spüren.";
+
+"exercise.info.biceps_concentration_curl.description" = "Concentration Curl ist ein strenger einarmiger Curl, der sich auf die kontrollierte Bizepskontraktion konzentriert.";
+"exercise.info.biceps_concentration_curl.technique.1" = "Setzen Sie sich und stützen Sie den Oberarm an der Innenseite des Oberschenkels ab.";
+"exercise.info.biceps_concentration_curl.technique.2" = "Beginnen Sie mit kontrolliert ausgestrecktem Arm.";
+"exercise.info.biceps_concentration_curl.technique.3" = "Locken Sie die Hantel, ohne die Schulter zu bewegen.";
+"exercise.info.biceps_concentration_curl.technique.4" = "Halten Sie oben kurz inne.";
+"exercise.info.biceps_concentration_curl.technique.5" = "Senken Sie sich langsam und halten Sie die Wiederholungen streng.";
+"exercise.info.biceps_concentration_curl.technique.6" = "Vermeiden Sie es, den Oberkörper zu verdrehen, um die Wiederholung zu beenden.";
+
+"exercise.info.biceps_cable_curl.description" = "Cable Curl trainiert den Bizeps mit konstanter Kabelspannung während der Bewegung.";
+"exercise.info.biceps_cable_curl.technique.1" = "Stehen Sie stabil gegenüber dem Kabelstapel.";
+"exercise.info.biceps_cable_curl.technique.2" = "Halten Sie die Ellbogen nah an Ihren Seiten.";
+"exercise.info.biceps_cable_curl.technique.3" = "Rollen Sie den Griff sanft in Richtung Brust.";
+"exercise.info.biceps_cable_curl.technique.4" = "Halten Sie die Schultern gesenkt und den Oberkörper ruhig.";
+"exercise.info.biceps_cable_curl.technique.5" = "Oben kurz zusammendrücken.";
+"exercise.info.biceps_cable_curl.technique.6" = "Kontrollieren Sie die Rückkehr, ohne den Stapel fallen zu lassen.";
+
+"exercise.info.biceps_spider_curl.description" = "Spider Curl ist eine strenge Curl-Variante, die mit der Brust nach unten auf einer Schrägbank ausgeführt wird, um den Schwung zu begrenzen.";
+"exercise.info.biceps_spider_curl.technique.1" = "Legen Sie sich mit hängenden Armen mit der Brust nach unten auf eine Schrägbank.";
+"exercise.info.biceps_spider_curl.technique.2" = "Halten Sie die Brust gestützt und die Schultern entspannt.";
+"exercise.info.biceps_spider_curl.technique.3" = "Rollen Sie das Gewicht, ohne die Oberarme stark zu bewegen.";
+"exercise.info.biceps_spider_curl.technique.4" = "Halten Sie oben kurz inne.";
+"exercise.info.biceps_spider_curl.technique.5" = "Langsam absenken, bis die volle Kontrolle erreicht ist.";
+"exercise.info.biceps_spider_curl.technique.6" = "Verwenden Sie eine mäßige Belastung, damit die Bewegung streng bleibt.";
+
+"exercise.info.triceps_close_grip_bench_press.description" = "Bankdrücken mit engem Griff ist ein Verbunddrücken, das den Trizeps betont und gleichzeitig Brust und Schultern beansprucht.";
+"exercise.info.triceps_close_grip_bench_press.technique.1" = "Legen Sie sich mit den Augen unter die Stange und die Füße fest auf den Boden.";
+"exercise.info.triceps_close_grip_bench_press.technique.2" = "Greifen Sie die Stange etwas schmaler als schulterbreit.";
+"exercise.info.triceps_close_grip_bench_press.technique.3" = "Halten Sie die Schulterblätter auf der Bank nach hinten und unten gezogen.";
+"exercise.info.triceps_close_grip_bench_press.technique.4" = "Senken Sie die Stange kontrolliert in Richtung der unteren Brust.";
+"exercise.info.triceps_close_grip_bench_press.technique.5" = "Halten Sie die Ellbogen näher am Körper und nicht weit auseinander.";
+"exercise.info.triceps_close_grip_bench_press.technique.6" = "Drücken Sie sanft nach oben, ohne die Spannung im oberen Rückenbereich zu verlieren.";
+
+"exercise.info.triceps_dips.description" = "Dips trainieren den Trizeps stark mit Körpergewicht oder Zusatzgewicht, insbesondere wenn der Oberkörper aufrechter bleibt.";
+"exercise.info.triceps_dips.technique.1" = "Beginnen Sie am Barren mit geraden Armen und kontrollierten Schultern.";
+"exercise.info.triceps_dips.technique.2" = "Halten Sie den Oberkörper relativ aufrecht, um den Trizeps zu betonen.";
+"exercise.info.triceps_dips.technique.3" = "Senken Sie die Position, bis sich Schultern und Ellenbogen angenehm anfühlen.";
+"exercise.info.triceps_dips.technique.4" = "Halten Sie die Ellbogen dabei, sich nach hinten zu bewegen, anstatt sie weit nach außen zu strecken.";
+"exercise.info.triceps_dips.technique.5" = "Drücken Sie durch die Griffe, bis die Arme fast gerade sind.";
+"exercise.info.triceps_dips.technique.6" = "Benutzen Sie ein kontrolliertes Tempo und vermeiden Sie Sprünge am unteren Ende.";
+
+"exercise.info.triceps_french_press.description" = "French Press im Liegen ist eine Trizeps-Isolationsübung, die auf einer Bank mit einer EZ-Stange oder Langhantel durchgeführt wird.";
+"exercise.info.triceps_french_press.technique.1" = "Legen Sie sich auf eine flache Bank und stellen Sie die Füße fest auf den Boden.";
+"exercise.info.triceps_french_press.technique.2" = "Halten Sie die Stange mit einem sicheren und bequemen Griff über den Schultern.";
+"exercise.info.triceps_french_press.technique.3" = "Halten Sie die Oberarme nahezu senkrecht und stabil.";
+"exercise.info.triceps_french_press.technique.4" = "Beugen Sie die Ellbogen, um die Stange in Richtung Stirn oder leicht dahinter abzusenken.";
+"exercise.info.triceps_french_press.technique.5" = "Strecken Sie die Ellbogen aus, um die Stange zurückzuholen, ohne sie in eine Brustpresse umzuwandeln.";
+"exercise.info.triceps_french_press.technique.6" = "Senken Sie das Gewicht kontrolliert ab und nutzen Sie einen schmerzfreien Bereich für die Ellenbogen.";
+
+"exercise.info.triceps_cable_pushdown.description" = "Cable Pushdown trainiert den Trizeps mit gleichmäßiger Kabelspannung und ist eine der häufigsten Trizeps-Isolationsübungen.";
+"exercise.info.triceps_cable_pushdown.technique.1" = "Stehen Sie mit dem Gesicht zum Kabel und den Ellbogen nah an Ihren Seiten.";
+"exercise.info.triceps_cable_pushdown.technique.2" = "Halten Sie die Brust angehoben und die Schultern entspannt.";
+"exercise.info.triceps_cable_pushdown.technique.3" = "Drücken Sie den Griff nach unten, indem Sie die Ellbogen strecken.";
+"exercise.info.triceps_cable_pushdown.technique.4" = "Vermeiden Sie es, Ihren Körper über den Griff zu beugen, um die Wiederholungen zu beenden.";
+"exercise.info.triceps_cable_pushdown.technique.5" = "Unten kurz zusammendrücken.";
+"exercise.info.triceps_cable_pushdown.technique.6" = "Kehren Sie unter Kontrolle zurück, ohne die Ellbogen nach vorne driften zu lassen.";
+
+"exercise.info.triceps_rope_pushdown.description" = "Rope Pushdown ist eine Kabel-Pushdown-Variante, die einen starken Lockout und eine natürliche Handgelenksposition ermöglicht.";
+"exercise.info.triceps_rope_pushdown.technique.1" = "Halten Sie beide Seilenden fest und stellen Sie sich nahe genug hin, um die Spannung aufrechtzuerhalten.";
+"exercise.info.triceps_rope_pushdown.technique.2" = "Halten Sie die Ellbogen in der Nähe der Rippen fest.";
+"exercise.info.triceps_rope_pushdown.technique.3" = "Strecken Sie die Ellenbogen aus und trennen Sie die Seilenden unten.";
+"exercise.info.triceps_rope_pushdown.technique.4" = "Halten Sie Ihre Handgelenke bequem und neutral.";
+"exercise.info.triceps_rope_pushdown.technique.5" = "Schwingen Sie den Oberkörper nicht, um das Gewicht zu bewegen.";
+"exercise.info.triceps_rope_pushdown.technique.6" = "Lassen Sie das Seil langsam zurücklaufen, während Sie die Oberarme ruhig halten.";
+
+"exercise.info.triceps_two_arm_overhead_dumbbell_extension.description" = "Die zweiarmige Überkopf-Hantelverlängerung trainiert den langen Kopf des Trizeps, indem beide Hände eine Hantel über dem Kopf halten.";
+"exercise.info.triceps_two_arm_overhead_dumbbell_extension.technique.1" = "Halten Sie eine Hantel über den Kopf und umfassen Sie mit beiden Händen den Griff oder die Platte.";
+"exercise.info.triceps_two_arm_overhead_dumbbell_extension.technique.2" = "Halten Sie die Rippen unten und den Oberkörper stabil.";
+"exercise.info.triceps_two_arm_overhead_dumbbell_extension.technique.3" = "Richten Sie die Ellbogen nach vorne und achten Sie darauf, dass sie nicht zu weit auseinander ragen.";
+"exercise.info.triceps_two_arm_overhead_dumbbell_extension.technique.4" = "Senken Sie die Hantel kontrolliert hinter den Kopf.";
+"exercise.info.triceps_two_arm_overhead_dumbbell_extension.technique.5" = "Strecken Sie die Ellbogen aus, um die Hantel wieder über den Kopf zu bringen.";
+"exercise.info.triceps_two_arm_overhead_dumbbell_extension.technique.6" = "Verwenden Sie ein Gewicht, das Sie kontrollieren können, ohne den Rücken zu krümmen.";
+
+"exercise.info.triceps_one_arm_overhead_dumbbell_extension.description" = "Die einarmige Überkopf-Hantelverlängerung ist eine einseitige Trizepsübung, die dabei hilft, jeden Arm über den gesamten Überkopfbereich zu trainieren.";
+"exercise.info.triceps_one_arm_overhead_dumbbell_extension.technique.1" = "Halten Sie eine Hantel mit einem Arm über den Kopf.";
+"exercise.info.triceps_one_arm_overhead_dumbbell_extension.technique.2" = "Stützen Sie den Oberkörper ab und halten Sie die Schulter stabil.";
+"exercise.info.triceps_one_arm_overhead_dumbbell_extension.technique.3" = "Beugen Sie den Ellbogen und senken Sie die Hantel hinter den Kopf.";
+"exercise.info.triceps_one_arm_overhead_dumbbell_extension.technique.4" = "Halten Sie den Ellenbogen größtenteils nach oben gerichtet.";
+"exercise.info.triceps_one_arm_overhead_dumbbell_extension.technique.5" = "Strecken Sie sich wieder nach oben, ohne dass das Handgelenk einknickt.";
+"exercise.info.triceps_one_arm_overhead_dumbbell_extension.technique.6" = "Passen Sie bei beiden Armen die gleiche Reichweite und Kontrolle an.";
+
+"exercise.info.triceps_overhead_cable_extension.description" = "Die Overhead Cable Extension hält den Trizeps in einer Overhead-Position unter Spannung und zielt gut auf den langen Kopf ab.";
+"exercise.info.triceps_overhead_cable_extension.technique.1" = "Platzieren Sie das Kabel tief oder hinter sich und nehmen Sie einen stabilen Stand ein.";
+"exercise.info.triceps_overhead_cable_extension.technique.2" = "Bringen Sie den Griff oder das Seil mit gebeugten Ellbogen über den Kopf.";
+"exercise.info.triceps_overhead_cable_extension.technique.3" = "Halten Sie die Oberarme nach vorne abgewinkelt und größtenteils fixiert.";
+"exercise.info.triceps_overhead_cable_extension.technique.4" = "Strecken Sie die Ellenbogen aus, bis die Arme fast gerade sind.";
+"exercise.info.triceps_overhead_cable_extension.technique.5" = "Halten Sie die Rippen unter Kontrolle und vermeiden Sie eine übermäßige Wölbung.";
+"exercise.info.triceps_overhead_cable_extension.technique.6" = "Gehen Sie langsam zurück und halten Sie die Spannung des Kabels aufrecht.";
+
+"exercise.info.triceps_lying_dumbbell_extension.description" = "Trizepsstrecken mit Kurzhanteln im Liegen trainiert beide Arme unabhängig voneinander.";
+"exercise.info.triceps_lying_dumbbell_extension.technique.1" = "Legen Sie sich auf eine Bank und halten Sie die Hanteln über den Schultern.";
+"exercise.info.triceps_lying_dumbbell_extension.technique.2" = "Halten Sie die Oberarme ruhig und die Ellbogen zeigen nach oben.";
+"exercise.info.triceps_lying_dumbbell_extension.technique.3" = "Senken Sie die Hanteln seitlich am Kopf ab.";
+"exercise.info.triceps_lying_dumbbell_extension.technique.4" = "Verwenden Sie einen neutralen oder bequemen Griff.";
+"exercise.info.triceps_lying_dumbbell_extension.technique.5" = "Strecken Sie die Ellbogen, ohne sie in eine Presse zu verwandeln.";
+"exercise.info.triceps_lying_dumbbell_extension.technique.6" = "Halten Sie beide Arme gleichmäßig und unter Kontrolle.";
+
+"exercise.info.triceps_kickback.description" = "Kickback ist eine strenge Trizeps-Isolationsübung, die normalerweise mit einer Hantel oder einem Kabelzug aus einer aufklappbaren Position ausgeführt wird.";
+"exercise.info.triceps_kickback.technique.1" = "Beugen Sie sich bei Bedarf mit flachem Rücken und gestütztem Oberkörper nach vorne.";
+"exercise.info.triceps_kickback.technique.2" = "Halten Sie den Oberarm nah am Körper und ungefähr parallel zum Boden.";
+"exercise.info.triceps_kickback.technique.3" = "Strecken Sie den Ellenbogen aus, bis der Arm gerade hinter Ihnen liegt.";
+"exercise.info.triceps_kickback.technique.4" = "Oben kurz innehalten, ohne zu schwingen.";
+"exercise.info.triceps_kickback.technique.5" = "Senken Sie sich langsam ab, während Sie die Schulter ruhig halten.";
+"exercise.info.triceps_kickback.technique.6" = "Verwenden Sie eine ausreichend leichte Last, um die Bewegung gleichmäßig zu halten.";
+
+"exercise.info.triceps_close_grip_push_up.description" = "Close-Grip Push-Up ist eine auf den Körpergewichts-Trizeps fokussierte Liegestütz-Variante, bei der die Hände schmaler als üblich platziert sind.";
+"exercise.info.triceps_close_grip_push_up.technique.1" = "Platzieren Sie die Hände unter oder leicht innerhalb der Schulterbreite.";
+"exercise.info.triceps_close_grip_push_up.technique.2" = "Halten Sie den Körper in einer geraden Linie.";
+"exercise.info.triceps_close_grip_push_up.technique.3" = "Senken Sie die Position mit den Ellbogen nahe an den Rippen ab.";
+"exercise.info.triceps_close_grip_push_up.technique.4" = "Halten Sie den Hals neutral und den Rumpf angespannt.";
+"exercise.info.triceps_close_grip_push_up.technique.5" = "Drücken Sie sich wieder nach oben, indem Sie die Ellbogen strecken.";
+"exercise.info.triceps_close_grip_push_up.technique.6" = "Passen Sie den Handabstand an, wenn sich die Handgelenke unangenehm anfühlen.";
+
+"exercise.info.forearms_wrist_curl.description" = "Wrist Curl trainiert die Handgelenksbeuger an der Innenseite des Unterarms mit einer einfachen Curling-Bewegung am Handgelenk.";
+"exercise.info.forearms_wrist_curl.technique.1" = "Sitzen oder stehen Sie mit gestützten Unterarmen und nach oben gerichteten Handflächen.";
+"exercise.info.forearms_wrist_curl.technique.2" = "Lassen Sie die Handgelenke unten leicht kontrolliert ausstrecken.";
+"exercise.info.forearms_wrist_curl.technique.3" = "Rollen Sie das Gewicht nach oben, indem Sie nur die Handgelenke bewegen.";
+"exercise.info.forearms_wrist_curl.technique.4" = "Halten Sie die Unterarme während des gesamten Satzes ruhig.";
+"exercise.info.forearms_wrist_curl.technique.5" = "Halten Sie oben kurz inne, ohne die Ellbogen anzuheben.";
+"exercise.info.forearms_wrist_curl.technique.6" = "Senken Sie das Gewicht langsam ab und vermeiden Sie, dass das Gewicht auf und ab springt.";
+
+"exercise.info.forearms_reverse_wrist_curl.description" = "Reverse Wrist Curl zielt auf die Handgelenksstrecker auf der Oberseite des Unterarms ab.";
+"exercise.info.forearms_reverse_wrist_curl.technique.1" = "Stützen Sie die Unterarme mit den Handflächen nach unten.";
+"exercise.info.forearms_reverse_wrist_curl.technique.2" = "Halten Sie das Gewicht mit kontrolliertem Griff.";
+"exercise.info.forearms_reverse_wrist_curl.technique.3" = "Heben Sie die Knöchel nach oben, indem Sie die Handgelenke strecken.";
+"exercise.info.forearms_reverse_wrist_curl.technique.4" = "Halten Sie die Bewegung klein, streng und gleichmäßig.";
+"exercise.info.forearms_reverse_wrist_curl.technique.5" = "Heben Sie die Unterarme nicht von der Stütze ab.";
+"exercise.info.forearms_reverse_wrist_curl.technique.6" = "Senken Sie sich langsam in die Ausgangsposition ab.";
+
+"exercise.info.forearms_reverse_barbell_curl.description" = "Langhantel-Curls im Obergriff trainieren Unterarme, Brachialis und Bizeps.";
+"exercise.info.forearms_reverse_barbell_curl.technique.1" = "Stehen Sie aufrecht und halten Sie die Stange mit proniertem Griff.";
+"exercise.info.forearms_reverse_barbell_curl.technique.2" = "Halten Sie die Ellbogen nah an den Seiten.";
+"exercise.info.forearms_reverse_barbell_curl.technique.3" = "Rollen Sie die Stange nach oben, ohne den Oberkörper zu schwingen.";
+"exercise.info.forearms_reverse_barbell_curl.technique.4" = "Halten Sie Ihre Handgelenke fest und lassen Sie sie nicht nach hinten beugen.";
+"exercise.info.forearms_reverse_barbell_curl.technique.5" = "Halten Sie oben kurz inne.";
+"exercise.info.forearms_reverse_barbell_curl.technique.6" = "Über den gesamten Bereich kontrolliert absenken.";
+
+"exercise.info.forearms_behind_back_wrist_curl.description" = "Beim Behind-the-Back Wrist Curl handelt es sich um eine stehende Handgelenk-Curl-Variante, bei der die Unterarmbeuger hinter dem Körper belastet werden.";
+"exercise.info.forearms_behind_back_wrist_curl.technique.1" = "Stellen Sie sich hin und halten Sie eine Langhantel hinter Ihrem Körper, die Handflächen zeigen nach hinten.";
+"exercise.info.forearms_behind_back_wrist_curl.technique.2" = "Halten Sie die Arme gerade und die Schultern entspannt.";
+"exercise.info.forearms_behind_back_wrist_curl.technique.3" = "Lassen Sie die Stange bei Bedarf leicht in Richtung der Finger rollen.";
+"exercise.info.forearms_behind_back_wrist_curl.technique.4" = "Beugen Sie die Handgelenke nach oben und drücken Sie die Unterarme zusammen.";
+"exercise.info.forearms_behind_back_wrist_curl.technique.5" = "Halten Sie den Oberkörper ruhig und vermeiden Sie ein Achselzucken.";
+"exercise.info.forearms_behind_back_wrist_curl.technique.6" = "Kontrollieren Sie die Absenkphase und halten Sie den Griff sicher.";
+
+"exercise.info.forearms_wrist_roller.description" = "Der Wrist Roller stärkt die Ausdauer des Unterarms und die Griffkraft, indem er eine belastete Schnur auf und ab rollt.";
+"exercise.info.forearms_wrist_roller.technique.1" = "Halten Sie die Walze mit beiden Händen etwa auf Schulterhöhe oder etwas tiefer.";
+"exercise.info.forearms_wrist_roller.technique.2" = "Halten Sie die Schultern unten und den Oberkörper stabil.";
+"exercise.info.forearms_wrist_roller.technique.3" = "Rollen Sie den Griff mit abwechselnden Bewegungen des Handgelenks.";
+"exercise.info.forearms_wrist_roller.technique.4" = "Halten Sie die Bewegung gleichmäßig statt ruckartig.";
+"exercise.info.forearms_wrist_roller.technique.5" = "Senken Sie das Gewicht nach dem Aufrollen kontrolliert ab.";
+"exercise.info.forearms_wrist_roller.technique.6" = "Verwenden Sie eine Last, mit der Sie die gesamte Rolle beenden können, ohne den Halt zu verlieren.";
+
+"exercise.info.forearms_dead_hang.description" = "Dead Hang entwickelt Griffausdauer und Schulterkontrolle, indem es an einer Klimmzugstange hängt.";
+"exercise.info.forearms_dead_hang.technique.1" = "Fassen Sie die Stange mit beiden Händen in angenehmer Breite.";
+"exercise.info.forearms_dead_hang.technique.2" = "Lassen Sie den Körper hängen, während Sie die Schultern unter Kontrolle halten.";
+"exercise.info.forearms_dead_hang.technique.3" = "Halten Sie den Rumpf leicht angespannt und die Beine ruhig.";
+"exercise.info.forearms_dead_hang.technique.4" = "Vermeiden Sie es, sich während des Haltens zu drehen oder zu schwingen.";
+"exercise.info.forearms_dead_hang.technique.5" = "Atmen Sie gleichmäßig und behalten Sie dabei den Griff bei.";
+"exercise.info.forearms_dead_hang.technique.6" = "Steigen Sie sicher ab, bevor der Halt vollständig nachlässt.";
+
+"exercise.info.abs_crunch.description" = "Crunch ist eine grundlegende Bauchübung, bei der der Oberkörper in Richtung Becken gebeugt wird.";
+"exercise.info.abs_crunch.technique.1" = "Legen Sie sich auf den Rücken, die Knie sind gebeugt und die Füße stehen auf dem Boden.";
+"exercise.info.abs_crunch.technique.2" = "Legen Sie die Hände leicht hinter den Kopf oder über die Brust.";
+"exercise.info.abs_crunch.technique.3" = "Rollen Sie den oberen Rücken mithilfe der Bauchmuskeln vom Boden ab.";
+"exercise.info.abs_crunch.technique.4" = "Halten Sie den unteren Rücken nah am Boden.";
+"exercise.info.abs_crunch.technique.5" = "Vermeiden Sie es, mit den Händen am Hals zu ziehen.";
+"exercise.info.abs_crunch.technique.6" = "Senken Sie sich langsam ab und halten Sie die Bewegung kontrolliert.";
+
+"exercise.info.abs_lying_leg_raise.description" = "Leg Raise im Liegen trainiert die unteren Bauchmuskeln und Hüftbeuger, indem die Beine aus der Liegeposition angehoben werden.";
+"exercise.info.abs_lying_leg_raise.technique.1" = "Legen Sie sich mit geraden oder leicht gebeugten Beinen auf den Rücken.";
+"exercise.info.abs_lying_leg_raise.technique.2" = "Halten Sie den unteren Rücken kontrolliert gegen den Boden.";
+"exercise.info.abs_lying_leg_raise.technique.3" = "Heben Sie die Beine an, bis sie nahezu senkrecht stehen.";
+"exercise.info.abs_lying_leg_raise.technique.4" = "Senken Sie sich langsam ab, ohne den unteren Rücken durchzubiegen.";
+"exercise.info.abs_lying_leg_raise.technique.5" = "Verwenden Sie einen kleineren Bereich, wenn die Kontrolle verloren geht.";
+"exercise.info.abs_lying_leg_raise.technique.6" = "Halten Sie die Bewegung gleichmäßig und vermeiden Sie das Schwingen der Beine.";
+
+"exercise.info.abs_plank.description" = "Der Unterarmstütz ist eine isometrische Rumpfübung zum Halten einer stabilen Körperposition.";
+"exercise.info.abs_plank.technique.1" = "Legen Sie die Ellbogen unter die Schultern und die Unterarme auf den Boden.";
+"exercise.info.abs_plank.technique.2" = "Treten Sie mit den Füßen nach hinten und bilden Sie vom Kopf bis zu den Fersen eine gerade Linie.";
+"exercise.info.abs_plank.technique.3" = "Spannen Sie die Bauch- und Gesäßmuskulatur leicht an.";
+"exercise.info.abs_plank.technique.4" = "Lassen Sie die Hüften nicht durchhängen oder zu hoch ansteigen.";
+"exercise.info.abs_plank.technique.5" = "Halten Sie den Hals neutral und atmen Sie gleichmäßig.";
+"exercise.info.abs_plank.technique.6" = "Stoppen Sie den Satz, wenn die Position zu brechen beginnt.";
+
+"exercise.info.abs_reverse_crunch.description" = "Reverse Crunch betont den unteren Teil der Bauchbewegung, indem es das Becken nach oben wölbt.";
+"exercise.info.abs_reverse_crunch.technique.1" = "Legen Sie sich mit gebeugten Knien und angehobenen Füßen auf den Rücken.";
+"exercise.info.abs_reverse_crunch.technique.2" = "Halten Sie den Oberkörper entspannt und stabil.";
+"exercise.info.abs_reverse_crunch.technique.3" = "Rollen Sie das Becken nach oben in Richtung der Rippen.";
+"exercise.info.abs_reverse_crunch.technique.4" = "Vermeiden Sie den Schwung aus den Beinen.";
+"exercise.info.abs_reverse_crunch.technique.5" = "Halten Sie oben kurz inne.";
+"exercise.info.abs_reverse_crunch.technique.6" = "Senken Sie die Hüften langsam zurück zum Ausgangspunkt.";
+
+"exercise.info.abs_bicycle_crunch.description" = "Bicycle Crunch kombiniert Rumpfbeugung und -rotation, um die Bauch- und Schrägmuskeln zu trainieren.";
+"exercise.info.abs_bicycle_crunch.technique.1" = "Legen Sie sich auf den Rücken, die Hände leicht hinter dem Kopf.";
+"exercise.info.abs_bicycle_crunch.technique.2" = "Heben Sie die Schultern an und bringen Sie ein Knie zum gegenüberliegenden Ellbogen.";
+"exercise.info.abs_bicycle_crunch.technique.3" = "Drehen Sie sich durch den Rumpf, anstatt am Hals zu ziehen.";
+"exercise.info.abs_bicycle_crunch.technique.4" = "Strecken Sie das andere Bein kontrolliert aus.";
+"exercise.info.abs_bicycle_crunch.technique.5" = "Wechseln Sie die Seiten in einem gleichmäßigen Rhythmus.";
+"exercise.info.abs_bicycle_crunch.technique.6" = "Verlangsamen Sie die Geschwindigkeit, wenn die Bewegung locker oder ruckartig wird.";
+
+"exercise.info.abs_cable_crunch.description" = "Cable Crunch belastet die Beugung der Wirbelsäule mit einem Kabel und ist daher eine häufige Bauchübung mit Gewichten.";
+"exercise.info.abs_cable_crunch.technique.1" = "Je nach Einrichtung knien oder stehen Sie mit dem Gesicht vom Kabel weg.";
+"exercise.info.abs_cable_crunch.technique.2" = "Halten Sie das Seil oder den Griff nahe am Kopf.";
+"exercise.info.abs_cable_crunch.technique.3" = "Rollen Sie die Rippen mithilfe der Bauchmuskeln in Richtung Becken.";
+"exercise.info.abs_cable_crunch.technique.4" = "Halten Sie die Hüften größtenteils fixiert.";
+"exercise.info.abs_cable_crunch.technique.5" = "Vermeiden Sie es, nur mit den Armen zu ziehen.";
+"exercise.info.abs_cable_crunch.technique.6" = "Kehren Sie langsam zurück und halten Sie dabei die Spannung am Kabel aufrecht.";
+
+"exercise.info.abs_hanging_knee_raise.description" = "Beim Hängenden Knieheben werden die Bauchmuskeln trainiert, indem die Knie aus der hängenden Position angehoben werden.";
+"exercise.info.abs_hanging_knee_raise.technique.1" = "Mit sicherem Halt an einer Stange aufhängen.";
+"exercise.info.abs_hanging_knee_raise.technique.2" = "Halten Sie die Schultern unter Kontrolle und vermeiden Sie passives Schwingen.";
+"exercise.info.abs_hanging_knee_raise.technique.3" = "Heben Sie die Knie in Richtung Brust.";
+"exercise.info.abs_hanging_knee_raise.technique.4" = "Locken Sie das Becken oben leicht an.";
+"exercise.info.abs_hanging_knee_raise.technique.5" = "Senken Sie die Beine langsam.";
+"exercise.info.abs_hanging_knee_raise.technique.6" = "Setzen Sie die Kontrolle zurück, bevor Sie mit der nächsten Wiederholung beginnen.";
+
+"exercise.info.abs_hanging_leg_raise.description" = "„Hanging Leg Raise“ ist eine härtere hängende Rumpfübung, bei der gestreckte Beine über einen größeren Bereich angehoben werden.";
+"exercise.info.abs_hanging_leg_raise.technique.1" = "Hängen Sie sich mit stillem Körper an eine Stange.";
+"exercise.info.abs_hanging_leg_raise.technique.2" = "Halten Sie die Beine gerade oder leicht gebeugt.";
+"exercise.info.abs_hanging_leg_raise.technique.3" = "Heben Sie die Beine kontrolliert auf Hüfthöhe oder höher.";
+"exercise.info.abs_hanging_leg_raise.technique.4" = "Vermeiden Sie es, zu schwingen, um die Bewegung zu starten.";
+"exercise.info.abs_hanging_leg_raise.technique.5" = "Senken Sie sich langsam auf demselben Weg ab.";
+"exercise.info.abs_hanging_leg_raise.technique.6" = "Verwenden Sie zuerst Knieheben, wenn das vollständige Beinheben nicht kontrolliert werden kann.";
+
+"exercise.info.abs_side_plank.description" = "Side Plank ist eine isometrische Übung für die schrägen Bauchmuskeln und die seitliche Rumpfstabilität.";
+"exercise.info.abs_side_plank.technique.1" = "Platzieren Sie einen Ellbogen unter der Schulter und stellen Sie die Füße übereinander oder versetzt auf.";
+"exercise.info.abs_side_plank.technique.2" = "Heben Sie die Hüften an, bis der Körper eine gerade Linie bildet.";
+"exercise.info.abs_side_plank.technique.3" = "Stützen Sie den Oberkörper und die Gesäßmuskulatur seitlich ab.";
+"exercise.info.abs_side_plank.technique.4" = "Lassen Sie die Hüften nicht nach vorne oder hinten rotieren.";
+"exercise.info.abs_side_plank.technique.5" = "Halten Sie den Hals in einer Linie mit dem Körper.";
+"exercise.info.abs_side_plank.technique.6" = "Wiederholen Sie die gleiche Haltezeit auf beiden Seiten.";
+
+"exercise.info.abs_decline_crunch.description" = "Decline Crunch ist eine Crunch-Variante, die auf einer Schrägbank ausgeführt wird, um einen größeren Bewegungsbereich zu erreichen.";
+"exercise.info.abs_decline_crunch.technique.1" = "Sichern Sie die Füße auf der Absenkbank.";
+"exercise.info.abs_decline_crunch.technique.2" = "Beginnen Sie mit kontrolliert abgesenktem Oberkörper.";
+"exercise.info.abs_decline_crunch.technique.3" = "Rollen Sie den Oberkörper mithilfe der Bauchmuskeln nach oben.";
+"exercise.info.abs_decline_crunch.technique.4" = "Vermeiden Sie es, nur mit Hüftbeugern ganz nach oben zu sitzen.";
+"exercise.info.abs_decline_crunch.technique.5" = "Halten Sie den Nacken entspannt.";
+"exercise.info.abs_decline_crunch.technique.6" = "Senken Sie sich langsam ab und halten Sie die Spannung während des gesamten Satzes aufrecht.";
+
+"exercise.info.abs_ab_wheel_rollout.description" = "Das Ausrollen mit dem Bauchroller ist eine anspruchsvolle Rumpfübung gegen die Überstreckung des Rückens.";
+"exercise.info.abs_ab_wheel_rollout.technique.1" = "Beginnen Sie auf den Knien mit dem Rad unter den Schultern.";
+"exercise.info.abs_ab_wheel_rollout.technique.2" = "Spannen Sie die Bauchmuskeln an und halten Sie die Rippen unten.";
+"exercise.info.abs_ab_wheel_rollout.technique.3" = "Rollen Sie nur so weit vorwärts, wie Sie es kontrollieren können.";
+"exercise.info.abs_ab_wheel_rollout.technique.4" = "Lassen Sie den unteren Rücken nicht durchhängen.";
+"exercise.info.abs_ab_wheel_rollout.technique.5" = "Ziehen Sie das Rad zurück, indem Sie die Bauchmuskeln festziehen.";
+"exercise.info.abs_ab_wheel_rollout.technique.6" = "Verwenden Sie einen kürzeren Bereich, bis die volle Bewegung stabil ist.";
+
+"exercise.info.cardio_running.description" = "Laufen ist eine rhythmische Cardio-Übung, die die aerobe Ausdauer stärkt und anhand von Distanz und Zeit verfolgt werden kann.";
+"exercise.info.cardio_running.technique.1" = "Beginnen Sie mit einem kurzen Aufwärmspaziergang oder leichtem Joggen.";
+"exercise.info.cardio_running.technique.2" = "Halten Sie den Oberkörper aufrecht und neigen Sie ihn leicht nach vorne.";
+"exercise.info.cardio_running.technique.3" = "Landen Sie sanft mit dem Fuß nahe unter dem Körper.";
+"exercise.info.cardio_running.technique.4" = "Machen Sie einen bequemen Schritt, anstatt zu weit nach vorne zu greifen.";
+"exercise.info.cardio_running.technique.5" = "Lassen Sie die Arme natürlich neben dem Oberkörper schwingen.";
+"exercise.info.cardio_running.technique.6" = "Erhöhen Sie die Distanz oder das Tempo im Laufe der Zeit schrittweise.";
+
+"exercise.info.cardio_walking.description" = "Gehen ist eine Cardio-Übung mit geringer Belastung für allgemeine Aktivität, Erholung und aerobe Ausdauer.";
+"exercise.info.cardio_walking.technique.1" = "Gehen Sie in einem Tempo, das die Atmung beschleunigt und gleichzeitig kontrolliert bleibt.";
+"exercise.info.cardio_walking.technique.2" = "Halten Sie den Kopf hoch und den Oberkörper hoch.";
+"exercise.info.cardio_walking.technique.3" = "Rollen Sie den Fuß sanft von der Ferse bis zu den Zehen ab.";
+"exercise.info.cardio_walking.technique.4" = "Lassen Sie die Arme natürlich schwingen, ohne die Schultern zu verspannen.";
+"exercise.info.cardio_walking.technique.5" = "Wählen Sie festes Schuhwerk und einen sicheren Weg.";
+"exercise.info.cardio_walking.technique.6" = "Bauen Sie Dauer und Distanz schrittweise auf.";
+
+"exercise.info.cardio_treadmill.description" = "Beim Gehen oder Laufen auf dem Laufband handelt es sich um Cardiotraining im Fitnessstudio, das anhand der Sitzungszeit und nicht anhand der zurückgelegten Strecke erfasst wird.";
+"exercise.info.cardio_treadmill.technique.1" = "Steigen Sie auf die Seitenschienen, bevor Sie mit dem Förderband beginnen.";
+"exercise.info.cardio_treadmill.technique.2" = "Beginnen Sie mit einer leichten Geschwindigkeit und steigern Sie diese schrittweise.";
+"exercise.info.cardio_treadmill.technique.3" = "Schauen Sie nach vorne statt nach unten auf die Konsole.";
+"exercise.info.cardio_treadmill.technique.4" = "Behalten Sie eine aufrechte Körperhaltung bei und vermeiden Sie es, sich beim Bewegen an den Schienen festzuhalten.";
+"exercise.info.cardio_treadmill.technique.5" = "Verwenden Sie den Sicherheitsclip, wenn das Laufband einen solchen hat.";
+"exercise.info.cardio_treadmill.technique.6" = "Lassen Sie das Band langsamer laufen, bevor Sie absteigen.";
+
+"exercise.info.cardio_cycling.description" = "Radfahren ist eine Cardio-Aktivität im Freien, die nach Distanz und Zeit protokolliert werden kann.";
+"exercise.info.cardio_cycling.technique.1" = "Tragen Sie bei Fahrten im Freien einen richtig sitzenden Helm.";
+"exercise.info.cardio_cycling.technique.2" = "Stellen Sie den Sattel so ein, dass das Knie am unteren Ende des Pedalwegs leicht gebeugt bleibt.";
+"exercise.info.cardio_cycling.technique.3" = "Halten Sie den Lenker entspannt im Griff.";
+"exercise.info.cardio_cycling.technique.4" = "Treten Sie sanft und mit gleichmäßiger Trittfrequenz in die Pedale.";
+"exercise.info.cardio_cycling.technique.5" = "Befolgen Sie die Verkehrsregeln und behalten Sie die Route im Auge.";
+"exercise.info.cardio_cycling.technique.6" = "Erhöhen Sie die Distanz und Intensität der Fahrt schrittweise.";
+
+"exercise.info.cardio_stationary_bike.description" = "Stationäres Fahrrad ist Indoor-Cardio, bei dem die Sitzungszeit die primäre Trainingsmaßnahme ist.";
+"exercise.info.cardio_stationary_bike.technique.1" = "Passen Sie den Sattel an, bevor Sie mit der Sitzung beginnen.";
+"exercise.info.cardio_stationary_bike.technique.2" = "Halten Sie das Knie am unteren Ende jedes Pedaltritts leicht gebeugt.";
+"exercise.info.cardio_stationary_bike.technique.3" = "Halten Sie den Oberkörper stabil und die Schultern entspannt.";
+"exercise.info.cardio_stationary_bike.technique.4" = "Treten Sie durch einen sanften, kontrollierten Kreis.";
+"exercise.info.cardio_stationary_bike.technique.5" = "Wählen Sie einen Widerstand, der zum geplanten Aufwand passt.";
+"exercise.info.cardio_stationary_bike.technique.6" = "Reduzieren Sie das Tempo schrittweise, um die Sitzung zu beenden.";
+
+"exercise.info.cardio_elliptical.description" = "Ellipsentraining ist ein Cardiotraining mit geringer Belastung, das den gesamten Körper mit einer geführten Schrittbewegung trainiert.";
+"exercise.info.cardio_elliptical.technique.1" = "Treten Sie erst in die Pedale, wenn die Maschine stabil steht.";
+"exercise.info.cardio_elliptical.technique.2" = "Halten Sie den Oberkörper aufrecht und den Rumpf leicht angespannt.";
+"exercise.info.cardio_elliptical.technique.3" = "Stellen Sie den gesamten Fuß auf jedes Pedal.";
+"exercise.info.cardio_elliptical.technique.4" = "Bewegen Sie die Griffe und Pedale in einem gleichmäßigen Rhythmus.";
+"exercise.info.cardio_elliptical.technique.5" = "Vermeiden Sie es, sich stark auf die festen Griffe zu stützen.";
+"exercise.info.cardio_elliptical.technique.6" = "Passen Sie den Widerstand oder die Neigung schrittweise an.";
+
+"exercise.info.cardio_rowing_machine.description" = "Das Rudergerät ist ein Ganzkörper-Cardiotraining für den Innenbereich, das auf einem koordinierten Bein-, Rumpf- und Armzug basiert.";
+"exercise.info.cardio_rowing_machine.technique.1" = "Befestigen Sie die Füße und stellen Sie den Dämpfer auf ein erträgliches Niveau ein.";
+"exercise.info.cardio_rowing_machine.technique.2" = "Fahren Sie zuerst mit den Beinen, während Sie die Arme gerade halten.";
+"exercise.info.cardio_rowing_machine.technique.3" = "Öffnen Sie den Oberkörper leicht, nachdem die Beine gestreckt sind.";
+"exercise.info.cardio_rowing_machine.technique.4" = "Beenden Sie den Strich, indem Sie den Griff in Richtung der unteren Rippen ziehen.";
+"exercise.info.cardio_rowing_machine.technique.5" = "Rückkehr in umgekehrter Reihenfolge: Arme, Rumpf, dann Knie.";
+"exercise.info.cardio_rowing_machine.technique.6" = "Halten Sie den Rücken neutral und den Schlag sanft.";
+
+"exercise.info.cardio_jump_rope.description" = "Jump Rope ist eine einfache Cardio-Übung, die Rhythmus, Koordination und Ausdauer der Unterschenkel fördert.";
+"exercise.info.cardio_jump_rope.technique.1" = "Verwenden Sie eine Seillänge, die bequem über den Boden reicht.";
+"exercise.info.cardio_jump_rope.technique.2" = "Springen Sie nur so hoch, dass das Seil vorbeikommt.";
+"exercise.info.cardio_jump_rope.technique.3" = "Drehen Sie das Seil hauptsächlich mit den Handgelenken.";
+"exercise.info.cardio_jump_rope.technique.4" = "Landen Sie sanft auf den Fußballen.";
+"exercise.info.cardio_jump_rope.technique.5" = "Halten Sie die Ellbogen nah am Oberkörper.";
+"exercise.info.cardio_jump_rope.technique.6" = "Bauen Sie nach und nach längere Intervalle auf, um die Waden und Schienbeine zu schonen.";
+
+"exercise.info.cardio_stair_climber.description" = "Stair Climber ist ein Indoor-Cardiotraining, das das Treppensteigen simuliert und die Beine und Gesäßmuskeln betont.";
+"exercise.info.cardio_stair_climber.technique.1" = "Steigen Sie erst dann auf die Maschine, wenn diese stabil steht.";
+"exercise.info.cardio_stair_climber.technique.2" = "Stehen Sie aufrecht und stützen Sie den Rumpf leicht ab.";
+"exercise.info.cardio_stair_climber.technique.3" = "Stellen Sie bei jeder Stufe den ganzen Fuß auf.";
+"exercise.info.cardio_stair_climber.technique.4" = "Benutzen Sie die Schienen zum Ausbalancieren, nicht zum Stützen des Körpergewichts.";
+"exercise.info.cardio_stair_climber.technique.5" = "Halten Sie ein gleichmäßiges Tempo ein, das Sie kontrollieren können.";
+"exercise.info.cardio_stair_climber.technique.6" = "Erhöhen Sie die Geschwindigkeit oder den Widerstand schrittweise.";
+
+"exercise.info.cardio_swimming.description" = "Schwimmen ist eine Ganzkörper-Cardio-Aktivität mit geringer Belastung, die nach Distanz und Zeit verfolgt werden kann.";
+"exercise.info.cardio_swimming.technique.1" = "Wählen Sie einen Schwimmstil und ein Tempo, die Ihren Schwimmfähigkeiten entsprechen.";
+"exercise.info.cardio_swimming.technique.2" = "Wärmen Sie sich mit leichten Längen auf, bevor Sie härter arbeiten.";
+"exercise.info.cardio_swimming.technique.3" = "Halten Sie den Körper im Wasser lang und stromlinienförmig.";
+"exercise.info.cardio_swimming.technique.4" = "Atmen Sie in einem regelmäßigen, kontrollierten Rhythmus.";
+"exercise.info.cardio_swimming.technique.5" = "Drücken Sie sich vorsichtig von der Wand ab und achten Sie auf den Verkehr auf der Fahrspur.";
+"exercise.info.cardio_swimming.technique.6" = "Bauen Sie die Gesamtdistanz schrittweise auf.";
+
+"exercise.info.cardio_ski_erg.description" = "SkiErg ist ein Indoor-Cardio-Training im Stehen, bei dem eine kraftvolle Abwärtsbewegung zum Einsatz kommt.";
+"exercise.info.cardio_ski_erg.technique.1" = "Stehen Sie mit etwa schulterbreit auseinander stehenden Füßen.";
+"exercise.info.cardio_ski_erg.technique.2" = "Greifen Sie mit entspannten Schultern nach den Griffen.";
+"exercise.info.cardio_ski_erg.technique.3" = "Ziehen Sie die Griffe nach unten, indem Sie den Latissimus und den Rumpf anspannen.";
+"exercise.info.cardio_ski_erg.technique.4" = "Lassen Sie die Hüften leicht hängen, anstatt den Rücken abzurunden.";
+"exercise.info.cardio_ski_erg.technique.5" = "Beenden Sie die Übung mit den Händen in der Nähe der Hüften und kehren Sie dann sanft zurück.";
+"exercise.info.cardio_ski_erg.technique.6" = "Halten Sie einen gleichmäßigen Rhythmus ein, bevor Sie mehr Leistung hinzufügen.";
+
+"exercise.info.functional_training_burpee.description" = "Burpee kombiniert eine Kniebeuge-, Plank-, Liegestütz-Variante und einen Sprung zu einer Ganzkörper-Konditionierungsbewegung.";
+"exercise.info.functional_training_burpee.technique.1" = "Stehen Sie mit etwa hüftbreit auseinander stehenden Füßen.";
+"exercise.info.functional_training_burpee.technique.2" = "Gehen Sie in die Hocke und legen Sie die Hände fest auf den Boden.";
+"exercise.info.functional_training_burpee.technique.3" = "Treten oder springen Sie mit den Füßen zurück auf ein stabiles Brett.";
+"exercise.info.functional_training_burpee.technique.4" = "Halten Sie den Oberkörper angespannt und vermeiden Sie ein Durchhängen der Hüfte.";
+"exercise.info.functional_training_burpee.technique.5" = "Bringen Sie die Füße kontrolliert wieder unter den Körper.";
+"exercise.info.functional_training_burpee.technique.6" = "Stehen Sie auf oder springen Sie sanft auf, bevor Sie mit der nächsten Wiederholung beginnen.";
+
+"exercise.info.functional_training_thruster.description" = "Thruster kombiniert eine Frontkniebeuge mit einer Überkopfpresse in einer kontinuierlichen, gewichteten Bewegung.";
+"exercise.info.functional_training_thruster.technique.1" = "Halten Sie die Last mit sicherem Griff auf Schulterhöhe.";
+"exercise.info.functional_training_thruster.technique.2" = "Spannen Sie den Rumpf an und gehen Sie mit angehobener Brust in die Hocke.";
+"exercise.info.functional_training_thruster.technique.3" = "Halten Sie die Knie in einer Linie mit den Füßen.";
+"exercise.info.functional_training_thruster.technique.4" = "Fahren Sie aus der Hocke durch die Füße nach oben.";
+"exercise.info.functional_training_thruster.technique.5" = "Benutzen Sie den Aufwärtsantrieb, um die Last nach oben zu drücken.";
+"exercise.info.functional_training_thruster.technique.6" = "Beenden Sie den Vorgang mit ausgestreckten Armen und bringen Sie die Last dann wieder unter Kontrolle.";
+
+"exercise.info.functional_training_kettlebell_swing.description" = "Der Kettlebell-Swing ist eine Übung mit Hüftbeugung, die Explosivkraft und Kondition entwickelt.";
+"exercise.info.functional_training_kettlebell_swing.technique.1" = "Stellen Sie sich mit der Kettlebell leicht vor die Füße.";
+"exercise.info.functional_training_kettlebell_swing.technique.2" = "Beugen Sie die Hüften, während Sie den Rücken neutral halten.";
+"exercise.info.functional_training_kettlebell_swing.technique.3" = "Fassen Sie den Griff und führen Sie die Kettlebell zwischen den Beinen nach hinten.";
+"exercise.info.functional_training_kettlebell_swing.technique.4" = "Strecken Sie die Hüften kraftvoll, um die Kettlebell zu beschleunigen.";
+"exercise.info.functional_training_kettlebell_swing.technique.5" = "Lassen Sie die Arme die Kettlebell führen, ohne sie mit den Schultern anzuheben.";
+"exercise.info.functional_training_kettlebell_swing.technique.6" = "Kontrollieren Sie die Rückkehr mit den Hüften und halten Sie den Rumpf angespannt.";
+
+"exercise.info.functional_training_box_jump.description" = "Box Jump ist eine explosive Unterkörperübung, bei der ein kontrollierter Sprung auf eine stabile Plattform erfolgt.";
+"exercise.info.functional_training_box_jump.technique.1" = "Wählen Sie eine stabile Boxenhöhe, auf der Sie sicher landen können.";
+"exercise.info.functional_training_box_jump.technique.2" = "Stellen Sie sich nah genug an die Kiste, um in deren Mitte zu landen.";
+"exercise.info.functional_training_box_jump.technique.3" = "Machen Sie zur Vorbereitung eine flache Hocke und schwingen Sie die Arme.";
+"exercise.info.functional_training_box_jump.technique.4" = "Springen Sie mit beiden Füßen und landen Sie sanft mit gebeugten Knien.";
+"exercise.info.functional_training_box_jump.technique.5" = "Stellen Sie sich aufrecht auf die Box, bevor Sie heruntersteigen.";
+"exercise.info.functional_training_box_jump.technique.6" = "Treten Sie nach unten, anstatt nach unten zu springen, wenn die Ermüdung die Landekontrolle beeinträchtigt.";
+
+"exercise.info.functional_training_medicine_ball_slam.description" = "Medicine Ball Slam ist eine kraftvolle Ganzkörperbewegung, die einen Medizinball kraftvoll in den Boden treibt.";
+"exercise.info.functional_training_medicine_ball_slam.technique.1" = "Verwenden Sie einen Schlagball oder einen Medizinball, der für den Bodenaufprall geeignet ist.";
+"exercise.info.functional_training_medicine_ball_slam.technique.2" = "Heben Sie den Ball mit angespanntem Rumpf über den Kopf.";
+"exercise.info.functional_training_medicine_ball_slam.technique.3" = "Treiben Sie den Ball mit Armen, Rumpf und Hüfte nach unten.";
+"exercise.info.functional_training_medicine_ball_slam.technique.4" = "Beugen Sie die Knie, während der Ball den Boden erreicht.";
+"exercise.info.functional_training_medicine_ball_slam.technique.5" = "Nehmen Sie den Ball mit neutralem Rücken auf.";
+"exercise.info.functional_training_medicine_ball_slam.technique.6" = "Wählen Sie ein Gewicht, das kraftvolle, aber kontrollierte Wiederholungen ermöglicht.";
+
+"exercise.info.functional_training_battle_rope.description" = "Battle Rope ist eine zeitgesteuerte Konditionierung mit wiederholten Wellen oder Schlägen mit schweren Seilen.";
+"exercise.info.functional_training_battle_rope.technique.1" = "Stehen Sie mit etwa schulterbreit auseinander stehenden Füßen und leicht gebeugten Knien.";
+"exercise.info.functional_training_battle_rope.technique.2" = "Halten Sie den Oberkörper hoch und den Rumpf leicht angespannt.";
+"exercise.info.functional_training_battle_rope.technique.3" = "Halten Sie jedes Seilende mit einem festen, aber entspannten Griff.";
+"exercise.info.functional_training_battle_rope.technique.4" = "Erzeugen Sie gleichmäßige Wellen durch kontrollierte Armbewegungen.";
+"exercise.info.functional_training_battle_rope.technique.5" = "Vermeiden Sie es, die Schultern zu runden oder den Atem anzuhalten.";
+"exercise.info.functional_training_battle_rope.technique.6" = "Verwenden Sie Intervalle, die Sie in konsistenter Form einhalten können.";
+
+"exercise.info.functional_training_wall_ball.description" = "Wall Ball kombiniert eine Kniebeuge und einen Medizinballwurf zu einem Wandziel für die Ganzkörperkonditionierung.";
+"exercise.info.functional_training_wall_ball.technique.1" = "Wählen Sie einen Medizinball und eine Zielhöhe, die Sie kontrollieren können.";
+"exercise.info.functional_training_wall_ball.technique.2" = "Halten Sie den Ball auf Brusthöhe, die Füße etwa schulterbreit auseinander.";
+"exercise.info.functional_training_wall_ball.technique.3" = "Gehen Sie in die Hocke und halten Sie dabei die Brust angehoben.";
+"exercise.info.functional_training_wall_ball.technique.4" = "Fahren Sie durch die Beine nach oben und werfen Sie den Ball zum Ziel.";
+"exercise.info.functional_training_wall_ball.technique.5" = "Fangen Sie den Ball sanft und absorbieren Sie ihn in der nächsten Kniebeuge.";
+"exercise.info.functional_training_wall_ball.technique.6" = "Halten Sie die Knie während der gesamten Bewegung in einer Linie mit den Füßen.";
+
+"exercise.info.functional_training_mountain_climber.description" = "Mountain Climber ist eine Körpergewichts-Konditionierungsübung, bei der abwechselnd Kniebewegungen aus der Plank-Position ausgeführt werden.";
+"exercise.info.functional_training_mountain_climber.technique.1" = "Beginnen Sie im hohen Stütz mit den Händen unter den Schultern.";
+"exercise.info.functional_training_mountain_climber.technique.2" = "Spannen Sie den Rumpf an, um den Rumpf stabil zu halten.";
+"exercise.info.functional_training_mountain_climber.technique.3" = "Führen Sie ein Knie in Richtung Brust.";
+"exercise.info.functional_training_mountain_climber.technique.4" = "Setzen Sie den Fuß zurück und wechseln Sie unter Kontrolle die Seite.";
+"exercise.info.functional_training_mountain_climber.technique.5" = "Vermeiden Sie es, die Hüften hochzuheben oder den unteren Rücken durchhängen zu lassen.";
+"exercise.info.functional_training_mountain_climber.technique.6" = "Verwenden Sie einen gleichmäßigen Rhythmus, bevor Sie die Geschwindigkeit erhöhen.";
+
+"exercise.info.functional_training_kettlebell_clean_and_press.description" = "Kettlebell Clean and Press bringt eine Kettlebell in die Rack-Position, bevor sie über den Kopf gedrückt wird.";
+"exercise.info.functional_training_kettlebell_clean_and_press.technique.1" = "Beginnen Sie mit der Kettlebell auf dem Boden oder im kontrollierten Hang.";
+"exercise.info.functional_training_kettlebell_clean_and_press.technique.2" = "Beugen Sie die Hüfte und halten Sie den Rücken neutral.";
+"exercise.info.functional_training_kettlebell_clean_and_press.technique.3" = "Strecken Sie die Hüften kraftvoll und führen Sie die Kettlebell in die Rack-Position.";
+"exercise.info.functional_training_kettlebell_clean_and_press.technique.4" = "Lassen Sie die Kettlebell um das Handgelenk rotieren, anstatt gegen den Unterarm zu schlagen.";
+"exercise.info.functional_training_kettlebell_clean_and_press.technique.5" = "Spannen Sie den Rumpf an und drücken Sie die Kettlebell kontrolliert über den Kopf.";
+"exercise.info.functional_training_kettlebell_clean_and_press.technique.6" = "Senken Sie die Kettlebell in die Rack-Position und stabilisieren Sie sie vor der nächsten Wiederholung.";
+
+"exercise.info.stretching_hamstring_stretch.description" = "Eine sanfte statische Dehnübung.";
+"exercise.info.stretching_hamstring_stretch.technique.1" = "Beginnen Sie in einer bequemen Position.";
+"exercise.info.stretching_hamstring_stretch.technique.2" = "Bewegen Sie sich langsam, bis Sie eine leichte Spannung spüren.";
+"exercise.info.stretching_hamstring_stretch.technique.3" = "Atmen Sie gleichmäßig und halten Sie den Körper entspannt.";
+"exercise.info.stretching_hamstring_stretch.technique.4" = "Wippen Sie nicht und erzwingen Sie keine größere Bewegungsweite.";
+"exercise.info.stretching_hamstring_stretch.technique.5" = "Halten Sie für die geplante Zeit eine stabile Position.";
+"exercise.info.stretching_hamstring_stretch.technique.6" = "Wiederholen Sie dies ggf. auf der anderen Seite.";
+
+"exercise.info.stretching_quadriceps_stretch.description" = "Eine sanfte statische Dehnübung.";
+"exercise.info.stretching_quadriceps_stretch.technique.1" = "Beginnen Sie in einer bequemen Position.";
+"exercise.info.stretching_quadriceps_stretch.technique.2" = "Bewegen Sie sich langsam, bis Sie eine leichte Spannung spüren.";
+"exercise.info.stretching_quadriceps_stretch.technique.3" = "Atmen Sie gleichmäßig und halten Sie den Körper entspannt.";
+"exercise.info.stretching_quadriceps_stretch.technique.4" = "Wippen Sie nicht und erzwingen Sie keine größere Bewegungsweite.";
+"exercise.info.stretching_quadriceps_stretch.technique.5" = "Halten Sie für die geplante Zeit eine stabile Position.";
+"exercise.info.stretching_quadriceps_stretch.technique.6" = "Wiederholen Sie dies ggf. auf der anderen Seite.";
+
+"exercise.info.stretching_chest_stretch.description" = "Eine sanfte statische Dehnübung.";
+"exercise.info.stretching_chest_stretch.technique.1" = "Beginnen Sie in einer bequemen Position.";
+"exercise.info.stretching_chest_stretch.technique.2" = "Bewegen Sie sich langsam, bis Sie eine leichte Spannung spüren.";
+"exercise.info.stretching_chest_stretch.technique.3" = "Atmen Sie gleichmäßig und halten Sie den Körper entspannt.";
+"exercise.info.stretching_chest_stretch.technique.4" = "Wippen Sie nicht und erzwingen Sie keine größere Bewegungsweite.";
+"exercise.info.stretching_chest_stretch.technique.5" = "Halten Sie für die geplante Zeit eine stabile Position.";
+"exercise.info.stretching_chest_stretch.technique.6" = "Wiederholen Sie dies ggf. auf der anderen Seite.";
+
+"exercise.info.stretching_shoulder_stretch.description" = "Eine sanfte statische Dehnübung.";
+"exercise.info.stretching_shoulder_stretch.technique.1" = "Beginnen Sie in einer bequemen Position.";
+"exercise.info.stretching_shoulder_stretch.technique.2" = "Bewegen Sie sich langsam, bis Sie eine leichte Spannung spüren.";
+"exercise.info.stretching_shoulder_stretch.technique.3" = "Atmen Sie gleichmäßig und halten Sie den Körper entspannt.";
+"exercise.info.stretching_shoulder_stretch.technique.4" = "Wippen Sie nicht und erzwingen Sie keine größere Bewegungsweite.";
+"exercise.info.stretching_shoulder_stretch.technique.5" = "Halten Sie für die geplante Zeit eine stabile Position.";
+"exercise.info.stretching_shoulder_stretch.technique.6" = "Wiederholen Sie dies ggf. auf der anderen Seite.";
+
+"exercise.info.stretching_glute_stretch.description" = "Eine sanfte statische Dehnübung.";
+"exercise.info.stretching_glute_stretch.technique.1" = "Beginnen Sie in einer bequemen Position.";
+"exercise.info.stretching_glute_stretch.technique.2" = "Bewegen Sie sich langsam, bis Sie eine leichte Spannung spüren.";
+"exercise.info.stretching_glute_stretch.technique.3" = "Atmen Sie gleichmäßig und halten Sie den Körper entspannt.";
+"exercise.info.stretching_glute_stretch.technique.4" = "Wippen Sie nicht und erzwingen Sie keine größere Bewegungsweite.";
+"exercise.info.stretching_glute_stretch.technique.5" = "Halten Sie für die geplante Zeit eine stabile Position.";
+"exercise.info.stretching_glute_stretch.technique.6" = "Wiederholen Sie dies ggf. auf der anderen Seite.";
+
+"exercise.info.stretching_calf_stretch.description" = "Eine sanfte statische Dehnübung.";
+"exercise.info.stretching_calf_stretch.technique.1" = "Beginnen Sie in einer bequemen Position.";
+"exercise.info.stretching_calf_stretch.technique.2" = "Bewegen Sie sich langsam, bis Sie eine leichte Spannung spüren.";
+"exercise.info.stretching_calf_stretch.technique.3" = "Atmen Sie gleichmäßig und halten Sie den Körper entspannt.";
+"exercise.info.stretching_calf_stretch.technique.4" = "Wippen Sie nicht und erzwingen Sie keine größere Bewegungsweite.";
+"exercise.info.stretching_calf_stretch.technique.5" = "Halten Sie für die geplante Zeit eine stabile Position.";
+"exercise.info.stretching_calf_stretch.technique.6" = "Wiederholen Sie dies ggf. auf der anderen Seite.";
+
+"exercise.info.stretching_hip_flexor_stretch.description" = "Eine sanfte statische Dehnübung.";
+"exercise.info.stretching_hip_flexor_stretch.technique.1" = "Beginnen Sie in einer bequemen Position.";
+"exercise.info.stretching_hip_flexor_stretch.technique.2" = "Bewegen Sie sich langsam, bis Sie eine leichte Spannung spüren.";
+"exercise.info.stretching_hip_flexor_stretch.technique.3" = "Atmen Sie gleichmäßig und halten Sie den Körper entspannt.";
+"exercise.info.stretching_hip_flexor_stretch.technique.4" = "Wippen Sie nicht und erzwingen Sie keine größere Bewegungsweite.";
+"exercise.info.stretching_hip_flexor_stretch.technique.5" = "Halten Sie für die geplante Zeit eine stabile Position.";
+"exercise.info.stretching_hip_flexor_stretch.technique.6" = "Wiederholen Sie dies ggf. auf der anderen Seite.";
+
+"exercise.info.stretching_butterfly_stretch.description" = "Eine sanfte statische Dehnübung.";
+"exercise.info.stretching_butterfly_stretch.technique.1" = "Beginnen Sie in einer bequemen Position.";
+"exercise.info.stretching_butterfly_stretch.technique.2" = "Bewegen Sie sich langsam, bis Sie eine leichte Spannung spüren.";
+"exercise.info.stretching_butterfly_stretch.technique.3" = "Atmen Sie gleichmäßig und halten Sie den Körper entspannt.";
+"exercise.info.stretching_butterfly_stretch.technique.4" = "Wippen Sie nicht und erzwingen Sie keine größere Bewegungsweite.";
+"exercise.info.stretching_butterfly_stretch.technique.5" = "Halten Sie für die geplante Zeit eine stabile Position.";
+"exercise.info.stretching_butterfly_stretch.technique.6" = "Wiederholen Sie dies ggf. auf der anderen Seite.";
+
+"exercise.info.stretching_lat_stretch.description" = "Eine sanfte statische Dehnübung.";
+"exercise.info.stretching_lat_stretch.technique.1" = "Beginnen Sie in einer bequemen Position.";
+"exercise.info.stretching_lat_stretch.technique.2" = "Bewegen Sie sich langsam, bis Sie eine leichte Spannung spüren.";
+"exercise.info.stretching_lat_stretch.technique.3" = "Atmen Sie gleichmäßig und halten Sie den Körper entspannt.";
+"exercise.info.stretching_lat_stretch.technique.4" = "Wippen Sie nicht und erzwingen Sie keine größere Bewegungsweite.";
+"exercise.info.stretching_lat_stretch.technique.5" = "Halten Sie für die geplante Zeit eine stabile Position.";
+"exercise.info.stretching_lat_stretch.technique.6" = "Wiederholen Sie dies ggf. auf der anderen Seite.";
+
+"exercise.info.stretching_childs_pose.description" = "Eine sanfte statische Dehnübung.";
+"exercise.info.stretching_childs_pose.technique.1" = "Beginnen Sie in einer bequemen Position.";
+"exercise.info.stretching_childs_pose.technique.2" = "Bewegen Sie sich langsam, bis Sie eine leichte Spannung spüren.";
+"exercise.info.stretching_childs_pose.technique.3" = "Atmen Sie gleichmäßig und halten Sie den Körper entspannt.";
+"exercise.info.stretching_childs_pose.technique.4" = "Wippen Sie nicht und erzwingen Sie keine größere Bewegungsweite.";
+"exercise.info.stretching_childs_pose.technique.5" = "Halten Sie für die geplante Zeit eine stabile Position.";
+"exercise.info.stretching_childs_pose.technique.6" = "Wiederholen Sie dies ggf. auf der anderen Seite.";
+
+"exercise.info.stretching_triceps_stretch.description" = "Eine sanfte statische Dehnübung.";
+"exercise.info.stretching_triceps_stretch.technique.1" = "Beginnen Sie in einer bequemen Position.";
+"exercise.info.stretching_triceps_stretch.technique.2" = "Bewegen Sie sich langsam, bis Sie eine leichte Spannung spüren.";
+"exercise.info.stretching_triceps_stretch.technique.3" = "Atmen Sie gleichmäßig und halten Sie den Körper entspannt.";
+"exercise.info.stretching_triceps_stretch.technique.4" = "Wippen Sie nicht und erzwingen Sie keine größere Bewegungsweite.";
+"exercise.info.stretching_triceps_stretch.technique.5" = "Halten Sie für die geplante Zeit eine stabile Position.";
+"exercise.info.stretching_triceps_stretch.technique.6" = "Wiederholen Sie dies ggf. auf der anderen Seite.";
+
+"exercise.info.stretching_neck_stretch.description" = "Eine sanfte statische Dehnübung.";
+"exercise.info.stretching_neck_stretch.technique.1" = "Beginnen Sie in einer bequemen Position.";
+"exercise.info.stretching_neck_stretch.technique.2" = "Bewegen Sie sich langsam, bis Sie eine leichte Spannung spüren.";
+"exercise.info.stretching_neck_stretch.technique.3" = "Atmen Sie gleichmäßig und halten Sie den Körper entspannt.";
+"exercise.info.stretching_neck_stretch.technique.4" = "Wippen Sie nicht und erzwingen Sie keine größere Bewegungsweite.";
+"exercise.info.stretching_neck_stretch.technique.5" = "Halten Sie für die geplante Zeit eine stabile Position.";
+"exercise.info.stretching_neck_stretch.technique.6" = "Wiederholen Sie dies ggf. auf der anderen Seite.";

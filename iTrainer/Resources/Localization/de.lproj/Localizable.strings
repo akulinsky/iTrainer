@@ -1,0 +1,438 @@
+/* Report Metric Info */
+
+"report.metric.info.accessibility.about" = "Über %@";
+"report.metric.info.done" = "Fertig";
+"report.metric.info.meaning" = "Bedeutung";
+"report.metric.info.formula" = "Formel";
+"report.metric.info.example" = "Beispiel";
+
+"report.metric.volume.title" = "Volumen";
+"report.metric.volume.description" = "Gesamtleistung aller Sätze mit Gewicht. Kombiniert Gewicht und Wiederholungen zu einem Wert.";
+"report.metric.volume.formula" = "Summe aus Gewicht x Wiederholungen für abgeschlossene Sätze.";
+"report.metric.volume.example" = "80 x 10 Wdh. + 70 x 8 Wdh. = 1.360 Volumen";
+
+"report.metric.volume_goal.title" = "Volumenziel";
+"report.metric.volume_goal.description" = "Vergleicht das absolvierte Volumen mit dem geplanten Zielvolumen für Übungen mit Gewicht. Das Volumen ist die Gesamtleistung: Gewicht x Wiederholungen aller abgeschlossenen Sätze.";
+"report.metric.volume_goal.formula" = "Tatsächliches Volumen / Zielvolumen.";
+"report.metric.volume_goal.example" = "Erreicht 1.360, Ziel 1.500 = 91%";
+
+"report.metric.density.title" = "Dichte";
+"report.metric.density.description" = "Zeigt, wie viel Leistung mit Gewicht pro Trainingsminute erbracht wurde.";
+"report.metric.density.formula" = "Gesamtvolumen / Trainingsdauer in Minuten.";
+"report.metric.density.example" = "4.800 Volumen / 40 Min. = 120 pro Min.";
+
+"report.metric.pace.title" = "Tempo";
+"report.metric.pace.description" = "Zeigt die benötigte Zeit pro Distanzeinheit. Ein niedrigeres Tempo ist besser.";
+"report.metric.pace.formula" = "Gesamtzeit / Gesamtdistanz.";
+"report.metric.pace.example" = "15:00 / 2 Distanzeinheiten = 7:30 pro Einheit";
+
+"report.metric.pace_goal.title" = "Tempoziel";
+"report.metric.pace_goal.description" = "Vergleicht das tatsächliche Tempo mit dem Zieltempo. Das Tempo ist die Zeit pro Distanzeinheit. Ein niedrigerer Wert bedeutet daher eine bessere Leistung.";
+"report.metric.pace_goal.formula" = "Zieltempo / tatsächliches Tempo.";
+"report.metric.pace_goal.example" = "Ziel 8:00 pro Einheit, erreicht 7:30 pro Einheit = Ziel übertroffen";
+
+"report.metric.record_type.title" = "Rekordtyp";
+"report.metric.record_type.description" = "Zeigt, welche Kennzahl zum persönlichen Rekord oder Fortschritt geführt hat.";
+"report.metric.record_type.example" = "Volumen bedeutet, dass Gewicht x Wiederholungen insgesamt höher war als zuvor. Tempo bedeutet, dass sich die Zeit pro Distanzeinheit verbessert hat.";
+
+"report.metric.improvement.title" = "Verbesserung";
+"report.metric.improvement.description" = "Zeigt die Differenz zwischen dem aktuellen und dem vorherigen Vergleichsergebnis.";
+"report.metric.improvement.formula" = "Für die meisten Kennzahlen: aktuell - vorher. Beim Tempo: vorher - aktuell, da ein niedrigeres Tempo besser ist.";
+"report.metric.improvement.example" = "Vorheriges Tempo 8:00 pro Einheit, aktuell 7:30 pro Einheit = Verbesserung -0:30";
+
+/* Common */
+
+"common.cancel" = "Abbrechen";
+"common.done" = "Fertig";
+"common.edit" = "Bearbeiten";
+"common.save" = "Sichern";
+"common.close" = "Schließen";
+"common.delete" = "Löschen";
+"common.hide" = "Ausblenden";
+"common.restore" = "Wiederherstellen";
+"common.add" = "Hinzufügen";
+"common.clear" = "Löschen";
+"common.ok" = "OK";
+"common.loading" = "Laden";
+"common.name" = "Name";
+"common.name.placeholder" = "Neuer Name";
+"common.optional" = "Optional";
+"common.not_selected" = "Nicht ausgewählt";
+
+/* Notifications */
+
+"notifications.rest_finished.title" = "Pause beendet";
+"notifications.rest_finished.body" = "Zeit für den nächsten Satz.";
+"notifications.active_workout.title" = "Training noch aktiv";
+"notifications.active_workout.body_with_title" = "%@ läuft noch.";
+"notifications.active_workout.body" = "Dein Training läuft noch.";
+
+/* Workouts */
+
+"workouts.title" = "Trainings";
+"workouts.empty.title" = "Keine Trainings";
+"workouts.new" = "Neues Training";
+"workouts.edit" = "Training bearbeiten";
+"workouts.name.placeholder" = "Name des neuen Trainings";
+"workouts.selected_plan" = "Ausgewählter Plan";
+"workouts.workout_plan" = "Trainingsplan";
+
+/* Calendar */
+
+"calendar.empty_day" = "Leerer Tag";
+
+/* Workout Groups */
+
+"workout_groups.title" = "Gruppen";
+"workout_groups.empty.title" = "Kein Training ausgewählt";
+"workout_groups.choose_workout" = "Training auswählen";
+"workout_groups.new" = "Neue Gruppe";
+"workout_groups.edit" = "Gruppe bearbeiten";
+"workout_groups.name.placeholder" = "Name der neuen Gruppe";
+"workout_groups.status.active" = "Aktiv";
+"workout_groups.status.last" = "Zuletzt";
+"workout_groups.exercise_count" = "%d Übungen";
+
+/* Active Workout */
+
+"active_workout.title" = "Aktives Training";
+"active_workout.metric.workout" = "Training";
+"active_workout.metric.rest" = "Pause";
+"active_workout.metric.progress" = "Fortschritt";
+"active_workout.finish" = "Beenden";
+"active_workout.finish_alert.title" = "Training beenden?";
+"active_workout.finish_alert.close_current" = "Das aktuelle Training wird beendet.";
+"active_workout.finish_alert.incomplete_progress" = "Du hast %d von %d Übungen abgeschlossen. Trotzdem beenden?";
+
+/* Exercise List */
+
+"exercise_list.start" = "Starten";
+"exercise_list.title" = "Übungen";
+"exercise_list.start_workout" = "Training starten";
+"exercise_list.workout_session" = "Trainingseinheit";
+"exercise_list.start_alert.title" = "Training starten?";
+"exercise_list.start_alert.default_workout" = "dieses Training";
+"exercise_list.start_alert.message" = "%@ starten?";
+"exercise_list.new_exercise" = "Neue Übung";
+"exercise_list.add_headline" = "Überschrift hinzufügen";
+"exercise_list.hidden.title" = "Ausgeblendete Übungen";
+"exercise_list.exercise.new" = "Neue Übung";
+"exercise_list.exercise.edit" = "Übung bearbeiten";
+"exercise_list.exercise.name.placeholder" = "Name der neuen Übung";
+"exercise_list.headline.new" = "Neue Überschrift";
+"exercise_list.headline.edit" = "Überschrift bearbeiten";
+"exercise_list.headline.name.placeholder" = "Name der neuen Überschrift";
+"exercise_list.action.hide_active.title" = "Übung während des aktiven Trainings ausblenden?";
+"exercise_list.action.delete_active.title" = "Übung während des aktiven Trainings löschen?";
+"exercise_list.action.delete.title" = "Übung löschen?";
+"exercise_list.action.active.message" = "Dies kann den Fortschritt des aktuellen Trainings und den Abschlussbericht beeinflussen.";
+"exercise_list.action.delete_active.message" = "Die Übung wird aus dem Training entfernt. Dies kann den aktuellen Fortschritt und den Abschlussbericht beeinflussen.";
+"exercise_list.action.delete.message" = "Die Übung wird aus diesem Training entfernt. Frühere Berichte bleiben unverändert.";
+"exercise_list.add_conflict.active.title" = "Übung bereits vorhanden";
+"exercise_list.add_conflict.hidden.title" = "Übung ist ausgeblendet";
+"exercise_list.add_conflict.active.message" = "%@ ist bereits in diesem Training. Eine weitere Kopie hinzufügen?";
+"exercise_list.add_conflict.hidden.message" = "%@ ist in diesem Training ausgeblendet. Wiederherstellen?";
+"exercise_list.add_conflict.add_anyway" = "Trotzdem hinzufügen";
+"exercise_list.add_conflict.add_new_copy" = "Neue Kopie hinzufügen";
+
+/* Superset */
+
+"superset.add" = "Supersatz hinzufügen";
+"superset.edit.title" = "Supersatz bearbeiten";
+"superset.rest.title" = "Supersatz-Pause";
+"superset.exercises" = "Übungen";
+"superset.prompt.two" = "Füge mindestens zwei Übungen hinzu, um diesen Supersatz zu verwenden.";
+"superset.prompt.one_more" = "Füge eine weitere Übung hinzu, um diesen Supersatz zu verwenden.";
+"superset.no_exercises" = "Keine Übungen";
+"superset.rest_time" = "Pausenzeit";
+"superset.rest_after_cycle" = "Pause nach dem Durchgang";
+"superset.without_rest" = "Ohne Pause";
+"superset.reorder" = "Neu anordnen";
+"superset.remove" = "Entfernen";
+"superset.delete_button" = "Supersatz löschen";
+"superset.delete_alert.title" = "Supersatz löschen?";
+"superset.delete_alert.message" = "Der Supersatz wird gelöscht. Seine Übungen kehren in die Trainingsliste zurück.";
+"superset.active_locked" = "Ein Training ist aktiv. Beende es, bevor du die Übungen des Supersatzes änderst.";
+"superset.picker.title" = "Übungen hinzufügen";
+"superset.picker.empty" = "Keine verfügbaren Übungen";
+
+/* Exercise */
+
+"exercise.edit.title" = "Übung bearbeiten";
+"exercise.edit.custom_name" = "Eigener Name";
+"exercise.edit.name.placeholder" = "Neuer Name...";
+"exercise.edit.default_name_hint" = "Leer lassen, um den Standardnamen zu verwenden.";
+"exercise.edit.save_error.title" = "Übung kann nicht gesichert werden";
+"exercise.edit.save_error.message" = "Prüfe die Werte der Zielsätze und versuche es erneut.";
+"exercise.edit.save_error.invalid_sets" = "Fülle vor dem Sichern alle Werte der Zielsätze aus.";
+"exercise.info.accessibility_hint" = "Übungsinformationen öffnen";
+"exercise.latest_report" = "Neuester Bericht";
+"exercise.rest_time" = "Pausenzeit";
+"exercise.rest_time.value" = "Pause %@";
+"exercise.rest_between_sets" = "Pause zwischen Sätzen";
+"exercise.target_sets" = "Zielsätze";
+"exercise.no_target_sets" = "Keine Zielsätze";
+"exercise.no_target_sets.subtitle" = "Zielsätze beim Bearbeiten hinzufügen";
+"exercise.add_result" = "Ergebnis hinzufügen";
+"exercise.add_superset_result" = "Supersatz-Ergebnis hinzufügen";
+"exercise.finish_workout" = "Training beenden";
+"exercise.next_exercise" = "Nächste Übung";
+"exercise.sets.new" = "Neue Sätze";
+"exercise.sets.edit" = "Sätze bearbeiten";
+"exercise.report_sets.edit" = "Berichtssätze bearbeiten";
+"exercise.add_set" = "Satz hinzufügen";
+"exercise.set_number" = "Satz %d";
+"exercise.error.type_missing" = "Übungstyp fehlt";
+
+/* Sets */
+
+"sets.parameter.weight" = "Gewicht";
+"sets.parameter.reps" = "Wdh.";
+"sets.parameter.distance" = "Distanz";
+"sets.parameter.time" = "Zeit";
+
+/* Tracking Type */
+
+"tracking_type.weighted_reps.title" = "Gewicht und Wdh.";
+"tracking_type.weighted_time.title" = "Gewicht und Zeit";
+"tracking_type.reps_only.title" = "Nur Wiederholungen";
+"tracking_type.timed.title" = "Zeitbasiert";
+"tracking_type.distance.title" = "Distanz";
+"tracking_type.distance_time.title" = "Distanz und Zeit";
+"tracking_type.weighted_reps.description" = "Erfasst Gewicht und Wiederholungen für jeden Satz.";
+"tracking_type.weighted_time.description" = "Erfasst Gewicht und Dauer für jeden Satz.";
+"tracking_type.reps_only.description" = "Erfasst Wiederholungen für jeden Satz.";
+"tracking_type.timed.description" = "Erfasst die Dauer jedes Satzes.";
+"tracking_type.distance.description" = "Erfasst die Distanz jedes Satzes.";
+"tracking_type.distance_time.description" = "Erfasst Distanz und Dauer.";
+
+/* Exercise Catalog */
+
+"exercise_catalog.title" = "Übungen";
+"exercise_catalog.search.prompt" = "Übung suchen";
+"exercise_catalog.create.title" = "Übung erstellen";
+"exercise_catalog.empty" = "Keine Übungen";
+"exercise_catalog.empty.bookmarked" = "Keine favorisierten Übungen";
+"exercise_catalog.bookmarks.show_all" = "Alle Übungen anzeigen";
+"exercise_catalog.bookmarks.show_bookmarked" = "Favorisierte Übungen anzeigen";
+"exercise_catalog.bookmarks.add" = "Zu Favoriten hinzufügen";
+"exercise_catalog.bookmarks.remove" = "Aus Favoriten entfernen";
+"exercise_catalog.category.coming_next" = "Demnächst";
+"exercise_catalog.category.exercise_count" = "%d Übungen";
+"exercise_catalog.selected_count" = "%d ausgewählt";
+"exercise_catalog.clear_selection" = "Auswahl löschen";
+"exercise_catalog.delete_alert.title" = "Diese Übung löschen?";
+"exercise_catalog.delete_alert.message" = "Die Übung wird aus dem Katalog und allen Trainings entfernt. Frühere Berichte bleiben unverändert.";
+"exercise_catalog.delete_button" = "Übung löschen";
+"exercise_catalog.detail.basic_info" = "Allgemeine Informationen";
+"exercise_catalog.detail.category" = "Kategorie";
+"exercise_catalog.detail.parameters" = "Parameter";
+"exercise_catalog.detail.description" = "Beschreibung";
+"exercise_catalog.detail.technique" = "Ausführung";
+"exercise_catalog.statistics.subtitle" = "Globale Übungsstatistik anzeigen";
+"exercise_catalog.missing_info.title" = "Übungsinformationen fehlen";
+"exercise_catalog.missing_info.message" = "Informationen für die Übungs-ID fehlen: %@";
+
+/* Custom Exercise */
+
+"custom_exercise.tracking_type" = "Erfassungstyp";
+"custom_exercise.select_category" = "Kategorie auswählen";
+"custom_exercise.select_tracking_type" = "Erfassungstyp auswählen";
+"custom_exercise.select_category.title" = "Kategorie auswählen";
+"custom_exercise.select_tracking_type.title" = "Erfassungstyp auswählen";
+"custom_exercise.generated_name" = "Eigene Übung %d";
+"custom_exercise.generated_name_prefix" = "Eigene Übung ";
+"custom_exercise.error.category_required" = "Wähle eine Kategorie aus.";
+"custom_exercise.error.tracking_type_required" = "Wähle einen Erfassungstyp aus.";
+"custom_exercise.error.duplicate_name" = "Eine Übung mit diesem Namen ist in dieser Kategorie bereits vorhanden.";
+
+/* Reports */
+
+"reports.common.close" = "Schließen";
+"reports.common.cancel" = "Abbrechen";
+"reports.common.delete" = "Löschen";
+"reports.common.set" = "Satz";
+"reports.common.set_number" = "Satz %d";
+"reports.common.extra_set" = "Zusätzlicher Satz";
+"reports.common.target" = "Ziel";
+"reports.common.result" = "Ergebnis";
+"reports.common.date_unavailable" = "Datum nicht verfügbar";
+"reports.common.time_unavailable" = "Zeit nicht verfügbar";
+"reports.common.loading_reports" = "Berichte werden geladen";
+"reports.common.completed_workouts_hint" = "Abgeschlossene Trainings werden hier angezeigt.";
+"reports.common.duration.hours_minutes" = "%d Std. %d Min.";
+"reports.common.duration.hours" = "%d Std.";
+"reports.common.duration.minutes" = "%d Min.";
+
+"reports.dashboard.title" = "Berichte";
+"reports.dashboard.calendar" = "Kalender";
+"reports.dashboard.workouts" = "Trainings";
+"reports.dashboard.empty_month.title" = "Keine Trainings in diesem Monat";
+"reports.dashboard.summary.workout_completed" = "Training abgeschlossen";
+"reports.dashboard.summary.workouts_completed" = "Trainings abgeschlossen";
+"reports.dashboard.summary.personal_record" = "Persönlicher Rekord";
+"reports.dashboard.summary.personal_records" = "Persönliche Rekorde";
+"reports.dashboard.summary.total_volume" = "Gesamtvolumen";
+
+"reports.calendar.title" = "Kalender";
+"reports.calendar.today" = "Heute";
+"reports.calendar.empty_date.title" = "Keine Trainings an diesem Tag";
+
+"reports.workout_report.title" = "Trainingsbericht";
+"reports.workout_report.loading" = "Bericht wird vorbereitet";
+"reports.workout_report.exercises" = "Übungen";
+"reports.workout_report.no_exercises" = "Keine Übungen";
+"reports.workout_report.delete_button" = "Bericht löschen";
+"reports.workout_report.delete_alert.title" = "Bericht löschen?";
+"reports.workout_report.delete_alert.message" = "Der gespeicherte Bericht wird gelöscht. Das Training wird nicht wiederhergestellt.";
+
+"reports.exercise_report.title" = "Übungsbericht";
+"reports.exercise_report.breakdown" = "Details";
+"reports.exercise_report.target_vs_result" = "Ziel und Ergebnis";
+"reports.exercise_report.summary" = "Übungsübersicht";
+"reports.exercise_report.view_statistics" = "Statistik anzeigen";
+"reports.exercise_report.view_statistics.subtitle" = "Verlauf, Rekorde und langfristiger Fortschritt";
+"reports.exercise_report.status.previous_best" = "Bisheriger Bestwert";
+"reports.exercise_report.status.previous" = "Vorher";
+"reports.exercise_report.status.goal" = "Ziel";
+"reports.exercise_report.status.achieved" = "Erreicht";
+"reports.exercise_report.status.missed" = "Verfehlt";
+"reports.exercise_report.status.targets" = "Ziele";
+"reports.exercise_report.status.recorded" = "Erfasst";
+"reports.exercise_report.status.complete" = "Abgeschlossen";
+"reports.exercise_report.status.metric" = "Kennzahl";
+"reports.exercise_report.status.current" = "Aktuell";
+"reports.exercise_report.status.improvement" = "Verbesserung";
+"reports.exercise_report.status.all_targets_completed" = "Alle geplanten Sätze wurden erfolgreich abgeschlossen.";
+"reports.exercise_report.status.no_target_sets" = "Übung ohne Zielsätze abgeschlossen.";
+"reports.exercise_report.status.some_targets_missed" = "Einige Zielsätze wurden verfehlt.";
+"reports.exercise_report.status.missed_targets_count" = "%d von %d Zielen verfehlt.";
+
+"reports.exercise_status.personal_record" = "Neuer persönlicher Rekord";
+"reports.exercise_status.progress" = "Fortschritt";
+"reports.exercise_status.goal_achieved" = "Ziel erreicht";
+"reports.exercise_status.goal_missed" = "Ziel verfehlt";
+"reports.exercise_status.complete" = "Abgeschlossen";
+
+"reports.workout_status.personal_record" = "Neuer persönlicher Rekord";
+"reports.workout_status.personal_records" = "%d neue persönliche Rekorde";
+"reports.workout_status.progress" = "Fortschritt";
+"reports.workout_status.incomplete" = "Training unvollständig";
+"reports.workout_status.goals_achieved" = "Ziele erreicht";
+"reports.workout_status.goals_not_achieved" = "Ziele nicht erreicht";
+"reports.workout_status.complete" = "Training abgeschlossen";
+
+"reports.summary.exercises" = "Übungen";
+"reports.summary.density" = "Dichte";
+"reports.summary.volume_goal" = "Volumenziel";
+"reports.summary.repetition_goal" = "Wiederholungsziel";
+"reports.summary.time_goal" = "Zeitziel";
+"reports.summary.distance_goal" = "Distanzziel";
+"reports.summary.pace_goal" = "Tempoziel";
+"reports.summary.weight" = "Gewicht";
+"reports.summary.repetitions" = "Wiederholungen";
+"reports.summary.volume" = "Volumen";
+"reports.summary.rest_time" = "Pausenzeit";
+"reports.summary.total_repetitions" = "Gesamtwiederholungen";
+"reports.summary.sets" = "Sätze";
+"reports.summary.total_time" = "Gesamtzeit";
+"reports.summary.distance" = "Distanz";
+"reports.summary.time" = "Zeit";
+"reports.summary.pace" = "Tempo";
+"reports.summary.no_rest" = "Keine Pause";
+"reports.summary.distance_time" = "Distanz / Zeit";
+"reports.summary.actual_from_target" = "%@ von %@";
+
+"reports.history.title" = "Verlauf";
+"reports.history.show_all" = "Alle anzeigen";
+"reports.history.screen_title" = "Übungsverlauf";
+"reports.history.loading" = "Verlauf wird geladen";
+"reports.history.empty.title" = "Kein Übungsverlauf";
+"reports.history.empty.subtitle" = "Frühere abgeschlossene Berichte für diese Übung werden hier angezeigt.";
+
+"reports.month_picker.month" = "Monat";
+"reports.month_picker.year" = "Jahr";
+"reports.month_picker.title" = "Monat auswählen";
+"reports.month_picker.select" = "Auswählen";
+
+"reports.statistics.title" = "Statistik";
+"reports.statistics.legend.workout" = "Training";
+"reports.statistics.legend.personal_record" = "Persönlicher Rekord";
+"reports.statistics.empty_period.title" = "Keine Daten für diesen Zeitraum";
+"reports.statistics.empty_period.subtitle" = "Wähle einen längeren Zeitraum.";
+"reports.statistics.empty.title" = "Noch keine Statistik";
+"reports.statistics.empty.subtitle" = "Berichte werden nach Abschluss dieser Übung angezeigt.";
+"reports.statistics.period_summary" = "Zeitraumübersicht";
+"reports.statistics.current_vs_previous" = "Aktuell und vorher";
+"reports.statistics.average" = "Durchschnitt";
+"reports.statistics.change" = "Änderung";
+"reports.statistics.result" = "Ergebnis";
+"reports.statistics.date" = "Datum";
+"reports.statistics.current" = "Aktuell";
+"reports.statistics.previous" = "Vorher";
+"reports.statistics.across_all_workouts" = "Über alle Trainings";
+"reports.statistics.metric.weight.subtitle" = "Höchstes Gewicht pro Bericht";
+"reports.statistics.metric.volume.subtitle" = "Gesamtvolumen pro Bericht";
+"reports.statistics.metric.repetitions.subtitle" = "Wiederholungen mit relevantem Gewicht";
+"reports.statistics.metric.repetitions.total_subtitle" = "Gesamtwiederholungen pro Bericht";
+"reports.statistics.metric.time.subtitle" = "Gesamtzeit pro Bericht";
+"reports.statistics.metric.distance.subtitle" = "Gesamtdistanz pro Bericht";
+"reports.statistics.metric.pace.subtitle" = "Bestes niedrigeres Tempo pro Bericht";
+"reports.statistics.best.weight" = "Bestes Gewicht";
+"reports.statistics.best.volume" = "Bestes Volumen";
+"reports.statistics.best.set" = "Bester Satz";
+"reports.statistics.best.time" = "Beste Zeit";
+"reports.statistics.best.distance" = "Beste Distanz";
+"reports.statistics.best.pace" = "Bestes Tempo";
+"reports.statistics.axis.time" = "Zeit";
+"reports.statistics.axis.pace_km" = "Tempo /km";
+"reports.statistics.axis.pace_mi" = "Tempo /mi";
+"reports.statistics.period.all" = "Alle";
+
+/* Settings */
+
+"settings.title" = "Einstellungen";
+"settings.common.ok" = "OK";
+
+"settings.units.title" = "Einheiten";
+"settings.units.weight" = "Gewicht";
+"settings.units.distance" = "Distanz";
+"settings.units.system" = "System";
+"settings.units.weight.kilograms" = "kg";
+"settings.units.weight.pounds" = "lb";
+"settings.units.distance.metric" = "Metrisch";
+"settings.units.distance.imperial" = "Imperial";
+"unit.repetitions.short" = "Wdh.";
+
+"settings.notifications.title" = "Mitteilungen";
+"settings.notifications.enabled.title" = "Trainingsmitteilungen";
+"settings.notifications.enabled.subtitle" = "Pausentimer und Erinnerungen an aktive Trainings sind aktiviert.";
+"settings.notifications.paused.subtitle" = "iTrainer plant keine Trainingserinnerungen.";
+"settings.notifications.enable.title" = "Mitteilungen aktivieren";
+"settings.notifications.enable.subtitle" = "Pausentimer und Erinnerungen an aktive Trainings erlauben.";
+"settings.notifications.blocked.title" = "Mitteilungen sind deaktiviert";
+"settings.notifications.blocked.subtitle" = "Aktiviere Mitteilungen in den iPhone-Einstellungen, um Pausen- und Trainingserinnerungen zu erhalten.";
+"settings.notifications.open_settings" = "Einstellungen öffnen";
+
+"settings.language.title" = "Sprache";
+"settings.language.system.title" = "Verwendet die iTrainer-Einstellungen des iPhone";
+"settings.language.system.subtitle" = "Öffne die iTrainer-Einstellungen in iOS, um die App-Sprache auszuwählen.";
+
+"settings.support.title" = "Support";
+"settings.share_app.title" = "iTrainer teilen";
+"settings.rate_app.title" = "iTrainer bewerten";
+"settings.support.feedback.title" = "Feedback senden";
+"settings.support.feedback.subtitle" = "Feedback zur App oder Details zu einem Problem per E-Mail senden.";
+"settings.support.feedback.subject" = "iTrainer-Feedback";
+"settings.support.feedback.app_info" = "App-Informationen";
+"settings.support.mail_unavailable.title" = "Mail ist nicht verfügbar";
+"settings.support.mail_unavailable.message" = "Richte Mail auf diesem iPhone ein oder kontaktiere den Support über eine andere E-Mail-App.";
+
+"settings.privacy.title" = "Datenschutz";
+"settings.privacy.local_data.title" = "Lokale Trainingsdaten";
+"settings.privacy.local_data.subtitle" = "Deine Trainingsdaten werden auf diesem Gerät gespeichert. Die Cloud-Synchronisierung ist nicht aktiviert.";
+"settings.privacy.policy.title" = "Datenschutzerklärung";
+"settings.privacy.policy.pending" = "Füge vor der Veröffentlichung die URL der Erklärung hinzu.";
+
+"settings.about.title" = "Über";
+"settings.about.version" = "Version";

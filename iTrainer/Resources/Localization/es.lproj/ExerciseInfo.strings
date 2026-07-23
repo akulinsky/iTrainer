@@ -1,0 +1,1033 @@
+/* Exercise Info */
+
+"exercise.info.chest_bench_press.description" = "El press de banca es un press con barra fundamental para desarrollar la fuerza del pecho, los hombros y los tríceps.";
+"exercise.info.chest_bench_press.technique.1" = "Plante los pies firmemente en el suelo antes de quitar la barra.";
+"exercise.info.chest_bench_press.technique.2" = "Retraiga y presione los omóplatos para crear una parte superior de la espalda estable.";
+"exercise.info.chest_bench_press.technique.3" = "Utilice un agarre ligeramente más ancho que el ancho de los hombros con las muñecas apiladas sobre los codos.";
+"exercise.info.chest_bench_press.technique.4" = "Baje la barra bajo control hacia la parte inferior o media del pecho.";
+"exercise.info.chest_bench_press.technique.5" = "No hagas rebotar la barra contra tu pecho ni dejes que tus caderas se levanten del banco.";
+"exercise.info.chest_bench_press.technique.6" = "Presione la barra hacia arriba en un camino constante mientras mantiene la parte superior de la espalda apretada.";
+
+"exercise.info.chest_incline_bench_press.description" = "El press de banca inclinado es un press con barra que enfatiza la parte superior del pecho y los hombros delanteros.";
+"exercise.info.chest_incline_bench_press.technique.1" = "Coloque el banco en una inclinación moderada, generalmente entre 30 y 45 grados.";
+"exercise.info.chest_incline_bench_press.technique.2" = "Mantenga los pies estables y los omóplatos apoyados contra el banco.";
+"exercise.info.chest_incline_bench_press.technique.3" = "Agarre la barra un poco más ancha que el ancho de los hombros.";
+"exercise.info.chest_incline_bench_press.technique.4" = "Baja la barra bajo control hacia la parte superior del pecho.";
+"exercise.info.chest_incline_bench_press.technique.5" = "Mantenga los codos controlados en lugar de extenderlos hacia afuera.";
+"exercise.info.chest_incline_bench_press.technique.6" = "Presione suavemente hacia arriba sin perder la posición del banco.";
+
+"exercise.info.chest_dumbbell_press.description" = "Press con mancuernas es una variación de press de pecho que permite que cada brazo trabaje de forma independiente a través de un rango de movimiento natural.";
+"exercise.info.chest_dumbbell_press.technique.1" = "Siéntate con las mancuernas controladas y luego acuéstate con ellas cerca de tu pecho.";
+"exercise.info.chest_dumbbell_press.technique.2" = "Coloca los omóplatos y mantén los pies plantados.";
+"exercise.info.chest_dumbbell_press.technique.3" = "Comience con las muñecas apiladas sobre los codos, no dobladas hacia atrás.";
+"exercise.info.chest_dumbbell_press.technique.4" = "Baje ambas mancuernas de manera uniforme hasta que sienta un cómodo estiramiento del pecho.";
+"exercise.info.chest_dumbbell_press.technique.5" = "Presione hacia arriba sin dejar que las mancuernas choquen en la parte superior.";
+"exercise.info.chest_dumbbell_press.technique.6" = "Mantenga ambos lados moviéndose uniformemente y evite torcer el torso.";
+
+"exercise.info.chest_incline_dumbbell_press.description" = "El press inclinado con mancuernas desarrolla fuerza en la parte superior del pecho con movimiento independiente del brazo y un rango de movimiento ligeramente más largo.";
+"exercise.info.chest_incline_dumbbell_press.technique.1" = "Utilice una inclinación moderada para que el movimiento todavía se sienta centrado en el pecho.";
+"exercise.info.chest_incline_dumbbell_press.technique.2" = "Mantenga los omóplatos estables y la zona lumbar controlada.";
+"exercise.info.chest_incline_dumbbell_press.technique.3" = "Comience con las mancuernas encima de la parte superior del pecho.";
+"exercise.info.chest_incline_dumbbell_press.technique.4" = "Baje las mancuernas junto a la parte superior del pecho con control.";
+"exercise.info.chest_incline_dumbbell_press.technique.5" = "No dejes que los codos se desplacen demasiado detrás de los hombros.";
+"exercise.info.chest_incline_dumbbell_press.technique.6" = "Presione hacia arriba suavemente sin dejar que las mancuernas se muevan demasiado hacia adelante.";
+
+"exercise.info.chest_dips.description" = "Los fondos son un ejercicio de presión con el peso corporal que puede enfatizar el pecho cuando se realiza con una ligera inclinación hacia adelante.";
+"exercise.info.chest_dips.technique.1" = "Comience con los brazos rectos y los hombros alejados de las orejas.";
+"exercise.info.chest_dips.technique.2" = "Inclínese ligeramente hacia adelante para desplazar más trabajo hacia el pecho.";
+"exercise.info.chest_dips.technique.3" = "Baje bajo control hasta que la parte superior de sus brazos esté casi paralela al piso.";
+"exercise.info.chest_dips.technique.4" = "Mantenga los codos moviéndose naturalmente en lugar de abrirlos ampliamente.";
+"exercise.info.chest_dips.technique.5" = "Presione hacia arriba suavemente sin rebotar desde abajo.";
+"exercise.info.chest_dips.technique.6" = "Detén la serie si sientes una molestia aguda en el hombro.";
+
+"exercise.info.chest_push_up.description" = "Push-Up es un ejercicio de presión con el peso corporal para el control del pecho, los hombros, los tríceps y el tronco.";
+"exercise.info.chest_push_up.technique.1" = "Coloque las manos un poco más anchas que el ancho de los hombros.";
+"exercise.info.chest_push_up.technique.2" = "Mantenga su cuerpo en línea recta desde la cabeza hasta los talones.";
+"exercise.info.chest_push_up.technique.3" = "Apoye su tronco para que las caderas no se doblen ni se levanten.";
+"exercise.info.chest_push_up.technique.4" = "Baje el pecho hacia el suelo con control.";
+"exercise.info.chest_push_up.technique.5" = "Mantenga los codos en un ángulo cómodo, no extendidos hacia los lados.";
+"exercise.info.chest_push_up.technique.6" = "Presione hacia arriba completamente mientras mantiene la misma línea del cuerpo.";
+
+"exercise.info.chest_machine_press.description" = "Machine Chest Press es un ejercicio de presión guiado que entrena la fuerza del pecho con un soporte corporal estable.";
+"exercise.info.chest_machine_press.technique.1" = "Ajuste el asiento de modo que las manijas se alineen alrededor de la mitad del pecho.";
+"exercise.info.chest_machine_press.technique.2" = "Mantenga la espalda y las caderas apoyadas contra la almohadilla.";
+"exercise.info.chest_machine_press.technique.3" = "Agarre las manijas con las muñecas en posición neutral y los hombros relajados.";
+"exercise.info.chest_machine_press.technique.4" = "Presione hacia adelante suavemente sin encogerse de hombros.";
+"exercise.info.chest_machine_press.technique.5" = "Evite bloquear los codos agresivamente al final del press.";
+"exercise.info.chest_machine_press.technique.6" = "Devuelve las manijas bajo control antes de comenzar la siguiente repetición.";
+
+"exercise.info.chest_smith_machine_press.description" = "Smith Machine Press es un press con barra guiado que puede ayudar a entrenar el pecho con una trayectoria de barra fija.";
+"exercise.info.chest_smith_machine_press.technique.1" = "Coloque el banco de modo que la barra baje hasta la mitad o la parte inferior del pecho.";
+"exercise.info.chest_smith_machine_press.technique.2" = "Ajusta los omóplatos y mantén los pies estables.";
+"exercise.info.chest_smith_machine_press.technique.3" = "Utilice un agarre que mantenga las muñecas apiladas sobre los codos.";
+"exercise.info.chest_smith_machine_press.technique.4" = "Desbloquea la barra con cuidado y bájala con control.";
+"exercise.info.chest_smith_machine_press.technique.5" = "No fuerces tus hombros en una trayectoria fija incómoda.";
+"exercise.info.chest_smith_machine_press.technique.6" = "Presione hacia arriba suavemente y vuelva a colocar la barra solo cuando la barra esté completamente controlada.";
+
+"exercise.info.chest_dumbbell_fly.description" = "Dumbbell Fly es un ejercicio de aislamiento que entrena el pecho a través de un arco amplio y un estiramiento cargado.";
+"exercise.info.chest_dumbbell_fly.technique.1" = "Recuéstese con las mancuernas sobre el pecho y las palmas una frente a la otra.";
+"exercise.info.chest_dumbbell_fly.technique.2" = "Mantenga una ligera flexión de los codos durante todo el movimiento.";
+"exercise.info.chest_dumbbell_fly.technique.3" = "Abre los brazos lentamente hasta que sientas un estiramiento controlado del pecho.";
+"exercise.info.chest_dumbbell_fly.technique.4" = "No baje tanto que los hombros se sientan tensos.";
+"exercise.info.chest_dumbbell_fly.technique.5" = "Vuelva a juntar las mancuernas siguiendo el mismo arco.";
+"exercise.info.chest_dumbbell_fly.technique.6" = "Mantenga el movimiento como una mosca, no como un press oculto con mancuernas.";
+
+"exercise.info.chest_pec_deck.description" = "Pec Deck es un ejercicio de aislamiento del pecho con máquina que utiliza una trayectoria guiada del brazo para entrenar la aducción del pecho.";
+"exercise.info.chest_pec_deck.technique.1" = "Ajuste el asiento para que las manijas o las almohadillas se alineen con su pecho.";
+"exercise.info.chest_pec_deck.technique.2" = "Mantenga la espalda apoyada y el pecho elevado.";
+"exercise.info.chest_pec_deck.technique.3" = "Sostenga las manijas o almohadillas con los hombros relajados.";
+"exercise.info.chest_pec_deck.technique.4" = "Junte los brazos suavemente frente al pecho.";
+"exercise.info.chest_pec_deck.technique.5" = "Haga una pausa breve sin dejar que los hombros se muevan hacia adelante.";
+"exercise.info.chest_pec_deck.technique.6" = "Regrese lentamente hasta que sienta un estiramiento cómodo.";
+
+"exercise.info.chest_cable_crossover.description" = "Cable Crossover es un ejercicio de aislamiento del pecho que mantiene la tensión en el pecho en todo su rango.";
+"exercise.info.chest_cable_crossover.technique.1" = "Coloca las poleas a la altura que coincida con el ángulo del pecho que deseas entrenar.";
+"exercise.info.chest_cable_crossover.technique.2" = "Párese estable con una ligera inclinación hacia adelante y un pie hacia adelante si es necesario.";
+"exercise.info.chest_cable_crossover.technique.3" = "Mantenga los codos suavemente doblados y los hombros hacia abajo.";
+"exercise.info.chest_cable_crossover.technique.4" = "Mueva las manos formando un arco suave frente al cuerpo.";
+"exercise.info.chest_cable_crossover.technique.5" = "Aprieta el pecho brevemente sin curvar los hombros.";
+"exercise.info.chest_cable_crossover.technique.6" = "Controla el retorno y evita que la pila de pesas te tire hacia atrás.";
+
+"exercise.info.chest_dumbbell_pullover.description" = "Dumbbell Pullover es un ejercicio controlado para la parte superior del cuerpo que puede entrenar el pecho y los dorsales mediante la extensión de los hombros.";
+"exercise.info.chest_dumbbell_pullover.technique.1" = "Acuéstese en un banco y sostenga firmemente una mancuerna con ambas manos.";
+"exercise.info.chest_dumbbell_pullover.technique.2" = "Comienza con la mancuerna por encima del pecho y los codos ligeramente flexionados.";
+"exercise.info.chest_dumbbell_pullover.technique.3" = "Baje la mancuerna detrás de su cabeza solo hasta donde lo permitan sus hombros.";
+"exercise.info.chest_dumbbell_pullover.technique.4" = "Mantenga las costillas y la espalda baja controladas en lugar de arquearlas demasiado.";
+"exercise.info.chest_dumbbell_pullover.technique.5" = "Tire de la mancuerna hacia atrás sobre el pecho formando un arco suave.";
+"exercise.info.chest_dumbbell_pullover.technique.6" = "Utilice una carga moderada y evite convertir el movimiento en una extensión de tríceps.";
+
+"exercise.info.back_pull_up.description" = "Pull-Up es un ejercicio de tracción vertical con peso corporal para desarrollar los dorsales, la fuerza de la parte superior de la espalda y el control de los brazos.";
+"exercise.info.back_pull_up.technique.1" = "Comience desde una caída controlada con los hombros activos, no sueltos.";
+"exercise.info.back_pull_up.technique.2" = "Agarre la barra con firmeza y afirme su tronco antes de tirar.";
+"exercise.info.back_pull_up.technique.3" = "Tire empujando los codos hacia los costados.";
+"exercise.info.back_pull_up.technique.4" = "Apunta tu pecho hacia la barra sin balancearte excesivamente.";
+"exercise.info.back_pull_up.technique.5" = "Bajar bajo control hasta que los brazos vuelvan a estar extendidos.";
+"exercise.info.back_pull_up.technique.6" = "Mantenga las repeticiones limpias y evite patear las piernas para ganar impulso.";
+
+"exercise.info.back_reverse_grip_pull_up.description" = "Pull-Up con agarre inverso es un tirón estilo dominadas que enfatiza los dorsales y los bíceps con un agarre supinado.";
+"exercise.info.back_reverse_grip_pull_up.technique.1" = "Utilice un agarre por debajo del ancho de los hombros.";
+"exercise.info.back_reverse_grip_pull_up.technique.2" = "Comience con una suspensión controlada con las costillas hacia abajo.";
+"exercise.info.back_reverse_grip_pull_up.technique.3" = "Tire de su pecho hacia la barra mientras mantiene los codos cerca.";
+"exercise.info.back_reverse_grip_pull_up.technique.4" = "Evite estirar el cuello para alcanzar la barra.";
+"exercise.info.back_reverse_grip_pull_up.technique.5" = "Baje lentamente hasta que los codos estén extendidos.";
+"exercise.info.back_reverse_grip_pull_up.technique.6" = "No dejes que los hombros colapsen en la parte inferior.";
+
+"exercise.info.back_barbell_row.description" = "El remo con barra inclinado es un tirón horizontal compuesto para la estabilidad de la parte media de la espalda, los dorsales y la cadena posterior.";
+"exercise.info.back_barbell_row.technique.1" = "Gire las caderas y mantenga la columna neutra.";
+"exercise.info.back_barbell_row.technique.2" = "Apoye su torso antes de levantar la barra del piso o del estante.";
+"exercise.info.back_barbell_row.technique.3" = "Mantenga estable el ángulo del torso durante toda la serie.";
+"exercise.info.back_barbell_row.technique.4" = "Tire de la barra hacia las costillas inferiores o la parte superior del abdomen.";
+"exercise.info.back_barbell_row.technique.5" = "Aprieta la espalda brevemente sin sacudir el peso.";
+"exercise.info.back_barbell_row.technique.6" = "Baja la barra bajo control sin arquear la espalda.";
+
+"exercise.info.back_one_arm_dumbbell_row.description" = "El remo con mancuernas a un brazo entrena cada lado de la espalda de forma independiente con el apoyo de un banco o una superficie estable.";
+"exercise.info.back_one_arm_dumbbell_row.technique.1" = "Apoye una mano y una rodilla o una mano sobre un soporte estable.";
+"exercise.info.back_one_arm_dumbbell_row.technique.2" = "Mantenga la columna neutra y el torso firme.";
+"exercise.info.back_one_arm_dumbbell_row.technique.3" = "Deje que el hombro de trabajo llegue ligeramente hacia abajo.";
+"exercise.info.back_one_arm_dumbbell_row.technique.4" = "Tire de la mancuerna hacia la cadera, no hacia el hombro.";
+"exercise.info.back_one_arm_dumbbell_row.technique.5" = "Haga una pausa breve manteniendo el codo cerca del cuerpo.";
+"exercise.info.back_one_arm_dumbbell_row.technique.6" = "Evite torcer el torso para levantar peso más pesado.";
+
+"exercise.info.back_lat_pulldown.description" = "Lat Pulldown es un tirón de cable vertical que entrena los dorsales y la parte superior de la espalda con carga ajustable.";
+"exercise.info.back_lat_pulldown.technique.1" = "Siéntate erguido y asegura tus muslos debajo de la almohadilla.";
+"exercise.info.back_lat_pulldown.technique.2" = "Agarre la barra ligeramente más ancha que el ancho de los hombros a menos que utilice otro accesorio.";
+"exercise.info.back_lat_pulldown.technique.3" = "Comience colocando los hombros lejos de las orejas.";
+"exercise.info.back_lat_pulldown.technique.4" = "Tire de la barra hacia la parte superior del pecho.";
+"exercise.info.back_lat_pulldown.technique.5" = "Mantenga el torso prácticamente estable y evite inclinarse demasiado hacia atrás.";
+"exercise.info.back_lat_pulldown.technique.6" = "Devuelve la barra hacia arriba lentamente sin perder el control.";
+
+"exercise.info.back_seated_cable_row.description" = "Sentado Cable Row es un ejercicio de tracción horizontal para la parte media de la espalda, los dorsales y el control escapular.";
+"exercise.info.back_seated_cable_row.technique.1" = "Siéntese erguido con la columna neutra y los pies apoyados.";
+"exercise.info.back_seated_cable_row.technique.2" = "Comienza con los brazos extendidos mientras mantienes el pecho elevado.";
+"exercise.info.back_seated_cable_row.technique.3" = "Tire del mango hacia las costillas inferiores o la parte superior del abdomen.";
+"exercise.info.back_seated_cable_row.technique.4" = "Lleva los codos hacia atrás sin encoger los hombros.";
+"exercise.info.back_seated_cable_row.technique.5" = "Haga una pausa breve con los omóplatos controlados.";
+"exercise.info.back_seated_cable_row.technique.6" = "Regrese el mango lentamente sin doblarlo hacia adelante.";
+
+"exercise.info.back_t_bar_row.description" = "T-Bar Row es una variación de remo pesado que apunta a la parte media de la espalda y los dorsales con una trayectoria de tracción estable.";
+"exercise.info.back_t_bar_row.technique.1" = "Establece tu postura y articula para que tu torso se mantenga estable.";
+"exercise.info.back_t_bar_row.technique.2" = "Apoye su tronco antes de levantar la manija.";
+"exercise.info.back_t_bar_row.technique.3" = "Tire del mango hacia la parte inferior del pecho o la parte superior del abdomen.";
+"exercise.info.back_t_bar_row.technique.4" = "Mantenga los codos hacia atrás en lugar de dejar que los hombros se encojan.";
+"exercise.info.back_t_bar_row.technique.5" = "Evite utilizar un gran balanceo del torso para comenzar cada repetición.";
+"exercise.info.back_t_bar_row.technique.6" = "Bajar el peso bajo control hasta que los brazos se extiendan.";
+
+"exercise.info.back_chest_supported_machine_row.description" = "El remo con máquina con apoyo en el pecho entrena la espalda con soporte para el torso, lo que reduce la necesidad de estabilizar la zona lumbar.";
+"exercise.info.back_chest_supported_machine_row.technique.1" = "Ajuste el asiento o la almohadilla para el pecho para que las manijas se alineen cómodamente.";
+"exercise.info.back_chest_supported_machine_row.technique.2" = "Mantenga su pecho contra la almohadilla durante toda la serie.";
+"exercise.info.back_chest_supported_machine_row.technique.3" = "Comienza con los brazos extendidos y los hombros controlados.";
+"exercise.info.back_chest_supported_machine_row.technique.4" = "Tire de las manijas hacia atrás empujando los codos detrás de usted.";
+"exercise.info.back_chest_supported_machine_row.technique.5" = "Haga una pausa breve sin levantar el pecho de la almohadilla.";
+"exercise.info.back_chest_supported_machine_row.technique.6" = "Regrese suavemente y mantenga la tensión en la espalda.";
+
+"exercise.info.back_straight_arm_pulldown.description" = "Pulldown con brazos rectos es un ejercicio con cable para los dorsales que utiliza un movimiento estilo jersey con brazos mayoritariamente rectos.";
+"exercise.info.back_straight_arm_pulldown.technique.1" = "Coloque un cable en alto y aléjese lo suficiente para mantener la tensión.";
+"exercise.info.back_straight_arm_pulldown.technique.2" = "Sostenga la barra o cuerda con los codos suavemente doblados.";
+"exercise.info.back_straight_arm_pulldown.technique.3" = "Apoye el torso y mantenga los hombros alejados de las orejas.";
+"exercise.info.back_straight_arm_pulldown.technique.4" = "Tire de la manija hacia abajo formando un arco hacia la parte superior de los muslos.";
+"exercise.info.back_straight_arm_pulldown.technique.5" = "Concéntrese en moverse desde los hombros, no doblar los codos como si estuviera haciendo una presión de tríceps.";
+"exercise.info.back_straight_arm_pulldown.technique.6" = "Regrese lentamente hasta que sienta un estiramiento controlado en los dorsales.";
+
+"exercise.info.back_deadlift.description" = "El peso muerto es un ejercicio pesado de articulación de la cadera que desarrolla la fuerza de tracción de todo el cuerpo y la potencia de la cadena posterior.";
+"exercise.info.back_deadlift.technique.1" = "Coloque los pies debajo de la barra con la barra cerca de la mitad del pie.";
+"exercise.info.back_deadlift.technique.2" = "Bájate, agarra la barra y apoya el torso con fuerza.";
+"exercise.info.back_deadlift.technique.3" = "Mantenga la barra cerca de sus piernas mientras comienza a tirar.";
+"exercise.info.back_deadlift.technique.4" = "Empuja el suelo manteniendo la espalda neutra.";
+"exercise.info.back_deadlift.technique.5" = "Bloquee extendiendo las caderas y las rodillas juntas.";
+"exercise.info.back_deadlift.technique.6" = "Evite inclinarse excesivamente hacia atrás en la parte superior.";
+
+"exercise.info.back_hyperextension.description" = "La hiperextensión entrena la extensión controlada de la cadera, los glúteos, los isquiotibiales y la resistencia de la zona lumbar.";
+"exercise.info.back_hyperextension.technique.1" = "Coloque la almohadilla para que sus caderas puedan moverse libremente.";
+"exercise.info.back_hyperextension.technique.2" = "Cruza los brazos o sostén una carga cerca del cuerpo.";
+"exercise.info.back_hyperextension.technique.3" = "Baje el torso con la columna neutra.";
+"exercise.info.back_hyperextension.technique.4" = "Vuelva a levantarse apretando los glúteos y los isquiotibiales.";
+"exercise.info.back_hyperextension.technique.5" = "Deténgase cuando su cuerpo esté alineado, no hiperextendido hacia atrás.";
+"exercise.info.back_hyperextension.technique.6" = "Muévete lentamente y evita balancearte durante las repeticiones.";
+
+"exercise.info.back_dumbbell_shrug.description" = "Dumbbell Shrug entrena la parte superior del trapecio con cada brazo cargado de forma independiente.";
+"exercise.info.back_dumbbell_shrug.technique.1" = "Ponte de pie con una mancuerna en cada mano.";
+"exercise.info.back_dumbbell_shrug.technique.2" = "Mantenga los brazos rectos y deje que las pesas cuelguen a los costados.";
+"exercise.info.back_dumbbell_shrug.technique.3" = "Levanta los hombros hacia las orejas.";
+"exercise.info.back_dumbbell_shrug.technique.4" = "Haga una breve pausa en la parte superior sin girar los hombros.";
+"exercise.info.back_dumbbell_shrug.technique.5" = "Baje bajo control hasta estirarse por completo.";
+"exercise.info.back_dumbbell_shrug.technique.6" = "Mantenga el cuello neutral y evite hacer rebotar el peso.";
+
+"exercise.info.back_barbell_shrug.description" = "Los encogimientos con barra entrenan la parte superior del trapecio y permiten usar cargas mayores.";
+"exercise.info.back_barbell_shrug.technique.1" = "Sostenga la barra frente a sus muslos con un agarre firme.";
+"exercise.info.back_barbell_shrug.technique.2" = "Manténgase erguido con el tronco apuntalado.";
+"exercise.info.back_barbell_shrug.technique.3" = "Levante los hombros hacia arriba sin doblar los codos.";
+"exercise.info.back_barbell_shrug.technique.4" = "Haz una breve pausa en la parte superior y mantén la barra cerca.";
+"exercise.info.back_barbell_shrug.technique.5" = "Baje la barra bajo control en lugar de caer al fondo.";
+"exercise.info.back_barbell_shrug.technique.6" = "No gire los hombros; moverse hacia arriba y hacia abajo.";
+
+"exercise.info.legs_barbell_squat.description" = "La sentadilla con barra es un ejercicio básico para desarrollar los cuádriceps, los glúteos y la estabilidad de todo el cuerpo.";
+"exercise.info.legs_barbell_squat.technique.1" = "Coloque la barra de forma segura en la parte superior de la espalda y sujétela uniformemente.";
+"exercise.info.legs_barbell_squat.technique.2" = "Coloque los pies aproximadamente al ancho de los hombros y apoye el torso.";
+"exercise.info.legs_barbell_squat.technique.3" = "Baje doblando las caderas y las rodillas juntas.";
+"exercise.info.legs_barbell_squat.technique.4" = "Mantenga las rodillas alineadas con los pies.";
+"exercise.info.legs_barbell_squat.technique.5" = "Mantenga una columna neutral y evite colapsar hacia adelante.";
+"exercise.info.legs_barbell_squat.technique.6" = "Sube por la parte media del pie hasta que las caderas y las rodillas se extiendan.";
+
+"exercise.info.legs_leg_press.description" = "Leg Press es un ejercicio en máquina para entrenar las piernas con la espalda apoyada y la carga guiada por el trineo.";
+"exercise.info.legs_leg_press.technique.1" = "Coloque los pies firmemente sobre la plataforma a un ancho cómodo.";
+"exercise.info.legs_leg_press.technique.2" = "Mantenga las caderas y la espalda baja contra la almohadilla.";
+"exercise.info.legs_leg_press.technique.3" = "Desbloquea el trineo sólo cuando estés estable.";
+"exercise.info.legs_leg_press.technique.4" = "Baje la plataforma hasta que sus rodillas se doblen cómodamente.";
+"exercise.info.legs_leg_press.technique.5" = "Presione todo el pie sin dejar que las rodillas colapsen hacia adentro.";
+"exercise.info.legs_leg_press.technique.6" = "Evite bloquear las rodillas agresivamente en la parte superior.";
+
+"exercise.info.legs_squat.description" = "La sentadilla es un movimiento de la parte inferior del cuerpo con el peso corporal para fortalecer las piernas, movilidad y control del movimiento.";
+"exercise.info.legs_squat.technique.1" = "Párese con los pies a la altura de los hombros.";
+"exercise.info.legs_squat.technique.2" = "Apoye su torso y mantenga su pecho elevado.";
+"exercise.info.legs_squat.technique.3" = "Baje sentándose entre las caderas.";
+"exercise.info.legs_squat.technique.4" = "Mantenga las rodillas alineadas con los dedos de los pies.";
+"exercise.info.legs_squat.technique.5" = "Baja lo más que puedas mientras mantienes el control.";
+"exercise.info.legs_squat.technique.6" = "Ponte de pie suavemente a través de la parte media del pie.";
+
+"exercise.info.legs_dumbbell_lunge.description" = "Dumbbell Lunge es un ejercicio con una sola pierna para los cuádriceps, los glúteos, el equilibrio y el control de las piernas.";
+"exercise.info.legs_dumbbell_lunge.technique.1" = "Sostenga mancuernas a los costados y manténgase erguido.";
+"exercise.info.legs_dumbbell_lunge.technique.2" = "Da un paso adelante o atrás con control.";
+"exercise.info.legs_dumbbell_lunge.technique.3" = "Baje hasta que ambas rodillas se doblen naturalmente.";
+"exercise.info.legs_dumbbell_lunge.technique.4" = "Mantenga la rodilla delantera sobre el pie.";
+"exercise.info.legs_dumbbell_lunge.technique.5" = "Empuja con el pie delantero para regresar.";
+"exercise.info.legs_dumbbell_lunge.technique.6" = "Mantenga el torso firme y evite tambalearse de lado a lado.";
+
+"exercise.info.legs_barbell_lunge.description" = "La zancada con barra es un ejercicio unilateral que desarrolla la fuerza de las piernas, el equilibrio y la estabilidad del tronco.";
+"exercise.info.legs_barbell_lunge.technique.1" = "Coloque la barra de forma segura en la parte superior de la espalda.";
+"exercise.info.legs_barbell_lunge.technique.2" = "Apoye su torso antes de dar un paso.";
+"exercise.info.legs_barbell_lunge.technique.3" = "Pisa con control y mantén la barra nivelada.";
+"exercise.info.legs_barbell_lunge.technique.4" = "Baje hasta que ambas rodillas se doblen cómodamente.";
+"exercise.info.legs_barbell_lunge.technique.5" = "Empuje con el pie delantero sin dejar que la rodilla colapse hacia adentro.";
+"exercise.info.legs_barbell_lunge.technique.6" = "Utilice una carga más ligera si se rompe el equilibrio.";
+
+"exercise.info.legs_hack_squat.description" = "Hack Squat es una variación de la sentadilla en máquina que enfatiza los cuádriceps con una trayectoria guiada y un torso apoyado.";
+"exercise.info.legs_hack_squat.technique.1" = "Coloque los hombros y la espalda firmemente contra las almohadillas.";
+"exercise.info.legs_hack_squat.technique.2" = "Coloque los pies sobre la plataforma en una postura cómoda.";
+"exercise.info.legs_hack_squat.technique.3" = "Desbloquee la máquina sólo después de sujetarla.";
+"exercise.info.legs_hack_squat.technique.4" = "Baje bajo control mientras las rodillas siguen los dedos de los pies.";
+"exercise.info.legs_hack_squat.technique.5" = "Presione a través de la plataforma sin levantar los talones.";
+"exercise.info.legs_hack_squat.technique.6" = "Evite el bloqueo brusco de la rodilla en la parte superior.";
+
+"exercise.info.legs_front_squat.description" = "Front Squat es una variación de sentadilla con la barra sostenida al frente, enfatizando los cuádriceps y el control del torso erguido.";
+"exercise.info.legs_front_squat.technique.1" = "Apoye la barra en la parte delantera de sus hombros con los codos levantados.";
+"exercise.info.legs_front_squat.technique.2" = "Apoye su torso y mantenga su pecho erguido.";
+"exercise.info.legs_front_squat.technique.3" = "Baje doblando las caderas y las rodillas juntas.";
+"exercise.info.legs_front_squat.technique.4" = "Mantenga los codos en alto para que la barra no ruede hacia adelante.";
+"exercise.info.legs_front_squat.technique.5" = "Sube por la mitad del pie.";
+"exercise.info.legs_front_squat.technique.6" = "Utilice una carga que pueda controlar sin desplomarse hacia adelante.";
+
+"exercise.info.legs_leg_extension.description" = "La extensión de piernas es un ejercicio de aislamiento en máquina para los cuádriceps.";
+"exercise.info.legs_leg_extension.technique.1" = "Ajuste el asiento para que el pivote de la máquina se alinee con su rodilla.";
+"exercise.info.legs_leg_extension.technique.2" = "Coloque la almohadilla justo por encima de los tobillos.";
+"exercise.info.legs_leg_extension.technique.3" = "Sostenga las asas y mantenga las caderas hacia abajo.";
+"exercise.info.legs_leg_extension.technique.4" = "Extienda las piernas suavemente sin balancearse.";
+"exercise.info.legs_leg_extension.technique.5" = "Haga una breve pausa cerca de la cima si se siente cómodo.";
+"exercise.info.legs_leg_extension.technique.6" = "Baja el peso lentamente y mantén la tensión en los cuádriceps.";
+
+"exercise.info.legs_lying_leg_curl.description" = "Lying Leg Curl es un ejercicio de aislamiento en máquina para los isquiotibiales que se realiza boca abajo.";
+"exercise.info.legs_lying_leg_curl.technique.1" = "Acuéstese boca abajo y alinee las rodillas con el pivote de la máquina.";
+"exercise.info.legs_lying_leg_curl.technique.2" = "Coloca la almohadilla justo encima de tus talones.";
+"exercise.info.legs_lying_leg_curl.technique.3" = "Mantenga las caderas presionadas contra la almohadilla.";
+"exercise.info.legs_lying_leg_curl.technique.4" = "Doble el peso hacia los glúteos con control.";
+"exercise.info.legs_lying_leg_curl.technique.5" = "Evite levantar las caderas para terminar la repetición.";
+"exercise.info.legs_lying_leg_curl.technique.6" = "Baja lentamente hasta que las piernas estén extendidas.";
+
+"exercise.info.legs_seated_leg_curl.description" = "La flexión de piernas sentada es un ejercicio de aislamiento de los isquiotibiales que se realiza con las caderas flexionadas y el torso apoyado.";
+"exercise.info.legs_seated_leg_curl.technique.1" = "Ajuste el asiento para que sus rodillas se alineen con el pivote de la máquina.";
+"exercise.info.legs_seated_leg_curl.technique.2" = "Asegure la almohadilla para los muslos cómodamente por encima de las rodillas.";
+"exercise.info.legs_seated_leg_curl.technique.3" = "Mantenga las caderas y la espalda contra el asiento.";
+"exercise.info.legs_seated_leg_curl.technique.4" = "Doble la almohadilla hacia abajo con control.";
+"exercise.info.legs_seated_leg_curl.technique.5" = "Haga una breve pausa en la posición contraída.";
+"exercise.info.legs_seated_leg_curl.technique.6" = "Regrese lentamente sin dejar que la pila de pesas golpee.";
+
+"exercise.info.legs_standing_calf_raise.description" = "Standing Calf Raise entrena las pantorrillas a través de la extensión del tobillo con las piernas mayormente rectas.";
+"exercise.info.legs_standing_calf_raise.technique.1" = "Párese erguido con las puntas de los pies sobre la plataforma o el suelo.";
+"exercise.info.legs_standing_calf_raise.technique.2" = "Mantenga las rodillas casi rectas pero no bloqueadas con fuerza.";
+"exercise.info.legs_standing_calf_raise.technique.3" = "Baje los talones bajo control para lograr un estiramiento cómodo.";
+"exercise.info.legs_standing_calf_raise.technique.4" = "Ponte de puntillas en todo el rango.";
+"exercise.info.legs_standing_calf_raise.technique.5" = "Haga una breve pausa en la parte superior.";
+"exercise.info.legs_standing_calf_raise.technique.6" = "Evite rebotar entre las repeticiones.";
+
+"exercise.info.legs_seated_calf_raise.description" = "Seated Calf Raise entrena las pantorrillas con las rodillas dobladas, a menudo enfatizando el sóleo.";
+"exercise.info.legs_seated_calf_raise.technique.1" = "Siéntate con las puntas de los pies sobre la plataforma.";
+"exercise.info.legs_seated_calf_raise.technique.2" = "Coloque la almohadilla cómodamente sobre los muslos.";
+"exercise.info.legs_seated_calf_raise.technique.3" = "Baje los talones lentamente hasta lograr un estiramiento cómodo.";
+"exercise.info.legs_seated_calf_raise.technique.4" = "Presione a través de las puntas de los pies para levantar los talones.";
+"exercise.info.legs_seated_calf_raise.technique.5" = "Haga una breve pausa en la parte superior.";
+"exercise.info.legs_seated_calf_raise.technique.6" = "Mantenga el movimiento controlado y evite rebotes.";
+
+"exercise.info.legs_hip_adduction_machine.description" = "La máquina de aducción de cadera entrena la parte interna de los muslos llevando las piernas hacia la línea media.";
+"exercise.info.legs_hip_adduction_machine.technique.1" = "Siéntese erguido y ajuste las almohadillas a un ancho inicial cómodo.";
+"exercise.info.legs_hip_adduction_machine.technique.2" = "Mantenga la espalda apoyada contra el asiento.";
+"exercise.info.legs_hip_adduction_machine.technique.3" = "Sostenga las manijas y apóyelas ligeramente.";
+"exercise.info.legs_hip_adduction_machine.technique.4" = "Junta las piernas suavemente.";
+"exercise.info.legs_hip_adduction_machine.technique.5" = "Haga una pausa breve sin forzar el rango.";
+"exercise.info.legs_hip_adduction_machine.technique.6" = "Regrese lentamente y mantenga el control de las almohadillas.";
+
+"exercise.info.glutes_hip_thrust.description" = "Hip Thrust es un ejercicio de glúteos cargado que se realiza con la parte superior de la espalda apoyada en un banco.";
+"exercise.info.glutes_hip_thrust.technique.1" = "Coloque la parte superior de su espalda contra un banco y coloque la barra sobre sus caderas.";
+"exercise.info.glutes_hip_thrust.technique.2" = "Mantenga los pies aproximadamente al ancho de las caderas y lo suficientemente cerca como para que las espinillas queden casi verticales en la parte superior.";
+"exercise.info.glutes_hip_thrust.technique.3" = "Apoye su tronco antes de levantar las caderas.";
+"exercise.info.glutes_hip_thrust.technique.4" = "Conduzca a través de los talones y levante hasta que las caderas estén completamente extendidas.";
+"exercise.info.glutes_hip_thrust.technique.5" = "Haz una breve pausa en la parte superior y aprieta los glúteos.";
+"exercise.info.glutes_hip_thrust.technique.6" = "Baje bajo control sin arquear demasiado la zona lumbar.";
+
+"exercise.info.glutes_glute_bridge.description" = "Glute Bridge es un ejercicio de glúteos que se realiza en el suelo con un rango de movimiento más corto que un empuje de cadera.";
+"exercise.info.glutes_glute_bridge.technique.1" = "Acuéstese boca arriba con las rodillas dobladas y los pies apoyados en el suelo.";
+"exercise.info.glutes_glute_bridge.technique.2" = "Coloque los pies aproximadamente al ancho de las caderas y mantenga las costillas controladas.";
+"exercise.info.glutes_glute_bridge.technique.3" = "Conduce sobre los talones para levantar las caderas.";
+"exercise.info.glutes_glute_bridge.technique.4" = "Deténgase cuando las caderas estén extendidas y el cuerpo forme una línea recta.";
+"exercise.info.glutes_glute_bridge.technique.5" = "Aprieta los glúteos en la parte superior sin arquear la espalda.";
+"exercise.info.glutes_glute_bridge.technique.6" = "Baja lentamente hasta que las caderas regresen al suelo.";
+
+"exercise.info.glutes_romanian_deadlift.description" = "El peso muerto rumano es un ejercicio de articulación de la cadera que entrena los glúteos, los isquiotibiales y el control de la cadena posterior.";
+"exercise.info.glutes_romanian_deadlift.technique.1" = "Párate erguido con el peso delante de tus muslos.";
+"exercise.info.glutes_romanian_deadlift.technique.2" = "Apoye el torso y mantenga las rodillas suavemente dobladas.";
+"exercise.info.glutes_romanian_deadlift.technique.3" = "Gire las caderas y empújelas hacia atrás.";
+"exercise.info.glutes_romanian_deadlift.technique.4" = "Mantenga el peso cerca de sus piernas a medida que desciende.";
+"exercise.info.glutes_romanian_deadlift.technique.5" = "Baje hasta que sienta un estiramiento controlado en los isquiotibiales.";
+"exercise.info.glutes_romanian_deadlift.technique.6" = "Vuelve a levantarte empujando las caderas hacia adelante.";
+
+"exercise.info.glutes_bulgarian_split_squat.description" = "La sentadilla dividida búlgara es un ejercicio con una sola pierna que puede entrenar fuertemente los glúteos y los cuádriceps.";
+"exercise.info.glutes_bulgarian_split_squat.technique.1" = "Coloque el pie trasero sobre un banco o soporte estable.";
+"exercise.info.glutes_bulgarian_split_squat.technique.2" = "Coloque el pie delantero lo suficientemente adelantado para controlar la posición de la rodilla.";
+"exercise.info.glutes_bulgarian_split_squat.technique.3" = "Mantenga el torso ligeramente inclinado hacia adelante si apunta a los glúteos.";
+"exercise.info.glutes_bulgarian_split_squat.technique.4" = "Baje bajo control hasta que la pierna delantera se doble cómodamente.";
+"exercise.info.glutes_bulgarian_split_squat.technique.5" = "Empuja el pie delantero para levantarte.";
+"exercise.info.glutes_bulgarian_split_squat.technique.6" = "Mantenga el equilibrio estable y evite rebotar desde el fondo.";
+
+"exercise.info.glutes_cable_kickback.description" = "Cable Kickback entrena los glúteos extendiendo la cadera hacia atrás contra la resistencia del cable.";
+"exercise.info.glutes_cable_kickback.technique.1" = "Coloque el manguito del cable cerca del tobillo y sostenga la máquina como soporte.";
+"exercise.info.glutes_cable_kickback.technique.2" = "Manténgase erguido con una ligera inclinación hacia adelante y afirme su tronco.";
+"exercise.info.glutes_cable_kickback.technique.3" = "Mueva la pierna de trabajo hacia atrás desde la cadera.";
+"exercise.info.glutes_cable_kickback.technique.4" = "Mantenga la pelvis estable y evite rotar el torso.";
+"exercise.info.glutes_cable_kickback.technique.5" = "Haga una breve pausa cuando el glúteo se contraiga.";
+"exercise.info.glutes_cable_kickback.technique.6" = "Regrese lentamente sin dejar que el peso tire de la pierna hacia adelante.";
+
+"exercise.info.glutes_leg_kickback.description" = "Leg Kickback es un movimiento de glúteos con peso corporal o con banda centrado en la extensión de la cadera.";
+"exercise.info.glutes_leg_kickback.technique.1" = "Comience desde una posición estable de pie o con las manos y las rodillas.";
+"exercise.info.glutes_leg_kickback.technique.2" = "Apoye su tronco para que la parte baja de la espalda no se arquee demasiado.";
+"exercise.info.glutes_leg_kickback.technique.3" = "Lleva una pierna hacia atrás desde la cadera.";
+"exercise.info.glutes_leg_kickback.technique.4" = "Mantenga la pelvis cuadrada y evite torcerla.";
+"exercise.info.glutes_leg_kickback.technique.5" = "Aprieta el glúteo brevemente al final del movimiento.";
+"exercise.info.glutes_leg_kickback.technique.6" = "Regresa con control antes de comenzar la siguiente repetición.";
+
+"exercise.info.glutes_abduction_machine.description" = "La máquina de abducción de cadera entrena el glúteo medio y los glúteos externos alejando las piernas de la línea media.";
+"exercise.info.glutes_abduction_machine.technique.1" = "Siéntese con la espalda apoyada y las almohadillas colocadas fuera de los muslos.";
+"exercise.info.glutes_abduction_machine.technique.2" = "Elija un ancho inicial que le resulte cómodo.";
+"exercise.info.glutes_abduction_machine.technique.3" = "Sostenga las manijas y mantenga el torso firme.";
+"exercise.info.glutes_abduction_machine.technique.4" = "Abre las piernas hacia afuera bajo control.";
+"exercise.info.glutes_abduction_machine.technique.5" = "Haga una pausa breve sin inclinarse ni aprovechar el impulso.";
+"exercise.info.glutes_abduction_machine.technique.6" = "Regrese lentamente y mantenga la tensión en los glúteos.";
+
+"exercise.info.glutes_step_up.description" = "Step-Up es un ejercicio con una sola pierna que entrena los glúteos, los cuádriceps y el equilibrio al subirse a una plataforma elevada.";
+"exercise.info.glutes_step_up.technique.1" = "Elija una altura de plataforma que pueda controlar.";
+"exercise.info.glutes_step_up.technique.2" = "Coloque todo el pie de trabajo sobre la plataforma.";
+"exercise.info.glutes_step_up.technique.3" = "Inclínese ligeramente hacia adelante y afirme su torso.";
+"exercise.info.glutes_step_up.technique.4" = "Empuje el pie de trabajo para subir.";
+"exercise.info.glutes_step_up.technique.5" = "Evite empujar con fuerza la pierna trasera.";
+"exercise.info.glutes_step_up.technique.6" = "Baje lentamente y repita con control.";
+
+"exercise.info.glutes_cable_side_kick.description" = "Cable Side Kick entrena los glúteos externos moviendo la pierna hacia los lados contra la resistencia del cable.";
+"exercise.info.glutes_cable_side_kick.technique.1" = "Coloque el manguito del cable cerca del tobillo y colóquese de lado a la máquina.";
+"exercise.info.glutes_cable_side_kick.technique.2" = "Sostenga la máquina para mantener el equilibrio y mantenga el torso erguido.";
+"exercise.info.glutes_cable_side_kick.technique.3" = "Mueva la pierna de trabajo hacia un lado de la cadera.";
+"exercise.info.glutes_cable_side_kick.technique.4" = "Mantenga la pelvis estable y evite inclinarse demasiado.";
+"exercise.info.glutes_cable_side_kick.technique.5" = "Haga una breve pausa al final del rango.";
+"exercise.info.glutes_cable_side_kick.technique.6" = "Regrese lentamente sin dejar que el cable lo saque de su posición.";
+
+"exercise.info.shoulders_overhead_press.description" = "El press por encima de la cabeza desarrolla la fuerza de empuje vertical y la estabilidad del tronco.";
+"exercise.info.shoulders_overhead_press.technique.1" = "Párese con los pies estables y la barra cerca de la parte superior del pecho.";
+"exercise.info.shoulders_overhead_press.technique.2" = "Apoye su torso y mantenga las costillas controladas.";
+"exercise.info.shoulders_overhead_press.technique.3" = "Presione la barra hacia arriba en una trayectoria casi recta.";
+"exercise.info.shoulders_overhead_press.technique.4" = "Mueva la cabeza ligeramente hacia atrás y luego hacia adelante a medida que pasa la barra.";
+"exercise.info.shoulders_overhead_press.technique.5" = "Termina con la barra sobre los hombros, las caderas y la parte media del pie.";
+"exercise.info.shoulders_overhead_press.technique.6" = "Baja bajo control sin inclinarte excesivamente hacia atrás.";
+
+"exercise.info.shoulders_seated_dumbbell_press.description" = "El press con mancuernas sentado aumenta la fuerza del press de hombros con un movimiento independiente del brazo y un soporte estable para el torso.";
+"exercise.info.shoulders_seated_dumbbell_press.technique.1" = "Siéntate erguido con la espalda apoyada y los pies plantados.";
+"exercise.info.shoulders_seated_dumbbell_press.technique.2" = "Comience con mancuernas cerca del nivel de los hombros.";
+"exercise.info.shoulders_seated_dumbbell_press.technique.3" = "Mantenga las muñecas apiladas sobre los codos.";
+"exercise.info.shoulders_seated_dumbbell_press.technique.4" = "Presione hacia arriba sin dejar que la parte baja de la espalda se arquee.";
+"exercise.info.shoulders_seated_dumbbell_press.technique.5" = "No golpees las mancuernas en la parte superior.";
+"exercise.info.shoulders_seated_dumbbell_press.technique.6" = "Baje ambas mancuernas de manera uniforme y con control.";
+
+"exercise.info.shoulders_machine_press.description" = "El press de hombros con máquina entrena la fuerza del press vertical con una trayectoria guiada y un soporte corporal estable.";
+"exercise.info.shoulders_machine_press.technique.1" = "Ajuste el asiento de modo que las manijas comiencen a la altura de los hombros.";
+"exercise.info.shoulders_machine_press.technique.2" = "Mantenga la espalda y las caderas apoyadas contra la almohadilla.";
+"exercise.info.shoulders_machine_press.technique.3" = "Agarre las manijas con las muñecas en posición neutral.";
+"exercise.info.shoulders_machine_press.technique.4" = "Presione hacia arriba suavemente sin encogerse de hombros.";
+"exercise.info.shoulders_machine_press.technique.5" = "Evite bloquear los codos agresivamente.";
+"exercise.info.shoulders_machine_press.technique.6" = "Devuelve las manijas bajo control antes de la siguiente repetición.";
+
+"exercise.info.shoulders_arnold_press.description" = "Arnold Press es una variación del press de hombros con mancuernas que combina la rotación con un press por encima de la cabeza.";
+"exercise.info.shoulders_arnold_press.technique.1" = "Comienza sentado o de pie con las mancuernas delante de los hombros.";
+"exercise.info.shoulders_arnold_press.technique.2" = "Comience con las palmas hacia usted y los codos al frente.";
+"exercise.info.shoulders_arnold_press.technique.3" = "Gire las mancuernas hacia afuera mientras presiona sobre la cabeza.";
+"exercise.info.shoulders_arnold_press.technique.4" = "Mantenga el movimiento suave y controlado.";
+"exercise.info.shoulders_arnold_press.technique.5" = "Evite el arco excesivo de la espalda durante la prensa.";
+"exercise.info.shoulders_arnold_press.technique.6" = "Invierte la rotación a medida que bajas hasta el inicio.";
+
+"exercise.info.shoulders_lateral_raise.description" = "Elevación lateral es un ejercicio de aislamiento para los deltoides laterales y el ancho de hombros.";
+"exercise.info.shoulders_lateral_raise.technique.1" = "Párese erguido con los codos ligeramente doblados.";
+"exercise.info.shoulders_lateral_raise.technique.2" = "Levanta las mancuernas hacia los lados con control.";
+"exercise.info.shoulders_lateral_raise.technique.3" = "Dirija con los codos en lugar de con las manos.";
+"exercise.info.shoulders_lateral_raise.technique.4" = "Deténgase a la altura de los hombros.";
+"exercise.info.shoulders_lateral_raise.technique.5" = "Baja lentamente sin dejar caer las pesas.";
+"exercise.info.shoulders_lateral_raise.technique.6" = "Evite balancear el torso para comenzar la repetición.";
+
+"exercise.info.shoulders_cable_lateral_raise.description" = "Cable Lateral Raise entrena los deltoides laterales con una tensión constante del cable en todo el rango de movimiento.";
+"exercise.info.shoulders_cable_lateral_raise.technique.1" = "Coloque el cable en una posición baja y colóquese de lado a la máquina.";
+"exercise.info.shoulders_cable_lateral_raise.technique.2" = "Sostenga el mango con la mano exterior y afirme su torso.";
+"exercise.info.shoulders_cable_lateral_raise.technique.3" = "Mantenga una suave flexión del codo.";
+"exercise.info.shoulders_cable_lateral_raise.technique.4" = "Levante el brazo hacia un lado hasta aproximadamente la altura del hombro.";
+"exercise.info.shoulders_cable_lateral_raise.technique.5" = "Controlar el retorno y mantener tensión en el cable.";
+"exercise.info.shoulders_cable_lateral_raise.technique.6" = "No se incline ni gire para levantar más peso.";
+
+"exercise.info.shoulders_front_raise.description" = "Front Raise entrena los deltoides frontales mediante la flexión controlada del hombro.";
+"exercise.info.shoulders_front_raise.technique.1" = "Mantente erguido y fortalece tu torso.";
+"exercise.info.shoulders_front_raise.technique.2" = "Sostenga las pesas frente a sus muslos.";
+"exercise.info.shoulders_front_raise.technique.3" = "Levante el peso hacia adelante hasta aproximadamente la altura de los hombros.";
+"exercise.info.shoulders_front_raise.technique.4" = "Mantenga los codos suavemente doblados y las muñecas en posición neutra.";
+"exercise.info.shoulders_front_raise.technique.5" = "Baje lentamente sin inclinarse hacia atrás.";
+"exercise.info.shoulders_front_raise.technique.6" = "Evite balancear el peso desde las caderas.";
+
+"exercise.info.shoulders_reverse_fly.description" = "Reverse Fly entrena los deltoides posteriores y el control de la parte superior de la espalda mediante el movimiento horizontal del brazo.";
+"exercise.info.shoulders_reverse_fly.technique.1" = "Gire a la altura de las caderas o acuéstese boca abajo en un banco inclinado.";
+"exercise.info.shoulders_reverse_fly.technique.2" = "Mantenga una suave flexión de los codos.";
+"exercise.info.shoulders_reverse_fly.technique.3" = "Abre los brazos hacia los lados.";
+"exercise.info.shoulders_reverse_fly.technique.4" = "Concéntrate en los deltoides posteriores en lugar de encogerte de hombros.";
+"exercise.info.shoulders_reverse_fly.technique.5" = "Haga una breve pausa en la cima si está controlado.";
+"exercise.info.shoulders_reverse_fly.technique.6" = "Baja lentamente sin dejar que las pesas se balanceen.";
+
+"exercise.info.shoulders_reverse_pec_deck.description" = "Reverse Pec Deck es un ejercicio de máquina para los deltoides posteriores y la estabilidad de la parte superior de la espalda.";
+"exercise.info.shoulders_reverse_pec_deck.technique.1" = "Ajuste el asiento de modo que las manijas queden a la altura de los hombros.";
+"exercise.info.shoulders_reverse_pec_deck.technique.2" = "Siéntese frente a la almohadilla con el pecho apoyado.";
+"exercise.info.shoulders_reverse_pec_deck.technique.3" = "Agarre las asas y mantenga los hombros hacia abajo.";
+"exercise.info.shoulders_reverse_pec_deck.technique.4" = "Abre los brazos hacia atrás formando un amplio arco.";
+"exercise.info.shoulders_reverse_pec_deck.technique.5" = "Haga una pausa breve sin alejarse del pad.";
+"exercise.info.shoulders_reverse_pec_deck.technique.6" = "Regrese lentamente y mantenga el control de la pila.";
+
+"exercise.info.shoulders_upright_row.description" = "Upright Row entrena los hombros y la parte superior de los trapecios con un movimiento de tracción vertical.";
+"exercise.info.shoulders_upright_row.technique.1" = "Sostenga la barra o mancuernas frente a sus muslos.";
+"exercise.info.shoulders_upright_row.technique.2" = "Mantenga el peso cerca de su cuerpo.";
+"exercise.info.shoulders_upright_row.technique.3" = "Tire hacia arriba con los codos hacia adelante.";
+"exercise.info.shoulders_upright_row.technique.4" = "Deténgase alrededor de la parte inferior o superior del pecho.";
+"exercise.info.shoulders_upright_row.technique.5" = "Baja bajo control sin balancearse.";
+"exercise.info.shoulders_upright_row.technique.6" = "Deténgase si el movimiento le resulta incómodo en los hombros.";
+
+"exercise.info.shoulders_face_pull.description" = "Face Pull es un ejercicio con cable para deltoides posteriores, rotadores externos y control de la parte superior de la espalda.";
+"exercise.info.shoulders_face_pull.technique.1" = "Coloque el cable alrededor de la parte superior del pecho o a la altura de la cara.";
+"exercise.info.shoulders_face_pull.technique.2" = "Utilice un accesorio de cuerda y retroceda para crear tensión.";
+"exercise.info.shoulders_face_pull.technique.3" = "Tire de la cuerda hacia su cara con los codos en alto.";
+"exercise.info.shoulders_face_pull.technique.4" = "Separe los extremos de la cuerda mientras tira.";
+"exercise.info.shoulders_face_pull.technique.5" = "Mantenga las costillas hacia abajo y evite inclinarse hacia atrás.";
+"exercise.info.shoulders_face_pull.technique.6" = "Regrese lentamente con los hombros controlados.";
+
+"exercise.info.biceps_barbell_curl.description" = "El curl de bíceps con barra entrena la flexión de los codos con ambos brazos.";
+"exercise.info.biceps_barbell_curl.technique.1" = "Párate erguido con los pies estables y la barra frente a tus muslos.";
+"exercise.info.biceps_barbell_curl.technique.2" = "Mantenga los codos cerca de los costados.";
+"exercise.info.biceps_barbell_curl.technique.3" = "Doble la barra hacia arriba sin balancear el torso.";
+"exercise.info.biceps_barbell_curl.technique.4" = "Mantenga las muñecas en posición neutra y evite doblarlas hacia atrás.";
+"exercise.info.biceps_barbell_curl.technique.5" = "Apriete brevemente cerca de la parte superior.";
+"exercise.info.biceps_barbell_curl.technique.6" = "Baja lentamente hasta que los brazos estén extendidos con control.";
+
+"exercise.info.biceps_ez_bar_curl.description" = "EZ-Bar Curl es una variación de curl de bíceps que utiliza una barra en ángulo para reducir la tensión en la muñeca para muchos levantadores.";
+"exercise.info.biceps_ez_bar_curl.technique.1" = "Sostenga la barra EZ con un cómodo agarre en ángulo.";
+"exercise.info.biceps_ez_bar_curl.technique.2" = "Mantente erguido y fortalece tu torso.";
+"exercise.info.biceps_ez_bar_curl.technique.3" = "Mantenga los codos cerca de los costados durante toda la repetición.";
+"exercise.info.biceps_ez_bar_curl.technique.4" = "Riza la barra suavemente sin inclinarte hacia atrás.";
+"exercise.info.biceps_ez_bar_curl.technique.5" = "Haga una pausa breve cerca de la cima si está controlado.";
+"exercise.info.biceps_ez_bar_curl.technique.6" = "Baja bajo control y evita relajarte en el fondo.";
+
+"exercise.info.biceps_dumbbell_curl.description" = "Dumbbell Curl entrena los bíceps con movimiento independiente del brazo y una trayectoria natural de la muñeca.";
+"exercise.info.biceps_dumbbell_curl.technique.1" = "Párese o siéntese erguido con mancuernas a los costados.";
+"exercise.info.biceps_dumbbell_curl.technique.2" = "Mantenga los codos cerca de su torso.";
+"exercise.info.biceps_dumbbell_curl.technique.3" = "Curl ambas mancuernas suavemente en todo el rango.";
+"exercise.info.biceps_dumbbell_curl.technique.4" = "Gire las palmas hacia arriba si utiliza un curl de supinación.";
+"exercise.info.biceps_dumbbell_curl.technique.5" = "Evite inclinarse hacia atrás o balancear las pesas.";
+"exercise.info.biceps_dumbbell_curl.technique.6" = "Baja con control hasta que los brazos estén extendidos.";
+
+"exercise.info.biceps_alternating_dumbbell_curl.description" = "Curl con mancuernas alterno entrena cada brazo uno a la vez mientras mantiene el movimiento controlado.";
+"exercise.info.biceps_alternating_dumbbell_curl.technique.1" = "Sostenga mancuernas a los costados y manténgase erguido.";
+"exercise.info.biceps_alternating_dumbbell_curl.technique.2" = "Doble una mancuerna mientras el otro brazo permanece quieto.";
+"exercise.info.biceps_alternating_dumbbell_curl.technique.3" = "Mantenga el codo de trabajo cerca de su costado.";
+"exercise.info.biceps_alternating_dumbbell_curl.technique.4" = "Controla la muñeca y evita torcer el hombro hacia adelante.";
+"exercise.info.biceps_alternating_dumbbell_curl.technique.5" = "Baje completamente antes de cambiar de brazo.";
+"exercise.info.biceps_alternating_dumbbell_curl.technique.6" = "Mantenga las repeticiones uniformes entre ambos lados.";
+
+"exercise.info.biceps_hammer_curl.description" = "Hammer Curl utiliza un agarre neutral para entrenar los músculos bíceps, braquial y del antebrazo.";
+"exercise.info.biceps_hammer_curl.technique.1" = "Sostenga las mancuernas con las palmas una frente a la otra.";
+"exercise.info.biceps_hammer_curl.technique.2" = "Mantenga los codos cerca de los costados.";
+"exercise.info.biceps_hammer_curl.technique.3" = "Curl sin rotar las muñecas.";
+"exercise.info.biceps_hammer_curl.technique.4" = "Levante hasta que los antebrazos estén casi verticales.";
+"exercise.info.biceps_hammer_curl.technique.5" = "Evite balancear las mancuernas hacia adelante.";
+"exercise.info.biceps_hammer_curl.technique.6" = "Baje lentamente y mantenga el agarre neutral.";
+
+"exercise.info.biceps_preacher_curl.description" = "Preacher Curl apoya la parte superior de los brazos sobre una almohadilla para aislar los bíceps y limitar el impulso del cuerpo.";
+"exercise.info.biceps_preacher_curl.technique.1" = "Coloque el asiento de modo que la parte superior de sus brazos descanse completamente sobre la almohadilla.";
+"exercise.info.biceps_preacher_curl.technique.2" = "Mantenga el cofre cerca del banco.";
+"exercise.info.biceps_preacher_curl.technique.3" = "Comience con los codos ligeramente doblados, no bloqueados con fuerza.";
+"exercise.info.biceps_preacher_curl.technique.4" = "Doble el peso sin levantar la parte superior de los brazos de la almohadilla.";
+"exercise.info.biceps_preacher_curl.technique.5" = "Haga una breve pausa cerca de la cima.";
+"exercise.info.biceps_preacher_curl.technique.6" = "Baje lentamente y evite caer al fondo.";
+
+"exercise.info.biceps_dumbbell_preacher_curl.description" = "Dumbbell Preacher Curl es una variación del predicador con un solo brazo para un trabajo más estricto de bíceps de lado a lado.";
+"exercise.info.biceps_dumbbell_preacher_curl.technique.1" = "Coloque un brazo firmemente sobre la plataforma del predicador.";
+"exercise.info.biceps_dumbbell_preacher_curl.technique.2" = "Sostenga la mancuerna con la muñeca en posición neutral.";
+"exercise.info.biceps_dumbbell_preacher_curl.technique.3" = "Curl sin levantar el codo de la almohadilla.";
+"exercise.info.biceps_dumbbell_preacher_curl.technique.4" = "Mantenga el movimiento lento y estricto.";
+"exercise.info.biceps_dumbbell_preacher_curl.technique.5" = "Baje hasta que el brazo esté extendido pero no relajado.";
+"exercise.info.biceps_dumbbell_preacher_curl.technique.6" = "Repita el mismo rango y control en ambos brazos.";
+
+"exercise.info.biceps_incline_dumbbell_curl.description" = "Incline Dumbbell Curl estira los bíceps al flexionarse con los brazos detrás del torso en un banco inclinado.";
+"exercise.info.biceps_incline_dumbbell_curl.technique.1" = "Coloque el banco en una inclinación moderada.";
+"exercise.info.biceps_incline_dumbbell_curl.technique.2" = "Deje que los brazos cuelguen con los hombros relajados.";
+"exercise.info.biceps_incline_dumbbell_curl.technique.3" = "Mantenga los codos mayoritariamente fijos mientras realiza el curl.";
+"exercise.info.biceps_incline_dumbbell_curl.technique.4" = "Rízate en una zona cómoda sin balancearte.";
+"exercise.info.biceps_incline_dumbbell_curl.technique.5" = "Evite dejar que los hombros giren hacia adelante.";
+"exercise.info.biceps_incline_dumbbell_curl.technique.6" = "Baje lentamente para sentir un estiramiento controlado.";
+
+"exercise.info.biceps_concentration_curl.description" = "Concentration Curl es un curl estricto con un solo brazo centrado en la contracción controlada del bíceps.";
+"exercise.info.biceps_concentration_curl.technique.1" = "Siéntese y apoye la parte superior del brazo contra la parte interna del muslo.";
+"exercise.info.biceps_concentration_curl.technique.2" = "Comienza con el brazo extendido bajo control.";
+"exercise.info.biceps_concentration_curl.technique.3" = "Curl la mancuerna sin mover el hombro.";
+"exercise.info.biceps_concentration_curl.technique.4" = "Haga una breve pausa cerca de la cima.";
+"exercise.info.biceps_concentration_curl.technique.5" = "Baja lentamente y mantén la repetición estricta.";
+"exercise.info.biceps_concentration_curl.technique.6" = "Evite girar el torso para terminar la repetición.";
+
+"exercise.info.biceps_cable_curl.description" = "Cable Curl entrena los bíceps con una tensión constante del cable durante el movimiento.";
+"exercise.info.biceps_cable_curl.technique.1" = "Manténgase estable frente a la pila de cables.";
+"exercise.info.biceps_cable_curl.technique.2" = "Mantenga los codos cerca de los costados.";
+"exercise.info.biceps_cable_curl.technique.3" = "Doble el mango suavemente hacia el pecho.";
+"exercise.info.biceps_cable_curl.technique.4" = "Mantenga los hombros hacia abajo y el torso quieto.";
+"exercise.info.biceps_cable_curl.technique.5" = "Apriete brevemente cerca de la parte superior.";
+"exercise.info.biceps_cable_curl.technique.6" = "Controla la devolución sin dejar caer la pila.";
+
+"exercise.info.biceps_spider_curl.description" = "Spider Curl es una variación estricta del curl que se realiza con el pecho hacia abajo en un banco inclinado para limitar el impulso.";
+"exercise.info.biceps_spider_curl.technique.1" = "Acuéstese boca abajo en un banco inclinado con los brazos colgando.";
+"exercise.info.biceps_spider_curl.technique.2" = "Mantenga el pecho apoyado y los hombros relajados.";
+"exercise.info.biceps_spider_curl.technique.3" = "Curl el peso sin mover mucho la parte superior de los brazos.";
+"exercise.info.biceps_spider_curl.technique.4" = "Haga una breve pausa en la parte superior.";
+"exercise.info.biceps_spider_curl.technique.5" = "Baje lentamente hasta alcanzar el control total.";
+"exercise.info.biceps_spider_curl.technique.6" = "Utilice una carga moderada para que el movimiento se mantenga estricto.";
+
+"exercise.info.triceps_close_grip_bench_press.description" = "El press de banca con agarre cerrado es un press compuesto que enfatiza los tríceps sin dejar de utilizar el pecho y los hombros.";
+"exercise.info.triceps_close_grip_bench_press.technique.1" = "Acuéstese con los ojos debajo de la barra y los pies firmemente plantados.";
+"exercise.info.triceps_close_grip_bench_press.technique.2" = "Agarre la barra un poco más estrecha que el ancho de los hombros.";
+"exercise.info.triceps_close_grip_bench_press.technique.3" = "Mantenga los omóplatos hacia atrás y hacia abajo en el banco.";
+"exercise.info.triceps_close_grip_bench_press.technique.4" = "Baja la barra bajo control hacia la parte inferior del pecho.";
+"exercise.info.triceps_close_grip_bench_press.technique.5" = "Mantenga los codos más cerca del cuerpo, no muy abiertos.";
+"exercise.info.triceps_close_grip_bench_press.technique.6" = "Presione hacia arriba suavemente sin perder tensión en la parte superior de la espalda.";
+
+"exercise.info.triceps_dips.description" = "Los fondos entrenan fuertemente los tríceps con el peso corporal o peso adicional, especialmente cuando el torso se mantiene más erguido.";
+"exercise.info.triceps_dips.technique.1" = "Comience en barras paralelas con los brazos rectos y los hombros controlados.";
+"exercise.info.triceps_dips.technique.2" = "Mantenga el torso relativamente erguido para enfatizar los tríceps.";
+"exercise.info.triceps_dips.technique.3" = "Baje hasta que los hombros y los codos se sientan cómodos.";
+"exercise.info.triceps_dips.technique.4" = "Mantenga los codos hacia atrás en lugar de extenderse mucho.";
+"exercise.info.triceps_dips.technique.5" = "Presione a través de las manijas hasta que los brazos estén casi rectos.";
+"exercise.info.triceps_dips.technique.6" = "Utilice un tempo controlado y evite rebotar en la parte inferior.";
+
+"exercise.info.triceps_french_press.description" = "El press francés tumbado es un ejercicio de aislamiento de tríceps que se realiza en un banco con una barra EZ o una barra.";
+"exercise.info.triceps_french_press.technique.1" = "Acuéstese en un banco plano con los pies firmemente plantados en el suelo.";
+"exercise.info.triceps_french_press.technique.2" = "Sostenga la barra por encima de los hombros con un agarre seguro y cómodo.";
+"exercise.info.triceps_french_press.technique.3" = "Mantenga la parte superior de los brazos casi vertical y estable.";
+"exercise.info.triceps_french_press.technique.4" = "Doble los codos para bajar la barra hacia la frente o ligeramente detrás de ella.";
+"exercise.info.triceps_french_press.technique.5" = "Extiende los codos para devolver la barra sin convertirla en un press de pecho.";
+"exercise.info.triceps_french_press.technique.6" = "Baje el peso bajo control y utilice un rango sin dolor para los codos.";
+
+"exercise.info.triceps_cable_pushdown.description" = "Cable Pushdown entrena los tríceps con una tensión constante del cable y es uno de los ejercicios de aislamiento de tríceps más comunes.";
+"exercise.info.triceps_cable_pushdown.technique.1" = "Párese frente al cable con los codos cerca de los costados.";
+"exercise.info.triceps_cable_pushdown.technique.2" = "Mantenga el pecho elevado y los hombros relajados.";
+"exercise.info.triceps_cable_pushdown.technique.3" = "Empuje el mango hacia abajo extendiendo los codos.";
+"exercise.info.triceps_cable_pushdown.technique.4" = "Evite inclinar su cuerpo sobre el mango para terminar las repeticiones.";
+"exercise.info.triceps_cable_pushdown.technique.5" = "Apriete brevemente cerca del fondo.";
+"exercise.info.triceps_cable_pushdown.technique.6" = "Vuelva a estar bajo control sin dejar que los codos se desplacen hacia adelante.";
+
+"exercise.info.triceps_rope_pushdown.description" = "Rope Pushdown es una variación de pushdown con cable que permite un bloqueo fuerte y una posición natural de la muñeca.";
+"exercise.info.triceps_rope_pushdown.technique.1" = "Sostenga ambos extremos de la cuerda y párese lo suficientemente cerca para mantener la tensión.";
+"exercise.info.triceps_rope_pushdown.technique.2" = "Mantenga los codos inmovilizados cerca de las costillas.";
+"exercise.info.triceps_rope_pushdown.technique.3" = "Extienda los codos y separe los extremos de la cuerda cerca de la parte inferior.";
+"exercise.info.triceps_rope_pushdown.technique.4" = "Mantenga las muñecas cómodas y neutrales.";
+"exercise.info.triceps_rope_pushdown.technique.5" = "No balancees el torso para mover el peso.";
+"exercise.info.triceps_rope_pushdown.technique.6" = "Deje que la cuerda regrese lentamente mientras mantiene quietos los brazos.";
+
+"exercise.info.triceps_two_arm_overhead_dumbbell_extension.description" = "La extensión de dos brazos por encima de la cabeza con mancuernas entrena la cabeza larga del tríceps con ambas manos sosteniendo una mancuerna por encima de la cabeza.";
+"exercise.info.triceps_two_arm_overhead_dumbbell_extension.technique.1" = "Sostenga una mancuerna por encima de la cabeza con ambas manos alrededor del mango o plato.";
+"exercise.info.triceps_two_arm_overhead_dumbbell_extension.technique.2" = "Mantenga las costillas hacia abajo y el torso estable.";
+"exercise.info.triceps_two_arm_overhead_dumbbell_extension.technique.3" = "Apunte los codos hacia adelante y evite que se abran demasiado.";
+"exercise.info.triceps_two_arm_overhead_dumbbell_extension.technique.4" = "Baje la mancuerna detrás de la cabeza bajo control.";
+"exercise.info.triceps_two_arm_overhead_dumbbell_extension.technique.5" = "Extienda los codos para llevar la mancuerna hacia atrás por encima de la cabeza.";
+"exercise.info.triceps_two_arm_overhead_dumbbell_extension.technique.6" = "Utilice un peso que pueda controlar sin arquear la espalda.";
+
+"exercise.info.triceps_one_arm_overhead_dumbbell_extension.description" = "La extensión con mancuernas por encima de la cabeza con un brazo es un ejercicio de tríceps unilateral que ayuda a entrenar cada brazo en un rango completo por encima de la cabeza.";
+"exercise.info.triceps_one_arm_overhead_dumbbell_extension.technique.1" = "Sostenga una mancuerna por encima de la cabeza con un brazo.";
+"exercise.info.triceps_one_arm_overhead_dumbbell_extension.technique.2" = "Apoye el torso y mantenga estable el hombro.";
+"exercise.info.triceps_one_arm_overhead_dumbbell_extension.technique.3" = "Doble el codo y baje la mancuerna detrás de la cabeza.";
+"exercise.info.triceps_one_arm_overhead_dumbbell_extension.technique.4" = "Mantenga el codo apuntando principalmente hacia arriba.";
+"exercise.info.triceps_one_arm_overhead_dumbbell_extension.technique.5" = "Extienda hacia arriba sin dejar que la muñeca colapse.";
+"exercise.info.triceps_one_arm_overhead_dumbbell_extension.technique.6" = "Haga coincidir el mismo rango y control en ambos brazos.";
+
+"exercise.info.triceps_overhead_cable_extension.description" = "La extensión de cable superior mantiene la tensión en los tríceps en una posición superior y apunta bien a la cabeza larga.";
+"exercise.info.triceps_overhead_cable_extension.technique.1" = "Coloque el cable abajo o detrás de usted y adopte una postura estable.";
+"exercise.info.triceps_overhead_cable_extension.technique.2" = "Lleve el asa o la cuerda por encima con los codos doblados.";
+"exercise.info.triceps_overhead_cable_extension.technique.3" = "Mantenga la parte superior de los brazos inclinada hacia adelante y mayoritariamente fija.";
+"exercise.info.triceps_overhead_cable_extension.technique.4" = "Extienda los codos hasta que los brazos estén casi rectos.";
+"exercise.info.triceps_overhead_cable_extension.technique.5" = "Mantenga las costillas controladas y evite arquearse demasiado.";
+"exercise.info.triceps_overhead_cable_extension.technique.6" = "Regrese lentamente y mantenga la tensión del cable.";
+
+"exercise.info.triceps_lying_dumbbell_extension.description" = "La extensión tumbada con mancuernas es un ejercicio de tríceps estilo triturador de cráneo que utiliza mancuernas para el movimiento independiente del brazo.";
+"exercise.info.triceps_lying_dumbbell_extension.technique.1" = "Acuéstese en un banco con mancuernas sostenidas por encima de los hombros.";
+"exercise.info.triceps_lying_dumbbell_extension.technique.2" = "Mantenga los brazos firmes y los codos apuntando hacia arriba.";
+"exercise.info.triceps_lying_dumbbell_extension.technique.3" = "Baje las mancuernas hacia los lados de la cabeza.";
+"exercise.info.triceps_lying_dumbbell_extension.technique.4" = "Utilice un agarre neutro o cómodo.";
+"exercise.info.triceps_lying_dumbbell_extension.technique.5" = "Extiende los codos sin convertirlos en una prensa.";
+"exercise.info.triceps_lying_dumbbell_extension.technique.6" = "Mantenga ambos brazos moviéndose uniformemente y bajo control.";
+
+"exercise.info.triceps_kickback.description" = "El contragolpe es un ejercicio estricto de aislamiento de tríceps que generalmente se realiza con una mancuerna o un cable desde una posición con bisagras.";
+"exercise.info.triceps_kickback.technique.1" = "Inclínese hacia adelante con la espalda plana y el torso apoyado si es necesario.";
+"exercise.info.triceps_kickback.technique.2" = "Mantenga la parte superior del brazo cerca del cuerpo y aproximadamente paralela al suelo.";
+"exercise.info.triceps_kickback.technique.3" = "Extiende el codo hasta que el brazo quede recto detrás de ti.";
+"exercise.info.triceps_kickback.technique.4" = "Haga una breve pausa en la cima sin balancearse.";
+"exercise.info.triceps_kickback.technique.5" = "Baje lentamente mientras mantiene el hombro quieto.";
+"exercise.info.triceps_kickback.technique.6" = "Utilice una carga lo suficientemente liviana para mantener el movimiento estricto.";
+
+"exercise.info.triceps_close_grip_push_up.description" = "Close-Grip Push-Up es una variación de flexión de brazos centrada en el tríceps con el peso corporal y con las manos colocadas más estrechas de lo habitual.";
+"exercise.info.triceps_close_grip_push_up.technique.1" = "Coloque las manos debajo o ligeramente dentro del ancho de los hombros.";
+"exercise.info.triceps_close_grip_push_up.technique.2" = "Mantenga el cuerpo en línea recta.";
+"exercise.info.triceps_close_grip_push_up.technique.3" = "Baje con los codos cerca de las costillas.";
+"exercise.info.triceps_close_grip_push_up.technique.4" = "Mantenga el cuello neutral y el core firme.";
+"exercise.info.triceps_close_grip_push_up.technique.5" = "Presione hacia arriba extendiendo los codos.";
+"exercise.info.triceps_close_grip_push_up.technique.6" = "Ajuste el espacio entre las manos si las muñecas se sienten incómodas.";
+
+"exercise.info.forearms_wrist_curl.description" = "Wrist Curl entrena los flexores de la muñeca en el interior del antebrazo con un simple movimiento de flexión en la muñeca.";
+"exercise.info.forearms_wrist_curl.technique.1" = "Siéntate o párate con los antebrazos apoyados y las palmas hacia arriba.";
+"exercise.info.forearms_wrist_curl.technique.2" = "Deje que las muñecas se extiendan ligeramente bajo control en la parte inferior.";
+"exercise.info.forearms_wrist_curl.technique.3" = "Doble el peso hacia arriba moviendo solo las muñecas.";
+"exercise.info.forearms_wrist_curl.technique.4" = "Mantenga los antebrazos quietos durante toda la serie.";
+"exercise.info.forearms_wrist_curl.technique.5" = "Haga una breve pausa en la parte superior sin levantar los codos.";
+"exercise.info.forearms_wrist_curl.technique.6" = "Baja lentamente y evita rebotar el peso.";
+
+"exercise.info.forearms_reverse_wrist_curl.description" = "La flexión de muñeca inversa se dirige a los extensores de la muñeca en la parte superior del antebrazo.";
+"exercise.info.forearms_reverse_wrist_curl.technique.1" = "Apoye los antebrazos con las palmas hacia abajo.";
+"exercise.info.forearms_reverse_wrist_curl.technique.2" = "Sostenga el peso con un agarre controlado.";
+"exercise.info.forearms_reverse_wrist_curl.technique.3" = "Levante los nudillos hacia arriba extendiendo las muñecas.";
+"exercise.info.forearms_reverse_wrist_curl.technique.4" = "Mantenga el movimiento pequeño, estricto y suave.";
+"exercise.info.forearms_reverse_wrist_curl.technique.5" = "No levante los antebrazos del soporte.";
+"exercise.info.forearms_reverse_wrist_curl.technique.6" = "Baja lentamente hasta la posición inicial.";
+
+"exercise.info.forearms_reverse_barbell_curl.description" = "El curl inverso con barra entrena los antebrazos, el braquial y los bíceps con agarre prono.";
+"exercise.info.forearms_reverse_barbell_curl.technique.1" = "Párese erguido y sostenga la barra con un agarre en pronación.";
+"exercise.info.forearms_reverse_barbell_curl.technique.2" = "Mantenga los codos cerca de los lados.";
+"exercise.info.forearms_reverse_barbell_curl.technique.3" = "Doble la barra hacia arriba sin balancear el torso.";
+"exercise.info.forearms_reverse_barbell_curl.technique.4" = "Mantenga las muñecas firmes y evite que se doblen hacia atrás.";
+"exercise.info.forearms_reverse_barbell_curl.technique.5" = "Haga una breve pausa cerca de la cima.";
+"exercise.info.forearms_reverse_barbell_curl.technique.6" = "Baje bajo control en todo el rango.";
+
+"exercise.info.forearms_behind_back_wrist_curl.description" = "La flexión de muñeca detrás de la espalda es una variación de flexión de muñeca de pie que carga los flexores del antebrazo desde detrás del cuerpo.";
+"exercise.info.forearms_behind_back_wrist_curl.technique.1" = "Párese sosteniendo una barra detrás de su cuerpo con las palmas hacia atrás.";
+"exercise.info.forearms_behind_back_wrist_curl.technique.2" = "Mantenga los brazos rectos y los hombros relajados.";
+"exercise.info.forearms_behind_back_wrist_curl.technique.3" = "Deje que la barra ruede ligeramente hacia los dedos si le resulta cómodo.";
+"exercise.info.forearms_behind_back_wrist_curl.technique.4" = "Doble las muñecas hacia arriba y apriete los antebrazos.";
+"exercise.info.forearms_behind_back_wrist_curl.technique.5" = "Mantenga el torso quieto y evite encogerse de hombros.";
+"exercise.info.forearms_behind_back_wrist_curl.technique.6" = "Controla la fase de descenso y mantén el agarre seguro.";
+
+"exercise.info.forearms_wrist_roller.description" = "El rodillo de muñeca aumenta la resistencia del antebrazo y la fuerza de agarre haciendo rodar una cuerda cargada hacia arriba y hacia abajo.";
+"exercise.info.forearms_wrist_roller.technique.1" = "Sostenga el rodillo con ambas manos aproximadamente a la altura de los hombros o ligeramente más abajo.";
+"exercise.info.forearms_wrist_roller.technique.2" = "Mantenga los hombros hacia abajo y el torso estable.";
+"exercise.info.forearms_wrist_roller.technique.3" = "Gire el mango con movimientos alternos de muñeca.";
+"exercise.info.forearms_wrist_roller.technique.4" = "Mantenga el movimiento constante en lugar de entrecortado.";
+"exercise.info.forearms_wrist_roller.technique.5" = "Bajar el peso bajo control después de enrollarlo.";
+"exercise.info.forearms_wrist_roller.technique.6" = "Utilice una carga que le permita terminar el rollo completo sin perder agarre.";
+
+"exercise.info.forearms_dead_hang.description" = "La suspensión en barra desarrolla la resistencia del agarre y el control de los hombros.";
+"exercise.info.forearms_dead_hang.technique.1" = "Agarre la barra con ambas manos a un ancho cómodo.";
+"exercise.info.forearms_dead_hang.technique.2" = "Deja que el cuerpo cuelgue manteniendo los hombros controlados.";
+"exercise.info.forearms_dead_hang.technique.3" = "Mantenga el core ligeramente activado y las piernas quietas.";
+"exercise.info.forearms_dead_hang.technique.4" = "Evite girar o balancearse durante la sujeción.";
+"exercise.info.forearms_dead_hang.technique.5" = "Respire constantemente mientras mantiene el agarre.";
+"exercise.info.forearms_dead_hang.technique.6" = "Baje con seguridad antes de que el agarre falle por completo.";
+
+"exercise.info.abs_crunch.description" = "El crunch es un ejercicio abdominal básico que flexiona la parte superior del torso hacia la pelvis.";
+"exercise.info.abs_crunch.technique.1" = "Acuéstese boca arriba con las rodillas dobladas y los pies en el suelo.";
+"exercise.info.abs_crunch.technique.2" = "Coloque las manos ligeramente detrás de la cabeza o cruzando el pecho.";
+"exercise.info.abs_crunch.technique.3" = "Levante la parte superior de la espalda del suelo usando los abdominales.";
+"exercise.info.abs_crunch.technique.4" = "Mantenga la zona lumbar cerca del suelo.";
+"exercise.info.abs_crunch.technique.5" = "Evite tirar del cuello con las manos.";
+"exercise.info.abs_crunch.technique.6" = "Baja lentamente y mantén el movimiento controlado.";
+
+"exercise.info.abs_lying_leg_raise.description" = "Lying Leg Raise entrena los abdominales inferiores y los flexores de la cadera levantando las piernas desde una posición acostada.";
+"exercise.info.abs_lying_leg_raise.technique.1" = "Acuéstese boca arriba con las piernas estiradas o ligeramente flexionadas.";
+"exercise.info.abs_lying_leg_raise.technique.2" = "Mantenga la zona lumbar controlada contra el suelo.";
+"exercise.info.abs_lying_leg_raise.technique.3" = "Levante las piernas hasta que estén casi verticales.";
+"exercise.info.abs_lying_leg_raise.technique.4" = "Baje lentamente sin dejar que la parte baja de la espalda se arquee.";
+"exercise.info.abs_lying_leg_raise.technique.5" = "Utilice un rango más pequeño si pierde el control.";
+"exercise.info.abs_lying_leg_raise.technique.6" = "Mantenga el movimiento suave y evite balancear las piernas.";
+
+"exercise.info.abs_plank.description" = "La plancha es un ejercicio isométrico del core centrado en mantener una posición corporal estable.";
+"exercise.info.abs_plank.technique.1" = "Coloque los codos debajo de los hombros y los antebrazos en el suelo.";
+"exercise.info.abs_plank.technique.2" = "Retroceda los pies y forme una línea recta desde la cabeza hasta los talones.";
+"exercise.info.abs_plank.technique.3" = "Apoye ligeramente los abdominales y los glúteos.";
+"exercise.info.abs_plank.technique.4" = "No dejes que las caderas se doblen o se eleven demasiado.";
+"exercise.info.abs_plank.technique.5" = "Mantenga el cuello neutral y respire constantemente.";
+"exercise.info.abs_plank.technique.6" = "Detenga la serie cuando ya no pueda mantener la posición.";
+
+"exercise.info.abs_reverse_crunch.description" = "Reverse Crunch enfatiza la parte inferior del movimiento abdominal al curvar la pelvis hacia arriba.";
+"exercise.info.abs_reverse_crunch.technique.1" = "Acuéstese boca arriba con las rodillas dobladas y los pies levantados.";
+"exercise.info.abs_reverse_crunch.technique.2" = "Mantenga la parte superior del cuerpo relajada y estable.";
+"exercise.info.abs_reverse_crunch.technique.3" = "Doble la pelvis hacia las costillas.";
+"exercise.info.abs_reverse_crunch.technique.4" = "Evite utilizar el impulso de las piernas.";
+"exercise.info.abs_reverse_crunch.technique.5" = "Haga una breve pausa en la parte superior.";
+"exercise.info.abs_reverse_crunch.technique.6" = "Baje las caderas lentamente hasta el inicio.";
+
+"exercise.info.abs_bicycle_crunch.description" = "Bicycle Crunch combina la flexión y rotación del tronco para entrenar los abdominales y oblicuos.";
+"exercise.info.abs_bicycle_crunch.technique.1" = "Acuéstese boca arriba con las manos ligeramente detrás de la cabeza.";
+"exercise.info.abs_bicycle_crunch.technique.2" = "Levante los hombros y lleve una rodilla hacia el codo opuesto.";
+"exercise.info.abs_bicycle_crunch.technique.3" = "Gire a través del torso en lugar de tirar del cuello.";
+"exercise.info.abs_bicycle_crunch.technique.4" = "Extiende la otra pierna bajo control.";
+"exercise.info.abs_bicycle_crunch.technique.5" = "Lados alternos con un ritmo constante.";
+"exercise.info.abs_bicycle_crunch.technique.6" = "Disminuya la velocidad si el movimiento se vuelve flojo o entrecortado.";
+
+"exercise.info.abs_cable_crunch.description" = "Cable Crunch carga la flexión de la columna con un cable, lo que lo convierte en un ejercicio abdominal con peso común.";
+"exercise.info.abs_cable_crunch.technique.1" = "Arrodíllese o párese de espaldas al cable según la configuración.";
+"exercise.info.abs_cable_crunch.technique.2" = "Sostenga la cuerda o el mango cerca de la cabeza.";
+"exercise.info.abs_cable_crunch.technique.3" = "Doble las costillas hacia la pelvis usando los abdominales.";
+"exercise.info.abs_cable_crunch.technique.4" = "Mantenga las caderas mayoritariamente fijas.";
+"exercise.info.abs_cable_crunch.technique.5" = "Evite tirar sólo con los brazos.";
+"exercise.info.abs_cable_crunch.technique.6" = "Regrese lentamente mientras mantiene tensión en el cable.";
+
+"exercise.info.abs_hanging_knee_raise.description" = "El levantamiento de rodillas en suspensión entrena los abdominales levantando las rodillas desde una posición colgante.";
+"exercise.info.abs_hanging_knee_raise.technique.1" = "Cuelgue de una barra con un agarre seguro.";
+"exercise.info.abs_hanging_knee_raise.technique.2" = "Mantenga los hombros controlados y evite el balanceo pasivo.";
+"exercise.info.abs_hanging_knee_raise.technique.3" = "Levanta las rodillas hacia el pecho.";
+"exercise.info.abs_hanging_knee_raise.technique.4" = "Doble ligeramente la pelvis en la parte superior.";
+"exercise.info.abs_hanging_knee_raise.technique.5" = "Baja las piernas lentamente.";
+"exercise.info.abs_hanging_knee_raise.technique.6" = "Restablezca el control antes de comenzar la siguiente repetición.";
+
+"exercise.info.abs_hanging_leg_raise.description" = "El levantamiento de piernas colgantes es un ejercicio central colgante más duro que eleva las piernas más rectas en un rango más amplio.";
+"exercise.info.abs_hanging_leg_raise.technique.1" = "Colgarse de una barra con el cuerpo quieto.";
+"exercise.info.abs_hanging_leg_raise.technique.2" = "Mantenga las piernas rectas o ligeramente flexionadas.";
+"exercise.info.abs_hanging_leg_raise.technique.3" = "Levante las piernas bajo control hacia la altura de la cadera o más.";
+"exercise.info.abs_hanging_leg_raise.technique.4" = "Evite balancearse para iniciar el movimiento.";
+"exercise.info.abs_hanging_leg_raise.technique.5" = "Bajamos lentamente por el mismo camino.";
+"exercise.info.abs_hanging_leg_raise.technique.6" = "Utilice primero las elevaciones de rodillas si no se controlan las elevaciones completas de las piernas.";
+
+"exercise.info.abs_side_plank.description" = "La plancha lateral es un ejercicio isométrico para los oblicuos y la estabilidad lateral del core.";
+"exercise.info.abs_side_plank.technique.1" = "Coloque un codo debajo del hombro y apile o escalone los pies.";
+"exercise.info.abs_side_plank.technique.2" = "Levanta las caderas hasta que el cuerpo forme una línea recta.";
+"exercise.info.abs_side_plank.technique.3" = "Apoye el costado del torso y los glúteos.";
+"exercise.info.abs_side_plank.technique.4" = "No dejes que las caderas giren hacia adelante o hacia atrás.";
+"exercise.info.abs_side_plank.technique.5" = "Mantenga el cuello alineado con el cuerpo.";
+"exercise.info.abs_side_plank.technique.6" = "Repita el mismo tiempo de espera en ambos lados.";
+
+"exercise.info.abs_decline_crunch.description" = "Decline Crunch es una variación de abdominales que se realiza en un banco inclinado para un mayor rango de movimiento.";
+"exercise.info.abs_decline_crunch.technique.1" = "Asegure los pies en el banco de descenso.";
+"exercise.info.abs_decline_crunch.technique.2" = "Comience con el torso bajado bajo control.";
+"exercise.info.abs_decline_crunch.technique.3" = "Doble la parte superior del cuerpo usando los abdominales.";
+"exercise.info.abs_decline_crunch.technique.4" = "Evite sentarse completamente erguido únicamente con los flexores de la cadera.";
+"exercise.info.abs_decline_crunch.technique.5" = "Mantenga el cuello relajado.";
+"exercise.info.abs_decline_crunch.technique.6" = "Baje lentamente y mantenga la tensión durante toda la serie.";
+
+"exercise.info.abs_ab_wheel_rollout.description" = "Ab Wheel Rollout es un ejercicio básico exigente que entrena los abdominales para resistir la extensión.";
+"exercise.info.abs_ab_wheel_rollout.technique.1" = "Comienza desde las rodillas con la rueda debajo de los hombros.";
+"exercise.info.abs_ab_wheel_rollout.technique.2" = "Contrae los abdominales y mantén las costillas hacia abajo.";
+"exercise.info.abs_ab_wheel_rollout.technique.3" = "Avanza sólo hasta donde puedas controlar.";
+"exercise.info.abs_ab_wheel_rollout.technique.4" = "No dejes que la zona lumbar se hunda.";
+"exercise.info.abs_ab_wheel_rollout.technique.5" = "Tire de la rueda hacia atrás apretando los abdominales.";
+"exercise.info.abs_ab_wheel_rollout.technique.6" = "Utilice un rango más corto hasta que el movimiento total sea estable.";
+
+"exercise.info.cardio_running.description" = "Correr es un ejercicio cardiovascular rítmico que desarrolla la resistencia aeróbica y se puede seguir por distancia y tiempo.";
+"exercise.info.cardio_running.technique.1" = "Comience con una caminata corta de calentamiento o un trote suave.";
+"exercise.info.cardio_running.technique.2" = "Mantenga el torso erguido con una ligera inclinación natural hacia adelante.";
+"exercise.info.cardio_running.technique.3" = "Aterriza suavemente con el pie cerca de debajo del cuerpo.";
+"exercise.info.cardio_running.technique.4" = "Utilice un paso cómodo en lugar de estirarse demasiado hacia adelante.";
+"exercise.info.cardio_running.technique.5" = "Deje que los brazos se balanceen naturalmente al lado del torso.";
+"exercise.info.cardio_running.technique.6" = "Aumente la distancia o el ritmo gradualmente con el tiempo.";
+
+"exercise.info.cardio_walking.description" = "Caminar es un ejercicio cardiovascular de bajo impacto para la actividad general, la recuperación y la resistencia aeróbica.";
+"exercise.info.cardio_walking.technique.1" = "Camine a un ritmo que eleve la respiración manteniendo el control.";
+"exercise.info.cardio_walking.technique.2" = "Mantenga la cabeza erguida y el torso erguido.";
+"exercise.info.cardio_walking.technique.3" = "Pase suavemente por el pie desde el talón hasta la punta.";
+"exercise.info.cardio_walking.technique.4" = "Deja que los brazos se balanceen naturalmente sin tensar los hombros.";
+"exercise.info.cardio_walking.technique.5" = "Elija calzado estable y una ruta segura.";
+"exercise.info.cardio_walking.technique.6" = "Aumente la duración y la distancia gradualmente.";
+
+"exercise.info.cardio_treadmill.description" = "Caminar o correr en cinta rodante es un ejercicio cardiovascular en el gimnasio que se registra según el tiempo de sesión en lugar de la distancia de la ruta.";
+"exercise.info.cardio_treadmill.technique.1" = "Súbase a los rieles laterales antes de comenzar a colocar el cinturón.";
+"exercise.info.cardio_treadmill.technique.2" = "Comience a una velocidad suave y aumente gradualmente.";
+"exercise.info.cardio_treadmill.technique.3" = "Mire hacia adelante en lugar de mirar hacia abajo, a la consola.";
+"exercise.info.cardio_treadmill.technique.4" = "Mantenga una postura erguida y evite sujetarse a los rieles mientras se mueve.";
+"exercise.info.cardio_treadmill.technique.5" = "Utilice el clip de seguridad cuando la máquina para correr tenga uno.";
+"exercise.info.cardio_treadmill.technique.6" = "Reduzca la velocidad de la cinta antes de bajarse.";
+
+"exercise.info.cardio_cycling.description" = "El ciclismo es una actividad cardiovascular al aire libre que se puede registrar por distancia y tiempo.";
+"exercise.info.cardio_cycling.technique.1" = "Use un casco que le quede bien para paseos al aire libre.";
+"exercise.info.cardio_cycling.technique.2" = "Coloque el sillín de modo que la rodilla quede ligeramente doblada en la parte inferior del pedaleo.";
+"exercise.info.cardio_cycling.technique.3" = "Mantenga un agarre relajado del manillar.";
+"exercise.info.cardio_cycling.technique.4" = "Pedalea suavemente con una cadencia constante.";
+"exercise.info.cardio_cycling.technique.5" = "Siga las reglas de tránsito y esté atento a la ruta.";
+"exercise.info.cardio_cycling.technique.6" = "Aumente la distancia y la intensidad del recorrido gradualmente.";
+
+"exercise.info.cardio_stationary_bike.description" = "La bicicleta estática es un ejercicio cardiovascular en interiores donde el tiempo de sesión es la principal medida de entrenamiento.";
+"exercise.info.cardio_stationary_bike.technique.1" = "Ajusta el sillín antes de iniciar la sesión.";
+"exercise.info.cardio_stationary_bike.technique.2" = "Mantenga una ligera flexión de la rodilla al final de cada pedaleo.";
+"exercise.info.cardio_stationary_bike.technique.3" = "Mantenga el torso estable y los hombros relajados.";
+"exercise.info.cardio_stationary_bike.technique.4" = "Pedalea a través de un círculo suave y controlado.";
+"exercise.info.cardio_stationary_bike.technique.5" = "Elija una resistencia que coincida con el esfuerzo planificado.";
+"exercise.info.cardio_stationary_bike.technique.6" = "Baja el ritmo poco a poco para terminar la sesión.";
+
+"exercise.info.cardio_elliptical.description" = "La elíptica es un ejercicio cardiovascular de bajo impacto que entrena todo el cuerpo con un movimiento de pasos guiado.";
+"exercise.info.cardio_elliptical.technique.1" = "Pise los pedales sólo después de que la máquina esté estable.";
+"exercise.info.cardio_elliptical.technique.2" = "Mantenga el torso erguido y el core ligeramente activado.";
+"exercise.info.cardio_elliptical.technique.3" = "Coloque todo el pie en cada pedal.";
+"exercise.info.cardio_elliptical.technique.4" = "Mueve las manijas y pedales con un ritmo suave.";
+"exercise.info.cardio_elliptical.technique.5" = "Evite apoyarse demasiado en las manijas fijas.";
+"exercise.info.cardio_elliptical.technique.6" = "Ajuste la resistencia o la inclinación gradualmente.";
+
+"exercise.info.cardio_rowing_machine.description" = "La máquina de remo es un ejercicio cardiovascular en interiores para todo el cuerpo construido alrededor de una brazada coordinada de piernas, torso y brazos.";
+"exercise.info.cardio_rowing_machine.technique.1" = "Asegure los pies y ajuste el amortiguador a un nivel manejable.";
+"exercise.info.cardio_rowing_machine.technique.2" = "Conduce primero con las piernas manteniendo los brazos rectos.";
+"exercise.info.cardio_rowing_machine.technique.3" = "Abra ligeramente el torso después de que las piernas se extiendan.";
+"exercise.info.cardio_rowing_machine.technique.4" = "Termine el trazo arrastrando el mango hacia las costillas inferiores.";
+"exercise.info.cardio_rowing_machine.technique.5" = "Regrese en orden inverso: brazos, torso y luego rodillas.";
+"exercise.info.cardio_rowing_machine.technique.6" = "Mantenga la espalda neutral y la brazada suave.";
+
+"exercise.info.cardio_jump_rope.description" = "Saltar la cuerda es un ejercicio cardiovascular simple que desarrolla el ritmo, la coordinación y la resistencia de la parte inferior de las piernas.";
+"exercise.info.cardio_jump_rope.technique.1" = "Utilice una longitud de cuerda que despeje el suelo cómodamente.";
+"exercise.info.cardio_jump_rope.technique.2" = "Salta sólo lo suficientemente alto para que pase la cuerda.";
+"exercise.info.cardio_jump_rope.technique.3" = "Gira la cuerda principalmente con las muñecas.";
+"exercise.info.cardio_jump_rope.technique.4" = "Aterriza suavemente sobre las puntas de los pies.";
+"exercise.info.cardio_jump_rope.technique.5" = "Mantenga los codos cerca del torso.";
+"exercise.info.cardio_jump_rope.technique.6" = "Construya intervalos más largos gradualmente para proteger las pantorrillas y las espinillas.";
+
+"exercise.info.cardio_stair_climber.description" = "Stair Climber es un ejercicio cardiovascular en interiores que simula subir escaleras y enfatiza las piernas y los glúteos.";
+"exercise.info.cardio_stair_climber.technique.1" = "Suba a la máquina sólo cuando esté estable.";
+"exercise.info.cardio_stair_climber.technique.2" = "Manténgase erguido con el core ligeramente activado.";
+"exercise.info.cardio_stair_climber.technique.3" = "Coloque todo el pie en cada paso.";
+"exercise.info.cardio_stair_climber.technique.4" = "Utilice los rieles para mantener el equilibrio, no para soportar el peso del cuerpo.";
+"exercise.info.cardio_stair_climber.technique.5" = "Mantenga un ritmo constante que pueda controlar.";
+"exercise.info.cardio_stair_climber.technique.6" = "Aumente la velocidad o la resistencia gradualmente.";
+
+"exercise.info.cardio_swimming.description" = "La natación es una actividad cardiovascular de bajo impacto para todo el cuerpo que se puede seguir por distancia y tiempo.";
+"exercise.info.cardio_swimming.technique.1" = "Elija una brazada y un ritmo que coincidan con su habilidad para nadar.";
+"exercise.info.cardio_swimming.technique.2" = "Calienta con largos fáciles antes de trabajar más duro.";
+"exercise.info.cardio_swimming.technique.3" = "Mantenga el cuerpo largo y estilizado en el agua.";
+"exercise.info.cardio_swimming.technique.4" = "Respire a un ritmo regular y controlado.";
+"exercise.info.cardio_swimming.technique.5" = "Empuje la pared con cuidado y esté atento al tráfico del carril.";
+"exercise.info.cardio_swimming.technique.6" = "Aumente la distancia total gradualmente.";
+
+"exercise.info.cardio_ski_erg.description" = "SkiErg es un ejercicio cardiovascular de pie en interiores que utiliza un poderoso movimiento de tracción hacia abajo.";
+"exercise.info.cardio_ski_erg.technique.1" = "Párese con los pies separados a la altura de los hombros.";
+"exercise.info.cardio_ski_erg.technique.2" = "Levante las asas con los hombros relajados.";
+"exercise.info.cardio_ski_erg.technique.3" = "Tire de las manijas hacia abajo involucrando los dorsales y el core.";
+"exercise.info.cardio_ski_erg.technique.4" = "Bisagra ligeramente en las caderas en lugar de redondear la espalda.";
+"exercise.info.cardio_ski_erg.technique.5" = "Termina con las manos cerca de las caderas y luego regresa suavemente.";
+"exercise.info.cardio_ski_erg.technique.6" = "Mantenga un ritmo constante antes de agregar más potencia.";
+
+"exercise.info.functional_training_burpee.description" = "Burpee combina una variación de sentadilla, plancha, flexión y salto en un movimiento de acondicionamiento de todo el cuerpo.";
+"exercise.info.functional_training_burpee.technique.1" = "Párese con los pies separados a la altura de las caderas.";
+"exercise.info.functional_training_burpee.technique.2" = "Agáchate y coloca las manos firmemente en el suelo.";
+"exercise.info.functional_training_burpee.technique.3" = "Da un paso o salta con los pies hacia atrás sobre una tabla estable.";
+"exercise.info.functional_training_burpee.technique.4" = "Mantenga el torso firme y evite que las caderas se caigan.";
+"exercise.info.functional_training_burpee.technique.5" = "Vuelva a colocar los pies debajo del cuerpo con control.";
+"exercise.info.functional_training_burpee.technique.6" = "Ponte de pie o salta suavemente antes de comenzar la siguiente repetición.";
+
+"exercise.info.functional_training_thruster.description" = "Thruster combina una sentadilla frontal con un press por encima de la cabeza en un movimiento continuo con peso.";
+"exercise.info.functional_training_thruster.technique.1" = "Sostenga la carga a la altura de los hombros con un agarre estable.";
+"exercise.info.functional_training_thruster.technique.2" = "Mantenga el core firme y haga una sentadilla con el pecho elevado.";
+"exercise.info.functional_training_thruster.technique.3" = "Mantenga las rodillas alineadas con los pies.";
+"exercise.info.functional_training_thruster.technique.4" = "Sube por los pies fuera de la sentadilla.";
+"exercise.info.functional_training_thruster.technique.5" = "Utilice el accionamiento ascendente para presionar la carga sobre su cabeza.";
+"exercise.info.functional_training_thruster.technique.6" = "Termine con los brazos bloqueados y luego regrese la carga bajo control.";
+
+"exercise.info.functional_training_kettlebell_swing.description" = "El balanceo con pesa rusa es un ejercicio de bisagra de cadera que desarrolla potencia y acondicionamiento.";
+"exercise.info.functional_training_kettlebell_swing.technique.1" = "Párese con la pesa rusa ligeramente por delante de los pies.";
+"exercise.info.functional_training_kettlebell_swing.technique.2" = "Bisagra en las caderas manteniendo la espalda neutral.";
+"exercise.info.functional_training_kettlebell_swing.technique.3" = "Sujete el asa y lleve la pesa rusa hacia atrás entre las piernas.";
+"exercise.info.functional_training_kettlebell_swing.technique.4" = "Extienda las caderas con fuerza para impulsar la pesa rusa.";
+"exercise.info.functional_training_kettlebell_swing.technique.5" = "Deje que los brazos guíen la pesa rusa sin elevarla con los hombros.";
+"exercise.info.functional_training_kettlebell_swing.technique.6" = "Controle el regreso con las caderas y mantenga el core firme.";
+
+"exercise.info.functional_training_box_jump.description" = "Box Jump es un ejercicio explosivo para la parte inferior del cuerpo que utiliza un salto controlado sobre una plataforma estable.";
+"exercise.info.functional_training_box_jump.technique.1" = "Elija una altura de caja estable en la que pueda aterrizar con confianza.";
+"exercise.info.functional_training_box_jump.technique.2" = "Párese lo suficientemente cerca de la caja para aterrizar cerca de su centro.";
+"exercise.info.functional_training_box_jump.technique.3" = "Sumérgete en una sentadilla poco profunda y balancea los brazos para prepararte.";
+"exercise.info.functional_training_box_jump.technique.4" = "Salta con ambos pies y aterriza suavemente con las rodillas dobladas.";
+"exercise.info.functional_training_box_jump.technique.5" = "Párate erguido sobre la caja antes de bajar.";
+"exercise.info.functional_training_box_jump.technique.6" = "Bájese en lugar de saltar cuando la fatiga afecte el control del aterrizaje.";
+
+"exercise.info.functional_training_medicine_ball_slam.description" = "Medicine Ball Slam es un poderoso movimiento de cuerpo completo que impulsa un balón medicinal con fuerza contra el suelo.";
+"exercise.info.functional_training_medicine_ball_slam.technique.1" = "Utilice un slam ball o un balón medicinal clasificado para impacto en el suelo.";
+"exercise.info.functional_training_medicine_ball_slam.technique.2" = "Eleve el balón por encima de la cabeza con el core firme.";
+"exercise.info.functional_training_medicine_ball_slam.technique.3" = "Conduce la pelota hacia abajo usando los brazos, el torso y las caderas.";
+"exercise.info.functional_training_medicine_ball_slam.technique.4" = "Doble las rodillas cuando la pelota llegue al suelo.";
+"exercise.info.functional_training_medicine_ball_slam.technique.5" = "Recoge el balón con la espalda neutral.";
+"exercise.info.functional_training_medicine_ball_slam.technique.6" = "Elija un peso que permita repeticiones potentes pero controladas.";
+
+"exercise.info.functional_training_battle_rope.description" = "Battle Rope es un acondicionamiento cronometrado que utiliza ondas repetidas o golpes con cuerdas pesadas.";
+"exercise.info.functional_training_battle_rope.technique.1" = "Párese con los pies separados a la altura de los hombros y las rodillas ligeramente dobladas.";
+"exercise.info.functional_training_battle_rope.technique.2" = "Mantenga el torso erguido y el core ligeramente activado.";
+"exercise.info.functional_training_battle_rope.technique.3" = "Sostenga cada extremo de la cuerda con un agarre firme pero relajado.";
+"exercise.info.functional_training_battle_rope.technique.4" = "Crea ondas uniformes utilizando el movimiento controlado del brazo.";
+"exercise.info.functional_training_battle_rope.technique.5" = "Evite doblar los hombros o contener la respiración.";
+"exercise.info.functional_training_battle_rope.technique.6" = "Utilice intervalos que pueda mantener de forma constante.";
+
+"exercise.info.functional_training_wall_ball.description" = "Wall Ball combina una sentadilla y un lanzamiento de balón medicinal a una pared para acondicionar todo el cuerpo.";
+"exercise.info.functional_training_wall_ball.technique.1" = "Elija un balón medicinal y una altura objetivo que pueda controlar.";
+"exercise.info.functional_training_wall_ball.technique.2" = "Sostenga la pelota a la altura del pecho con los pies separados a la altura de los hombros.";
+"exercise.info.functional_training_wall_ball.technique.3" = "Agáchate manteniendo el pecho elevado.";
+"exercise.info.functional_training_wall_ball.technique.4" = "Sube por las piernas y lanza la pelota al objetivo.";
+"exercise.info.functional_training_wall_ball.technique.5" = "Atrapa la pelota suavemente y absórbela en la siguiente sentadilla.";
+"exercise.info.functional_training_wall_ball.technique.6" = "Mantenga las rodillas alineadas con los pies durante todo el movimiento.";
+
+"exercise.info.functional_training_mountain_climber.description" = "Mountain Climber es un ejercicio de acondicionamiento con el peso corporal que alterna impulsos de rodilla desde una posición de tabla.";
+"exercise.info.functional_training_mountain_climber.technique.1" = "Comienza en una tabla alta con las manos debajo de los hombros.";
+"exercise.info.functional_training_mountain_climber.technique.2" = "Active el core para mantener el torso estable.";
+"exercise.info.functional_training_mountain_climber.technique.3" = "Lleva una rodilla hacia el pecho.";
+"exercise.info.functional_training_mountain_climber.technique.4" = "Regrese ese pie y cambie de lado bajo control.";
+"exercise.info.functional_training_mountain_climber.technique.5" = "Evite levantar las caderas en alto o dejar que la espalda baja se hunda.";
+"exercise.info.functional_training_mountain_climber.technique.6" = "Utilice un ritmo constante antes de aumentar la velocidad.";
+
+"exercise.info.functional_training_kettlebell_clean_and_press.description" = "La cargada y press con pesa rusa lleva la pesa hasta el hombro antes de elevarla por encima de la cabeza.";
+"exercise.info.functional_training_kettlebell_clean_and_press.technique.1" = "Comience con la pesa rusa en el suelo o en una suspensión controlada.";
+"exercise.info.functional_training_kettlebell_clean_and_press.technique.2" = "Gire las caderas y mantenga la espalda neutral.";
+"exercise.info.functional_training_kettlebell_clean_and_press.technique.3" = "Extienda las caderas para guiar la pesa rusa hasta el hombro.";
+"exercise.info.functional_training_kettlebell_clean_and_press.technique.4" = "Deje que la pesa rusa gire alrededor de la muñeca en vez de golpear el antebrazo.";
+"exercise.info.functional_training_kettlebell_clean_and_press.technique.5" = "Mantenga el core firme y eleve la pesa rusa por encima de la cabeza con control.";
+"exercise.info.functional_training_kettlebell_clean_and_press.technique.6" = "Baje la pesa rusa hasta el hombro y estabilice la posición antes de la siguiente repetición.";
+
+"exercise.info.stretching_hamstring_stretch.description" = "Un suave ejercicio de estiramiento estático.";
+"exercise.info.stretching_hamstring_stretch.technique.1" = "Empiece desde una posición cómoda.";
+"exercise.info.stretching_hamstring_stretch.technique.2" = "Muévase lentamente hasta que sienta una leve tensión.";
+"exercise.info.stretching_hamstring_stretch.technique.3" = "Respira constantemente y mantén el cuerpo relajado.";
+"exercise.info.stretching_hamstring_stretch.technique.4" = "No rebote ni fuerce la amplitud del movimiento.";
+"exercise.info.stretching_hamstring_stretch.technique.5" = "Mantener una posición estable durante el tiempo previsto.";
+"exercise.info.stretching_hamstring_stretch.technique.6" = "Repita en el otro lado cuando corresponda.";
+
+"exercise.info.stretching_quadriceps_stretch.description" = "Un suave ejercicio de estiramiento estático.";
+"exercise.info.stretching_quadriceps_stretch.technique.1" = "Empiece desde una posición cómoda.";
+"exercise.info.stretching_quadriceps_stretch.technique.2" = "Muévase lentamente hasta que sienta una leve tensión.";
+"exercise.info.stretching_quadriceps_stretch.technique.3" = "Respira constantemente y mantén el cuerpo relajado.";
+"exercise.info.stretching_quadriceps_stretch.technique.4" = "No rebote ni fuerce la amplitud del movimiento.";
+"exercise.info.stretching_quadriceps_stretch.technique.5" = "Mantener una posición estable durante el tiempo previsto.";
+"exercise.info.stretching_quadriceps_stretch.technique.6" = "Repita en el otro lado cuando corresponda.";
+
+"exercise.info.stretching_chest_stretch.description" = "Un suave ejercicio de estiramiento estático.";
+"exercise.info.stretching_chest_stretch.technique.1" = "Empiece desde una posición cómoda.";
+"exercise.info.stretching_chest_stretch.technique.2" = "Muévase lentamente hasta que sienta una leve tensión.";
+"exercise.info.stretching_chest_stretch.technique.3" = "Respira constantemente y mantén el cuerpo relajado.";
+"exercise.info.stretching_chest_stretch.technique.4" = "No rebote ni fuerce la amplitud del movimiento.";
+"exercise.info.stretching_chest_stretch.technique.5" = "Mantener una posición estable durante el tiempo previsto.";
+"exercise.info.stretching_chest_stretch.technique.6" = "Repita en el otro lado cuando corresponda.";
+
+"exercise.info.stretching_shoulder_stretch.description" = "Un suave ejercicio de estiramiento estático.";
+"exercise.info.stretching_shoulder_stretch.technique.1" = "Empiece desde una posición cómoda.";
+"exercise.info.stretching_shoulder_stretch.technique.2" = "Muévase lentamente hasta que sienta una leve tensión.";
+"exercise.info.stretching_shoulder_stretch.technique.3" = "Respira constantemente y mantén el cuerpo relajado.";
+"exercise.info.stretching_shoulder_stretch.technique.4" = "No rebote ni fuerce la amplitud del movimiento.";
+"exercise.info.stretching_shoulder_stretch.technique.5" = "Mantener una posición estable durante el tiempo previsto.";
+"exercise.info.stretching_shoulder_stretch.technique.6" = "Repita en el otro lado cuando corresponda.";
+
+"exercise.info.stretching_glute_stretch.description" = "Un suave ejercicio de estiramiento estático.";
+"exercise.info.stretching_glute_stretch.technique.1" = "Empiece desde una posición cómoda.";
+"exercise.info.stretching_glute_stretch.technique.2" = "Muévase lentamente hasta que sienta una leve tensión.";
+"exercise.info.stretching_glute_stretch.technique.3" = "Respira constantemente y mantén el cuerpo relajado.";
+"exercise.info.stretching_glute_stretch.technique.4" = "No rebote ni fuerce la amplitud del movimiento.";
+"exercise.info.stretching_glute_stretch.technique.5" = "Mantener una posición estable durante el tiempo previsto.";
+"exercise.info.stretching_glute_stretch.technique.6" = "Repita en el otro lado cuando corresponda.";
+
+"exercise.info.stretching_calf_stretch.description" = "Un suave ejercicio de estiramiento estático.";
+"exercise.info.stretching_calf_stretch.technique.1" = "Empiece desde una posición cómoda.";
+"exercise.info.stretching_calf_stretch.technique.2" = "Muévase lentamente hasta que sienta una leve tensión.";
+"exercise.info.stretching_calf_stretch.technique.3" = "Respira constantemente y mantén el cuerpo relajado.";
+"exercise.info.stretching_calf_stretch.technique.4" = "No rebote ni fuerce la amplitud del movimiento.";
+"exercise.info.stretching_calf_stretch.technique.5" = "Mantener una posición estable durante el tiempo previsto.";
+"exercise.info.stretching_calf_stretch.technique.6" = "Repita en el otro lado cuando corresponda.";
+
+"exercise.info.stretching_hip_flexor_stretch.description" = "Un suave ejercicio de estiramiento estático.";
+"exercise.info.stretching_hip_flexor_stretch.technique.1" = "Empiece desde una posición cómoda.";
+"exercise.info.stretching_hip_flexor_stretch.technique.2" = "Muévase lentamente hasta que sienta una leve tensión.";
+"exercise.info.stretching_hip_flexor_stretch.technique.3" = "Respira constantemente y mantén el cuerpo relajado.";
+"exercise.info.stretching_hip_flexor_stretch.technique.4" = "No rebote ni fuerce la amplitud del movimiento.";
+"exercise.info.stretching_hip_flexor_stretch.technique.5" = "Mantener una posición estable durante el tiempo previsto.";
+"exercise.info.stretching_hip_flexor_stretch.technique.6" = "Repita en el otro lado cuando corresponda.";
+
+"exercise.info.stretching_butterfly_stretch.description" = "Un suave ejercicio de estiramiento estático.";
+"exercise.info.stretching_butterfly_stretch.technique.1" = "Empiece desde una posición cómoda.";
+"exercise.info.stretching_butterfly_stretch.technique.2" = "Muévase lentamente hasta que sienta una leve tensión.";
+"exercise.info.stretching_butterfly_stretch.technique.3" = "Respira constantemente y mantén el cuerpo relajado.";
+"exercise.info.stretching_butterfly_stretch.technique.4" = "No rebote ni fuerce la amplitud del movimiento.";
+"exercise.info.stretching_butterfly_stretch.technique.5" = "Mantener una posición estable durante el tiempo previsto.";
+"exercise.info.stretching_butterfly_stretch.technique.6" = "Repita en el otro lado cuando corresponda.";
+
+"exercise.info.stretching_lat_stretch.description" = "Un suave ejercicio de estiramiento estático.";
+"exercise.info.stretching_lat_stretch.technique.1" = "Empiece desde una posición cómoda.";
+"exercise.info.stretching_lat_stretch.technique.2" = "Muévase lentamente hasta que sienta una leve tensión.";
+"exercise.info.stretching_lat_stretch.technique.3" = "Respira constantemente y mantén el cuerpo relajado.";
+"exercise.info.stretching_lat_stretch.technique.4" = "No rebote ni fuerce la amplitud del movimiento.";
+"exercise.info.stretching_lat_stretch.technique.5" = "Mantener una posición estable durante el tiempo previsto.";
+"exercise.info.stretching_lat_stretch.technique.6" = "Repita en el otro lado cuando corresponda.";
+
+"exercise.info.stretching_childs_pose.description" = "Un suave ejercicio de estiramiento estático.";
+"exercise.info.stretching_childs_pose.technique.1" = "Empiece desde una posición cómoda.";
+"exercise.info.stretching_childs_pose.technique.2" = "Muévase lentamente hasta que sienta una leve tensión.";
+"exercise.info.stretching_childs_pose.technique.3" = "Respira constantemente y mantén el cuerpo relajado.";
+"exercise.info.stretching_childs_pose.technique.4" = "No rebote ni fuerce la amplitud del movimiento.";
+"exercise.info.stretching_childs_pose.technique.5" = "Mantener una posición estable durante el tiempo previsto.";
+"exercise.info.stretching_childs_pose.technique.6" = "Repita en el otro lado cuando corresponda.";
+
+"exercise.info.stretching_triceps_stretch.description" = "Un suave ejercicio de estiramiento estático.";
+"exercise.info.stretching_triceps_stretch.technique.1" = "Empiece desde una posición cómoda.";
+"exercise.info.stretching_triceps_stretch.technique.2" = "Muévase lentamente hasta que sienta una leve tensión.";
+"exercise.info.stretching_triceps_stretch.technique.3" = "Respira constantemente y mantén el cuerpo relajado.";
+"exercise.info.stretching_triceps_stretch.technique.4" = "No rebote ni fuerce la amplitud del movimiento.";
+"exercise.info.stretching_triceps_stretch.technique.5" = "Mantener una posición estable durante el tiempo previsto.";
+"exercise.info.stretching_triceps_stretch.technique.6" = "Repita en el otro lado cuando corresponda.";
+
+"exercise.info.stretching_neck_stretch.description" = "Un suave ejercicio de estiramiento estático.";
+"exercise.info.stretching_neck_stretch.technique.1" = "Empiece desde una posición cómoda.";
+"exercise.info.stretching_neck_stretch.technique.2" = "Muévase lentamente hasta que sienta una leve tensión.";
+"exercise.info.stretching_neck_stretch.technique.3" = "Respira constantemente y mantén el cuerpo relajado.";
+"exercise.info.stretching_neck_stretch.technique.4" = "No rebote ni fuerce la amplitud del movimiento.";
+"exercise.info.stretching_neck_stretch.technique.5" = "Mantener una posición estable durante el tiempo previsto.";
+"exercise.info.stretching_neck_stretch.technique.6" = "Repita en el otro lado cuando corresponda.";

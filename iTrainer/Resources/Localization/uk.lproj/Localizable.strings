@@ -1,0 +1,438 @@
+/* Report Metric Info */
+
+"report.metric.info.accessibility.about" = "Про %@";
+"report.metric.info.done" = "Готово";
+"report.metric.info.meaning" = "Значення";
+"report.metric.info.formula" = "Формула";
+"report.metric.info.example" = "Приклад";
+
+"report.metric.volume.title" = "Обсяг";
+"report.metric.volume.description" = "Загальна робота у вправах з вагою. Поєднує вагу та повторення в один показник.";
+"report.metric.volume.formula" = "Сума ваги x повторення для завершених підходів.";
+"report.metric.volume.example" = "80 x 10 повторень + 70 x 8 повторень = 1 360 обсягу";
+
+"report.metric.volume_goal.title" = "Ціль за обсягом";
+"report.metric.volume_goal.description" = "Порівнює виконаний обсяг із запланованим цільовим обсягом для вправ з вагою. Обсяг - це загальна робота: вага x повторення для завершених підходів.";
+"report.metric.volume_goal.formula" = "Фактичний обсяг / цільовий обсяг.";
+"report.metric.volume_goal.example" = "Фактично 1 360, ціль 1 500 = 91%";
+
+"report.metric.density.title" = "Щільність";
+"report.metric.density.description" = "Показує, скільки роботи з вагою виконано за хвилину тренування.";
+"report.metric.density.formula" = "Загальний обсяг / тривалість тренування у хвилинах.";
+"report.metric.density.example" = "4 800 обсягу / 40 хв = 120 за хвилину";
+
+"report.metric.pace.title" = "Темп";
+"report.metric.pace.description" = "Показує, скільки часу потрібно для подолання однієї одиниці дистанції. Нижчий темп кращий.";
+"report.metric.pace.formula" = "Загальний час / загальна дистанція.";
+"report.metric.pace.example" = "15:00 / 2 одиниці дистанції = 7:30 за одиницю";
+
+"report.metric.pace_goal.title" = "Ціль за темпом";
+"report.metric.pace_goal.description" = "Порівнює фактичний темп із цільовим. Темп - це час на одиницю дистанції, тому нижчий темп означає кращий результат.";
+"report.metric.pace_goal.formula" = "Цільовий темп / фактичний темп.";
+"report.metric.pace_goal.example" = "Ціль 8:00 за одиницю, фактично 7:30 за одиницю = ціль перевиконано";
+
+"report.metric.record_type.title" = "Тип рекорду";
+"report.metric.record_type.description" = "Показує, який показник спричинив особистий рекорд або прогрес.";
+"report.metric.record_type.example" = "Обсяг означає, що загальна вага x повторення стала більшою, ніж раніше. Темп означає, що час на одиницю дистанції покращився.";
+
+"report.metric.improvement.title" = "Покращення";
+"report.metric.improvement.description" = "Показує різницю між поточним результатом і попереднім результатом для порівняння.";
+"report.metric.improvement.formula" = "Для більшості показників: поточний - попередній. Для темпу: попередній - поточний, оскільки нижчий темп кращий.";
+"report.metric.improvement.example" = "Попередній темп 8:00 за одиницю, поточний 7:30 за одиницю = покращення -0:30";
+
+/* Common */
+
+"common.cancel" = "Скасувати";
+"common.done" = "Готово";
+"common.edit" = "Редагувати";
+"common.save" = "Зберегти";
+"common.close" = "Закрити";
+"common.delete" = "Видалити";
+"common.hide" = "Приховати";
+"common.restore" = "Відновити";
+"common.add" = "Додати";
+"common.clear" = "Очистити";
+"common.ok" = "OK";
+"common.loading" = "Завантаження";
+"common.name" = "Назва";
+"common.name.placeholder" = "Нова назва";
+"common.optional" = "Необов'язково";
+"common.not_selected" = "Не вибрано";
+
+/* Notifications */
+
+"notifications.rest_finished.title" = "Відпочинок завершено";
+"notifications.rest_finished.body" = "Час для наступного підходу.";
+"notifications.active_workout.title" = "Тренування ще активне";
+"notifications.active_workout.body_with_title" = "%@ ще триває.";
+"notifications.active_workout.body" = "Ваше тренування ще триває.";
+
+/* Workouts */
+
+"workouts.title" = "Тренування";
+"workouts.empty.title" = "Немає тренувань";
+"workouts.new" = "Нове тренування";
+"workouts.edit" = "Редагувати тренування";
+"workouts.name.placeholder" = "Назва нового тренування";
+"workouts.selected_plan" = "Вибраний план";
+"workouts.workout_plan" = "План тренування";
+
+/* Calendar */
+
+"calendar.empty_day" = "Порожній день";
+
+/* Workout Groups */
+
+"workout_groups.title" = "Групи";
+"workout_groups.empty.title" = "Тренування не вибрано";
+"workout_groups.choose_workout" = "Вибрати тренування";
+"workout_groups.new" = "Нова група";
+"workout_groups.edit" = "Редагувати групу";
+"workout_groups.name.placeholder" = "Назва нової групи";
+"workout_groups.status.active" = "Активна";
+"workout_groups.status.last" = "Остання";
+"workout_groups.exercise_count" = "%d вправ";
+
+/* Active Workout */
+
+"active_workout.title" = "Активне тренування";
+"active_workout.metric.workout" = "Тренування";
+"active_workout.metric.rest" = "Відпочинок";
+"active_workout.metric.progress" = "Прогрес";
+"active_workout.finish" = "Завершити";
+"active_workout.finish_alert.title" = "Завершити тренування?";
+"active_workout.finish_alert.close_current" = "Поточне тренування буде завершено.";
+"active_workout.finish_alert.incomplete_progress" = "Ви виконали %d із %d вправ. Все одно завершити?";
+
+/* Exercise List */
+
+"exercise_list.start" = "Почати";
+"exercise_list.title" = "Вправи";
+"exercise_list.start_workout" = "Почати тренування";
+"exercise_list.workout_session" = "Тренувальна сесія";
+"exercise_list.start_alert.title" = "Почати тренування?";
+"exercise_list.start_alert.default_workout" = "це тренування";
+"exercise_list.start_alert.message" = "Почати %@?";
+"exercise_list.new_exercise" = "Нова вправа";
+"exercise_list.add_headline" = "Додати заголовок";
+"exercise_list.hidden.title" = "Приховані вправи";
+"exercise_list.exercise.new" = "Нова вправа";
+"exercise_list.exercise.edit" = "Редагувати вправу";
+"exercise_list.exercise.name.placeholder" = "Назва нової вправи";
+"exercise_list.headline.new" = "Новий заголовок";
+"exercise_list.headline.edit" = "Редагувати заголовок";
+"exercise_list.headline.name.placeholder" = "Назва нового заголовка";
+"exercise_list.action.hide_active.title" = "Приховати вправу під час активного тренування?";
+"exercise_list.action.delete_active.title" = "Видалити вправу під час активного тренування?";
+"exercise_list.action.delete.title" = "Видалити вправу?";
+"exercise_list.action.active.message" = "Це може вплинути на прогрес поточного тренування та підсумковий звіт.";
+"exercise_list.action.delete_active.message" = "Вправу буде видалено з тренування. Це може вплинути на прогрес поточного тренування та підсумковий звіт.";
+"exercise_list.action.delete.message" = "Вправу буде видалено з цього тренування. Попередні звіти не зміняться.";
+"exercise_list.add_conflict.active.title" = "Вправа вже існує";
+"exercise_list.add_conflict.hidden.title" = "Вправу приховано";
+"exercise_list.add_conflict.active.message" = "%@ вже є в цьому тренуванні. Додати ще одну копію?";
+"exercise_list.add_conflict.hidden.message" = "%@ приховано в цьому тренуванні. Відновити вправу?";
+"exercise_list.add_conflict.add_anyway" = "Усе одно додати";
+"exercise_list.add_conflict.add_new_copy" = "Додати нову копію";
+
+/* Superset */
+
+"superset.add" = "Додати суперсет";
+"superset.edit.title" = "Редагувати суперсет";
+"superset.rest.title" = "Відпочинок у суперсеті";
+"superset.exercises" = "Вправи";
+"superset.prompt.two" = "Додайте щонайменше дві вправи, щоб використовувати цей суперсет.";
+"superset.prompt.one_more" = "Додайте ще одну вправу, щоб використовувати цей суперсет.";
+"superset.no_exercises" = "Немає вправ";
+"superset.rest_time" = "Час відпочинку";
+"superset.rest_after_cycle" = "Відпочинок після циклу";
+"superset.without_rest" = "Без відпочинку";
+"superset.reorder" = "Змінити порядок";
+"superset.remove" = "Вилучити";
+"superset.delete_button" = "Видалити суперсет";
+"superset.delete_alert.title" = "Видалити суперсет?";
+"superset.delete_alert.message" = "Суперсет буде видалено. Його вправи повернуться до списку тренування.";
+"superset.active_locked" = "Триває активне тренування. Завершіть його, перш ніж змінювати вправи суперсету.";
+"superset.picker.title" = "Додати вправи";
+"superset.picker.empty" = "Немає доступних вправ";
+
+/* Exercise */
+
+"exercise.edit.title" = "Редагувати вправу";
+"exercise.edit.custom_name" = "Власна назва";
+"exercise.edit.name.placeholder" = "Нова назва...";
+"exercise.edit.default_name_hint" = "Залиште порожнім, щоб використовувати назву за замовчуванням.";
+"exercise.edit.save_error.title" = "Не вдалося зберегти вправу";
+"exercise.edit.save_error.message" = "Перевірте значення цільових підходів і спробуйте ще раз.";
+"exercise.edit.save_error.invalid_sets" = "Заповніть усі значення цільових підходів перед збереженням.";
+"exercise.info.accessibility_hint" = "Відкрити інформацію про вправу";
+"exercise.latest_report" = "Останній звіт";
+"exercise.rest_time" = "Час відпочинку";
+"exercise.rest_time.value" = "Відпочинок %@";
+"exercise.rest_between_sets" = "Відпочинок між підходами";
+"exercise.target_sets" = "Цільові підходи";
+"exercise.no_target_sets" = "Немає цільових підходів";
+"exercise.no_target_sets.subtitle" = "Додайте цільові підходи під час редагування";
+"exercise.add_result" = "Додати результат";
+"exercise.add_superset_result" = "Додати результат суперсету";
+"exercise.finish_workout" = "Завершити тренування";
+"exercise.next_exercise" = "Наступна вправа";
+"exercise.sets.new" = "Нові підходи";
+"exercise.sets.edit" = "Редагувати підходи";
+"exercise.report_sets.edit" = "Редагувати підходи у звіті";
+"exercise.add_set" = "Додати підхід";
+"exercise.set_number" = "Підхід %d";
+"exercise.error.type_missing" = "Тип вправи відсутній";
+
+/* Sets */
+
+"sets.parameter.weight" = "Вага";
+"sets.parameter.reps" = "Повт.";
+"sets.parameter.distance" = "Дистанція";
+"sets.parameter.time" = "Час";
+
+/* Tracking Type */
+
+"tracking_type.weighted_reps.title" = "Вага й повторення";
+"tracking_type.weighted_time.title" = "Вага й час";
+"tracking_type.reps_only.title" = "Лише повторення";
+"tracking_type.timed.title" = "За часом";
+"tracking_type.distance.title" = "Дистанція";
+"tracking_type.distance_time.title" = "Дистанція й час";
+"tracking_type.weighted_reps.description" = "Відстежує вагу й повторення для кожного підходу.";
+"tracking_type.weighted_time.description" = "Відстежує вагу й тривалість кожного підходу.";
+"tracking_type.reps_only.description" = "Відстежує повторення для кожного підходу.";
+"tracking_type.timed.description" = "Відстежує тривалість кожного підходу.";
+"tracking_type.distance.description" = "Відстежує дистанцію для кожного підходу.";
+"tracking_type.distance_time.description" = "Відстежує дистанцію й тривалість.";
+
+/* Exercise Catalog */
+
+"exercise_catalog.title" = "Вправи";
+"exercise_catalog.search.prompt" = "Пошук вправи";
+"exercise_catalog.create.title" = "Створити вправу";
+"exercise_catalog.empty" = "Немає вправ";
+"exercise_catalog.empty.bookmarked" = "Немає вибраних вправ";
+"exercise_catalog.bookmarks.show_all" = "Показати всі вправи";
+"exercise_catalog.bookmarks.show_bookmarked" = "Показати вибрані вправи";
+"exercise_catalog.bookmarks.add" = "Додати до вибраного";
+"exercise_catalog.bookmarks.remove" = "Вилучити з вибраного";
+"exercise_catalog.category.coming_next" = "Незабаром";
+"exercise_catalog.category.exercise_count" = "%d вправ";
+"exercise_catalog.selected_count" = "Вибрано: %d";
+"exercise_catalog.clear_selection" = "Очистити вибір";
+"exercise_catalog.delete_alert.title" = "Видалити цю вправу?";
+"exercise_catalog.delete_alert.message" = "Вправу буде видалено з каталогу та всіх тренувань. Попередні звіти не зміняться.";
+"exercise_catalog.delete_button" = "Видалити вправу";
+"exercise_catalog.detail.basic_info" = "Основна інформація";
+"exercise_catalog.detail.category" = "Категорія";
+"exercise_catalog.detail.parameters" = "Параметри";
+"exercise_catalog.detail.description" = "Опис";
+"exercise_catalog.detail.technique" = "Техніка";
+"exercise_catalog.statistics.subtitle" = "Переглянути загальну статистику вправи";
+"exercise_catalog.missing_info.title" = "Немає інформації про вправу";
+"exercise_catalog.missing_info.message" = "Немає інформації для вправи з id: %@";
+
+/* Custom Exercise */
+
+"custom_exercise.tracking_type" = "Тип відстеження";
+"custom_exercise.select_category" = "Виберіть категорію";
+"custom_exercise.select_tracking_type" = "Виберіть тип відстеження";
+"custom_exercise.select_category.title" = "Вибір категорії";
+"custom_exercise.select_tracking_type.title" = "Вибір типу відстеження";
+"custom_exercise.generated_name" = "Власна вправа %d";
+"custom_exercise.generated_name_prefix" = "Власна вправа ";
+"custom_exercise.error.category_required" = "Виберіть категорію.";
+"custom_exercise.error.tracking_type_required" = "Виберіть тип відстеження.";
+"custom_exercise.error.duplicate_name" = "Вправа з такою назвою вже існує в цій категорії.";
+
+/* Reports */
+
+"reports.common.close" = "Закрити";
+"reports.common.cancel" = "Скасувати";
+"reports.common.delete" = "Видалити";
+"reports.common.set" = "Підхід";
+"reports.common.set_number" = "Підхід %d";
+"reports.common.extra_set" = "Додатковий підхід";
+"reports.common.target" = "Ціль";
+"reports.common.result" = "Результат";
+"reports.common.date_unavailable" = "Дата недоступна";
+"reports.common.time_unavailable" = "Час недоступний";
+"reports.common.loading_reports" = "Завантаження звітів";
+"reports.common.completed_workouts_hint" = "Завершені тренування з'являться тут.";
+"reports.common.duration.hours_minutes" = "%d год %d хв";
+"reports.common.duration.hours" = "%d год";
+"reports.common.duration.minutes" = "%d хв";
+
+"reports.dashboard.title" = "Звіти";
+"reports.dashboard.calendar" = "Календар";
+"reports.dashboard.workouts" = "Тренування";
+"reports.dashboard.empty_month.title" = "Цього місяця немає тренувань";
+"reports.dashboard.summary.workout_completed" = "Тренування завершено";
+"reports.dashboard.summary.workouts_completed" = "Тренування завершено";
+"reports.dashboard.summary.personal_record" = "Особистий рекорд";
+"reports.dashboard.summary.personal_records" = "Особисті рекорди";
+"reports.dashboard.summary.total_volume" = "Загальний обсяг";
+
+"reports.calendar.title" = "Календар";
+"reports.calendar.today" = "Сьогодні";
+"reports.calendar.empty_date.title" = "Цього дня немає тренувань";
+
+"reports.workout_report.title" = "Звіт про тренування";
+"reports.workout_report.loading" = "Підготовка звіту";
+"reports.workout_report.exercises" = "Вправи";
+"reports.workout_report.no_exercises" = "Немає вправ";
+"reports.workout_report.delete_button" = "Видалити звіт";
+"reports.workout_report.delete_alert.title" = "Видалити звіт?";
+"reports.workout_report.delete_alert.message" = "Збережений звіт буде видалено. Тренування не буде відновлено.";
+
+"reports.exercise_report.title" = "Звіт про вправу";
+"reports.exercise_report.breakdown" = "Деталі";
+"reports.exercise_report.target_vs_result" = "Ціль і результат";
+"reports.exercise_report.summary" = "Підсумок вправи";
+"reports.exercise_report.view_statistics" = "Переглянути статистику";
+"reports.exercise_report.view_statistics.subtitle" = "Історія, рекорди та довгостроковий прогрес";
+"reports.exercise_report.status.previous_best" = "Попередній рекорд";
+"reports.exercise_report.status.previous" = "Попередній";
+"reports.exercise_report.status.goal" = "Ціль";
+"reports.exercise_report.status.achieved" = "Досягнуто";
+"reports.exercise_report.status.missed" = "Не досягнуто";
+"reports.exercise_report.status.targets" = "Цілі";
+"reports.exercise_report.status.recorded" = "Записано";
+"reports.exercise_report.status.complete" = "Завершено";
+"reports.exercise_report.status.metric" = "Показник";
+"reports.exercise_report.status.current" = "Поточний";
+"reports.exercise_report.status.improvement" = "Покращення";
+"reports.exercise_report.status.all_targets_completed" = "Усі заплановані підходи успішно виконано.";
+"reports.exercise_report.status.no_target_sets" = "Вправу виконано без цільових підходів.";
+"reports.exercise_report.status.some_targets_missed" = "Деяких цільових показників не досягнуто.";
+"reports.exercise_report.status.missed_targets_count" = "Не досягнуто %d із %d цілей.";
+
+"reports.exercise_status.personal_record" = "Новий особистий рекорд";
+"reports.exercise_status.progress" = "Прогрес";
+"reports.exercise_status.goal_achieved" = "Цілі досягнуто";
+"reports.exercise_status.goal_missed" = "Цілі не досягнуто";
+"reports.exercise_status.complete" = "Завершено";
+
+"reports.workout_status.personal_record" = "Новий особистий рекорд";
+"reports.workout_status.personal_records" = "%d нових особистих рекордів";
+"reports.workout_status.progress" = "Прогрес";
+"reports.workout_status.incomplete" = "Тренування не завершено";
+"reports.workout_status.goals_achieved" = "Цілі досягнуто";
+"reports.workout_status.goals_not_achieved" = "Цілі не досягнуто";
+"reports.workout_status.complete" = "Тренування завершено";
+
+"reports.summary.exercises" = "Вправи";
+"reports.summary.density" = "Щільність";
+"reports.summary.volume_goal" = "Ціль за обсягом";
+"reports.summary.repetition_goal" = "Ціль за повтореннями";
+"reports.summary.time_goal" = "Ціль за часом";
+"reports.summary.distance_goal" = "Ціль за дистанцією";
+"reports.summary.pace_goal" = "Ціль за темпом";
+"reports.summary.weight" = "Вага";
+"reports.summary.repetitions" = "Повторення";
+"reports.summary.volume" = "Обсяг";
+"reports.summary.rest_time" = "Час відпочинку";
+"reports.summary.total_repetitions" = "Усього повторень";
+"reports.summary.sets" = "Підходи";
+"reports.summary.total_time" = "Загальний час";
+"reports.summary.distance" = "Дистанція";
+"reports.summary.time" = "Час";
+"reports.summary.pace" = "Темп";
+"reports.summary.no_rest" = "Без відпочинку";
+"reports.summary.distance_time" = "Дистанція / час";
+"reports.summary.actual_from_target" = "%@ з %@";
+
+"reports.history.title" = "Історія";
+"reports.history.show_all" = "Показати все";
+"reports.history.screen_title" = "Історія вправи";
+"reports.history.loading" = "Завантаження історії";
+"reports.history.empty.title" = "Історії вправи ще немає";
+"reports.history.empty.subtitle" = "Попередні завершені звіти для цієї вправи з'являться тут.";
+
+"reports.month_picker.month" = "Місяць";
+"reports.month_picker.year" = "Рік";
+"reports.month_picker.title" = "Вибрати місяць";
+"reports.month_picker.select" = "Вибрати";
+
+"reports.statistics.title" = "Статистика";
+"reports.statistics.legend.workout" = "Тренування";
+"reports.statistics.legend.personal_record" = "Особистий рекорд";
+"reports.statistics.empty_period.title" = "Немає даних за цей період";
+"reports.statistics.empty_period.subtitle" = "Спробуйте вибрати довший період.";
+"reports.statistics.empty.title" = "Статистики ще немає";
+"reports.statistics.empty.subtitle" = "Звіти з'являться після виконання цієї вправи.";
+"reports.statistics.period_summary" = "Підсумок за період";
+"reports.statistics.current_vs_previous" = "Поточний і попередній";
+"reports.statistics.average" = "Середнє";
+"reports.statistics.change" = "Зміна";
+"reports.statistics.result" = "Результат";
+"reports.statistics.date" = "Дата";
+"reports.statistics.current" = "Поточний";
+"reports.statistics.previous" = "Попередній";
+"reports.statistics.across_all_workouts" = "За всіма тренуваннями";
+"reports.statistics.metric.weight.subtitle" = "Найбільша вага у звіті";
+"reports.statistics.metric.volume.subtitle" = "Загальний обсяг у звіті";
+"reports.statistics.metric.repetitions.subtitle" = "Повторення з відповідною вагою";
+"reports.statistics.metric.repetitions.total_subtitle" = "Загальна кількість повторень у звіті";
+"reports.statistics.metric.time.subtitle" = "Загальний час у звіті";
+"reports.statistics.metric.distance.subtitle" = "Загальна дистанція у звіті";
+"reports.statistics.metric.pace.subtitle" = "Найкращий нижчий темп у звіті";
+"reports.statistics.best.weight" = "Найкраща вага";
+"reports.statistics.best.volume" = "Найкращий обсяг";
+"reports.statistics.best.set" = "Найкращий підхід";
+"reports.statistics.best.time" = "Найкращий час";
+"reports.statistics.best.distance" = "Найкраща дистанція";
+"reports.statistics.best.pace" = "Найкращий темп";
+"reports.statistics.axis.time" = "час";
+"reports.statistics.axis.pace_km" = "темп /км";
+"reports.statistics.axis.pace_mi" = "темп /милю";
+"reports.statistics.period.all" = "Усе";
+
+/* Settings */
+
+"settings.title" = "Налаштування";
+"settings.common.ok" = "OK";
+
+"settings.units.title" = "Одиниці";
+"settings.units.weight" = "Вага";
+"settings.units.distance" = "Дистанція";
+"settings.units.system" = "Система";
+"settings.units.weight.kilograms" = "кг";
+"settings.units.weight.pounds" = "фунт";
+"settings.units.distance.metric" = "Метрична";
+"settings.units.distance.imperial" = "Імперська";
+"unit.repetitions.short" = "повт.";
+
+"settings.notifications.title" = "Сповіщення";
+"settings.notifications.enabled.title" = "Сповіщення про тренування";
+"settings.notifications.enabled.subtitle" = "Таймер відпочинку та нагадування про активне тренування ввімкнено.";
+"settings.notifications.paused.subtitle" = "iTrainer не плануватиме нагадування про тренування.";
+"settings.notifications.enable.title" = "Увімкнути сповіщення";
+"settings.notifications.enable.subtitle" = "Дозволити таймер відпочинку та нагадування про активне тренування.";
+"settings.notifications.blocked.title" = "Сповіщення вимкнено";
+"settings.notifications.blocked.subtitle" = "Увімкніть сповіщення в налаштуваннях iPhone, щоб отримувати нагадування про відпочинок і тренування.";
+"settings.notifications.open_settings" = "Відкрити налаштування";
+
+"settings.language.title" = "Мова";
+"settings.language.system.title" = "Використовує налаштування iTrainer на iPhone";
+"settings.language.system.subtitle" = "Відкрийте налаштування iTrainer в iOS, щоб вибрати мову застосунку.";
+
+"settings.support.title" = "Підтримка";
+"settings.share_app.title" = "Поділитися iTrainer";
+"settings.rate_app.title" = "Оцінити iTrainer";
+"settings.support.feedback.title" = "Надіслати відгук";
+"settings.support.feedback.subtitle" = "Надішліть відгук про застосунок або опис проблеми електронною поштою.";
+"settings.support.feedback.subject" = "Відгук про iTrainer";
+"settings.support.feedback.app_info" = "Інформація про застосунок";
+"settings.support.mail_unavailable.title" = "Пошта недоступна";
+"settings.support.mail_unavailable.message" = "Налаштуйте Пошту на цьому iPhone або зверніться до підтримки з іншого поштового застосунку.";
+
+"settings.privacy.title" = "Конфіденційність";
+"settings.privacy.local_data.title" = "Локальні дані тренувань";
+"settings.privacy.local_data.subtitle" = "Дані тренувань зберігаються на цьому пристрої. Хмарну синхронізацію не ввімкнено.";
+"settings.privacy.policy.title" = "Політика конфіденційності";
+"settings.privacy.policy.pending" = "Додайте URL політики перед випуском.";
+
+"settings.about.title" = "Про застосунок";
+"settings.about.version" = "Версія";
