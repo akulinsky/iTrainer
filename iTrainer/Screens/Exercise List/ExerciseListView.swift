@@ -146,7 +146,7 @@ struct ExerciseListView: View {
             
             if viewModel.isEditHeadline {
                 editNameView()
-                    .presentationDetents([.height(250)])
+                    .presentationDetents([.height(340)])
             } else {
                 editExercise()
                     .presentationDetents([.large])
@@ -580,20 +580,24 @@ struct ExerciseListView: View {
             title = value
         }
         
-        let editTitle: String
-        let placeholder: String
         if viewModel.isEditHeadline {
-            editTitle = viewModel.editExercise == nil ? String(localized: "exercise_list.headline.new") : String(localized: "exercise_list.headline.edit")
-            placeholder = String(localized: "exercise_list.headline.name.placeholder")
-        } else {
-            editTitle = viewModel.editExercise == nil ? String(localized: "exercise_list.exercise.new") : String(localized: "exercise_list.exercise.edit")
-            placeholder = String(localized: "exercise_list.exercise.name.placeholder")
+            return AnyView(EditTaggedNameView(value: title.isEmpty ? "" : title,
+                                              title: viewModel.editExercise == nil ? String(localized: "exercise_list.headline.new") : String(localized: "exercise_list.headline.edit"),
+                                              placeholder: String(localized: "exercise_list.headline.name.placeholder"),
+                                              tags: categoryTags) {
+                switch $0 {
+                case .save(let name):
+                    viewModel.update(name: name)
+                default:
+                    viewModel.isEditHeadline = false
+                    break
+                }
+            })
         }
         
-        return EditNameView(value: title.isEmpty ? "" : title,
-                            title: editTitle,
-                            placeholder: placeholder) {
-            
+        return AnyView(EditNameView(value: title.isEmpty ? "" : title,
+                                    title: viewModel.editExercise == nil ? String(localized: "exercise_list.exercise.new") : String(localized: "exercise_list.exercise.edit"),
+                                    placeholder: String(localized: "exercise_list.exercise.name.placeholder")) {
             switch $0 {
             case .save(let name):
                 viewModel.update(name: name)
@@ -601,7 +605,11 @@ struct ExerciseListView: View {
                 viewModel.isEditHeadline = false
                 break
             }
-        }
+        })
+    }
+    
+    private var categoryTags: [String] {
+        DataContainer.shared.categories.map(\.displayName)
     }
     
     @ViewBuilder

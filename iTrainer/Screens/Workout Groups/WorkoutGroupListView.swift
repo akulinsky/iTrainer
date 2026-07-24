@@ -85,7 +85,7 @@ struct WorkoutGroupListView: View {
             }
             .sheet(isPresented: $viewModel.isEditGroup, content: {
                 editNameView()
-                    .presentationDetents([.height(250)])
+                    .presentationDetents([.height(340)])
             })
             .sheet(isPresented: $viewModel.isSelectWorkoutPresented, onDismiss: {
                 viewModel.reloadSelectedWorkoutData()
@@ -270,9 +270,10 @@ struct WorkoutGroupListView: View {
             title = value
         }
         
-        return EditNameView(value: title.isEmpty ? "" : title,
-                            title: viewModel.editGroup == nil ? String(localized: "workout_groups.new") : String(localized: "workout_groups.edit"),
-                            placeholder: String(localized: "workout_groups.name.placeholder")) {
+        return EditTaggedNameView(value: title.isEmpty ? "" : title,
+                                  title: viewModel.editGroup == nil ? String(localized: "workout_groups.new") : String(localized: "workout_groups.edit"),
+                                  placeholder: String(localized: "workout_groups.name.placeholder"),
+                                  tags: categoryTags) {
             
             switch $0 {
             case .save(let name):
@@ -281,6 +282,10 @@ struct WorkoutGroupListView: View {
                 break
             }
         }
+    }
+    
+    private var categoryTags: [String] {
+        DataContainer.shared.categories.map(\.displayName)
     }
     
     private func clickBtnEditint() {
