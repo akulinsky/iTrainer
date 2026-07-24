@@ -83,12 +83,14 @@ struct MetricInfoButton: View {
     let info: ReportMetricInfo
     let size: CGFloat
     let iconSize: CGFloat
+    let color: Color
     @State private var isPresented = false
     
-    init(info: ReportMetricInfo, size: CGFloat = 32, iconSize: CGFloat = 17) {
+    init(info: ReportMetricInfo, size: CGFloat = 32, iconSize: CGFloat = 17, color: Color = AppColor.textSecondary) {
         self.info = info
         self.size = size
         self.iconSize = iconSize
+        self.color = color
     }
     
     var body: some View {
@@ -97,7 +99,7 @@ struct MetricInfoButton: View {
         } label: {
             Image(systemName: "info.circle")
                 .font(.system(size: iconSize, weight: .semibold))
-                .foregroundStyle(AppColor.textSecondary)
+                .foregroundStyle(color)
                 .frame(width: size, height: size)
                 .contentShape(Rectangle())
         }

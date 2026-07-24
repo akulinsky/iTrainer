@@ -225,9 +225,9 @@ struct ReportView: View {
         }
         .overlay(alignment: .topTrailing) {
             if let info = card.info {
-                MetricInfoButton(info: info, size: 28, iconSize: 16)
-                    .padding(.top, 2)
-                    .padding(.trailing, 2)
+                MetricInfoButton(info: info, size: 38, iconSize: 12, color: AppColor.brandPrimary)
+                    .padding(.top, -6)
+                    .padding(.trailing, -6)
             }
         }
     }
