@@ -13,49 +13,17 @@ struct ReportsDashboardHeaderView: View {
     
     var body: some View {
         Button(action: action) {
-            HStack(alignment: .top, spacing: 18) {
-                ZStack {
-                    Circle()
-                        .fill(AppColor.brandPrimary.opacity(0.08))
-                    Image(systemName: "calendar")
-                        .font(.system(size: 27, weight: .medium))
-                        .foregroundStyle(AppColor.brandPrimary)
-                }
-                .frame(width: 64, height: 64)
-                
-                VStack(alignment: .leading, spacing: 10) {
-                    HStack(spacing: 8) {
-                        Text(summary.monthTitle)
-                            .font(.system(size: 18, weight: .semibold))
-                            .foregroundStyle(AppColor.brandPrimary)
-                            .lineLimit(1)
-                            .minimumScaleFactor(0.82)
-                        Image(systemName: "chevron.down")
-                            .font(.system(size: 14, weight: .bold))
-                            .foregroundStyle(AppColor.brandPrimary)
-                    }
-                    
-                    summaryLine(value: summary.workoutCountValueText,
-                                title: summary.workoutCountTitleText,
-                                color: AppColor.progressGreen)
-                    .lineLimit(2)
-                    .minimumScaleFactor(0.78)
-                    
-                    VStack(alignment: .leading, spacing: 7) {
-                        summaryLine(value: summary.personalRecordValueText,
-                                    title: summary.personalRecordTitleText,
-                                    color: AppColor.restAmber)
-                        summaryLine(value: summary.totalVolumeValueText,
-                                    title: summary.totalVolumeTitleText,
-                                    color: AppColor.textSecondary)
-                    }
-                    .lineLimit(1)
-                    .minimumScaleFactor(0.82)
-                }
-                .frame(maxWidth: .infinity, alignment: .leading)
+            VStack(spacing: 14) {
+                monthRow
+                Divider()
+                    .background(AppColor.separatorSoft)
+                workoutSummary
+                Divider()
+                    .background(AppColor.separatorSoft)
+                bottomMetrics
             }
-            .padding(20)
-            .frame(maxWidth: .infinity, alignment: .leading)
+            .padding(18)
+            .frame(maxWidth: .infinity)
             .background(AppColor.surfacePrimary)
             .clipShape(RoundedRectangle(cornerRadius: 14, style: .continuous))
             .overlay {
@@ -64,26 +32,108 @@ struct ReportsDashboardHeaderView: View {
             }
         }
         .buttonStyle(.plain)
+        .accessibilityElement(children: .ignore)
+        .accessibilityLabel(accessibilityText)
     }
     
-    private func summaryLine(value: String, title: String, color: Color) -> some View {
-        HStack(alignment: .firstTextBaseline, spacing: 5) {
-            Text(value)
-                .font(.system(size: 18, weight: .bold))
-            Text(title)
-                .font(.system(size: 18, weight: .medium))
+    private var monthRow: some View {
+        HStack(spacing: 10) {
+            ZStack {
+                Circle()
+                    .fill(AppColor.brandPrimary.opacity(0.08))
+                Image(systemName: "calendar")
+                    .font(.system(size: 20, weight: .medium))
+                    .foregroundStyle(AppColor.brandPrimary)
+            }
+            .frame(width: 42, height: 42)
+            
+            HStack(spacing: 6) {
+                Text(summary.monthTitle)
+                    .font(.system(size: 18, weight: .semibold))
+                    .foregroundStyle(AppColor.brandPrimary)
+                    .lineLimit(1)
+                    .minimumScaleFactor(0.88)
+                    .layoutPriority(1)
+                Image(systemName: "chevron.down")
+                    .font(.system(size: 13, weight: .bold))
+                    .foregroundStyle(AppColor.brandPrimary)
+                    .accessibilityHidden(true)
+            }
+            
+            Spacer(minLength: 0)
         }
-        .foregroundStyle(color)
+        .frame(maxWidth: .infinity, alignment: .leading)
+    }
+    
+    private var workoutSummary: some View {
+        VStack(spacing: 5) {
+            Text(summary.workoutCountValueText)
+                .font(.system(size: 42, weight: .bold))
+                .foregroundStyle(AppColor.brandPrimary)
+                .lineLimit(1)
+                .minimumScaleFactor(0.9)
+                .layoutPriority(1)
+            
+            Text(summary.workoutCountTitleText)
+                .font(.system(size: 17, weight: .semibold))
+                .foregroundStyle(AppColor.textPrimary)
+                .multilineTextAlignment(.center)
+                .lineLimit(2)
+                .fixedSize(horizontal: false, vertical: true)
+        }
+        .frame(maxWidth: .infinity)
+        .padding(.top, 2)
+    }
+    
+    private var bottomMetrics: some View {
+        HStack(alignment: .center, spacing: 0) {
+            metricColumn(value: summary.personalRecordValueText,
+                         title: summary.personalRecordTitleText,
+                         valueColor: AppColor.restAmber)
+            
+            Rectangle()
+                .fill(AppColor.separatorSoft)
+                .frame(width: 1)
+                .padding(.vertical, 4)
+            
+            metricColumn(value: summary.totalVolumeValueText,
+                         title: summary.totalVolumeTitleText,
+                         valueColor: AppColor.textPrimary)
+        }
+        .frame(maxWidth: .infinity)
+    }
+    
+    private func metricColumn(value: String, title: String, valueColor: Color) -> some View {
+        VStack(spacing: 5) {
+            Text(value)
+                .font(.system(size: 21, weight: .bold))
+                .foregroundStyle(valueColor)
+                .lineLimit(1)
+                .minimumScaleFactor(0.86)
+                .layoutPriority(1)
+            
+            Text(title)
+                .font(.system(size: 14, weight: .medium))
+                .foregroundStyle(AppColor.textSecondary)
+                .multilineTextAlignment(.center)
+                .lineLimit(2)
+                .fixedSize(horizontal: false, vertical: true)
+        }
+        .frame(maxWidth: .infinity)
+    }
+    
+    private var accessibilityText: Text {
+        Text("\(summary.monthTitle), \(summary.workoutCountValueText) \(summary.workoutCountTitleText), \(summary.personalRecordValueText) \(summary.personalRecordTitleText), \(summary.totalVolumeValueText) \(summary.totalVolumeTitleText)")
     }
 }
 
 #Preview {
-    ReportsDashboardHeaderView(summary: ReportsMonthSummary(monthTitle: "May 2026",
+    ReportsDashboardHeaderView(summary: ReportsMonthSummary(monthTitle: "July 2026",
                                                             workoutCountValueText: "12",
                                                             workoutCountTitleText: "Workouts Completed",
                                                             personalRecordValueText: "3",
                                                             personalRecordTitleText: "Personal Records",
-                                                            totalVolumeValueText: "52,400",
+                                                            totalVolumeValueText: "52,400 kg",
                                                             totalVolumeTitleText: "Total Volume"),
                                action: {})
     .padding(20)
