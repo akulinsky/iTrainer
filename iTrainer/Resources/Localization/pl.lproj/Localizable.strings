@@ -86,6 +86,9 @@
 "workout_groups.title" = "Grupy";
 "workout_groups.empty.title" = "Nie wybrano treningu";
 "workout_groups.choose_workout" = "Wybierz trening";
+"workout_groups.empty_days.title" = "Brak dni treningowych";
+"workout_groups.empty_days.subtitle" = "Dodaj dzień treningowy, aby zacząć tworzyć ten trening.";
+"workout_groups.empty_days.add" = "Dodaj dzień treningowy";
 "workout_groups.new" = "Nowa grupa";
 "workout_groups.edit" = "Edytuj grupę";
 "workout_groups.name.placeholder" = "Nazwa nowej grupy";

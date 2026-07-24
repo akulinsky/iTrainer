@@ -35,6 +35,8 @@ struct WorkoutGroupListView: View {
             VStack(spacing: 0) {
                 if viewModel.workout == nil {
                     emptyWorkoutView()
+                } else if viewModel.workoutGroups.isEmpty {
+                    emptyWorkoutGroupsView()
                 } else {
                     List {
                         if workoutManager.isWorkoutInProgress {
@@ -133,6 +135,30 @@ struct WorkoutGroupListView: View {
                 .font(AppFont.rowTitle)
                 .foregroundStyle(AppColor.textPrimary)
             Button("workout_groups.choose_workout", action: viewModel.showWorkoutPicker)
+                .buttonStyle(.borderedProminent)
+                .tint(AppColor.brandPrimary)
+            Spacer()
+        }
+        .frame(maxWidth: .infinity, maxHeight: .infinity)
+        .padding()
+        .background(AppColor.backgroundPrimary)
+    }
+    
+    private func emptyWorkoutGroupsView() -> some View {
+        VStack(spacing: 16) {
+            Spacer()
+            Image(systemName: "calendar.badge.plus")
+                .font(.system(size: 44))
+                .foregroundStyle(AppColor.textSecondary)
+            Text("workout_groups.empty_days.title")
+                .font(AppFont.rowTitle)
+                .foregroundStyle(AppColor.textPrimary)
+            Text("workout_groups.empty_days.subtitle")
+                .font(AppFont.rowSubtitle)
+                .foregroundStyle(AppColor.textSecondary)
+                .multilineTextAlignment(.center)
+                .padding(.horizontal, 24)
+            Button("workout_groups.empty_days.add", action: clickBtnNewWorkoutGroup)
                 .buttonStyle(.borderedProminent)
                 .tint(AppColor.brandPrimary)
             Spacer()

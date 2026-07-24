@@ -86,6 +86,9 @@
 "workout_groups.title" = "Групи";
 "workout_groups.empty.title" = "Тренування не вибрано";
 "workout_groups.choose_workout" = "Вибрати тренування";
+"workout_groups.empty_days.title" = "Немає тренувальних днів";
+"workout_groups.empty_days.subtitle" = "Додайте тренувальний день, щоб почати складати тренування.";
+"workout_groups.empty_days.add" = "Додати тренувальний день";
 "workout_groups.new" = "Нова група";
 "workout_groups.edit" = "Редагувати групу";
 "workout_groups.name.placeholder" = "Назва нової групи";
