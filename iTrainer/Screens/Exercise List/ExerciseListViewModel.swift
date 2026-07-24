@@ -70,6 +70,10 @@ class ExerciseListViewModel: ObservableObject {
         !hiddenExercises.isEmpty
     }
     
+    var hasRunnableExercises: Bool {
+        !exercises.flattenedExerciseItems().isEmpty
+    }
+    
     private var pendingAddTypeIds = [String]()
     private var pendingHiddenRestoreIds = [UUID]()
     

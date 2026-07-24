@@ -111,6 +111,9 @@
 
 "exercise_list.start" = "Starten";
 "exercise_list.title" = "Übungen";
+"exercise_list.empty.title" = "Noch keine Übungen";
+"exercise_list.empty.subtitle" = "Füge Übungen hinzu, um diesen Trainingstag aufzubauen.";
+"exercise_list.empty.add" = "Übung hinzufügen";
 "exercise_list.start_workout" = "Training starten";
 "exercise_list.workout_session" = "Trainingseinheit";
 "exercise_list.start_alert.title" = "Training starten?";

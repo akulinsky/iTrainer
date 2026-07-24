@@ -111,6 +111,9 @@
 
 "exercise_list.start" = "Rozpocznij";
 "exercise_list.title" = "Ćwiczenia";
+"exercise_list.empty.title" = "Brak ćwiczeń";
+"exercise_list.empty.subtitle" = "Dodaj ćwiczenia, aby zacząć tworzyć ten dzień treningowy.";
+"exercise_list.empty.add" = "Dodaj ćwiczenie";
 "exercise_list.start_workout" = "Rozpocznij trening";
 "exercise_list.workout_session" = "Sesja treningowa";
 "exercise_list.start_alert.title" = "Rozpocząć trening?";

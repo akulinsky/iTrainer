@@ -111,6 +111,9 @@
 
 "exercise_list.start" = "Start";
 "exercise_list.title" = "Exercises";
+"exercise_list.empty.title" = "No exercises yet";
+"exercise_list.empty.subtitle" = "Add exercises to start building this workout day.";
+"exercise_list.empty.add" = "Add exercise";
 "exercise_list.start_workout" = "Start workout";
 "exercise_list.workout_session" = "Workout session";
 "exercise_list.start_alert.title" = "Start workout?";

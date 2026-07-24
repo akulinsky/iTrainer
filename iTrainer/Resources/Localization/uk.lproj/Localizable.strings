@@ -111,6 +111,9 @@
 
 "exercise_list.start" = "Почати";
 "exercise_list.title" = "Вправи";
+"exercise_list.empty.title" = "Немає вправ";
+"exercise_list.empty.subtitle" = "Додайте вправи, щоб почати складати тренувальний день.";
+"exercise_list.empty.add" = "Додати вправу";
 "exercise_list.start_workout" = "Почати тренування";
 "exercise_list.workout_session" = "Тренувальна сесія";
 "exercise_list.start_alert.title" = "Почати тренування?";

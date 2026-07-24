@@ -57,38 +57,41 @@ struct ExerciseListView: View {
     
     var body: some View {
         VStack(spacing: 0) {
-            ScrollViewReader { proxy in
-                List {
-                    if workoutManager.isWorkoutInProgress {
-                        workoutStatusWidget
-                            .transition(.asymmetric(
-                                insertion: .move(edge: .top).combined(with: .opacity),
-                                removal: .scale(scale: 0.96).combined(with: .opacity)
-                            ))
-                            .listRowInsets(EdgeInsets(top: 10, leading: 20, bottom: 12, trailing: 20))
-                            .listRowSeparator(.hidden)
-                            .listRowBackground(AppColor.backgroundPrimary)
-                    } else {
-                        startSessionCard
-                            .transition(.asymmetric(
-                                insertion: .move(edge: .top).combined(with: .opacity),
-                                removal: .scale(scale: 0.96).combined(with: .opacity)
-                            ))
-                            .listRowInsets(EdgeInsets(top: 10, leading: 20, bottom: 12, trailing: 20))
-                            .listRowSeparator(.hidden)
-                            .listRowBackground(AppColor.backgroundPrimary)
-                    }
-                    
-                    ForEach(viewModel.exercises) { item in
-                        cells(for: item)
-                            .id(item.id)
-                            .swipeActions(edge: .trailing, allowsFullSwipe: false) {
-                                rowSwipeActions(for: item)
-                            }
-                            .listRowInsets(rowInsets(for: item))
-                            .listRowSeparator(.hidden)
-                            .listRowBackground(AppColor.backgroundPrimary)
-                    }
+            if viewModel.exercises.isEmpty {
+                emptyExercisesView
+            } else {
+                ScrollViewReader { proxy in
+                    List {
+                        if workoutManager.isWorkoutInProgress {
+                            workoutStatusWidget
+                                .transition(.asymmetric(
+                                    insertion: .move(edge: .top).combined(with: .opacity),
+                                    removal: .scale(scale: 0.96).combined(with: .opacity)
+                                ))
+                                .listRowInsets(EdgeInsets(top: 10, leading: 20, bottom: 12, trailing: 20))
+                                .listRowSeparator(.hidden)
+                                .listRowBackground(AppColor.backgroundPrimary)
+                        } else if viewModel.hasRunnableExercises {
+                            startSessionCard
+                                .transition(.asymmetric(
+                                    insertion: .move(edge: .top).combined(with: .opacity),
+                                    removal: .scale(scale: 0.96).combined(with: .opacity)
+                                ))
+                                .listRowInsets(EdgeInsets(top: 10, leading: 20, bottom: 12, trailing: 20))
+                                .listRowSeparator(.hidden)
+                                .listRowBackground(AppColor.backgroundPrimary)
+                        }
+                        
+                        ForEach(viewModel.exercises) { item in
+                            cells(for: item)
+                                .id(item.id)
+                                .swipeActions(edge: .trailing, allowsFullSwipe: false) {
+                                    rowSwipeActions(for: item)
+                                }
+                                .listRowInsets(rowInsets(for: item))
+                                .listRowSeparator(.hidden)
+                                .listRowBackground(AppColor.backgroundPrimary)
+                        }
                     .onDelete(perform: deleteItems)
                     .onMove(perform: moveItems)
                 }
@@ -111,6 +114,7 @@ struct ExerciseListView: View {
                         viewModel.pendingScrollExerciseId = nil
                     }
                 }
+            }
             }
         }
         .background(AppColor.backgroundPrimary)
@@ -387,6 +391,30 @@ struct ExerciseListView: View {
                 navigation.path.append(ExerciseListRoute.exerciseView(item: child))
             }
         }
+    }
+    
+    private var emptyExercisesView: some View {
+        VStack(spacing: 16) {
+            Spacer()
+            Image(systemName: "figure.strengthtraining.traditional")
+                .font(.system(size: 44))
+                .foregroundStyle(AppColor.textSecondary)
+            Text("exercise_list.empty.title")
+                .font(AppFont.rowTitle)
+                .foregroundStyle(AppColor.textPrimary)
+            Text("exercise_list.empty.subtitle")
+                .font(AppFont.rowSubtitle)
+                .foregroundStyle(AppColor.textSecondary)
+                .multilineTextAlignment(.center)
+                .padding(.horizontal, 24)
+            Button("exercise_list.empty.add", action: clickBtnNewExercise)
+                .buttonStyle(.borderedProminent)
+                .tint(AppColor.brandPrimary)
+            Spacer()
+        }
+        .frame(maxWidth: .infinity, maxHeight: .infinity)
+        .padding()
+        .background(AppColor.backgroundPrimary)
     }
     
     private var workoutStatusWidget: some View {
