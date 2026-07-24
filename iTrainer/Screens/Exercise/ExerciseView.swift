@@ -283,7 +283,13 @@ private struct ExerciseContentView: View {
         }
         
         let groupTitle = isSupersetChild ? String(localized: "superset.title") : type.type.displayName
-        return "\(groupTitle) · \(type.displayName)"
+        let typeTitle = type.displayName
+        
+        if viewModel.title.trimmingCharacters(in: .whitespacesAndNewlines).caseInsensitiveCompare(typeTitle.trimmingCharacters(in: .whitespacesAndNewlines)) == .orderedSame {
+            return groupTitle
+        }
+        
+        return "\(groupTitle) · \(typeTitle)"
     }
     
     private var restTimeText: String {
