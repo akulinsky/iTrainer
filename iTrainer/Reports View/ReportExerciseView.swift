@@ -209,15 +209,15 @@ struct ReportExerciseView: View {
         }
         .overlay(alignment: .topTrailing) {
             if let info = statusMetricsInfo {
-                MetricInfoButton(info: info, size: 22, iconSize: 13)
-                    .padding(.top, 1)
-                    .padding(.trailing, 1)
+                MetricInfoButton(info: info, size: 30, iconSize: 12, color: AppColor.brandPrimary)
+                    .padding(.top, -4)
+                    .padding(.trailing, -4)
             }
         }
     }
     
     private func metricPillView(_ metric: (title: String, value: String, info: ReportMetricInfo?)) -> some View {
-        HStack(alignment: .center, spacing: 6) {
+        HStack(alignment: .center, spacing: 0) {
             Text(metric.title + ":")
                 .font(.system(size: 13, weight: .semibold))
                 .foregroundStyle(AppColor.textSecondary)
@@ -229,9 +229,11 @@ struct ReportExerciseView: View {
                 .foregroundStyle(AppColor.textPrimary)
                 .lineLimit(1)
                 .minimumScaleFactor(0.78)
+                .padding(.leading, 6)
             
             if let info = metric.info {
-                MetricInfoButton(info: info, size: 24, iconSize: 14)
+                MetricInfoButton(info: info, size: 30, iconSize: 12, color: AppColor.brandPrimary)
+                    .offset(x: -6, y: -5)
             }
         }
     }

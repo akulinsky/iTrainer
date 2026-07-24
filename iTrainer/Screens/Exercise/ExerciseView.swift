@@ -228,11 +228,6 @@ private struct ExerciseContentView: View {
                         .foregroundStyle(AppColor.textSecondary)
                     
                     Spacer(minLength: 12)
-                    
-                    Image(systemName: "info.circle")
-                        .font(.system(size: 20, weight: .semibold))
-                        .foregroundStyle(AppColor.textSecondary)
-                        .padding(.trailing, 2)
                 }
             }
             .frame(maxWidth: .infinity, alignment: .leading)
@@ -240,6 +235,14 @@ private struct ExerciseContentView: View {
         .padding(12)
         .frame(minHeight: 112)
         .frame(maxWidth: .infinity, alignment: .leading)
+        .overlay(alignment: .topTrailing) {
+            Image(systemName: "info.circle")
+                .font(.system(size: 14, weight: .semibold))
+                .foregroundStyle(AppColor.brandPrimary)
+                .frame(width: 38, height: 38)
+                .padding(.top, -6)
+                .padding(.trailing, -6)
+        }
         .contentShape(Rectangle())
     }
     
