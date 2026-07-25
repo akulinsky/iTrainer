@@ -12,9 +12,13 @@ import SwiftUI
 
 struct WorkoutListView: View {
     
+    @EnvironmentObject private var workoutManager: WorkoutManager
+    
     @StateObject var viewModel = WorkoutListViewModel()
     
     @State private var editMode = EditMode.inactive
+    
+    @State private var isActiveWorkoutDeletionAlertPresented = false
     
     @StateObject private var navigationManager = NavigationManager()
     
@@ -65,6 +69,11 @@ struct WorkoutListView: View {
                 editNameView()
                     .presentationDetents([.height(250)])
             })
+            .alert(Text("active_workout.delete_blocked.title"), isPresented: $isActiveWorkoutDeletionAlertPresented) {
+                Button("common.ok", role: .cancel) {}
+            } message: {
+                Text("active_workout.delete_blocked.message")
+            }
         }
         .task {
             viewModel.setup()
@@ -178,10 +187,9 @@ struct WorkoutListView: View {
     }
 
     private func deleteItems(offsets: IndexSet) {
-        withAnimation {
-            for index in offsets {
-                viewModel.delete(index: index)
-            }
+        viewModel.delete(offsets: offsets,
+                         activeWorkoutGroupId: workoutManager.currentWorkoutGroupId) {
+            isActiveWorkoutDeletionAlertPresented = true
         }
     }
     
@@ -192,4 +200,5 @@ struct WorkoutListView: View {
 
 #Preview {
     WorkoutListView()
+        .environmentObject(DataContainer.shared.workoutManager)
 }

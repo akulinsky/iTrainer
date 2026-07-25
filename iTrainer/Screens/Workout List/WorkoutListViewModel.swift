@@ -75,12 +75,30 @@ class WorkoutListViewModel: ObservableObject {
         }
     }
     
-    func delete(index: Int) {
-        let item = self.workouts[index]
+    func delete(offsets: IndexSet, activeWorkoutGroupId: UUID?, onBlocked: (() -> Void)? = nil) {
+        let items = offsets.compactMap { index in
+            workouts.indices.contains(index) ? workouts[index] : nil
+        }
+        guard !items.isEmpty else { return }
+        
         Task {
-            
             let dataManager = DataManagerBackground(container: DataContainer.shared.sharedModelContainer)
-            await dataManager.removeWorkout(with: item.id)
+            
+            if let activeWorkoutGroupId {
+                for item in items {
+                    let groups = await dataManager.fetchWorkoutGroups(for: item.id)
+                    if groups.contains(where: { $0.id == activeWorkoutGroupId }) {
+                        await MainActor.run {
+                            onBlocked?()
+                        }
+                        return
+                    }
+                }
+            }
+            
+            for item in items {
+                await dataManager.removeWorkout(with: item.id)
+            }
             
 //            print("DBG_ --------------")
 //            print("DBG_  WorkoutModelDB count: \(await WorkoutModelDB.count())")
@@ -91,6 +109,10 @@ class WorkoutListViewModel: ObservableObject {
                 fetchItems()
             }
         }
+    }
+    
+    func delete(index: Int) {
+        delete(offsets: IndexSet(integer: index), activeWorkoutGroupId: nil)
     }
     
     func moveItem(source: IndexSet, destination: Int) {

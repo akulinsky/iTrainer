@@ -106,6 +106,8 @@
 "active_workout.finish_alert.title" = "Завершить тренировку?";
 "active_workout.finish_alert.close_current" = "Текущая тренировка будет закрыта.";
 "active_workout.finish_alert.incomplete_progress" = "Вы выполнили %d из %d упражнений. Завершить все равно?";
+"active_workout.delete_blocked.title" = "Тренировка активна";
+"active_workout.delete_blocked.message" = "Сначала завершите или отмените активную тренировку, а потом удалите эту тренировку или тренировочный день.";
 
 /* Exercise List */
 

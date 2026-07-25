@@ -106,6 +106,8 @@
 "active_workout.finish_alert.title" = "Finish workout?";
 "active_workout.finish_alert.close_current" = "Current workout will be closed.";
 "active_workout.finish_alert.incomplete_progress" = "You completed %d of %d exercises. Finish anyway?";
+"active_workout.delete_blocked.title" = "Workout in progress";
+"active_workout.delete_blocked.message" = "Finish or cancel the active workout before deleting this workout or workout day.";
 
 /* Exercise List */
 

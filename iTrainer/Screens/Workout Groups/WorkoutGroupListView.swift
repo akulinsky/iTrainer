@@ -24,6 +24,8 @@ struct WorkoutGroupListView: View {
     
     @State private var isEndWorkoutAlertPresented = false
     
+    @State private var isActiveWorkoutDeletionAlertPresented = false
+    
     @StateObject private var navigationManager = NavigationManager()
     
     init(viewModel: WorkoutGroupListViewModel) {
@@ -106,6 +108,11 @@ struct WorkoutGroupListView: View {
                 }
             } message: {
                 Text(workoutManager.finishWorkoutAlertMessage)
+            }
+            .alert(Text("active_workout.delete_blocked.title"), isPresented: $isActiveWorkoutDeletionAlertPresented) {
+                Button("common.ok", role: .cancel) {}
+            } message: {
+                Text("active_workout.delete_blocked.message")
             }
         }
         .environment(\.navigation, navigationManager)
@@ -351,6 +358,14 @@ struct WorkoutGroupListView: View {
     }
 
     private func deleteItems(offsets: IndexSet) {
+        if let activeWorkoutGroupId = workoutManager.currentWorkoutGroupId,
+           offsets.contains(where: { index in
+               viewModel.workoutGroups.indices.contains(index) && viewModel.workoutGroups[index].id == activeWorkoutGroupId
+           }) {
+            isActiveWorkoutDeletionAlertPresented = true
+            return
+        }
+        
         withAnimation {
             for index in offsets {
                 viewModel.delete(index: index)
