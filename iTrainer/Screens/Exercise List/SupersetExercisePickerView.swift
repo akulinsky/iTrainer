@@ -89,6 +89,8 @@ struct SupersetExercisePickerView: View {
                 .frame(width: 30, height: 44)
                 .padding(.trailing, 8)
         }
+        .frame(maxWidth: .infinity, alignment: .leading)
+        .contentShape(Rectangle())
         .background(AppColor.surfacePrimary)
         .clipShape(RoundedRectangle(cornerRadius: 14, style: .continuous))
         .overlay {

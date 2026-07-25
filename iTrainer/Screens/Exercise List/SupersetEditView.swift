@@ -276,6 +276,8 @@ struct SupersetEditView: View {
                                    showsProgress: false,
                                    showsIcon: true,
                                    contentPadding: EdgeInsets(top: 10, leading: 10, bottom: 10, trailing: 4))
+                    .frame(maxWidth: .infinity, alignment: .leading)
+                    .contentShape(Rectangle())
             }
             .buttonStyle(.plain)
             
@@ -289,6 +291,7 @@ struct SupersetEditView: View {
                     .accessibilityLabel(Text("superset.reorder"))
             }
         }
+        .contentShape(Rectangle())
         .background(AppColor.surfacePrimary)
         .clipShape(RoundedRectangle(cornerRadius: 14, style: .continuous))
         .overlay {
