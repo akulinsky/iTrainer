@@ -19,18 +19,29 @@ struct CreateCustomExerciseView: View {
     
     var body: some View {
         NavigationStack {
-            ScrollView {
-                VStack(spacing: 14) {
-                    previewCard
-                    nameInputCard
-                    selectionCard
-                    descriptionCard
+            ScrollViewReader { proxy in
+                ScrollView {
+                    VStack(spacing: 14) {
+                        previewCard
+                        nameInputCard
+                        selectionCard
+                        descriptionCard
+                            .id(Field.description)
+                    }
+                    .padding(.horizontal, horizontalPadding)
+                    .padding(.top, 16)
+                    .padding(.bottom, focusedField == .description ? 260 : 28)
                 }
-                .padding(.horizontal, horizontalPadding)
-                .padding(.top, 16)
-                .padding(.bottom, 28)
+                .scrollDismissesKeyboard(.interactively)
+                .onChange(of: focusedField) { _, field in
+                    guard field == .description else { return }
+                    scrollDescriptionIntoView(proxy)
+                }
+                .onChange(of: viewModel.descriptionText) { _, _ in
+                    guard focusedField == .description else { return }
+                    scrollDescriptionIntoView(proxy)
+                }
             }
-            .scrollDismissesKeyboard(.immediately)
             .background(AppColor.backgroundPrimary.ignoresSafeArea())
             .navigationTitle("exercise_catalog.create.title")
             .navigationBarTitleDisplayMode(.inline)
@@ -222,6 +233,14 @@ struct CreateCustomExerciseView: View {
             .font(AppFont.caption)
             .foregroundStyle(AppColor.progressRed)
             .fixedSize(horizontal: false, vertical: true)
+    }
+    
+    private func scrollDescriptionIntoView(_ proxy: ScrollViewProxy) {
+        DispatchQueue.main.async {
+            withAnimation(.easeOut(duration: 0.18)) {
+                proxy.scrollTo(Field.description, anchor: .bottom)
+            }
+        }
     }
     
     private func save() {
