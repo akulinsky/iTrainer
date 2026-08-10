@@ -109,7 +109,9 @@ struct ExerciseStatisticsView: View {
                                     .fill(AppColor.brandPrimary)
                             }
                         }
+                        .contentShape(Rectangle())
                 }
+                .frame(maxWidth: .infinity)
                 .buttonStyle(.plain)
                 
                 if metric != viewModel.availableMetrics.last {
