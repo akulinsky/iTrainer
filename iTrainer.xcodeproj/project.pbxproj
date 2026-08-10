@@ -650,33 +650,81 @@
 			path = Localization;
 			sourceTree = "<group>";
 		};
-		F6CB13092C9B16CE00B9FCFC /* Reports View */ = {
+		F6B0AB97302A0B6F008F6D15 /* Calendar */ = {
 			isa = PBXGroup;
 			children = (
 				F6CB130A2C9B171300B9FCFC /* ReportsCalendarView.swift */,
 				F6CB130C2C9B172700B9FCFC /* ReportsCalendarViewModel.swift */,
-				F632E90B2C9C2C5C009C7BE1 /* ReportView.swift */,
-				F6F1E08C2C9DCA3500C1419A /* ReportExerciseCell.swift */,
-				F632E90D2C9C2C6E009C7BE1 /* ReportViewModel.swift */,
-				F6F1E08E2CA07B7200C1419A /* ReportExerciseView.swift */,
-				F6F1E0902CA07B8700C1419A /* ReportExerciseViewModel.swift */,
-				F656783C2FF42AE100250F44 /* ReportStatusService.swift */,
-				F64CF0492FF55BE0009FB938 /* ReportExerciseSetComparisonCell.swift */,
-				F64CF04B2FF55BEC009FB938 /* ExerciseStatisticsView.swift */,
-				F625F2B02FF8F6920074FE79 /* ExerciseStatisticsViewModel.swift */,
+				F625F2B82FF927C90074FE79 /* MonthPickerSheet.swift */,
+			);
+			path = Calendar;
+			sourceTree = "<group>";
+		};
+		F6B0AB98302A0B70008F6D15 /* Dashboard */ = {
+			isa = PBXGroup;
+			children = (
 				F61476AB2FF82B2A00B4CA74 /* ReportDashboardView.swift */,
 				F625F2AE2FF8F42A0074FE79 /* ReportDashboardViewModel.swift */,
 				F625F2B42FF927A20074FE79 /* ReportsDashboardHeaderView.swift */,
 				F625F2BA2FF93A380074FE79 /* ReportDashboardDataBuilder.swift */,
-				F625F2B22FF9273D0074FE79 /* WorkoutReportStatusDisplay.swift */,
 				F625F2B62FF927B80074FE79 /* WorkoutReportCard.swift */,
-				F625F2B82FF927C90074FE79 /* MonthPickerSheet.swift */,
-				F6CCEE072FFD374000686CFB /* ExerciseStatisticsExpandedChartView.swift */,
+				F625F2B22FF9273D0074FE79 /* WorkoutReportStatusDisplay.swift */,
+			);
+			path = Dashboard;
+			sourceTree = "<group>";
+		};
+		F6B0AB99302A0B70008F6D15 /* Workout Report */ = {
+			isa = PBXGroup;
+			children = (
+				F632E90B2C9C2C5C009C7BE1 /* ReportView.swift */,
+				F632E90D2C9C2C6E009C7BE1 /* ReportViewModel.swift */,
+				F6F1E08C2C9DCA3500C1419A /* ReportExerciseCell.swift */,
+			);
+			path = "Workout Report";
+			sourceTree = "<group>";
+		};
+		F6B0AB9A302A0B70008F6D15 /* Exercise Report */ = {
+			isa = PBXGroup;
+			children = (
+				F6F1E08E2CA07B7200C1419A /* ReportExerciseView.swift */,
+				F6F1E0902CA07B8700C1419A /* ReportExerciseViewModel.swift */,
+				F64CF0492FF55BE0009FB938 /* ReportExerciseSetComparisonCell.swift */,
 				F6186DF12FFED7BB0018B216 /* ReportExerciseHistorySection.swift */,
 				F6186DF32FFEDBCF0018B216 /* ReportExerciseHistoryBuilder.swift */,
 				F6186DF72FFEDBF10018B216 /* ReportExerciseHistoryView.swift */,
 				F6186DF52FFEDBEF0018B216 /* ReportExerciseHistoryViewModel.swift */,
+			);
+			path = "Exercise Report";
+			sourceTree = "<group>";
+		};
+		F6B0AB9B302A0B70008F6D15 /* Exercise Statistics */ = {
+			isa = PBXGroup;
+			children = (
+				F64CF04B2FF55BEC009FB938 /* ExerciseStatisticsView.swift */,
+				F625F2B02FF8F6920074FE79 /* ExerciseStatisticsViewModel.swift */,
+				F6CCEE072FFD374000686CFB /* ExerciseStatisticsExpandedChartView.swift */,
+			);
+			path = "Exercise Statistics";
+			sourceTree = "<group>";
+		};
+		F6B0AB9C302A0B70008F6D15 /* Shared */ = {
+			isa = PBXGroup;
+			children = (
+				F656783C2FF42AE100250F44 /* ReportStatusService.swift */,
 				F6336E1B300148D9006ECA08 /* ReportMetricInfoView.swift */,
+			);
+			path = Shared;
+			sourceTree = "<group>";
+		};
+		F6CB13092C9B16CE00B9FCFC /* Reports View */ = {
+			isa = PBXGroup;
+			children = (
+				F6B0AB97302A0B6F008F6D15 /* Calendar */,
+				F6B0AB98302A0B70008F6D15 /* Dashboard */,
+				F6B0AB99302A0B70008F6D15 /* Workout Report */,
+				F6B0AB9A302A0B70008F6D15 /* Exercise Report */,
+				F6B0AB9B302A0B70008F6D15 /* Exercise Statistics */,
+				F6B0AB9C302A0B70008F6D15 /* Shared */,
 			);
 			path = "Reports View";
 			sourceTree = "<group>";
