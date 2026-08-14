@@ -66,7 +66,23 @@ final class WorkoutManager: ObservableObject {
     
     @Published private(set) var exerciseProgressById = [UUID: Double]()
     
-    var finishWorkoutAlertMessage: String {
+    var hasWorkoutResults: Bool {
+        !reportedExerciseIds.isEmpty
+    }
+
+    var endWorkoutAlertTitle: String {
+        String(localized: hasWorkoutResults ? "active_workout.finish_alert.title" : "active_workout.cancel_alert.title")
+    }
+
+    var endWorkoutActionTitle: String {
+        String(localized: hasWorkoutResults ? "active_workout.finish" : "active_workout.cancel")
+    }
+
+    var endWorkoutAlertMessage: String {
+        guard hasWorkoutResults else {
+            return String(localized: "active_workout.cancel_alert.message")
+        }
+
         guard isWorkoutInProgress,
               targetExercisesCount > 0,
               completedExercisesCount < targetExercisesCount else {

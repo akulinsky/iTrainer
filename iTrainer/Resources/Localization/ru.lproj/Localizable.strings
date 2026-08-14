@@ -102,10 +102,15 @@
 "active_workout.metric.workout" = "Тренировка";
 "active_workout.metric.rest" = "Отдых";
 "active_workout.metric.progress" = "Прогресс";
-"active_workout.finish" = "Финиш";
+"active_workout.end" = "Завершить тренировку";
+"active_workout.keep" = "Продолжить тренировку";
+"active_workout.finish" = "Завершить тренировку";
 "active_workout.finish_alert.title" = "Завершить тренировку?";
 "active_workout.finish_alert.close_current" = "Текущая тренировка будет закрыта.";
 "active_workout.finish_alert.incomplete_progress" = "Вы выполнили %d из %d упражнений. Завершить все равно?";
+"active_workout.cancel" = "Отменить тренировку";
+"active_workout.cancel_alert.title" = "Отменить тренировку?";
+"active_workout.cancel_alert.message" = "Результаты не добавлены. Эта тренировка не будет сохранена.";
 "active_workout.delete_blocked.title" = "Тренировка активна";
 "active_workout.delete_blocked.message" = "Сначала завершите или отмените активную тренировку, а потом удалите эту тренировку или тренировочный день.";
 "active_workout.other_context.title" = "Тренировка уже запущена";

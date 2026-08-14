@@ -102,10 +102,15 @@
 "active_workout.metric.workout" = "Training";
 "active_workout.metric.rest" = "Pause";
 "active_workout.metric.progress" = "Fortschritt";
-"active_workout.finish" = "Beenden";
+"active_workout.end" = "Training beenden";
+"active_workout.keep" = "Training fortsetzen";
+"active_workout.finish" = "Training beenden";
 "active_workout.finish_alert.title" = "Training beenden?";
 "active_workout.finish_alert.close_current" = "Das aktuelle Training wird beendet.";
 "active_workout.finish_alert.incomplete_progress" = "Du hast %d von %d Übungen abgeschlossen. Trotzdem beenden?";
+"active_workout.cancel" = "Training abbrechen";
+"active_workout.cancel_alert.title" = "Training abbrechen?";
+"active_workout.cancel_alert.message" = "Es wurden keine Ergebnisse hinzugefügt. Dieses Training wird nicht gespeichert.";
 "active_workout.delete_blocked.title" = "Training läuft";
 "active_workout.delete_blocked.message" = "Beende oder brich das aktive Training ab, bevor du dieses Training oder diesen Trainingstag löschst.";
 "active_workout.other_context.title" = "Ein Training läuft bereits";

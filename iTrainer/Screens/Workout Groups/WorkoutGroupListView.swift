@@ -101,13 +101,13 @@ struct WorkoutGroupListView: View {
             .contentSelf(content: { view in
                 contentViewNavigation(content: view)
             })
-            .alert(Text("active_workout.finish_alert.title"), isPresented: $isEndWorkoutAlertPresented) {
-                Button("common.cancel", role: .cancel) {}
-                Button("active_workout.finish", role: .destructive) {
+            .alert(Text(workoutManager.endWorkoutAlertTitle), isPresented: $isEndWorkoutAlertPresented) {
+                Button("active_workout.keep", role: .cancel) {}
+                Button(workoutManager.endWorkoutActionTitle, role: .destructive) {
                     finishWorkout()
                 }
             } message: {
-                Text(workoutManager.finishWorkoutAlertMessage)
+                Text(workoutManager.endWorkoutAlertMessage)
             }
             .alert(Text("active_workout.delete_blocked.title"), isPresented: $isActiveWorkoutDeletionAlertPresented) {
                 Button("common.ok", role: .cancel) {}
@@ -196,6 +196,9 @@ struct WorkoutGroupListView: View {
                             restTime: workoutManager.currentRestTime,
                             restProgress: workoutManager.progressRestTime,
                             workoutProgress: workoutManager.workoutProgress,
+                            onEndTap: {
+                                isEndWorkoutAlertPresented = true
+                            },
                             onWorkoutTap: {
                                 isEndWorkoutAlertPresented = true
                             },

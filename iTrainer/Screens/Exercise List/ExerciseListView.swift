@@ -181,15 +181,15 @@ struct ExerciseListView: View {
         .contentSelf(content: { view in
             contentViewNavigation(content: view)
         })
-        .alert(Text("active_workout.finish_alert.title"), isPresented: $isEndWorkoutAlertPresented) {
-            Button("common.cancel", role: .cancel) {}
-            Button("active_workout.finish", role: .destructive) {
+        .alert(Text(workoutManager.endWorkoutAlertTitle), isPresented: $isEndWorkoutAlertPresented) {
+            Button("active_workout.keep", role: .cancel) {}
+            Button(workoutManager.endWorkoutActionTitle, role: .destructive) {
                 withAnimation(.spring(response: 0.45, dampingFraction: 0.86)) {
                     finishWorkout()
                 }
             }
         } message: {
-            Text(workoutManager.finishWorkoutAlertMessage)
+            Text(workoutManager.endWorkoutAlertMessage)
         }
         .alert(Text("exercise_list.start_alert.title"), isPresented: $isStartWorkoutAlertPresented) {
             Button("common.cancel", role: .cancel) {}
@@ -430,6 +430,9 @@ struct ExerciseListView: View {
                             restTime: workoutManager.currentRestTime,
                             restProgress: workoutManager.progressRestTime,
                             workoutProgress: workoutManager.workoutProgress,
+                            onEndTap: {
+                                isEndWorkoutAlertPresented = true
+                            },
                             onWorkoutTap: {
                                 isEndWorkoutAlertPresented = true
                             },

@@ -102,10 +102,15 @@
 "active_workout.metric.workout" = "Workout";
 "active_workout.metric.rest" = "Rest";
 "active_workout.metric.progress" = "Progress";
-"active_workout.finish" = "Finish";
+"active_workout.end" = "End workout";
+"active_workout.keep" = "Keep Workout";
+"active_workout.finish" = "Finish Workout";
 "active_workout.finish_alert.title" = "Finish workout?";
 "active_workout.finish_alert.close_current" = "Current workout will be closed.";
 "active_workout.finish_alert.incomplete_progress" = "You completed %d of %d exercises. Finish anyway?";
+"active_workout.cancel" = "Cancel Workout";
+"active_workout.cancel_alert.title" = "Cancel workout?";
+"active_workout.cancel_alert.message" = "No results were added. This workout will not be saved.";
 "active_workout.delete_blocked.title" = "Workout in progress";
 "active_workout.delete_blocked.message" = "Finish or cancel the active workout before deleting this workout or workout day.";
 "active_workout.other_context.title" = "Workout already in progress";

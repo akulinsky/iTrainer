@@ -102,10 +102,15 @@
 "active_workout.metric.workout" = "Тренування";
 "active_workout.metric.rest" = "Відпочинок";
 "active_workout.metric.progress" = "Прогрес";
-"active_workout.finish" = "Завершити";
+"active_workout.end" = "Завершити тренування";
+"active_workout.keep" = "Продовжити тренування";
+"active_workout.finish" = "Завершити тренування";
 "active_workout.finish_alert.title" = "Завершити тренування?";
 "active_workout.finish_alert.close_current" = "Поточне тренування буде завершено.";
 "active_workout.finish_alert.incomplete_progress" = "Ви виконали %d із %d вправ. Все одно завершити?";
+"active_workout.cancel" = "Скасувати тренування";
+"active_workout.cancel_alert.title" = "Скасувати тренування?";
+"active_workout.cancel_alert.message" = "Результатів не додано. Це тренування не буде збережено.";
 "active_workout.delete_blocked.title" = "Тренування активне";
 "active_workout.delete_blocked.message" = "Спочатку завершіть або скасуйте активне тренування, а потім видаліть це тренування або тренувальний день.";
 "active_workout.other_context.title" = "Тренування вже розпочато";

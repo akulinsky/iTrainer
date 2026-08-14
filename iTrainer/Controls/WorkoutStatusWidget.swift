@@ -13,6 +13,7 @@ struct WorkoutStatusWidget: View {
     let restTime: TimeInterval?
     let restProgress: Double
     let workoutProgress: Double
+    let onEndTap: () -> Void
     let onWorkoutTap: () -> Void
     let onRestTap: () -> Void
     let onProgressTap: () -> Void
@@ -22,6 +23,7 @@ struct WorkoutStatusWidget: View {
          restTime: TimeInterval? = nil,
          restProgress: Double = 0,
          workoutProgress: Double,
+         onEndTap: @escaping () -> Void = {},
          onWorkoutTap: @escaping () -> Void = {},
          onRestTap: @escaping () -> Void = {},
          onProgressTap: @escaping () -> Void = {}) {
@@ -30,6 +32,7 @@ struct WorkoutStatusWidget: View {
         self.restTime = restTime
         self.restProgress = restProgress
         self.workoutProgress = workoutProgress
+        self.onEndTap = onEndTap
         self.onWorkoutTap = onWorkoutTap
         self.onRestTap = onRestTap
         self.onProgressTap = onProgressTap
@@ -37,9 +40,25 @@ struct WorkoutStatusWidget: View {
     
     var body: some View {
         VStack(alignment: .leading, spacing: 10) {
-            Text(title)
-                .font(AppFont.workoutWidgetTitle)
-                .foregroundStyle(AppColor.textPrimary)
+            HStack(spacing: 12) {
+                Text(title)
+                    .font(AppFont.workoutWidgetTitle)
+                    .foregroundStyle(AppColor.textPrimary)
+
+                Spacer(minLength: 0)
+
+                Button(action: onEndTap) {
+                    Image(systemName: "power")
+                        .font(.system(size: 17, weight: .bold))
+                        .foregroundStyle(AppColor.progressRed)
+                        .frame(width: 36, height: 36)
+                        .background(AppColor.progressRed.opacity(0.10), in: Circle())
+                        .contentShape(Circle())
+                }
+                .buttonStyle(.plain)
+                .accessibilityLabel(Text("active_workout.end"))
+                .help(String(localized: "active_workout.end"))
+            }
             
             HStack(alignment: .top, spacing: isRestVisible ? 14 : 7) {
                 WorkoutStatusMetricView(title: String(localized: "active_workout.metric.workout"),
