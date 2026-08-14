@@ -13,6 +13,7 @@ struct WorkoutStatusWidget: View {
     let restTime: TimeInterval?
     let restProgress: Double
     let workoutProgress: Double
+    let hasIncompleteGoals: Bool
     let onEndTap: () -> Void
     let onWorkoutTap: () -> Void
     let onRestTap: () -> Void
@@ -23,6 +24,7 @@ struct WorkoutStatusWidget: View {
          restTime: TimeInterval? = nil,
          restProgress: Double = 0,
          workoutProgress: Double,
+         hasIncompleteGoals: Bool,
          onEndTap: @escaping () -> Void = {},
          onWorkoutTap: @escaping () -> Void = {},
          onRestTap: @escaping () -> Void = {},
@@ -32,6 +34,7 @@ struct WorkoutStatusWidget: View {
         self.restTime = restTime
         self.restProgress = restProgress
         self.workoutProgress = workoutProgress
+        self.hasIncompleteGoals = hasIncompleteGoals
         self.onEndTap = onEndTap
         self.onWorkoutTap = onWorkoutTap
         self.onRestTap = onRestTap
@@ -48,11 +51,11 @@ struct WorkoutStatusWidget: View {
                 Spacer(minLength: 0)
 
                 Button(action: onEndTap) {
-                    Image(systemName: "power")
+                    Image(systemName: hasIncompleteGoals ? "power" : "flag.checkered")
                         .font(.system(size: 17, weight: .bold))
-                        .foregroundStyle(AppColor.progressRed)
+                        .foregroundStyle(endActionColor)
                         .frame(width: 36, height: 36)
-                        .background(AppColor.progressRed.opacity(0.10), in: Circle())
+                        .background(endActionColor.opacity(0.10), in: Circle())
                         .contentShape(Circle())
                 }
                 .buttonStyle(.plain)
@@ -117,6 +120,10 @@ struct WorkoutStatusWidget: View {
         default:
             AppColor.progressGreen
         }
+    }
+
+    private var endActionColor: Color {
+        hasIncompleteGoals ? AppColor.progressRed : AppColor.workoutGreen
     }
     
 }
@@ -284,7 +291,8 @@ private extension TimeInterval {
                             workoutTime: 9805,
                             restTime: 38,
                             restProgress: 0.72,
-                            workoutProgress: 0.64)
+                            workoutProgress: 0.64,
+                            hasIncompleteGoals: true)
             .padding(20)
     }
     .preferredColorScheme(.light)

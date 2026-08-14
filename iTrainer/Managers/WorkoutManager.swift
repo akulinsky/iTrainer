@@ -55,6 +55,8 @@ final class WorkoutManager: ObservableObject {
     @Published private(set) var currentRestTime: TimeInterval?
     
     @Published private(set) var workoutProgress: Double = 0
+
+    @Published private(set) var hasIncompleteWorkoutGoals = false
     
     @Published private(set) var currentWorkoutTitle: String = String(localized: "active_workout.title")
     
@@ -171,6 +173,7 @@ final class WorkoutManager: ObservableObject {
         isWorkoutInProgress = false
         workoutElapsedTime = 0
         workoutProgress = 0
+        hasIncompleteWorkoutGoals = false
         currentWorkoutTitle = String(localized: "active_workout.title")
         currentWorkoutGroupId = nil
         activeExerciseId = nil
@@ -229,7 +232,10 @@ final class WorkoutManager: ObservableObject {
         }
         let startDate = Date()
         reportWorkout.startDate = startDate
-        let targetExercisesCount = await dataManager.fetchFlattenedExercises(for: groupId).count
+        let exercises = await dataManager.fetchFlattenedExercises(for: groupId)
+        let targetExercisesCount = exercises.count
+        let hasIncompleteWorkoutGoals = containsIncompleteWorkoutGoals(exercises: exercises,
+                                                                       reportWorkout: reportWorkout)
         await dataManager.save()
         
         let reportWorkoutId = reportWorkout.id
@@ -243,6 +249,7 @@ final class WorkoutManager: ObservableObject {
             self.currentRestTimeIntervalExercise = nil
             self.restStartedAt = nil
             self.targetExercisesCount = targetExercisesCount
+            self.hasIncompleteWorkoutGoals = hasIncompleteWorkoutGoals
             self.exerciseProgressById = [:]
             self.completedExercisesCount = 0
             self.reportedExerciseIds = []
@@ -421,6 +428,8 @@ final class WorkoutManager: ObservableObject {
         let exerciseProgressById = await exerciseProgressById(for: reportWorkout, dataManager: dataManager)
         let reportedExerciseIds = Set(reportWorkout.exercises.flattenedReportExerciseItems().map(\.exerciseId))
         let activeExerciseId = restoredActiveExerciseId(reportWorkout: reportWorkout, snapshot: snapshot)
+        let hasIncompleteWorkoutGoals = containsIncompleteWorkoutGoals(exercises: exercises,
+                                                                       reportWorkout: reportWorkout)
         
         await MainActor.run {
             self.workoutId = reportWorkoutId
@@ -432,6 +441,7 @@ final class WorkoutManager: ObservableObject {
             self.exerciseProgressById = exerciseProgressById
             self.completedExercisesCount = reportedExerciseIds.count
             self.targetExercisesCount = targetExercisesCount
+            self.hasIncompleteWorkoutGoals = hasIncompleteWorkoutGoals
             self.updateWorkoutProgress()
             self.startTimer(startDate: startedAt)
             self.restoreRestState(snapshot: snapshot)
@@ -589,6 +599,8 @@ final class WorkoutManager: ObservableObject {
         let exerciseProgressById = await exerciseProgressById(for: reportWorkout, dataManager: dataManager)
         let exercises = await dataManager.fetchFlattenedExercises(for: workoutGroupId)
         let targetExercisesCount = exercises.count
+        let hasIncompleteWorkoutGoals = containsIncompleteWorkoutGoals(exercises: exercises,
+                                                                       reportWorkout: reportWorkout)
         let restDuration = await dataManager.restDurationAfterReportSet(exerciseId: exerciseId,
                                                                          reportWorkoutId: reportWorkout.id)
         let restStartedAt = Date()
@@ -603,6 +615,7 @@ final class WorkoutManager: ObservableObject {
             self.exerciseProgressById = exerciseProgressById
             self.completedExercisesCount = reportedExerciseIds.count
             self.targetExercisesCount = targetExercisesCount
+            self.hasIncompleteWorkoutGoals = hasIncompleteWorkoutGoals
             self.currentRestTimeIntervalExercise = restDuration
             self.updateWorkoutProgress()
             self.resetRestTime()
@@ -719,5 +732,23 @@ final class WorkoutManager: ObservableObject {
         }
         
         return progressById
+    }
+
+    private func containsIncompleteWorkoutGoals(exercises: [ExerciseModelDB],
+                                                reportWorkout: ReportWorkoutModelDB) -> Bool {
+        var reportSetCounts = [UUID: Int]()
+
+        for reportExercise in reportWorkout.exercises.flattenedReportExerciseItems() {
+            reportSetCounts[reportExercise.exerciseId, default: 0] += reportExercise.reportSets.count
+        }
+
+        return exercises.contains { exercise in
+            let targetSetCount = exercise.sets.count
+            guard targetSetCount > 0 else {
+                return false
+            }
+
+            return reportSetCounts[exercise.id, default: 0] < targetSetCount
+        }
     }
 }

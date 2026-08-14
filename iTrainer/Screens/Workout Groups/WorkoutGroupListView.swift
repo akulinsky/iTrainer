@@ -196,6 +196,7 @@ struct WorkoutGroupListView: View {
                             restTime: workoutManager.currentRestTime,
                             restProgress: workoutManager.progressRestTime,
                             workoutProgress: workoutManager.workoutProgress,
+                            hasIncompleteGoals: workoutManager.hasIncompleteWorkoutGoals,
                             onEndTap: {
                                 isEndWorkoutAlertPresented = true
                             },
