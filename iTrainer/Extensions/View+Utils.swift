@@ -272,6 +272,7 @@ struct DistanceUnitPicker: View {
                                     .fill(AppColor.brandPrimary)
                             }
                         }
+                        .contentShape(Rectangle())
                 }
                 .buttonStyle(.plain)
             }

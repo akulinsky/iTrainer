@@ -286,7 +286,9 @@ struct ExerciseStatisticsView: View {
                                     .fill(AppColor.brandPrimary)
                             }
                         }
+                        .contentShape(Rectangle())
                 }
+                .frame(maxWidth: .infinity)
                 .buttonStyle(.plain)
                 
                 if period != ExerciseStatisticsPeriod.allCases.last {

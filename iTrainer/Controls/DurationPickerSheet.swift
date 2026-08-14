@@ -121,7 +121,9 @@ struct DurationPickerSheet: View {
                             Capsule()
                                 .stroke(AppColor.separatorSoft, lineWidth: 1)
                         }
+                        .contentShape(Capsule())
                 }
+                .frame(maxWidth: .infinity)
                 .buttonStyle(.plain)
             }
         }
