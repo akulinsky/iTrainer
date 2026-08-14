@@ -84,6 +84,10 @@ class ExerciseViewModel: ObservableObject {
     @Published var nextExercise: ExerciseModel?
     
     @Published var canAdvanceWorkoutExercise = false
+
+    @Published private(set) var workoutGroupId: UUID?
+
+    @Published private(set) var workoutGroupTitle: String?
     
     var hasTargetSets: Bool {
         !sets.isEmpty
@@ -132,6 +136,7 @@ class ExerciseViewModel: ObservableObject {
                 let exerciseModel = ExerciseModel(model: model)
                 let startedWorkout = await dataManager.fetchStartedWorkout()
                 let workoutGroupId = model.workoutGroup?.id
+                let workoutGroupTitle = model.workoutGroup?.title
                 let isActiveWorkoutExercise = startedWorkout?.workoutGroupId == workoutGroupId
                 let activeReportSetCount = startedWorkout?.exercises
                     .flattenedReportExerciseItems()
@@ -150,6 +155,8 @@ class ExerciseViewModel: ObservableObject {
                 
                 await MainActor.run {
                     exercise = exerciseModel
+                    self.workoutGroupId = workoutGroupId
+                    self.workoutGroupTitle = workoutGroupTitle
                     self.isActiveWorkoutExercise = isActiveWorkoutExercise
                     self.activeReportSetCount = activeReportSetCount
                     self.nextExercise = isActiveWorkoutExercise ? resolvedNextExercise : nil

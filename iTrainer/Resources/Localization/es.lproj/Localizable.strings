@@ -108,6 +108,8 @@
 "active_workout.finish_alert.incomplete_progress" = "Has completado %d de %d ejercicios. ¿Finalizar de todos modos?";
 "active_workout.delete_blocked.title" = "Entrenamiento en curso";
 "active_workout.delete_blocked.message" = "Finaliza o cancela el entrenamiento activo antes de eliminar este entrenamiento o día de entrenamiento.";
+"active_workout.other_context.title" = "Ya hay un entrenamiento en curso";
+"active_workout.other_context.message" = "Finaliza el entrenamiento activo antes de iniciar este.";
 
 /* Exercise List */
 

@@ -50,6 +50,8 @@ private struct ExerciseContentView: View {
     @State private var showAnimation = false
     
     @State private var isEndWorkoutAlertPresented = false
+
+    @State private var isStartWorkoutAlertPresented = false
     
     @State private var isExerciseInfoPresented = false
     
@@ -93,7 +95,7 @@ private struct ExerciseContentView: View {
                 .listRowSeparator(.hidden)
                 .listRowBackground(AppColor.backgroundPrimary)
             
-            addResultSection
+            workoutActionSection
                 .listRowInsets(EdgeInsets(top: 8, leading: 20, bottom: 8, trailing: 20))
                 .listRowSeparator(.hidden)
                 .listRowBackground(AppColor.backgroundPrimary)
@@ -153,6 +155,29 @@ private struct ExerciseContentView: View {
             }
         } message: {
             Text(workoutManager.finishWorkoutAlertMessage)
+        }
+        .alert(Text("exercise_list.start_alert.title"), isPresented: $isStartWorkoutAlertPresented) {
+            Button("common.cancel", role: .cancel) {}
+            Button("exercise_list.start") {
+                startWorkout()
+            }
+        } message: {
+            Text(startWorkoutAlertMessage)
+        }
+    }
+
+    @ViewBuilder
+    private var workoutActionSection: some View {
+        if workoutManager.isWorkoutInProgress {
+            if workoutManager.currentWorkoutGroupId == viewModel.workoutGroupId {
+                addResultSection
+            } else {
+                ActiveWorkoutContextNoticeCard()
+            }
+        } else if viewModel.workoutGroupId != nil {
+            WorkoutStartCard(workoutTitle: viewModel.workoutGroupTitle ?? String(localized: "exercise_list.workout_session")) {
+                isStartWorkoutAlertPresented = true
+            }
         }
     }
     
@@ -613,6 +638,18 @@ private struct ExerciseContentView: View {
         workoutManager.endWorkout { report in
             appState.reportToPresent = report
         }
+    }
+
+    private var startWorkoutAlertMessage: String {
+        let title = viewModel.workoutGroupTitle ?? String(localized: "exercise_list.start_alert.default_workout")
+        return String.localizedStringWithFormat(String(localized: "exercise_list.start_alert.message"), title)
+    }
+
+    private func startWorkout() {
+        guard let workoutGroupId = viewModel.workoutGroupId else {
+            return
+        }
+        workoutManager.startWorkout(with: workoutGroupId)
     }
     
     private func performCompletedGoalAction() {

@@ -102,6 +102,74 @@ struct WorkoutStatusWidget: View {
     
 }
 
+struct WorkoutStartCard: View {
+    let workoutTitle: String
+    let action: () -> Void
+
+    var body: some View {
+        Button(action: action) {
+            HStack(spacing: 12) {
+                Image(systemName: "play.circle.fill")
+                    .font(.system(size: 28, weight: .semibold))
+                    .foregroundStyle(AppColor.workoutGreen)
+
+                VStack(alignment: .leading, spacing: 4) {
+                    Text("exercise_list.start_workout")
+                        .font(AppFont.workoutGroupCardTitle)
+                        .foregroundStyle(AppColor.textPrimary)
+
+                    Text(workoutTitle)
+                        .font(AppFont.rowSubtitle)
+                        .foregroundStyle(AppColor.textSecondary)
+                        .lineLimit(2)
+                }
+
+                Spacer(minLength: 0)
+            }
+            .padding(16)
+            .frame(maxWidth: .infinity, alignment: .leading)
+            .background(AppColor.surfacePrimary)
+            .clipShape(RoundedRectangle(cornerRadius: 14, style: .continuous))
+            .overlay {
+                RoundedRectangle(cornerRadius: 14, style: .continuous)
+                    .stroke(AppColor.separatorSoft, lineWidth: 1)
+            }
+            .contentShape(RoundedRectangle(cornerRadius: 14, style: .continuous))
+        }
+        .buttonStyle(.plain)
+    }
+}
+
+struct ActiveWorkoutContextNoticeCard: View {
+    var body: some View {
+        HStack(alignment: .center, spacing: 12) {
+            Image(systemName: "lock.fill")
+                .font(.system(size: 17, weight: .semibold))
+                .foregroundStyle(AppColor.progressAmber)
+                .frame(width: 28, height: 28)
+
+            VStack(alignment: .leading, spacing: 4) {
+                Text("active_workout.other_context.title")
+                    .font(AppFont.rowTitle)
+                    .foregroundStyle(AppColor.textPrimary)
+
+                Text("active_workout.other_context.message")
+                    .font(AppFont.rowSubtitle)
+                    .foregroundStyle(AppColor.textSecondary)
+                    .fixedSize(horizontal: false, vertical: true)
+            }
+            .frame(maxWidth: .infinity, alignment: .leading)
+        }
+        .padding(16)
+        .background(AppColor.progressAmber.opacity(0.08))
+        .clipShape(RoundedRectangle(cornerRadius: 14, style: .continuous))
+        .overlay {
+            RoundedRectangle(cornerRadius: 14, style: .continuous)
+                .stroke(AppColor.progressAmber.opacity(0.35), lineWidth: 1)
+        }
+    }
+}
+
 private struct WorkoutStatusMetricView: View {
     let title: String
     let value: String

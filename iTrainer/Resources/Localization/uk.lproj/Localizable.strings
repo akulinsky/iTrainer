@@ -108,6 +108,8 @@
 "active_workout.finish_alert.incomplete_progress" = "Ви виконали %d із %d вправ. Все одно завершити?";
 "active_workout.delete_blocked.title" = "Тренування активне";
 "active_workout.delete_blocked.message" = "Спочатку завершіть або скасуйте активне тренування, а потім видаліть це тренування або тренувальний день.";
+"active_workout.other_context.title" = "Тренування вже розпочато";
+"active_workout.other_context.message" = "Завершіть активне тренування, перш ніж починати це.";
 
 /* Exercise List */
 

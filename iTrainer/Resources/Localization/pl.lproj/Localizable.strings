@@ -108,6 +108,8 @@
 "active_workout.finish_alert.incomplete_progress" = "Ukończono %d z %d ćwiczeń. Zakończyć mimo to?";
 "active_workout.delete_blocked.title" = "Trening w toku";
 "active_workout.delete_blocked.message" = "Najpierw zakończ lub anuluj aktywny trening, a potem usuń ten trening albo dzień treningowy.";
+"active_workout.other_context.title" = "Trening jest już w toku";
+"active_workout.other_context.message" = "Zakończ aktywny trening przed rozpoczęciem tego.";
 
 /* Exercise List */
 

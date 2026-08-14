@@ -108,6 +108,8 @@
 "active_workout.finish_alert.incomplete_progress" = "Du hast %d von %d Übungen abgeschlossen. Trotzdem beenden?";
 "active_workout.delete_blocked.title" = "Training läuft";
 "active_workout.delete_blocked.message" = "Beende oder brich das aktive Training ab, bevor du dieses Training oder diesen Trainingstag löschst.";
+"active_workout.other_context.title" = "Ein Training läuft bereits";
+"active_workout.other_context.message" = "Beende das aktive Training, bevor du dieses startest.";
 
 /* Exercise List */
 

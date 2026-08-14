@@ -108,6 +108,8 @@
 "active_workout.finish_alert.incomplete_progress" = "You completed %d of %d exercises. Finish anyway?";
 "active_workout.delete_blocked.title" = "Workout in progress";
 "active_workout.delete_blocked.message" = "Finish or cancel the active workout before deleting this workout or workout day.";
+"active_workout.other_context.title" = "Workout already in progress";
+"active_workout.other_context.message" = "Finish the active workout before starting this one.";
 
 /* Exercise List */
 

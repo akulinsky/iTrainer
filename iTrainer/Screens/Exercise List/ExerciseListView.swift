@@ -71,6 +71,13 @@ struct ExerciseListView: View {
                                 .listRowInsets(EdgeInsets(top: 10, leading: 20, bottom: 12, trailing: 20))
                                 .listRowSeparator(.hidden)
                                 .listRowBackground(AppColor.backgroundPrimary)
+
+                            if workoutManager.currentWorkoutGroupId != viewModel.group.id {
+                                ActiveWorkoutContextNoticeCard()
+                                    .listRowInsets(EdgeInsets(top: 0, leading: 20, bottom: 12, trailing: 20))
+                                    .listRowSeparator(.hidden)
+                                    .listRowBackground(AppColor.backgroundPrimary)
+                            }
                         } else if viewModel.hasRunnableExercises {
                             startSessionCard
                                 .transition(.asymmetric(
@@ -435,37 +442,9 @@ struct ExerciseListView: View {
     }
     
     private var startSessionCard: some View {
-        Button {
+        WorkoutStartCard(workoutTitle: viewModel.group.title ?? String(localized: "exercise_list.workout_session")) {
             isStartWorkoutAlertPresented = true
-        } label: {
-            HStack(spacing: 12) {
-                Image(systemName: "play.circle.fill")
-                    .font(.system(size: 28, weight: .semibold))
-                    .foregroundStyle(AppColor.workoutGreen)
-                
-                VStack(alignment: .leading, spacing: 4) {
-                    Text("exercise_list.start_workout")
-                        .font(AppFont.workoutGroupCardTitle)
-                        .foregroundStyle(AppColor.textPrimary)
-                    
-                    Text(viewModel.group.title ?? String(localized: "exercise_list.workout_session"))
-                        .font(AppFont.rowSubtitle)
-                        .foregroundStyle(AppColor.textSecondary)
-                        .lineLimit(1)
-                }
-                
-                Spacer()
-            }
-            .padding(16)
-            .frame(maxWidth: .infinity, alignment: .leading)
-            .background(AppColor.surfacePrimary)
-            .clipShape(RoundedRectangle(cornerRadius: 14, style: .continuous))
-            .overlay {
-                RoundedRectangle(cornerRadius: 14, style: .continuous)
-                    .stroke(AppColor.separatorSoft, lineWidth: 1)
-            }
         }
-        .buttonStyle(.plain)
     }
     
     private func progressStatus(for item: ExerciseModel) -> ExerciseProgressStatus {
