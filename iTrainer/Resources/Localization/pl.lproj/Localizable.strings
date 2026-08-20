@@ -422,7 +422,7 @@
 "settings.notifications.title" = "Powiadomienia";
 "settings.notifications.enabled.title" = "Powiadomienia o treningu";
 "settings.notifications.enabled.subtitle" = "Minutnik odpoczynku i przypomnienia o aktywnym treningu są włączone.";
-"settings.notifications.paused.subtitle" = "iTrainer nie będzie planować przypomnień o treningu.";
+"settings.notifications.paused.subtitle" = "Liftova nie będzie planować przypomnień o treningu.";
 "settings.notifications.enable.title" = "Włącz powiadomienia";
 "settings.notifications.enable.subtitle" = "Zezwól na minutnik odpoczynku i przypomnienia o aktywnym treningu.";
 "settings.notifications.blocked.title" = "Powiadomienia są wyłączone";
@@ -430,15 +430,15 @@
 "settings.notifications.open_settings" = "Otwórz ustawienia";
 
 "settings.language.title" = "Język";
-"settings.language.system.title" = "Używa ustawień iTrainer na iPhonie";
-"settings.language.system.subtitle" = "Otwórz ustawienia iTrainer w iOS, aby wybrać język aplikacji.";
+"settings.language.system.title" = "Używa ustawień Liftova na iPhonie";
+"settings.language.system.subtitle" = "Otwórz ustawienia Liftova w iOS, aby wybrać język aplikacji.";
 
 "settings.support.title" = "Pomoc";
-"settings.share_app.title" = "Udostępnij iTrainer";
-"settings.rate_app.title" = "Oceń iTrainer";
+"settings.share_app.title" = "Udostępnij Liftova";
+"settings.rate_app.title" = "Oceń Liftova";
 "settings.support.feedback.title" = "Wyślij opinię";
 "settings.support.feedback.subtitle" = "Wyślij e-mailem opinię o aplikacji lub szczegóły problemu.";
-"settings.support.feedback.subject" = "Opinia o iTrainer";
+"settings.support.feedback.subject" = "Opinia o Liftova";
 "settings.support.feedback.app_info" = "Informacje o aplikacji";
 "settings.support.mail_unavailable.title" = "Poczta jest niedostępna";
 "settings.support.mail_unavailable.message" = "Skonfiguruj aplikację Mail na tym iPhonie lub skontaktuj się z pomocą przez inną aplikację pocztową.";

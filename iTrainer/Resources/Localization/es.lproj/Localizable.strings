@@ -422,7 +422,7 @@
 "settings.notifications.title" = "Notificaciones";
 "settings.notifications.enabled.title" = "Notificaciones de entrenamiento";
 "settings.notifications.enabled.subtitle" = "El temporizador de descanso y los recordatorios del entrenamiento activo están activados.";
-"settings.notifications.paused.subtitle" = "iTrainer no programará recordatorios de entrenamiento.";
+"settings.notifications.paused.subtitle" = "Liftova no programará recordatorios de entrenamiento.";
 "settings.notifications.enable.title" = "Activar notificaciones";
 "settings.notifications.enable.subtitle" = "Permite el temporizador de descanso y los recordatorios del entrenamiento activo.";
 "settings.notifications.blocked.title" = "Las notificaciones están desactivadas";
@@ -430,15 +430,15 @@
 "settings.notifications.open_settings" = "Abrir ajustes";
 
 "settings.language.title" = "Idioma";
-"settings.language.system.title" = "Usa los ajustes de iTrainer del iPhone";
-"settings.language.system.subtitle" = "Abre los ajustes de iTrainer en iOS para elegir el idioma de la aplicación.";
+"settings.language.system.title" = "Usa los ajustes de Liftova del iPhone";
+"settings.language.system.subtitle" = "Abre los ajustes de Liftova en iOS para elegir el idioma de la aplicación.";
 
 "settings.support.title" = "Soporte";
-"settings.share_app.title" = "Compartir iTrainer";
-"settings.rate_app.title" = "Valorar iTrainer";
+"settings.share_app.title" = "Compartir Liftova";
+"settings.rate_app.title" = "Valorar Liftova";
 "settings.support.feedback.title" = "Enviar comentarios";
 "settings.support.feedback.subtitle" = "Envía por correo tus comentarios sobre la aplicación o los detalles de un problema.";
-"settings.support.feedback.subject" = "Comentarios sobre iTrainer";
+"settings.support.feedback.subject" = "Comentarios sobre Liftova";
 "settings.support.feedback.app_info" = "Información de la aplicación";
 "settings.support.mail_unavailable.title" = "El correo no está disponible";
 "settings.support.mail_unavailable.message" = "Configura Mail en este iPhone o ponte en contacto con soporte desde otra aplicación de correo.";

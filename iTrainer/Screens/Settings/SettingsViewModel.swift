@@ -12,9 +12,9 @@ import UIKit
 final class SettingsViewModel: ObservableObject {
     @Published var notificationPermissionStatus: LocalNotificationPermissionStatus = .notDetermined
     
-    let supportEmail = "support@itrainer.app"
-    let appStoreURL = URL(string: "https://apps.apple.com/app/id0000000000")!
-    let privacyPolicyURL: URL? = nil
+    let supportEmail = "support@liftova.app"
+    let appStoreURL = URL(string: "https://liftova.app")!
+    let privacyPolicyURL: URL? = URL(string: "https://liftova.app/privacy")
     
     var feedbackMailURL: URL? {
         var components = URLComponents()

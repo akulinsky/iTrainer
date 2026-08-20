@@ -422,7 +422,7 @@
 "settings.notifications.title" = "Notifications";
 "settings.notifications.enabled.title" = "Workout Notifications";
 "settings.notifications.enabled.subtitle" = "Rest timer and active workout reminders are enabled.";
-"settings.notifications.paused.subtitle" = "iTrainer will not schedule workout reminders.";
+"settings.notifications.paused.subtitle" = "Liftova will not schedule workout reminders.";
 "settings.notifications.enable.title" = "Enable Notifications";
 "settings.notifications.enable.subtitle" = "Allow rest timer and active workout reminders.";
 "settings.notifications.blocked.title" = "Notifications are disabled";
@@ -430,15 +430,15 @@
 "settings.notifications.open_settings" = "Open Settings";
 
 "settings.language.title" = "Language";
-"settings.language.system.title" = "Uses iTrainer iPhone settings";
-"settings.language.system.subtitle" = "Open iTrainer settings in iOS to choose the app language.";
+"settings.language.system.title" = "Uses Liftova iPhone settings";
+"settings.language.system.subtitle" = "Open Liftova settings in iOS to choose the app language.";
 
 "settings.support.title" = "Support";
-"settings.share_app.title" = "Share iTrainer";
-"settings.rate_app.title" = "Rate iTrainer";
+"settings.share_app.title" = "Share Liftova";
+"settings.rate_app.title" = "Rate Liftova";
 "settings.support.feedback.title" = "Send Feedback";
 "settings.support.feedback.subtitle" = "Email app feedback and issue details.";
-"settings.support.feedback.subject" = "iTrainer Feedback";
+"settings.support.feedback.subject" = "Liftova Feedback";
 "settings.support.feedback.app_info" = "App info";
 "settings.support.mail_unavailable.title" = "Mail is unavailable";
 "settings.support.mail_unavailable.message" = "Set up Mail on this iPhone or contact support from another email app.";
