@@ -549,7 +549,7 @@ private struct ExerciseContentView: View {
     
     private func reportSetsHeaderView(reportExercise: ReportExerciseModel) -> some View {
         VStack(alignment: .leading, spacing: 0) {
-            sectionTitle(reportExercise.date?.formatted(date: .long, time: .omitted) ?? String(localized: "reports.history.title"))
+            sectionTitle(reportSetsHeaderTitle(for: reportExercise.date))
                 .padding(.leading, 20)
                 .padding(.top, 12)
                 .padding(.bottom, 6)
@@ -557,6 +557,22 @@ private struct ExerciseContentView: View {
         .frame(maxWidth: .infinity, alignment: .leading)
         .background(AppColor.backgroundPrimary)
         .listRowInsets(EdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 0))
+    }
+    
+    private func reportSetsHeaderTitle(for date: Date?) -> String {
+        guard let date else {
+            return String(localized: "reports.history.title")
+        }
+        
+        if Calendar.current.isDateInToday(date) {
+            return String(localized: "common.today")
+        }
+        
+        if Calendar.current.isDateInYesterday(date) {
+            return String(localized: "common.yesterday")
+        }
+        
+        return date.formatted(date: .long, time: .omitted)
     }
     
     private func prepareToSave() {

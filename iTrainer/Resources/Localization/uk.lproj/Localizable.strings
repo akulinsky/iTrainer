@@ -58,6 +58,8 @@
 "common.name.placeholder" = "Нова назва";
 "common.optional" = "Необов'язково";
 "common.not_selected" = "Не вибрано";
+"common.today" = "Сьогодні";
+"common.yesterday" = "Вчора";
 
 /* Notifications */
 

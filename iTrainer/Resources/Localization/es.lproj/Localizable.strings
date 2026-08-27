@@ -58,6 +58,8 @@
 "common.name.placeholder" = "Nuevo nombre";
 "common.optional" = "Opcional";
 "common.not_selected" = "Sin seleccionar";
+"common.today" = "Hoy";
+"common.yesterday" = "Ayer";
 
 /* Notifications */
 
