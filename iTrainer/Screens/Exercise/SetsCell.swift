@@ -52,12 +52,12 @@ struct SetsCell: View {
             
             VStack(alignment: .leading, spacing: 4) {
                 Text(String.localizedStringWithFormat(String(localized: "exercise.set_number"), model.index))
-                    .font(AppFont.rowTitle)
-                    .foregroundStyle(AppColor.textPrimary)
-                
-                Text(parametersText)
                     .font(AppFont.rowSubtitle)
                     .foregroundStyle(AppColor.textSecondary)
+                
+                Text(parametersText)
+                    .font(AppFont.rowTitle)
+                    .foregroundStyle(AppColor.textPrimary)
                     .lineLimit(1)
                     .minimumScaleFactor(0.82)
             }

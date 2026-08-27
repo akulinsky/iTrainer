@@ -12,7 +12,7 @@ import Combine
 
 class ExerciseViewModel: ObservableObject {
     
-    private let reportHistoryDayLimit = 10
+    private let reportHistoryDayLimit = 5
     
     @Observable
     class ParamData: Identifiable {
