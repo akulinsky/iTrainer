@@ -155,6 +155,7 @@
 /* Superset */
 
 "superset.add" = "Add Superset";
+"superset.title" = "Superset";
 "superset.edit.title" = "Edit superset";
 "superset.rest.title" = "Superset rest";
 "superset.exercises" = "Exercises";

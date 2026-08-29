@@ -211,7 +211,7 @@ private struct ExerciseContentView: View {
             }
             .buttonStyle(.plain)
             .accessibilityElement(children: .combine)
-            .accessibilityLabel("\(viewModel.title), \(exerciseMetadata)")
+            .accessibilityLabel("\(viewModel.title), \(viewModel.exerciseMetadata)")
             .accessibilityHint(Text("exercise.info.accessibility_hint"))
             
             if let latestReportExercise = viewModel.reportExercises.first {
@@ -245,7 +245,7 @@ private struct ExerciseContentView: View {
                     .lineLimit(2)
                     .minimumScaleFactor(0.82)
                 
-                Text(exerciseMetadata)
+                Text(viewModel.exerciseMetadata)
                     .font(AppFont.rowSubtitle)
                     .foregroundStyle(AppColor.textSecondary)
                     .lineLimit(1)
@@ -306,30 +306,11 @@ private struct ExerciseContentView: View {
                              symbolSize: 36)
     }
     
-    private var exerciseMetadata: String {
-        guard let type = viewModel.exercise.type else {
-            return ""
-        }
-        
-        let groupTitle = isSupersetChild ? String(localized: "superset.title") : type.type.displayName
-        let typeTitle = type.displayName
-        
-        if viewModel.title.trimmingCharacters(in: .whitespacesAndNewlines).caseInsensitiveCompare(typeTitle.trimmingCharacters(in: .whitespacesAndNewlines)) == .orderedSame {
-            return groupTitle
-        }
-        
-        return "\(groupTitle) · \(typeTitle)"
-    }
-    
     private var restTimeText: String {
         guard viewModel.exercise.restTime > 0 else {
             return String(localized: "superset.without_rest")
         }
         return String.localizedStringWithFormat(String(localized: "exercise.rest_time.value"), viewModel.exercise.restTime.minuteSecond)
-    }
-    
-    private var isSupersetChild: Bool {
-        viewModel.exercise.parentSupersetId != nil
     }
     
     private var targetSetsSection: some View {
@@ -397,7 +378,7 @@ private struct ExerciseContentView: View {
     
     private var addResultSection: some View {
         VStack(alignment: .leading, spacing: 10) {
-            sectionTitle(isSupersetChild ? String(localized: "exercise.add_superset_result") : String(localized: "exercise.add_result"))
+            sectionTitle(viewModel.isSupersetChild ? String(localized: "exercise.add_superset_result") : String(localized: "exercise.add_result"))
             
             VStack(spacing: 10) {
                 HStack(alignment: .top, spacing: 10) {

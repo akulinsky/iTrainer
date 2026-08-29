@@ -155,6 +155,7 @@
 /* Superset */
 
 "superset.add" = "Añadir superserie";
+"superset.title" = "Superserie";
 "superset.edit.title" = "Editar superserie";
 "superset.rest.title" = "Descanso de la superserie";
 "superset.exercises" = "Ejercicios";

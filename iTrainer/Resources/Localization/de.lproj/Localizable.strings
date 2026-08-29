@@ -155,6 +155,7 @@
 /* Superset */
 
 "superset.add" = "Supersatz hinzufügen";
+"superset.title" = "Supersatz";
 "superset.edit.title" = "Supersatz bearbeiten";
 "superset.rest.title" = "Supersatz-Pause";
 "superset.exercises" = "Übungen";

@@ -88,6 +88,8 @@ class ExerciseViewModel: ObservableObject {
     @Published private(set) var workoutGroupId: UUID?
 
     @Published private(set) var workoutGroupTitle: String?
+
+    @Published private(set) var parentSupersetTitle: String?
     
     var hasTargetSets: Bool {
         !sets.isEmpty
@@ -104,6 +106,25 @@ class ExerciseViewModel: ObservableObject {
         
         return canAdvanceWorkoutExercise
     }
+
+    var isSupersetChild: Bool {
+        exercise.parentSupersetId != nil
+    }
+
+    var exerciseMetadata: String {
+        guard let type = exercise.type else {
+            return ""
+        }
+        
+        let groupTitle = isSupersetChild ? supersetMetadataTitle : type.type.displayName
+        let typeTitle = type.displayName
+        
+        if title.trimmingCharacters(in: .whitespacesAndNewlines).caseInsensitiveCompare(typeTitle.trimmingCharacters(in: .whitespacesAndNewlines)) == .orderedSame {
+            return groupTitle
+        }
+        
+        return "\(groupTitle) · \(typeTitle)"
+    }
     
     var paramsData = [ParamData]()
     
@@ -117,6 +138,16 @@ class ExerciseViewModel: ObservableObject {
     
     private var unitFormatter: UnitFormatter {
         UnitFormatter(settings: AppSettings.shared)
+    }
+
+    private var supersetMetadataTitle: String {
+        let supersetTitle = String(localized: "superset.title")
+        guard let parentSupersetTitle = parentSupersetTitle?.trimmingCharacters(in: .whitespacesAndNewlines),
+              !parentSupersetTitle.isEmpty else {
+            return supersetTitle
+        }
+        
+        return "\(supersetTitle) · \(parentSupersetTitle)"
     }
     
     static var countExerciseViewModel = 0
@@ -137,6 +168,7 @@ class ExerciseViewModel: ObservableObject {
                 let startedWorkout = await dataManager.fetchStartedWorkout()
                 let workoutGroupId = model.workoutGroup?.id
                 let workoutGroupTitle = model.workoutGroup?.title
+                let parentSupersetTitle = model.parentSuperset?.title
                 let isActiveWorkoutExercise = startedWorkout?.workoutGroupId == workoutGroupId
                 let activeReportSetCount = startedWorkout?.exercises
                     .flattenedReportExerciseItems()
@@ -157,6 +189,7 @@ class ExerciseViewModel: ObservableObject {
                     exercise = exerciseModel
                     self.workoutGroupId = workoutGroupId
                     self.workoutGroupTitle = workoutGroupTitle
+                    self.parentSupersetTitle = parentSupersetTitle
                     self.isActiveWorkoutExercise = isActiveWorkoutExercise
                     self.activeReportSetCount = activeReportSetCount
                     self.nextExercise = isActiveWorkoutExercise ? resolvedNextExercise : nil
