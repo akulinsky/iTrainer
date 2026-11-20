@@ -31,39 +31,37 @@ struct CalendarMonthPagerView: View {
     }
     
     var body: some View {
-        GeometryReader { proxy in
-            ScrollView(.horizontal) {
-                LazyHStack(spacing: 0) {
-                    ForEach(0..<monthCount, id: \.self) { index in
-                        monthGrid(index: index)
-                            .frame(width: proxy.size.width)
-                            .id(index)
-                    }
+        ScrollView(.horizontal) {
+            LazyHStack(spacing: 0) {
+                ForEach(0..<monthCount, id: \.self) { index in
+                    monthGrid(index: index)
+                        .containerRelativeFrame(.horizontal)
+                        .id(index)
                 }
-                .scrollTargetLayout()
             }
-            .scrollIndicators(.hidden)
-            .scrollTargetBehavior(.paging)
-            .scrollPosition(id: $scrollPosition)
-            .onAppear(perform: syncScrollPositionWithVisibleMonth)
-            .onChange(of: scrollPosition) { _, newValue in
-                guard let newValue else { return }
-                let month = month(for: newValue)
-                guard !calendar.calendarControlIsMonth(month, sameAs: visibleMonth) else { return }
-                visibleMonth = month
-            }
-            .onChange(of: visibleMonth) {
-                syncScrollPositionWithVisibleMonth()
-            }
-            .onChange(of: minimumMonth) {
-                syncScrollPositionAfterBoundsChange()
-            }
-            .onChange(of: maximumMonth) {
-                syncScrollPositionAfterBoundsChange()
-            }
-            .onChange(of: monthCount) {
-                syncScrollPositionAfterBoundsChange()
-            }
+            .scrollTargetLayout()
+        }
+        .scrollIndicators(.hidden)
+        .scrollTargetBehavior(.paging)
+        .scrollPosition(id: $scrollPosition, anchor: .leading)
+        .onAppear(perform: syncScrollPositionWithVisibleMonth)
+        .onChange(of: scrollPosition) { _, newValue in
+            guard let newValue else { return }
+            let month = month(for: newValue)
+            guard !calendar.calendarControlIsMonth(month, sameAs: visibleMonth) else { return }
+            visibleMonth = month
+        }
+        .onChange(of: visibleMonth) {
+            syncScrollPositionWithVisibleMonth()
+        }
+        .onChange(of: minimumMonth) {
+            syncScrollPositionAfterBoundsChange()
+        }
+        .onChange(of: maximumMonth) {
+            syncScrollPositionAfterBoundsChange()
+        }
+        .onChange(of: monthCount) {
+            syncScrollPositionAfterBoundsChange()
         }
         .frame(height: pagerHeight)
     }
